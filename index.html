@@ -1,176 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>F Pac Store - Não é só Roupa. É identidade!</title>
-
-  <meta name="description" content="F Pac Store em Joinville SC. Camisas masculinas personalizadas. Não é só roupa. É identidade.">
-
+  <meta name="description" content="F Pac Store em Joinville SC. Camisas masculinas personalizadas, uniformes operacionais, silk screen, DTF e bordado. Não é só roupa. É identidade.">
+  <meta name="keywords" content="camisas personalizadas, uniforme masculino, silk screen, dtf, bordado">
+  <meta name="author" content="F Pac Store">
+  <!-- Google Fonts (CORRIGIDO) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome (CORRIGIDO) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    :root {
-      --primary: #003366;
-      --accent: #FFC107;
-      --bg: #E0E0E0;
-      --text: #333333;
-      --white: #ffffff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* HEADER */
-    .header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: var(--primary);
-      color: var(--white);
-      box-shadow: 0 2px 10px rgba(0,0,0,.2);
-      z-index: 1000;
-    }
-
     .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 80px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
-      text-decoration: none;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
+  padding: 0 10px; /* antes era 20px */
+}
     .logo-img {
-      height: 60px;
-    }
-
-    .nav {
-      display: none;
-      gap: 30px;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .menu-toggle {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .nav.active {
-      position: absolute;
-      top: 80px;
-      left: 0;
-      width: 100%;
-      background: var(--primary);
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    @media (min-width: 768px) {
-      .nav {
-        display: flex;
-      }
-      .menu-toggle {
-        display: none;
-      }
-    }
-
-    /* HERO */
-    .hero {
-      margin-top: 80px;
-      min-height: calc(100vh - 80px);
-      background: linear-gradient(rgba(0,51,102,.85),rgba(0,51,102,.7)),
-        url('https://images.unsplash.com/photo-1534349735944-2b3a6f7a268f') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 40px 20px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header class="header">
-  <div class="container header-content">
-    <a href="#inicio" class="logo">
-      <img src="imagens/logo-fpac.png" alt="Logo FPAC" class="logo-img">
-      <span>F PAC <strong>STORE</strong></span>
-    </a>
-
-    <nav class="nav" id="nav">
-      <a href="#inicio">Início</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#estampas">Estampas</a>
-      <a href="#personalizar">Personalizar</a>
-    </nav>
-
-    <button class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</header>
-
-<section id="inicio" class="hero">
-  <div>
-    <h1>Não é só Roupa. É identidade!</h1>
-    <p>Camisas masculinas com estilo e qualidade.</p>
-  </div>
-</section>
-
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('nav');
-
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
-</script>
-
-</body>
-</html>
+  max-height: 70px; /* antes 60px */
+}
+    .btn {
+  box-shadow: 0 4px 15px rgba(255,193,7,0.4);
+}
+    
