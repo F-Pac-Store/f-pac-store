@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>F Pac Store - Não é só Roupa. É identidade!</title>
+
   <meta name="description" content="Camisas masculinas personalizadas, uniformes operacionais e estampas exclusivas.">
   <meta name="author" content="F Pac Store">
+
   <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <!-- Icons -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
       --primary: #003366;
@@ -20,21 +28,25 @@
       --text: #333;
       --white: #fff;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
     }
+
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 0 15px;
     }
+
     /* HEADER */
     .header {
       background: var(--primary);
@@ -44,12 +56,14 @@
       top: 0;
       z-index: 1000;
     }
+
     .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 80px;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -58,23 +72,28 @@
       color: white;
       font-weight: 800;
     }
+
     .logo-img {
       max-height: 65px;
     }
+
     .nav {
       display: none;
     }
+
     .nav a {
       color: white;
       text-decoration: none;
       font-weight: 600;
     }
+
     .menu-toggle {
       font-size: 1.5rem;
       background: none;
       border: none;
       color: white;
     }
+
     .nav.active {
       display: flex;
       flex-direction: column;
@@ -86,6 +105,7 @@
       padding: 20px;
       gap: 15px;
     }
+
     @media(min-width:768px){
       .nav {
         display: flex;
@@ -95,6 +115,7 @@
         display: none;
       }
     }
+
     /* HERO */
     .hero {
       margin-top: 80px;
@@ -107,10 +128,12 @@
       text-align: center;
       color: white;
     }
+
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 15px;
     }
+
     .btn {
       background: var(--accent);
       color: black;
@@ -120,28 +143,34 @@
       border-radius: 5px;
       display: inline-block;
     }
+
     /* PRODUTOS */
     .produtos {
       padding: 60px 0;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap: 20px;
     }
+
     .card {
       background: white;
       border-radius: 8px;
       padding: 15px;
       text-align: center;
     }
+
     .card img {
       width: 100%;
       border-radius: 5px;
     }
+
     .card h3 {
       margin: 10px 0;
     }
+
     .whatsapp {
       background: #25D366;
       color: white;
@@ -151,6 +180,7 @@
       text-decoration: none;
       border-radius: 5px;
     }
+
     /* FOOTER */
     .footer {
       background: #001a33;
@@ -159,63 +189,85 @@
       text-align: center;
     }
   </style>
+
 </head>
+
 <body>
+
 <header class="header">
   <div class="container header-content">
     <a href="#" class="logo">
       <img src="imagens/logo-fpac.png" class="logo-img">
       F PAC STORE
     </a>
+
+```
 <nav class="nav" id="nav">
   <a href="#inicio">Início</a>
   <a href="#produtos">Produtos</a>
 </nav>
+
 <button class="menu-toggle" id="toggle">
   <i class="fas fa-bars"></i>
 </button>
+```
+
   </div>
 </header>
+
 <section class="hero" id="inicio">
   <div>
     <h1>Não é só roupa. É identidade.</h1>
     <a href="https://wa.me/5547997465602" class="btn">Fazer orçamento</a>
   </div>
 </section>
+
 <section class="produtos" id="produtos">
   <div class="container">
     <h2>Produtos</h2>
+
+```
 <div class="grid">
+
   <div class="card">
     <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
     <h3>Camiseta Militar</h3>
     <p>Alta resistência e estilo tático.</p>
     <a class="whatsapp" href="https://wa.me/5547997465602">Comprar</a>
   </div>
+
   <div class="card">
     <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
     <h3>Camiseta Personalizada</h3>
     <p>Crie sua estampa exclusiva.</p>
     <a class="whatsapp" href="https://wa.me/5547997465602">Comprar</a>
   </div>
+
   <div class="card">
     <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
     <h3>Uniforme Operacional</h3>
     <p>Profissional e resistente.</p>
     <a class="whatsapp" href="https://wa.me/5547997465602">Comprar</a>
   </div>
+
 </div>
+```
+
   </div>
 </section>
+
 <footer class="footer">
   &copy; 2026 F Pac Store
 </footer>
+
 <script>
   const toggle = document.getElementById('toggle');
   const nav = document.getElementById('nav');
+
   toggle.onclick = () => {
     nav.classList.toggle('active');
   }
 </script>
+
 </body>
 </html>
