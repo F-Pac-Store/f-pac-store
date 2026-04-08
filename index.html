@@ -16,7 +16,7 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #003366;
@@ -62,15 +62,19 @@
       height: 80px;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: white;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+    .logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;          /* Desktop */
+  letter-spacing: 3px;      /* Identidade forte */
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: 2.4rem;      /* Fica maior no desktop */
+  }
+}
+
 
     .logo-img {
       max-height: 60px;
@@ -218,9 +222,9 @@
 <header class="header">
   <div class="container header-content">
     <a href="#" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      F PAC STORE
-    </a>
+  <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+  <span class="logo-text">F PAC STORE</span>
+</a>
 
     <nav class="nav" id="nav">
       <a href="#inicio">Início</a>
