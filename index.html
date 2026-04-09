@@ -9,14 +9,17 @@
   <meta name="description" content="Camisas masculinas estampadas com personalidade. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
   <meta name="author" content="F Pac Store">
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
+  <!-- Fonte Geakosa -->
+  <link href="https://fonts.cdnfonts.com/css/geakosa" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.cdnfonts.com/css/geakosa" rel="stylesheet">
+
   <style>
     :root {
       --primary: #003366;
@@ -57,34 +60,52 @@
 
     .header-content {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      height: 80px;
+      justify-content: space-between;
+      height: 90px;
+    }
+
+    /* LOGO */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      max-height: 85px;
     }
 
     .logo-text {
-  font-family: 'Geakosa', sans-serif;
-  font-size: 2.4rem;        /* Mobile */
-  letter-spacing: 3px;
-  color: #FFC107;
-  text-decoration: none;
-  border-bottom: none;
-  line-height: 1;
-}
+      font-family: 'Geakosa', sans-serif;
+      font-size: 2.6rem;
+      letter-spacing: 3px;
+      line-height: 1;
+      background-color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      color: #ffffff;
+      -webkit-text-stroke: 2.5px #FFC107;
+      display: flex;
+      align-items: center;
+    }
 
-@media (min-width: 768px) {
-  .logo-text {
-    font-size: 3rem;        /* Desktop */
-  }
-}
+    @media (min-width: 768px) {
+      .logo-img {
+        max-height: 90px;
+      }
 
-    .logo-img {
-  max-height: 85px;
-}
+      .logo-text {
+        font-size: 3.2rem;
+        -webkit-text-stroke: 3px #FFC107;
+      }
+    }
 
-
+    /* MENU */
     .nav {
       display: none;
+      gap: 25px;
     }
 
     .nav a {
@@ -94,7 +115,7 @@
     }
 
     .menu-toggle {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       background: none;
       border: none;
       color: white;
@@ -106,7 +127,7 @@
       position: absolute;
       width: 100%;
       background: var(--primary);
-      top: 80px;
+      top: 90px;
       left: 0;
       padding: 20px;
       gap: 15px;
@@ -115,7 +136,6 @@
     @media (min-width: 768px) {
       .nav {
         display: flex;
-        gap: 25px;
       }
 
       .menu-toggle {
@@ -125,10 +145,10 @@
 
     /* HERO */
     .hero {
-      margin-top: 80px;
+      margin-top: 90px;
       height: 90vh;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-      url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -224,10 +244,11 @@
 
 <header class="header">
   <div class="container header-content">
+
     <a href="#" class="logo">
-  <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-  <span class="logo-text">F PAC STORE</span>
-</a>
+      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+      <span class="logo-text">F PAC STORE</span>
+    </a>
 
     <nav class="nav" id="nav">
       <a href="#inicio">Início</a>
@@ -237,6 +258,7 @@
     <button class="menu-toggle" id="toggle">
       <i class="fas fa-bars"></i>
     </button>
+
   </div>
 </header>
 
@@ -262,37 +284,22 @@
       <div class="card">
         <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camiseta Militar">
         <h3>Camiseta Militar</h3>
-        <p>
-          Visual forte, resistência superior e presença marcante.
-          Ideal para quem carrega atitude no dia a dia.
-        </p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">
-          Garantir a minha agora
-        </a>
+        <p>Visual forte, resistência superior e presença marcante.</p>
+        <a class="whatsapp" href="https://wa.me/5547997465602">Garantir a minha</a>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="Camiseta Personalizada">
         <h3>Camiseta Personalizada</h3>
-        <p>
-          Crie uma estampa exclusiva e vista uma peça que ninguém mais tem.
-          Sua identidade, do seu jeito.
-        </p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">
-          Criar minha estampa
-        </a>
+        <p>Crie sua própria estampa e vista sua identidade.</p>
+        <a class="whatsapp" href="https://wa.me/5547997465602">Criar a minha</a>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb" alt="Uniforme Operacional">
         <h3>Uniforme Operacional</h3>
-        <p>
-          Profissionalismo, conforto e durabilidade para quem exige
-          performance sem abrir mão do estilo.
-        </p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">
-          Solicitar orçamento
-        </a>
+        <p>Durabilidade, conforto e imagem profissional.</p>
+        <a class="whatsapp" href="https://wa.me/5547997465602">Solicitar orçamento</a>
       </div>
 
     </div>
