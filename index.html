@@ -216,20 +216,29 @@
         display: none;
       }
     }
+/* HERO - CAPA PRINCIPAL */
+/* Imagem ocupa 100% da área */
 
-    /* HERO CAPA DO SITE */
 .hero {
   margin-top: 90px;
-  height: 90vh;
-  background:
+
+  /* garante altura mínima total da tela */
+  min-height: calc(100vh - 90px);
+
+  /* imagem de fundo */
+  background-image:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg')
-      center / cover no-repeat;
+    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+
+  background-size: cover;       /* ocupa tudo */
+  background-position: center;  /* centraliza */
+  background-repeat: no-repeat;
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+
   color: white;
   padding: 20px;
 }
