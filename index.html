@@ -84,7 +84,6 @@
 
     /* HEADER */
 
-
     .header {
       background: var(--primary);
       color: var(--white);
@@ -100,10 +99,6 @@
       justify-content: space-between;
       height: 90px;
     }
-
-.header-content {
-  background: var(--primary);
-}
 
     /* LOGO */
 
@@ -142,19 +137,23 @@
 
     /* MENU */
 
-    @media (min-width: 768px) {
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--primary); /* COR AZUL MARINHO */
-    height: 100%;
-  }
+    .nav {
+      display: none;
+      gap: 25px;
+    }
 
-  .menu-toggle {
-    display: none;
-  }
-}
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .menu-toggle {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+    }
 
 
 /* Hover opcional (desktop) */
