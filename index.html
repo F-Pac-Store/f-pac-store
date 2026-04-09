@@ -19,9 +19,43 @@
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   <style>
+
+/* MENU INTERNO */
+
+.menu-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+/* ICONES SOCIAIS NO MENU */
+
+.menu-social {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* ESTILO DOS ICONES */
+
+.menu-social a {
+  color: white;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* HOVER DOS ICONES */
+
+.menu-social a:hover {
+  color: var(--accent);
+  transform: scale(1.15);
+}
+``
+
     :root {
       --primary: #003366;
       --accent: #FFC107;
@@ -202,6 +236,7 @@
 }
 
     /* PRODUTOS */
+
     .produtos {
       padding: 70px 0;
     }
@@ -251,6 +286,7 @@
     }
 
     /* FOOTER */
+
     .footer {
       background: #001a33;
       color: white;
@@ -272,11 +308,27 @@
     </a>
 
     <nav class="nav" id="nav">
-      <a href="#inicio">Início</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#criar sua camisa">Criar Sua Camisa</a>
-    </nav>
+
+  <!-- LINKS DO MENU -->
+  <div class="menu-links">
+    <a href="#inicio">Início</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#criar">Criar Sua Camisa</a>
+  </div>
+
+  <!-- ICONES SOCIAIS -->
+  <div class="menu-social">
+    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+</nav>
 
     <button class="menu-toggle" id="toggle">
       <i class="fas fa-bars"></i>
