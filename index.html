@@ -1,89 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+  <!-- ================================= -->
+  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
+  <!-- ================================= -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>F Pac Store | Não é só roupa. É identidade!</title>
 
-<meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
-<meta name="author" content="F Pac Store">
+  <!-- SEO -->
+  <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade.">
+  <meta name="author" content="F Pac Store">
 
-
-  <!-- Google Fonts -->
+  <!-- ================================= -->
+  <!-- FONTES -->
+  <!-- ================================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonte principal -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Fonte blacklisted -->
+  <!-- Fonte da logo -->
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Ícones sociais -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- ================================= -->
+  <!-- ESTILOS DO SITE -->
+  <!-- ================================= -->
   <style>
 
-/* MENU INTERNO */
-
-.menu-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-/* ICONES SOCIAIS NO MENU */
-
-.menu-social {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-/* ESTILO DOS ICONES */
-
-.menu-social a {
-  color: white;
-  font-size: 1.8rem; /* TAMANHO DOS ÍCONES */
-  transition: transform 0.2s ease;
-}
-
-/* HOVER DOS ICONES */
-
-.menu-social a:hover {
-  color: var(--accent);
-  transform: scale(1.15);
-}
-
-/* ============================= */
-/* CORES OFICIAIS DOS ÍCONES */
-/* ============================= */
-
-/* WhatsApp - verde oficial */
-.menu-social a .fa-whatsapp {
-  color: #25D366;
-}
-
-/* Instagram - gradiente oficial da marca */
-
-.menu-social a .fa-instagram {
-  background: radial-gradient(circle at 30% 110%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285AEB 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+    /* ============================= */
+    /* VARIÁVEIS DE CORES GLOBAIS */
+    /* ============================= */
     :root {
       --primary: #003366;
       --accent: #FFC107;
       --bg: #f5f5f5;
       --text: #333;
-      --white: #fff;
+      --white: #ffffff;
     }
 
+    /* ============================= */
+    /* RESET PADRÃO */
+    /* ============================= */
     * {
       margin: 0;
       padding: 0;
@@ -103,8 +67,13 @@
       padding: 0 15px;
     }
 
-    /* HEADER */
+    html {
+      scroll-behavior: smooth;
+    }
 
+    /* ============================= */
+    /* HEADER FIXO */
+    /* ============================= */
     .header {
       background: var(--primary);
       color: var(--white);
@@ -112,6 +81,7 @@
       width: 100%;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     .header-content {
@@ -121,8 +91,9 @@
       height: 90px;
     }
 
+    /* ============================= */
     /* LOGO */
-
+    /* ============================= */
     .logo {
       display: flex;
       align-items: center;
@@ -138,26 +109,14 @@
       font-family: 'blacklisted', sans-serif;
       font-size: 1.5rem;
       letter-spacing: 3px;
-      line-height: 1;
-      color: #000000;
-      -webkit-text-stroke: 2.3px #FFC107;
-      display: flex;
-      align-items: center;
+      color: #FFC107;
+      -webkit-text-stroke: 1.5px #000;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
 
-    @media (min-width: 768px) {
-      .logo-img {
-        max-height: 90px;
-      }
-
-      .logo-text {
-  color: #FFC107;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-
-    /* MENU */
-
+    /* ============================= */
+    /* MENU DE NAVEGAÇÃO */
+    /* ============================= */
     .nav {
       display: none;
       gap: 25px;
@@ -169,6 +128,52 @@
       font-weight: 600;
     }
 
+    /* MENU LINKS */
+    .menu-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    /* ============================= */
+    /* ÍCONES SOCIAIS NO MENU */
+    /* ============================= */
+    .menu-social {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* TAMANHO DOS ÍCONES */
+    .menu-social a {
+      font-size: 1.8rem;
+      transition: transform 0.2s ease;
+    }
+
+    /* HOVER DOS ÍCONES */
+    .menu-social a:hover {
+      transform: scale(1.15);
+    }
+
+    /* WhatsApp - cor oficial */
+    .menu-social .fa-whatsapp {
+      color: #25D366;
+    }
+
+    /* Instagram - gradiente oficial */
+    .menu-social .fa-instagram {
+      background: radial-gradient(circle at 30% 110%,
+        #fdf497 0%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285AEB 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ============================= */
+    /* MENU MOBILE */
+    /* ============================= */
     .menu-toggle {
       font-size: 2rem;
       background: none;
@@ -176,25 +181,13 @@
       color: white;
     }
 
-
-/* Hover opcional (desktop) */
-
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: white;
-  transition: color 0.3s ease;
-}
-
     .nav.active {
       display: flex;
       flex-direction: column;
       position: absolute;
+      top: 90px;
       width: 100%;
       background: var(--primary);
-      top: 90px;
-      left: 0;
       padding: 20px;
       gap: 15px;
     }
@@ -209,22 +202,24 @@
       }
     }
 
-    /* HERO */
-.hero {
-  margin-top: 90px;
-  height: 90vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg')
-      center / cover no-repeat;
+    /* ============================= */
+    /* HERO (CAPA DO SITE) */
+    /* ============================= */
+    .hero {
+      margin-top: 90px;
+      height: 90vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg')
+        center / cover no-repeat;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
 
     .hero h1 {
       font-size: 2.8rem;
@@ -239,24 +234,25 @@
       margin-bottom: 25px;
     }
 
+    /* BOTÃO PRINCIPAL */
     .btn {
-  background: var(--accent);
-  color: black;
-  padding: 15px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
+      background: var(--accent);
+      color: black;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
 
-.btn:hover {
-  background: #e6ad00;
-  transform: scale(1.05);
-}
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
-    /* PRODUTOS */
-
+    /* ============================= */
+    /* SEÇÃO DE PRODUTOS */
+    /* ============================= */
     .produtos {
       padding: 70px 0;
     }
@@ -290,10 +286,6 @@
       margin: 15px 0 10px;
     }
 
-    .card p {
-      font-size: 0.95rem;
-    }
-
     .whatsapp {
       background: #25D366;
       color: white;
@@ -305,8 +297,9 @@
       font-weight: 600;
     }
 
+    /* ============================= */
     /* FOOTER */
-
+    /* ============================= */
     .footer {
       background: #001a33;
       color: white;
@@ -314,106 +307,102 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
   </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="container header-content">
+  <!-- ================================= -->
+  <!-- HEADER / MENU -->
+  <!-- ================================= -->
+  <header class="header">
+    <div class="container header-content">
 
-    <a href="#" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
-    </a>
+      <!-- LOGO -->
+      <a href="#" class="logo">
+        <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+        <span class="logo-text">F PAC STORE</span>
+      </a>
 
-    <nav class="nav" id="nav">
+      <!-- MENU -->
+      <nav class="nav" id="nav">
 
-  <!-- LINKS DO MENU -->
-  <div class="menu-links">
-    <a href="#inicio">Início</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#criar">Criar Sua Camisa</a>
-  </div>
+        <div class="menu-links">
+          <a href="#inicio">Início</a>
+          <a href="#produtos">Produtos</a>
+        </div>
 
-  <!-- ICONES SOCIAIS -->
-  <div class="menu-social">
-    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
+        <div class="menu-social">
+          <a href="https://wa.me/5547997465602" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://instagram.com/f_pac_store/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
 
-    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
+      </nav>
 
-</nav>
+      <!-- BOTÃO MOBILE -->
+      <button class="menu-toggle" id="toggle">
+        <i class="fas fa-bars"></i>
+      </button>
 
-    <button class="menu-toggle" id="toggle">
-      <i class="fas fa-bars"></i>
-    </button>
+    </div>
+  </header>
 
-  </div>
-</header>
+  <!-- ================================= -->
+  <!-- HERO -->
+  <!-- ================================= -->
+  <section class="hero" id="inicio">
+    <div>
+      <h1>Não é só roupa. É identidade.</h1>
+      <p>Camisas masculinas estampadas para quem se recusa a vestir o comum.</p>
+      <a href="https://wa.me/5547997465602" class="btn">Bora Vestir Isso</a>
+    </div>
+  </section>
 
-<section class="hero" id="inicio">
-  <div>
-    <h1>Não é só roupa. É identidade.</h1>
-    <p>
-      Camisas masculinas estampadas para quem se recusa a vestir o comum.
-      Mais atitude, mais personalidade e estilo que fala antes de você.
-    </p>
-    <a href="https://wa.me/5547997465602" class="btn">
-      Bora Vestir Isso
-    </a>
-  </div>
-</section>
+  <!-- ================================= -->
+  <!-- PRODUTOS -->
+  <!-- ================================= -->
+  <section class="produtos" id="produtos">
+    <div class="container">
 
-<section class="produtos" id="produtos">
-  <div class="container">
-    <h2>Camisas que representam quem você é</h2>
+      <h2>Camisas que representam quem você é</h2>
 
-    <div class="grid">
+      <div class="grid">
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camiseta Militar">
-        <h3>Camiseta Militar</h3>
-        <p>Visual forte, resistência superior e presença marcante.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Garantir a minha</a>
-      </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+          <h3>Camiseta Militar</h3>
+          <a class="whatsapp" href="https://wa.me/5547997465602">Garantir a minha</a>
+        </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="Camiseta Personalizada">
-        <h3>Camiseta Personalizada</h3>
-        <p>Crie sua própria estampa e vista sua identidade.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Criar a minha</a>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb" alt="Uniforme Operacional">
-        <h3>Uniforme Operacional</h3>
-        <p>Durabilidade, conforto e imagem profissional.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Solicitar orçamento</a>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  © 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
+  <!-- ================================= -->
+  <!-- FOOTER -->
+  <!-- ================================= -->
+  <footer class="footer">
+    © 2026 F Pac Store — Não é só roupa. É identidade.
+  </footer>
 
-<script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
+  <!-- ================================= -->
+  <!-- SCRIPT: MENU MOBILE -->
+  <!-- ================================= -->
+  <script>
+    const toggle = document.getElementById('toggle');
+    const nav = document.getElementById('nav');
 
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-</script>
+    // Abre e fecha o menu no mobile
+    toggle.onclick = () => {
+      nav.classList.toggle('active');
+    };
+  </script>
 
 </body>
 </html>
-``
