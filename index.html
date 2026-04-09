@@ -85,16 +85,20 @@
     /* HEADER */
 
     .header {
-  background: var(--primary);
-}
+      background: var(--primary);
+      color: var(--white);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
 
-.header-content {
-  background: var(--primary);
-}
-
-.header .container {
-  background: transparent;
-}
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 90px;
+    }
 
     /* LOGO */
 
