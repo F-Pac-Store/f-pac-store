@@ -206,30 +206,37 @@
       padding: 20px;
       gap: 15px;
     }
+/* HERO - MOBILE RETRATO */
+/* Evita página muito alta */
+      
+@media (max-width: 768px) and (orientation: portrait) {
+  .hero {
+    min-height: 70vh;            /* REDUZ altura */
+    background-size: contain;    /* Mostra imagem inteira */
+    padding: 40px 20px;
+  }
+}
 
-    @media (min-width: 768px) {
-      .nav {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: none;
-      }
-    }
 
     /* HERO CAPA DO SITE */
-.hero {
+.
+hero {
   margin-top: 90px;
-  height: 90vh;
-  background:
+  min-height: calc(100vh - 90px);
+
+  background-image:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg')
-      center / cover no-repeat;
+    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+
   color: white;
   padding: 20px;
 }
