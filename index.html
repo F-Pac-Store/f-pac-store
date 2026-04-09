@@ -305,11 +305,22 @@
       text-align: center;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     }
+/* IMAGENS DOS PRODUTOS */
+/* Evita imagens gigantes no mobile */
 
-    .card img {
-      width: 100%;
-      border-radius: 5px;
-    }
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* proporção quadrada */
+  object-fit: cover;       /* corta excesso sem distorcer */
+  border-radius: 5px;
+}
+/* AJUSTE DE IMAGEM - MOBILE */
+
+@media (max-width: 768px) {
+  .card img {
+    aspect-ratio: 4 / 5; /* formato mais elegante no celular */
+  }
+}
 
     .card h3 {
       margin: 15px 0 10px;
