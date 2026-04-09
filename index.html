@@ -206,21 +206,20 @@
       padding: 20px;
       gap: 15px;
     }
-/* HERO - MOBILE RETRATO */
-/* Evita página muito alta */
-      
-@media (max-width: 768px) and (orientation: portrait) {
-  .hero {
-    min-height: 70vh;            /* REDUZ altura */
-    background-size: contain;    /* Mostra imagem inteira */
-    padding: 40px 20px;
-  }
-}
 
+    @media (min-width: 768px) {
+      .nav {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+    }
 
     /* HERO CAPA DO SITE */
-.
-hero {
+
+.hero {
   margin-top: 90px;
   min-height: calc(100vh - 90px);
 
@@ -433,4 +432,3 @@ hero {
 </body>
 </html>
 ``
-
