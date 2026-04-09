@@ -50,6 +50,7 @@
     }
 
     /* HEADER */
+
     .header {
       background: var(--primary);
       color: var(--white);
@@ -67,6 +68,7 @@
     }
 
     /* LOGO */
+
     .logo {
       display: flex;
       align-items: center;
@@ -101,6 +103,7 @@
     }
 
     /* MENU */
+
     .nav {
       display: none;
       gap: 25px;
@@ -113,11 +116,22 @@
     }
 
     .menu-toggle {
-      font-size: 1.6rem;
+      font-size: 2rem;
       background: none;
       border: none;
       color: white;
     }
+
+
+/* Hover opcional (desktop) */
+
+.menu-toggle {
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: white;
+  transition: color 0.3s ease;
+}
 
     .nav.active {
       display: flex;
