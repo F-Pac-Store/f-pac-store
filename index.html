@@ -621,6 +621,7 @@ x'<!DOCTYPE html>
         <select id="cor-basica">
           <option value="Preta">Preta</option>
           <option value="Branca">Branca</option>
+          <option value="Off White">Off White</option>
         </select>
 
         <label>Tamanho</label>
@@ -661,15 +662,14 @@ x'<!DOCTYPE html>
         <option value="">Selecione</option>
         <option>Preta</option>
         <option>Branca</option>
+        <option>Off White</option>
       </select>
 
       <label>Tamanho</label>
       <select id="tamanho-premium" onchange="calcularPrecoPremium()">
         <option value="">Selecione</option>
-        <option>P</option>
         <option>M</option>
         <option>G</option>
-        <option>GG</option>
       </select>
 
 <label>Quantidade de Camisas</label>
@@ -681,6 +681,13 @@ x'<!DOCTYPE html>
   onchange="calcularPrecoPremium()"
 />
 
+<label>Quantidade de Estampas</label>
+<select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
+  <option value="0">Nenhuma</option>
+  <option value="1">1 Estampa</option>
+  <option value="2">2 Estampas</option>
+</select>
+      
     </div>
   </div>
 </section>
