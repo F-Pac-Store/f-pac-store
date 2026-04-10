@@ -497,7 +497,7 @@ x'<!DOCTYPE html>
 
   <!-- ICONES SOCIAIS -->
   <div class="menu-social">
-    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -522,7 +522,7 @@ x'<!DOCTYPE html>
       Camisas masculinas estampadas para quem se recusa a vestir o comum.
       Mais atitude, mais personalidade e estilo que fala antes de você.
     </p>
-    <a href="https://wa.me/5547997465602" class="btn">
+    <a href="https://wa.me/554799746" class="btn">
       Bora Vestir Isso
     </a>
   </div>
@@ -634,7 +634,7 @@ x'<!DOCTYPE html>
         <input type="number" id="qtd-basica" value="1" min="1">
 
         <button onclick="comprarBasica()">
-          Comprar pelo WhatsApp
+          Finalizar Compra
         </button>
 
       </div>
@@ -785,7 +785,7 @@ function comprarBasica() {
     `Valor total: R$ ${totalFormatado}`;
 
   window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+    "https://wa.me/55479974?text=" + encodeURIComponent(mensagem),
     "_blank"
   );
 }
@@ -804,6 +804,48 @@ function mostrarEstampas() {
     document.getElementById('estampa2').style.display =
       qtd === 2 ? 'block' : 'none';
   }
+}
+</script>
+
+<script>
+function comprarPremium() {
+  const cor = document.getElementById('cor-premium').value;
+  const tamanho = document.getElementById('tamanho-premium').value;
+  const qtdCamisas = document.getElementById('qtd-camisas').value;
+  const qtdEstampas = document.getElementById('qtd-estampas').value;
+  const preco = document.getElementById('preco-premium').innerText;
+
+  let detalhesEstampas = '';
+
+  if (qtdEstampas >= 1) {
+    detalhesEstampas +=
+      `\nEstampa 1:` +
+      `\n• Arte: ${arte1.value}` +
+      `\n• Posição: ${pos1.value}` +
+      `\n• Fundo: ${fundo1.value}\n`;
+  }
+
+  if (qtdEstampas == 2) {
+    detalhesEstampas +=
+      `\nEstampa 2:` +
+      `\n• Arte: ${arte2.value}` +
+      `\n• Posição: ${pos2.value}` +
+      `\n• Fundo: ${fundo2.value}\n`;
+  }
+
+  const mensagem =
+    `Olá! Quero criar minha Camiseta Premium.\n\n` +
+    `Cor: ${cor}\n` +
+    `Tamanho: ${tamanho}\n` +
+    `Quantidade de camisas: ${qtdCamisas}\n` +
+    `Quantidade de estampas: ${qtdEstampas}\n` +
+    `${detalhesEstampas}\n` +
+    `Valor estimado: ${preco}`;
+
+  window.open(
+    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+    "_blank"
+  );
 }
 </script>
   
