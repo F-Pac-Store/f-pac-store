@@ -615,7 +615,7 @@ x'<!DOCTYPE html>
 >
 
         <h3>Camiseta Básica</h3>
-        <p class="preco">R$ 79,90</p>
+       <p class="preco" id="preco-basica">R$ 79,90</p>
 
         <label>Cor</label>
         <select id="cor-basica">
@@ -631,7 +631,13 @@ x'<!DOCTYPE html>
         </select>
 
         <label>Quantidade</label>
-        <input type="number" id="qtd-basica" value="1" min="1">
+        <input
+  type="number"
+  id="qtd-basica"
+  value="1"
+  min="1"
+  onchange="calcularPrecoBasica()"
+/>
 
         <button onclick="comprarBasica()">
           Finalizar Compra
@@ -904,6 +910,26 @@ function calcularPrecoPremium() {
   }
 }
 </script>
+
+<script>
+function calcularPrecoBasica() {
+  const precoUnitario = 79.90;
+  const quantidade = Number(
+    document.getElementById('qtd-basica').value
+  );
+
+  const total = precoUnitario * quantidade;
+
+  const precoEl = document.getElementById('preco-basica');
+  if (precoEl) {
+    precoEl.innerText =
+      'R$ ' + total.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2
+      });
+  }
+}
+</script>
+
  
 </body>
 </html>
