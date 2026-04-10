@@ -245,21 +245,19 @@
   color: white;
   padding: 20px;
 }
-
-/* HERO - MOBILE RETRATO */
-/* Ajuste correto para celular */
+/* HEADER + HERO - MOBILE FINAL */
 
 @media (max-width: 768px) {
   .header-content {
-    height: 100px;   /* menu um pouco menor no celular */
+    height: 96px;        /* altura ideal no mobile */
   }
 
   .hero {
-    margin-top: 100px;
-    min-height: calc(100vh - 100px);
+    margin-top: 96px;    /* sincroniza com header */
+    min-height: 52vh;    /* evita espaço branco vertical */
   }
 }
-    
+
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 15px;
