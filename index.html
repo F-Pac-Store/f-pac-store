@@ -239,13 +239,14 @@
   color: white;
   padding: 20px;
 }
+
 /* HERO - MOBILE RETRATO */
-/* Evita página muito alta */
+/* Ajuste correto para celular */
 
 @media (max-width: 768px) and (orientation: portrait) {
   .hero {
-    min-height: 70vh;            /* REDUZ altura */
-    background-size: contain;    /* Mostra imagem inteira */
+    min-height: 60vh;          /* evita página gigante */
+    background-size: cover;   /* evita áreas brancas */
     padding: 40px 20px;
   }
 }
