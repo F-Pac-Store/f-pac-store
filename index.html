@@ -1,7 +1,7 @@
 x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  /* CONFIGURAÇÕES BÁSICAS DO SITE */
+ <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@ x'<!DOCTYPE html>
 
 <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
 <meta name="author" content="F Pac Store">
- /* FONTES */
+<!-- FONTES -->
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -848,6 +848,33 @@ function comprarPremium() {
   );
 }
 </script>
-  
+
+<script>
+function calcularPrecoPremium() {
+  let precoBase = 69.90;
+
+  const qtdEstampas = Number(
+    document.getElementById('qtd-estampas').value
+  );
+
+  const qtdCamisas = Number(
+    document.getElementById('qtd-camisas').value
+  );
+
+  // Acréscimo por quantidade de estampas
+  if (qtdEstampas === 1) precoBase += 10;
+  if (qtdEstampas === 2) precoBase += 30;
+
+  const total = precoBase * qtdCamisas;
+
+  const precoEl = document.getElementById('preco-premium');
+  if (precoEl) {
+    precoEl.innerText =
+      'R$ ' + total.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2
+      });
+  }
+}
+</script>  
 </body>
 </html>
