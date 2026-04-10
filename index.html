@@ -96,13 +96,11 @@
     }
 
     body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-
-  padding-top: 90px; /* ✅ reserva espaço para o header fixo */
-}
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
     .container {
       max-width: 1200px;
@@ -146,7 +144,7 @@
 
     .logo-text {
       font-family: 'blacklisted', sans-serif;
-      font-size: 2.2rem;
+      font-size: 1.5rem;
       letter-spacing: 3px;
       line-height: 1;
       color: #000000;
@@ -199,21 +197,18 @@
   color: white;
   transition: color 0.3s ease;
 }
-/* MENU MOBILE - POSIÇÃO CORRETA */
 
-.nav.active {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 100%;
-  background: var(--primary);
-
-  top: 100px;           /* ✅ IGUAL AO HEADER MOBILE */
-  left: 0;
-
-  padding: 20px;
-  gap: 15px;
-}
+    .nav.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      background: var(--primary);
+      top: 90px;
+      left: 0;
+      padding: 20px;
+      gap: 15px;
+    }
 
     @media (min-width: 768px) {
       .nav {
@@ -228,6 +223,7 @@
     /* HERO CAPA DO SITE */
 
 .hero {
+  margin-top: 90px;
   min-height: calc(100vh - 90px);
 
   background-image:
@@ -246,29 +242,18 @@
   color: white;
   padding: 20px;
 }
-/* HEADER + HERO - MOBILE FINAL */
 
-@media (max-width: 768px) {
-  .header-content {
-    height: 96px;
-  }
+/* HERO - MOBILE RETRATO */
+/* Ajuste correto para celular */
 
-  body {
-    padding-top: 96px; /* ✅ sincroniza com o header mobile */
-  }
-
+@media (max-width: 768px) and (orientation: portrait) {
   .hero {
-    min-height: 52vh;
+    min-height: 60vh;          /* evita página gigante */
+    background-size: cover;   /* evita áreas brancas */
+    padding: 40px 20px;
   }
 }
-
-
-  .hero {
-    margin-top: 96px;    /* sincroniza com header */
-    min-height: 52vh;    /* evita espaço branco vertical */
-  }
-}
-
+    
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 15px;
