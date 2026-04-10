@@ -265,7 +265,7 @@
       max-width: 650px;
       margin: auto;
       margin-bottom: 25px;
-    }
+    } 
 /* BOTÃO PRINCIPAL */
       
     .btn {
@@ -283,6 +283,58 @@
   background: #e6ad00;
   transform: scale(1.05);
 }
+
+/* CATÁLOGO DE ESTAMPAS */
+
+.catalogo {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.catalogo h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.catalogo-descricao {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.estampa {
+  background: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.estampa:hover {
+  transform: scale(1.05);
+}
+
+.estampa img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.estampa span {
+  display: block;
+  padding: 12px;
+  font-weight: 600;
+}
+
+    
 
     /* PRODUTOS */
 
@@ -407,6 +459,39 @@
     <a href="https://wa.me/5547997465602" class="btn">
       Bora Vestir Isso
     </a>
+  </div>
+</section>
+  
+<!-- CATÁLOGO DE ESTAMPAS -->
+
+<section class="catalogo" id="catalogo">
+  <div class="container">
+
+    <h2>Nossas Estampas</h2>
+    <p class="catalogo-descricao">
+      Escolha a estampa que mais combina com você.
+    </p>
+
+    <div class="catalogo-grid">
+
+      <div class="estampa">
+        <img src="imagens/estampas/estampa1.jpg" alt="Estampa 1">
+        <span>Estampa Caveira</span>
+      </div>
+
+      <div class="estampa">
+        <img src="imagens/estampas/estampa2.jpg" alt="Estampa 2">
+        <span>Estampa Militar</span>
+      </div>
+
+      <div class="estampa">
+        <img src="imagens/estampas/estampa3.jpg" alt="Estampa 3">
+        <span>Estampa Urbana</span>
+      </div>
+
+      <!-- DUPLIQUE ESTE BLOCO PARA NOVAS ESTAMPAS -->
+
+    </div>
   </div>
 </section>
 
