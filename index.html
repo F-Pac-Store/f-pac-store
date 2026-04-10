@@ -647,14 +647,6 @@ x'<!DOCTYPE html>
 </footer>
 
 <script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
-
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-</script>
-<script>
 function comprarBasica() {
   const cor = document.getElementById('cor-basica').value;
   const tamanho = document.getElementById('tamanho-basica').value;
@@ -681,6 +673,15 @@ function comprarBasica() {
     "_blank"
   );
 }
+</script>
+  
+<script>
+  const toggle = document.getElementById('toggle');
+  const nav = document.getElementById('nav');
+
+  toggle.onclick = () => {
+    nav.classList.toggle('active');
+  };
 </script>
 </body>
 </html>
