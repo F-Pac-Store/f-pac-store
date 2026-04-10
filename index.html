@@ -687,6 +687,64 @@ x'<!DOCTYPE html>
   <option value="1">1 Estampa</option>
   <option value="2">2 Estampas</option>
 </select>
+
+      <div id="estampa1" style="display:none;">
+
+  <hr>
+  <strong>Estampa 1</strong>
+
+  <label>Posição da Estampa</label>
+  <select id="pos1">
+    <option>Peito Central</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
+    <option>Costas</option>
+  </select>
+
+  <label>Fundo</label>
+  <select id="fundo1">
+    <option>Com fundo</option>
+    <option>Sem fundo</option>
+  </select>
+
+  <label>Escolha a Estampa</label>
+  <select id="arte1">
+    <option>E01 – Tropa Urbana</option>
+    <option>E02 – Tropa Urbana</option>
+    <option>E03 – Outra Estampa</option>
+  </select>
+
+</div>
+
+<div id="estampa2" style="display:none;">
+
+  <hr>
+  <strong>Estampa 2</strong>
+
+  <label>Posição da Estampa</label>
+  <select id="pos2">
+    <option>Peito Central</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
+    <option>Costas</option>
+  </select>
+
+  <label>Fundo</label>
+  <select id="fundo2">
+    <option>Com fundo</option>
+    <option>Sem fundo</option>
+  </select>
+
+  <label>Escolha a Estampa</label>
+  <select id="arte2">
+    <option>E01 – Tropa Urbana</option>
+    <option>E02 – Tropa Urbana</option>
+    <option>E03 – Outra Estampa</option>
+  </select>
+
+</div>
+
+      
       
     </div>
   </div>
@@ -731,6 +789,23 @@ function comprarBasica() {
     "_blank"
   );
 }
+</script>  
+
+<script>
+function mostrarEstampas() {
+  const qtd = Number(document.getElementById('qtd-estampas').value);
+
+  if (document.getElementById('estampa1')) {
+    document.getElementById('estampa1').style.display =
+      qtd >= 1 ? 'block' : 'none';
+  }
+
+  if (document.getElementById('estampa2')) {
+    document.getElementById('estampa2').style.display =
+      qtd === 2 ? 'block' : 'none';
+  }
+}
 </script>
+  
 </body>
 </html>
