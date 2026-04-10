@@ -875,6 +875,35 @@ function calcularPrecoPremium() {
       });
   }
 }
-</script>  
+</script> 
+
+ <script>
+function calcularPrecoPremium() {
+  let precoBase = 69.90;
+
+  const qtdEstampas = Number(
+    document.getElementById('qtd-estampas').value
+  );
+
+  const qtdCamisas = Number(
+    document.getElementById('qtd-camisas').value
+  );
+
+  // Acréscimos por estampas (provisório)
+  if (qtdEstampas === 1) precoBase += 10;
+  if (qtdEstampas === 2) precoBase += 30;
+
+  const total = precoBase * qtdCamisas;
+
+  const precoEl = document.getElementById('preco-premium');
+  if (precoEl) {
+    precoEl.innerText =
+      'R$ ' + total.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2
+      });
+  }
+}
+</script>
+ 
 </body>
 </html>
