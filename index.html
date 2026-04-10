@@ -96,11 +96,13 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+
+  padding-top: 90px; /* ✅ reserva espaço para o header fixo */
+}
 
     .container {
       max-width: 1200px;
@@ -248,8 +250,18 @@
 
 @media (max-width: 768px) {
   .header-content {
-    height: 96px;        /* altura ideal no mobile */
+    height: 96px;
   }
+
+  body {
+    padding-top: 96px; /* ✅ sincroniza com o header mobile */
+  }
+
+  .hero {
+    min-height: 52vh;
+  }
+}
+
 
   .hero {
     margin-top: 96px;    /* sincroniza com header */
