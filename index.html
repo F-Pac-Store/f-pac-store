@@ -1,7 +1,7 @@
 x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  /* CONFIGURAÇÕES BÁSICAS DO SITE */
+  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,9 @@ x'<!DOCTYPE html>
 
 <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
 <meta name="author" content="F Pac Store">
- /* FONTES */
+
+ <!-- FONTES -->
+
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +27,7 @@ x'<!DOCTYPE html>
 
   <style>
 
-/* MENU INTERNO */
+<!-- MENU INTERNO -->
 
 .menu-links {
   display: flex;
@@ -33,7 +35,7 @@ x'<!DOCTYPE html>
   align-items: center;
 }
 
-/* ICONES SOCIAIS NO MENU */
+<!-- ICONES SOCIAIS NO MENU -->
 
 .menu-social {
   display: flex;
@@ -51,23 +53,21 @@ x'<!DOCTYPE html>
   transition: transform 0.2s ease;
 }
 
-/* HOVER DOS ICONES */
+<!-- HOVER DOS ICONES -->
 
 .menu-social a:hover {
   color: var(--accent);
   transform: scale(1.15);
 }
 
-/* ============================= */
-/* CORES OFICIAIS DOS ÍCONES */
-/* ============================= */
+<!-- CORES OFICIAIS DOS ICONES -->
 
 /* WhatsApp - verde oficial */
 .menu-social a .fa-whatsapp {
   color: #25D366;
 }
 
-/* Instagram - gradiente oficial da marca */
+<!-- Instagram - gradiente oficial da marca -->
 
 .menu-social a .fa-instagram {
   background: radial-gradient(circle at 30% 110%,
@@ -79,7 +79,8 @@ x'<!DOCTYPE html>
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* VARIÁVEIS DE CORES GLOBAIS */
+
+<!-- VARIAVEIS DE CORES GLOBAIS -->
     
     :root {
       --primary: #003366;
@@ -108,7 +109,7 @@ x'<!DOCTYPE html>
       padding: 0 15px;
     }
 
-    /* HEADER */
+    <!-- HEADER -->
 
     .header {
       background: var(--primary);
@@ -118,7 +119,8 @@ x'<!DOCTYPE html>
       top: 0;
       z-index: 1000;
     }
-/* HEADER - FAIXA DO MENU (DESKTOP) */
+
+ <!-- HEADER - FAIXA DO MENU (DESKTOP) -->
 
 .header-content {
   display: flex;
@@ -129,7 +131,7 @@ x'<!DOCTYPE html>
   padding: 0 15px;   /* respiro lateral */
 }
 
-    /* LOGO */
+     <!-- LOGO -->
 
     .logo {
       display: flex;
@@ -164,13 +166,14 @@ x'<!DOCTYPE html>
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
     }
-    /* MENU DE NAVEGAÇÃO */
+     <!-- MENU DE NAVEGAÇÃO -->
 
     .nav {
       display: none;
       gap: 25px;
     }
-/* LINKS DO MENU (PADRONIZAÇÃO) */
+
+ <!-- LINKS PADRAO DO MENU -->
 /* Mesma fonte, tamanho e peso */
     
 .nav a {
@@ -188,7 +191,7 @@ x'<!DOCTYPE html>
       color: white;
     }
 
-/* Hover opcional (desktop) */
+ <!-- Hover opcional (desktop) -->
 
 .menu-toggle {
   font-size: 1.6rem;
@@ -220,7 +223,7 @@ x'<!DOCTYPE html>
       }
     }
 
-    /* HERO CAPA DO SITE */
+     <!-- HERO CAPA DO SITE -->
 
 .hero {
   margin-top: 90px;
@@ -243,7 +246,7 @@ x'<!DOCTYPE html>
   padding: 20px;
 }
 
-/* HERO - MOBILE RETRATO */
+<!-- HERO MOBILE RETRATO -->
 /* Ajuste correto para celular */
 
 @media (max-width: 768px) and (orientation: portrait) {
@@ -266,7 +269,8 @@ x'<!DOCTYPE html>
       margin: auto;
       margin-bottom: 25px;
     } 
-/* BOTÃO PRINCIPAL */
+
+<!-- BOTÃO PRINCIPAL -->
       
     .btn {
   background: var(--accent);
@@ -284,7 +288,7 @@ x'<!DOCTYPE html>
   transform: scale(1.05);
 }
 
-/* CATÁLOGO DE ESTAMPAS */
+<!-- CATALOGO DE ESTAMPAS -->
 
 .catalogo {
   padding: 80px 0;
@@ -334,7 +338,7 @@ x'<!DOCTYPE html>
   font-weight: 600;
 }
 
-    /* PRODUTOS */
+   <!-- PRODUTOS -->
 
     .produtos {
       padding: 70px 0;
@@ -359,7 +363,8 @@ x'<!DOCTYPE html>
       text-align: center;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     }
-/* IMAGENS DOS PRODUTOS */
+
+ <!-- IMAGENS DO PRODUTO -->
 /* Evita imagens gigantes no mobile */
 
 .card img {
@@ -368,7 +373,7 @@ x'<!DOCTYPE html>
   object-fit: cover;       /* corta excesso sem distorcer */
   border-radius: 5px;
 }
-/* AJUSTE DE IMAGEM - MOBILE */
+ <!-- AJUSTE DA IMAGEM MOBILE -->
 
 @media (max-width: 768px) {
   .card img {
@@ -395,7 +400,7 @@ x'<!DOCTYPE html>
       font-weight: 600;
     }
 
-    /* FOOTER */
+     <!-- FOOTER -->
 
     .footer {
       background: #001a33;
@@ -405,10 +410,8 @@ x'<!DOCTYPE html>
       font-size: 0.9rem;
     }
 
-    /* ============================= */
-/* CAMISETA BÁSICA */
-/* ============================= */
-/* Ajuste de rolagem para header fixo */
+    <!-- CAMISETA BASICA -->
+
 #basica {
   scroll-margin-top: 130px;
 }
@@ -488,6 +491,7 @@ x'<!DOCTYPE html>
     <nav class="nav" id="nav">
 
   <!-- LINKS DO MENU -->
+
   <div class="menu-links">
     <a href="#inicio">Início</a>
     <a href="#catalogo">Catálogo</a>
@@ -496,6 +500,7 @@ x'<!DOCTYPE html>
   </div>
 
   <!-- ICONES SOCIAIS -->
+
   <div class="menu-social">
     <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
       <i class="fab fa-whatsapp"></i>
@@ -528,9 +533,7 @@ x'<!DOCTYPE html>
   </div>
 </section>
   
-<!-- ============================= -->
-<!-- CATÁLOGO DE ESTAMPAS -->
-<!-- ============================= -->
+ <!-- CATALOGO DE ESTAMPAS -->
   
 <section class="catalogo" id="catalogo">
   <div class="container">
@@ -577,6 +580,7 @@ x'<!DOCTYPE html>
     <div class="produtos-grid">
 
       <!-- CAMISETA BÁSICA -->
+
       <div class="produto-card">
         <img src="imagens/produtos/camiseta-basica.png" alt="Camiseta Básica">
         <h3>Camiseta Básica</h3>
@@ -585,6 +589,7 @@ x'<!DOCTYPE html>
       </div>
 
       <!-- CAMISETA PREMIUM -->
+
       <div class="produto-card">
         <img src="imagens/produtos/camiseta-premium.png" alt="Camiseta Premium">
         <h3>Camiseta Premium</h3>
@@ -596,10 +601,8 @@ x'<!DOCTYPE html>
   </div>
 </section>
   
- <!-- ============================= -->
-<!-- CAMISETA BÁSICA -->
-<!-- ============================= -->
-  
+ <!-- CAMISETA BÁSICA -->
+
 <section class="basica" id="basica">
   <div class="container">
 
@@ -610,7 +613,7 @@ x'<!DOCTYPE html>
 
       <div class="basica-card">
 
-        <img src="imagens/logo-no
+        <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
 
         <h3>Camiseta Básica</h3>
         <p class="preco">R$ 79,90</p>
@@ -642,6 +645,18 @@ x'<!DOCTYPE html>
   </div>
 </section>
 
+<footer class="footer">
+  © 2026 F Pac Store — Não é só roupa. É identidade.
+</footer>
+
+<script>
+  const toggle = document.getElementById('toggle');
+  const nav = document.getElementById('nav');
+
+  toggle.onclick = () => {
+    nav.classList.toggle('active');
+  };
+</script>
 <script>
 function comprarBasica() {
   const cor = document.getElementById('cor-basica').value;
@@ -669,19 +684,6 @@ function comprarBasica() {
     "_blank"
   );
 }
-</script>
-  
-<footer class="footer">
-  © 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
-
-<script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
-
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
 </script>
 </body>
 </html>
