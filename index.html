@@ -118,16 +118,13 @@
       top: 0;
       z-index: 1000;
     }
-/* HEADER - ALTURA DO MENU */
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: 110px;        /* AUMENTA A FAIXA DO MENU */
-  padding: 0 10px;     /* respiro lateral */
-}
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 90px;
+    }
 
     /* LOGO */
 
@@ -219,12 +216,12 @@
         display: none;
       }
     }
-/* HERO - DESCONTA A ALTURA DO MENU */
+
+    /* HERO CAPA DO SITE */
 
 .hero {
-  margin-top: 110px;
-  min-height: calc(100vh - 110px);
-}
+  margin-top: 90px;
+  min-height: calc(100vh - 90px);
 
   background-image:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
@@ -242,16 +239,15 @@
   color: white;
   padding: 20px;
 }
-/* HEADER - MOBILE */
 
-@media (max-width: 768px) {
-  .header-content {
-    height: 100px;   /* um pouco menor no celular */
-  }
+/* HERO - MOBILE RETRATO */
+/* Ajuste correto para celular */
 
+@media (max-width: 768px) and (orientation: portrait) {
   .hero {
-    margin-top: 100px;
-    min-height: calc(100vh - 100px);
+    min-height: 60vh;          /* evita página gigante */
+    background-size: cover;   /* evita áreas brancas */
+    padding: 40px 20px;
   }
 }
     
