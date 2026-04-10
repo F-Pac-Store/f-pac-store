@@ -404,6 +404,74 @@ x'<!DOCTYPE html>
       text-align: center;
       font-size: 0.9rem;
     }
+
+    /* ============================= */
+/* CAMISETA BÁSICA */
+/* ============================= */
+.basica {
+  padding: 80px 0;
+  background: #f9f9f9;
+}
+
+.basica h2,
+.basica p {
+  text-align: center;
+}
+
+.basica p {
+  margin-bottom: 40px;
+}
+
+.basica-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.basica-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.basica-card img {
+  width: 100%;
+  max-width: 240px;
+  margin-bottom: 15px;
+}
+
+.basica-card label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.basica-card select,
+.basica-card input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.basica-card .preco {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.basica-card button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #FFC107;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+    
   </style>
 </head>
 
@@ -497,6 +565,7 @@ x'<!DOCTYPE html>
     </div>
   </div>
 </section>
+  
 <!-- PRODUTOS -->
 
 <section class="produtos" id="produtos">
@@ -526,7 +595,51 @@ x'<!DOCTYPE html>
     </div>
   </div>
 </section>
-  
+  <!-- ============================= -->
+<!-- CAMISETA BÁSICA -->
+<!-- ============================= -->
+<section class="basica" id="basica">
+  <div class="container">
+
+    <h2>Camiseta Básica</h2>
+    <p>Modelo pronto com valor fixo.</p>
+
+    <div class="basica-grid">
+
+      <div class="basica-card">
+
+        <img src="imagens/produtos/camiseta-basica.png" alt="Camiseta Básica">
+
+        <h3>Camiseta Básica</h3>
+        <p class="preco">R$ 59,90</p>
+
+        <label>Cor</label>
+        <select id="cor-basica">
+          <option value="Preta">Preta</option>
+          <option value="Branca">Branca</option>
+        </select>
+
+        <label>Tamanho</label>
+        <select id="tamanho-basica">
+          <option>P</option>
+          <option>M</option>
+          <option>G</option>
+          <option>GG</option>
+        </select>
+
+        <label>Quantidade</label>
+        <input type="number" id="qtd-basica" value="1" min="1">
+
+        <button onclick="comprarBasica()">
+          Comprar pelo WhatsApp
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 
   
