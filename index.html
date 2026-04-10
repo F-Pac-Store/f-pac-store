@@ -642,6 +642,49 @@ x'<!DOCTYPE html>
   </div>
 </section>
 
+ <!-- ============================= -->
+<!-- CAMISETA PREMIUM -->
+<!-- ============================= -->
+  
+<section class="criar-camisa" id="criar">
+  <div class="container">
+
+    <h2>Criar Minha Camisa</h2>
+    <p>Monte sua camiseta personalizada.</p>
+
+    <div class="basica-card">
+
+      <p class="preco" id="preco-premium">R$ 69,90</p>
+
+      <label>Cor</label>
+      <select id="cor-premium" onchange="calcularPrecoPremium()">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+      </select>
+
+      <label>Tamanho</label>
+      <select id="tamanho-premium" onchange="calcularPrecoPremium()">
+        <option value="">Selecione</option>
+        <option>P</option>
+        <option>M</option>
+        <option>G</option>
+        <option>GG</option>
+      </select>
+
+<label>Quantidade de Camisas</label>
+<input
+  type="number"
+  id="qtd-camisas"
+  value="1"
+  min="1"
+  onchange="calcularPrecoPremium()"
+/>
+
+    </div>
+  </div>
+</section>
+  
 <footer class="footer">
   © 2026 F Pac Store — Não é só roupa. É identidade.
 </footer>
