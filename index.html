@@ -656,7 +656,28 @@ x'<!DOCTYPE html>
     nav.classList.toggle('active');
   };
 </script>
+<script>
+function comprarBasica() {
+  const cor = document.getElementById('cor-basica').value;
+  const tamanho = document.getElementById('tamanho-basica').value;
+  const quantidade = document.getElementById('qtd-basica').value;
 
+  const precoUnitario = 59.90;
+  const total = precoUnitario * quantidade;
+
+  const mensagem =
+    `Olá, quero comprar uma Camiseta Básica.\n` +
+    `Cor: ${cor}\n` +
+    `Tamanho: ${tamanho}\n` +
+    `Quantidade: ${quantidade}\n` +
+    `Valor total: R$ ${total.toFixed(2)}`;
+
+  window.open(
+    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+    "_blank"
+  );
+}
+</script>
 </body>
 </html>
 ``
