@@ -144,7 +144,7 @@
 
     .logo-text {
       font-family: 'blacklisted', sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       letter-spacing: 3px;
       line-height: 1;
       color: #000000;
@@ -197,18 +197,21 @@
   color: white;
   transition: color 0.3s ease;
 }
+/* MENU MOBILE - POSIÇÃO CORRETA */
 
-    .nav.active {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      width: 100%;
-      background: var(--primary);
-      top: 90px;
-      left: 0;
-      padding: 20px;
-      gap: 15px;
-    }
+.nav.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  background: var(--primary);
+
+  top: 100px;           /* ✅ IGUAL AO HEADER MOBILE */
+  left: 0;
+
+  padding: 20px;
+  gap: 15px;
+}
 
     @media (min-width: 768px) {
       .nav {
