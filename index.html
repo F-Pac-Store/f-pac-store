@@ -660,15 +660,21 @@ function comprarBasica() {
   const tamanho = document.getElementById('tamanho-basica').value;
   const quantidade = document.getElementById('qtd-basica').value;
 
-  const precoUnitario = 59.90;
+  const precoUnitario = 79.90;
   const total = precoUnitario * quantidade;
 
+  const totalFormatado = total.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
   const mensagem =
-    `Olá, quero comprar uma Camiseta Básica.\n` +
+    `Olá! Gostaria de comprar uma Camiseta Básica.\n\n` +
+    `Modelo: Camiseta Básica\n` +
     `Cor: ${cor}\n` +
     `Tamanho: ${tamanho}\n` +
-    `Quantidade: ${quantidade}\n` +
-    `Valor total: R$ ${total.toFixed(2)}`;
+    `Quantidade: ${quantidade}\n\n` +
+    `Valor total: R$ ${totalFormatado}`;
 
   window.open(
     "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
