@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   /* CONFIGURAÇÕES BÁSICAS DO SITE */
@@ -172,6 +172,7 @@
     }
 /* LINKS DO MENU (PADRONIZAÇÃO) */
 /* Mesma fonte, tamanho e peso */
+    
 .nav a {
   font-family: 'Inter', sans-serif; /* Fonte única */
   font-size: 1rem;                  /* Mesmo tamanho */
@@ -186,7 +187,6 @@
       border: none;
       color: white;
     }
-
 
 /* Hover opcional (desktop) */
 
@@ -265,7 +265,7 @@
       max-width: 650px;
       margin: auto;
       margin-bottom: 25px;
-    }
+    } 
 /* BOTÃO PRINCIPAL */
       
     .btn {
@@ -282,6 +282,56 @@
 .btn:hover {
   background: #e6ad00;
   transform: scale(1.05);
+}
+
+/* CATÁLOGO DE ESTAMPAS */
+
+.catalogo {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.catalogo h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.catalogo-descricao {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.estampa {
+  background: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.estampa:hover {
+  transform: scale(1.05);
+}
+
+.estampa img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.estampa span {
+  display: block;
+  padding: 12px;
+  font-weight: 600;
 }
 
     /* PRODUTOS */
@@ -354,6 +404,74 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    /* ============================= */
+/* CAMISETA BÁSICA */
+/* ============================= */
+/* Ajuste de rolagem para header fixo */
+#basica {
+  scroll-margin-top: 130px;
+}
+
+.basica h2,
+.basica p {
+  text-align: center;
+}
+
+.basica p {
+  margin-bottom: 40px;
+}
+
+.basica-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.basica-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.basica-card img {
+  width: 100%;
+  max-width: 240px;
+  margin-bottom: 15px;
+}
+
+.basica-card label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.basica-card select,
+.basica-card input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.basica-card .preco {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.basica-card button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #FFC107;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+    
   </style>
 </head>
 
@@ -409,32 +527,115 @@
     </a>
   </div>
 </section>
+  
+<!-- ============================= -->
+<!-- CATÁLOGO DE ESTAMPAS -->
+<!-- ============================= -->
+  
+<section class="catalogo" id="catalogo">
+  <div class="container">
+
+    <h2>Nossas Estampas</h2>
+    <p class="catalogo-descricao">
+      Escolha a estampa que mais combina com você.
+    </p>
+
+    <div class="catalogo-grid">
+
+      <div class="estampa">
+        <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
+        <span>E01 – Tropa Urbana – Com Fundo</span>
+      </div>
+
+      <div class="estampa">
+        <img src="imagens/estampas/e2.png" alt="Estampa 02">
+        <span>E01 – Tropa Urbana – Sem Fundo</span>
+      </div>
+
+      <div class="estampa">
+        <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
+        <span>E02 – Tropa Urbana – Com Fundo</span>
+      </div>
+
+      <div class="estampa">
+        <img src="imagens/estampas/e4.png" alt="Estampa 04">
+        <span>E02 – Tropa Urbana – Sem Fundo</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+<!-- PRODUTOS -->
 
 <section class="produtos" id="produtos">
   <div class="container">
-    <h2>Camisas que representam quem você é</h2>
 
-    <div class="grid">
+    <h2>Nossos Produtos</h2>
+    <p>Escolha como você quer sua camisa.</p>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camiseta Militar">
-        <h3>Camiseta Militar</h3>
-        <p>Visual forte, resistência superior e presença marcante.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Garantir a minha</a>
+    <div class="produtos-grid">
+
+      <!-- CAMISETA BÁSICA -->
+      <div class="produto-card">
+        <img src="imagens/produtos/camiseta-basica.png" alt="Camiseta Básica">
+        <h3>Camiseta Básica</h3>
+        <p>Modelo pronto com valor fixo.</p>
+        <a href="#basica" class="btn">Escolher Camisetas</a>
       </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="Camiseta Personalizada">
-        <h3>Camiseta Personalizada</h3>
-        <p>Crie sua própria estampa e vista sua identidade.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Criar a minha</a>
+      <!-- CAMISETA PREMIUM -->
+      <div class="produto-card">
+        <img src="imagens/produtos/camiseta-premium.png" alt="Camiseta Premium">
+        <h3>Camiseta Premium</h3>
+        <p>Crie sua camisa do seu jeito.</p>
+        <a href="#criar" class="btn">Criar Minha Camisa</a>
       </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb" alt="Uniforme Operacional">
-        <h3>Uniforme Operacional</h3>
-        <p>Durabilidade, conforto e imagem profissional.</p>
-        <a class="whatsapp" href="https://wa.me/5547997465602">Solicitar orçamento</a>
+    </div>
+  </div>
+</section>
+  
+ <!-- ============================= -->
+<!-- CAMISETA BÁSICA -->
+<!-- ============================= -->
+  
+<section class="basica" id="basica">
+  <div class="container">
+
+    <h2>Camiseta Básica</h2>
+    <p>Modelo pronto com valor fixo.</p>
+
+    <div class="basica-grid">
+
+      <div class="basica-card">
+
+        <img src="imagens/logo-no
+
+        <h3>Camiseta Básica</h3>
+        <p class="preco">R$ 79,90</p>
+
+        <label>Cor</label>
+        <select id="cor-basica">
+          <option value="Preta">Preta</option>
+          <option value="Branca">Branca</option>
+        </select>
+
+        <label>Tamanho</label>
+        <select id="tamanho-basica">
+          <option>P</option>
+          <option>M</option>
+          <option>G</option>
+          <option>GG</option>
+        </select>
+
+        <label>Quantidade</label>
+        <input type="number" id="qtd-basica" value="1" min="1">
+
+        <button onclick="comprarBasica()">
+          Comprar pelo WhatsApp
+        </button>
+
       </div>
 
     </div>
@@ -453,7 +654,33 @@
     nav.classList.toggle('active');
   };
 </script>
+<script>
+function comprarBasica() {
+  const cor = document.getElementById('cor-basica').value;
+  const tamanho = document.getElementById('tamanho-basica').value;
+  const quantidade = document.getElementById('qtd-basica').value;
 
+  const precoUnitario = 79.90;
+  const total = precoUnitario * quantidade;
+
+  const totalFormatado = total.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
+  const mensagem =
+    `Olá! Gostaria de comprar uma Camiseta Básica.\n\n` +
+    `Modelo: Camiseta Básica\n` +
+    `Cor: ${cor}\n` +
+    `Tamanho: ${tamanho}\n` +
+    `Quantidade: ${quantidade}\n\n` +
+    `Valor total: R$ ${totalFormatado}`;
+
+  window.open(
+    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+    "_blank"
+  );
+}
+</script>
 </body>
 </html>
-``
