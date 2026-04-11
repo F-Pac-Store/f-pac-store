@@ -348,6 +348,8 @@ x'<!DOCTYPE html>
   font-weight: 600;
 }
 
+
+   
     /* PRODUTOS */
 
     .produtos {
@@ -376,12 +378,6 @@ x'<!DOCTYPE html>
 /* IMAGENS DOS PRODUTOS */
 /* Evita imagens gigantes no mobile */
 
-.card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;     /* proporção quadrada */
-  object-fit: cover;       /* corta excesso sem distorcer */
-  border-radius: 5px;
-}
 /* ============================= */
 /* PRODUTOS - IMAGENS */
 /* ============================= */
@@ -636,7 +632,7 @@ x'<!DOCTYPE html>
         <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
         <span>E01 – Tropa Urbana – Com Fundo</span>
       </div>
-
+     
       <div class="estampa">
         <img src="imagens/estampas/e2.png" alt="Estampa 02">
         <span>E01 – Tropa Urbana – Sem Fundo</span>
@@ -652,6 +648,19 @@ x'<!DOCTYPE html>
         <span>E02 – Tropa Urbana – Sem Fundo</span>
       </div>
 
+<div class="catalogo-grid">
+  <!-- estampas -->
+</div>
+
+<div class="catalogo-cta">
+  https://SEU-LINK-DA-GALERIA.EXTERNA
+    Mais Estampas
+  </a>
+</div>
+
+</div>
+</section>
+     
     </div>
   </div>
 </section>
@@ -982,51 +991,6 @@ function calcularPrecoPremium() {
 </script> 
 
  <script>
-function calcularPrecoPremium() {
-  let precoBase = 69.90;
-
-  const qtdEstampas = Number(
-    document.getElementById('qtd-estampas').value
-  );
-
-  const qtdCamisas = Number(
-    document.getElementById('qtd-camisas').value
-  );
-
-  // Acréscimos por estampas (provisório)
-  if (qtdEstampas === 1) precoBase += 10;
-  if (qtdEstampas === 2) precoBase += 30;
-
-  const total = precoBase * qtdCamisas;
-
-  const precoEl = document.getElementById('preco-premium');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script>
-
-<script>
-function calcularPrecoBasica() {
-  const precoUnitario = 79.90;
-  const quantidade = Number(
-    document.getElementById('qtd-basica').value
-  );
-
-  const total = precoUnitario * quantidade;
-
-  const precoEl = document.getElementById('preco-basica');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script>
 
 <script>
 function atualizarPreviewPosicao(posicao) {
