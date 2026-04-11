@@ -974,29 +974,31 @@ function atualizarPreviewPosicao(posicao) {
   const estampa = document.getElementById('preview-estampa');
   if (!estampa) return;
 
+  // Reset base
+  estampa.style.transform = 'translate(-50%, -50%)';
+
   switch (posicao) {
+
     case 'Peito Central':
-      estampa.style.top = '35%';
+      estampa.style.top = '42%';
       estampa.style.left = '50%';
       break;
 
     case 'Peito LE':
-      estampa.style.top = '35%';
-      estampa.style.left = '35%';
+      estampa.style.top = '44%';
+      estampa.style.left = '38%';
       break;
 
     case 'Peito LD':
-      estampa.style.top = '35%';
-      estampa.style.left = '65%';
+      estampa.style.top = '44%';
+      estampa.style.left = '62%';
       break;
 
     case 'Costas':
-      estampa.style.top = '55%';
+      estampa.style.top = '60%';
       estampa.style.left = '50%';
       break;
   }
-
-  estampa.style.transform = 'translate(-50%, -50%)';
 }
 </script>
 
