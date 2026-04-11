@@ -859,7 +859,7 @@ text-shadow:
   id="qtd-basica"
   value="1"
   min="1"
-  onchange="calcularPrecoBasica()"
+  oninput="calcularPrecoBasica()"
 />
 
         <button onclick="comprarBasica()">
@@ -1153,6 +1153,28 @@ function atualizarPreviewArte(arte) {
   if (!estampa) return;
 
   estampa.innerText = arte;
+}
+</script>
+
+ <script>
+function calcularPrecoBasica() {
+  const precoUnitario = 79.90;
+
+  const quantidadeEl = document.getElementById('qtd-basica');
+  const precoEl = document.getElementById('preco-basica');
+
+  if (!quantidadeEl || !precoEl) {
+    return; // segurança: não quebra se algo não existir
+  }
+
+  const quantidade = Number(quantidadeEl.value);
+  const total = precoUnitario * quantidade;
+
+  precoEl.innerText =
+    'R$ ' + total.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
 }
 </script>
  
