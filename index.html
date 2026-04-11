@@ -471,7 +471,38 @@ x'<!DOCTYPE html>
   font-weight: bold;
   cursor: pointer;
 }
-    
+
+/* PREVIEW DA CAMISA */
+
+.preview-camisa {
+  position: relative;
+  width: 260px;
+  margin: 0 auto 20px;
+}
+
+.preview-camisa img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.estampa-preview {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+   
   </style>
 </head>
 
@@ -661,6 +692,16 @@ x'<!DOCTYPE html>
 
     <div class="basica-card">
 
+     <!-- PREVIEW DA CAMISA -->
+     
+<div class="preview-camisa">
+  <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
+
+  <div id="preview-estampa" class="estampa-preview">
+    E01
+  </div>
+</div>
+
       <p class="preco" id="preco-premium">R$ 69,90</p>
 
       <label>Cor</label>
@@ -700,7 +741,7 @@ x'<!DOCTYPE html>
   <strong>Estampa 1</strong>
 
   <label>Posição da Estampa</label>
-  <select id="pos1">
+  <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
     <option>Peito LE</option>
     <option>Peito LD</option>
@@ -714,7 +755,7 @@ x'<!DOCTYPE html>
   </select>
 
   <label>Escolha a Estampa</label>
-  <select id="arte1">
+  <select id="arte1" onchange="atualizarPreviewArte(this.value)">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
@@ -749,8 +790,6 @@ x'<!DOCTYPE html>
   </select>
 
 </div>
-
-      
       
     </div>
   </div>
@@ -930,6 +969,45 @@ function calcularPrecoBasica() {
 }
 </script>
 
+<script>
+function atualizarPreviewPosicao(posicao) {
+  const estampa = document.getElementById('preview-estampa');
+  if (!estampa) return;
+
+  switch (posicao) {
+    case 'Peito Central':
+      estampa.style.top = '35%';
+      estampa.style.left = '50%';
+      break;
+
+    case 'Peito LE':
+      estampa.style.top = '35%';
+      estampa.style.left = '35%';
+      break;
+
+    case 'Peito LD':
+      estampa.style.top = '35%';
+      estampa.style.left = '65%';
+      break;
+
+    case 'Costas':
+      estampa.style.top = '55%';
+      estampa.style.left = '50%';
+      break;
+  }
+
+  estampa.style.transform = 'translate(-50%, -50%)';
+}
+</script>
+
+<script>
+function atualizarPreviewArte(arte) {
+  const estampa = document.getElementById('preview-estampa');
+  if (!estampa) return;
+
+  estampa.innerText = arte;
+}
+</script>
  
 </body>
 </html>
