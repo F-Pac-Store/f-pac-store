@@ -743,8 +743,8 @@ x'<!DOCTYPE html>
   <label>Posição da Estampa</label>
   <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
+    <option>Peito Esquerdo (Visual)</option>
+<option>Peito Direito (Visual)</option>
     <option>Costas</option>
   </select>
 
@@ -771,8 +771,8 @@ x'<!DOCTYPE html>
   <label>Posição da Estampa</label>
   <select id="pos2">
     <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
+    <option>Peito Esquerdo (Visual)</option>
+<option>Peito Direito (Visual)</option>
     <option>Costas</option>
   </select>
 
@@ -974,7 +974,6 @@ function atualizarPreviewPosicao(posicao) {
   const estampa = document.getElementById('preview-estampa');
   if (!estampa) return;
 
-  // Reset base
   estampa.style.transform = 'translate(-50%, -50%)';
 
   switch (posicao) {
@@ -985,13 +984,15 @@ function atualizarPreviewPosicao(posicao) {
       break;
 
     case 'Peito LE':
+      // Lado esquerdo de quem veste = direita na imagem
       estampa.style.top = '44%';
-      estampa.style.left = '38%';
+      estampa.style.left = '68%';
       break;
 
     case 'Peito LD':
+      // Lado direito de quem veste = esquerda na imagem
       estampa.style.top = '44%';
-      estampa.style.left = '62%';
+      estampa.style.left = '32%';
       break;
 
     case 'Costas':
