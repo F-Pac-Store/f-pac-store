@@ -684,36 +684,44 @@ x'<!DOCTYPE html>
 
       <p class="preco" id="preco-premium">R$ 69,90</p>
 
-      <label>Cor</label>
-      <select id="cor-premium" onchange="calcularPrecoPremium()">
-        <option value="">Selecione</option>
-        <option>Preta</option>
-        <option>Branca</option>
-        <option>Off White</option>
-      </select>
+      <div class="campo-form">
+  <label>Cor</label>
+  <select id="cor-premium" onchange="calcularPrecoPremium()">
+    <option value="">Selecione</option>
+    <option>Preta</option>
+    <option>Branca</option>
+    <option>Off White</option>
+  </select>
+</div>
 
-      <label>Tamanho</label>
-      <select id="tamanho-premium" onchange="calcularPrecoPremium()">
-        <option value="">Selecione</option>
-        <option>M</option>
-        <option>G</option>
-      </select>
+<div class="campo-form">
+  <label>Tamanho</label>
+  <select id="tamanho-premium" onchange="calcularPrecoPremium()">
+    <option value="">Selecione</option>
+    <option>M</option>
+    <option>G</option>
+  </select>
+</div>
 
-<label>Quantidade de Camisas</label>
-<input
-  type="number"
-  id="qtd-camisas"
-  value="1"
-  min="1"
-  onchange="calcularPrecoPremium()"
-/>
+<div class="campo-form">
+  <label>Quantidade de Camisas</label>
+  <input
+    type="number"
+    id="qtd-camisas"
+    value="1"
+    min="1"
+    onchange="calcularPrecoPremium()"
+  />
+</div>
 
-<label>Quantidade de Estampas</label>
-<select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
-  <option value="0">Nenhuma</option>
-  <option value="1">1 Estampa</option>
-  <option value="2">2 Estampas</option>
-</select>
+<div class="campo-form">
+  <label>Quantidade de Estampas</label>
+  <select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
+    <option value="0">Nenhuma</option>
+    <option value="1">1 Estampa</option>
+    <option value="2">2 Estampas</option>
+  </select>
+</div>
 
       <div id="estampa1" style="display:none;">
 
@@ -948,6 +956,25 @@ function calcularPrecoBasica() {
   }
 }
 </script>
+
+/* ORGANIZAÇÃO DOS CAMPOS DE ESCOLHA */
+
+.campo-form {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.campo-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.campo-form select,
+.campo-form input {
+  width: 100%;
+  padding: 8px;
+}
  
 </body>
 </html>
