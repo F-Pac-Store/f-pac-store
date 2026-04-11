@@ -486,23 +486,6 @@ x'<!DOCTYPE html>
   border-radius: 6px;
 }
 
-.estampa-preview {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-   
   </style>
 </head>
 
@@ -963,49 +946,6 @@ function calcularPrecoBasica() {
         minimumFractionDigits: 2
       });
   }
-}
-</script>
-
-<script>
-function atualizarPreviewPosicao(posicao) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
-
-  estampa.style.transform = 'translate(-50%, -50%)';
-
-  switch (posicao) {
-
-    case 'Peito Central':
-      estampa.style.top = '42%';
-      estampa.style.left = '50%';
-      break;
-
-    case 'Peito LE':
-      // Lado esquerdo de quem veste = direita na imagem
-      estampa.style.top = '44%';
-      estampa.style.left = '68%';
-      break;
-
-    case 'Peito LD':
-      // Lado direito de quem veste = esquerda na imagem
-      estampa.style.top = '44%';
-      estampa.style.left = '32%';
-      break;
-
-    case 'Costas':
-      estampa.style.top = '60%';
-      estampa.style.left = '50%';
-      break;
-  }
-}
-</script>
-
-<script>
-function atualizarPreviewArte(arte) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
-
-  estampa.innerText = arte;
 }
 </script>
  
