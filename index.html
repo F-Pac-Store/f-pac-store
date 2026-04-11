@@ -505,8 +505,9 @@ text-shadow:
 
 .card img {
   width: 100%;
-  max-height: 45vh;   /* ✅ controla pelo tamanho do card */
-  object-fit: cover;
+  max-height: 35vh;   /* controle do tamanho */
+  object-fit: contain; /* 👈 mostra a imagem inteira */
+  background: #fff;   /* evita “buraco” visual */
   border-radius: 5px;
 }
 
