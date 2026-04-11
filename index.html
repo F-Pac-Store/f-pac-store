@@ -321,8 +321,8 @@ x'<!DOCTYPE html>
 
 .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 18px;
 }
 
 .estampa {
@@ -334,19 +334,17 @@ x'<!DOCTYPE html>
   cursor: pointer;
 }
 
-.estampa:hover {
-  transform: scale(1.05);
-}
-
 .estampa img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  object-fit: cover;
+  object-fit: contain; /* ← evita imagem grande demais */
+  padding: 8px;
 }
 
 .estampa span {
   display: block;
-  padding: 12px;
+  padding: 8px;
+  font-size: 0.85rem; /* texto mais compacto */
   font-weight: 600;
 }
 
@@ -384,32 +382,69 @@ x'<!DOCTYPE html>
   object-fit: cover;       /* corta excesso sem distorcer */
   border-radius: 5px;
 }
-/* AJUSTE DE IMAGEM - MOBILE */
+/* ============================= */
+/* PRODUTOS - IMAGENS */
+/* ============================= */
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* proporção quadrada */
+  object-fit: cover;       /* corta excesso sem distorcer */
+  border-radius: 5px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+}
+
+.card p {
+  font-size: 0.95rem;
+}
+
+/* ============================= */
+/* PRODUTOS - MOBILE */
+/* ============================= */
 
 @media (max-width: 768px) {
   .card img {
-    aspect-ratio: 4 / 5; /* formato mais elegante no celular */
+    aspect-ratio: 4 / 5;   /* formato mais elegante no celular */
   }
 }
 
-    .card h3 {
-      margin: 15px 0 10px;
-    }
+/* ============================= */
+/* CATÁLOGO DE ESTAMPAS - MOBILE */
+/* ============================= */
 
-    .card p {
-      font-size: 0.95rem;
-    }
+@media (max-width: 768px) {
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
 
-    .whatsapp {
-      background: #25D366;
-      color: white;
-      padding: 12px;
-      display: block;
-      margin-top: 15px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-    }
+  .estampa img {
+    padding: 6px;
+  }
+
+  .estampa span {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}
+
+/* ============================= */
+/* BOTÃO WHATSAPP */
+/* ============================= */
+
+.whatsapp {
+  background: #25D366;
+  color: white;
+  padding: 12px;
+  display: block;
+  margin-top: 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
 
     /* FOOTER */
 
