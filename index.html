@@ -439,7 +439,10 @@ text-shadow:
     /* PRODUTOS */
 
     .produtos {
-  padding: 40px 0 50px;
+  min-height: calc(100vh - 140px); /* viewport menos header */
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
 }
 
     .produtos h2 {
@@ -758,7 +761,9 @@ text-shadow:
   </div>
 </section>
   
+<!-- ============================= -->
 <!-- PRODUTOS -->
+<!-- ============================= -->
 
 <section class="produtos" id="produtos">
   <div class="container">
@@ -766,6 +771,23 @@ text-shadow:
     <h2>Nossos Produtos</h2>
 
     <div class="grid">
+
+      <div class="card">
+        <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
+        <h3>Camiseta Básica</h3>
+        <a href="#basica" class="btn">Escolher Camisetas</a>
+      </div>
+
+      <div class="card">
+        <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
+        <h3>Camiseta Premium</h3>
+        <p>Criar do meu jeito.</p>
+        <a href="#criar" class="btn">Criar Minha Camisa</a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       <!-- CAMISETA BÁSICA -->
        <div class="card">
