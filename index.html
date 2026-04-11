@@ -348,6 +348,57 @@ x'<!DOCTYPE html>
   font-weight: 600;
 }
 
+   /* ============================= */
+/* CTA CATÁLOGO – CARD MAIS ESTAMPAS */
+/* ============================= */
+
+.catalogo-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.catalogo-card {
+  width: 100%;
+  max-width: 140px;        /* mesma largura das estampas */
+  height: 185px;           /* mesma altura visual */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--primary); /* azul marinho */
+  color: var(--accent);       /* amarelo da marca */
+
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.catalogo-card:hover {
+  background: #001f3f;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px) {
+  .catalogo-card {
+    max-width: 100%;
+    height: auto;
+    padding: 28px;
+    font-size: 0.95rem;
+  }
+}
+
 /* BOTÃO MAIS ESTAMPAS */
 
 .catalogo-cta {
