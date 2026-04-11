@@ -1,1014 +1,290 @@
-x'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
- <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>F Pac Store | Não é só roupa. É identidade!</title>
+  <title>F Pac Store | Streetwear Oversized Masculino</title>
+  <meta name="description" content="Camisetas oversized streetwear masculina. Edição limitada. Não é só roupa. É identidade." />
 
-<meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
-<meta name="author" content="F Pac Store">
-<!-- FONTES -->
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- FONTES -->
+  https://fonts.googleapis.com
+  https://fonts.gstatic.com
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+  <ttps://fonts.cdnfonts.com/css/blacklisted
 
-  <!-- Fonte blacklisted -->
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-
-/* MENU INTERNO */
-
-.menu-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-/* ICONES SOCIAIS NO MENU */
-
-.menu-social {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-/* ÍCONES SOCIAIS DO MENU */
-/* Tamanho dos ícones Whats/Instagram */
-
-.menu-social i {
-  font-size: 2.6rem; /* <<< AUMENTE AQUI */
-}
-.menu-social a {
-  font-size: 2.3rem; /* AUMENTA OS ÍCONES */
-  transition: transform 0.2s ease;
-}
-
-/* HOVER DOS ICONES */
-
-.menu-social a:hover {
-  color: var(--accent);
-  transform: scale(1.15);
-}
-
-/* ============================= */
-/* CORES OFICIAIS DOS ÍCONES */
-/* ============================= */
-
-/* WhatsApp - verde oficial */
-.menu-social a .fa-whatsapp {
-  color: #25D366;
-}
-
-/* Instagram - gradiente oficial da marca */
-
-.menu-social a .fa-instagram {
-  background: radial-gradient(circle at 30% 110%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285AEB 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-/* VARIÁVEIS DE CORES GLOBAIS */
-    
-    :root {
-      --primary: #003366;
-      --accent: #FFC107;
-      --bg: #f5f5f5;
-      --text: #333;
-      --white: #fff;
+  <!-- ÍCONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.    :root {
+      --primary:#050505;
+      --accent:#FFC107;
+      --bg:#f5f5f5;
+      --text:#222;
+      --white:#fff;
     }
 
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family:'Inter', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    img {
+      max-width:100%;
+      display:block;
+    }
+
+    a {
+      text-decoration:none;
+      color:inherit;
     }
 
     .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 15px;
+      max-width:1200px;
+      padding:0 16px;
+      margin:auto;
     }
 
     /* HEADER */
-
-    .header {
-      background: var(--primary);
-      color: var(--white);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+    header {
+      position:fixed;
+      top:0;
+      width:100%;
+      background:var(--primary);
+      z-index:1000;
     }
-/* HEADER - FAIXA DO MENU (DESKTOP) */
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: 120px;      /* aumenta a faixa azul */
-  padding: 0 15px;   /* respiro lateral */
-}
-
-    /* LOGO */
+    .header-content {
+      height:90px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
     .logo-img {
-      max-height: 85px;
+      height:60px;
     }
 
     .logo-text {
-      font-family: 'blacklisted', sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 3px;
-      line-height: 1;
-      color: #000000;
-      -webkit-text-stroke: 2.3px #FFC107;
-      display: flex;
-      align-items: center;
+      font-family:'blacklisted',sans-serif;
+      font-size:1.8rem;
+      letter-spacing:3px;
+      color:var(--accent);
+      text-shadow:2px 2px 6px #000;
     }
 
-    @media (min-width: 768px) {
-      .logo-img {
-        max-height: 90px;
-      }
-
-      .logo-text {
-  color: #FFC107;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
+    nav {
+      display:none;
+      flex-direction:column;
+      background:#000;
+      position:absolute;
+      top:90px;
+      width:100%;
+      left:0;
+      padding:20px;
+      gap:20px;
     }
-    /* MENU DE NAVEGAÇÃO */
 
-    .nav {
-      display: none;
-      gap: 25px;
+    nav.active {
+      display:flex;
     }
-/* LINKS DO MENU (PADRONIZAÇÃO) */
-/* Mesma fonte, tamanho e peso */
-    
-.nav a {
-  font-family: 'Inter', sans-serif; /* Fonte única */
-  font-size: 1rem;                  /* Mesmo tamanho */
-  font-weight: 600;                 /* Mesmo peso */
-  color: white;
-  text-decoration: none;
-}
+
+    nav a {
+      font-weight:600;
+      font-size:1.1rem;
+      color:#fff;
+    }
 
     .menu-toggle {
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: white;
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:1.6rem;
     }
 
-/* Hover opcional (desktop) */
-
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-    .nav.active {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      width: 100%;
-      background: var(--primary);
-      top: 90px;
-      left: 0;
-      padding: 20px;
-      gap: 15px;
-    }
-
-    @media (min-width: 768px) {
-      .nav {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: none;
+    @media(min-width:768px){
+      .menu-toggle{display:none;}
+      nav {
+        display:flex;
+        position:static;
+        flex-direction:row;
+        background:none;
+        width:auto;
+        gap:24px;
       }
     }
 
-    /* HERO CAPA DO SITE */
+    /* HERO */
+    .hero {
+      margin-top:90px;
+      min-height:80vh;
+      background:
+        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+        url("https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg")
+        center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      text-align:center;
+      color:#fff;
+    }
 
-.hero {
-  margin-top: 90px;
-  min-height: calc(100vh - 90px);
-
-  background-image:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  color: white;
-  padding: 20px;
-}
-
-/* HERO - MOBILE RETRATO */
-/* Ajuste correto para celular */
-
-@media (max-width: 768px) and (orientation: portrait) {
-  .hero {
-    min-height: 60vh;          /* evita página gigante */
-    background-size: cover;   /* evita áreas brancas */
-    padding: 40px 20px;
-  }
-}
-    
     .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      font-weight: 800;
+      font-size:2.6rem;
+      font-weight:800;
+      margin-bottom:15px;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: auto;
-      margin-bottom: 25px;
-    } 
-/* BOTÃO PRINCIPAL */
-      
+      max-width:640px;
+      margin:auto;
+      margin-bottom:25px;
+      font-size:1.1rem;
+    }
+
     .btn {
-  background: var(--accent);
-  color: black;
-  padding: 15px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
+      display:inline-block;
+      background:var(--accent);
+      color:#000;
+      padding:14px 28px;
+      border-radius:6px;
+      font-weight:700;
+      transition:.3s;
+    }
 
-.btn:hover {
-  background: #e6ad00;
-  transform: scale(1.05);
-}
+    .btn:hover {
+      background:#e6ad00;
+      transform:scale(1.05);
+    }
 
-/* CATÁLOGO DE ESTAMPAS */
+    /* SEÇÕES */
+    section {
+      padding:70px 0;
+      background:#fff;
+    }
 
-.catalogo {
-  padding: 80px 0;
-  background: #ffffff;
-}
+    section:nth-child(even){
+      background:#f9f9f9;
+    }
 
-.catalogo h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
+    h2 {
+      text-align:center;
+      font-size:2rem;
+      margin-bottom:10px;
+    }
 
-.catalogo-descricao {
-  text-align: center;
-  color: #666;
-  margin-bottom: 40px;
-}
-
-.catalogo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 25px;
-}
-
-.estampa {
-  background: #f8f8f8;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.estampa:hover {
-  transform: scale(1.05);
-}
-
-.estampa img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.estampa span {
-  display: block;
-  padding: 12px;
-  font-weight: 600;
-}
+    .subtitle {
+      text-align:center;
+      color:#666;
+      margin-bottom:40px;
+    }
 
     /* PRODUTOS */
-
-    .produtos {
-      padding: 70px 0;
-    }
-
-    .produtos h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
-    }
-
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      display:grid;
+      gap:25px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     }
 
     .card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-/* IMAGENS DOS PRODUTOS */
-/* Evita imagens gigantes no mobile */
-
-.card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;     /* proporção quadrada */
-  object-fit: cover;       /* corta excesso sem distorcer */
-  border-radius: 5px;
-}
-/* AJUSTE DE IMAGEM - MOBILE */
-
-@media (max-width: 768px) {
-  .card img {
-    aspect-ratio: 4 / 5; /* formato mais elegante no celular */
-  }
-}
-
-    .card h3 {
-      margin: 15px 0 10px;
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      padding:16px;
+      text-align:center;
     }
 
-    .card p {
-      font-size: 0.95rem;
+    .card img {
+      aspect-ratio:1/1;
+      object-fit:cover;
+      border-radius:6px;
     }
 
-    .whatsapp {
-      background: #25D366;
-      color: white;
-      padding: 12px;
-      display: block;
-      margin-top: 15px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-    }
+    .card h3 {margin:15px 0;}
 
     /* FOOTER */
-
-    .footer {
-      background: #001a33;
-      color: white;
-      padding: 25px;
-      text-align: center;
-      font-size: 0.9rem;
+    footer {
+      background:#050505;
+      color:#aaa;
+      text-align:center;
+      padding:18px;
+      font-size:.9rem;
     }
-
-    /* ============================= */
-/* CAMISETA BÁSICA */
-/* ============================= */
-/* Ajuste de rolagem para header fixo */
-#basica {
-  scroll-margin-top: 130px;
-}
-
-.basica h2,
-.basica p {
-  text-align: center;
-}
-
-.basica p {
-  margin-bottom: 40px;
-}
-
-.basica-grid {
-  display: flex;
-  justify-content: center;
-}
-
-.basica-card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  width: 320px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.basica-card img {
-  width: 100%;
-  max-width: 240px;
-  margin-bottom: 15px;
-}
-
-.basica-card label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
-}
-
-.basica-card select,
-.basica-card input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-}
-
-.basica-card .preco {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.basica-card button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  background: #FFC107;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* PREVIEW DA CAMISA */
-
-.preview-camisa {
-  position: relative;
-  width: 260px;
-  margin: 0 auto 20px;
-}
-
-.preview-camisa img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-}
-
   </style>
 </head>
 
 <body>
 
-<header class="header">
+<header>
   <div class="container header-content">
-
-    <a href="#" class="logo">
+    <a href="#inicio" class="logo">
       <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
+      <span class="logo-text">F PAC</span>
     </a>
-
-    <nav class="nav" id="nav">
-
-  <!-- LINKS DO MENU -->
-  <div class="menu-links">
-    <a href="#inicio">Início</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#criar">Criar Sua Camisa</a>
-  </div>
-
-  <!-- ICONES SOCIAIS -->
-  <div class="menu-social">
-    <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-
-</nav>
 
     <button class="menu-toggle" id="toggle">
       <i class="fas fa-bars"></i>
     </button>
 
+    <nav id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#basica">Básica</a>
+      <a href="#criar">Personalizar</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero" id="inicio">
-  <div>
-    <h1>Não é só roupa. É identidade.</h1>
-    <p>
-      Camisas masculinas estampadas para quem se recusa a vestir o comum.
-      Mais atitude, mais personalidade e estilo que fala antes de você.
-    </p>
-    <a href="https://wa.me/554799746" class="btn">
-      Bora Vestir Isso
-    </a>
+  <div class="container">
+    <h1>Streetwear não é moda.<br>É atitude.</h1>
+    <p>Camisetas oversized premium para quem vive fora do padrão. Edição limitada.</p>
+    <a href="#produtos" class="btn">Ver Coleção</a>
   </div>
 </section>
-  
-<!-- ============================= -->
-<!-- CATÁLOGO DE ESTAMPAS -->
-<!-- ============================= -->
-  
-<section class="catalogo" id="catalogo">
+
+<section id="produtos">
   <div class="container">
-
-    <h2>Nossas Estampas</h2>
-    <p class="catalogo-descricao">
-      Escolha a estampa que mais combina com você.
-    </p>
-
-    <div class="catalogo-grid">
-
-      <div class="estampa">
-        <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
-        <span>E01 – Tropa Urbana – Com Fundo</span>
-      </div>
-
-      <div class="estampa">
-        <img src="imagens/estampas/e2.png" alt="Estampa 02">
-        <span>E01 – Tropa Urbana – Sem Fundo</span>
-      </div>
-
-      <div class="estampa">
-        <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
-        <span>E02 – Tropa Urbana – Com Fundo</span>
-      </div>
-
-      <div class="estampa">
-        <img src="imagens/estampas/e4.png" alt="Estampa 04">
-        <span>E02 – Tropa Urbana – Sem Fundo</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-  
-<!-- PRODUTOS -->
-
-<section class="produtos" id="produtos">
-  <div class="container">
-
     <h2>Nossos Produtos</h2>
+    <p class="subtitle">Escolha seu estilo</p>
 
     <div class="grid">
-
-      <!-- CAMISETA BÁSICA -->
-       <div class="card">
+      <div class="card">
         <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
         <h3>Camiseta Básica</h3>
-        <a href="#basica" class="btn">Escolher Camisetas</a>
+        <a href="#basica" class="btn">Comprar Agora</a>
       </div>
 
-      <!-- CAMISETA PREMIUM -->
       <div class="card">
         <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
         <h3>Camiseta Premium</h3>
-        <p>Criar do meu jeito.</p>
-        <a href="#criar" class="btn">Criar Minha Camisa</a>
+        <a href="#criar" class="btn">Personalizar</a>
       </div>
-
-    </div>
-  </div>
-</section>
-  
- <!-- ============================= -->
-<!-- CAMISETA BÁSICA -->
-<!-- ============================= -->
-  
-<section class="basica" id="basica">
-  <div class="container">
-
-    <h2>Camiseta Básica</h2>
-    <p>Modelo pronto com valor fixo.</p>
-
-    <div class="basica-grid">
-
-      <div class="basica-card">
-
-        <img
-  src="imagens/logo-no-peito.jpg"
-  alt="Camiseta Básica F Pac Store"
-  class="camiseta-img"
->
-
-        <h3>Camiseta Básica</h3>
-       <p class="preco" id="preco-basica">R$ 79,90</p>
-
-        <label>Cor</label>
-        <select id="cor-basica">
-          <option value="Preta">Preta</option>
-          <option value="Branca">Branca</option>
-          <option value="Off White">Off White</option>
-        </select>
-
-        <label>Tamanho</label>
-        <select id="tamanho-basica">
-          <option>M</option>
-          <option>G</option>
-        </select>
-
-        <label>Quantidade</label>
-        <input
-  type="number"
-  id="qtd-basica"
-  value="1"
-  min="1"
-  onchange="calcularPrecoBasica()"
-/>
-
-        <button onclick="comprarBasica()">
-          🛒 Finalizar Compra
-        </button>
-
-      </div>
-
     </div>
   </div>
 </section>
 
- <!-- ============================= -->
-<!-- CAMISETA PREMIUM -->
-<!-- ============================= -->
-  
-<section class="criar-camisa" id="criar">
-  <div class="container">
-
-    <h2>Criar Minha Camisa</h2>
-    <p>Monte sua camiseta personalizada.</p>
-
-    <div class="basica-card">
-
-     <!-- PREVIEW DA CAMISA -->
-     
-<div class="preview-camisa">
-  <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
-</div>
-</div>
-
-      <p class="preco" id="preco-premium">R$ 69,90</p>
-
-      <div class="campo-form">
-  <label>Cor</label>
-  <select id="cor-premium" onchange="calcularPrecoPremium()">
-    <option value="">Selecione</option>
-    <option>Preta</option>
-    <option>Branca</option>
-    <option>Off White</option>
-  </select>
-</div>
-
-<div class="campo-form">
-  <label>Tamanho</label>
-  <select id="tamanho-premium" onchange="calcularPrecoPremium()">
-    <option value="">Selecione</option>
-    <option>M</option>
-    <option>G</option>
-  </select>
-</div>
-
-<div class="campo-form">
-  <label>Quantidade de Camisas</label>
-  <input
-    type="number"
-    id="qtd-camisas"
-    value="1"
-    min="1"
-    onchange="calcularPrecoPremium()"
-  />
-</div>
-
-<div class="campo-form">
-  <label>Quantidade de Estampas</label>
-  <select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
-    <option value="0">Nenhuma</option>
-    <option value="1">1 Estampa</option>
-    <option value="2">2 Estampas</option>
-  </select>
-</div>
-
-      <div id="estampa1" style="display:none;">
-
-  <hr>
-  <strong>Estampa 1</strong>
-
-  <label>Posição da Estampa</label>
-  <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
-    <option>Peito Central</option>
-    <option>Peito Esquerdo (Visual)</option>
-<option>Peito Direito (Visual)</option>
-    <option>Costas</option>
-  </select>
-
-  <label>Fundo</label>
-  <select id="fundo1">
-    <option>Com fundo</option>
-    <option>Sem fundo</option>
-  </select>
-
-  <label>Escolha a Estampa</label>
-  <select id="arte1" onchange="atualizarPreviewArte(this.value)">
-    <option>E01 – Tropa Urbana</option>
-    <option>E02 – Tropa Urbana</option>
-    <option>E03 – Outra Estampa</option>
-  </select>
-
-</div>
-
-<div id="estampa2" style="display:none;">
-
-  <hr>
-  <strong>Estampa 2</strong>
-
-  <label>Posição da Estampa</label>
-  <select id="pos2">
-    <option>Peito Central</option>
-    <option>Peito Esquerdo (Visual)</option>
-<option>Peito Direito (Visual)</option>
-    <option>Costas</option>
-  </select>
-
-  <label>Fundo</label>
-  <select id="fundo2">
-    <option>Com fundo</option>
-    <option>Sem fundo</option>
-  </select>
-
-  <label>Escolha a Estampa</label>
-  <select id="arte2">
-    <option>E01 – Tropa Urbana</option>
-    <option>E02 – Tropa Urbana</option>
-    <option>E03 – Outra Estampa</option>
-  </select>
-
-</div>
-      
-    </div>
-  </div>
-</section>
-  
-<footer class="footer">
+<footer>
   © 2026 F Pac Store — Não é só roupa. É identidade.
 </footer>
 
-<script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
-
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-</script>
-<script>
-function comprarBasica() {
-  const cor = document.getElementById('cor-basica').value;
-  const tamanho = document.getElementById('tamanho-basica').value;
-  const quantidade = document.getElementById('qtd-basica').value;
-
-  const precoUnitario = 79.90;
-  const total = precoUnitario * quantidade;
-
-  const totalFormatado = total.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-
-  const mensagem =
-    `Fala comigo! Gostaria de finalizar minha compra.\n\n` +
-    `Modelo: Camiseta Básica\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade: ${quantidade}\n\n` +
-    `Valor total: R$ ${totalFormatado}`;
-
-  window.open(
-    "https://wa.me/55479974?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
-}
-</script>  
-
-<script>
-function mostrarEstampas() {
-  const qtd = Number(document.getElementById('qtd-estampas').value);
-
-  if (document.getElementById('estampa1')) {
-    document.getElementById('estampa1').style.display =
-      qtd >= 1 ? 'block' : 'none';
-  }
-
-  if (document.getElementById('estampa2')) {
-    document.getElementById('estampa2').style.display =
-      qtd === 2 ? 'block' : 'none';
-  }
-}
+<script defer>
+  const toggle=document.getElementById("toggle");
+  const nav=document.getElementById("nav");
+  toggle.onclick=()=>nav.classList.toggle("active");
 </script>
 
-<script>
-function comprarPremium() {
-  const cor = document.getElementById('cor-premium').value;
-  const tamanho = document.getElementById('tamanho-premium').value;
-  const qtdCamisas = document.getElementById('qtd-camisas').value;
-  const qtdEstampas = document.getElementById('qtd-estampas').value;
-  const preco = document.getElementById('preco-premium').innerText;
-
-  let detalhesEstampas = '';
-
-  if (qtdEstampas >= 1) {
-    detalhesEstampas +=
-      `\nEstampa 1:` +
-      `\n• Arte: ${arte1.value}` +
-      `\n• Posição: ${pos1.value}` +
-      `\n• Fundo: ${fundo1.value}\n`;
-  }
-
-  if (qtdEstampas == 2) {
-    detalhesEstampas +=
-      `\nEstampa 2:` +
-      `\n• Arte: ${arte2.value}` +
-      `\n• Posição: ${pos2.value}` +
-      `\n• Fundo: ${fundo2.value}\n`;
-  }
-
-  const mensagem =
-    `Olá! Quero criar minha Camiseta Premium.\n\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade de camisas: ${qtdCamisas}\n` +
-    `Quantidade de estampas: ${qtdEstampas}\n` +
-    `${detalhesEstampas}\n` +
-    `Valor estimado: ${preco}`;
-
-  window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
-}
-</script>
-
-<script>
-function calcularPrecoPremium() {
-  let precoBase = 69.90;
-
-  const qtdEstampas = Number(
-    document.getElementById('qtd-estampas').value
-  );
-
-  const qtdCamisas = Number(
-    document.getElementById('qtd-camisas').value
-  );
-
-  // Acréscimo por quantidade de estampas
-  if (qtdEstampas === 1) precoBase += 10;
-  if (qtdEstampas === 2) precoBase += 30;
-
-  const total = precoBase * qtdCamisas;
-
-  const precoEl = document.getElementById('preco-premium');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script> 
-
- <script>
-function calcularPrecoPremium() {
-  let precoBase = 69.90;
-
-  const qtdEstampas = Number(
-    document.getElementById('qtd-estampas').value
-  );
-
-  const qtdCamisas = Number(
-    document.getElementById('qtd-camisas').value
-  );
-
-  // Acréscimos por estampas (provisório)
-  if (qtdEstampas === 1) precoBase += 10;
-  if (qtdEstampas === 2) precoBase += 30;
-
-  const total = precoBase * qtdCamisas;
-
-  const precoEl = document.getElementById('preco-premium');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script>
-
-<script>
-function calcularPrecoBasica() {
-  const precoUnitario = 79.90;
-  const quantidade = Number(
-    document.getElementById('qtd-basica').value
-  );
-
-  const total = precoUnitario * quantidade;
-
-  const precoEl = document.getElementById('preco-basica');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script>
-
-/* ORGANIZAÇÃO DOS CAMPOS DE ESCOLHA */
-
-.campo-form {
-  margin-bottom: 12px;
-  text-align: left;
-}
-
-.campo-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.campo-form select,
-.campo-form input {
-  width: 100%;
-  padding: 8px;
-}
-
-<!-- BOTÃO FIXO FINALIZAR COMPRA -->
-<div class="botao-fixo-whatsapp">
-  <button onclick="comprarPremium()">
-    🛒 Finalizar Compra
-  </button>
-</div>
-/* BOTÃO FIXO FINALIZAR COMPRA */
-
-.botao-fixo-whatsapp {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 20px);
-  max-width: 420px;
-  z-index: 9999;
-}
-
-.botao-fixo-whatsapp button {
-  width: 100%;
-  padding: 14px;
-  background: #25D366;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
-
-.botao-fixo-whatsapp button:hover {
-  background: #1ebe5d;
-}
 </body>
 </html>
+``
