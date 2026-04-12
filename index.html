@@ -220,6 +220,21 @@ x'<!DOCTYPE html>
       }
     }
 
+   /* ============================= */
+/* CRIAR CAMISA - TEXTO VERTICAL (MOBILE) */
+/* ============================= */
+@media (max-width: 768px) {
+  .menu-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg); /* leitura correta */
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent);
+    align-self: center;
+  }
+}
+
     /* HERO CAPA DO SITE */
 
 .hero {
@@ -738,7 +753,7 @@ text-shadow:
     <a href="#inicio">Início</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#produtos">Produtos</a>
-    <a href="#criar">Criar Camisa</a>
+    <a href="#criar" class="menu-vertical">Criar Camisa</a>
   </div>
 
   <!-- ICONES SOCIAIS -->
