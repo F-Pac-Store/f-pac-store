@@ -904,12 +904,12 @@ text-shadow:
   <div class="etapa oculta" id="etapa-quantidade">
     <label>Quantidade</label>
     <input
-      type="number"
-      id="qtd-basica"
-      value="0"
-      min="0"
-      oninput="mostrarBotao(); calcularPrecoBasica()"
-    >
+  type="number"
+  id="qtd-basica"
+  value="0"
+  min="0"
+  oninput="mostrarBotao(); calcularPrecoBasica()"
+>
   </div>
 
   <!-- ETAPA 4: FINALIZAR -->
@@ -1261,10 +1261,15 @@ function mostrarQuantidade() {
 }
 
 function mostrarBotao() {
-  const etapa = document.getElementById('etapa-finalizar');
-  if (Number(document.getElementById('qtd-basica').value) > 0) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
+  const qtd = Number(document.getElementById('qtd-basica').value);
+  const etapaFinalizar = document.getElementById('etapa-finalizar');
+
+  if (qtd > 0) {
+    etapaFinalizar.style.display = 'block';
+    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
+  } else {
+    etapaFinalizar.style.display = 'none';
+    etapaFinalizar.classList.remove('visivel');
   }
 }
 </script>
