@@ -223,11 +223,12 @@ x'<!DOCTYPE html>
    /* ============================= */
 /* CRIAR CAMISA - TEXTO VERTICAL (MOBILE) */
 /* ============================= */
-/* CRIAR CAMISA - VOLTAR PARA HORIZONTAL (MOBILE) */
+/* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
 @media (max-width: 768px) {
   .menu-vertical {
-    writing-mode: horizontal-tb; /* FORÇA horizontal */
-    transform: none;
+    writing-mode: horizontal-tb; /* garante horizontal */
+    white-space: nowrap;         /* NÃO quebra linha */
+    display: inline-block;       /* evita empilhamento */
     font-weight: 800;
     letter-spacing: 1px;
     color: var(--accent);
