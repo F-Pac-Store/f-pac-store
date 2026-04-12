@@ -622,17 +622,25 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 25px;
+  padding: 20px;
   border-radius: 10px;
-  width: 320px;
+  width: 300px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
 }
 
+.etapa {
+  margin-top: 12px;
+}
+
+.oculta {
+  display: none;
+}
+
 .basica-card img {
   width: 100%;
-  max-width: 240px;
-  margin-bottom: 15px;
+  max-width: 220px;       /* menor para caber tudo */
+  margin-bottom: 10px;
 }
 
 .basica-card label {
@@ -849,42 +857,54 @@ text-shadow:
 
       <div class="basica-card">
 
-        <img
-  src="imagens/logo-no-peito.jpg"
-  alt="Camiseta Básica F Pac Store"
-  class="camiseta-img"
->
-       <p class="preco" id="preco-basica">R$ 79,90</p>
+  <img
+    src="imagens/logo-no-peito.jpg"
+    alt="Camiseta Básica F Pac Store"
+    class="camiseta-img"
+  >
 
-        <label>Cor</label>
-        <select id="cor-basica">
-          <option value="Preta">Preta</option>
-          <option value="Branca">Branca</option>
-          <option value="Off White">Off White</option>
-        </select>
+  <p class="preco" id="preco-basica">R$ 79,90</p>
 
-        <label>Tamanho</label>
-        <select id="tamanho-basica">
-          <option>M</option>
-          <option>G</option>
-        </select>
+  <!-- ETAPA 1: COR -->
+  <div class="etapa">
+    <label>Cor</label>
+    <select id="cor-basica" onchange="mostrarTamanho()">
+      <option value="">Selecione</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+      <option value="Off White">Off White</option>
+    </select>
+  </div>
 
-        <label>Quantidade</label>
-        <input
-  type="number"
-  id="qtd-basica"
-  value="1"
-  min="1"
-  oninput="calcularPrecoBasica()"
-/>
+  <!-- ETAPA 2: TAMANHO -->
+  <div class="etapa oculta" id="etapa-tamanho">
+    <label>Tamanho</label>
+    <select id="tamanho-basica" onchange="mostrarQuantidade()">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
 
-        <button onclick="comprarBasica()">
-          Finalizar Compra
-        </button>
+  <!-- ETAPA 3: QUANTIDADE -->
+  <div class="etapa oculta" id="etapa-quantidade">
+    <label>Quantidade</label>
+    <input
+      type="number"
+      id="qtd-basica"
+      value="1"
+      min="1"
+      oninput="mostrarBotao(); calcularPrecoBasica()"
+    >
+  </div>
 
-      </div>
+  <!-- ETAPA 4: FINALIZAR -->
+  <div class="etapa oculta" id="etapa-finalizar">
+    <button onclick="comprarBasica()">Finalizar Compra</button>
+  </div>
 
-    </div>
+</div>
+
   </div>
 </section>
 
