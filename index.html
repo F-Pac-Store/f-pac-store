@@ -631,6 +631,14 @@ text-shadow:
 
 .etapa {
   margin-top: 12px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.3s ease;
+}
+
+.etapa.visivel {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .oculta {
@@ -1231,48 +1239,59 @@ function calcularPrecoBasica() {
 
 <script>
 function mostrarTamanho() {
-  const cor = document.getElementById('cor-basica').value;
-  if (cor) {
-    document.getElementById('etapa-tamanho').style.display = 'block';
+  const etapa = document.getElementById('etapa-tamanho');
+  if (document.getElementById('cor-basica').value) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQuantidade() {
-  const tamanho = document.getElementById('tamanho-basica').value;
-  if (tamanho) {
-    document.getElementById('etapa-quantidade').style.display = 'block';
+  const etapa = document.getElementById('etapa-quantidade');
+  if (document.getElementById('tamanho-basica').value) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarBotao() {
-  const qtd = Number(document.getElementById('qtd-basica').value);
-  if (qtd > 0) {
-    document.getElementById('etapa-finalizar').style.display = 'block';
+  const etapa = document.getElementById('etapa-finalizar');
+  if (Number(document.getElementById('qtd-basica').value) > 0) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 </script>
 
 <script>
 function mostrarTamanhoPremium() {
+  const etapa = document.getElementById('etapa-tamanho-premium');
   if (document.getElementById('cor-premium').value) {
-    document.getElementById('etapa-tamanho-premium').style.display = 'block';
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQtdCamisas() {
+  const etapa = document.getElementById('etapa-qtd-camisas');
   if (document.getElementById('tamanho-premium').value) {
-    document.getElementById('etapa-qtd-camisas').style.display = 'block';
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQtdEstampas() {
+  const etapa = document.getElementById('etapa-qtd-estampas');
   if (Number(document.getElementById('qtd-camisas').value) > 0) {
-    document.getElementById('etapa-qtd-estampas').style.display = 'block';
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarFinalizar() {
-  document.getElementById('etapa-finalizar-premium').style.display = 'block';
+  const etapa = document.getElementById('etapa-finalizar-premium');
+  etapa.style.display = 'block';
+  setTimeout(() => etapa.classList.add('visivel'), 10);
 }
 </script>
  
