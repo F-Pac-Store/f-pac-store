@@ -1236,6 +1236,30 @@ function mostrarBotao() {
   }
 }
 </script>
+
+<script>
+function mostrarTamanhoPremium() {
+  if (document.getElementById('cor-premium').value) {
+    document.getElementById('etapa-tamanho-premium').style.display = 'block';
+  }
+}
+
+function mostrarQtdCamisas() {
+  if (document.getElementById('tamanho-premium').value) {
+    document.getElementById('etapa-qtd-camisas').style.display = 'block';
+  }
+}
+
+function mostrarQtdEstampas() {
+  if (Number(document.getElementById('qtd-camisas').value) > 0) {
+    document.getElementById('etapa-qtd-estampas').style.display = 'block';
+  }
+}
+
+function mostrarFinalizar() {
+  document.getElementById('etapa-finalizar-premium').style.display = 'block';
+}
+</script>
  
 </body>
 </html>
