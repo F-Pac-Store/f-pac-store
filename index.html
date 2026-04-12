@@ -1213,6 +1213,29 @@ function calcularPrecoBasica() {
     });
 }
 </script>
+
+<script>
+function mostrarTamanho() {
+  const cor = document.getElementById('cor-basica').value;
+  if (cor) {
+    document.getElementById('etapa-tamanho').style.display = 'block';
+  }
+}
+
+function mostrarQuantidade() {
+  const tamanho = document.getElementById('tamanho-basica').value;
+  if (tamanho) {
+    document.getElementById('etapa-quantidade').style.display = 'block';
+  }
+}
+
+function mostrarBotao() {
+  const qtd = Number(document.getElementById('qtd-basica').value);
+  if (qtd > 0) {
+    document.getElementById('etapa-finalizar').style.display = 'block';
+  }
+}
+</script>
  
 </body>
 </html>
