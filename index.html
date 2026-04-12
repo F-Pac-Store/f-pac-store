@@ -1287,10 +1287,15 @@ function mostrarQtdCamisas() {
 }
 
 function mostrarQtdEstampas() {
+  const qtd = Number(document.getElementById('qtd-camisas').value);
   const etapa = document.getElementById('etapa-qtd-estampas');
-  if (Number(document.getElementById('qtd-camisas').value) > 0) {
+
+  if (qtd > 0) {
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
+  } else {
+    etapa.style.display = 'none';
+    etapa.classList.remove('visivel');
   }
 }
 
