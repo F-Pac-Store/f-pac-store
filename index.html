@@ -1117,6 +1117,12 @@ text-shadow:
      <!-- PREVIEW DA CAMISA -->
      
 <div class="preview-camisa">
+  <img
+    id="preview-camisa-img"
+    src="imagens/preview/frente.jpg"
+    alt="Preview Camisa"
+  >
+</div>
   <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
 
 </div>
@@ -1177,7 +1183,10 @@ text-shadow:
   <strong>Estampa 1</strong>
 
   <label>Posição da Estampa</label>
-  <select id="pos1" onchange="atualizarPreviewPosicao(this.value); atualizarOpcoesEstampa2()">
+  <select
+  id="pos1"
+  onchange="atualizarPreviewPosicao(this.value); atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
+>
     <option>Peito Central</option>
     <option>Peito LE (De quem veste)</option>
     <option>Peito LD (De quem veste)</option>
@@ -1205,7 +1214,10 @@ text-shadow:
   <strong>Estampa 2</strong>
 
   <label>Posição da Estampa</label>
-<select id="pos2" onchange="atualizarOpcoesEstampa2()">
+<select
+  id="pos2"
+  onchange="atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
+>
     <option>Peito Central</option>
     <option>Peito LE (De quem veste)</option>
     <option>Peito LD (De quem veste)</option>
