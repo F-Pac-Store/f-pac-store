@@ -2,7 +2,7 @@ x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
-  
+ 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,11 +11,11 @@ x'<!DOCTYPE html>
 <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
 <meta name="author" content="F Pac Store">
 <!-- FONTES -->
-  
+ 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800\&display=swap" rel="stylesheet">
 
   <!-- Fonte blacklisted -->
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
@@ -80,7 +80,7 @@ x'<!DOCTYPE html>
   -webkit-text-fill-color: transparent;
 }
 /* VARIÁVEIS DE CORES GLOBAIS */
-    
+ 
     :root {
       --primary: #003366;
       --accent: #FFC107;
@@ -172,7 +172,7 @@ x'<!DOCTYPE html>
     }
 /* LINKS DO MENU (PADRONIZAÇÃO) */
 /* Mesma fonte, tamanho e peso */
-    
+ 
 .nav a {
   font-family: 'Inter', sans-serif; /* Fonte única */
   font-size: 1rem;                  /* Mesmo tamanho */
@@ -282,7 +282,7 @@ x'<!DOCTYPE html>
     padding: 40px 20px;
   }
 }
-    
+ 
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 15px;
@@ -294,9 +294,9 @@ x'<!DOCTYPE html>
       max-width: 650px;
       margin: auto;
       margin-bottom: 25px;
-    } 
+    }
 /* BOTÃO PRINCIPAL */
-      
+ 
     .btn {
  background: rgba(255, 193, 7, 0.85); /* amarelo semi-transparente */
   color: black;
@@ -440,7 +440,7 @@ text-shadow:
     font-size: 0.95rem;
   }
 }
-   
+ 
 /* ============================= */
 /* BOTÃO MAIS ESTAMPAS */
 /* ============================= */
@@ -472,7 +472,7 @@ text-shadow:
   color: #000;
   transform: scale(1.05);
 }
-   
+ 
     /* PRODUTOS */
 
  .produtos {
@@ -485,7 +485,7 @@ text-shadow:
   flex-direction: column;
   align-items: center;
 }
-   
+ 
     .produtos h2 {
       text-align: center;
       margin-bottom: 40px;
@@ -604,7 +604,7 @@ text-shadow:
   min-height: calc(100vh - 120px); /* reserva a tela */
   padding: 40px 0 80px;            /* sobe o conteúdo */
 }
-   
+ 
    #inicio {
   scroll-margin-top: 120px;
 }
@@ -635,16 +635,14 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 14px;
+  padding: 12px;
   border-radius: 10px;
-  width: 260px;
-
-  display: flex;
-  flex-direction: column; /* ✅ resolve corte */
-  align-items: center;
-
+  width: 235px;              /* ⬅️ menor */
+  min-height: 390px;        /* ⬅️ menor */
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
 }
+
 .etapa {
   margin-top: 8px;
   opacity: 0;
@@ -668,7 +666,7 @@ text-shadow:
 }
 
 .basica-card img {
-  width: 180px;
+  width: 165px;
   height: 220px;          /* altura fixa */
   object-fit: contain;    /* não distorce */
   margin-bottom: 6px;
@@ -711,13 +709,27 @@ text-shadow:
   pointer-events: none;
 }
 
+   /* DESTAQUE PARA CARD DISPONÍVEL */
+.basica-card.disponivel {
+  border: 2px solid var(--accent);
+  box-shadow:
+    0 0 0 2px rgba(255,193,7,0.25),
+    0 14px 30px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.basica-card.disponivel:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
 /* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
 @media (max-width: 768px) {
   .basica-grid {
     justify-items: center;
   }
 }
-   
+ 
 /* PREVIEW DA CAMISA */
 
 .preview-camisa {
@@ -748,8 +760,21 @@ text-shadow:
   left: 50%;
   transform: translate(-50%, -50%);
 }
-   
+
+   /* ============================= */
+/* PERSONALIZAR CAMISA */
+/* ============================= */
+.criar-camisa h2,
+.criar-camisa p {
+  text-align: center;
+}
+
+.criar-camisa p {
+  margin-bottom: 40px;
+}
+ 
   </style>
+ 
 </head>
 
 <body>
@@ -774,19 +799,19 @@ text-shadow:
 
   <!-- ICONES SOCIAIS -->
   <div class="menu-social">
-    <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/5547997465" target="\_blank" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp">
     </a>
 
-    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
+    <a href="https://instagram.com/f\_pac\_store/" target="\_blank" aria-label="Instagram">
+      <i class="fab fa-instagram">
     </a>
   </div>
 
 </nav>
 
     <button class="menu-toggle" id="toggle">
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars">
     </button>
 
   </div>
@@ -806,11 +831,11 @@ text-shadow:
 </a>
   </div>
 </section>
-  
+ 
 <!-- ============================= -->
 <!-- CATÁLOGO DE ESTAMPAS -->
 <!-- ============================= -->
-  
+ 
 <section class="catalogo" id="catalogo">
   <div class="container">
 
@@ -825,7 +850,7 @@ text-shadow:
         <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
         <span>E01 – Tropa Urbana – Com Fundo</span>
       </div>
-     
+ 
       <div class="estampa">
         <img src="imagens/estampas/e2.png" alt="Estampa 02">
         <span>E01 – Tropa Urbana – Sem Fundo</span>
@@ -840,7 +865,7 @@ text-shadow:
         <img src="imagens/estampas/e4.png" alt="Estampa 04">
         <span>E02 – Tropa Urbana – Sem Fundo</span>
       </div>
-     
+ 
 <div class="catalogo-cta">
   <a
     href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link"
@@ -854,11 +879,11 @@ text-shadow:
 
 </div>
 </section>
-     
+ 
     </div>
   </div>
 </section>
-  
+ 
 <!-- ============================= -->
 <!-- PRODUTOS -->
 <!-- ============================= -->
@@ -887,11 +912,11 @@ text-shadow:
     </div>
   </div>
 </section>
-  
+ 
  <!-- ============================= -->
 <!-- CAMISA BÁSICA -->
 <!-- ============================= -->
-  
+ 
 <section class="basica" id="basica">
   <div class="container">
 
@@ -908,12 +933,12 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco" id="preco-basica">R$ 79,90</p>
+  <p class="preco" id="preco-basica">R$ ???</p>
 
   <!-- ETAPA 1: COR -->
   <div class="etapa">
     <label>Cor</label>
-    <select id="cor-basica" onchange="mostrarTamanho(this)">
+    <select id="cor-basica" onchange="mostrarTamanho()">
       <option value="">Selecione</option>
       <option value="Preta">Preta</option>
       <option value="Branca">Branca</option>
@@ -951,7 +976,7 @@ text-shadow:
 </div>
 
      <!-- CAMISA BÁSICA 2 -->
-     
+ 
 <div class="basica-card">
 
   <img
@@ -960,7 +985,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ 79,90</p>
+  <p class="preco">R$ ???</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -976,7 +1001,7 @@ text-shadow:
 </div>
 
 <!-- CAMISA BÁSICA 3 -->
-     
+ 
 <div class="basica-card">
 
   <img
@@ -985,7 +1010,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ 79,90</p>
+  <p class="preco">R$ ???</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1001,7 +1026,7 @@ text-shadow:
 </div>
 
 <!-- CAMISA BÁSICA 4 -->
-     
+ 
 <div class="basica-card">
 
   <img
@@ -1010,7 +1035,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ 79,90</p>
+  <p class="preco">R$ ???</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1034,7 +1059,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ 79,90</p>
+  <p class="preco">R$ ???</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura dos outros cards esgotados) -->
   <div class="etapa">
@@ -1050,7 +1075,7 @@ text-shadow:
 </div>
 
      <!-- CAMISA BÁSICA 6 -->
-     
+ 
 <div class="basica-card">
 
   <img
@@ -1059,7 +1084,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ 79,90</p>
+  <p class="preco">R$ ???</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1080,7 +1105,7 @@ text-shadow:
  <!-- ============================= -->
 <!-- CAMISETA PREMIUM -->
 <!-- ============================= -->
-  
+ 
 <section class="criar-camisa" id="criar">
   <div class="container">
 
@@ -1090,7 +1115,7 @@ text-shadow:
     <div class="basica-card">
 
      <!-- PREVIEW DA CAMISA -->
-     
+ 
 <div class="preview-camisa">
   <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
 
@@ -1099,7 +1124,7 @@ text-shadow:
   </div>
 </div>
 
-      <p class="preco" id="preco-premium">R$ 69,90</p>
+      <p class="preco" id="preco-premium">R$ ???</p>
 
       <!-- ETAPA 1: COR -->
 <div class="etapa">
@@ -1157,8 +1182,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1185,8 +1210,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos2">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1204,177 +1229,320 @@ text-shadow:
   </select>
 
 </div>
-      
+ 
     </div>
   </div>
 </section>
-  
+ 
 <footer class="footer">
   © 2026 F Pac Store — Não é só roupa. É identidade.
 </footer>
 
 <script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
 
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-</script>
+&#x20; const toggle = document.getElementById('toggle');
+
+&#x20; const nav = document.getElementById('nav');
+
+
+
+&#x20; toggle.onclick = () => {
+
+&#x20;   nav.classList.toggle('active');
+
+&#x20; };
+
 <script>
+
 function comprarBasica() {
-  const cor = document.getElementById('cor-basica').value;
-  const tamanho = document.getElementById('tamanho-basica').value;
-  const quantidade = document.getElementById('qtd-basica').value;
 
-  const precoUnitario = 79.90;
-  const total = precoUnitario * quantidade;
+&#x20; const cor = document.getElementById('cor-basica').value;
 
-  const totalFormatado = total.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
+&#x20; const tamanho = document.getElementById('tamanho-basica').value;
 
-  const mensagem =
-    `Fala comigo! Gostaria de finalizar minha compra.\n\n` +
-    `Modelo: Camiseta Básica\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade: ${quantidade}\n\n` +
-    `Valor total: R$ ${totalFormatado}`;
+&#x20; const quantidade = document.getElementById('qtd-basica').value;
 
-  window.open(
-    "https://wa.me/55479974?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
+
+
+&#x20; const precoUnitario = 79.90;
+
+&#x20; const total = precoUnitario \* quantidade;
+
+
+
+&#x20; const totalFormatado = total.toLocaleString('pt-BR', {
+
+&#x20;   minimumFractionDigits: 2,
+
+&#x20;   maximumFractionDigits: 2
+
+&#x20; });
+
+
+
+&#x20; const mensagem =
+
+&#x20;   `Fala comigo! Gostaria de finalizar minha compra.\\n\\n` +
+
+&#x20;   `Modelo: Camiseta Básica\\n` +
+
+&#x20;   `Cor: ${cor}\\n` +
+
+&#x20;   `Tamanho: ${tamanho}\\n` +
+
+&#x20;   `Quantidade: ${quantidade}\\n\\n` +
+
+&#x20;   `Valor total: R$ ${totalFormatado}`;
+
+
+
+&#x20; window.open(
+
+&#x20;   "https://wa.me/55479974?text=" + encodeURIComponent(mensagem),
+
+&#x20;   "\_blank"
+
+&#x20; );
+
 }
-</script>  
+
 
 <script>
+
 function mostrarEstampas() {
-  const qtd = Number(document.getElementById('qtd-estampas').value);
 
-  if (document.getElementById('estampa1')) {
-    document.getElementById('estampa1').style.display =
-      qtd >= 1 ? 'block' : 'none';
-  }
+&#x20; const qtd = Number(document.getElementById('qtd-estampas').value);
 
-  if (document.getElementById('estampa2')) {
-    document.getElementById('estampa2').style.display =
-      qtd === 2 ? 'block' : 'none';
-  }
+
+
+&#x20; if (document.getElementById('estampa1')) {
+
+&#x20;   document.getElementById('estampa1').style.display =
+
+&#x20;     qtd >= 1 ? 'block' : 'none';
+
+&#x20; }
+
+
+
+&#x20; if (document.getElementById('estampa2')) {
+
+&#x20;   document.getElementById('estampa2').style.display =
+
+&#x20;     qtd === 2 ? 'block' : 'none';
+
+&#x20; }
+
 }
-</script>
+
 
 <script>
+
 function comprarPremium() {
-  const cor = document.getElementById('cor-premium').value;
-  const tamanho = document.getElementById('tamanho-premium').value;
-  const qtdCamisas = document.getElementById('qtd-camisas').value;
-  const qtdEstampas = document.getElementById('qtd-estampas').value;
-  const preco = document.getElementById('preco-premium').innerText;
 
-  let detalhesEstampas = '';
+&#x20; const cor = document.getElementById('cor-premium').value;
 
-  if (qtdEstampas >= 1) {
-    detalhesEstampas +=
-      `\nEstampa 1:` +
-      `\n• Arte: ${arte1.value}` +
-      `\n• Posição: ${pos1.value}` +
-      `\n• Fundo: ${fundo1.value}\n`;
-  }
+&#x20; const tamanho = document.getElementById('tamanho-premium').value;
 
-  if (qtdEstampas == 2) {
-    detalhesEstampas +=
-      `\nEstampa 2:` +
-      `\n• Arte: ${arte2.value}` +
-      `\n• Posição: ${pos2.value}` +
-      `\n• Fundo: ${fundo2.value}\n`;
-  }
+&#x20; const qtdCamisas = document.getElementById('qtd-camisas').value;
 
-  const mensagem =
-    `Olá! Quero criar minha Camiseta Premium.\n\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade de camisas: ${qtdCamisas}\n` +
-    `Quantidade de estampas: ${qtdEstampas}\n` +
-    `${detalhesEstampas}\n` +
-    `Valor estimado: ${preco}`;
+&#x20; const qtdEstampas = document.getElementById('qtd-estampas').value;
 
-  window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
+&#x20; const preco = document.getElementById('preco-premium').innerText;
+
+
+
+&#x20; let detalhesEstampas = '';
+
+
+
+&#x20; if (qtdEstampas >= 1) {
+
+&#x20;   detalhesEstampas +=
+
+&#x20;     `\\nEstampa 1:` +
+
+&#x20;     `\\n• Arte: ${arte1.value}` +
+
+&#x20;     `\\n• Posição: ${pos1.value}` +
+
+&#x20;     `\\n• Fundo: ${fundo1.value}\\n`;
+
+&#x20; }
+
+
+
+&#x20; if (qtdEstampas == 2) {
+
+&#x20;   detalhesEstampas +=
+
+&#x20;     `\\nEstampa 2:` +
+
+&#x20;     `\\n• Arte: ${arte2.value}` +
+
+&#x20;     `\\n• Posição: ${pos2.value}` +
+
+&#x20;     `\\n• Fundo: ${fundo2.value}\\n`;
+
+&#x20; }
+
+
+
+&#x20; const mensagem =
+
+&#x20;   `Olá! Quero criar minha Camiseta Premium.\\n\\n` +
+
+&#x20;   `Cor: ${cor}\\n` +
+
+&#x20;   `Tamanho: ${tamanho}\\n` +
+
+&#x20;   `Quantidade de camisas: ${qtdCamisas}\\n` +
+
+&#x20;   `Quantidade de estampas: ${qtdEstampas}\\n` +
+
+&#x20;   `${detalhesEstampas}\\n` +
+
+&#x20;   `Valor estimado: ${preco}`;
+
+
+
+&#x20; window.open(
+
+&#x20;   "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+
+&#x20;   "\_blank"
+
+&#x20; );
+
 }
-</script>
+
 
 <script>
+
 function calcularPrecoPremium() {
-  let precoBase = 69.90;
 
-  const qtdEstampas = Number(
-    document.getElementById('qtd-estampas').value
-  );
+&#x20; let precoBase = 69.90;
 
-  const qtdCamisas = Number(
-    document.getElementById('qtd-camisas').value
-  );
 
-  // Acréscimo por quantidade de estampas
-  if (qtdEstampas === 1) precoBase += 10;
-  if (qtdEstampas === 2) precoBase += 30;
 
-  const total = precoBase * qtdCamisas;
+&#x20; const qtdEstampas = Number(
 
-  const precoEl = document.getElementById('preco-premium');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
+&#x20;   document.getElementById('qtd-estampas').value
+
+&#x20; );
+
+
+
+&#x20; const qtdCamisas = Number(
+
+&#x20;   document.getElementById('qtd-camisas').value
+
+&#x20; );
+
+
+
+&#x20; // Acréscimo por quantidade de estampas
+
+&#x20; if (qtdEstampas === 1) precoBase += 10;
+
+&#x20; if (qtdEstampas === 2) precoBase += 30;
+
+
+
+&#x20; const total = precoBase \* qtdCamisas;
+
+
+
+&#x20; const precoEl = document.getElementById('preco-premium');
+
+&#x20; if (precoEl) {
+
+&#x20;   precoEl.innerText =
+
+&#x20;     'R$ ' + total.toLocaleString('pt-BR', {
+
+&#x20;       minimumFractionDigits: 2
+
+&#x20;     });
+
+&#x20; }
+
 }
-</script> 
+
 
 <script>
+
 function atualizarPreviewPosicao(posicao) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
 
-  switch (posicao) {
-    case 'Peito Central':
-      estampa.style.top = '35%';
-      estampa.style.left = '50%';
-      break;
+&#x20; const estampa = document.getElementById('preview-estampa');
 
-    case 'Peito LE':
-      estampa.style.top = '35%';
-      estampa.style.left = '35%';
-      break;
+&#x20; if (!estampa) return;
 
-    case 'Peito LD':
-      estampa.style.top = '35%';
-      estampa.style.left = '65%';
-      break;
 
-    case 'Costas':
-      estampa.style.top = '55%';
-      estampa.style.left = '50%';
-      break;
-  }
 
-  estampa.style.transform = 'translate(-50%, -50%)';
+&#x20; switch (posicao) {
+
+&#x20;   case 'Peito Central':
+
+&#x20;     estampa.style.top = '35%';
+
+&#x20;     estampa.style.left = '50%';
+
+&#x20;     break;
+
+
+
+&#x20;   case 'Peito LE':
+
+&#x20;     estampa.style.top = '35%';
+
+&#x20;     estampa.style.left = '35%';
+
+&#x20;     break;
+
+
+
+&#x20;   case 'Peito LD':
+
+&#x20;     estampa.style.top = '35%';
+
+&#x20;     estampa.style.left = '65%';
+
+&#x20;     break;
+
+
+
+&#x20;   case 'Costas':
+
+&#x20;     estampa.style.top = '55%';
+
+&#x20;     estampa.style.left = '50%';
+
+&#x20;     break;
+
+&#x20; }
+
+
+
+&#x20; estampa.style.transform = 'translate(-50%, -50%)';
+
 }
-</script>
+
 
 <script>
-function atualizarPreviewArte(arte) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
 
-  estampa.innerText = arte;
+function atualizarPreviewArte(arte) {
+
+&#x20; const estampa = document.getElementById('preview-estampa');
+
+&#x20; if (!estampa) return;
+
+
+
+&#x20; estampa.innerText = arte;
+
 }
-</script>
+
 
  <script>
 function calcularPrecoBasica() {
@@ -1399,117 +1567,219 @@ function calcularPrecoBasica() {
 </script>
 
 <script>
-<script>
-function mostrarTamanho(select) {
-  const card = select.closest('.basica-card');
-  if (!card) return;
 
-  const etapa = card.querySelector('#etapa-tamanho');
-  if (!etapa) return;
+function mostrarTamanho() {
 
-  if (select.value) {
-    etapa.classList.remove('oculta');
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+&#x20; const etapa = document.getElementById('etapa-tamanho');
+
+&#x20; if (document.getElementById('cor-basica').value) {
+
+&#x20;   etapa.style.display = 'block';
+
+&#x20;   setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; }
+
 }
-</script>
 
-<script>
-function mostrarQuantidade(select) {
-  const card = select.closest('.basica-card');
-  if (!card) return;
 
-  const etapa = card.querySelector('#etapa-quantidade');
-  if (!etapa) return;
 
-  if (select.value) {
-    etapa.classList.remove('oculta');
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+function mostrarQuantidade() {
+
+&#x20; const etapa = document.getElementById('etapa-quantidade');
+
+&#x20; if (document.getElementById('tamanho-basica').value) {
+
+&#x20;   etapa.style.display = 'block';
+
+&#x20;   setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; }
+
 }
-</script>
- 
-<script>
-function mostrarBotao(input) {
-  const card = input.closest('.basica-card');
-  if (!card) return;
 
-  const etapa = card.querySelector('#etapa-finalizar');
-  if (!etapa) return;
 
-  if (Number(input.value) > 0) {
-    etapa.classList.remove('oculta');
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  } else {
-    etapa.classList.add('oculta');
-    etapa.style.display = 'none';
-    etapa.classList.remove('visivel');
-  }
+
+function mostrarBotao() {
+
+&#x20; const qtd = Number(document.getElementById('qtd-basica').value);
+
+&#x20; const etapaFinalizar = document.getElementById('etapa-finalizar');
+
+
+
+&#x20; if (qtd > 0) {
+
+&#x20;   etapaFinalizar.style.display = 'block';
+
+&#x20;   setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
+
+&#x20; } else {
+
+&#x20;   etapaFinalizar.style.display = 'none';
+
+&#x20;   etapaFinalizar.classList.remove('visivel');
+
+&#x20; }
+
 }
-</script>
+
 
 <script>
+
 function mostrarTamanhoPremium() {
-  const etapa = document.getElementById('etapa-tamanho-premium');
-  if (document.getElementById('cor-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+
+&#x20; const etapa = document.getElementById('etapa-tamanho-premium');
+
+&#x20; if (document.getElementById('cor-premium').value) {
+
+&#x20;   etapa.style.display = 'block';
+
+&#x20;   setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; }
+
 }
+
+
 
 function mostrarQtdCamisas() {
-  const etapa = document.getElementById('etapa-qtd-camisas');
-  if (document.getElementById('tamanho-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+
+&#x20; const etapa = document.getElementById('etapa-qtd-camisas');
+
+&#x20; if (document.getElementById('tamanho-premium').value) {
+
+&#x20;   etapa.style.display = 'block';
+
+&#x20;   setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; }
+
 }
+
+
 
 function mostrarQtdEstampas() {
-  const qtd = Number(document.getElementById('qtd-camisas').value);
-  const etapa = document.getElementById('etapa-qtd-estampas');
 
-  if (qtd > 0) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  } else {
-    etapa.style.display = 'none';
-    etapa.classList.remove('visivel');
-  }
+&#x20; const qtd = Number(document.getElementById('qtd-camisas').value);
+
+&#x20; const etapa = document.getElementById('etapa-qtd-estampas');
+
+
+
+&#x20; if (qtd > 0) {
+
+&#x20;   etapa.style.display = 'block';
+
+&#x20;   setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; } else {
+
+&#x20;   etapa.style.display = 'none';
+
+&#x20;   etapa.classList.remove('visivel');
+
+&#x20; }
+
 }
+
+
 
 function mostrarFinalizar() {
-  const etapa = document.getElementById('etapa-finalizar-premium');
-  etapa.style.display = 'block';
-  setTimeout(() => etapa.classList.add('visivel'), 10);
+
+&#x20; const etapa = document.getElementById('etapa-finalizar-premium');
+
+&#x20; etapa.style.display = 'block';
+
+&#x20; setTimeout(() => etapa.classList.add('visivel'), 10);
+
 }
-</script>
+
 
 <script>
+
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
 
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
+&#x20; const grid = document.querySelector(".basica-grid");
 
-    if (!img) return;
+&#x20; if (!grid) return;
 
-    // Se a imagem for esgotado.png → bloqueia tudo
-    if (img.src.includes("esgotado")) {
-      card.classList.add("bloqueado");
-      selects.forEach(el => el.disabled = true);
-    } else {
-      // Se trocar a imagem no futuro → desbloqueia automaticamente
-      card.classList.remove("bloqueado");
-      selects.forEach(el => el.disabled = false);
-    }
-  });
+
+
+&#x20; const cards = Array.from(grid.querySelectorAll(".basica-card"));
+
+
+
+&#x20; const disponiveis = \[];
+
+&#x20; const esgotados = \[];
+
+
+
+&#x20; cards.forEach(card => {
+
+&#x20;   const img = card.querySelector("img");
+
+&#x20;   const controls = card.querySelectorAll("select, input, button");
+
+
+
+&#x20;   if (!img) return;
+
+
+
+&#x20;   const isEsgotado = img.src.includes("esgotado");
+
+
+
+&#x20;   if (isEsgotado) {
+
+&#x20;     // BLOQUEIA E MARCA COMO ESGOTADO
+
+&#x20;     card.classList.add("bloqueado");
+
+&#x20;     card.classList.remove("disponivel");
+
+&#x20;     controls.forEach(el => el.disabled = true);
+
+&#x20;     esgotados.push(card);
+
+&#x20;   } else {
+
+&#x20;     // LIBERA E MARCA COMO DISPONÍVEL
+
+&#x20;     card.classList.remove("bloqueado");
+
+&#x20;     card.classList.add("disponivel");
+
+&#x20;     controls.forEach(el => el.disabled = false);
+
+&#x20;     disponiveis.push(card);
+
+&#x20;   }
+
+&#x20; });
+
+
+
+&#x20; // 🔁 LIMPA A GRID
+
+&#x20; grid.innerHTML = "";
+
+
+
+&#x20; // ✅ PRIMEIRO DISPONÍVEIS
+
+&#x20; disponiveis.forEach(card => grid.appendChild(card));
+
+
+
+&#x20; // ❌ DEPOIS ESGOTADOS
+
+&#x20; esgotados.forEach(card => grid.appendChild(card));
+
 });
-</script>
- 
+
+
 </body>
 </html>
