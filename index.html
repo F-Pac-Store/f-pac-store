@@ -1363,29 +1363,48 @@ document.querySelectorAll('.basica-card').forEach(card => {
   const qtd = card.querySelector('.quantidade');
   const finalizar = card.querySelector('.etapa-finalizar');
 
+  // Estado inicial
+  if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
+  if (qtdEtapa) qtdEtapa.classList.add('oculta');
+  if (finalizar) finalizar.classList.add('oculta');
+
+  // ETAPA 1 → COR
   if (cor) {
     cor.addEventListener('change', () => {
-      if (cor.value) {
-        tamanhoEtapa.classList.remove('oculta');
-        tamanhoEtapa.classList.add('visivel');
-      }
+      // Reseta etapas seguintes
+      if (tamanho) tamanho.value = '';
+      if (qtd) qtd.value = 0;
+
+      tamanhoEtapa.classList.remove('oculta');
+      tamanhoEtapa.classList.add('visivel');
+
+      qtdEtapa.classList.add('oculta');
+      finalizar.classList.add('oculta');
     });
   }
 
+  // ETAPA 2 → TAMANHO
   if (tamanho) {
     tamanho.addEventListener('change', () => {
-      if (tamanho.value) {
-        qtdEtapa.classList.remove('oculta');
-        qtdEtapa.classList.add('visivel');
-      }
+      if (!tamanho.value) return;
+
+      if (qtd) qtd.value = 0;
+
+      qtdEtapa.classList.remove('oculta');
+      qtdEtapa.classList.add('visivel');
+
+      finalizar.classList.add('oculta');
     });
   }
 
+  // ETAPA 3 → QUANTIDADE
   if (qtd) {
     qtd.addEventListener('input', () => {
       if (Number(qtd.value) > 0) {
         finalizar.classList.remove('oculta');
         finalizar.classList.add('visivel');
+      } else {
+        finalizar.classList.add('oculta');
       }
     });
   }
