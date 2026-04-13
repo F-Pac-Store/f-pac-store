@@ -1705,16 +1705,34 @@ if (enviar) {
     const quantidadeValor = qtd?.value || '';
     const bairroValor = card.querySelector('.bairro')?.value || '';
     const pagamentoValor = card.querySelector('.pagamento')?.value || '';
+const img = card.querySelector('img');
+let nomeEstampa = '';
 
+if (img && img.src) {
+  nomeEstampa = img.src
+    .split('/')
+    .pop()
+    .replace('.jpg', '')
+    .replace('.png', '')
+    .replace(/-/g, ' ')
+    .toUpperCase();
+}
+  
     const mensagem =
-      `Olá! Gostaria de fazer um pedido 😊\n\n` +
-      `🛍 Produto: ${produto}\n` +
-      `💰 Valor: ${preco}\n` +
-      `🎨 Cor: ${corValor}\n` +
-      `📏 Tamanho: ${tamanhoValor}\n` +
-      `🔢 Quantidade: ${quantidadeValor}\n\n` +
-      `📍 Bairro para entrega: ${bairroValor}\n` +
-      `💳 Forma de pagamento: ${pagamentoValor}`;
+  `Fala comigo! 👋\n` +
+  `Quero finalizar minha compra na *F PAC Store* ✅🔥\n\n` +
+  `🧾 *RESUMO DO PEDIDO*\n` +
+  `👕 Modelo: Force – ${nomeEstampa}\n` +
+  `🎨 Cor: ${corValor}\n` +
+  `📏 Tamanho: ${tamanhoValor}\n` +
+  `📦 Quantidade: ${quantidadeValor}\n` +
+  `💰 Valor unitário: ${preco}\n\n` +
+  `🚚 *ENTREGA*\n` +
+  `📍 Bairro/Cidade: ${bairroValor}\n\n` +
+  `💵 *SUBTOTAL*: calcular no WhatsApp + frete\n\n` +
+  `💳 *FORMA DE PAGAMENTO*\n` +
+  `👉 Preferência informada no site: ${pagamentoValor}\n\n` +
+  `Aguardo pra concluir a compra 😄`;
 
     const telefone = "5547997465602";
     const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
