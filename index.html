@@ -700,6 +700,12 @@ text-shadow:
   cursor: pointer;
 }
 
+   /* ESTADO BLOQUEADO AUTOMÁTICO (CARDS ESGOTADOS) */
+.basica-card.bloqueado {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 /* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
 @media (max-width: 768px) {
   .basica-grid {
@@ -945,13 +951,22 @@ text-shadow:
 
   <img
     src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store Modelo 2"
+    alt="Camiseta Básica F Pac Store"
     class="camiseta-img"
   >
 
   <p class="preco">R$ 79,90</p>
 
-  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
+  <div class="etapa">
+    <label>Cor</label>
+    <select>
+      <option>Selecione</option>
+      <option>Preta</option>
+      <option>Branca</option>
+      <option>Off White</option>
+    </select>
+  </div>
 
 </div>
 
@@ -961,13 +976,22 @@ text-shadow:
 
   <img
     src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store Modelo 3"
+    alt="Camiseta Básica F Pac Store"
     class="camiseta-img"
   >
 
   <p class="preco">R$ 79,90</p>
 
-  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
+  <div class="etapa">
+    <label>Cor</label>
+    <select>
+      <option>Selecione</option>
+      <option>Preta</option>
+      <option>Branca</option>
+      <option>Off White</option>
+    </select>
+  </div>
 
 </div>
 
@@ -977,13 +1001,22 @@ text-shadow:
 
   <img
     src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store Modelo 4"
+    alt="Camiseta Básica F Pac Store"
     class="camiseta-img"
   >
 
   <p class="preco">R$ 79,90</p>
 
-  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
+  <div class="etapa">
+    <label>Cor</label>
+    <select>
+      <option>Selecione</option>
+      <option>Preta</option>
+      <option>Branca</option>
+      <option>Off White</option>
+    </select>
+  </div>
 
 </div>
 
@@ -1009,13 +1042,22 @@ text-shadow:
 
   <img
     src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store Modelo 5"
+    alt="Camiseta Básica F Pac Store"
     class="camiseta-img"
   >
 
   <p class="preco">R$ 79,90</p>
 
-  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
+  <div class="etapa">
+    <label>Cor</label>
+    <select>
+      <option>Selecione</option>
+      <option>Preta</option>
+      <option>Branca</option>
+      <option>Off White</option>
+    </select>
+  </div>
 
 </div>
 
@@ -1409,6 +1451,29 @@ function mostrarFinalizar() {
   etapa.style.display = 'block';
   setTimeout(() => etapa.classList.add('visivel'), 10);
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".basica-card");
+
+  cards.forEach(card => {
+    const img = card.querySelector("img");
+    const selects = card.querySelectorAll("select, input, button");
+
+    if (!img) return;
+
+    // Se a imagem for esgotado.png → bloqueia tudo
+    if (img.src.includes("esgotado")) {
+      card.classList.add("bloqueado");
+      selects.forEach(el => el.disabled = true);
+    } else {
+      // Se trocar a imagem no futuro → desbloqueia automaticamente
+      card.classList.remove("bloqueado");
+      selects.forEach(el => el.disabled = false);
+    }
+  });
+});
 </script>
  
 </body>
