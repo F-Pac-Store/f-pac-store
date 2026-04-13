@@ -635,12 +635,12 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 14px;       /* menos espaço interno */
+  padding: 12px;
   border-radius: 10px;
-  width: 260px;        /* card mais estreito */
+  width: 235px;              /* ⬅️ menor */
+  min-height: 390px;        /* ⬅️ menor */
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
- min-height: 430px;
 }
 
 .etapa {
@@ -666,7 +666,7 @@ text-shadow:
 }
 
 .basica-card img {
-  width: 180px;
+  width: 165px;
   height: 220px;          /* altura fixa */
   object-fit: contain;    /* não distorce */
   margin-bottom: 6px;
@@ -707,6 +707,20 @@ text-shadow:
 .basica-card.bloqueado {
   opacity: 0.55;
   pointer-events: none;
+}
+
+   /* DESTAQUE PARA CARD DISPONÍVEL */
+.basica-card.disponivel {
+  border: 2px solid var(--accent);
+  box-shadow: 
+    0 0 0 2px rgba(255,193,7,0.25),
+    0 14px 30px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.basica-card.disponivel:hover {
+  transform: translateY(-6px) scale(1.02);
 }
 
 /* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
@@ -911,7 +925,7 @@ text-shadow:
   <!-- ETAPA 1: COR -->
   <div class="etapa">
     <label>Cor</label>
-    <select id="cor-basica" onchange="mostrarTamanho(this)">
+    <select id="cor-basica" onchange="mostrarTamanho()">
       <option value="">Selecione</option>
       <option value="Preta">Preta</option>
       <option value="Branca">Branca</option>
@@ -1155,8 +1169,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1183,8 +1197,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos2">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1397,54 +1411,32 @@ function calcularPrecoBasica() {
 </script>
 
 <script>
-<script>
-function mostrarTamanho(select) {
-  const card = select.closest('.basica-card');
-  if (!card) return;
-
-  const etapa = card.querySelector('#etapa-tamanho');
-  if (!etapa) return;
-
-  if (select.value) {
-    etapa.classList.remove('oculta');
+function mostrarTamanho() {
+  const etapa = document.getElementById('etapa-tamanho');
+  if (document.getElementById('cor-basica').value) {
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
-</script>
 
-<script>
-function mostrarQuantidade(select) {
-  const card = select.closest('.basica-card');
-  if (!card) return;
-
-  const etapa = card.querySelector('#etapa-quantidade');
-  if (!etapa) return;
-
-  if (select.value) {
-    etapa.classList.remove('oculta');
+function mostrarQuantidade() {
+  const etapa = document.getElementById('etapa-quantidade');
+  if (document.getElementById('tamanho-basica').value) {
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
-</script>
- 
-<script>
-function mostrarBotao(input) {
-  const card = input.closest('.basica-card');
-  if (!card) return;
 
-  const etapa = card.querySelector('#etapa-finalizar');
-  if (!etapa) return;
+function mostrarBotao() {
+  const qtd = Number(document.getElementById('qtd-basica').value);
+  const etapaFinalizar = document.getElementById('etapa-finalizar');
 
-  if (Number(input.value) > 0) {
-    etapa.classList.remove('oculta');
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
+  if (qtd > 0) {
+    etapaFinalizar.style.display = 'block';
+    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
   } else {
-    etapa.classList.add('oculta');
-    etapa.style.display = 'none';
-    etapa.classList.remove('visivel');
+    etapaFinalizar.style.display = 'none';
+    etapaFinalizar.classList.remove('visivel');
   }
 }
 </script>
@@ -1492,18 +1484,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => {
     const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
+    const controls = card.querySelectorAll("select, input, button");
 
     if (!img) return;
 
-    // Se a imagem for esgotado.png → bloqueia tudo
-    if (img.src.includes("esgotado")) {
+    const isEsgotado = img.src.includes("esgotado");
+
+    if (isEsgotado) {
+      // BLOQUEIA CARD ESGOTADO
       card.classList.add("bloqueado");
-      selects.forEach(el => el.disabled = true);
+      card.classList.remove("disponivel");
+      controls.forEach(el => el.disabled = true);
     } else {
-      // Se trocar a imagem no futuro → desbloqueia automaticamente
+      // LIBERA CARD DISPONÍVEL
       card.classList.remove("bloqueado");
-      selects.forEach(el => el.disabled = false);
+      card.classList.add("disponivel");
+      controls.forEach(el => el.disabled = false);
     }
   });
 });
