@@ -1477,39 +1477,6 @@ function mostrarFinalizar() {
   setTimeout(() => etapa.classList.add('visivel'), 10);
 }
 </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
-
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
-
-    if (!img) return;
-
-    // Se a imagem for esgotado.png → bloqueia tudo
-    document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
-
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
-
-    if (!img) return;
-
-    if (img.src.includes("esgotado")) {
-      card.classList.add("bloqueado");
-      card.classList.remove("disponivel");
-      selects.forEach(el => el.disabled = true);
-    } else {
-      card.classList.remove("bloqueado");
-      card.classList.add("disponivel");
-      selects.forEach(el => el.disabled = false);
-    }
-  });
-});
-</script>
  
 </body>
 </html>
