@@ -220,6 +220,19 @@ x'<!DOCTYPE html>
       }
     }
 
+/* ============================= */
+/* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
+@media (max-width: 768px) {
+  .menu-vertical {
+    writing-mode: horizontal-tb; /* garante horizontal */
+    white-space: nowrap;         /* NÃO quebra linha */
+    display: inline-block;       /* evita empilhamento */
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+}
+
     /* HERO CAPA DO SITE */
 
 .hero {
@@ -687,6 +700,13 @@ text-shadow:
   cursor: pointer;
 }
 
+/* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
+@media (max-width: 768px) {
+  .basica-grid {
+    justify-items: center;
+  }
+}
+   
 /* PREVIEW DA CAMISA */
 
 .preview-camisa {
@@ -916,6 +936,70 @@ text-shadow:
   <div class="etapa oculta" id="etapa-finalizar">
     <button onclick="comprarBasica()">Finalizar Compra</button>
   </div>
+
+</div>
+
+     <!-- CAMISA BÁSICA 2 -->
+     
+<div class="basica-card">
+
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store Modelo 2"
+    class="camiseta-img"
+  >
+
+  <p class="preco">R$ 79,90</p>
+
+  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+
+</div>
+
+<!-- CAMISA BÁSICA 3 -->
+     
+<div class="basica-card">
+
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store Modelo 3"
+    class="camiseta-img"
+  >
+
+  <p class="preco">R$ 79,90</p>
+
+  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+
+</div>
+
+<!-- CAMISA BÁSICA 4 -->
+     
+<div class="basica-card">
+
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store Modelo 4"
+    class="camiseta-img"
+  >
+
+  <p class="preco">R$ 79,90</p>
+
+  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
+
+</div>
+
+<!-- CAMISA BÁSICA 5 -->
+     
+<div class="basica-card">
+
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store Modelo 5"
+    class="camiseta-img"
+  >
+
+  <p class="preco">R$ 79,90</p>
+
+  <p style="font-size: 0.85rem; font-weight: 600;">Estampa Discreta</p>
 
 </div>
 
