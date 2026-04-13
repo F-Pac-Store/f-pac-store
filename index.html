@@ -1477,6 +1477,33 @@ function mostrarFinalizar() {
   setTimeout(() => etapa.classList.add('visivel'), 10);
 }
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".basica-card");
+
+  cards.forEach(card => {
+    const img = card.querySelector("img");
+    const controls = card.querySelectorAll("select, input, button");
+
+    if (!img) return;
+
+    const isEsgotado = img.src.includes("esgotado");
+
+    if (isEsgotado) {
+      // BLOQUEIA CARD ESGOTADO
+      card.classList.add("bloqueado");
+      card.classList.remove("disponivel");
+      controls.forEach(el => el.disabled = true);
+    } else {
+      // LIBERA CARD DISPONÍVEL
+      card.classList.remove("bloqueado");
+      card.classList.add("disponivel");
+      controls.forEach(el => el.disabled = false);
+    }
+  });
+});
+</script>
  
 </body>
 </html>
