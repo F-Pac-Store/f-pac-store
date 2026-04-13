@@ -1480,7 +1480,13 @@ function mostrarFinalizar() {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
+  const grid = document.querySelector(".basica-grid");
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll(".basica-card"));
+
+  const disponiveis = [];
+  const esgotados = [];
 
   cards.forEach(card => {
     const img = card.querySelector("img");
@@ -1491,17 +1497,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const isEsgotado = img.src.includes("esgotado");
 
     if (isEsgotado) {
-      // BLOQUEIA CARD ESGOTADO
+      // BLOQUEIA E MARCA COMO ESGOTADO
       card.classList.add("bloqueado");
       card.classList.remove("disponivel");
       controls.forEach(el => el.disabled = true);
+      esgotados.push(card);
     } else {
-      // LIBERA CARD DISPONÍVEL
+      // LIBERA E MARCA COMO DISPONÍVEL
       card.classList.remove("bloqueado");
       card.classList.add("disponivel");
       controls.forEach(el => el.disabled = false);
+      disponiveis.push(card);
     }
   });
+
+  // 🔁 LIMPA A GRID
+  grid.innerHTML = "";
+
+  // ✅ PRIMEIRO DISPONÍVEIS
+  disponiveis.forEach(card => grid.appendChild(card));
+
+  // ❌ DEPOIS ESGOTADOS
+  esgotados.forEach(card => grid.appendChild(card));
 });
 </script>
 
