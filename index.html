@@ -744,23 +744,6 @@ text-shadow:
   border-radius: 6px;
 }
 
-.estampa-preview {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
    /* ============================= */
 /* PERSONALIZAR CAMISA */
 /* ============================= */
@@ -1184,7 +1167,7 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select
   id="pos1"
-  onchange="atualizarPreviewPosicao(this.value); atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
+  onchange="atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
 >
     <option>Peito Central</option>
     <option>Peito LE (De quem veste)</option>
@@ -1199,7 +1182,7 @@ text-shadow:
   </select>
 
   <label>Escolha a Estampa</label>
-<select id="arte1" onchange="atualizarPreviewArte(this.value); atualizarOpcoesEstampa2()">
+<select id="arte1" onchange="atualizarOpcoesEstampa2()">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
