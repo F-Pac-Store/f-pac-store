@@ -938,14 +938,14 @@ text-shadow:
     </select>
   </div>
 
-<!-- ETAPA 3: QUANTIDADE -->
+       <!-- ETAPA 3: QUANTIDADE -->
 <div class="etapa etapa-quantidade oculta">
   <label>Quantidade</label>
   <input class="quantidade" type="number" value="0" min="0">
 </div>
 
-  <!-- ETAPA 4: FINALIZAR -->
- <div class="etapa etapa-finalizar oculta">
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
   <button>Finalizar Compra</button>
 </div>
 
@@ -1005,16 +1005,21 @@ text-shadow:
     </select>
   </div>
 
-  <!-- QUANTIDADE -->
-  <div class="etapa etapa-quantidade oculta">
-    <label>Quantidade</label>
-    <input class="quantidade" type="number" value="0" min="0">
-  </div>
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input
+    type="number"
+    class="quantidade"
+    value="0"
+    min="0"
+  >
+</div>
 
-  <!-- FINALIZAR -->
-  <div class="etapa etapa-finalizar oculta">
-    <button>Finalizar Compra</button>
-  </div>
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 
 <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
 <div class="etapa etapa-checkout oculta">
@@ -1078,21 +1083,16 @@ text-shadow:
     </select>
   </div>
 
-  <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa etapa-quantidade oculta">
-    <label>Quantidade</label>
-    <input
-      class="quantidade"
-      type="number"
-      value="0"
-      min="0"
-    >
-  </div>
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
 
-  <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa etapa-finalizar oculta">
-    <button>Finalizar Compra</button>
-  </div>
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 
 <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
 <div class="etapa etapa-checkout oculta">
@@ -1156,21 +1156,16 @@ text-shadow:
     </select>
   </div>
 
-  <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa etapa-quantidade oculta">
-    <label>Quantidade</label>
-    <input
-      class="quantidade"
-      type="number"
-      value="0"
-      min="0"
-    >
-  </div>
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
 
-  <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa etapa-finalizar oculta">
-    <button>Finalizar Compra</button>
-  </div>
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 
 <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
 <div class="etapa etapa-checkout oculta">
@@ -1234,21 +1229,16 @@ text-shadow:
     </select>
   </div>
 
-  <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa etapa-quantidade oculta">
-    <label>Quantidade</label>
-    <input
-      class="quantidade"
-      type="number"
-      value="0"
-      min="0"
-    >
-  </div>
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
 
-  <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa etapa-finalizar oculta">
-    <button>Finalizar Compra</button>
-  </div>
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 
 <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
 <div class="etapa etapa-checkout oculta">
@@ -1312,21 +1302,16 @@ text-shadow:
     </select>
   </div>
 
-  <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa etapa-quantidade oculta">
-    <label>Quantidade</label>
-    <input
-      class="quantidade"
-      type="number"
-      value="0"
-      min="0"
-    >
-  </div>
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
 
-  <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa etapa-finalizar oculta">
-    <button>Finalizar Compra</button>
-  </div>
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 
 <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
 <div class="etapa etapa-checkout oculta">
@@ -1681,34 +1666,33 @@ const enviar = card.querySelector('.etapa-enviar');
   }
 
   // ETAPA 3 → QUANTIDADE
-  if (qtd) {
+if (qtd) {
   qtd.addEventListener('input', () => {
     if (Number(qtd.value) > 0) {
-
       finalizar.classList.remove('oculta');
       finalizar.classList.add('visivel');
-
-      if (checkout) {
-        checkout.classList.remove('oculta');
-        checkout.classList.add('visivel');
-      }
-
-      if (enviar) {
-        enviar.classList.remove('oculta');
-        enviar.classList.add('visivel');
-      }
-
     } else {
       finalizar.classList.add('oculta');
-
       if (checkout) checkout.classList.add('oculta');
       if (enviar) enviar.classList.add('oculta');
     }
   });
 }
 
-
-});
+// ETAPA 4 → FINALIZAR COMPRA
+if (finalizar) {
+  finalizar.addEventListener('click', () => {
+    if (checkout) {
+      checkout.classList.remove('oculta');
+      checkout.classList.add('visivel');
+    }
+    if (enviar) {
+      enviar.classList.remove('oculta');
+      enviar.classList.add('visivel');
+    }
+  });
+}
+ });
 </script>
 
 <script>
