@@ -622,15 +622,29 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 20px;
+  padding: 14px;       /* menos espaço interno */
   border-radius: 10px;
-  width: 300px;
+  width: 260px;        /* card mais estreito */
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
 }
 
 .etapa {
-  margin-top: 12px;
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.3s ease;
+}
+
+.etapa.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+   /* Primeira etapa sempre visível */
+.etapa:not(.oculta) {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .oculta {
@@ -639,8 +653,8 @@ text-shadow:
 
 .basica-card img {
   width: 100%;
-  max-width: 220px;       /* menor para caber tudo */
-  margin-bottom: 10px;
+  max-width: 180px;   /* imagem menor */
+  margin-bottom: 6px;
 }
 
 .basica-card label {
@@ -657,15 +671,15 @@ text-shadow:
 }
 
 .basica-card .preco {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .basica-card button {
-  margin-top: 20px;
+  margin-top: 12px;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background: #FFC107;
   border: none;
   border-radius: 6px;
@@ -724,7 +738,7 @@ text-shadow:
     <a href="#inicio">Início</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#produtos">Produtos</a>
-    <a href="#criar">Criar Sua Camisa</a>
+    <a href="#criar" class="menu-vertical">Criar Camisa</a>
   </div>
 
   <!-- ICONES SOCIAIS -->
@@ -890,12 +904,12 @@ text-shadow:
   <div class="etapa oculta" id="etapa-quantidade">
     <label>Quantidade</label>
     <input
-      type="number"
-      id="qtd-basica"
-      value="1"
-      min="1"
-      oninput="mostrarBotao(); calcularPrecoBasica()"
-    >
+  type="number"
+  id="qtd-basica"
+  value="0"
+  min="0"
+  oninput="mostrarBotao(); calcularPrecoBasica()"
+>
   </div>
 
   <!-- ETAPA 4: FINALIZAR -->
@@ -959,8 +973,8 @@ text-shadow:
   <input
     type="number"
     id="qtd-camisas"
-    value="1"
-    min="1"
+    value="0"
+    min="0"
     onchange="mostrarQtdEstampas(); calcularPrecoPremium()"
   >
 </div>
@@ -1167,8 +1181,6 @@ function calcularPrecoPremium() {
 }
 </script> 
 
- <script>
-
 <script>
 function atualizarPreviewPosicao(posicao) {
   const estampa = document.getElementById('preview-estampa');
@@ -1233,51 +1245,71 @@ function calcularPrecoBasica() {
 
 <script>
 function mostrarTamanho() {
-  const cor = document.getElementById('cor-basica').value;
-  if (cor) {
-    document.getElementById('etapa-tamanho').style.display = 'block';
+  const etapa = document.getElementById('etapa-tamanho');
+  if (document.getElementById('cor-basica').value) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQuantidade() {
-  const tamanho = document.getElementById('tamanho-basica').value;
-  if (tamanho) {
-    document.getElementById('etapa-quantidade').style.display = 'block';
+  const etapa = document.getElementById('etapa-quantidade');
+  if (document.getElementById('tamanho-basica').value) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarBotao() {
   const qtd = Number(document.getElementById('qtd-basica').value);
+  const etapaFinalizar = document.getElementById('etapa-finalizar');
+
   if (qtd > 0) {
-    document.getElementById('etapa-finalizar').style.display = 'block';
+    etapaFinalizar.style.display = 'block';
+    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
+  } else {
+    etapaFinalizar.style.display = 'none';
+    etapaFinalizar.classList.remove('visivel');
   }
 }
 </script>
 
 <script>
 function mostrarTamanhoPremium() {
+  const etapa = document.getElementById('etapa-tamanho-premium');
   if (document.getElementById('cor-premium').value) {
-    document.getElementById('etapa-tamanho-premium').style.display = 'block';
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQtdCamisas() {
+  const etapa = document.getElementById('etapa-qtd-camisas');
   if (document.getElementById('tamanho-premium').value) {
-    document.getElementById('etapa-qtd-camisas').style.display = 'block';
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
 
 function mostrarQtdEstampas() {
-  if (Number(document.getElementById('qtd-camisas').value) > 0) {
-    document.getElementById('etapa-qtd-estampas').style.display = 'block';
+  const qtd = Number(document.getElementById('qtd-camisas').value);
+  const etapa = document.getElementById('etapa-qtd-estampas');
+
+  if (qtd > 0) {
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
+  } else {
+    etapa.style.display = 'none';
+    etapa.classList.remove('visivel');
   }
 }
 
 function mostrarFinalizar() {
-  document.getElementById('etapa-finalizar-premium').style.display = 'block';
+  const etapa = document.getElementById('etapa-finalizar-premium');
+  etapa.style.display = 'block';
+  setTimeout(() => etapa.classList.add('visivel'), 10);
 }
 </script>
  
 </body>
 </html>
-esta assim agora, salvar?
