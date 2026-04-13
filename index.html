@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
@@ -622,11 +622,19 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 20px;          /* menor */
+  padding: 20px;
   border-radius: 10px;
-  width: 300px;           /* um pouco menor */
+  width: 300px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
+}
+
+.etapa {
+  margin-top: 12px;
+}
+
+.oculta {
+  display: none;
 }
 
 .basica-card img {
@@ -924,36 +932,53 @@ text-shadow:
 
       <p class="preco" id="preco-premium">R$ 69,90</p>
 
-      <label>Cor</label>
-      <select id="cor-premium" onchange="calcularPrecoPremium()">
-        <option value="">Selecione</option>
-        <option>Preta</option>
-        <option>Branca</option>
-        <option>Off White</option>
-      </select>
+      <!-- ETAPA 1: COR -->
+<div class="etapa">
+  <label>Cor</label>
+  <select id="cor-premium" onchange="mostrarTamanhoPremium(); calcularPrecoPremium()">
+    <option value="">Selecione</option>
+    <option>Preta</option>
+    <option>Branca</option>
+    <option>Off White</option>
+  </select>
+</div>
 
-      <label>Tamanho</label>
-      <select id="tamanho-premium" onchange="calcularPrecoPremium()">
-        <option value="">Selecione</option>
-        <option>M</option>
-        <option>G</option>
-      </select>
+<!-- ETAPA 2: TAMANHO -->
+<div class="etapa oculta" id="etapa-tamanho-premium">
+  <label>Tamanho</label>
+  <select id="tamanho-premium" onchange="mostrarQtdCamisas(); calcularPrecoPremium()">
+    <option value="">Selecione</option>
+    <option>M</option>
+    <option>G</option>
+  </select>
+</div>
 
-<label>Quantidade de Camisas</label>
-<input
-  type="number"
-  id="qtd-camisas"
-  value="1"
-  min="1"
-  onchange="calcularPrecoPremium()"
-/>
+<!-- ETAPA 3: QTD CAMISAS -->
+<div class="etapa oculta" id="etapa-qtd-camisas">
+  <label>Quantidade de Camisas</label>
+  <input
+    type="number"
+    id="qtd-camisas"
+    value="1"
+    min="1"
+    onchange="mostrarQtdEstampas(); calcularPrecoPremium()"
+  >
+</div>
 
-<label>Quantidade de Estampas</label>
-<select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
-  <option value="0">Nenhuma</option>
-  <option value="1">1 Estampa</option>
-  <option value="2">2 Estampas</option>
-</select>
+<!-- ETAPA 4: QTD ESTAMPAS -->
+<div class="etapa oculta" id="etapa-qtd-estampas">
+  <label>Quantidade de Estampas</label>
+  <select id="qtd-estampas" onchange="mostrarEstampas(); mostrarFinalizar(); calcularPrecoPremium()">
+    <option value="0">Nenhuma</option>
+    <option value="1">1 Estampa</option>
+    <option value="2">2 Estampas</option>
+  </select>
+</div>
+
+<!-- ETAPA 5: FINALIZAR -->
+<div class="etapa oculta" id="etapa-finalizar-premium">
+  <button onclick="comprarPremium()">Finalizar Compra</button>
+</div>
 
       <div id="estampa1" style="display:none;">
 
@@ -1205,6 +1230,54 @@ function calcularPrecoBasica() {
     });
 }
 </script>
+
+<script>
+function mostrarTamanho() {
+  const cor = document.getElementById('cor-basica').value;
+  if (cor) {
+    document.getElementById('etapa-tamanho').style.display = 'block';
+  }
+}
+
+function mostrarQuantidade() {
+  const tamanho = document.getElementById('tamanho-basica').value;
+  if (tamanho) {
+    document.getElementById('etapa-quantidade').style.display = 'block';
+  }
+}
+
+function mostrarBotao() {
+  const qtd = Number(document.getElementById('qtd-basica').value);
+  if (qtd > 0) {
+    document.getElementById('etapa-finalizar').style.display = 'block';
+  }
+}
+</script>
+
+<script>
+function mostrarTamanhoPremium() {
+  if (document.getElementById('cor-premium').value) {
+    document.getElementById('etapa-tamanho-premium').style.display = 'block';
+  }
+}
+
+function mostrarQtdCamisas() {
+  if (document.getElementById('tamanho-premium').value) {
+    document.getElementById('etapa-qtd-camisas').style.display = 'block';
+  }
+}
+
+function mostrarQtdEstampas() {
+  if (Number(document.getElementById('qtd-camisas').value) > 0) {
+    document.getElementById('etapa-qtd-estampas').style.display = 'block';
+  }
+}
+
+function mostrarFinalizar() {
+  document.getElementById('etapa-finalizar-premium').style.display = 'block';
+}
+</script>
  
 </body>
 </html>
+esta assim agora, salvar?
