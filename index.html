@@ -635,12 +635,12 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 12px;
+  padding: 14px;       /* menos espaço interno */
   border-radius: 10px;
-  width: 235px;              /* ⬅️ menor */
-  min-height: 390px;        /* ⬅️ menor */
+  width: 260px;        /* card mais estreito */
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
+ min-height: 430px;
 }
 
 .etapa {
@@ -666,7 +666,7 @@ text-shadow:
 }
 
 .basica-card img {
-  width: 165px;
+  width: 180px;
   height: 220px;          /* altura fixa */
   object-fit: contain;    /* não distorce */
   margin-bottom: 6px;
@@ -709,20 +709,6 @@ text-shadow:
   pointer-events: none;
 }
 
-   /* DESTAQUE PARA CARD DISPONÍVEL */
-.basica-card.disponivel {
-  border: 2px solid var(--accent);
-  box-shadow: 
-    0 0 0 2px rgba(255,193,7,0.25),
-    0 14px 30px rgba(0,0,0,0.2);
-  transform: translateY(-4px);
-  transition: all 0.3s ease;
-}
-
-.basica-card.disponivel:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
 /* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
 @media (max-width: 768px) {
   .basica-grid {
@@ -744,20 +730,24 @@ text-shadow:
   border-radius: 6px;
 }
 
-   /* ============================= */
-/* PERSONALIZAR CAMISA */
-/* ============================= */
-.criar-camisa h2,
-.criar-camisa p {
-  text-align: center;
-}
-
-.criar-camisa p {
-  margin-bottom: 40px;
+.estampa-preview {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
    
   </style>
- 
 </head>
 
 <body>
@@ -916,7 +906,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco" id="preco-basica">R$ ???</p>
+  <p class="preco" id="preco-basica">R$ 79,90</p>
 
   <!-- ETAPA 1: COR -->
   <div class="etapa">
@@ -968,7 +958,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ ???</p>
+  <p class="preco">R$ 79,90</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -993,7 +983,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ ???</p>
+  <p class="preco">R$ 79,90</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1018,7 +1008,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ ???</p>
+  <p class="preco">R$ 79,90</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1042,7 +1032,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ ???</p>
+  <p class="preco">R$ 79,90</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura dos outros cards esgotados) -->
   <div class="etapa">
@@ -1067,7 +1057,7 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco">R$ ???</p>
+  <p class="preco">R$ 79,90</p>
 
   <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
   <div class="etapa">
@@ -1100,16 +1090,14 @@ text-shadow:
      <!-- PREVIEW DA CAMISA -->
      
 <div class="preview-camisa">
-  <img
-    id="preview-camisa-img"
-    src="imagens/preview/frente.jpg"
-    alt="Preview Camisa"
-  >
+  <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
+
+  <div id="preview-estampa" class="estampa-preview">
+    E01
+  </div>
 </div>
 
-</div>
-
-      <p class="preco" id="preco-premium">R$ ???</p>
+      <p class="preco" id="preco-premium">R$ 69,90</p>
 
       <!-- ETAPA 1: COR -->
 <div class="etapa">
@@ -1165,13 +1153,10 @@ text-shadow:
   <strong>Estampa 1</strong>
 
   <label>Posição da Estampa</label>
-  <select
-  id="pos1"
-  onchange="atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
->
+  <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1182,7 +1167,7 @@ text-shadow:
   </select>
 
   <label>Escolha a Estampa</label>
-<select id="arte1" onchange="atualizarOpcoesEstampa2()">
+  <select id="arte1" onchange="atualizarPreviewArte(this.value)">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
@@ -1196,13 +1181,10 @@ text-shadow:
   <strong>Estampa 2</strong>
 
   <label>Posição da Estampa</label>
-<select
-  id="pos2"
-  onchange="atualizarOpcoesEstampa2(); atualizarPreviewCamisa()"
->
+  <select id="pos2">
     <option>Peito Central</option>
-    <option>Peito LE (De quem veste)</option>
-    <option>Peito LD (De quem veste)</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
     <option>Costas</option>
   </select>
 
@@ -1213,7 +1195,7 @@ text-shadow:
   </select>
 
   <label>Escolha a Estampa</label>
-<select id="arte2" onchange="atualizarOpcoesEstampa2()">
+  <select id="arte2">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
@@ -1352,6 +1334,44 @@ function calcularPrecoPremium() {
 }
 </script> 
 
+<script>
+function atualizarPreviewPosicao(posicao) {
+  const estampa = document.getElementById('preview-estampa');
+  if (!estampa) return;
+
+  switch (posicao) {
+    case 'Peito Central':
+      estampa.style.top = '35%';
+      estampa.style.left = '50%';
+      break;
+
+    case 'Peito LE':
+      estampa.style.top = '35%';
+      estampa.style.left = '35%';
+      break;
+
+    case 'Peito LD':
+      estampa.style.top = '35%';
+      estampa.style.left = '65%';
+      break;
+
+    case 'Costas':
+      estampa.style.top = '55%';
+      estampa.style.left = '50%';
+      break;
+  }
+
+  estampa.style.transform = 'translate(-50%, -50%)';
+}
+</script>
+
+<script>
+function atualizarPreviewArte(arte) {
+  const estampa = document.getElementById('preview-estampa');
+  if (!estampa) return;
+
+  estampa.innerText = arte;
+}
 </script>
 
  <script>
@@ -1446,45 +1466,24 @@ function mostrarFinalizar() {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.querySelector(".basica-grid");
-  if (!grid) return;
-
-  const cards = Array.from(grid.querySelectorAll(".basica-card"));
-
-  const disponiveis = [];
-  const esgotados = [];
+  const cards = document.querySelectorAll(".basica-card");
 
   cards.forEach(card => {
     const img = card.querySelector("img");
-    const controls = card.querySelectorAll("select, input, button");
+    const selects = card.querySelectorAll("select, input, button");
 
     if (!img) return;
 
-    const isEsgotado = img.src.includes("esgotado");
-
-    if (isEsgotado) {
-      // BLOQUEIA E MARCA COMO ESGOTADO
+    // Se a imagem for esgotado.png → bloqueia tudo
+    if (img.src.includes("esgotado")) {
       card.classList.add("bloqueado");
-      card.classList.remove("disponivel");
-      controls.forEach(el => el.disabled = true);
-      esgotados.push(card);
+      selects.forEach(el => el.disabled = true);
     } else {
-      // LIBERA E MARCA COMO DISPONÍVEL
+      // Se trocar a imagem no futuro → desbloqueia automaticamente
       card.classList.remove("bloqueado");
-      card.classList.add("disponivel");
-      controls.forEach(el => el.disabled = false);
-      disponiveis.push(card);
+      selects.forEach(el => el.disabled = false);
     }
   });
-
-  // 🔁 LIMPA A GRID
-  grid.innerHTML = "";
-
-  // ✅ PRIMEIRO DISPONÍVEIS
-  disponiveis.forEach(card => grid.appendChild(card));
-
-  // ❌ DEPOIS ESGOTADOS
-  esgotados.forEach(card => grid.appendChild(card));
 });
 </script>
  
