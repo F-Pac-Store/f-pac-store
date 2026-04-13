@@ -666,7 +666,7 @@ text-shadow:
 }
 
 .basica-card img {
-  width: 180px;
+  width: 165px;
   height: 220px;          /* altura fixa */
   object-fit: contain;    /* não distorce */
   margin-bottom: 6px;
@@ -1484,32 +1484,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => {
     const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
+    const controls = card.querySelectorAll("select, input, button");
 
     if (!img) return;
 
-    // Se a imagem for esgotado.png → bloqueia tudo
-    document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
+    const isEsgotado = img.src.includes("esgotado");
 
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
-
-    if (!img) return;
-
-    if (img.src.includes("esgotado")) {
+    if (isEsgotado) {
+      // BLOQUEIA CARD ESGOTADO
       card.classList.add("bloqueado");
       card.classList.remove("disponivel");
-      selects.forEach(el => el.disabled = true);
+      controls.forEach(el => el.disabled = true);
     } else {
+      // LIBERA CARD DISPONÍVEL
       card.classList.remove("bloqueado");
       card.classList.add("disponivel");
-      selects.forEach(el => el.disabled = false);
+      controls.forEach(el => el.disabled = false);
     }
   });
 });
 </script>
- 
+
 </body>
 </html>
