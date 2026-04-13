@@ -1371,37 +1371,6 @@ function calcularPrecoPremium() {
 </script> 
 
 <script>
-function atualizarPreviewPosicao(posicao) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
-
-  switch (posicao) {
-    case 'Peito Central':
-      estampa.style.top = '35%';
-      estampa.style.left = '50%';
-      break;
-
-    case 'Peito LE':
-      estampa.style.top = '35%';
-      estampa.style.left = '35%';
-      break;
-
-    case 'Peito LD':
-      estampa.style.top = '35%';
-      estampa.style.left = '65%';
-      break;
-
-    case 'Costas':
-      estampa.style.top = '55%';
-      estampa.style.left = '50%';
-      break;
-  }
-
-  estampa.style.transform = 'translate(-50%, -50%)';
-}
-</script>
-
-<script>
 function atualizarPreviewArte(arte) {
   const estampa = document.getElementById('preview-estampa');
   if (!estampa) return;
