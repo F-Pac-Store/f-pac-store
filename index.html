@@ -960,60 +960,6 @@ text-shadow:
   placeholder="Comece a digitar o bairro"
 >
 
- <datalist id="bairros-joinville">
-  <!-- Centro -->
-  <option value="Centro">
-  <!-- Norte -->
-  <option value="América">
-  <option value="Atiradores">
-  <option value="Bom Retiro">
-  <option value="Costa e Silva">
-  <option value="Glória">
-  <option value="Saguaçu">
-  <option value="Santo Antônio">
-  <!-- Leste -->
-  <option value="Aventureiro">
-  <option value="Comasa">
-  <option value="Espinheiros">
-  <option value="Iririú">
-  <option value="Jardim Iririú">
-  <option value="Jardim Paraíso">
-  <option value="Jardim Sofia">
-  <!-- Sul -->
-  <option value="Adhemar Garcia">
-  <option value="Boehmerwald">
-  <option value="Floresta">
-  <option value="Fátima">
-  <option value="Guanabara">
-  <option value="Itaum">
-  <option value="Itinga">
-  <option value="Jarivatuba">
-  <option value="João Costa">
-  <option value="Nova Brasília">
-  <option value="Paranaguamirim">
-  <option value="Petrópolis">
-  <option value="Profipo">
-  <option value="Santa Catarina">
-  <option value="São Marcos">
-  <option value="Ulysses Guimarães">
-  <!-- Oeste -->
-  <option value="Anita Garibaldi">
-  <option value="Bucarein">
-  <option value="Morro do Meio">
-  <option value="Vila Cubatão">
-  <option value="Vila Nova">
-</datalist>
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
 <!-- BOTÃO FINAL PARA WHATSAPP -->
 <div class="etapa etapa-enviar oculta">
   <button class="btn-whatsapp">Enviar Pedido!</button>
@@ -1073,7 +1019,7 @@ text-shadow:
   <input
     type="text"
     class="bairro"
-    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
   >
 
   <label>Forma de pagamento</label>
@@ -1146,7 +1092,7 @@ text-shadow:
   <input
     type="text"
     class="bairro"
-    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
   >
 
   <label>Forma de pagamento</label>
@@ -1219,7 +1165,7 @@ text-shadow:
   <input
     type="text"
     class="bairro"
-    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
   >
 
   <label>Forma de pagamento</label>
@@ -1292,7 +1238,7 @@ text-shadow:
   <input
     type="text"
     class="bairro"
-    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
   >
 
   <label>Forma de pagamento</label>
@@ -1365,7 +1311,7 @@ text-shadow:
   <input
     type="text"
     class="bairro"
-    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
   >
 
   <label>Forma de pagamento</label>
@@ -1815,6 +1761,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+<datalist id="bairros-joinville">
+  <!-- Centro -->
+  <option value="Centro">
+
+  <!-- Norte -->
+  <option value="América">
+  <option value="Atiradores">
+  <option value="Bom Retiro">
+  <option value="Costa e Silva">
+  <option value="Glória">
+  <option value="Saguaçu">
+  <option value="Santo Antônio">
+
+  <!-- Leste -->
+  <option value="Aventureiro">
+  <option value="Comasa">
+  <option value="Espinheiros">
+  <option value="Iririú">
+  <option value="Jardim Iririú">
+  <option value="Jardim Paraíso">
+  <option value="Jardim Sofia">
+
+  <!-- Sul -->
+  <option value="Adhemar Garcia">
+  <option value="Boehmerwald">
+  <option value="Floresta">
+  <option value="Fátima">
+  <option value="Guanabara">
+  <option value="Itaum">
+  <option value="Itinga">
+  <option value="Jarivatuba">
+  <option value="João Costa">
+  <option value="Nova Brasília">
+  <option value="Paranaguamirim">
+  <option value="Petrópolis">
+  <option value="Profipo">
+  <option value="Santa Catarina">
+  <option value="São Marcos">
+  <option value="Ulysses Guimarães">
+
+  <!-- Oeste -->
+  <option value="Anita Garibaldi">
+  <option value="Bucarein">
+  <option value="Morro do Meio">
+  <option value="Vila Cubatão">
+  <option value="Vila Nova">
+</datalist>
  
 </body>
 </html>
