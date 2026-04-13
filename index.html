@@ -1249,10 +1249,8 @@ text-shadow:
 <div class="etapa etapa-enviar oculta">
   <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
 </div>
-``
  
 </div>
-
 
      <!-- CAMISA BÁSICA 6 -->
      
@@ -1711,6 +1709,40 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.add("disponivel");
       controls.forEach(el => el.disabled = false);
     }
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll('.basica-card').forEach(card => {
+  const btnWhats = card.querySelector('.btn-whatsapp');
+  if (!btnWhats) return;
+
+  btnWhats.addEventListener('click', () => {
+    const cor = card.querySelector('.cor')?.value;
+    const tamanho = card.querySelector('.tamanho')?.value;
+    const qtd = card.querySelector('.quantidade')?.value;
+    const bairro = card.querySelector('.bairro')?.value || 'Não informado';
+    const pagamento = card.querySelector('.pagamento')?.value || 'A combinar';
+
+    if (!cor || !tamanho || qtd <= 0) {
+      alert('Complete as opções do produto.');
+      return;
+    }
+
+    const mensagem =
+      `Olá! Quero finalizar minha compra na F Pac Store.%0A%0A` +
+      `🧥 Produto: Estampa Discreta%0A` +
+      `🎨 Cor: ${cor}%0A` +
+      `📏 Tamanho: ${tamanho}%0A` +
+      `📦 Quantidade: ${qtd}%0A%0A` +
+      `📍 Bairro: ${bairro}%0A` +
+      `💳 Pagamento: ${pagamento}`;
+
+    window.open(
+      `https://wa.me/5547997465602?text=${mensagem}`,
+      '_blank'
+    );
   });
 });
 </script>
