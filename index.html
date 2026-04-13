@@ -1,4 +1,4 @@
-x'<!DOCTYPE html>
+é pra ficar assim?x'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
@@ -220,30 +220,19 @@ x'<!DOCTYPE html>
       }
     }
 
-/* ============================= */
-/* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
-@media (max-width: 768px) {
-  .menu-vertical {
-    writing-mode: horizontal-tb; /* garante horizontal */
-    white-space: nowrap;         /* NÃO quebra linha */
-    display: inline-block;       /* evita empilhamento */
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--accent);
-  }
-}
-
     /* HERO CAPA DO SITE */
 
 .hero {
-  position: relative;
   margin-top: 90px;
-  min-height: 80vh;
+  min-height: calc(100vh - 90px);
 
-  /* FUNDO ESTENDIDO (preenche a tela) */
-  background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
-  background-size: cover;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+
+  background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 
   display: flex;
   align-items: center;
@@ -251,25 +240,7 @@ x'<!DOCTYPE html>
   text-align: center;
 
   color: white;
-  padding: 40px 20px;
-  overflow: hidden;
-}
-
-   .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 960px;
-  width: 100%;
-
-  padding: 80px 40px;
-  border-radius: 12px;
+  padding: 20px;
 }
 
 /* HERO - MOBILE RETRATO */
@@ -298,7 +269,7 @@ x'<!DOCTYPE html>
 /* BOTÃO PRINCIPAL */
       
     .btn {
- background: rgba(255, 193, 7, 0.85); /* amarelo semi-transparente */
+  background: var(--accent);
   color: black;
   padding: 15px 30px;
   text-decoration: none;
@@ -306,29 +277,6 @@ x'<!DOCTYPE html>
   border-radius: 5px;
   display: inline-block;
   transition: background 0.3s ease, transform 0.2s ease;
-}
-
-   /* CTA DOMINANTE — CAMISA PREMIUM */
-
-.btn-destaque {
-  background: linear-gradient(
-    135deg,
-    #FFC107,
-    #ffb300
-  );
-  color: #000;
-  font-size: 1.05rem;
-  padding: 16px 36px;
-  font-weight: 800;
-  border-radius: 8px;
-
-  box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-  transition: all 0.25s ease;
-}
-
-.btn-destaque:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.4);
 }
 
 .btn:hover {
@@ -339,8 +287,7 @@ x'<!DOCTYPE html>
 /* CATÁLOGO DE ESTAMPAS */
 
 .catalogo {
-  padding: 80px 0 140px;   /* mais respiro embaixo */
-  min-height: 100vh;       /* ocupa a altura da tela */
+  padding: 80px 0;
   background: #ffffff;
 }
 
@@ -358,8 +305,8 @@ x'<!DOCTYPE html>
 
 .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
 }
 
 .estampa {
@@ -371,121 +318,28 @@ x'<!DOCTYPE html>
   cursor: pointer;
 }
 
+.estampa:hover {
+  transform: scale(1.05);
+}
+
 .estampa img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  object-fit: contain; /* ← evita imagem grande demais */
-  padding: 8px;
+  object-fit: cover;
 }
 
 .estampa span {
   display: block;
-  padding: 8px;
-  font-size: 0.85rem; /* texto mais compacto */
+  padding: 12px;
   font-weight: 600;
 }
 
-   /* ============================= */
-/* CTA CATÁLOGO – CARD MAIS ESTAMPAS */
-/* ============================= */
-
-.catalogo-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-
-.catalogo-card {
-  width: 100%;
-  max-width: 180px;
-  aspect-ratio: 1 / 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background: var(--primary);
-  border-radius: 10px;
-  text-decoration: none;
-
-  /* MAIS ESTAMPA DO CATALOGO */
-  font-family: 'blacklisted', sans-serif;
-  font-size: 1.3rem;
-  letter-spacing: 3.2px;
-  line-height: 1.35;
-
-
-color: #FFC107;                  /* amarelo vivo */
--webkit-text-stroke: 1.3px #111; /* borda escura, mas mais fina */
-
-text-shadow:
-  1px 1px 0 rgba(0,0,0,0.8),
-  2px 2px 4px rgba(0,0,0,0.35);
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  transition: all 0.3s ease;
-}
-
-.catalogo-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-
-@media (max-width: 768px) {
-  .catalogo-card {
-    max-width: 100%;
-    height: auto;
-    padding: 28px;
-    font-size: 0.95rem;
-  }
-}
-   
-/* ============================= */
-/* BOTÃO MAIS ESTAMPAS */
-/* ============================= */
-.catalogo-cta {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-
-.catalogo-cta a {
-  text-decoration: none;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: #000;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.btn-outline:hover {
-  background: var(--accent);
-  color: #000;
-  transform: scale(1.05);
-}
-   
     /* PRODUTOS */
 
- .produtos {
-  padding: 40px 0 40px;
-  min-height: calc(100vh - 120px); /* ocupa a tela sem invadir o header */
-}
+    .produtos {
+      padding: 70px 0;
+    }
 
-.produtos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-   
     .produtos h2 {
       text-align: center;
       margin-bottom: 40px;
@@ -498,89 +352,48 @@ text-shadow:
       gap: 25px;
     }
 
-   /* PRODUTOS – cards lado a lado */
-.produtos .grid {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 900px;   /* controla largura total */
-  margin: 0 auto;     /* centraliza a grid */
-}
-
     .card {
-  background: white;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
 /* IMAGENS DOS PRODUTOS */
 /* Evita imagens gigantes no mobile */
 
-/* ============================= */
-/* PRODUTOS - IMAGENS */
-/* ============================= */
-
 .card img {
   width: 100%;
-  max-height: 35vh;   /* controle do tamanho */
-  object-fit: contain; /* 👈 mostra a imagem inteira */
-  background: #fff;   /* evita “buraco” visual */
+  aspect-ratio: 1 / 1;     /* proporção quadrada */
+  object-fit: cover;       /* corta excesso sem distorcer */
   border-radius: 5px;
 }
-
-.card h3 {
-  margin: 8px 0 4px;
-  font-size: 1rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-}
-
-/* ============================= */
-/* PRODUTOS - MOBILE */
-/* ============================= */
+/* AJUSTE DE IMAGEM - MOBILE */
 
 @media (max-width: 768px) {
   .card img {
-    aspect-ratio: 4 / 5;   /* formato mais elegante no celular */
+    aspect-ratio: 4 / 5; /* formato mais elegante no celular */
   }
 }
 
-/* ============================= */
-/* CATÁLOGO DE ESTAMPAS - MOBILE */
-/* ============================= */
+    .card h3 {
+      margin: 15px 0 10px;
+    }
 
-@media (max-width: 768px) {
-  .catalogo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
+    .card p {
+      font-size: 0.95rem;
+    }
 
-  .estampa img {
-    padding: 6px;
-  }
-
-  .estampa span {
-    font-size: 0.8rem;
-    padding: 6px;
-  }
-}
-
-/* ============================= */
-/* BOTÃO WHATSAPP */
-/* ============================= */
-
-.whatsapp {
-  background: #25D366;
-  color: white;
-  padding: 12px;
-  display: block;
-  margin-top: 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-}
+    .whatsapp {
+      background: #25D366;
+      color: white;
+      padding: 12px;
+      display: block;
+      margin-top: 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+    }
 
     /* FOOTER */
 
@@ -593,27 +406,11 @@ text-shadow:
     }
 
     /* ============================= */
-/* CAMISA BÁSICA */
+/* CAMISETA BÁSICA */
 /* ============================= */
 /* Ajuste de rolagem para header fixo */
 #basica {
   scroll-margin-top: 130px;
-}
-
-.basica {
-  min-height: calc(100vh - 120px); /* reserva a tela */
-  padding: 40px 0 80px;            /* sobe o conteúdo */
-}
-   
-   #inicio {
-  scroll-margin-top: 120px;
-}
-   #produtos {
-  scroll-margin-top: 120px;
-}
-
-   #catalogo {
-  scroll-margin-top: 120px;
 }
 
 .basica h2,
@@ -626,50 +423,23 @@ text-shadow:
 }
 
 .basica-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .basica-card {
   background: #ffffff;
-  padding: 14px;       /* menos espaço interno */
+  padding: 25px;
   border-radius: 10px;
-  width: 260px;        /* card mais estreito */
+  width: 320px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   text-align: center;
- min-height: 400px;
-}
-
-.etapa {
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: all 0.3s ease;
-}
-
-.etapa.visivel {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-   /* Primeira etapa sempre visível */
-.etapa:not(.oculta) {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.oculta {
-  display: none;
 }
 
 .basica-card img {
-  width: 180px;
-  height: 220px;          /* altura fixa */
-  object-fit: contain;    /* não distorce */
-  margin-bottom: 6px;
+  width: 100%;
+  max-width: 240px;
+  margin-bottom: 15px;
 }
 
 .basica-card label {
@@ -686,16 +456,15 @@ text-shadow:
 }
 
 .basica-card .preco {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  margin: 6px 0;
-  min-height: 32px;   /* PASSO 3 – reserva altura fixa */
+  margin: 10px 0;
 }
 
 .basica-card button {
-  margin-top: 12px;
+  margin-top: 20px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #FFC107;
   border: none;
   border-radius: 6px;
@@ -703,19 +472,6 @@ text-shadow:
   cursor: pointer;
 }
 
-   /* ESTADO BLOQUEADO AUTOMÁTICO (CARDS ESGOTADOS) */
-.basica-card.bloqueado {
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-/* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
-@media (max-width: 768px) {
-  .basica-grid {
-    justify-items: center;
-  }
-}
-   
 /* PREVIEW DA CAMISA */
 
 .preview-camisa {
@@ -730,23 +486,6 @@ text-shadow:
   border-radius: 6px;
 }
 
-.estampa-preview {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-   
   </style>
 </head>
 
@@ -767,7 +506,7 @@ text-shadow:
     <a href="#inicio">Início</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#produtos">Produtos</a>
-    <a href="#criar" class="menu-vertical">Criar Camisa</a>
+    <a href="#criar">Criar Sua Camisa</a>
   </div>
 
   <!-- ICONES SOCIAIS -->
@@ -791,17 +530,15 @@ text-shadow:
 </header>
 
 <section class="hero" id="inicio">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
+  <div>
     <h1>Não é só roupa. É identidade.</h1>
     <p>
       Camisas masculinas estampadas para quem se recusa a vestir o comum.
       Mais atitude, mais personalidade e estilo que fala antes de você.
     </p>
-    <a href="#produtos" class="btn">
- Comprar Já!
-</a>
+    <a href="https://wa.me/554799746" class="btn">
+      Bora Vestir Isso
+    </a>
   </div>
 </section>
   
@@ -823,7 +560,7 @@ text-shadow:
         <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
         <span>E01 – Tropa Urbana – Com Fundo</span>
       </div>
-     
+
       <div class="estampa">
         <img src="imagens/estampas/e2.png" alt="Estampa 02">
         <span>E01 – Tropa Urbana – Sem Fundo</span>
@@ -838,28 +575,12 @@ text-shadow:
         <img src="imagens/estampas/e4.png" alt="Estampa 04">
         <span>E02 – Tropa Urbana – Sem Fundo</span>
       </div>
-     
-<div class="catalogo-cta">
-  <a
-    href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link"
-    target="_blank"
-    class="catalogo-card"
-    rel="noopener"
-  >
-  Catalogo Completo
-  </a>
-</div>
 
-</div>
-</section>
-     
     </div>
   </div>
 </section>
   
-<!-- ============================= -->
 <!-- PRODUTOS -->
-<!-- ============================= -->
 
 <section class="produtos" id="produtos">
   <div class="container">
@@ -868,18 +589,19 @@ text-shadow:
 
     <div class="grid">
 
-      <div class="card">
+      <!-- CAMISETA BÁSICA -->
+       <div class="card">
         <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
-        <h3>Force</h3>
-       <p>Camisas Prontas</p>
-        <a href="#basica" class="btn">Escolher Camisa</a>
+        <h3>Camiseta Básica</h3>
+        <a href="#basica" class="btn">Escolher Camisetas</a>
       </div>
 
+      <!-- CAMISETA PREMIUM -->
       <div class="card">
         <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
-        <h3>Prime</h3>
-        <p>Criar do seu jeito</p>
-        <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
+        <h3>Camiseta Premium</h3>
+        <p>Criar do meu jeito.</p>
+        <a href="#criar" class="btn">Criar Minha Camisa</a>
       </div>
 
     </div>
@@ -887,191 +609,57 @@ text-shadow:
 </section>
   
  <!-- ============================= -->
-<!-- CAMISA BÁSICA -->
+<!-- CAMISETA BÁSICA -->
 <!-- ============================= -->
   
 <section class="basica" id="basica">
   <div class="container">
 
-    <h2>Estampa Discreta</h2>
-    <p>Modelo pronto com valor fixo</p>
+    <h2>Camiseta Básica</h2>
+    <p>Modelo pronto com valor fixo.</p>
 
     <div class="basica-grid">
 
       <div class="basica-card">
 
-  <img
-    src="imagens/logo-no-peito.jpg"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
+        <img
+  src="imagens/logo-no-peito.jpg"
+  alt="Camiseta Básica F Pac Store"
+  class="camiseta-img"
+>
 
-  <p class="preco" id="preco-basica">R$ 79,90</p>
+        <h3>Camiseta Básica</h3>
+       <p class="preco" id="preco-basica">R$ 79,90</p>
 
-  <!-- ETAPA 1: COR -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
+        <label>Cor</label>
+        <select id="cor-basica">
+          <option value="Preta">Preta</option>
+          <option value="Branca">Branca</option>
+          <option value="Off White">Off White</option>
+        </select>
 
-  <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
+        <label>Tamanho</label>
+        <select id="tamanho-basica">
+          <option>M</option>
+          <option>G</option>
+        </select>
 
-  <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa oculta" id="etapa-quantidade">
-    <label>Quantidade</label>
-    <input
+        <label>Quantidade</label>
+        <input
   type="number"
   id="qtd-basica"
-  value="0"
-  min="0"
-  oninput="mostrarBotao(); calcularPrecoBasica()"
->
-  </div>
+  value="1"
+  min="1"
+  onchange="calcularPrecoBasica()"
+/>
 
-  <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa oculta" id="etapa-finalizar">
-    <button onclick="comprarBasica()">Finalizar Compra</button>
-  </div>
+        <button onclick="comprarBasica()">
+          🛒 Finalizar Compra
+        </button>
 
-</div>
+      </div>
 
-     <!-- CAMISA BÁSICA 2 -->
-     
-<div class="basica-card">
-
-  <img
-    src="imagens/logo-nas-costas.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-</div>
-
-<!-- CAMISA BÁSICA 3 -->
-     
-<div class="basica-card">
-
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-</div>
-
-<!-- CAMISA BÁSICA 4 -->
-     
-<div class="basica-card">
-
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-</div>
-
-<!-- CAMISA BÁSICA 5 -->
-<div class="basica-card">
-
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store Modelo 5"
-    class="camiseta-img"
-  >
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA ÚNICA (mesma estrutura dos outros cards esgotados) -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-</div>
-
-     <!-- CAMISA BÁSICA 6 -->
-     
-<div class="basica-card">
-
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-</div>
-
+    </div>
   </div>
 </section>
 
@@ -1082,8 +670,8 @@ text-shadow:
 <section class="criar-camisa" id="criar">
   <div class="container">
 
-    <h2>Personalizar Camisa</h2>
-    <p>Monte a camisa do jeito</p>
+    <h2>Criar Minha Camisa</h2>
+    <p>Monte sua camiseta personalizada.</p>
 
     <div class="basica-card">
 
@@ -1091,18 +679,14 @@ text-shadow:
      
 <div class="preview-camisa">
   <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
-
-  <div id="preview-estampa" class="estampa-preview">
-    E01
-  </div>
+</div>
 </div>
 
       <p class="preco" id="preco-premium">R$ 69,90</p>
 
-      <!-- ETAPA 1: COR -->
-<div class="etapa">
+      <div class="campo-form">
   <label>Cor</label>
-  <select id="cor-premium" onchange="mostrarTamanhoPremium(); calcularPrecoPremium()">
+  <select id="cor-premium" onchange="calcularPrecoPremium()">
     <option value="">Selecione</option>
     <option>Preta</option>
     <option>Branca</option>
@@ -1110,41 +694,33 @@ text-shadow:
   </select>
 </div>
 
-<!-- ETAPA 2: TAMANHO -->
-<div class="etapa oculta" id="etapa-tamanho-premium">
+<div class="campo-form">
   <label>Tamanho</label>
-  <select id="tamanho-premium" onchange="mostrarQtdCamisas(); calcularPrecoPremium()">
+  <select id="tamanho-premium" onchange="calcularPrecoPremium()">
     <option value="">Selecione</option>
     <option>M</option>
     <option>G</option>
   </select>
 </div>
 
-<!-- ETAPA 3: QTD CAMISAS -->
-<div class="etapa oculta" id="etapa-qtd-camisas">
+<div class="campo-form">
   <label>Quantidade de Camisas</label>
   <input
     type="number"
     id="qtd-camisas"
-    value="0"
-    min="0"
-    onchange="mostrarQtdEstampas(); calcularPrecoPremium()"
-  >
+    value="1"
+    min="1"
+    onchange="calcularPrecoPremium()"
+  />
 </div>
 
-<!-- ETAPA 4: QTD ESTAMPAS -->
-<div class="etapa oculta" id="etapa-qtd-estampas">
+<div class="campo-form">
   <label>Quantidade de Estampas</label>
-  <select id="qtd-estampas" onchange="mostrarEstampas(); mostrarFinalizar(); calcularPrecoPremium()">
+  <select id="qtd-estampas" onchange="mostrarEstampas(); calcularPrecoPremium()">
     <option value="0">Nenhuma</option>
     <option value="1">1 Estampa</option>
     <option value="2">2 Estampas</option>
   </select>
-</div>
-
-<!-- ETAPA 5: FINALIZAR -->
-<div class="etapa oculta" id="etapa-finalizar-premium">
-  <button onclick="comprarPremium()">Finalizar Compra</button>
 </div>
 
       <div id="estampa1" style="display:none;">
@@ -1155,8 +731,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
     <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
+    <option>Peito Esquerdo (Visual)</option>
+<option>Peito Direito (Visual)</option>
     <option>Costas</option>
   </select>
 
@@ -1183,8 +759,8 @@ text-shadow:
   <label>Posição da Estampa</label>
   <select id="pos2">
     <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
+    <option>Peito Esquerdo (Visual)</option>
+<option>Peito Direito (Visual)</option>
     <option>Costas</option>
   </select>
 
@@ -1334,158 +910,105 @@ function calcularPrecoPremium() {
 }
 </script> 
 
-<script>
-function atualizarPreviewPosicao(posicao) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
-
-  switch (posicao) {
-    case 'Peito Central':
-      estampa.style.top = '35%';
-      estampa.style.left = '50%';
-      break;
-
-    case 'Peito LE':
-      estampa.style.top = '35%';
-      estampa.style.left = '35%';
-      break;
-
-    case 'Peito LD':
-      estampa.style.top = '35%';
-      estampa.style.left = '65%';
-      break;
-
-    case 'Costas':
-      estampa.style.top = '55%';
-      estampa.style.left = '50%';
-      break;
-  }
-
-  estampa.style.transform = 'translate(-50%, -50%)';
-}
-</script>
-
-<script>
-function atualizarPreviewArte(arte) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
-
-  estampa.innerText = arte;
-}
-</script>
-
  <script>
+function calcularPrecoPremium() {
+  let precoBase = 69.90;
+
+  const qtdEstampas = Number(
+    document.getElementById('qtd-estampas').value
+  );
+
+  const qtdCamisas = Number(
+    document.getElementById('qtd-camisas').value
+  );
+
+  // Acréscimos por estampas (provisório)
+  if (qtdEstampas === 1) precoBase += 10;
+  if (qtdEstampas === 2) precoBase += 30;
+
+  const total = precoBase * qtdCamisas;
+
+  const precoEl = document.getElementById('preco-premium');
+  if (precoEl) {
+    precoEl.innerText =
+      'R$ ' + total.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2
+      });
+  }
+}
+</script>
+
+<script>
 function calcularPrecoBasica() {
   const precoUnitario = 79.90;
+  const quantidade = Number(
+    document.getElementById('qtd-basica').value
+  );
 
-  const quantidadeEl = document.getElementById('qtd-basica');
-  const precoEl = document.getElementById('preco-basica');
-
-  if (!quantidadeEl || !precoEl) {
-    return; // segurança: não quebra se algo não existir
-  }
-
-  const quantidade = Number(quantidadeEl.value);
   const total = precoUnitario * quantidade;
 
-  precoEl.innerText =
-    'R$ ' + total.toLocaleString('pt-BR', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-}
-</script>
-
-<script>
-function mostrarTamanho() {
-  const etapa = document.getElementById('etapa-tamanho');
-  if (document.getElementById('cor-basica').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
-
-function mostrarQuantidade() {
-  const etapa = document.getElementById('etapa-quantidade');
-  if (document.getElementById('tamanho-basica').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
-
-function mostrarBotao() {
-  const qtd = Number(document.getElementById('qtd-basica').value);
-  const etapaFinalizar = document.getElementById('etapa-finalizar');
-
-  if (qtd > 0) {
-    etapaFinalizar.style.display = 'block';
-    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
-  } else {
-    etapaFinalizar.style.display = 'none';
-    etapaFinalizar.classList.remove('visivel');
+  const precoEl = document.getElementById('preco-basica');
+  if (precoEl) {
+    precoEl.innerText =
+      'R$ ' + total.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2
+      });
   }
 }
 </script>
 
-<script>
-function mostrarTamanhoPremium() {
-  const etapa = document.getElementById('etapa-tamanho-premium');
-  if (document.getElementById('cor-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+/* ORGANIZAÇÃO DOS CAMPOS DE ESCOLHA */
+
+.campo-form {
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-function mostrarQtdCamisas() {
-  const etapa = document.getElementById('etapa-qtd-camisas');
-  if (document.getElementById('tamanho-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
+.campo-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
-function mostrarQtdEstampas() {
-  const qtd = Number(document.getElementById('qtd-camisas').value);
-  const etapa = document.getElementById('etapa-qtd-estampas');
-
-  if (qtd > 0) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  } else {
-    etapa.style.display = 'none';
-    etapa.classList.remove('visivel');
-  }
+.campo-form select,
+.campo-form input {
+  width: 100%;
+  padding: 8px;
 }
 
-function mostrarFinalizar() {
-  const etapa = document.getElementById('etapa-finalizar-premium');
-  etapa.style.display = 'block';
-  setTimeout(() => etapa.classList.add('visivel'), 10);
+<!-- BOTÃO FIXO FINALIZAR COMPRA -->
+<div class="botao-fixo-whatsapp">
+  <button onclick="comprarPremium()">
+    🛒 Finalizar Compra
+  </button>
+</div>
+/* BOTÃO FIXO FINALIZAR COMPRA */
+
+.botao-fixo-whatsapp {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20px);
+  max-width: 420px;
+  z-index: 9999;
 }
-</script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
+.botao-fixo-whatsapp button {
+  width: 100%;
+  padding: 14px;
+  background: #25D366;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
 
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const selects = card.querySelectorAll("select, input, button");
-
-    if (!img) return;
-
-    // Se a imagem for esgotado.png → bloqueia tudo
-    if (img.src.includes("esgotado")) {
-      card.classList.add("bloqueado");
-      selects.forEach(el => el.disabled = true);
-    } else {
-      // Se trocar a imagem no futuro → desbloqueia automaticamente
-      card.classList.remove("bloqueado");
-      selects.forEach(el => el.disabled = false);
-    }
-  });
-});
-</script>
- 
+.botao-fixo-whatsapp button:hover {
+  background: #1ebe5d;
+}
 </body>
 </html>
