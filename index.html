@@ -948,6 +948,32 @@ text-shadow:
  <div class="etapa etapa-finalizar oculta">
   <button>Finalizar Compra</button>
 </div>
+
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
+</div>
+       
 </div>
 
      <!-- CAMISA BÁSICA 2 -->
@@ -1043,6 +1069,31 @@ text-shadow:
     <button>Finalizar Compra</button>
   </div>
 
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
+</div>
+ 
 </div>
 
 <!-- CAMISA BÁSICA 4 -->
@@ -1096,6 +1147,31 @@ text-shadow:
     <button>Finalizar Compra</button>
   </div>
 
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
+</div>
+ 
 </div>
 
 <!-- CAMISA BÁSICA 5 -->
@@ -1149,6 +1225,32 @@ text-shadow:
     <button>Finalizar Compra</button>
   </div>
 
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
+</div>
+``
+ 
 </div>
 
 
@@ -1203,6 +1305,31 @@ text-shadow:
     <button>Finalizar Compra</button>
   </div>
 
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+    placeholder="Ex: Centro, Aventureiro, Costa e Silva"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar pelo WhatsApp</button>
+</div>
+ 
 </div>
 
   </div>
@@ -1493,6 +1620,8 @@ if (etapaCor && !card.classList.contains('bloqueado')) {
   const qtdEtapa = card.querySelector('.etapa-quantidade');
   const qtd = card.querySelector('.quantidade');
   const finalizar = card.querySelector('.etapa-finalizar');
+ const checkout = card.querySelector('.etapa-checkout');
+const enviar = card.querySelector('.etapa-enviar');
  
   // Estado inicial
   if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
@@ -1530,15 +1659,31 @@ if (etapaCor && !card.classList.contains('bloqueado')) {
 
   // ETAPA 3 → QUANTIDADE
   if (qtd) {
-    qtd.addEventListener('input', () => {
-      if (Number(qtd.value) > 0) {
-        finalizar.classList.remove('oculta');
-        finalizar.classList.add('visivel');
-      } else {
-        finalizar.classList.add('oculta');
+  qtd.addEventListener('input', () => {
+    if (Number(qtd.value) > 0) {
+
+      finalizar.classList.remove('oculta');
+      finalizar.classList.add('visivel');
+
+      if (checkout) {
+        checkout.classList.remove('oculta');
+        checkout.classList.add('visivel');
       }
-    });
-  }
+
+      if (enviar) {
+        enviar.classList.remove('oculta');
+        enviar.classList.add('visivel');
+      }
+
+    } else {
+      finalizar.classList.add('oculta');
+
+      if (checkout) checkout.classList.add('oculta');
+      if (enviar) enviar.classList.add('oculta');
+    }
+  });
+}
+
 
 });
 </script>
