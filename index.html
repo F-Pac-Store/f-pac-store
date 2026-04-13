@@ -1397,12 +1397,16 @@ function calcularPrecoBasica() {
 </script>
 
 <script>
-function mostrarTamanho() {
-  const etapa = document.getElementById('etapa-tamanho');
+<script>
+function mostrarTamanho(select) {
+  const card = select.closest('.basica-card');
+  if (!card) return;
+
+  const etapa = card.querySelector('#etapa-tamanho');
   if (!etapa) return;
 
-  if (document.getElementById('cor-basica').value) {
-    etapa.classList.remove('oculta');   // 👈 CORREÇÃO PRINCIPAL
+  if (select.value) {
+    etapa.classList.remove('oculta');
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   }
