@@ -1350,14 +1350,19 @@ function atualizarPreviewArte(arte) {
 
 <script>
 document.querySelectorAll('.basica-card').forEach(card => {
+ 
+const etapaCor = card.querySelector('.etapa');
 
+if (etapaCor && !card.classList.contains('bloqueado')) {
+  etapaCor.classList.add('visivel');
+}
   const cor = card.querySelector('.cor');
   const tamanhoEtapa = card.querySelector('.etapa-tamanho');
   const tamanho = card.querySelector('.tamanho');
   const qtdEtapa = card.querySelector('.etapa-quantidade');
   const qtd = card.querySelector('.quantidade');
   const finalizar = card.querySelector('.etapa-finalizar');
-
+ 
   // Estado inicial
   if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
   if (qtdEtapa) qtdEtapa.classList.add('oculta');
