@@ -1177,7 +1177,7 @@ text-shadow:
   <strong>Estampa 1</strong>
 
   <label>Posição da Estampa</label>
-  <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
+  <select id="pos1" onchange="atualizarPreviewPosicao(this.value); atualizarOpcoesEstampa2()">
     <option>Peito Central</option>
     <option>Peito LE (De quem veste)</option>
     <option>Peito LD (De quem veste)</option>
@@ -1191,7 +1191,7 @@ text-shadow:
   </select>
 
   <label>Escolha a Estampa</label>
-  <select id="arte1" onchange="atualizarPreviewArte(this.value)">
+<select id="arte1" onchange="atualizarPreviewArte(this.value); atualizarOpcoesEstampa2()">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
@@ -1205,7 +1205,7 @@ text-shadow:
   <strong>Estampa 2</strong>
 
   <label>Posição da Estampa</label>
-  <select id="pos2">
+<select id="pos2" onchange="atualizarOpcoesEstampa2()">
     <option>Peito Central</option>
     <option>Peito LE (De quem veste)</option>
     <option>Peito LD (De quem veste)</option>
@@ -1219,7 +1219,7 @@ text-shadow:
   </select>
 
   <label>Escolha a Estampa</label>
-  <select id="arte2">
+<select id="arte2" onchange="atualizarOpcoesEstampa2()">
     <option>E01 – Tropa Urbana</option>
     <option>E02 – Tropa Urbana</option>
     <option>E03 – Outra Estampa</option>
