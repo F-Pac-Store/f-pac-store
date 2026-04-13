@@ -635,14 +635,16 @@ text-shadow:
 
 .basica-card {
   background: #ffffff;
-  padding: 14px;       /* menos espaço interno */
+  padding: 14px;
   border-radius: 10px;
-  width: 260px;        /* card mais estreito */
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  text-align: center;
- min-height: 430px;
-}
+  width: 260px;
 
+  display: flex;
+  flex-direction: column; /* ✅ resolve corte */
+  align-items: center;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 .etapa {
   margin-top: 8px;
   opacity: 0;
