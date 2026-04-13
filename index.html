@@ -709,6 +709,20 @@ text-shadow:
   pointer-events: none;
 }
 
+   /* DESTAQUE PARA CARD DISPONÍVEL */
+.basica-card.disponivel {
+  border: 2px solid var(--accent);
+  box-shadow: 
+    0 0 0 2px rgba(255,193,7,0.25),
+    0 14px 30px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.basica-card.disponivel:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
 /* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
 @media (max-width: 768px) {
   .basica-grid {
@@ -1475,12 +1489,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!img) return;
 
     // Se a imagem for esgotado.png → bloqueia tudo
+    document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".basica-card");
+
+  cards.forEach(card => {
+    const img = card.querySelector("img");
+    const selects = card.querySelectorAll("select, input, button");
+
+    if (!img) return;
+
     if (img.src.includes("esgotado")) {
       card.classList.add("bloqueado");
+      card.classList.remove("disponivel");
       selects.forEach(el => el.disabled = true);
     } else {
-      // Se trocar a imagem no futuro → desbloqueia automaticamente
       card.classList.remove("bloqueado");
+      card.classList.add("disponivel");
       selects.forEach(el => el.disabled = false);
     }
   });
