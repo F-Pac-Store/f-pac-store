@@ -1,4 +1,4 @@
-x'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
  <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
@@ -920,23 +920,23 @@ text-shadow:
     class="camiseta-img"
   >
 
-  <p class="preco" id="preco-basica">R$ 79,90</p>
+<p class="preco">R$ 79,90</p>
 
   <!-- ETAPA 1: COR -->
-  <div class="etapa">
-    <label>Cor</label>
-    <select id="cor-basica" onchange="mostrarTamanho()">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
+<div class="etapa">
+  <label>Cor</label>
+  <select class="cor">
+    <option value="">Selecione</option>
+    <option value="Preta">Preta</option>
+    <option value="Branca">Branca</option>
+    <option value="Off White">Off White</option>
+  </select>
+</div>
 
   <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa oculta" id="etapa-tamanho">
+<div class="etapa etapa-tamanho oculta">
     <label>Tamanho</label>
-    <select id="tamanho-basica" onchange="mostrarQuantidade()">
+    <select class="tamanho">
       <option value="">Selecione</option>
       <option value="M">M</option>
       <option value="G">G</option>
@@ -944,22 +944,16 @@ text-shadow:
   </div>
 
   <!-- ETAPA 3: QUANTIDADE -->
-  <div class="etapa oculta" id="etapa-quantidade">
-    <label>Quantidade</label>
-    <input
-  type="number"
-  id="qtd-basica"
-  value="0"
-  min="0"
-  oninput="mostrarBotao(); calcularPrecoBasica()"
->
-  </div>
+<!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
 
   <!-- ETAPA 4: FINALIZAR -->
-  <div class="etapa oculta" id="etapa-finalizar">
-    <button onclick="comprarBasica()">Finalizar Compra</button>
-  </div>
-
+ <div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
 </div>
 
      <!-- CAMISA BÁSICA 2 -->
@@ -1233,34 +1227,6 @@ text-shadow:
     nav.classList.toggle('active');
   };
 </script>
-<script>
-function comprarBasica() {
-  const cor = document.getElementById('cor-basica').value;
-  const tamanho = document.getElementById('tamanho-basica').value;
-  const quantidade = document.getElementById('qtd-basica').value;
-
-  const precoUnitario = 79.90;
-  const total = precoUnitario * quantidade;
-
-  const totalFormatado = total.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-
-  const mensagem =
-    `Fala comigo! Gostaria de finalizar minha compra.\n\n` +
-    `Modelo: Camiseta Básica\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade: ${quantidade}\n\n` +
-    `Valor total: R$ ${totalFormatado}`;
-
-  window.open(
-    "https://wa.me/55479974?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
-}
-</script>  
 
 <script>
 function mostrarEstampas() {
@@ -1388,57 +1354,44 @@ function atualizarPreviewArte(arte) {
 }
 </script>
 
- <script>
-function calcularPrecoBasica() {
-  const precoUnitario = 79.90;
-
-  const quantidadeEl = document.getElementById('qtd-basica');
-  const precoEl = document.getElementById('preco-basica');
-
-  if (!quantidadeEl || !precoEl) {
-    return; // segurança: não quebra se algo não existir
-  }
-
-  const quantidade = Number(quantidadeEl.value);
-  const total = precoUnitario * quantidade;
-
-  precoEl.innerText =
-    'R$ ' + total.toLocaleString('pt-BR', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-}
-</script>
-
 <script>
-function mostrarTamanho() {
-  const etapa = document.getElementById('etapa-tamanho');
-  if (document.getElementById('cor-basica').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
+document.querySelectorAll('.basica-card').forEach(card => {
 
-function mostrarQuantidade() {
-  const etapa = document.getElementById('etapa-quantidade');
-  if (document.getElementById('tamanho-basica').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
+  const cor = card.querySelector('.cor');
+  const tamanhoEtapa = card.querySelector('.etapa-tamanho');
+  const tamanho = card.querySelector('.tamanho');
+  const qtdEtapa = card.querySelector('.etapa-quantidade');
+  const qtd = card.querySelector('.quantidade');
+  const finalizar = card.querySelector('.etapa-finalizar');
 
-function mostrarBotao() {
-  const qtd = Number(document.getElementById('qtd-basica').value);
-  const etapaFinalizar = document.getElementById('etapa-finalizar');
-
-  if (qtd > 0) {
-    etapaFinalizar.style.display = 'block';
-    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
-  } else {
-    etapaFinalizar.style.display = 'none';
-    etapaFinalizar.classList.remove('visivel');
+  if (cor) {
+    cor.addEventListener('change', () => {
+      if (cor.value) {
+        tamanhoEtapa.classList.remove('oculta');
+        tamanhoEtapa.classList.add('visivel');
+      }
+    });
   }
-}
+
+  if (tamanho) {
+    tamanho.addEventListener('change', () => {
+      if (tamanho.value) {
+        qtdEtapa.classList.remove('oculta');
+        qtdEtapa.classList.add('visivel');
+      }
+    });
+  }
+
+  if (qtd) {
+    qtd.addEventListener('input', () => {
+      if (Number(qtd.value) > 0) {
+        finalizar.classList.remove('oculta');
+        finalizar.classList.add('visivel');
+      }
+    });
+  }
+
+});
 </script>
 
 <script>
