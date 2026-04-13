@@ -954,23 +954,40 @@ text-shadow:
      
 <div class="basica-card">
 
-  <img
-    src="imagens/logo-nas-costas.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
+  <img src="imagens/logo-nas-costas.png" alt="Camiseta Básica">
 
   <p class="preco">R$ 79,90</p>
 
-  <!-- ETAPA ÚNICA (mesma estrutura do primeiro card) -->
-  <div class="etapa">
+  <!-- COR -->
+  <div class="etapa visivel">
     <label>Cor</label>
-    <select>
-      <option>Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
+    <select class="cor">
+      <option value="">Selecione</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+      <option value="Off White">Off White</option>
     </select>
+  </div>
+
+  <!-- TAMANHO -->
+  <div class="etapa etapa-tamanho oculta">
+    <label>Tamanho</label>
+    <select class="tamanho">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
+
+  <!-- QUANTIDADE -->
+  <div class="etapa etapa-quantidade oculta">
+    <label>Quantidade</label>
+    <input class="quantidade" type="number" value="0" min="0">
+  </div>
+
+  <!-- FINALIZAR -->
+  <div class="etapa etapa-finalizar oculta">
+    <button>Finalizar Compra</button>
   </div>
 
 </div>
