@@ -943,7 +943,6 @@ text-shadow:
     </select>
   </div>
 
-  <!-- ETAPA 3: QUANTIDADE -->
 <!-- ETAPA 3: QUANTIDADE -->
 <div class="etapa etapa-quantidade oculta">
   <label>Quantidade</label>
@@ -1392,43 +1391,6 @@ document.querySelectorAll('.basica-card').forEach(card => {
   }
 
 });
-</script>
-
-<script>
-function mostrarTamanhoPremium() {
-  const etapa = document.getElementById('etapa-tamanho-premium');
-  if (document.getElementById('cor-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
-
-function mostrarQtdCamisas() {
-  const etapa = document.getElementById('etapa-qtd-camisas');
-  if (document.getElementById('tamanho-premium').value) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  }
-}
-
-function mostrarQtdEstampas() {
-  const qtd = Number(document.getElementById('qtd-camisas').value);
-  const etapa = document.getElementById('etapa-qtd-estampas');
-
-  if (qtd > 0) {
-    etapa.style.display = 'block';
-    setTimeout(() => etapa.classList.add('visivel'), 10);
-  } else {
-    etapa.style.display = 'none';
-    etapa.classList.remove('visivel');
-  }
-}
-
-function mostrarFinalizar() {
-  const etapa = document.getElementById('etapa-finalizar-premium');
-  etapa.style.display = 'block';
-  setTimeout(() => etapa.classList.add('visivel'), 10);
-}
 </script>
 
 <script>
