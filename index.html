@@ -911,7 +911,7 @@ text-shadow:
   <!-- ETAPA 1: COR -->
   <div class="etapa">
     <label>Cor</label>
-    <select id="cor-basica" onchange="mostrarTamanho()">
+    <select id="cor-basica" onchange="mostrarTamanho(this)">
       <option value="">Selecione</option>
       <option value="Preta">Preta</option>
       <option value="Branca">Branca</option>
@@ -1414,11 +1414,14 @@ function mostrarTamanho(select) {
 </script>
 
 <script>
-function mostrarQuantidade() {
-  const etapa = document.getElementById('etapa-quantidade');
+function mostrarQuantidade(select) {
+  const card = select.closest('.basica-card');
+  if (!card) return;
+
+  const etapa = card.querySelector('#etapa-quantidade');
   if (!etapa) return;
 
-  if (document.getElementById('tamanho-basica').value) {
+  if (select.value) {
     etapa.classList.remove('oculta');
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
@@ -1427,18 +1430,20 @@ function mostrarQuantidade() {
 </script>
  
 <script>
-function mostrarBotao() {
-  const qtd = Number(document.getElementById('qtd-basica').value);
-  const etapa = document.getElementById('etapa-finalizar');
+function mostrarBotao(input) {
+  const card = input.closest('.basica-card');
+  if (!card) return;
+
+  const etapa = card.querySelector('#etapa-finalizar');
   if (!etapa) return;
 
-  if (qtd > 0) {
+  if (Number(input.value) > 0) {
     etapa.classList.remove('oculta');
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   } else {
-    etapa.style.display = 'none';
     etapa.classList.add('oculta');
+    etapa.style.display = 'none';
     etapa.classList.remove('visivel');
   }
 }
