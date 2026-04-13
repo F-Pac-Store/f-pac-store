@@ -1692,6 +1692,37 @@ if (finalizar) {
     }
   });
 }
+
+ // ETAPA 5 → ENVIAR PEDIDO PELO WHATSAPP
+if (enviar) {
+  enviar.addEventListener('click', () => {
+
+    const produto = "Camiseta Básica F Pac Store";
+    const preco = card.querySelector('.preco')?.innerText || '';
+
+    const corValor = cor?.value || '';
+    const tamanhoValor = tamanho?.value || '';
+    const quantidadeValor = qtd?.value || '';
+    const bairroValor = card.querySelector('.bairro')?.value || '';
+    const pagamentoValor = card.querySelector('.pagamento')?.value || '';
+
+    const mensagem =
+      `Olá! Gostaria de fazer um pedido 😊\n\n` +
+      `🛍 Produto: ${produto}\n` +
+      `💰 Valor: ${preco}\n` +
+      `🎨 Cor: ${corValor}\n` +
+      `📏 Tamanho: ${tamanhoValor}\n` +
+      `🔢 Quantidade: ${quantidadeValor}\n\n` +
+      `📍 Bairro para entrega: ${bairroValor}\n` +
+      `💳 Forma de pagamento: ${pagamentoValor}`;
+
+    const telefone = "5547997465602";
+    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, '_blank');
+  });
+}
+ 
  });
 </script>
 
