@@ -1399,30 +1399,43 @@ function calcularPrecoBasica() {
 <script>
 function mostrarTamanho() {
   const etapa = document.getElementById('etapa-tamanho');
+  if (!etapa) return;
+
   if (document.getElementById('cor-basica').value) {
+    etapa.classList.remove('oculta');   // 👈 CORREÇÃO PRINCIPAL
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
+</script>
 
+<script>
 function mostrarQuantidade() {
   const etapa = document.getElementById('etapa-quantidade');
+  if (!etapa) return;
+
   if (document.getElementById('tamanho-basica').value) {
+    etapa.classList.remove('oculta');
     etapa.style.display = 'block';
     setTimeout(() => etapa.classList.add('visivel'), 10);
   }
 }
-
+</script>
+ 
+<script>
 function mostrarBotao() {
   const qtd = Number(document.getElementById('qtd-basica').value);
-  const etapaFinalizar = document.getElementById('etapa-finalizar');
+  const etapa = document.getElementById('etapa-finalizar');
+  if (!etapa) return;
 
   if (qtd > 0) {
-    etapaFinalizar.style.display = 'block';
-    setTimeout(() => etapaFinalizar.classList.add('visivel'), 10);
+    etapa.classList.remove('oculta');
+    etapa.style.display = 'block';
+    setTimeout(() => etapa.classList.add('visivel'), 10);
   } else {
-    etapaFinalizar.style.display = 'none';
-    etapaFinalizar.classList.remove('visivel');
+    etapa.style.display = 'none';
+    etapa.classList.add('oculta');
+    etapa.classList.remove('visivel');
   }
 }
 </script>
