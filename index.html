@@ -911,7 +911,7 @@ text-shadow:
   <!-- ETAPA 1: COR -->
   <div class="etapa">
     <label>Cor</label>
-    <select id="cor-basica" onchange="mostrarTamanho()">
+    <select class="cor">
       <option value="">Selecione</option>
       <option value="Preta">Preta</option>
       <option value="Branca">Branca</option>
@@ -920,9 +920,9 @@ text-shadow:
   </div>
 
   <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa oculta" id="etapa-tamanho">
+  <div class="etapa etapa-tamanho oculta">
     <label>Tamanho</label>
-    <select id="tamanho-basica" onchange="mostrarQuantidade()">
+    <select class="tamanho">
       <option value="">Selecione</option>
       <option value="M">M</option>
       <option value="G">G</option>
