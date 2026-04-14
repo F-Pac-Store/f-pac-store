@@ -627,12 +627,32 @@ text-shadow:
 
 .basica-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* ⬅️ menor */
-  gap: 24px; /* ⬅️ menos espaço */
+
+  /* ✅ cards lado a lado */
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
   max-width: 900px;
   margin: 0 auto;
+
   align-items: start;
+  justify-items: center;
 }
+
+/* ✅ tablet: 2 cards */
+@media (max-width: 1024px) {
+  .basica-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ✅ mobile: 1 card */
+@media (max-width: 600px) {
+  .basica-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
    .basica-card {
   background: #ffffff;
   padding: 10px;        /* ⬅️ menor */
