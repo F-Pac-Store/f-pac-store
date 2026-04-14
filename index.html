@@ -628,15 +628,14 @@ text-shadow:
 .basica-grid {
   display: grid;
 
-  /* ✅ cards lado a lado */
-  grid-template-columns: repeat(3, 1fr);
+  /* ✅ layout automático, igual "Nossos Produtos" */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
-  gap: 24px;
-  max-width: 1400px; 
+  gap: 28px;
+  max-width: 1600px;
   margin: 0 auto;
 
   align-items: start;
-  justify-items: center;
 }
 
 /* ✅ tablet: 2 cards */
@@ -653,16 +652,16 @@ text-shadow:
   }
 }
 
-   .basica-card {
+  .basica-card {
   background: #ffffff;
-  padding: 10px;        /* ⬅️ menor */
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 12px;
 
   width: 100%;
-  max-width: 240px;     /* ✅ CONTROLA O TAMANHO DO CARD */
-  min-height: 300px;    /* ⬅️ menor */
+  max-width: 280px;   /* ✅ largura ideal p/ até 5 por linha */
+  min-height: 380px;
 
-  box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
   text-align: center;
 }
 
@@ -691,10 +690,12 @@ text-shadow:
 }
 
 .basica-card img {
-  width: 165px;
-  height: 220px;          /* altura fixa */
-  object-fit: contain;    /* não distorce */
-  margin-bottom: 6px;
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
 .basica-card label {
