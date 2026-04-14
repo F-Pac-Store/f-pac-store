@@ -631,16 +631,15 @@ text-shadow:
   gap: 30px;
   max-width: 900px;
   margin: 0 auto;
+
+  align-items: start; /* ✅ CORREÇÃO DO DESALINHAMENTO */
 }
 
-.basica-card {
-  background: #ffffff;
-  padding: 12px;
-  border-radius: 10px;
-  width: 235px;              /* ⬅️ menor */
-  min-height: 390px;        /* ⬅️ menor */
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  text-align: center;
+@media (max-width: 768px) {
+  .basica-grid {
+    justify-items: center;
+    align-items: start; /* reforço opcional */
+  }
 }
 
 .etapa {
@@ -718,13 +717,6 @@ text-shadow:
   transform: translateY(-6px) scale(1.02);
 }
 
-/* CENTRALIZAR CARD DA ESTAMPA DISCRETA NO MOBILE */
-@media (max-width: 768px) {
-  .basica-grid {
-    justify-items: center;
-  }
-}
-   
 /* PREVIEW DA CAMISA */
 
 .preview-camisa {
