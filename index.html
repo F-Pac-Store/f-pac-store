@@ -627,12 +627,23 @@ text-shadow:
 
 .basica-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* ⬅️ menor */
+  gap: 24px; /* ⬅️ menos espaço */
   max-width: 900px;
   margin: 0 auto;
+  align-items: start;
+}
+   .basica-card {
+  background: #ffffff;
+  padding: 10px;        /* ⬅️ menor */
+  border-radius: 10px;
 
-  align-items: start; /* ✅ CORREÇÃO DO DESALINHAMENTO */
+  width: 100%;
+  max-width: 240px;     /* ✅ CONTROLA O TAMANHO DO CARD */
+  min-height: 300px;    /* ⬅️ menor */
+
+  box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 @media (max-width: 768px) {
