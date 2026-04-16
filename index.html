@@ -809,14 +809,15 @@ text-shadow:
 
 /* VISUAL DE CATÁLOGO – impede crescimento vertical */
 .basica-card .etapa {
-  opacity: 1;
-  transform: none;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
-/* Mantém apenas a primeira etapa visível */
 .basica-card .etapa.visivel {
-  display: block;
+  max-height: 120px;  /* controla o espaço */
+  opacity: 1;
 }
 
 /* Mantém etapas escondidas só quando realmente ocultas */
