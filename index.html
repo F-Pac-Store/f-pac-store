@@ -631,39 +631,53 @@ text-shadow:
   margin-bottom: 40px;
 }
 
-  .basica-card {
+ /* ============================= */
+/* CARD FIXO – NÃO ESTICA */
+/* ============================= */
+
+.basica-card {
   background: #ffffff;
   padding: 14px;
   border-radius: 12px;
   width: 100%;
   max-width: 280px;
 
-  height: 520px;                 /* altura fixa */
+  height: 540px;                 /* altura fixa real */
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;              /* 🔒 nada vaza */
 }
 
-   /* ÁREA DE FORMULÁRIO DENTRO DO CARD */
+/* ============================= */
+/* ETAPAS INTERNAS DO FORMULÁRIO */
+/* ============================= */
+
 .basica-card .etapa {
   width: 100%;
-}
-
-   /* ÁREA INTERNA DO CARD (conteúdo variável) */
-/* Etapas com espaço suficiente e rolagem */
-.basica-card .etapa {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+}
+
+.basica-card .etapa.visivel {
+  max-height: 300px;             /* ✅ cabe quantidade + botão */
+  opacity: 1;
+}
+
+/* estado oculto controlado */
+.basica-card .oculta {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
 }
 
    /* Primeira etapa sempre visível */
-.oculta {
-  display: none;
-}
 
 .basica-card img {
   width: 100%;
@@ -796,13 +810,6 @@ text-shadow:
   justify-items: center;
 }
 
-/* Cards ficam independentes, como produtos */
-.basica-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* VISUAL DE CATÁLOGO – impede crescimento vertical */
 .basica-card .etapa {
   max-height: 0;
@@ -810,12 +817,7 @@ text-shadow:
   opacity: 0;
   transition: all 0.3s ease;
 }
-
-.basica-card .etapa.visivel {
-  max-height: 120px;  /* controla o espaço */
-  opacity: 1;
-}
-
+   
 /* Mantém etapas escondidas só quando realmente ocultas */
 .basica-card .oculta {
   max-height: 0;
