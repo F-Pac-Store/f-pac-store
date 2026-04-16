@@ -657,24 +657,7 @@ text-shadow:
   transition: all 0.3s ease;
 }
 
-.basica-card .etapa.visivel {
-  max-height: 220px;    /* ✅ espaço real */
-  opacity: 1;
-}
-
 @media (max-width: 768px) {
-}
-
-.etapa {
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: all 0.3s ease;
-}
-
-.etapa.visivel {
-  opacity: 1;
-  transform: translateY(0);
 }
 
    /* Primeira etapa sempre visível */
@@ -835,7 +818,9 @@ text-shadow:
 
 /* Mantém etapas escondidas só quando realmente ocultas */
 .basica-card .oculta {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
 }
 
 /* ============================= */
