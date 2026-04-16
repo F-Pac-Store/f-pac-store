@@ -592,9 +592,21 @@ text-shadow:
       font-size: 0.9rem;
     }
 
-    /* ============================= */
+   /* ============================= */
 /* CAMISA BÁSICA */
 /* ============================= */
+
+/* LIBERA O GRID DAS CAMISAS BÁSICAS */
+.basica .container {
+  max-width: 100%;
+}
+
+/* Ajuste de rolagem para header fixo */
+#basica {
+  scroll-margin-top: 130px;
+}
+
+   
 /* Ajuste de rolagem para header fixo */
 #basica {
   scroll-margin-top: 130px;
@@ -794,14 +806,16 @@ text-shadow:
   align-items: center;
 }
 
-/* ============================= */
-/* ESTAMPAS BÁSICAS – VISUAL DE CATÁLOGO */
-/* ============================= */
-
-/* Remove efeito de formulário ligado */
+/* VISUAL DE CATÁLOGO – impede crescimento vertical */
 .basica-card .etapa {
   opacity: 1;
   transform: none;
+  display: none;
+}
+
+/* Mantém apenas a primeira etapa visível */
+.basica-card .etapa.visivel {
+  display: block;
 }
 
 /* Mantém etapas escondidas só quando realmente ocultas */
@@ -817,6 +831,28 @@ text-shadow:
 .basica-card {
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+   /* Hover premium – somente cards disponíveis */
+.basica-card.disponivel:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+}
+
+/* Preço com destaque maior */
+.basica-card .preco {
+  font-size: 1.45rem;
+  font-weight: 900;
+  margin: 12px 0 8px;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+/* Card esgotado fica claro e neutro */
+.basica-card.bloqueado {
+  opacity: 0.45;
+  filter: grayscale(100%);
+  pointer-events: none;
 }
    
   </style>
@@ -961,7 +997,7 @@ text-shadow:
  <!-- ============================= -->
 <!-- CAMISA BÁSICA -->
 <!-- ============================= -->
-  
+
 <section class="basica" id="basica">
   <div class="container">
 
