@@ -654,26 +654,6 @@ text-shadow:
 /* ETAPAS INTERNAS DO FORMULÁRIO */
 /* ============================= */
 
-.basica-card .etapa {
-  width: 100%;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.35s ease;
-}
-
-.basica-card .etapa.visivel {
-  max-height: 300px;             /* ✅ cabe quantidade + botão */
-  opacity: 1;
-}
-
-/* estado oculto controlado */
-.basica-card .oculta {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-}
-
 @media (max-width: 768px) {
 }
 
@@ -1555,6 +1535,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+<style>
+  /* TODO O SEU CSS AQUI */
+
+  /* ============================= */
+  /* CARD FIXO COM SCROLL INTERNO */
+  /* ============================= */
+
+  .basica-card {
+    background: #ffffff;
+    padding: 14px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 280px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .basica-card > *:not(img):not(.preco) {
+    overflow-y: auto;
+  }
+
+  .basica-card > *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .basica-card > *::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+  }
+
+  .basica-card .etapa {
+    width: 100%;
+    opacity: 1;
+  }
+
+  .basica-card .oculta {
+    display: none;
+  }
+</style>
+
+ 
 </script>
 
 <datalist id="bairros-joinville">
@@ -1604,8 +1628,6 @@ document.addEventListener("DOMContentLoaded", () => {
   <option value="Vila Cubatão">
   <option value="Vila Nova">
 </datalist>
-
-
-     
+    
 </body>
 </html>
