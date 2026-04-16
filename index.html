@@ -606,12 +606,6 @@ text-shadow:
   scroll-margin-top: 130px;
 }
 
-   
-/* Ajuste de rolagem para header fixo */
-#basica {
-  scroll-margin-top: 130px;
-}
-
 .basica {
   min-height: calc(100vh - 120px); /* reserva a tela */
   padding: 40px 0 80px;            /* sobe o conteúdo */
@@ -791,12 +785,12 @@ text-shadow:
 
 .basica-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 por linha */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 32px;
-
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px 15px 80px; /* espaço p/ até 15 cards */
+  padding: 20px 15px 80px;
+  justify-items: center;
 }
 
 /* Cards ficam independentes, como produtos */
