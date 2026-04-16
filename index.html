@@ -1,1811 +1,1768 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1 id='sample'>My First Heading</h1>
+    <p>My first paragraph.</p>
+</body>
+
+</html>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
- <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>F Pac Store | Não é só roupa. É identidade!</title>
-
-<meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
-<meta name="author" content="F Pac Store">
-<!-- FONTES -->
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Fonte blacklisted -->
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-
-/* MENU INTERNO */
-
-.menu-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
-
-/* ICONES SOCIAIS NO MENU */
-
-.menu-social {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-/* ÍCONES SOCIAIS DO MENU */
-/* Tamanho dos ícones Whats/Instagram */
-
-.menu-social i {
-  font-size: 2.6rem; /* <<< AUMENTE AQUI */
-}
-.menu-social a {
-  font-size: 2.3rem; /* AUMENTA OS ÍCONES */
-  transition: transform 0.2s ease;
-}
-
-/* HOVER DOS ICONES */
-
-.menu-social a:hover {
-  color: var(--accent);
-  transform: scale(1.15);
-}
-
-/* ============================= */
-/* CORES OFICIAIS DOS ÍCONES */
-/* ============================= */
-
-/* WhatsApp - verde oficial */
-.menu-social a .fa-whatsapp {
-  color: #25D366;
-}
-
-/* Instagram - gradiente oficial da marca */
-
-.menu-social a .fa-instagram {
-  background: radial-gradient(circle at 30% 110%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285AEB 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-/* VARIÁVEIS DE CORES GLOBAIS */
-    
-    :root {
-      --primary: #003366;
-      --accent: #FFC107;
-      --bg: #f5f5f5;
-      --text: #333;
-      --white: #fff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 15px;
-    }
-
-    /* HEADER */
-
-    .header {
-      background: var(--primary);
-      color: var(--white);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-/* HEADER - FAIXA DO MENU (DESKTOP) */
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: 120px;      /* aumenta a faixa azul */
-  padding: 0 15px;   /* respiro lateral */
-}
-
-    /* LOGO */
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      max-height: 85px;
-    }
-
-    .logo-text {
-      font-family: 'blacklisted', sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 3px;
-      line-height: 1;
-      color: #000000;
-      -webkit-text-stroke: 2.3px #FFC107;
-      display: flex;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .logo-img {
-        max-height: 90px;
-      }
-
-      .logo-text {
-  color: #FFC107;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-    }
-    /* MENU DE NAVEGAÇÃO */
-
-    .nav {
-      display: none;
-      gap: 25px;
-    }
-/* LINKS DO MENU (PADRONIZAÇÃO) */
-/* Mesma fonte, tamanho e peso */
-    
-.nav a {
-  font-family: 'Inter', sans-serif; /* Fonte única */
-  font-size: 1rem;                  /* Mesmo tamanho */
-  font-weight: 600;                 /* Mesmo peso */
-  color: white;
-  text-decoration: none;
-}
-
-    .menu-toggle {
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: white;
-    }
-
-/* Hover opcional (desktop) */
-
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-    .nav.active {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      width: 100%;
-      background: var(--primary);
-      top: 90px;
-      left: 0;
-      padding: 20px;
-      gap: 15px;
-    }
-
-    @media (min-width: 768px) {
-      .nav {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: none;
-      }
-    }
-
-/* ============================= */
-/* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
-@media (max-width: 768px) {
-  .menu-vertical {
-    writing-mode: horizontal-tb; /* garante horizontal */
-    white-space: nowrap;         /* NÃO quebra linha */
-    display: inline-block;       /* evita empilhamento */
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--accent);
-  }
-}
-
-    /* HERO CAPA DO SITE */
-
-.hero {
-  position: relative;
-  margin-top: 90px;
-  min-height: 80vh;
-
-  /* FUNDO ESTENDIDO (preenche a tela) */
-  background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
-  background-size: cover;
-  background-position: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  color: white;
-  padding: 40px 20px;
-  overflow: hidden;
-}
-
-   .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 960px;
-  width: 100%;
-
-  padding: 80px 40px;
-  border-radius: 12px;
-}
-
-/* HERO - MOBILE RETRATO */
-/* Ajuste correto para celular */
-
-@media (max-width: 768px) and (orientation: portrait) {
-  .hero {
-    min-height: 60vh;          /* evita página gigante */
-    background-size: cover;   /* evita áreas brancas */
-    padding: 40px 20px;
-  }
-}
-    
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: auto;
-      margin-bottom: 25px;
-    } 
-/* BOTÃO PRINCIPAL */
-      
-    .btn {
- background: rgba(255, 193, 7, 0.85); /* amarelo semi-transparente */
-  color: black;
-  padding: 15px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-   /* CTA DOMINANTE — CAMISA PREMIUM */
-
-.btn-destaque {
-  background: linear-gradient(
-    135deg,
-    #FFC107,
-    #ffb300
-  );
-  color: #000;
-  font-size: 1.05rem;
-  padding: 16px 36px;
-  font-weight: 800;
-  border-radius: 8px;
-
-  box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-  transition: all 0.25s ease;
-}
-
-.btn-destaque:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.4);
-}
-
-.btn:hover {
-  background: #e6ad00;
-  transform: scale(1.05);
-}
-
-/* CATÁLOGO DE ESTAMPAS */
-
-.catalogo {
-  padding: 80px 0 140px;   /* mais respiro embaixo */
-  min-height: 100vh;       /* ocupa a altura da tela */
-  background: #ffffff;
-}
-
-.catalogo h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.catalogo-descricao {
-  text-align: center;
-  color: #666;
-  margin-bottom: 40px;
-}
-
-.catalogo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 18px;
-}
-
-.estampa {
-  background: #f8f8f8;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.estampa img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain; /* ← evita imagem grande demais */
-  padding: 8px;
-}
-
-.estampa span {
-  display: block;
-  padding: 8px;
-  font-size: 0.85rem; /* texto mais compacto */
-  font-weight: 600;
-}
-
-   /* ============================= */
-/* CTA CATÁLOGO – CARD MAIS ESTAMPAS */
-/* ============================= */
-
-.catalogo-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-
-.catalogo-card {
-  width: 100%;
-  max-width: 180px;
-  aspect-ratio: 1 / 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background: var(--primary);
-  border-radius: 10px;
-  text-decoration: none;
-
-  /* MAIS ESTAMPA DO CATALOGO */
-  font-family: 'blacklisted', sans-serif;
-  font-size: 1.3rem;
-  letter-spacing: 3.2px;
-  line-height: 1.35;
-
-
-color: #FFC107;                  /* amarelo vivo */
--webkit-text-stroke: 1.3px #111; /* borda escura, mas mais fina */
-
-text-shadow:
-  1px 1px 0 rgba(0,0,0,0.8),
-  2px 2px 4px rgba(0,0,0,0.35);
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  transition: all 0.3s ease;
-}
-
-.catalogo-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-
-@media (max-width: 768px) {
-  .catalogo-card {
-    max-width: 100%;
-    height: auto;
-    padding: 28px;
-    font-size: 0.95rem;
-  }
-}
-   
-/* ============================= */
-/* BOTÃO MAIS ESTAMPAS */
-/* ============================= */
-.catalogo-cta {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-
-.catalogo-cta a {
-  text-decoration: none;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: #000;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.btn-outline:hover {
-  background: var(--accent);
-  color: #000;
-  transform: scale(1.05);
-}
-   
-    /* PRODUTOS */
-
- .produtos {
-  padding: 40px 0 40px;
-  min-height: calc(100vh - 120px); /* ocupa a tela sem invadir o header */
-}
-
-.produtos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-   
-    .produtos h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-   /* PRODUTOS – cards lado a lado */
-.produtos .grid {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 900px;   /* controla largura total */
-  margin: 0 auto;     /* centraliza a grid */
-}
-
-    .card {
-  background: white;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-/* IMAGENS DOS PRODUTOS */
-/* Evita imagens gigantes no mobile */
-
-/* ============================= */
-/* PRODUTOS - IMAGENS */
-/* ============================= */
-
-.card img {
-  width: 100%;
-  max-height: 35vh;   /* controle do tamanho */
-  object-fit: contain; /* 👈 mostra a imagem inteira */
-  background: #fff;   /* evita “buraco” visual */
-  border-radius: 5px;
-}
-
-.card h3 {
-  margin: 8px 0 4px;
-  font-size: 1rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-}
-
-/* ============================= */
-/* PRODUTOS - MOBILE */
-/* ============================= */
-
-@media (max-width: 768px) {
-  .card img {
-    aspect-ratio: 4 / 5;   /* formato mais elegante no celular */
-  }
-}
-
-/* ============================= */
-/* CATÁLOGO DE ESTAMPAS - MOBILE */
-/* ============================= */
-
-@media (max-width: 768px) {
-  .catalogo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .estampa img {
-    padding: 6px;
-  }
-
-  .estampa span {
-    font-size: 0.8rem;
-    padding: 6px;
-  }
-}
-
-/* ============================= */
-/* BOTÃO WHATSAPP */
-/* ============================= */
-
-.whatsapp {
-  background: #25D366;
-  color: white;
-  padding: 12px;
-  display: block;
-  margin-top: 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-}
-
-    /* FOOTER */
-
-    .footer {
-      background: #001a33;
-      color: white;
-      padding: 25px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    /* ============================= */
-/* CAMISA BÁSICA */
-/* ============================= */
-/* Ajuste de rolagem para header fixo */
-#basica {
-  scroll-margin-top: 130px;
-}
-
-.basica {
-  min-height: calc(100vh - 120px); /* reserva a tela */
-  padding: 40px 0 80px;            /* sobe o conteúdo */
-}
-   
-   #inicio {
-  scroll-margin-top: 120px;
-}
-   #produtos {
-  scroll-margin-top: 120px;
-}
-
-   #catalogo {
-  scroll-margin-top: 120px;
-}
-
-.basica h2,
-.basica p {
-  text-align: center;
-}
-
-.basica p {
-  margin-bottom: 40px;
-}
-
-  .basica-card {
-  background: #ffffff;
-  padding: 14px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 280px;   /* ✅ largura ideal p/ até 5 por linha */
-  min-height: 380px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-}
-
-.etapa {
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: all 0.3s ease;
-}
-
-.etapa.visivel {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-   /* Primeira etapa sempre visível */
-.oculta {
-  display: none;
-}
-
-.basica-card img {
-  width: 100%;
-  max-width: 210px;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-.basica-card label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
-}
-   .ajuda {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 14px;
-}
-
-.basica-card select,
-.basica-card input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-}
-
-.basica-card .preco {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 6px 0;
-  min-height: 32px;   /* PASSO 3 – reserva altura fixa */
-}
-
-.basica-card button {
-  margin-top: 12px;
-  width: 100%;
-  padding: 10px;
-  background: #FFC107;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-   /* ESTADO BLOQUEADO AUTOMÁTICO (CARDS ESGOTADOS) */
-.basica-card.bloqueado {
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-   /* DESTAQUE PARA CARD DISPONÍVEL */
-.basica-card.disponivel {
-  border: 2px solid var(--accent);
-  box-shadow: 
-    0 0 0 2px rgba(255,193,7,0.25),
-    0 14px 30px rgba(0,0,0,0.2);
-  transform: translateY(-4px);
-  transition: all 0.3s ease;
-}
-
-.basica-card.disponivel:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
-/* PREVIEW DA CAMISA */
-
-.preview-camisa {
-  position: relative;
-  width: 260px;
-  margin: 0 auto 20px;
-}
-
-.preview-camisa img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-}
-
-.estampa-preview {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Desktop médio */
-@media (max-width: 1400px) {
-  .basica-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .basica-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .basica-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================= */
-/* ESTAMPAS BÁSICAS – PADRÃO PRODUTOS */
-/* ============================= */
-
-.basica-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 por linha */
-  gap: 32px;
-
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 15px 80px; /* espaço p/ até 15 cards */
-}
-
-/* Cards ficam independentes, como produtos */
-.basica-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ============================= */
-/* ESTAMPAS BÁSICAS – VISUAL DE CATÁLOGO */
-/* ============================= */
-
-/* Remove efeito de formulário ligado */
-.basica-card .etapa {
-  opacity: 1;
-  transform: none;
-}
-
-/* Mantém etapas escondidas só quando realmente ocultas */
-.basica-card .oculta {
-  display: none;
-}
-   
-  </style>
+    <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>F Pac Store | Não é só roupa. É identidade!</title>
+
+    <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
+    <meta name="author" content="F Pac Store">
+    <!-- FONTES -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Fonte blacklisted -->
+    <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* MENU INTERNO */
+        
+        .menu-links {
+          display: flex;
+          gap: 25px;
+          align-items: center;
+        }
+        
+        /* ICONES SOCIAIS NO MENU */
+        
+        .menu-social {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+        }
+        /* ÍCONES SOCIAIS DO MENU */
+        /* Tamanho dos ícones Whats/Instagram */
+        
+        .menu-social i {
+          font-size: 2.6rem; /* <<< AUMENTE AQUI */
+        }
+        .menu-social a {
+          font-size: 2.3rem; /* AUMENTA OS ÍCONES */
+          transition: transform 0.2s ease;
+        }
+        
+        /* HOVER DOS ICONES */
+        
+        .menu-social a:hover {
+          color: var(--accent);
+          transform: scale(1.15);
+        }
+        
+        /* ============================= */
+        /* CORES OFICIAIS DOS ÍCONES */
+        /* ============================= */
+        
+        /* WhatsApp - verde oficial */
+        .menu-social a .fa-whatsapp {
+          color: #25D366;
+        }
+        
+        /* Instagram - gradiente oficial da marca */
+        
+        .menu-social a .fa-instagram {
+          background: radial-gradient(circle at 30% 110%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285AEB 90%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        /* VARIÁVEIS DE CORES GLOBAIS */
+            
+            :root {
+              --primary: #003366;
+              --accent: #FFC107;
+              --bg: #f5f5f5;
+              --text: #333;
+              --white: #fff;
+            }
+        
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+        
+            body {
+              font-family: 'Inter', sans-serif;
+              background: var(--bg);
+              color: var(--text);
+              line-height: 1.6;
+            }
+        
+            .container {
+              max-width: 1200px;
+              margin: auto;
+              padding: 0 15px;
+            }
+        
+            /* HEADER */
+        
+            .header {
+              background: var(--primary);
+              color: var(--white);
+              position: fixed;
+              width: 100%;
+              top: 0;
+              z-index: 1000;
+            }
+        /* HEADER - FAIXA DO MENU (DESKTOP) */
+        
+        .header-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        
+          height: 120px;      /* aumenta a faixa azul */
+          padding: 0 15px;   /* respiro lateral */
+        }
+        
+            /* LOGO */
+        
+            .logo {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              text-decoration: none;
+            }
+        
+            .logo-img {
+              max-height: 85px;
+            }
+        
+            .logo-text {
+              font-family: 'blacklisted', sans-serif;
+              font-size: 2.2rem;
+              letter-spacing: 3px;
+              line-height: 1;
+              color: #000000;
+              -webkit-text-stroke: 2.3px #FFC107;
+              display: flex;
+              align-items: center;
+            }
+        
+            @media (min-width: 768px) {
+              .logo-img {
+                max-height: 90px;
+              }
+        
+              .logo-text {
+          color: #FFC107;
+          -webkit-text-stroke: 1.5px #000;
+          text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+            }
+            /* MENU DE NAVEGAÇÃO */
+        
+            .nav {
+              display: none;
+              gap: 25px;
+            }
+        /* LINKS DO MENU (PADRONIZAÇÃO) */
+        /* Mesma fonte, tamanho e peso */
+            
+        .nav a {
+          font-family: 'Inter', sans-serif; /* Fonte única */
+          font-size: 1rem;                  /* Mesmo tamanho */
+          font-weight: 600;                 /* Mesmo peso */
+          color: white;
+          text-decoration: none;
+        }
+        
+            .menu-toggle {
+              font-size: 2rem;
+              background: none;
+              border: none;
+              color: white;
+            }
+        
+        /* Hover opcional (desktop) */
+        
+        .menu-toggle {
+          font-size: 1.6rem;
+          background: none;
+          border: none;
+          color: white;
+          transition: color 0.3s ease;
+        }
+        
+            .nav.active {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              width: 100%;
+              background: var(--primary);
+              top: 90px;
+              left: 0;
+              padding: 20px;
+              gap: 15px;
+            }
+        
+            @media (min-width: 768px) {
+              .nav {
+                display: flex;
+              }
+        
+              .menu-toggle {
+                display: none;
+              }
+            }
+        
+        /* ============================= */
+        /* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
+        @media (max-width: 768px) {
+          .menu-vertical {
+            writing-mode: horizontal-tb; /* garante horizontal */
+            white-space: nowrap;         /* NÃO quebra linha */
+            display: inline-block;       /* evita empilhamento */
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent);
+          }
+        }
+        
+            /* HERO CAPA DO SITE */
+        
+        .hero {
+          position: relative;
+          margin-top: 90px;
+          min-height: 80vh;
+        
+          /* FUNDO ESTENDIDO (preenche a tela) */
+          background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+          background-size: cover;
+          background-position: center;
+        
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        
+          color: white;
+          padding: 40px 20px;
+          overflow: hidden;
+        }
+        
+           .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.65);
+          z-index: 1;
+        }
+        
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 960px;
+          width: 100%;
+        
+          padding: 80px 40px;
+          border-radius: 12px;
+        }
+        
+        /* HERO - MOBILE RETRATO */
+        /* Ajuste correto para celular */
+        
+        @media (max-width: 768px) and (orientation: portrait) {
+          .hero {
+            min-height: 60vh;          /* evita página gigante */
+            background-size: cover;   /* evita áreas brancas */
+            padding: 40px 20px;
+          }
+        }
+            
+            .hero h1 {
+              font-size: 2.8rem;
+              margin-bottom: 15px;
+              font-weight: 800;
+            }
+        
+            .hero p {
+              font-size: 1.2rem;
+              max-width: 650px;
+              margin: auto;
+              margin-bottom: 25px;
+            } 
+        /* BOTÃO PRINCIPAL */
+              
+            .btn {
+         background: rgba(255, 193, 7, 0.85); /* amarelo semi-transparente */
+          color: black;
+          padding: 15px 30px;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 5px;
+          display: inline-block;
+          transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+           /* CTA DOMINANTE — CAMISA PREMIUM */
+        
+        .btn-destaque {
+          background: linear-gradient(
+            135deg,
+            #FFC107,
+            #ffb300
+          );
+          color: #000;
+          font-size: 1.05rem;
+          padding: 16px 36px;
+          font-weight: 800;
+          border-radius: 8px;
+        
+          box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+          transition: all 0.25s ease;
+        }
+        
+        .btn-destaque:hover {
+          transform: translateY(-3px) scale(1.04);
+          box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+        
+        .btn:hover {
+          background: #e6ad00;
+          transform: scale(1.05);
+        }
+        
+        /* CATÁLOGO DE ESTAMPAS */
+        
+        .catalogo {
+          padding: 80px 0 140px;   /* mais respiro embaixo */
+          min-height: 100vh;       /* ocupa a altura da tela */
+          background: #ffffff;
+        }
+        
+        .catalogo h2 {
+          text-align: center;
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+        }
+        
+        .catalogo-descricao {
+          text-align: center;
+          color: #666;
+          margin-bottom: 40px;
+        }
+        
+        .catalogo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+          gap: 18px;
+        }
+        
+        .estampa {
+          background: #f8f8f8;
+          border-radius: 8px;
+          overflow: hidden;
+          text-align: center;
+          transition: transform 0.2s ease;
+          cursor: pointer;
+        }
+        
+        .estampa img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: contain; /* ← evita imagem grande demais */
+          padding: 8px;
+        }
+        
+        .estampa span {
+          display: block;
+          padding: 8px;
+          font-size: 0.85rem; /* texto mais compacto */
+          font-weight: 600;
+        }
+        
+           /* ============================= */
+        /* CTA CATÁLOGO – CARD MAIS ESTAMPAS */
+        /* ============================= */
+        
+        .catalogo-cta {
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+        }
+        
+        .catalogo-card {
+          width: 100%;
+          max-width: 180px;
+          aspect-ratio: 1 / 1;
+        
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        
+          background: var(--primary);
+          border-radius: 10px;
+          text-decoration: none;
+        
+          /* MAIS ESTAMPA DO CATALOGO */
+          font-family: 'blacklisted', sans-serif;
+          font-size: 1.3rem;
+          letter-spacing: 3.2px;
+          line-height: 1.35;
+        
+        
+        color: #FFC107;                  /* amarelo vivo */
+        -webkit-text-stroke: 1.3px #111; /* borda escura, mas mais fina */
+        
+        text-shadow:
+          1px 1px 0 rgba(0,0,0,0.8),
+          2px 2px 4px rgba(0,0,0,0.35);
+        
+          box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+          transition: all 0.3s ease;
+        }
+        
+        .catalogo-card:hover {
+          transform: translateY(-6px) scale(1.04);
+          box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        }
+        
+        @media (max-width: 768px) {
+          .catalogo-card {
+            max-width: 100%;
+            height: auto;
+            padding: 28px;
+            font-size: 0.95rem;
+          }
+        }
+           
+        /* ============================= */
+        /* BOTÃO MAIS ESTAMPAS */
+        /* ============================= */
+        .catalogo-cta {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+        }
+        
+        .catalogo-cta a {
+          text-decoration: none;
+        }
+        
+        .btn-outline {
+          background: transparent;
+          border: 2px solid var(--accent);
+          color: #000;
+          padding: 12px 32px;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+        
+        .btn-outline:hover {
+          background: var(--accent);
+          color: #000;
+          transform: scale(1.05);
+        }
+           
+            /* PRODUTOS */
+        
+         .produtos {
+          padding: 40px 0 40px;
+          min-height: calc(100vh - 120px); /* ocupa a tela sem invadir o header */
+        }
+        
+        .produtos .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+           
+            .produtos h2 {
+              text-align: center;
+              margin-bottom: 40px;
+              font-size: 2rem;
+            }
+        
+            .grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 25px;
+            }
+        
+           /* PRODUTOS – cards lado a lado */
+        .produtos .grid {
+          grid-template-columns: repeat(2, 1fr);
+          max-width: 900px;   /* controla largura total */
+          margin: 0 auto;     /* centraliza a grid */
+        }
+        
+            .card {
+          background: white;
+          border-radius: 8px;
+          padding: 10px;
+          text-align: center;
+          box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        /* IMAGENS DOS PRODUTOS */
+        /* Evita imagens gigantes no mobile */
+        
+        /* ============================= */
+        /* PRODUTOS - IMAGENS */
+        /* ============================= */
+        
+        .card img {
+          width: 100%;
+          max-height: 35vh;   /* controle do tamanho */
+          object-fit: contain; /* 👈 mostra a imagem inteira */
+          background: #fff;   /* evita “buraco” visual */
+          border-radius: 5px;
+        }
+        
+        .card h3 {
+          margin: 8px 0 4px;
+          font-size: 1rem;
+        }
+        
+        .card p {
+          font-size: 0.9rem;
+        }
+        
+        /* ============================= */
+        /* PRODUTOS - MOBILE */
+        /* ============================= */
+        
+        @media (max-width: 768px) {
+          .card img {
+            aspect-ratio: 4 / 5;   /* formato mais elegante no celular */
+          }
+        }
+        
+        /* ============================= */
+        /* CATÁLOGO DE ESTAMPAS - MOBILE */
+        /* ============================= */
+        
+        @media (max-width: 768px) {
+          .catalogo-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+          }
+        
+          .estampa img {
+            padding: 6px;
+          }
+        
+          .estampa span {
+            font-size: 0.8rem;
+            padding: 6px;
+          }
+        }
+        
+        /* ============================= */
+        /* BOTÃO WHATSAPP */
+        /* ============================= */
+        
+        .whatsapp {
+          background: #25D366;
+          color: white;
+          padding: 12px;
+          display: block;
+          margin-top: 15px;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: 600;
+        }
+        
+            /* FOOTER */
+        
+            .footer {
+              background: #001a33;
+              color: white;
+              padding: 25px;
+              text-align: center;
+              font-size: 0.9rem;
+            }
+        
+            /* ============================= */
+        /* CAMISA BÁSICA */
+        /* ============================= */
+        /* Ajuste de rolagem para header fixo */
+        #basica {
+          scroll-margin-top: 130px;
+        }
+        
+        .basica {
+          min-height: calc(100vh - 120px); /* reserva a tela */
+          padding: 40px 0 80px;            /* sobe o conteúdo */
+        }
+           
+           #inicio {
+          scroll-margin-top: 120px;
+        }
+           #produtos {
+          scroll-margin-top: 120px;
+        }
+        
+           #catalogo {
+          scroll-margin-top: 120px;
+        }
+        
+        .basica h2,
+        .basica p {
+          text-align: center;
+        }
+        
+        .basica p {
+          margin-bottom: 40px;
+        }
+        
+          .basica-card {
+          background: #ffffff;
+          padding: 14px;
+          border-radius: 12px;
+          width: 100%;
+          max-width: 280px;   /* ✅ largura ideal p/ até 5 por linha */
+          min-height: 380px;
+          box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+          text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+        }
+        
+        .etapa {
+          margin-top: 8px;
+          opacity: 0;
+          transform: translateY(-6px);
+          transition: all 0.3s ease;
+        }
+        
+        .etapa.visivel {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+           /* Primeira etapa sempre visível */
+        .oculta {
+          display: none;
+        }
+        
+        .basica-card img {
+          width: 100%;
+          max-width: 210px;
+          height: auto;
+          aspect-ratio: 3 / 4;
+          object-fit: contain;
+          margin-bottom: 10px;
+        }
+        
+        .basica-card label {
+          display: block;
+          margin-top: 12px;
+          font-weight: 600;
+        }
+           .ajuda {
+          font-size: 0.8rem;
+          color: #666;
+          margin-top: 14px;
+        }
+        
+        .basica-card select,
+        .basica-card input {
+          width: 100%;
+          padding: 8px;
+          margin-top: 5px;
+        }
+        
+        .basica-card .preco {
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin: 6px 0;
+          min-height: 32px;   /* PASSO 3 – reserva altura fixa */
+        }
+        
+        .basica-card button {
+          margin-top: 12px;
+          width: 100%;
+          padding: 10px;
+          background: #FFC107;
+          border: none;
+          border-radius: 6px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        
+           /* ESTADO BLOQUEADO AUTOMÁTICO (CARDS ESGOTADOS) */
+        .basica-card.bloqueado {
+          opacity: 0.55;
+          pointer-events: none;
+        }
+        
+           /* DESTAQUE PARA CARD DISPONÍVEL */
+        .basica-card.disponivel {
+          border: 2px solid var(--accent);
+          box-shadow: 
+            0 0 0 2px rgba(255,193,7,0.25),
+            0 14px 30px rgba(0,0,0,0.2);
+          transform: translateY(-4px);
+          transition: all 0.3s ease;
+        }
+        
+        .basica-card.disponivel:hover {
+          transform: translateY(-6px) scale(1.02);
+        }
+        
+        /* PREVIEW DA CAMISA */
+        
+        .preview-camisa {
+          position: relative;
+          width: 260px;
+          margin: 0 auto 20px;
+        }
+        
+        .preview-camisa img {
+          width: 100%;
+          display: block;
+          border-radius: 6px;
+        }
+        
+        .estampa-preview {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          background: #000;
+          color: #fff;
+          font-weight: bold;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          top: 35%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
+        /* Desktop médio */
+        @media (max-width: 1400px) {
+          .basica-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+        
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .basica-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        
+        /* Mobile */
+        @media (max-width: 600px) {
+          .basica-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+        
+        /* ============================= */
+        /* ESTAMPAS BÁSICAS – PADRÃO PRODUTOS */
+        /* ============================= */
+        
+        .basica-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr); /* 5 por linha */
+          gap: 32px;
+        
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 20px 15px 80px; /* espaço p/ até 15 cards */
+        }
+        
+        /* Cards ficam independentes, como produtos */
+        .basica-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        /* ============================= */
+        /* ESTAMPAS BÁSICAS – VISUAL DE CATÁLOGO */
+        /* ============================= */
+        
+        /* Remove efeito de formulário ligado */
+        .basica-card .etapa {
+          opacity: 1;
+          transform: none;
+        }
+        
+        /* Mantém etapas escondidas só quando realmente ocultas */
+        .basica-card .oculta {
+          display: none;
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="container header-content">
+    <header class="header">
+        <div class="container header-content">
 
-    <a href="#" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
-    </a>
+            <a href="#" class="logo">
+                <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+                <span class="logo-text">F PAC STORE</span>
+            </a>
 
-    <nav class="nav" id="nav">
+            <nav class="nav" id="nav">
 
-  <!-- LINKS DO MENU -->
-  <div class="menu-links">
-    <a href="#inicio">Início</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#criar" class="menu-vertical">Criar Camisa</a>
-  </div>
+                <!-- LINKS DO MENU -->
+                <div class="menu-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#catalogo">Catálogo</a>
+                    <a href="#produtos">Produtos</a>
+                    <a href="#criar" class="menu-vertical">Criar Camisa</a>
+                </div>
 
-  <!-- ICONES SOCIAIS -->
-  <div class="menu-social">
-    <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
+                <!-- ICONES SOCIAIS -->
+                <div class="menu-social">
+                    <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
 
-    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
+                    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
 
-</nav>
+            </nav>
 
-    <button class="menu-toggle" id="toggle">
-      <i class="fas fa-bars"></i>
-    </button>
+            <button class="menu-toggle" id="toggle">
+                <i class="fas fa-bars"></i>
+            </button>
 
-  </div>
-</header>
+        </div>
+    </header>
 
-<section class="hero" id="inicio">
-  <div class="hero-overlay"></div>
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <h1>Não é só roupa. É identidade.</h1>
-    <p>
-      Camisas masculinas estampadas para quem se recusa a vestir o comum.
-      Mais atitude, mais personalidade e estilo que fala antes de você.
-    </p>
-    <a href="#produtos" class="btn">
+        <div class="hero-content">
+            <h1>Não é só roupa. É identidade.</h1>
+            <p>
+                Camisas masculinas estampadas para quem se recusa a vestir o comum. Mais atitude, mais personalidade e estilo que fala antes de você.
+            </p>
+            <a href="#produtos" class="btn">
  Comprar Já!
 </a>
-  </div>
-</section>
-  
-<!-- ============================= -->
-<!-- CATÁLOGO DE ESTAMPAS -->
-<!-- ============================= -->
-  
-<section class="catalogo" id="catalogo">
-  <div class="container">
+        </div>
+    </section>
 
-    <h2>Nossas Estampas</h2>
-    <p class="catalogo-descricao">
-      Escolha a estampa que mais combina com você.
-    </p>
+    <!-- ============================= -->
+    <!-- CATÁLOGO DE ESTAMPAS -->
+    <!-- ============================= -->
 
-    <div class="catalogo-grid">
+    <section class="catalogo" id="catalogo">
+        <div class="container">
 
-      <div class="estampa">
-        <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
-        <span>E01 – Tropa Urbana – Com Fundo</span>
-      </div>
-     
-      <div class="estampa">
-        <img src="imagens/estampas/e2.png" alt="Estampa 02">
-        <span>E01 – Tropa Urbana – Sem Fundo</span>
-      </div>
+            <h2>Nossas Estampas</h2>
+            <p class="catalogo-descricao">
+                Escolha a estampa que mais combina com você.
+            </p>
 
-      <div class="estampa">
-        <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
-        <span>E02 – Tropa Urbana – Com Fundo</span>
-      </div>
+            <div class="catalogo-grid">
 
-      <div class="estampa">
-        <img src="imagens/estampas/e4.png" alt="Estampa 04">
-        <span>E02 – Tropa Urbana – Sem Fundo</span>
-      </div>
-     
-<div class="catalogo-cta">
-  <a
-    href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link"
-    target="_blank"
-    class="catalogo-card"
-    rel="noopener"
-  >
+                <div class="estampa">
+                    <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
+                    <span>E01 – Tropa Urbana – Com Fundo</span>
+                </div>
+
+                <div class="estampa">
+                    <img src="imagens/estampas/e2.png" alt="Estampa 02">
+                    <span>E01 – Tropa Urbana – Sem Fundo</span>
+                </div>
+
+                <div class="estampa">
+                    <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
+                    <span>E02 – Tropa Urbana – Com Fundo</span>
+                </div>
+
+                <div class="estampa">
+                    <img src="imagens/estampas/e4.png" alt="Estampa 04">
+                    <span>E02 – Tropa Urbana – Sem Fundo</span>
+                </div>
+
+                <div class="catalogo-cta">
+                    <a href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link" target="_blank" class="catalogo-card" rel="noopener">
   Catalogo Completo
   </a>
-</div>
+                </div>
 
-</div>
-</section>
-     
-    </div>
-  </div>
-</section>
-  
-<!-- ============================= -->
-<!-- PRODUTOS -->
-<!-- ============================= -->
-
-<section class="produtos" id="produtos">
-  <div class="container">
-
-    <h2>Nossos Produtos</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
-        <h3>Force</h3>
-       <p>Camisas Prontas</p>
-        <a href="#basica" class="btn">Escolher Camisa</a>
-      </div>
-
-      <div class="card">
-        <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
-        <h3>Prime</h3>
-        <p>Criar do seu jeito</p>
-        <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
-      </div>
+            </div>
+    </section>
 
     </div>
-  </div>
-</section>
-  
- <!-- ============================= -->
-<!-- CAMISA BÁSICA -->
-<!-- ============================= -->
-  
-<section class="basica" id="basica">
-  <div class="container">
-
-    <h2>Estampa Discreta</h2>
-    <p>Modelo pronto com valor fixo</p>
-
-    <div class="basica-grid">
-      
-</div>
-
-     <!-- CAMISA BÁSICA 2 -->
-     
-<div class="basica-card">
-
-  <img src="imagens/logo-nas-costas.png" alt="Camiseta Básica">
-
-  <p class="preco">R$ 79,90</p>
-
-  <!-- COR -->
-  <div class="etapa visivel">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
-
-  <!-- TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
-
- <!-- ETAPA 3: QUANTIDADE -->
-<div class="etapa etapa-quantidade oculta">
-  <label>Quantidade</label>
-  <input
-    type="number"
-    class="quantidade"
-    value="0"
-    min="0"
-  >
-</div>
-
-<!-- ETAPA 4: FINALIZAR -->
-<div class="etapa etapa-finalizar oculta">
-  <button>Finalizar Compra</button>
-</div>
-
-<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-<div class="etapa etapa-checkout oculta">
-
-  <label>Bairro para entrega</label>
-  <input
-    type="text"
-    class="bairro"
-     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
-  >
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
-<!-- BOTÃO FINAL PARA WHATSAPP -->
-<div class="etapa etapa-enviar oculta">
-  <button class="btn-whatsapp">Enviar Pedido!</button>
-</div>
- 
-</div>
-
-<!-- CAMISA BÁSICA 3 -->
-     
-<div class="basica-card">
-
-  <!-- IMAGEM DO PRODUTO -->
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <!-- PREÇO -->
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA 1: COR -->
-  <div class="etapa visivel">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
-
-  <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
-
- <!-- ETAPA 3: QUANTIDADE -->
-<div class="etapa etapa-quantidade oculta">
-  <label>Quantidade</label>
-  <input class="quantidade" type="number" value="0" min="0">
-</div>
-
-<!-- ETAPA 4: FINALIZAR -->
-<div class="etapa etapa-finalizar oculta">
-  <button>Finalizar Compra</button>
-</div>
-
-<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-<div class="etapa etapa-checkout oculta">
-
-  <label>Bairro para entrega</label>
-  <input
-    type="text"
-    class="bairro"
-     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
-  >
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
-<!-- BOTÃO FINAL PARA WHATSAPP -->
-<div class="etapa etapa-enviar oculta">
-  <button class="btn-whatsapp">Enviar Pedido!</button>
-</div>
- 
-</div>
-
-<!-- CAMISA BÁSICA 4 -->
-     
-<div class="basica-card">
-
-  <!-- IMAGEM DO PRODUTO -->
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <!-- PREÇO -->
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA 1: COR -->
-  <div class="etapa visivel">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
-
-  <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
-
- <!-- ETAPA 3: QUANTIDADE -->
-<div class="etapa etapa-quantidade oculta">
-  <label>Quantidade</label>
-  <input class="quantidade" type="number" value="0" min="0">
-</div>
-
-<!-- ETAPA 4: FINALIZAR -->
-<div class="etapa etapa-finalizar oculta">
-  <button>Finalizar Compra</button>
-</div>
-
-<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-<div class="etapa etapa-checkout oculta">
-
-  <label>Bairro para entrega</label>
-  <input
-    type="text"
-    class="bairro"
-     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
-  >
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
-<!-- BOTÃO FINAL PARA WHATSAPP -->
-<div class="etapa etapa-enviar oculta">
-  <button class="btn-whatsapp">Enviar Pedido!</button>
-</div>
- 
-</div>
-
-<!-- CAMISA BÁSICA 5 -->
-     
-<div class="basica-card">
-
-  <!-- IMAGEM DO PRODUTO -->
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <!-- PREÇO -->
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA 1: COR -->
-  <div class="etapa visivel">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
-
-  <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
-
- <!-- ETAPA 3: QUANTIDADE -->
-<div class="etapa etapa-quantidade oculta">
-  <label>Quantidade</label>
-  <input class="quantidade" type="number" value="0" min="0">
-</div>
-
-<!-- ETAPA 4: FINALIZAR -->
-<div class="etapa etapa-finalizar oculta">
-  <button>Finalizar Compra</button>
-</div>
-
-<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-<div class="etapa etapa-checkout oculta">
-
-  <label>Bairro para entrega</label>
-  <input
-    type="text"
-    class="bairro"
-     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
-  >
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
-<!-- BOTÃO FINAL PARA WHATSAPP -->
-<div class="etapa etapa-enviar oculta">
-  <button class="btn-whatsapp">Enviar Pedido!</button>
-</div>
- 
-</div>
-
-     <!-- CAMISA BÁSICA 6 -->
-     
-<div class="basica-card">
-
-  <!-- IMAGEM DO PRODUTO -->
-  <img
-    src="imagens/esgotado.png"
-    alt="Camiseta Básica F Pac Store"
-    class="camiseta-img"
-  >
-
-  <!-- PREÇO -->
-  <p class="preco">R$ 79,90</p>
-
-  <!-- ETAPA 1: COR -->
-  <div class="etapa visivel">
-    <label>Cor</label>
-    <select class="cor">
-      <option value="">Selecione</option>
-      <option value="Preta">Preta</option>
-      <option value="Branca">Branca</option>
-      <option value="Off White">Off White</option>
-    </select>
-  </div>
-
-  <!-- ETAPA 2: TAMANHO -->
-  <div class="etapa etapa-tamanho oculta">
-    <label>Tamanho</label>
-    <select class="tamanho">
-      <option value="">Selecione</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-    </select>
-  </div>
-
- <!-- ETAPA 3: QUANTIDADE -->
-<div class="etapa etapa-quantidade oculta">
-  <label>Quantidade</label>
-  <input class="quantidade" type="number" value="0" min="0">
-</div>
-
-<!-- ETAPA 4: FINALIZAR -->
-<div class="etapa etapa-finalizar oculta">
-  <button>Finalizar Compra</button>
-</div>
-
-<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-<div class="etapa etapa-checkout oculta">
-
-  <label>Bairro para entrega</label>
-  <input
-    type="text"
-    class="bairro"
-     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
-  >
-
-  <label>Forma de pagamento</label>
-  <select class="pagamento">
-    <option value="">Selecione</option>
-    <option value="Pix">Pix</option>
-    <option value="Cartão de Crédito">Cartão de Crédito</option>
-    <option value="Cartão de Débito">Cartão de Débito</option>
-  </select>
-
-</div>
-
-<!-- BOTÃO FINAL PARA WHATSAPP -->
-<div class="etapa etapa-enviar oculta">
-  <button class="btn-whatsapp">Enviar Pedido!</button>
-</div>
- 
-</div>
-
-  </div>
-</section>
-
- <!-- ============================= -->
-<!-- CAMISETA PREMIUM -->
-<!-- ============================= -->
-  
-<section class="criar-camisa" id="criar">
-  <div class="container">
-
-    <h2>Personalizar Camisa</h2>
-    <p>Monte a camisa do jeito</p>
-
-    <div class="basica-card">
-
-     <!-- PREVIEW DA CAMISA -->
-     
-<div class="preview-camisa">
-  <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
-
-  <div id="preview-estampa" class="estampa-preview">
-    E01
-  </div>
-</div>
-
-      <p class="preco" id="preco-premium">R$ 69,90</p>
-
-      <!-- ETAPA 1: COR -->
-<div class="etapa">
-  <label>Cor</label>
-  <select id="cor-premium" onchange="mostrarTamanhoPremium(); calcularPrecoPremium()">
-    <option value="">Selecione</option>
-    <option>Preta</option>
-    <option>Branca</option>
-    <option>Off White</option>
-  </select>
-</div>
-
-<!-- ETAPA 2: TAMANHO -->
-<div class="etapa oculta" id="etapa-tamanho-premium">
-  <label>Tamanho</label>
-  <select id="tamanho-premium" onchange="mostrarQtdCamisas(); calcularPrecoPremium()">
-    <option value="">Selecione</option>
-    <option>M</option>
-    <option>G</option>
-  </select>
-</div>
-
-<!-- ETAPA 3: QTD CAMISAS -->
-<div class="etapa oculta" id="etapa-qtd-camisas">
-  <label>Quantidade de Camisas</label>
-  <input
-    type="number"
-    id="qtd-camisas"
-    value="0"
-    min="0"
-    onchange="mostrarQtdEstampas(); calcularPrecoPremium()"
-  >
-</div>
-
-<!-- ETAPA 4: QTD ESTAMPAS -->
-<div class="etapa oculta" id="etapa-qtd-estampas">
-  <label>Quantidade de Estampas</label>
-  <select id="qtd-estampas" onchange="mostrarEstampas(); mostrarFinalizar(); calcularPrecoPremium()">
-    <option value="0">Nenhuma</option>
-    <option value="1">1 Estampa</option>
-    <option value="2">2 Estampas</option>
-  </select>
-</div>
-
-<!-- ETAPA 5: FINALIZAR -->
-<div class="etapa oculta" id="etapa-finalizar-premium">
-  <button onclick="comprarPremium()">Finalizar Compra</button>
-</div>
-
-      <div id="estampa1" style="display:none;">
-
-  <hr>
-  <strong>Estampa 1</strong>
-
-  <label>Posição da Estampa</label>
-  <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
-    <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
-    <option>Costas</option>
-  </select>
-
-  <label>Fundo</label>
-  <select id="fundo1">
-    <option>Com fundo</option>
-    <option>Sem fundo</option>
-  </select>
-
-  <label>Escolha a Estampa</label>
-  <select id="arte1" onchange="atualizarPreviewArte(this.value)">
-    <option>E01 – Tropa Urbana</option>
-    <option>E02 – Tropa Urbana</option>
-    <option>E03 – Outra Estampa</option>
-  </select>
-
-</div>
-
-<div id="estampa2" style="display:none;">
-
-  <hr>
-  <strong>Estampa 2</strong>
-
-  <label>Posição da Estampa</label>
-  <select id="pos2">
-    <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
-    <option>Costas</option>
-  </select>
-
-  <label>Fundo</label>
-  <select id="fundo2">
-    <option>Com fundo</option>
-    <option>Sem fundo</option>
-  </select>
-
-  <label>Escolha a Estampa</label>
-  <select id="arte2">
-    <option>E01 – Tropa Urbana</option>
-    <option>E02 – Tropa Urbana</option>
-    <option>E03 – Outra Estampa</option>
-  </select>
-
-</div>
-      
     </div>
-  </div>
-</section>
-  
-<footer class="footer">
-  © 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
+    </section>
 
-<script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
+    <!-- ============================= -->
+    <!-- PRODUTOS -->
+    <!-- ============================= -->
 
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-</script>
+    <section class="produtos" id="produtos">
+        <div class="container">
 
-<script>
-function mostrarEstampas() {
-  const qtd = Number(document.getElementById('qtd-estampas').value);
+            <h2>Nossos Produtos</h2>
 
-  if (document.getElementById('estampa1')) {
-    document.getElementById('estampa1').style.display =
-      qtd >= 1 ? 'block' : 'none';
-  }
+            <div class="grid">
 
-  if (document.getElementById('estampa2')) {
-    document.getElementById('estampa2').style.display =
-      qtd === 2 ? 'block' : 'none';
-  }
-}
-</script>
+                <div class="card">
+                    <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
+                    <h3>Force</h3>
+                    <p>Camisas Prontas</p>
+                    <a href="#basica" class="btn">Escolher Camisa</a>
+                </div>
 
-<script>
-function comprarPremium() {
-  const cor = document.getElementById('cor-premium').value;
-  const tamanho = document.getElementById('tamanho-premium').value;
-  const qtdCamisas = document.getElementById('qtd-camisas').value;
-  const qtdEstampas = document.getElementById('qtd-estampas').value;
-  const preco = document.getElementById('preco-premium').innerText;
+                <div class="card">
+                    <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
+                    <h3>Prime</h3>
+                    <p>Criar do seu jeito</p>
+                    <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
+                </div>
 
-  let detalhesEstampas = '';
+            </div>
+        </div>
+    </section>
 
-  if (qtdEstampas >= 1) {
-    detalhesEstampas +=
-      `\nEstampa 1:` +
-      `\n• Arte: ${arte1.value}` +
-      `\n• Posição: ${pos1.value}` +
-      `\n• Fundo: ${fundo1.value}\n`;
-  }
+    <!-- ============================= -->
+    <!-- CAMISA BÁSICA -->
+    <!-- ============================= -->
 
-  if (qtdEstampas == 2) {
-    detalhesEstampas +=
-      `\nEstampa 2:` +
-      `\n• Arte: ${arte2.value}` +
-      `\n• Posição: ${pos2.value}` +
-      `\n• Fundo: ${fundo2.value}\n`;
-  }
+    <section class="basica" id="basica">
+        <div class="container">
 
-  const mensagem =
-    `Olá! Quero criar minha Camiseta Premium.\n\n` +
-    `Cor: ${cor}\n` +
-    `Tamanho: ${tamanho}\n` +
-    `Quantidade de camisas: ${qtdCamisas}\n` +
-    `Quantidade de estampas: ${qtdEstampas}\n` +
-    `${detalhesEstampas}\n` +
-    `Valor estimado: ${preco}`;
+            <h2>Estampa Discreta</h2>
+            <p>Modelo pronto com valor fixo</p>
 
-  window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
-    "_blank"
-  );
-}
-</script>
+            <div class="basica-grid">
 
-<script>
-function calcularPrecoPremium() {
-  let precoBase = 69.90;
+            </div>
 
-  const qtdEstampas = Number(
-    document.getElementById('qtd-estampas').value
-  );
+            <!-- CAMISA BÁSICA 2 -->
 
-  const qtdCamisas = Number(
-    document.getElementById('qtd-camisas').value
-  );
+            <div class="basica-card">
 
-  // Acréscimo por quantidade de estampas
-  if (qtdEstampas === 1) precoBase += 10;
-  if (qtdEstampas === 2) precoBase += 30;
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Básica">
 
-  const total = precoBase * qtdCamisas;
+                <p class="preco">R$ 79,90</p>
 
-  const precoEl = document.getElementById('preco-premium');
-  if (precoEl) {
-    precoEl.innerText =
-      'R$ ' + total.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2
-      });
-  }
-}
-</script> 
+                <!-- COR -->
+                <div class="etapa visivel">
+                    <label>Cor</label>
+                    <select class="cor">
+                        <option value="">Selecione</option>
+                        <option value="Preta">Preta</option>
+                        <option value="Branca">Branca</option>
+                        <option value="Off White">Off White</option>
+                    </select>
+                </div>
 
-<script>
-function atualizarPreviewPosicao(posicao) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
+                <!-- TAMANHO -->
+                <div class="etapa etapa-tamanho oculta">
+                    <label>Tamanho</label>
+                    <select class="tamanho">
+                        <option value="">Selecione</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
 
-  switch (posicao) {
-    case 'Peito Central':
-      estampa.style.top = '35%';
-      estampa.style.left = '50%';
-      break;
+                <!-- ETAPA 3: QUANTIDADE -->
+                <div class="etapa etapa-quantidade oculta">
+                    <label>Quantidade</label>
+                    <input type="number" class="quantidade" value="0" min="0">
+                </div>
 
-    case 'Peito LE':
-      estampa.style.top = '35%';
-      estampa.style.left = '35%';
-      break;
+                <!-- ETAPA 4: FINALIZAR -->
+                <div class="etapa etapa-finalizar oculta">
+                    <button>Finalizar Compra</button>
+                </div>
 
-    case 'Peito LD':
-      estampa.style.top = '35%';
-      estampa.style.left = '65%';
-      break;
+                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+                <div class="etapa etapa-checkout oculta">
 
-    case 'Costas':
-      estampa.style.top = '55%';
-      estampa.style.left = '50%';
-      break;
-  }
+                    <label>Bairro para entrega</label>
+                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
 
-  estampa.style.transform = 'translate(-50%, -50%)';
-}
-</script>
+                    <label>Forma de pagamento</label>
+                    <select class="pagamento">
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                    </select>
 
-<script>
-function atualizarPreviewArte(arte) {
-  const estampa = document.getElementById('preview-estampa');
-  if (!estampa) return;
+                </div>
 
-  estampa.innerText = arte;
-}
-</script>
+                <!-- BOTÃO FINAL PARA WHATSAPP -->
+                <div class="etapa etapa-enviar oculta">
+                    <button class="btn-whatsapp">Enviar Pedido!</button>
+                </div>
 
-<script>
-document.querySelectorAll('.basica-card').forEach(card => {
- 
-const etapaCor = card.querySelector('.etapa');
+            </div>
 
-if (etapaCor && !card.classList.contains('bloqueado')) {
-  etapaCor.classList.add('visivel');
-}
-  const cor = card.querySelector('.cor');
-  const tamanhoEtapa = card.querySelector('.etapa-tamanho');
-  const tamanho = card.querySelector('.tamanho');
-  const qtdEtapa = card.querySelector('.etapa-quantidade');
-  const qtd = card.querySelector('.quantidade');
-  const finalizar = card.querySelector('.etapa-finalizar');
- const checkout = card.querySelector('.etapa-checkout');
-const enviar = card.querySelector('.etapa-enviar');
- 
-  // Estado inicial
-  if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
-  if (qtdEtapa) qtdEtapa.classList.add('oculta');
-  if (finalizar) finalizar.classList.add('oculta');
+            <!-- CAMISA BÁSICA 3 -->
 
-  // ETAPA 1 → COR
-  if (cor) {
-    cor.addEventListener('change', () => {
-      // Reseta etapas seguintes
-      if (tamanho) tamanho.value = '';
-      if (qtd) qtd.value = 0;
+            <div class="basica-card">
 
-      tamanhoEtapa.classList.remove('oculta');
-      tamanhoEtapa.classList.add('visivel');
+                <!-- IMAGEM DO PRODUTO -->
+                <img src="imagens/esgotado.png" alt="Camiseta Básica F Pac Store" class="camiseta-img">
 
-      qtdEtapa.classList.add('oculta');
-      finalizar.classList.add('oculta');
-    });
-  }
+                <!-- PREÇO -->
+                <p class="preco">R$ 79,90</p>
 
-  // ETAPA 2 → TAMANHO
-  if (tamanho) {
-    tamanho.addEventListener('change', () => {
-      if (!tamanho.value) return;
+                <!-- ETAPA 1: COR -->
+                <div class="etapa visivel">
+                    <label>Cor</label>
+                    <select class="cor">
+                        <option value="">Selecione</option>
+                        <option value="Preta">Preta</option>
+                        <option value="Branca">Branca</option>
+                        <option value="Off White">Off White</option>
+                    </select>
+                </div>
 
-      if (qtd) qtd.value = 0;
+                <!-- ETAPA 2: TAMANHO -->
+                <div class="etapa etapa-tamanho oculta">
+                    <label>Tamanho</label>
+                    <select class="tamanho">
+                        <option value="">Selecione</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
 
-      qtdEtapa.classList.remove('oculta');
-      qtdEtapa.classList.add('visivel');
+                <!-- ETAPA 3: QUANTIDADE -->
+                <div class="etapa etapa-quantidade oculta">
+                    <label>Quantidade</label>
+                    <input class="quantidade" type="number" value="0" min="0">
+                </div>
 
-      finalizar.classList.add('oculta');
-    });
-  }
+                <!-- ETAPA 4: FINALIZAR -->
+                <div class="etapa etapa-finalizar oculta">
+                    <button>Finalizar Compra</button>
+                </div>
 
-  // ETAPA 3 → QUANTIDADE
-if (qtd) {
-  qtd.addEventListener('input', () => {
-    if (Number(qtd.value) > 0) {
-      finalizar.classList.remove('oculta');
-      finalizar.classList.add('visivel');
-    } else {
-      finalizar.classList.add('oculta');
-      if (checkout) checkout.classList.add('oculta');
-      if (enviar) enviar.classList.add('oculta');
-    }
-  });
-}
+                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+                <div class="etapa etapa-checkout oculta">
 
-// ETAPA 4 → FINALIZAR COMPRA
-if (finalizar) {
-  finalizar.addEventListener('click', () => {
-    if (checkout) {
-      checkout.classList.remove('oculta');
-      checkout.classList.add('visivel');
-    }
-    if (enviar) {
-      enviar.classList.remove('oculta');
-      enviar.classList.add('visivel');
-    }
-  });
-}
+                    <label>Bairro para entrega</label>
+                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
 
- // ETAPA 5 → ENVIAR PEDIDO PELO WHATSAPP
-if (enviar) {
-  enviar.addEventListener('click', () => {
+                    <label>Forma de pagamento</label>
+                    <select class="pagamento">
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                    </select>
 
-    const produto = "Camiseta Básica F Pac Store";
-    const preco = card.querySelector('.preco')?.innerText || '';
+                </div>
 
-    const corValor = cor?.value || '';
-    const tamanhoValor = tamanho?.value || '';
-    const quantidadeValor = qtd?.value || '';
-    const bairroValor = card.querySelector('.bairro')?.value || '';
-    const pagamentoValor = card.querySelector('.pagamento')?.value || '';
-const img = card.querySelector('img');
-let nomeEstampa = '';
+                <!-- BOTÃO FINAL PARA WHATSAPP -->
+                <div class="etapa etapa-enviar oculta">
+                    <button class="btn-whatsapp">Enviar Pedido!</button>
+                </div>
 
-if (img && img.src) {
-  nomeEstampa = img.src
-    .split('/')
-    .pop()
-    .replace('.jpg', '')
-    .replace('.png', '')
-    .replace(/-/g, ' ')
-    .toUpperCase();
-}
-  
-    const mensagem =
-  `Fala comigo! 👋\n` +
-  `Quero finalizar minha compra na *F PAC Store* ✅🔥\n\n` +
-  `🧾 *RESUMO DO PEDIDO*\n` +
-  `👕 Modelo: Force – ${nomeEstampa}\n` +
-  `🎨 Cor: ${corValor}\n` +
-  `📏 Tamanho: ${tamanhoValor}\n` +
-  `📦 Quantidade: ${quantidadeValor}\n` +
-  `💰 Valor unitário: ${preco}\n\n` +
-  `🚚 *ENTREGA*\n` +
-  `📍 Bairro/Cidade: ${bairroValor}\n\n` +
-  `💵 *SUBTOTAL*: calcular no WhatsApp + frete\n\n` +
-  `💳 *FORMA DE PAGAMENTO*\n` +
-  `👉 Preferência informada no site: ${pagamentoValor}\n\n` +
-  `Aguardo pra concluir a compra 😄`;
+            </div>
 
-    const telefone = "5547997465602";
-    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+            <!-- CAMISA BÁSICA 4 -->
 
-    window.open(url, '_blank');
-  });
-}
- 
- });
-</script>
+            <div class="basica-card">
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".basica-card");
+                <!-- IMAGEM DO PRODUTO -->
+                <img src="imagens/esgotado.png" alt="Camiseta Básica F Pac Store" class="camiseta-img">
 
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const controls = card.querySelectorAll("select, input, button");
+                <!-- PREÇO -->
+                <p class="preco">R$ 79,90</p>
 
-    if (!img) return;
+                <!-- ETAPA 1: COR -->
+                <div class="etapa visivel">
+                    <label>Cor</label>
+                    <select class="cor">
+                        <option value="">Selecione</option>
+                        <option value="Preta">Preta</option>
+                        <option value="Branca">Branca</option>
+                        <option value="Off White">Off White</option>
+                    </select>
+                </div>
 
-    const isEsgotado = img.src.includes("esgotado");
+                <!-- ETAPA 2: TAMANHO -->
+                <div class="etapa etapa-tamanho oculta">
+                    <label>Tamanho</label>
+                    <select class="tamanho">
+                        <option value="">Selecione</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
 
-    if (isEsgotado) {
-      // BLOQUEIA CARD ESGOTADO
-      card.classList.add("bloqueado");
-      card.classList.remove("disponivel");
-      controls.forEach(el => el.disabled = true);
-    } else {
-      // LIBERA CARD DISPONÍVEL
-      card.classList.remove("bloqueado");
-      card.classList.add("disponivel");
-      controls.forEach(el => el.disabled = false);
-    }
-  });
-});
-</script>
+                <!-- ETAPA 3: QUANTIDADE -->
+                <div class="etapa etapa-quantidade oculta">
+                    <label>Quantidade</label>
+                    <input class="quantidade" type="number" value="0" min="0">
+                </div>
 
-<datalist id="bairros-joinville">
-  <!-- Centro -->
-  <option value="Centro">
+                <!-- ETAPA 4: FINALIZAR -->
+                <div class="etapa etapa-finalizar oculta">
+                    <button>Finalizar Compra</button>
+                </div>
 
-  <!-- Norte -->
-  <option value="América">
-  <option value="Atiradores">
-  <option value="Bom Retiro">
-  <option value="Costa e Silva">
-  <option value="Glória">
-  <option value="Saguaçu">
-  <option value="Santo Antônio">
+                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+                <div class="etapa etapa-checkout oculta">
 
-  <!-- Leste -->
-  <option value="Aventureiro">
-  <option value="Comasa">
-  <option value="Espinheiros">
-  <option value="Iririú">
-  <option value="Jardim Iririú">
-  <option value="Jardim Paraíso">
-  <option value="Jardim Sofia">
+                    <label>Bairro para entrega</label>
+                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
 
-  <!-- Sul -->
-  <option value="Adhemar Garcia">
-  <option value="Boehmerwald">
-  <option value="Floresta">
-  <option value="Fátima">
-  <option value="Guanabara">
-  <option value="Itaum">
-  <option value="Itinga">
-  <option value="Jarivatuba">
-  <option value="João Costa">
-  <option value="Nova Brasília">
-  <option value="Paranaguamirim">
-  <option value="Petrópolis">
-  <option value="Profipo">
-  <option value="Santa Catarina">
-  <option value="São Marcos">
-  <option value="Ulysses Guimarães">
+                    <label>Forma de pagamento</label>
+                    <select class="pagamento">
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                    </select>
 
-  <!-- Oeste -->
-  <option value="Anita Garibaldi">
-  <option value="Bucarein">
-  <option value="Morro do Meio">
-  <option value="Vila Cubatão">
-  <option value="Vila Nova">
-</datalist>
+                </div>
+
+                <!-- BOTÃO FINAL PARA WHATSAPP -->
+                <div class="etapa etapa-enviar oculta">
+                    <button class="btn-whatsapp">Enviar Pedido!</button>
+                </div>
+
+            </div>
+
+            <!-- CAMISA BÁSICA 5 -->
+
+            <div class="basica-card">
+
+                <!-- IMAGEM DO PRODUTO -->
+                <img src="imagens/esgotado.png" alt="Camiseta Básica F Pac Store" class="camiseta-img">
+
+                <!-- PREÇO -->
+                <p class="preco">R$ 79,90</p>
+
+                <!-- ETAPA 1: COR -->
+                <div class="etapa visivel">
+                    <label>Cor</label>
+                    <select class="cor">
+                        <option value="">Selecione</option>
+                        <option value="Preta">Preta</option>
+                        <option value="Branca">Branca</option>
+                        <option value="Off White">Off White</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 2: TAMANHO -->
+                <div class="etapa etapa-tamanho oculta">
+                    <label>Tamanho</label>
+                    <select class="tamanho">
+                        <option value="">Selecione</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 3: QUANTIDADE -->
+                <div class="etapa etapa-quantidade oculta">
+                    <label>Quantidade</label>
+                    <input class="quantidade" type="number" value="0" min="0">
+                </div>
+
+                <!-- ETAPA 4: FINALIZAR -->
+                <div class="etapa etapa-finalizar oculta">
+                    <button>Finalizar Compra</button>
+                </div>
+
+                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+                <div class="etapa etapa-checkout oculta">
+
+                    <label>Bairro para entrega</label>
+                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
+
+                    <label>Forma de pagamento</label>
+                    <select class="pagamento">
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                    </select>
+
+                </div>
+
+                <!-- BOTÃO FINAL PARA WHATSAPP -->
+                <div class="etapa etapa-enviar oculta">
+                    <button class="btn-whatsapp">Enviar Pedido!</button>
+                </div>
+
+            </div>
+
+            <!-- CAMISA BÁSICA 6 -->
+
+            <div class="basica-card">
+
+                <!-- IMAGEM DO PRODUTO -->
+                <img src="imagens/esgotado.png" alt="Camiseta Básica F Pac Store" class="camiseta-img">
+
+                <!-- PREÇO -->
+                <p class="preco">R$ 79,90</p>
+
+                <!-- ETAPA 1: COR -->
+                <div class="etapa visivel">
+                    <label>Cor</label>
+                    <select class="cor">
+                        <option value="">Selecione</option>
+                        <option value="Preta">Preta</option>
+                        <option value="Branca">Branca</option>
+                        <option value="Off White">Off White</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 2: TAMANHO -->
+                <div class="etapa etapa-tamanho oculta">
+                    <label>Tamanho</label>
+                    <select class="tamanho">
+                        <option value="">Selecione</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 3: QUANTIDADE -->
+                <div class="etapa etapa-quantidade oculta">
+                    <label>Quantidade</label>
+                    <input class="quantidade" type="number" value="0" min="0">
+                </div>
+
+                <!-- ETAPA 4: FINALIZAR -->
+                <div class="etapa etapa-finalizar oculta">
+                    <button>Finalizar Compra</button>
+                </div>
+
+                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+                <div class="etapa etapa-checkout oculta">
+
+                    <label>Bairro para entrega</label>
+                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
+
+                    <label>Forma de pagamento</label>
+                    <select class="pagamento">
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                    </select>
+
+                </div>
+
+                <!-- BOTÃO FINAL PARA WHATSAPP -->
+                <div class="etapa etapa-enviar oculta">
+                    <button class="btn-whatsapp">Enviar Pedido!</button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CAMISETA PREMIUM -->
+    <!-- ============================= -->
+
+    <section class="criar-camisa" id="criar">
+        <div class="container">
+
+            <h2>Personalizar Camisa</h2>
+            <p>Monte a camisa do jeito</p>
+
+            <div class="basica-card">
+
+                <!-- PREVIEW DA CAMISA -->
+
+                <div class="preview-camisa">
+                    <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
+
+                    <div id="preview-estampa" class="estampa-preview">
+                        E01
+                    </div>
+                </div>
+
+                <p class="preco" id="preco-premium">R$ 69,90</p>
+
+                <!-- ETAPA 1: COR -->
+                <div class="etapa">
+                    <label>Cor</label>
+                    <select id="cor-premium" onchange="mostrarTamanhoPremium(); calcularPrecoPremium()">
+                        <option value="">Selecione</option>
+                        <option>Preta</option>
+                        <option>Branca</option>
+                        <option>Off White</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 2: TAMANHO -->
+                <div class="etapa oculta" id="etapa-tamanho-premium">
+                    <label>Tamanho</label>
+                    <select id="tamanho-premium" onchange="mostrarQtdCamisas(); calcularPrecoPremium()">
+                        <option value="">Selecione</option>
+                        <option>M</option>
+                        <option>G</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 3: QTD CAMISAS -->
+                <div class="etapa oculta" id="etapa-qtd-camisas">
+                    <label>Quantidade de Camisas</label>
+                    <input type="number" id="qtd-camisas" value="0" min="0" onchange="mostrarQtdEstampas(); calcularPrecoPremium()">
+                </div>
+
+                <!-- ETAPA 4: QTD ESTAMPAS -->
+                <div class="etapa oculta" id="etapa-qtd-estampas">
+                    <label>Quantidade de Estampas</label>
+                    <select id="qtd-estampas" onchange="mostrarEstampas(); mostrarFinalizar(); calcularPrecoPremium()">
+                        <option value="0">Nenhuma</option>
+                        <option value="1">1 Estampa</option>
+                        <option value="2">2 Estampas</option>
+                    </select>
+                </div>
+
+                <!-- ETAPA 5: FINALIZAR -->
+                <div class="etapa oculta" id="etapa-finalizar-premium">
+                    <button onclick="comprarPremium()">Finalizar Compra</button>
+                </div>
+
+                <div id="estampa1" style="display:none;">
+
+                    <hr>
+                    <strong>Estampa 1</strong>
+
+                    <label>Posição da Estampa</label>
+                    <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
+                        <option>Peito Central</option>
+                        <option>Peito LE</option>
+                        <option>Peito LD</option>
+                        <option>Costas</option>
+                    </select>
+
+                    <label>Fundo</label>
+                    <select id="fundo1">
+                        <option>Com fundo</option>
+                        <option>Sem fundo</option>
+                    </select>
+
+                    <label>Escolha a Estampa</label>
+                    <select id="arte1" onchange="atualizarPreviewArte(this.value)">
+                        <option>E01 – Tropa Urbana</option>
+                        <option>E02 – Tropa Urbana</option>
+                        <option>E03 – Outra Estampa</option>
+                    </select>
+
+                </div>
+
+                <div id="estampa2" style="display:none;">
+
+                    <hr>
+                    <strong>Estampa 2</strong>
+
+                    <label>Posição da Estampa</label>
+                    <select id="pos2">
+                        <option>Peito Central</option>
+                        <option>Peito LE</option>
+                        <option>Peito LD</option>
+                        <option>Costas</option>
+                    </select>
+
+                    <label>Fundo</label>
+                    <select id="fundo2">
+                        <option>Com fundo</option>
+                        <option>Sem fundo</option>
+                    </select>
+
+                    <label>Escolha a Estampa</label>
+                    <select id="arte2">
+                        <option>E01 – Tropa Urbana</option>
+                        <option>E02 – Tropa Urbana</option>
+                        <option>E03 – Outra Estampa</option>
+                    </select>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        © 2026 F Pac Store — Não é só roupa. É identidade.
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('toggle');
+          const nav = document.getElementById('nav');
+        
+          toggle.onclick = () => {
+            nav.classList.toggle('active');
+          };
+    </script>
+
+    <script>
+        function mostrarEstampas() {
+          const qtd = Number(document.getElementById('qtd-estampas').value);
+        
+          if (document.getElementById('estampa1')) {
+            document.getElementById('estampa1').style.display =
+              qtd >= 1 ? 'block' : 'none';
+          }
+        
+          if (document.getElementById('estampa2')) {
+            document.getElementById('estampa2').style.display =
+              qtd === 2 ? 'block' : 'none';
+          }
+        }
+    </script>
+
+    <script>
+        function comprarPremium() {
+          const cor = document.getElementById('cor-premium').value;
+          const tamanho = document.getElementById('tamanho-premium').value;
+          const qtdCamisas = document.getElementById('qtd-camisas').value;
+          const qtdEstampas = document.getElementById('qtd-estampas').value;
+          const preco = document.getElementById('preco-premium').innerText;
+        
+          let detalhesEstampas = '';
+        
+          if (qtdEstampas >= 1) {
+            detalhesEstampas +=
+              `\nEstampa 1:` +
+              `\n• Arte: ${arte1.value}` +
+              `\n• Posição: ${pos1.value}` +
+              `\n• Fundo: ${fundo1.value}\n`;
+          }
+        
+          if (qtdEstampas == 2) {
+            detalhesEstampas +=
+              `\nEstampa 2:` +
+              `\n• Arte: ${arte2.value}` +
+              `\n• Posição: ${pos2.value}` +
+              `\n• Fundo: ${fundo2.value}\n`;
+          }
+        
+          const mensagem =
+            `Olá! Quero criar minha Camiseta Premium.\n\n` +
+            `Cor: ${cor}\n` +
+            `Tamanho: ${tamanho}\n` +
+            `Quantidade de camisas: ${qtdCamisas}\n` +
+            `Quantidade de estampas: ${qtdEstampas}\n` +
+            `${detalhesEstampas}\n` +
+            `Valor estimado: ${preco}`;
+        
+          window.open(
+            "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
+            "_blank"
+          );
+        }
+    </script>
+
+    <script>
+        function calcularPrecoPremium() {
+          let precoBase = 69.90;
+        
+          const qtdEstampas = Number(
+            document.getElementById('qtd-estampas').value
+          );
+        
+          const qtdCamisas = Number(
+            document.getElementById('qtd-camisas').value
+          );
+        
+          // Acréscimo por quantidade de estampas
+          if (qtdEstampas === 1) precoBase += 10;
+          if (qtdEstampas === 2) precoBase += 30;
+        
+          const total = precoBase * qtdCamisas;
+        
+          const precoEl = document.getElementById('preco-premium');
+          if (precoEl) {
+            precoEl.innerText =
+              'R$ ' + total.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2
+              });
+          }
+        }
+    </script>
+
+    <script>
+        function atualizarPreviewPosicao(posicao) {
+          const estampa = document.getElementById('preview-estampa');
+          if (!estampa) return;
+        
+          switch (posicao) {
+            case 'Peito Central':
+              estampa.style.top = '35%';
+              estampa.style.left = '50%';
+              break;
+        
+            case 'Peito LE':
+              estampa.style.top = '35%';
+              estampa.style.left = '35%';
+              break;
+        
+            case 'Peito LD':
+              estampa.style.top = '35%';
+              estampa.style.left = '65%';
+              break;
+        
+            case 'Costas':
+              estampa.style.top = '55%';
+              estampa.style.left = '50%';
+              break;
+          }
+        
+          estampa.style.transform = 'translate(-50%, -50%)';
+        }
+    </script>
+
+    <script>
+        function atualizarPreviewArte(arte) {
+          const estampa = document.getElementById('preview-estampa');
+          if (!estampa) return;
+        
+          estampa.innerText = arte;
+        }
+    </script>
+
+    <script>
+        document.querySelectorAll('.basica-card').forEach(card => {
+         
+        const etapaCor = card.querySelector('.etapa');
+        
+        if (etapaCor && !card.classList.contains('bloqueado')) {
+          etapaCor.classList.add('visivel');
+        }
+          const cor = card.querySelector('.cor');
+          const tamanhoEtapa = card.querySelector('.etapa-tamanho');
+          const tamanho = card.querySelector('.tamanho');
+          const qtdEtapa = card.querySelector('.etapa-quantidade');
+          const qtd = card.querySelector('.quantidade');
+          const finalizar = card.querySelector('.etapa-finalizar');
+         const checkout = card.querySelector('.etapa-checkout');
+        const enviar = card.querySelector('.etapa-enviar');
+         
+          // Estado inicial
+          if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
+          if (qtdEtapa) qtdEtapa.classList.add('oculta');
+          if (finalizar) finalizar.classList.add('oculta');
+        
+          // ETAPA 1 → COR
+          if (cor) {
+            cor.addEventListener('change', () => {
+              // Reseta etapas seguintes
+              if (tamanho) tamanho.value = '';
+              if (qtd) qtd.value = 0;
+        
+              tamanhoEtapa.classList.remove('oculta');
+              tamanhoEtapa.classList.add('visivel');
+        
+              qtdEtapa.classList.add('oculta');
+              finalizar.classList.add('oculta');
+            });
+          }
+        
+          // ETAPA 2 → TAMANHO
+          if (tamanho) {
+            tamanho.addEventListener('change', () => {
+              if (!tamanho.value) return;
+        
+              if (qtd) qtd.value = 0;
+        
+              qtdEtapa.classList.remove('oculta');
+              qtdEtapa.classList.add('visivel');
+        
+              finalizar.classList.add('oculta');
+            });
+          }
+        
+          // ETAPA 3 → QUANTIDADE
+        if (qtd) {
+          qtd.addEventListener('input', () => {
+            if (Number(qtd.value) > 0) {
+              finalizar.classList.remove('oculta');
+              finalizar.classList.add('visivel');
+            } else {
+              finalizar.classList.add('oculta');
+              if (checkout) checkout.classList.add('oculta');
+              if (enviar) enviar.classList.add('oculta');
+            }
+          });
+        }
+        
+        // ETAPA 4 → FINALIZAR COMPRA
+        if (finalizar) {
+          finalizar.addEventListener('click', () => {
+            if (checkout) {
+              checkout.classList.remove('oculta');
+              checkout.classList.add('visivel');
+            }
+            if (enviar) {
+              enviar.classList.remove('oculta');
+              enviar.classList.add('visivel');
+            }
+          });
+        }
+        
+         // ETAPA 5 → ENVIAR PEDIDO PELO WHATSAPP
+        if (enviar) {
+          enviar.addEventListener('click', () => {
+        
+            const produto = "Camiseta Básica F Pac Store";
+            const preco = card.querySelector('.preco')?.innerText || '';
+        
+            const corValor = cor?.value || '';
+            const tamanhoValor = tamanho?.value || '';
+            const quantidadeValor = qtd?.value || '';
+            const bairroValor = card.querySelector('.bairro')?.value || '';
+            const pagamentoValor = card.querySelector('.pagamento')?.value || '';
+        const img = card.querySelector('img');
+        let nomeEstampa = '';
+        
+        if (img && img.src) {
+          nomeEstampa = img.src
+            .split('/')
+            .pop()
+            .replace('.jpg', '')
+            .replace('.png', '')
+            .replace(/-/g, ' ')
+            .toUpperCase();
+        }
+          
+            const mensagem =
+          `Fala comigo! 👋\n` +
+          `Quero finalizar minha compra na *F PAC Store* ✅🔥\n\n` +
+          `🧾 *RESUMO DO PEDIDO*\n` +
+          `👕 Modelo: Force – ${nomeEstampa}\n` +
+          `🎨 Cor: ${corValor}\n` +
+          `📏 Tamanho: ${tamanhoValor}\n` +
+          `📦 Quantidade: ${quantidadeValor}\n` +
+          `💰 Valor unitário: ${preco}\n\n` +
+          `🚚 *ENTREGA*\n` +
+          `📍 Bairro/Cidade: ${bairroValor}\n\n` +
+          `💵 *SUBTOTAL*: calcular no WhatsApp + frete\n\n` +
+          `💳 *FORMA DE PAGAMENTO*\n` +
+          `👉 Preferência informada no site: ${pagamentoValor}\n\n` +
+          `Aguardo pra concluir a compra 😄`;
+        
+            const telefone = "5547997465602";
+            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        
+            window.open(url, '_blank');
+          });
+        }
+         
+         });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const cards = document.querySelectorAll(".basica-card");
+        
+          cards.forEach(card => {
+            const img = card.querySelector("img");
+            const controls = card.querySelectorAll("select, input, button");
+        
+            if (!img) return;
+        
+            const isEsgotado = img.src.includes("esgotado");
+        
+            if (isEsgotado) {
+              // BLOQUEIA CARD ESGOTADO
+              card.classList.add("bloqueado");
+              card.classList.remove("disponivel");
+              controls.forEach(el => el.disabled = true);
+            } else {
+              // LIBERA CARD DISPONÍVEL
+              card.classList.remove("bloqueado");
+              card.classList.add("disponivel");
+              controls.forEach(el => el.disabled = false);
+            }
+          });
+        });
+    </script>
+
+    <datalist id="bairros-joinville">
+        <!-- Centro -->
+        <option value="Centro">
+
+            <!-- Norte -->
+            <option value="América">
+                <option value="Atiradores">
+                    <option value="Bom Retiro">
+                        <option value="Costa e Silva">
+                            <option value="Glória">
+                                <option value="Saguaçu">
+                                    <option value="Santo Antônio">
+
+                                        <!-- Leste -->
+                                        <option value="Aventureiro">
+                                            <option value="Comasa">
+                                                <option value="Espinheiros">
+                                                    <option value="Iririú">
+                                                        <option value="Jardim Iririú">
+                                                            <option value="Jardim Paraíso">
+                                                                <option value="Jardim Sofia">
+
+                                                                    <!-- Sul -->
+                                                                    <option value="Adhemar Garcia">
+                                                                        <option value="Boehmerwald">
+                                                                            <option value="Floresta">
+                                                                                <option value="Fátima">
+                                                                                    <option value="Guanabara">
+                                                                                        <option value="Itaum">
+                                                                                            <option value="Itinga">
+                                                                                                <option value="Jarivatuba">
+                                                                                                    <option value="João Costa">
+                                                                                                        <option value="Nova Brasília">
+                                                                                                            <option value="Paranaguamirim">
+                                                                                                                <option value="Petrópolis">
+                                                                                                                    <option value="Profipo">
+                                                                                                                        <option value="Santa Catarina">
+                                                                                                                            <option value="São Marcos">
+                                                                                                                                <option value="Ulysses Guimarães">
+
+                                                                                                                                    <!-- Oeste -->
+                                                                                                                                    <option value="Anita Garibaldi">
+                                                                                                                                        <option value="Bucarein">
+                                                                                                                                            <option value="Morro do Meio">
+                                                                                                                                                <option value="Vila Cubatão">
+                                                                                                                                                    <option value="Vila Nova">
+    </datalist>
 
 
-     
+
 </body>
+
 </html>
