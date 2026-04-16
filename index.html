@@ -592,15 +592,9 @@ text-shadow:
       font-size: 0.9rem;
     }
 
-   /* ============================= */
+    /* ============================= */
 /* CAMISA BÁSICA */
 /* ============================= */
-
-/* LIBERA O GRID DAS CAMISAS BÁSICAS */
-.basica .container {
-  max-width: 100%;
-}
-
 /* Ajuste de rolagem para header fixo */
 #basica {
   scroll-margin-top: 130px;
@@ -631,33 +625,36 @@ text-shadow:
   margin-bottom: 40px;
 }
 
- /* ============================= */
-/* CARD FIXO – NÃO ESTICA */
-/* ============================= */
-
-.basica-card {
+  .basica-card {
   background: #ffffff;
   padding: 14px;
   border-radius: 12px;
   width: 100%;
-  max-width: 280px;
-
-  height: 540px;                 /* altura fixa real */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  overflow: hidden;              /* 🔒 nada vaza */
+  max-width: 280px;   /* ✅ largura ideal p/ até 5 por linha */
+  min-height: 380px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  text-align: center;
 }
-
-/* ============================= */
-/* ETAPAS INTERNAS DO FORMULÁRIO */
-/* ============================= */
 
 @media (max-width: 768px) {
 }
 
+.etapa {
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.3s ease;
+}
+
+.etapa.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
    /* Primeira etapa sempre visível */
+.oculta {
+  display: none;
+}
 
 .basica-card img {
   width: 100%;
@@ -782,34 +779,34 @@ text-shadow:
 
 .basica-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(5, 1fr); /* 5 por linha */
   gap: 32px;
-  width: 100%;
+
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 15px 80px;
-  justify-items: center;
-}
-  
-/* ============================= */
-/* PASSO 3.2 – ACABAMENTO FINAL */
-/* ============================= */
-
-   /* Hover premium – somente cards disponíveis */
-
-/* Preço com destaque maior */
-.basica-card .preco {
-  font-size: 1.45rem;
-  font-weight: 900;
-  margin: 12px 0 8px;
-  color: #000;
-  letter-spacing: 0.5px;
+  padding: 20px 15px 80px; /* espaço p/ até 15 cards */
 }
 
-/* Card esgotado fica claro e neutro */
-.basica-card.bloqueado {
-  opacity: 0.45;
-  filter: grayscale(100%);
-  pointer-events: none;
+/* Cards ficam independentes, como produtos */
+.basica-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================= */
+/* ESTAMPAS BÁSICAS – VISUAL DE CATÁLOGO */
+/* ============================= */
+
+/* Remove efeito de formulário ligado */
+.basica-card .etapa {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mantém etapas escondidas só quando realmente ocultas */
+.basica-card .oculta {
+  display: none;
 }
    
   </style>
@@ -954,14 +951,74 @@ text-shadow:
  <!-- ============================= -->
 <!-- CAMISA BÁSICA -->
 <!-- ============================= -->
-
+  
 <section class="basica" id="basica">
   <div class="container">
 
     <h2>Estampa Discreta</h2>
     <p>Modelo pronto com valor fixo</p>
 
-    <div class="basica-grid">     
+    <div class="basica-grid">
+
+      <div class="basica-card">
+
+  <img
+    src="imagens/logo-no-peito.jpg"
+    alt="Camiseta Básica F Pac Store"
+    class="camiseta-img"
+  >
+
+<p class="preco">R$ 79,90</p>
+
+  <!-- ETAPA 1: COR -->
+<div class="etapa visivel">
+  <label>Cor</label>
+  <select class="cor">
+    <option value="">Selecione</option>
+    <option value="Preta">Preta</option>
+    <option value="Branca">Branca</option>
+    <option value="Off White">Off White</option>
+  </select>
+</div>
+
+  <!-- ETAPA 2: TAMANHO -->
+<div class="etapa etapa-tamanho oculta">
+    <label>Tamanho</label>
+    <select class="tamanho">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
+
+       <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
+
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
+
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+  type="text"
+  class="bairro"
+  list="bairros-joinville"
+  placeholder="Comece a digitar o bairro"
+>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar Pedido!</button>
+</div>
+       
+</div>
 
      <!-- CAMISA BÁSICA 2 -->
      
@@ -1041,7 +1098,7 @@ text-shadow:
 
   <!-- IMAGEM DO PRODUTO -->
   <img
-    src="imagens/logo-nas-costas.png"
+    src="imagens/esgotado.png"
     alt="Camiseta Básica F Pac Store"
     class="camiseta-img"
   >
@@ -1104,6 +1161,227 @@ text-shadow:
 <!-- BOTÃO FINAL PARA WHATSAPP -->
 <div class="etapa etapa-enviar oculta">
   <button class="btn-whatsapp">Enviar Pedido!</button>
+</div>
+ 
+</div>
+
+<!-- CAMISA BÁSICA 4 -->
+     
+<div class="basica-card">
+
+  <!-- IMAGEM DO PRODUTO -->
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store"
+    class="camiseta-img"
+  >
+
+  <!-- PREÇO -->
+  <p class="preco">R$ 79,90</p>
+
+  <!-- ETAPA 1: COR -->
+  <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+      <option value="">Selecione</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+      <option value="Off White">Off White</option>
+    </select>
+  </div>
+
+  <!-- ETAPA 2: TAMANHO -->
+  <div class="etapa etapa-tamanho oculta">
+    <label>Tamanho</label>
+    <select class="tamanho">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
+
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
+
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
+
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar Pedido!</button>
+</div>
+ 
+</div>
+
+<!-- CAMISA BÁSICA 5 -->
+     
+<div class="basica-card">
+
+  <!-- IMAGEM DO PRODUTO -->
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store"
+    class="camiseta-img"
+  >
+
+  <!-- PREÇO -->
+  <p class="preco">R$ 79,90</p>
+
+  <!-- ETAPA 1: COR -->
+  <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+      <option value="">Selecione</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+      <option value="Off White">Off White</option>
+    </select>
+  </div>
+
+  <!-- ETAPA 2: TAMANHO -->
+  <div class="etapa etapa-tamanho oculta">
+    <label>Tamanho</label>
+    <select class="tamanho">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
+
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
+
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
+
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar Pedido!</button>
+</div>
+ 
+</div>
+
+     <!-- CAMISA BÁSICA 6 -->
+     
+<div class="basica-card">
+
+  <!-- IMAGEM DO PRODUTO -->
+  <img
+    src="imagens/esgotado.png"
+    alt="Camiseta Básica F Pac Store"
+    class="camiseta-img"
+  >
+
+  <!-- PREÇO -->
+  <p class="preco">R$ 79,90</p>
+
+  <!-- ETAPA 1: COR -->
+  <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+      <option value="">Selecione</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+      <option value="Off White">Off White</option>
+    </select>
+  </div>
+
+  <!-- ETAPA 2: TAMANHO -->
+  <div class="etapa etapa-tamanho oculta">
+    <label>Tamanho</label>
+    <select class="tamanho">
+      <option value="">Selecione</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+    </select>
+  </div>
+
+ <!-- ETAPA 3: QUANTIDADE -->
+<div class="etapa etapa-quantidade oculta">
+  <label>Quantidade</label>
+  <input class="quantidade" type="number" value="0" min="0">
+</div>
+
+<!-- ETAPA 4: FINALIZAR -->
+<div class="etapa etapa-finalizar oculta">
+  <button>Finalizar Compra</button>
+</div>
+
+<!-- ETAPA 5: ENTREGA E PAGAMENTO -->
+<div class="etapa etapa-checkout oculta">
+
+  <label>Bairro para entrega</label>
+  <input
+    type="text"
+    class="bairro"
+     list="bairros-joinville"   placeholder="Comece a digitar o bairro"
+  >
+
+  <label>Forma de pagamento</label>
+  <select class="pagamento">
+    <option value="">Selecione</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+  </select>
+
+</div>
+
+<!-- BOTÃO FINAL PARA WHATSAPP -->
+<div class="etapa etapa-enviar oculta">
+  <button class="btn-whatsapp">Enviar Pedido!</button>
+</div>
+ 
 </div>
 
   </div>
@@ -1535,50 +1813,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-<style>
-  /* TODO O SEU CSS AQUI */
-
-  /* ============================= */
-  /* CARD FIXO COM SCROLL INTERNO */
-  /* ============================= */
-
-  .basica-card {
-    background: #ffffff;
-    padding: 14px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 280px;
-    height: 540px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .basica-card > *:not(img):not(.preco) {
-    overflow-y: auto;
-  }
-
-  .basica-card > *::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .basica-card > *::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px;
-  }
-
-  .basica-card .etapa {
-    width: 100%;
-    opacity: 1;
-  }
-
-  .basica-card .oculta {
-    display: none;
-  }
-</style>
-
- 
 </script>
 
 <datalist id="bairros-joinville">
@@ -1628,6 +1862,8 @@ document.addEventListener("DOMContentLoaded", () => {
   <option value="Vila Cubatão">
   <option value="Vila Nova">
 </datalist>
-    
+
+
+     
 </body>
 </html>
