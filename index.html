@@ -638,15 +638,28 @@ text-shadow:
   width: 100%;
   max-width: 280px;
 
-  height: 520px;              /* 🔒 altura fixa */
-  display: flex;              /* organização interna */
+  height: 520px;                 /* altura fixa */
+  display: flex;
   flex-direction: column;
 }
 
+   /* ÁREA DE FORMULÁRIO DENTRO DO CARD */
+.basica-card .etapa {
+  width: 100%;
+}
+
    /* ÁREA INTERNA DO CARD (conteúdo variável) */
-.basica-card .etapa,
+/* Etapas com espaço suficiente e rolagem */
+.basica-card .etapa {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
 .basica-card .etapa.visivel {
-  flex-shrink: 0;
+  max-height: 220px;    /* ✅ espaço real */
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
