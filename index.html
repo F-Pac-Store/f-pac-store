@@ -603,15 +603,12 @@
 
 .basica-grid {
   display: grid;
-    .basica .container {
-  max-width: 1400px;
-}
 
-  /* ✅ cards lado a lado */
+  /* cards lado a lado */
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-  gap: 24px;                 /* espaço equilibrado entre cards */
-  justify-items: center;     /* centraliza os cards */
+  gap: 24px;                 /* espaço entre cards */
+  justify-items: center;     /* centraliza cada card */
   align-items: start;
 
   width: 100%;
