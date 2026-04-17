@@ -121,8 +121,9 @@
     total += preco * p.quantidade;
 
     lista.innerHTML += `
-      <div class="item">
-        <div class="info">
+<div class="item">
+  <img src="${p.imagem}" alt="${p.nome}">
+  <div class="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>Preço: ${p.preco}</p>
