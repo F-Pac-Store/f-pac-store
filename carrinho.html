@@ -201,6 +201,12 @@
 <button class="finalizar" onclick="finalizar()">
   Finalizar Pedido
 </button>
+
+<div id="pix-qrcode" style="display:none; margin-top:20px;">
+  <p><strong>Pagamento via Pix</strong></p>
+  <img id="qr-img" src="" alt="QR Code Pix">
+</div>
+  
 </div>
 
 <script>
@@ -330,6 +336,14 @@ if (bairroInput && bairroInput.value) {
     
 }
 
+  // Atualiza o preview de frete quando o bairro mudar
+const bairroListener = document.getElementById("bairro");
+if (bairroListener) {
+  bairroListener.addEventListener("input", () => {
+    render();
+  });
+}
+
   function alterar(i, v) {
     carrinho[i].quantidade += v;
     if (carrinho[i].quantidade <= 0) carrinho.splice(i, 1);
@@ -375,6 +389,21 @@ if (!fretePorBairro[bairroNormalizado]) {
 
 // Total final
 const totalFinal = valorProdutos + frete;
+// ✅ Gera QR Code Pix automaticamente
+if (pagamento === "Pix") {
+  const valor = totalFinal.toFixed(2);
+  const qrUrl =
+    "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
+    encodeURIComponent(`pix:${chavePix}?amount=${valor}`);
+
+  const qrImg = document.getElementById("qr-img");
+  const qrBox = document.getElementById("pix-qrcode");
+
+  if (qrImg && qrBox) {
+    qrImg.src = qrUrl;
+    qrBox.style.display = "block";
+  }
+}
 
 msg += `🚚 Entrega: ${bairro}\n`;
 msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
