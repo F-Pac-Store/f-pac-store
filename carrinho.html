@@ -222,8 +222,11 @@ function normalizarBairro(valor) {
     lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
     totalEl.innerText = "R$ 0,00";
 
-    document.querySelector(".finalizar").disabled = true;
-    document.querySelector(".finalizar").style.opacity = "0.6";
+    const btnFinalizar = document.querySelector(".finalizar");
+if (btnFinalizar) {
+  btnFinalizar.disabled = true;
+  btnFinalizar.style.opacity = "0.6";
+}
 
     return;
   }
@@ -239,9 +242,9 @@ function normalizarBairro(valor) {
     total += preco * p.quantidade;
 
     lista.innerHTML += `
-      <div class="item">
-        <{p.imagem}
-        <div class="info">
+  <div class="item">
+    <img src="${p.imagem}" alt="${p.nome}">
+    <div class="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>Preço: ${p.preco}</p>
