@@ -167,6 +167,44 @@
   const lista = document.getElementById("lista");
   const totalEl = document.getElementById("total");
 
+const fretePorBairro = {
+"Paranaguamirim": 7,
+"João Costa": 12,
+"Jarivatuba": 13,
+"Adhemar Garcia": 13,
+"Ulysses Guimarães": 13,
+"Fátima": 14,
+"Santa Catarina": 14,
+"Profipo": 14,
+"Parque Guarani": 13,
+"Petrópolis": 13,
+"Boehmerwald": 13,
+"Itaum": 12,
+"Floresta": 14,
+"Guanabara": 13,
+
+"Aventureiro": 18,
+"Boa Vista": 17,
+"Comasa": 17,
+"Espinheiros": 18,
+"Iririú": 17,
+"Jardim Iririú": 17,
+
+"América": 17,
+"Atiradores": 17,
+"Bom Retiro": 18,
+"Centro": 16,
+"Costa e Silva": 18,
+"Glória": 17,
+"Saguaçu": 17,
+"Santo Antônio": 18,
+"Jardim Sofia": 18,
+
+"Morro do Meio": 20,
+"Nova Brasília": 20,
+"São Marcos": 20
+};
+  
  function render() {
   lista.innerHTML = "";
   let total = 0;
@@ -241,17 +279,28 @@ const chavePix = "f.pac.store@gmail.com"; // ajuste para a sua chave real
       `💰 ${p.preco}\n\n`;
   });
 
-  msg +=
-    `🚚 Entrega: ${bairro}\n` +
-    `💳 Pagamento: ${pagamento}\n\n` +
-    `✅ TOTAL: ${totalEl.innerText}\n\n` +
-    `Envio este pedido para confirmação.`;
+ msg += `🚚 Entrega: ${bairro}\n`;
+msg += `💳 Pagamento: ${pagamento}\n`;
+
+if (pagamento === "Pix") {
+  msg += `🔑 Chave Pix: ${chavePix}\n`;
+}
+
+msg +=
+  `\n✅ TOTAL: ${totalEl.innerText}\n\n` +
+  `Envio este pedido para confirmação.`;
 
   window.open(
     "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
     "_blank"
   );
 }
+
+// Limpa carrinho após envio
+carrinho = [];
+localStorage.removeItem("carrinho");
+render();
+  
   render();
 </script>
   
