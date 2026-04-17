@@ -1024,26 +1024,7 @@
 </button>
                 </div>
 
-                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-                <div class="etapa etapa-checkout oculta">
-
-                    <label>Bairro para entrega</label>
-                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
-
-                    <label>Forma de pagamento</label>
-                    <select class="pagamento">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                    </select>
-
-                </div>
-
                 <!-- BOTÃO FINAL PARA WHATSAPP -->
-                <div class="etapa etapa-enviar oculta">
-                    <button class="btn-whatsapp">Enviar Pedido!</button>
-                </div>
 
             </div>
 
@@ -1091,29 +1072,6 @@
 </button>
                 </div>
 
-                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-                <div class="etapa etapa-checkout oculta">
-
-                    <label>Bairro para entrega</label>
-                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
-
-                    <label>Forma de pagamento</label>
-                    <select class="pagamento">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                    </select>
-
-                </div>
-
-                <!-- BOTÃO FINAL PARA WHATSAPP -->
-                <div class="etapa etapa-enviar oculta">
-                    <button class="btn-whatsapp">Enviar Pedido!</button>
-                </div>
-
-            </div>
-
             <!-- CAMISA BÁSICA 4 -->
 
             <div class="basica-card">
@@ -1156,28 +1114,9 @@
 <button onclick="adicionarAoCarrinho(this)">
   Adicionar ao Carrinho
 </button>
-                </div>
-
-                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-                <div class="etapa etapa-checkout oculta">
-
-                    <label>Bairro para entrega</label>
-                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
-
-                    <label>Forma de pagamento</label>
-                    <select class="pagamento">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                    </select>
-
-                </div>
+                </div>    
 
                 <!-- BOTÃO FINAL PARA WHATSAPP -->
-                <div class="etapa etapa-enviar oculta">
-                    <button class="btn-whatsapp">Enviar Pedido!</button>
-                </div>
 
             </div>
 
@@ -1225,30 +1164,7 @@
 </button>
                 </div>
 
-                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-                <div class="etapa etapa-checkout oculta">
-
-                    <label>Bairro para entrega</label>
-                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
-
-                    <label>Forma de pagamento</label>
-                    <select class="pagamento">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                    </select>
-
-                </div>
-
-                <!-- BOTÃO FINAL PARA WHATSAPP -->
-                <div class="etapa etapa-enviar oculta">
-                    <button class="btn-whatsapp">Enviar Pedido!</button>
-                </div>
-
-            </div>
-
-            <!-- CAMISA BÁSICA 6 -->
+                <!-- CAMISA BÁSICA 6 -->
 
             <div class="basica-card">
 
@@ -1291,31 +1207,8 @@
   Adicionar ao Carrinho
 </button>
                 </div>
-
-                <!-- ETAPA 5: ENTREGA E PAGAMENTO -->
-                <div class="etapa etapa-checkout oculta">
-
-                    <label>Bairro para entrega</label>
-                    <input type="text" class="bairro" list="bairros-joinville" placeholder="Comece a digitar o bairro">
-
-                    <label>Forma de pagamento</label>
-                    <select class="pagamento">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                    </select>
-
-                </div>
-
-                <!-- BOTÃO FINAL PARA WHATSAPP -->
-                <div class="etapa etapa-enviar oculta">
-                    <button class="btn-whatsapp">Enviar Pedido!</button>
-                </div>
-
+        
             </div>
-
-        </div>
     </section>
 
     <!-- ============================= -->
@@ -1597,8 +1490,6 @@
           const qtdEtapa = card.querySelector('.etapa-quantidade');
           const qtd = card.querySelector('.quantidade');
           const finalizar = card.querySelector('.etapa-finalizar');
-         const checkout = card.querySelector('.etapa-checkout');
-        const enviar = card.querySelector('.etapa-enviar');
          
           // Estado inicial
           if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
@@ -1642,75 +1533,9 @@
               finalizar.classList.add('visivel');
             } else {
               finalizar.classList.add('oculta');
-              if (checkout) checkout.classList.add('oculta');
-              if (enviar) enviar.classList.add('oculta');
             }
           });
-        }
-        
-        // ETAPA 4 → FINALIZAR COMPRA
-        if (finalizar) {
-          finalizar.addEventListener('click', () => {
-            if (checkout) {
-              checkout.classList.remove('oculta');
-              checkout.classList.add('visivel');
-            }
-            if (enviar) {
-              enviar.classList.remove('oculta');
-              enviar.classList.add('visivel');
-            }
-          });
-        }
-        
-         // ETAPA 5 → ENVIAR PEDIDO PELO WHATSAPP
-        if (enviar) {
-          enviar.addEventListener('click', () => {
-        
-            const produto = "Camiseta Básica F Pac Store";
-            const preco = card.querySelector('.preco')?.innerText || '';
-        
-            const corValor = cor?.value || '';
-            const tamanhoValor = tamanho?.value || '';
-            const quantidadeValor = qtd?.value || '';
-            const bairroValor = card.querySelector('.bairro')?.value || '';
-            const pagamentoValor = card.querySelector('.pagamento')?.value || '';
-        const img = card.querySelector('img');
-        let nomeEstampa = '';
-        
-        if (img && img.src) {
-          nomeEstampa = img.src
-            .split('/')
-            .pop()
-            .replace('.jpg', '')
-            .replace('.png', '')
-            .replace(/-/g, ' ')
-            .toUpperCase();
-        }
-          
-            const mensagem =
-          `Fala comigo! 👋\n` +
-          `Quero finalizar minha compra na *F PAC Store* ✅🔥\n\n` +
-          `🧾 *RESUMO DO PEDIDO*\n` +
-          `👕 Modelo: Force – ${nomeEstampa}\n` +
-          `🎨 Cor: ${corValor}\n` +
-          `📏 Tamanho: ${tamanhoValor}\n` +
-          `📦 Quantidade: ${quantidadeValor}\n` +
-          `💰 Valor unitário: ${preco}\n\n` +
-          `🚚 *ENTREGA*\n` +
-          `📍 Bairro/Cidade: ${bairroValor}\n\n` +
-          `💵 *SUBTOTAL*: calcular no WhatsApp + frete\n\n` +
-          `💳 *FORMA DE PAGAMENTO*\n` +
-          `👉 Preferência informada no site: ${pagamentoValor}\n\n` +
-          `Aguardo pra concluir a compra 😄`;
-        
-            const telefone = "5547997465602";
-            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-        
-            window.open(url, '_blank');
-          });
-        }
-         
-         });
+       
     </script>
 
     <script>
