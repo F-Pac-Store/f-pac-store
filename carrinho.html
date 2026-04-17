@@ -110,42 +110,42 @@
   const lista = document.getElementById("lista");
   const totalEl = document.getElementById("total");
 
-  function render() {
-    lista.innerHTML = "";
-    let total = 0;
+ function render() {
+  lista.innerHTML = "";
+  let total = 0;
 
-    carrinho.forEach((p, i) => {
-      let preco = Number(
-        p.preco.replace("R$", "").replace(",", ".")
-      );
-      total += preco * p.quantidade;
+  carrinho.forEach((p, i) => {
+    let preco = Number(
+      p.preco.replace("R$", "").replace(",", ".")
+    );
+    total += preco * p.quantidade;
 
-      lista.innerHTML += `
-        <div class="item">
-          <img src="${p         <div class="info">
-            <strong>${p.nome}</strong>
-            <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
-            <p>Preço: ${p.preco}</p>
+    lista.innerHTML += `
+      <div class="item">
+        <div class="info">
+          <strong>${p.nome}</strong>
+          <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
+          <p>Preço: ${p.preco}</p>
 
-            <div class="qtd">
-              <button onclick="alterar(${i}, -1)">-</button>
-              <span>${p.quantidade}</span>
-              <button onclick="alterar(${i}, 1)">+</button>
-            </div>
-
-            <button class="remover" onclick="remover(${i})">
-              Remover item
-            </button>
+          <div class="qtd">
+            <button onclick="alterar(${i}, -1)">-</button>
+            <span>${p.quantidade}</span>
+            <button onclick="alterar(${i}, 1)">+</button>
           </div>
+
+          <button class="remover" onclick="remover(${i})">
+            Remover item
+          </button>
         </div>
-      `;
-    });
+      </div>
+    `;
+  });
 
-    totalEl.innerText =
-      "R$ " + total.toFixed(2);
+  totalEl.innerText =
+    "R$ " + total.toFixed(2);
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  }
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
 
   function alterar(i, v) {
     carrinho[i].quantidade += v;
