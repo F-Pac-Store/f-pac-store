@@ -279,7 +279,19 @@ const chavePix = "f.pac.store@gmail.com"; // ajuste para a sua chave real
       `💰 ${p.preco}\n\n`;
   });
 
- msg += `🚚 Entrega: ${bairro}\n`;
+// Calcula frete
+const frete = fretePorBairro[bairro] ?? 20;
+
+// Total dos produtos
+const valorProdutos = Number(
+  totalEl.innerText.replace("R$", "").replace(",", ".")
+);
+
+// Total final
+const totalFinal = valorProdutos + frete;
+
+msg += `🚚 Entrega: ${bairro}\n`;
+msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
 msg += `💳 Pagamento: ${pagamento}\n`;
 
 if (pagamento === "Pix") {
@@ -287,19 +299,20 @@ if (pagamento === "Pix") {
 }
 
 msg +=
-  `\n✅ TOTAL: ${totalEl.innerText}\n\n` +
+  `\n✅ TOTAL: R$ ${totalFinal.toFixed(2)}\n\n` +
   `Envio este pedido para confirmação.`;
 
   window.open(
     "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
     "_blank"
   );
-}
-
-// Limpa carrinho após envio
+    
+// ✅ limpa o carrinho depois do envio
 carrinho = [];
 localStorage.removeItem("carrinho");
 render();
+
+}
   
   render();
 </script>
