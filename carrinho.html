@@ -168,52 +168,60 @@
   const totalEl = document.getElementById("total");
 
 const fretePorBairro = {
-"Paranaguamirim": 7,
-"João Costa": 12,
-"Jarivatuba": 13,
-"Adhemar Garcia": 13,
-"Ulysses Guimarães": 13,
-"Fátima": 14,
-"Santa Catarina": 14,
-"Profipo": 14,
-"Parque Guarani": 13,
-"Petrópolis": 13,
-"Boehmerwald": 13,
-"Itaum": 12,
-"Floresta": 14,
-"Guanabara": 13,
+  "paranaguamirim": 7,
+  "joao costa": 12,
+  "jarivatuba": 13,
+  "adhemar garcia": 13,
+  "ulysses guimaraes": 13,
+  "fatima": 14,
+  "santa catarina": 14,
+  "profipo": 14,
+  "parque guarani": 13,
+  "petropolis": 13,
+  "boehmerwald": 13,
+  "itaum": 12,
+  "floresta": 14,
+  "guanabara": 13,
 
-"Aventureiro": 18,
-"Boa Vista": 17,
-"Comasa": 17,
-"Espinheiros": 18,
-"Iririú": 17,
-"Jardim Iririú": 17,
+  "aventureiro": 18,
+  "boa vista": 17,
+  "comasa": 17,
+  "espinheiros": 18,
+  "iririu": 17,
+  "jardim iririu": 17,
 
-"América": 17,
-"Atiradores": 17,
-"Bom Retiro": 18,
-"Centro": 16,
-"Costa e Silva": 18,
-"Glória": 17,
-"Saguaçu": 17,
-"Santo Antônio": 18,
-"Jardim Sofia": 18,
+  "america": 17,
+  "atiradores": 17,
+  "bom retiro": 18,
+  "centro": 16,
+  "costa e silva": 18,
+  "gloria": 17,
+  "saguacu": 17,
+  "santo antonio": 18,
+  "jardim sofia": 18,
 
-"Morro do Meio": 20,
-"Nova Brasília": 20,
-"São Marcos": 20
+  "morro do meio": 20,
+  "nova brasilia": 20,
+  "sao marcos": 20
 };
-  
- function render() {
-  lista.innerHTML = "";
-  let total = 0;
 
-  if (carrinho.length === 0) {
-    lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
-    totalEl.innerText = "R$ 0,00";
-    return;
-  }
+function normalizarBairro(valor) {
+  return valor
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+  
+ if (carrinho.length === 0) {
+  lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
+  totalEl.innerText = "R$ 0,00";
+
+  document.querySelector(".finalizar").disabled = true;
+  document.querySelector(".finalizar").style.opacity = "0.6";
+
+  return;
+}
 
   carrinho.forEach((p, i) => {
     let preco = Number(
@@ -280,12 +288,17 @@ const chavePix = "f.pac.store@gmail.com"; // ajuste para a sua chave real
   });
 
 // Calcula frete
-const frete = fretePorBairro[bairro] ?? 20;
+const bairroNormalizado = normalizarBairro(bairro);
+const frete = fretePorBairro[bairroNormalizado] ?? 20;
 
 // Total dos produtos
 const valorProdutos = Number(
   totalEl.innerText.replace("R$", "").replace(",", ".")
 );
+
+    if (!fretePorBairro[bairroNormalizado]) {
+  msg += "⚠️ Frete calculado como valor padrão\n";
+}
 
 // Total final
 const totalFinal = valorProdutos + frete;
