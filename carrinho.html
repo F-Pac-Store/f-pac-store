@@ -231,9 +231,11 @@ if (btnFinalizar) {
     return;
   }
 
-  // ✅ Passo 3 — Reativa botão quando houver itens
-  document.querySelector(".finalizar").disabled = false;
-  document.querySelector(".finalizar").style.opacity = "1";
+    const btnFinalizar = document.querySelector(".finalizar");
+if (btnFinalizar) {
+  btnFinalizar.disabled = false;
+  btnFinalizar.style.opacity = "1";
+}
 
   carrinho.forEach((p, i) => {
     let preco = Number(
@@ -306,7 +308,7 @@ const valorProdutos = Number(
   totalEl.innerText.replace("R$", "").replace(",", ".")
 );
 
-    if (!fretePorBairro[bairroNormalizado]) {
+if (!fretePorBairro[bairroNormalizado]) {
   msg += "⚠️ Frete calculado como valor padrão\n";
 }
 
