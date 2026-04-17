@@ -308,6 +308,26 @@ if (btnFinalizar) {
 
   totalEl.innerText = "R$ " + total.toFixed(2);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+// === Preview de frete e total ===
+const bairroInput = document.getElementById("bairro");
+const previewFrete = document.getElementById("frete-preview");
+const previewTotal = document.getElementById("total-final-preview");
+
+if (bairroInput && bairroInput.value) {
+  const bairroNormalizado = normalizarBairro(bairroInput.value);
+  const frete = fretePorBairro[bairroNormalizado] ?? 20;
+  const totalFinal = total + frete;
+
+  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
+  previewTotal.innerHTML =
+    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
+} else {
+  previewFrete.innerText = "Frete: —";
+  previewTotal.innerHTML =
+    "<strong>Total com frete: —</strong>";
+}
+    
 }
 
   function alterar(i, v) {
