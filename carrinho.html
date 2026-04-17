@@ -417,6 +417,19 @@ msg +=
   `\n✅ TOTAL: R$ ${totalFinal.toFixed(2)}\n\n` +
   `Envio este pedido para confirmação.`;
 
+    fetch("https://script.google.com/macros/s/AKfycbzeWHRO4Nm0YGUiTCJchxDHkTVuV0DwkmhFdlnPO3k31Cf7ELFRtQdqlmuENMkIMtHxoA/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    produtos: carrinho.map(p =>
+      `${p.nome} - ${p.cor} ${p.tamanho} x${p.quantidade}`
+    ).join(" | "),
+    bairro: bairro,
+    frete: frete,
+    pagamento: pagamento,
+    total: totalFinal
+  })
+});
+
   window.open(
     "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
     "_blank"
