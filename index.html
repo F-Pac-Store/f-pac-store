@@ -79,6 +79,34 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
+      /* ============================= */
+/* CARRINHO - AMARELO + PRETO */
+/* ============================= */
+
+.menu-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #FFC107; /* amarelo */
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.menu-carrinho i {
+  font-size: 2.4rem;
+  color: #FFC107;
+}
+
+#contador-carrinho {
+  background: #000;
+  color: #FFC107;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
         /* VARIÁVEIS DE CORES GLOBAIS */
             
             :root {
@@ -822,20 +850,21 @@
                 </div>
 
                 <!-- ICONES SOCIAIS -->
-               <div class="menu-social">
+             <div class="menu-social">
 
   <!-- Carrinho -->
-  carrinho.html
-    🛒 <span id="contador-carrinho">0</span>
+  <a href="carrinho.html" class="menu-carrinho" aria-label="Carrinho">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contador-carrinho">0</span>
   </a>
 
   <!-- WhatsApp -->
-  https://wa.me/5547997465
+  <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <!-- Instagram -->
-  https://instagram.com/f_pac_store/
+  <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
     <i class="fab fa-instagram"></i>
   </a>
 
