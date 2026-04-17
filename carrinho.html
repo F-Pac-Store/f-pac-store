@@ -90,6 +90,44 @@
       cursor: pointer;
       margin-top: 15px;
     }
+
+/* Checkout – Bairro e Pagamento */
+.checkout-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.checkout-form .campo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.checkout-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.checkout-form input,
+.checkout-form select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .checkout-form {
+    grid-template-columns: 1fr;
+  }
+}
+    
   </style>
 </head>
 
@@ -102,16 +140,23 @@
 <div class="container resumo">
   <h3>Total</h3>
   <p id="total"></p>
-  <label>Bairro para entrega (Joinville)</label>
-<input type="text" id="bairro" placeholder="Digite seu bairro">
+<div class="checkout-form">
+  <div class="campo">
+    <label for="bairro">Bairro para entrega (Joinville)</label>
+    <input type="text" id="bairro" placeholder="Ex: Jardim Paraíso">
+  </div>
 
-<label>Forma de pagamento</label>
-<select id="pagamento">
-  <option value="">Selecione</option>
-  <option>Pix</option>
-  <option>Cartão de Crédito</option>
-  <option>Cartão de Débito</option>
-</select>
+  <div class="campo">
+    <label for="pagamento">Forma de pagamento</label>
+    <select id="pagamento">
+      <option value="">Selecione</option>
+      <option>Pix</option>
+      <option>Cartão de Crédito</option>
+      <option>Cartão de Débito</option>
+    </select>
+  </div>
+</div>
+
 <button class="finalizar" onclick="finalizar()">
   Finalizar Pedido
 </button>
@@ -209,7 +254,7 @@
 }
   render();
 </script>
-
+  
 </body>
 </html>
 
