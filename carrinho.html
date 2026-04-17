@@ -140,11 +140,52 @@
 <div class="container resumo">
   <h3>Total</h3>
   <p id="total"></p>
+  <p id="frete-preview">Frete: —</p>
+<p id="total-final-preview"><strong>Total com frete: —</strong></p>
 <div class="checkout-form">
   <div class="campo">
     <label for="bairro">Bairro para entrega (Joinville)</label>
-    <input type="text" id="bairro" placeholder="Ex: Jardim Paraíso">
-  </div>
+<input
+  type="text" 
+  id="bairro" 
+  placeholder="Ex: Jardim Paraíso" 
+  list="lista-bairros"
+/>
+
+<datalist id="lista-bairros">
+  <option value="Paranaguamirim">
+  <option value="João Costa">
+  <option value="Jarivatuba">
+  <option value="Adhemar Garcia">
+  <option value="Ulysses Guimarães">
+  <option value="Fátima">
+  <option value="Santa Catarina">
+  <option value="Profipo">
+  <option value="Parque Guarani">
+  <option value="Petrópolis">
+  <option value="Boehmerwald">
+  <option value="Itaum">
+  <option value="Floresta">
+  <option value="Guanabara">
+  <option value="Aventureiro">
+  <option value="Boa Vista">
+  <option value="Comasa">
+  <option value="Espinheiros">
+  <option value="Iririú">
+  <option value="Jardim Iririú">
+  <option value="América">
+  <option value="Atiradores">
+  <option value="Bom Retiro">
+  <option value="Centro">
+  <option value="Costa e Silva">
+  <option value="Glória">
+  <option value="Saguaçu">
+  <option value="Santo Antônio">
+  <option value="Jardim Sofia">
+  <option value="Morro do Meio">
+  <option value="Nova Brasília">
+  <option value="São Marcos">
+</datalist>  </div>
 
   <div class="campo">
     <label for="pagamento">Forma de pagamento</label>
@@ -217,12 +258,13 @@ function normalizarBairro(valor) {
   lista.innerHTML = "";
   let total = 0;
 
+ const btnFinalizar = document.querySelector(".finalizar");
+
   // ✅ Carrinho vazio → botão desativado
   if (carrinho.length === 0) {
     lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
     totalEl.innerText = "R$ 0,00";
 
-    const btnFinalizar = document.querySelector(".finalizar");
 if (btnFinalizar) {
   btnFinalizar.disabled = true;
   btnFinalizar.style.opacity = "0.6";
@@ -231,7 +273,6 @@ if (btnFinalizar) {
     return;
   }
 
-    const btnFinalizar = document.querySelector(".finalizar");
 if (btnFinalizar) {
   btnFinalizar.disabled = false;
   btnFinalizar.style.opacity = "1";
