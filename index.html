@@ -505,13 +505,29 @@
               grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
               gap: 25px;
             }
-        
-           /* PRODUTOS – cards lado a lado */
-        .produtos .grid {
-          grid-template-columns: repeat(2, 1fr);
-          max-width: 900px;   /* controla largura total */
-          margin: 0 auto;     /* centraliza a grid */
-        }
+
+      /* PRODUTOS – cards lado a lado (RESPONSIVO DE VERDADE) */
+.produtos .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ✅ 3 cards no desktop */
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .produtos .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .produtos .grid {
+    grid-template-columns: 1fr;
+  }
+}
         
             .card {
           background: white;
