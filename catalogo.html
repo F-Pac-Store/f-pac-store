@@ -11,9 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-body {
-  padding-top: 140px; /* ✅ espaço para header fixo */
-}
     
     body {
   font-family: 'Inter', sans-serif;
@@ -70,11 +67,120 @@ body {
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+.header {
+              background: var(--primary);
+              color: var(--white);
+              position: fixed;
+              width: 100%;
+              top: 0;
+              z-index: 1000;
+            }
+        /* HEADER - FAIXA DO MENU (DESKTOP) */
+        
+        .header-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        
+          height: 120px;      /* aumenta a faixa azul */
+          padding: 0 15px;   /* respiro lateral */
+        }
+        
+            /* LOGO */
+        
+            .logo {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              text-decoration: none;
+            }
+        
+            .logo-img {
+              max-height: 85px;
+            }
+        
+            .logo-text {
+              font-family: 'blacklisted', sans-serif;
+              font-size: 2.2rem;
+              letter-spacing: 3px;
+              line-height: 1;
+              color: #000000;
+              -webkit-text-stroke: 2.3px #FFC107;
+              display: flex;
+              align-items: center;
+            }
+        
+            @media (min-width: 768px) {
+              .logo-img {
+                max-height: 90px;
+              }
+        
+              .logo-text {
+          color: #FFC107;
+          -webkit-text-stroke: 1.5px #000;
+          text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+            }
+            /* MENU DE NAVEGAÇÃO */
+        
+            .nav {
+              display: none;
+              gap: 25px;
+            }
+        /* LINKS DO MENU (PADRONIZAÇÃO) */
+        /* Mesma fonte, tamanho e peso */
+            
+        .nav a {
+          font-family: 'Inter', sans-serif; /* Fonte única */
+          font-size: 1rem;                  /* Mesmo tamanho */
+          font-weight: 600;                 /* Mesmo peso */
+          color: white;
+          text-decoration: none;
+        }
+        
+            .menu-toggle {
+              font-size: 2rem;
+              background: none;
+              border: none;
+              color: white;
+            }
+        
+        /* Hover opcional (desktop) */
+        
+        .menu-toggle {
+          font-size: 1.6rem;
+          background: none;
+          border: none;
+          color: white;
+          transition: color 0.3s ease;
+        }
+        
+            .nav.active {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              width: 100%;
+              background: var(--primary);
+              top: 90px;
+              left: 0;
+              padding: 20px;
+              gap: 15px;
+            }
+        
+            @media (min-width: 768px) {
+              .nav {
+                display: flex;
+              }
+        
+              .menu-toggle {
+                display: none;
+              }
+            }
+    
   </style>
 
 </head>
-
-<body>
 
   <header class="header">
         <div class="container header-content">
@@ -88,11 +194,11 @@ body {
 
     <!-- LINKS DO MENU -->
     <div class="menu-links">
-        <a href="#inicio">Início</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#criar" class="menu-vertical">Criar Camisa</a>
-    </div>
+  <a href="index.html">Início</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="index.html#produtos">Produtos</a>
+  <a href="index.html#criar" class="menu-vertical">Criar Camisa</a>
+</div>
 
    <!-- ICONES SOCIAIS -->
 <div class="menu-social">
@@ -157,6 +263,4 @@ body {
 
 </body>
 
-
-  
 </html>
