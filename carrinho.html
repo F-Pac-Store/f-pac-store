@@ -276,8 +276,12 @@ const btnFinalizar = document.querySelector(".finalizar");
 const lista = document.getElementById("lista");
 const totalEl = document.getElementById("total");
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-let historico = JSON.parse(localStorage.getItem("historicoPedidos")) || [];
+let carrinho;
+try {
+  carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+} catch {
+  carrinho = [];
+}
 
 const fretePorBairro = {
   floresta: 14,
