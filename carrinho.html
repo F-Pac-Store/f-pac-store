@@ -172,7 +172,7 @@ input.invalido {
 <p id="total-final-preview"><strong>Total com frete: —</strong></p>
 <div class="checkout-form">
 <div class="campo">
-  <label for="bairro">Bairro para entrega (Joinville)</label>
+  <label for="bairro">Bairro (para cálculo do frete)</label>
   <input
     type="text"
     id="bairro"
@@ -182,12 +182,40 @@ input.invalido {
 </div>
 
 <div class="campo">
-  <label for="numero">Número <span style="color:red">*</span></label>
+  <label for="rua">Rua *</label>
+  <input
+    type="text"
+    id="rua"
+    placeholder="Ex: Rua das Palmeiras"
+  />
+</div>
+
+<div class="campo">
+  <label for="numero">Número *</label>
   <input
     type="text"
     id="numero"
     placeholder="Ex: 123"
   />
+</div>
+
+<div class="campo">
+  <label for="referencias">Referências *</label>
+  <input
+    type="text"
+    id="referencias"
+    placeholder="Portão azul, próximo ao mercado"
+  />
+</div>
+
+<div class="campo">
+  <label for="pagamento">Forma de pagamento</label>
+  <select id="pagamento">
+    <option value="">Selecione</option>
+    <option>Pix</option>
+    <option>Cartão de Crédito</option>
+    <option>Cartão de Débito</option>
+  </select>
 </div>
 
 <datalist id="lista-bairros">
@@ -347,34 +375,20 @@ function atualizarFreteETotal(bairroDigitado) {
 }
 
 function validarCamposCheckout() {
-  const bairro = inputBairro.value;
-  const pagamento = selectPagamento.value;
-  const confirmacao = autoselecionarBairro(bairro);
+  const bairro = bairroEhValido(document.getElementById("bairro").value);
+  const rua = document.getElementById("rua").value.trim();
+  const numero = document.getElementById("numero").value.trim();
+  const referencias = document.getElementById("referencias").value.trim();
+  const pagamento = document.getElementById("pagamento").value;
 
-  const inputRua = document.getElementById("rua");
-const inputNumero = document.getElementById("numero");
-const inputReferencias = document.getElementById("referencias");
-
-const ruaValida = validarCampoObrigatorio(inputRua);
-const numeroValido = validarCampoObrigatorio(inputNumero);
-const referenciasValidas = validarCampoObrigatorio(inputReferencias);
-
-  if (confirmacao) {
-    inputBairro.classList.remove("invalido");
-    inputBairro.classList.add("valido");
-
-    atualizarFreteETotal(bairro);
-    const rua = document.getElementById("rua").value.trim();
-const numero = document.getElementById("numero").value.trim();
-const referencias = document.getElementById("referencias").value.trim();
-
-btnFinalizar.disabled = !(
-  confirmacao &&
-  pagamento &&
-  ruaValida &&
-  numeroValido &&
-  referenciasValidas
-);
+  btnFinalizar.disabled = !(
+    bairro &&
+    rua &&
+    numero &&
+    referencias &&
+    pagamento
+  );
+}
 
   } else if (bairro) {
     inputBairro.classList.remove("valido");
@@ -392,9 +406,11 @@ btnFinalizar.disabled = !(
 inputBairro.addEventListener("input", validarCamposCheckout);
 selectPagamento.addEventListener("change", validarCamposCheckout);
 
-  document.getElementById("rua").addEventListener("input", validarCamposCheckout);
+document.getElementById("bairro").addEventListener("input", validarCamposCheckout);
+document.getElementById("rua").addEventListener("input", validarCamposCheckout);
 document.getElementById("numero").addEventListener("input", validarCamposCheckout);
 document.getElementById("referencias").addEventListener("input", validarCamposCheckout);
+document.getElementById("pagamento").addEventListener("change", validarCamposCheckout);
 
   function normalizarListaBairros() {
   return Object.keys(fretePorBairro);
@@ -433,19 +449,6 @@ function autoselecionarBairro(valorDigitado) {
 }
 
 function render() {
-  lista.innerHTML = "";
-  let total = 0;
-
-  if (carrinho.length === 0) {
-    lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
-    totalEl.innerText = "R$ 0,00";
-    return;
-  }
-
-  carrinho.forEach((p, i) => {
-    const preco = Number(p.preco.replace("R$", "").replace(",", "."));
-    total += preco * p.quantidade;
-
   lista.innerHTML += `
   <div class="item">
     <img src="${p.imagem}" alt="${p.nome}">
