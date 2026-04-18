@@ -311,6 +311,18 @@ selectPagamento.addEventListener("change", validarCamposCheckout);
   return bairrosValidos.includes(bairroNormalizado);
 }
 
+  function normalizarListaBairros() {
+  return Object.keys(fretePorBairro);
+}
+
+function autoselecionarBairro(valorDigitado) {
+  const valorNormalizado = normalizarBairro(valorDigitado);
+  const bairrosValidos = normalizarListaBairros();
+
+  // verifica correspondência EXATA
+  return bairrosValidos.find(b => b === valorNormalizado) || null;
+}
+
 function render() {
   lista.innerHTML = "";
   let total = 0;
