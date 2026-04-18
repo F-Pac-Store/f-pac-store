@@ -915,175 +915,196 @@
 
     <section class="catalogo" id="catalogo">
         <div class="container">
-
             <h2>Nossas Estampas</h2>
             <p class="catalogo-descricao">
                 Escolha a estampa que mais combina com você.
             </p>
+            <!-- ============================= -->
 
-            <div class="catalogo-grid">
+<!-- CATÁLOGO DE ESTAMPAS -->
 
-                <div class="estampa">
-                    <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
-                    <span>E01 – Tropa Urbana – Com Fundo</span>
-                </div>
+<!-- ============================= -->
 
-                <div class="estampa">
-                    <img src="imagens/estampas/e2.png" alt="Estampa 02">
-                    <span>E01 – Tropa Urbana – Sem Fundo</span>
-                </div>
+<section class="catalogo" id="catalogo">
+    <div class="container">
+        <h2>Nossas Estampas</h2>
+        <p class="catalogo-descricao">
+            Escolha a estampa que mais combina com você.
+        </p>
 
-                <div class="estampa">
-                    <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
-                    <span>E02 – Tropa Urbana – Com Fundo</span>
-                </div>
+```
+    <div class="catalogo-grid">
 
-                <div class="estampa">
-                    <img src="imagens/estampas/e4.png" alt="Estampa 04">
-                    <span>E02 – Tropa Urbana – Sem Fundo</span>
-                </div>
-
-                <div class="catalogo-cta">
-                    <a href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link" target="_blank" class="catalogo-card" rel="noopener">
-  Catalogo Completo
-  </a>
-                </div>
-    </section>
-
-    <!-- ============================= -->
-    <!-- PRODUTOS -->
-    <!-- ============================= -->
-
-    <section class="produtos" id="produtos">
-        <div class="container">
-
-            <h2>Nossos Produtos</h2>
-
-            <div class="grid">
-
-                <div class="card">
-                    <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
-                    <h3>Force</h3>
-                    <p>Camisas Prontas</p>
-                    <a href="#basica" class="btn">Escolher Camisa</a>
-                </div>
-
-                <div class="card">
-                    <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
-                    <h3>Prime</h3>
-                    <p>Criar do seu jeito</p>
-                    <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
-                </div>
-
-            </div>
+        <div class="estampa">
+            <img src="imagens/estampas/e1.jpeg" alt="Estampa 01">
+            <span>E01 – Tropa Urbana – Com Fundo</span>
         </div>
-    </section>
 
-    <!-- ============================= -->
-    <!-- CAMISA FORCE -->
-    <!-- ============================= -->
+        <div class="estampa">
+            <img src="imagens/estampas/e2.png" alt="Estampa 02">
+            <span>E01 – Tropa Urbana – Sem Fundo</span>
+        </div>
 
-    <section class="basica" id="basica">
-        <div class="container">
+        <div class="estampa">
+            <img src="imagens/estampas/e3.jpeg" alt="Estampa 03">
+            <span>E02 – Tropa Urbana – Com Fundo</span>
+        </div>
 
-            <h2>Estampa Discreta</h2>
-            <p>Modelo pronto com valor fixo</p>
+        <div class="estampa">
+            <img src="imagens/estampas/e4.png" alt="Estampa 04">
+            <span>E02 – Tropa Urbana – Sem Fundo</span>
+        </div>
 
-            <div class="basica-grid">
+    </div> <!-- FECHA catalogo-grid -->
 
+    <div class="catalogo-cta">
+        <a href="https://drive.google.com/drive/folders/1qtDFvsbs4RWk9KEsLyOaOZbcau12YECz?usp=drive_link" 
+           target="_blank" 
+           class="catalogo-card" 
+           rel="noopener">
+           Catalogo Completo
+        </a>
+    </div>
 
-            <!-- CAMISA BÁSICA 1 -->
+</div> <!-- FECHA container -->
+```
 
-            <div class="basica-card">
+</section>
 
-                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+<!-- ============================= -->
 
-                <p class="preco">R$ 89,90</p>
+<!-- PRODUTOS -->
 
-                <!-- COR -->
-                <div class="etapa visivel">
-                    <label>Cor</label>
-                    <select class="cor">
-                        <option value="">Selecione</option>
-                        <option value="Preta">Preta</option>
-                        <option value="Branca">Branca</option>
-                        <option value="Off White">Off White</option>
-                    </select>
-                </div>
+<!-- ============================= -->
 
-                <!-- TAMANHO -->
-                <div class="etapa etapa-tamanho oculta">
-                    <label>Tamanho</label>
-                    <select class="tamanho">
-                        <option value="">Selecione</option>
-                        <option value="M">M</option>
-                        <option value="G">G</option>
-                    </select>
-                </div>
+<section class="produtos" id="produtos">
+    <div class="container">
 
-                <!-- ETAPA 3: QUANTIDADE -->
-                <div class="etapa etapa-quantidade oculta">
-                    <label>Quantidade</label>
-                    <input type="number" class="quantidade" value="0" min="0">
-                </div>
+```
+    <h2>Nossos Produtos</h2>
 
-                <!-- ETAPA 4: FINALIZAR -->
-                <div class="etapa etapa-finalizar oculta">
-<button onclick="adicionarAoCarrinho(this)">
-  Adicionar ao Carrinho
-</button>
-                </div>
+    <div class="grid">
 
-                <!-- BOTÃO FINAL PARA WHATSAPP -->
+        <div class="card">
+            <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
+            <h3>Force</h3>
+            <p>Camisas Prontas</p>
+            <a href="#basica" class="btn">Escolher Camisa</a>
+        </div>
 
+        <div class="card">
+            <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
+            <h3>Prime</h3>
+            <p>Criar do seu jeito</p>
+            <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
+        </div>
+
+    </div>
+</div>
+```
+
+</section>
+
+<!-- ============================= -->
+
+<!-- CAMISA FORCE -->
+
+<!-- ============================= -->
+
+<section class="basica" id="basica">
+    <div class="container">
+
+```
+    <h2>Estampa Discreta</h2>
+    <p>Modelo pronto com valor fixo</p>
+
+    <div class="basica-grid">
+
+        <!-- CAMISA BÁSICA 1 -->
+        <div class="basica-card">
+
+            <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+
+            <p class="preco">R$ 89,90</p>
+
+            <div class="etapa visivel">
+                <label>Cor</label>
+                <select class="cor">
+                    <option value="">Selecione</option>
+                    <option value="Preta">Preta</option>
+                    <option value="Branca">Branca</option>
+                    <option value="Off White">Off White</option>
+                </select>
             </div>
 
-            <!-- CAMISA BÁSICA 2 -->
+            <div class="etapa etapa-tamanho oculta">
+                <label>Tamanho</label>
+                <select class="tamanho">
+                    <option value="">Selecione</option>
+                    <option value="M">M</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
 
-            <div class="basica-card">
+            <div class="etapa etapa-quantidade oculta">
+                <label>Quantidade</label>
+                <input type="number" class="quantidade" value="0" min="0">
+            </div>
 
-                <!-- IMAGEM DO PRODUTO -->
-                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+            <div class="etapa etapa-finalizar oculta">
+                <button onclick="adicionarAoCarrinho(this)">
+                    Adicionar ao Carrinho
+                </button>
+            </div>
 
-                <!-- PREÇO -->
-                <p class="preco">R$ 89,90</p>
+        </div>
 
-                <!-- ETAPA 1: COR -->
-                <div class="etapa visivel">
-                    <label>Cor</label>
-                    <select class="cor">
-                        <option value="">Selecione</option>
-                        <option value="Preta">Preta</option>
-                        <option value="Branca">Branca</option>
-                        <option value="Off White">Off White</option>
-                    </select>
-                </div>
+        <!-- CAMISA BÁSICA 2 -->
+        <div class="basica-card">
 
-                <!-- ETAPA 2: TAMANHO -->
-                <div class="etapa etapa-tamanho oculta">
-                    <label>Tamanho</label>
-                    <select class="tamanho">
-                        <option value="">Selecione</option>
-                        <option value="M">M</option>
-                        <option value="G">G</option>
-                    </select>
-                </div>
+            <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
 
-                <!-- ETAPA 3: QUANTIDADE -->
-                <div class="etapa etapa-quantidade oculta">
-                    <label>Quantidade</label>
-                    <input class="quantidade" type="number" value="0" min="0">
-                </div>
+            <p class="preco">R$ 89,90</p>
 
-                <!-- ETAPA 4: FINALIZAR -->
-              <div class="etapa etapa-finalizar oculta">
-  <button onclick="adicionarAoCarrinho(this)">
-    Adicionar ao Carrinho
-  </button>
-</div>
+            <div class="etapa visivel">
+                <label>Cor</label>
+                <select class="cor">
+                    <option value="">Selecione</option>
+                    <option value="Preta">Preta</option>
+                    <option value="Branca">Branca</option>
+                    <option value="Off White">Off White</option>
+                </select>
+            </div>
 
-</div> <!-- fecha basica-card -->
-    </section>
+            <div class="etapa etapa-tamanho oculta">
+                <label>Tamanho</label>
+                <select class="tamanho">
+                    <option value="">Selecione</option>
+                    <option value="M">M</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
+
+            <div class="etapa etapa-quantidade oculta">
+                <label>Quantidade</label>
+                <input class="quantidade" type="number" value="0" min="0">
+            </div>
+
+            <div class="etapa etapa-finalizar oculta">
+                <button onclick="adicionarAoCarrinho(this)">
+                    Adicionar ao Carrinho
+                </button>
+            </div>
+
+        </div>
+
+    </div> <!-- FECHA basica-grid -->
+
+</div> <!-- FECHA container -->
+```
+
+</section>
+
 
     <!-- ============================= -->
     <!-- CAMISETA PREMIUM -->
