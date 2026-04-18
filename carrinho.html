@@ -310,7 +310,8 @@ function render() {
 
     lista.innerHTML += `
       <div class="item">
-        <img src="${p.imagem}" altlass="info">
+        <img src="${p.imagem}" alt="${p.nome}">
+        <div class="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>${p.preco}</p>
@@ -331,6 +332,7 @@ function render() {
 
   totalEl.innerText = "R$ " + total.toFixed(2).replace(".", ",");
 }
+``
   
 render();
 
