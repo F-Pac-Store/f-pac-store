@@ -286,9 +286,7 @@ function normalizar(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-/* ======================
-   RENDER SEM innerHTML
-   ====================== */
+/* ========= RENDER DEFINITIVO ========= */
 function render() {
   lista.innerHTML = "";
   let total = 0;
@@ -299,16 +297,17 @@ function render() {
     return;
   }
 
-  carrinho.forEach((p, i) => {
+  carrinho.forEach((p, index) => {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     const item = document.createElement("div");
     item.className = "item";
 
-    const imgWrapper = document.createElement("div");
-    imgWrapper.innerHTML = p.imagem; // ✅ imagem já vem pronta
-    item.appendChild(imgWrapper.firstElementChild);
+    // ✅ imagem (HTML REAL)
+    const imgContainer = document.createElement("div");
+    imgContainer.innerHTML = p.imagem;
+    item.appendChild(imgContainer.firstElementChild);
 
     const info = document.createElement("div");
     info.className = "info";
@@ -324,14 +323,14 @@ function render() {
 
     const menos = document.createElement("button");
     menos.textContent = "-";
-    menos.onclick = () => alterar(i, -1);
+    menos.onclick = () => alterar(index, -1);
 
     const span = document.createElement("span");
     span.textContent = p.quantidade;
 
     const mais = document.createElement("button");
     mais.textContent = "+";
-    mais.onclick = () => alterar(i, 1);
+    mais.onclick = () => alterar(index, 1);
 
     qtd.append(menos, span, mais);
     info.appendChild(qtd);
@@ -339,7 +338,7 @@ function render() {
     const removerBtn = document.createElement("button");
     removerBtn.textContent = "Remover item";
     removerBtn.className = "remover";
-    removerBtn.onclick = () => remover(i);
+    removerBtn.onclick = () => remover(index);
 
     info.appendChild(removerBtn);
     item.appendChild(info);
@@ -362,6 +361,7 @@ function remover(index) {
   render();
 }
 
+/* ========= FRETE ========= */
 function atualizarFrete() {
   const bairro = normalizar(document.getElementById("bairro").value);
   const frete = fretePorBairro[bairro];
@@ -375,11 +375,15 @@ function atualizarFrete() {
     return;
   }
 
-  const totalProdutos = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
+  const totalProdutos = Number(
+    totalEl.innerText.replace("R$", "").replace(",", ".")
+  );
+
   const totalFinal = totalProdutos + frete;
 
   freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
-  totalFinalEl.innerHTML = `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
+  totalFinalEl.innerHTML =
+    `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
 }
 
 document.getElementById("bairro").addEventListener("input", atualizarFrete);
