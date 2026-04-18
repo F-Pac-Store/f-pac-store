@@ -417,8 +417,11 @@ msg +=
   `\n✅ TOTAL: R$ ${totalFinal.toFixed(2)}\n\n` +
   `Envio este pedido para confirmação.`;
 
-    fetch("https://script.google.com/macros/s/AKfycbzeWHRO4Nm0YGUiTCJchxDHkTVuV0DwkmhFdlnPO3k31Cf7ELFRtQdqlmuENMkIMtHxoA/exec", {
+fetch(https://script.google.com/macros/s/AKfycbxWHR0AmN0yGU1TCJchxDkThVUV0dwkmhFdnP03k3ITCFLFRtQdq1muENMKJTmXhoA/exec, {
   method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify({
     produtos: carrinho.map(p =>
       `${p.nome} - ${p.cor} ${p.tamanho} x${p.quantidade}`
@@ -428,19 +431,15 @@ msg +=
     pagamento: pagamento,
     total: totalFinal
   })
-});
+})
+.then(res => res.text())
+.then(txt => console.log("SCRIPT OK:", txt))
+.catch(err => console.error("ERRO SCRIPT:", err));
 
   window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
-    "_blank"
-  );
-    
-// ✅ limpa o carrinho depois do envio
-carrinho = [];
-localStorage.removeItem("carrinho");
-render();
-
-}
+  "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
+  "_blank"
+);
   
   render();
 </script>
