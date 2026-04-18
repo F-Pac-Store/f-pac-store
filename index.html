@@ -815,6 +815,62 @@
         .basica-card .oculta {
           display: none;
         }
+
+      .basica-card .oculta {
+  display: none;
+}
+
+/* ============================= */
+/* CATÁLOGO DESTAQUE – HOME */
+/* ============================= */
+
+.catalogo-destaque {
+  background: #fff;
+  padding: 60px 0 90px;
+  text-align: center;
+}
+
+.catalogo-destaque-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 por linha */
+  gap: 24px;
+}
+
+.estampa-destaque {
+  background: #f9f9f9;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease;
+}
+
+.estampa-destaque:hover {
+  transform: translateY(-4px);
+}
+
+.estampa-destaque img {
+  width: 100%;
+  max-width: 260px; /* ✅ imagem menor */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+
+.estampa-destaque span {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .catalogo-destaque-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+      
     </style>
 </head>
 
@@ -890,29 +946,39 @@
       Destaques do nosso catálogo exclusivo.
     </p>
 
-    <div class="catalogo-destaque-grid">
+   <div class="catalogo-destaque-grid">
 
-      <div class="estampa-destaque">
-        <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
-        <span>E01 – Tropa Urbana – Com Fundo</span>
-      </div>
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e1.jpeg">
+    <span>E01 – Tropa Urbana – Com Fundo</span>
+  </div>
 
-      <div class="estampa-destaque">
-        <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
-        <span>E01 – Tropa Urbana – Sem Fundo</span>
-      </div>
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e2.png">
+    <span>E01 – Tropa Urbana – Sem Fundo</span>
+  </div>
 
-      <div class="estampa-destaque">
-        <img src="imagens/estampas/e3.jpeg" alt="E02 – Tropa Urbana – Com Fundo">
-        <span>E02 – Tropa Urbana – Com Fundo</span>
-      </div>
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e3.jpeg">
+    <span>E02 – Tropa Urbana – Com Fundo</span>
+  </div>
 
-      <div class="estampa-destaque">
-        <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
-        <span>E02 – Tropa Urbana – Sem Fundo</span>
-      </div>
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e4.png">
+    <span>E02 – Tropa Urbana – Sem Fundo</span>
+  </div>
 
-    </div>
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e5.jpeg">
+    <span>E03 – Outra Estampa</span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e6.png">
+    <span>E04 – Outra Estampa</span>
+  </div>
+
+</div>
 
     <div class="catalogo-cta">
       <a href="catalogo.html" class="btn btn-destaque">
