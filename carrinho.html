@@ -303,21 +303,25 @@ function render() {
   lista.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach(p => {
+  carrinho.forEach((p) => {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     lista.innerHTML += `
       <div class="item">
-        <img src="${p.imagem<div class="info">
+        <img src="${p.imagem}" alt="${p.nome}">
+        <div class="info">
           <strong>${p.nome}</strong>
-          <p>${p.cor} | ${p.tamanho}</p>
-          <p>${p.preco}</p>
+          <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
+          <p>Preço: ${p.preco}</p>
         </div>
       </div>
     `;
   });
 
+  totalEl.innerText = "R$ " + total.toFixed(2).replace(".", ",");
+}
+  
   totalEl.innerText = "R$ " + total.toFixed(2);
 }
 
