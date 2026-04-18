@@ -378,7 +378,7 @@ document.getElementById("bairro").addEventListener("input", () => {
   const total = Number(
   totalEl.innerText.replace("R$", "").replace(",", ".")
 );
-  const totalFinal = totalProdutos + frete;
+  const totalFinal = total + frete;
 
   freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
   totalFinalEl.innerHTML =
