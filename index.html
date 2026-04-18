@@ -80,34 +80,7 @@
           -webkit-text-fill-color: transparent;
         }
 
-      /* ============================= */
-/* CARRINHO - AMARELO + PRETO */
-/* ============================= */
-
-.menu-carrinho {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #FFC107; /* amarelo */
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.menu-carrinho i {
-  font-size: 2.4rem;
-  color: #FFC107;
-}
-
-#contador-carrinho {
-  background: #000;
-  color: #FFC107;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 999px;
-}
-
-        /* VARIÁVEIS DE CORES GLOBAIS */
+            /* VARIÁVEIS DE CORES GLOBAIS */
             
             :root {
               --primary: #003366;
@@ -868,12 +841,6 @@
                 <!-- ICONES SOCIAIS -->
 <div class="menu-social">
 
-  <!-- Carrinho -->
-  <a href="carrinho.html" class="menu-carrinho" aria-label="Carrinho">
-    <i class="fas fa-shopping-cart"></i>
-    <span id="contador-carrinho">0</span>
-  </a>
-
   <!-- WhatsApp -->
   <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
@@ -1465,52 +1432,6 @@ document.querySelectorAll('.basica-card').forEach(card => {
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
-<script>
-function adicionarAoCarrinho(botao) {
-  const card = botao.closest(".basica-card");
-
-  if (!card) {
-    console.error("Card não encontrado");
-    return;
-  }
-
-  const produto = {
-    nome: "Camisa F Pac Store",
-    preco: parseFloat(
-      card.querySelector(".preco").innerText
-        .replace("R$", "").replace(" ", "")
-        .replace(",", ".")
-    ),
-    imagem: card.querySelector("img").src,
-    cor: card.querySelector(".cor").value,
-    tamanho: card.querySelector(".tamanho").value,
-    quantidade: Number(card.querySelector(".quantidade").value)
-  };
-
-  if (!produto.cor || !produto.tamanho || produto.quantidade <= 0) {
-    alert("Selecione cor, tamanho e quantidade.");
-    return;
-  }
-
-  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-  carrinho.push(produto);
-
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  atualizarContadorCarrinho();
-  alert("Produto adicionado ao carrinho ✅");
-}
-
-function atualizarContadorCarrinho() {
-  const contador = document.getElementById("contador-carrinho");
-  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-contador.innerText = total;
-}
-
-document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
-</script>
   
 </body>
 
