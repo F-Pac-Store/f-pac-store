@@ -273,7 +273,13 @@ let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 const fretePorBairro = {
   "floresta": 14,
   "centro": 16,
-  "itaum": 12
+  "itaum": 12,
+  "espinheiros": 18,
+  "iririu": 17,
+  "avila": 15,
+  "boa vista": 17,
+  "atiradores": 17,
+  "jarivatuba": 13
 };
 
 function normalizar(texto) {
@@ -374,18 +380,6 @@ function remover(index) {
   render();
 }
 
-  function atualizarFrete() {
-  const bairro = document.getElementById("bairro").value;
-  const freteEl = document.getElementById("frete-preview");
-  const totalFinalEl = document.getElementById("total-final-preview");
-
-  const frete = fretePorBairro[normalizar(bairro)];
-
-  if (!frete) {
-    freteEl.innerText = "Frete: —";
-    totalFinalEl.innerHTML = "<strong>Total com frete: —</strong>";
-    return;
-  }
 
   const total = Number(
     totalEl.innerText.replace("R$", "").replace(",", ".")
