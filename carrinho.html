@@ -263,11 +263,13 @@ input.invalido {
 </div>
   
 </div>
+  
 <script>
 const lista = document.getElementById("lista");
 const totalEl = document.getElementById("total");
 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+let historico = JSON.parse(localStorage.getItem("historicoPedidos")) || [];
 
 const fretePorBairro = {
   floresta: 14,
@@ -280,13 +282,10 @@ const fretePorBairro = {
   jarivatuba: 13
 };
 
-function normalizar(texto) {
-  return texto.trim().toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
+const normalizar = t => t.trim().toLowerCase()
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-/* ========= RENDER DEFINITIVO ========= */
+/* ===== RENDER DEFINITIVO ===== */
 function render() {
   lista.innerHTML = "";
   let total = 0;
@@ -297,21 +296,19 @@ function render() {
     return;
   }
 
-  carrinho.forEach((p, index) => {
+  carrinho.forEach((p, i) => {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     const item = document.createElement("div");
     item.className = "item";
 
-    // ✅ imagem (HTML REAL)
-    const imgContainer = document.createElement("div");
-    imgContainer.innerHTML = p.imagem;
-    item.appendChild(imgContainer.firstElementChild);
+    const img = document.createElement("img");
+    img.src = p.imagem;           // ✅ URL direta
+    img.alt = p.nome;
 
     const info = document.createElement("div");
     info.className = "info";
-
     info.innerHTML = `
       <strong>${p.nome}</strong>
       <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
@@ -323,49 +320,50 @@ function render() {
 
     const menos = document.createElement("button");
     menos.textContent = "-";
-    menos.onclick = () => alterar(index, -1);
+    menos.onclick = () => alterar(i, -1);
 
     const span = document.createElement("span");
     span.textContent = p.quantidade;
 
     const mais = document.createElement("button");
     mais.textContent = "+";
-    mais.onclick = () => alterar(index, 1);
+    mais.onclick = () => alterar(i, 1);
 
     qtd.append(menos, span, mais);
-    info.appendChild(qtd);
 
     const removerBtn = document.createElement("button");
     removerBtn.textContent = "Remover item";
     removerBtn.className = "remover";
-    removerBtn.onclick = () => remover(index);
+    removerBtn.onclick = () => remover(i);
 
-    info.appendChild(removerBtn);
-    item.appendChild(info);
+    info.append(qtd, removerBtn);
+    item.append(img, info);
     lista.appendChild(item);
   });
 
   totalEl.innerText = "R$ " + total.toFixed(2).replace(".", ",");
 }
 
-function alterar(index, valor) {
-  carrinho[index].quantidade += valor;
-  if (carrinho[index].quantidade <= 0) carrinho.splice(index, 1);
+function alterar(i, v) {
+  carrinho[i].quantidade += v;
+  if (carrinho[i].quantidade <= 0) carrinho.splice(i, 1);
+  salvar();
+}
+
+function remover(i) {
+  carrinho.splice(i, 1);
+  salvar();
+}
+
+function salvar() {
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
   render();
 }
 
-function remover(index) {
-  carrinho.splice(index, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  render();
-}
-
-/* ========= FRETE ========= */
-function atualizarFrete() {
+/* ===== FRETE ===== */
+document.getElementById("bairro").addEventListener("input", () => {
   const bairro = normalizar(document.getElementById("bairro").value);
   const frete = fretePorBairro[bairro];
-
   const freteEl = document.getElementById("frete-preview");
   const totalFinalEl = document.getElementById("total-final-preview");
 
@@ -375,18 +373,29 @@ function atualizarFrete() {
     return;
   }
 
-  const totalProdutos = Number(
-    totalEl.innerText.replace("R$", "").replace(",", ".")
-  );
-
+  const totalProdutos = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
   const totalFinal = totalProdutos + frete;
 
   freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
   totalFinalEl.innerHTML =
     `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
-}
+});
 
-document.getElementById("bairro").addEventListener("input", atualizarFrete);
+/* ===== FINALIZAR + HISTÓRICO ===== */
+function finalizar() {
+  const pedido = {
+    data: new Date().toISOString(),
+    itens: carrinho,
+    total: totalEl.innerText
+  };
+
+  historico.push(pedido);
+  localStorage.setItem("historicoPedidos", JSON.stringify(historico));
+
+  carrinho = [];
+  salvar();
+  alert("✅ Pedido salvo no histórico!");
+}
 
 render();
 </script>
