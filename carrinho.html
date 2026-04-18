@@ -30,7 +30,6 @@
 
     #lista {
   margin-top: 20px;
-  border: 2px dashed red;
 }
 
     .item {
@@ -299,6 +298,9 @@ const normalizar = t => t.trim().toLowerCase()
 
 /* ===== RENDER DEFINITIVO ===== */
 function render() {
+  // ✅ SEMPRE lê do localStorage
+  carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
   lista.innerHTML = "";
   let total = 0;
 
