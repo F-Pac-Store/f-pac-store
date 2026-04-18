@@ -375,11 +375,16 @@
         }
         
         .estampa img {
-          width: 100%;
-          aspect-ratio: 1 / 1;
-          object-fit: contain; /* ← evita imagem grande demais */
-          padding: 8px;
-        }
+  width: 100%;
+  height: 180px;              /* ✅ força área maior para a imagem */
+  object-fit: contain;        /* mantém a arte inteira visível */
+  padding: 4px;               /* ✅ reduz respiro interno */
+}
+      @media (min-width: 768px) {
+  .estampa img {
+    height: 220px; /* ✅ maior no desktop */
+  }
+}
         
         .estampa span {
           display: block;
