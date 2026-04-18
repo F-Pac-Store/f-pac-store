@@ -849,10 +849,10 @@
 
 .estampa-destaque img {
   width: 100%;
-  max-width: 260px; /* ✅ imagem menor */
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  margin: 0 auto 10px;
+  height: 220px;          /* ✅ imagem realmente maior */
+  max-width: none;        /* ✅ remove o limite que travava */
+  object-fit: contain;    /* mantém a arte inteira */
+  margin: 0 auto 12px;
 }
 
 .estampa-destaque span {
