@@ -328,6 +328,33 @@ function render() {
   
 render();
 
+  function atualizarFrete() {
+  const bairroDigitado = document.getElementById("bairro").value;
+  const freteEl = document.getElementById("frete-preview");
+  const totalFinalEl = document.getElementById("total-final-preview");
+
+  const bairro = normalizar(bairroDigitado);
+  const frete = fretePorBairro[bairro];
+
+  // Se bairro não existir
+  if (!frete) {
+    freteEl.innerText = "Frete: —";
+    totalFinalEl.innerHTML = "<strong>Total com frete: —</strong>";
+    return;
+  }
+
+  // Total dos produtos
+  const totalProdutos = Number(
+    totalEl.innerText.replace("R$", "").replace(",", ".")
+  );
+
+  const totalComFrete = totalProdutos + frete;
+
+  freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
+  totalFinalEl.innerHTML =
+    `<strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>`;
+}
+
   function alterar(index, valor) {
   carrinho[index].quantidade += valor;
 
