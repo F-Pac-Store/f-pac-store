@@ -632,14 +632,13 @@
 .basica-grid {
   display: grid;
 
-  /* máximo 5 cards por linha */
-  grid-template-columns: repeat(5, 1fr);
+  /* ✅ cards independentes lado a lado */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
-  column-gap: 32px;  /* ✅ espaço horizontal REAL */
-  row-gap: 32px;     /* ✅ espaço vertical */
+  gap: 32px;
 
-  justify-items: stretch; /* ✅ cards ocupam a coluna */
-  align-items: stretch;
+  justify-content: center;
+  align-items: start;
 
   width: 100%;
   max-width: 1400px;
@@ -691,11 +690,10 @@
         
   .basica-card {
   background: #ffffff;
-  padding: 16px;          /* ✅ um pouco mais de respiro */
+  padding: 16px;
   border-radius: 12px;
 
-  width: 100%;            /* ✅ ocupa a coluna inteira */
-  max-width: none;        /* ✅ remove limitação */
+  width: 240px;       /* ✅ largura fixa e independente */
   min-height: 340px;
 
   box-shadow: 0 6px 22px rgba(0,0,0,0.12);
