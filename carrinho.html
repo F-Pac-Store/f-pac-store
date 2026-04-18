@@ -207,16 +207,6 @@ input.invalido {
     placeholder="Portão azul, próximo ao mercado"
   />
 </div>
-
-<div class="campo">
-  <label for="pagamento">Forma de pagamento</label>
-  <select id="pagamento">
-    <option value="">Selecione</option>
-    <option>Pix</option>
-    <option>Cartão de Crédito</option>
-    <option>Cartão de Débito</option>
-  </select>
-</div>
   
 <datalist id="lista-bairros">
   <option value="Adhemar Garcia">
@@ -303,17 +293,27 @@ function render() {
   lista.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach((p) => {
+  carrinho.forEach((p, i) => {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     lista.innerHTML += `
       <div class="item">
-        <img src="${p.imagem}" alt="${p.nome}">
+        ${p.imagem}
         <div class="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
-          <p>Preço: ${p.preco}</p>
+          <p>${p.preco}</p>
+
+          <div class="qtd">
+            <button onclick="alterar(${i}, -1)">-</button>
+            <span>${p.quantidade}</span>
+            <button onclick="alterar(${i}, 1)">+</button>
+          </div>
+
+          <button class="remover" onclick="remover(${i})">
+            Remover item
+          </button>
         </div>
       </div>
     `;
@@ -326,6 +326,32 @@ function render() {
 }
 
 render();
+
+  function atualizarFrete() {
+  const bairro = document.getElementById("bairro").value;
+  const freteEl = document.getElementById("frete-preview");
+  const totalFinalEl = document.getElementById("total-final-preview");
+
+  const frete = fretePorBairro[normalizar(bairro)];
+
+  if (!frete) {
+    freteEl.innerText = "Frete: —";
+    totalFinalEl.innerHTML = "<strong>Total com frete: —</strong>";
+    return;
+  }
+
+  const total = Number(
+    totalEl.innerText.replace("R$", "").replace(",", ".")
+  );
+
+  const totalFinal = total + frete;
+
+  freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
+  totalFinalEl.innerHTML =
+    `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
+}
+
+  document.getElementById("bairro").addEventListener("input", atualizarFrete);
 
 function validar() {
   const bairro = bairroValido(document.getElementById("bairro").value);
