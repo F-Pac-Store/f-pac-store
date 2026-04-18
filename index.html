@@ -1606,7 +1606,7 @@ function adicionarAoCarrinho(botao) {
   const produto = {
     nome: "Camisa Básica F Pac Store",
     preco: card.querySelector(".preco").innerText,
-    imagem: card.querySelector("img").src,
+    imagem: card.querySelector("img").getAttribute("src"),
     cor: card.querySelector(".cor").value,
     tamanho: card.querySelector(".tamanho").value,
     quantidade: Number(card.querySelector(".quantidade").value)
