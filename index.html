@@ -1477,68 +1477,50 @@
     </script>
 
     <script>
-        document.querySelectorAll('.basica-card').forEach(card => {
-         
-        const etapaCor = card.querySelector('.etapa');
-        
-        if (etapaCor && !card.classList.contains('bloqueado')) {
-          etapaCor.classList.add('visivel');
-        }
-          const cor = card.querySelector('.cor');
-          const tamanhoEtapa = card.querySelector('.etapa-tamanho');
-          const tamanho = card.querySelector('.tamanho');
-          const qtdEtapa = card.querySelector('.etapa-quantidade');
-          const qtd = card.querySelector('.quantidade');
-          const finalizar = card.querySelector('.etapa-finalizar');
-         
-          // Estado inicial
-          if (tamanhoEtapa) tamanhoEtapa.classList.add('oculta');
-          if (qtdEtapa) qtdEtapa.classList.add('oculta');
-          if (finalizar) finalizar.classList.add('oculta');
-        
-          // ETAPA 1 → COR
-          if (cor) {
-            cor.addEventListener('change', () => {
-              // Reseta etapas seguintes
-              if (tamanho) tamanho.value = '';
-              if (qtd) qtd.value = 0;
-        
-              tamanhoEtapa.classList.remove('oculta');
-              tamanhoEtapa.classList.add('visivel');
-        
-              qtdEtapa.classList.add('oculta');
-              finalizar.classList.add('oculta');
-            });
-          }
-        
-          // ETAPA 2 → TAMANHO
-          if (tamanho) {
-            tamanho.addEventListener('change', () => {
-              if (!tamanho.value) return;
-        
-              if (qtd) qtd.value = 0;
-        
-              qtdEtapa.classList.remove('oculta');
-              qtdEtapa.classList.add('visivel');
-        
-              finalizar.classList.add('oculta');
-            });
-          }
-        
-          // ETAPA 3 → QUANTIDADE
-        if (qtd) {
-          qtd.addEventListener('input', () => {
-            if (Number(qtd.value) > 0) {
-              finalizar.classList.remove('oculta');
-              finalizar.classList.add('visivel');
-            } else {
-              finalizar.classList.add('oculta');
-            }
-          });
-}
+document.querySelectorAll('.basica-card').forEach(card => {
+
+  const cor = card.querySelector('.cor');
+  const tamanho = card.querySelector('.tamanho');
+  const qtd = card.querySelector('.quantidade');
+  const etapaTamanho = card.querySelector('.etapa-tamanho');
+  const etapaQtd = card.querySelector('.etapa-quantidade');
+  const finalizar = card.querySelector('.etapa-finalizar');
+
+  if (etapaTamanho) etapaTamanho.classList.add('oculta');
+  if (etapaQtd) etapaQtd.classList.add('oculta');
+  if (finalizar) finalizar.classList.add('oculta');
+
+  if (cor) {
+    cor.addEventListener('change', () => {
+      if (etapaTamanho) etapaTamanho.classList.remove('oculta');
+      if (etapaTamanho) etapaTamanho.classList.add('visivel');
+
+      if (etapaQtd) etapaQtd.classList.add('oculta');
+      if (finalizar) finalizar.classList.add('oculta');
+    });
+  }
+
+  if (tamanho) {
+    tamanho.addEventListener('change', () => {
+      if (etapaQtd) etapaQtd.classList.remove('oculta');
+      if (etapaQtd) etapaQtd.classList.add('visivel');
+
+      if (finalizar) finalizar.classList.add('oculta');
+    });
+  }
+
+  if (qtd) {
+    qtd.addEventListener('input', () => {
+      if (Number(qtd.value) > 0) {
+        finalizar.classList.remove('oculta');
+        finalizar.classList.add('visivel');
+      } else {
+        finalizar.classList.add('oculta');
+      }
+    });
+  }
 });
-          
-    </script>
+</script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -1618,9 +1600,38 @@
 
 
 <script>
+function adicionarAoCarrinho(botao) {
+  const card = botao.closest(".basica-card");
 
+  const produto = {
+    nome: "Camisa Básica F Pac Store",
+    preco: card.querySelector(".preco").innerText,
+    imagem: card.querySelector("img").src,
+    cor: card.querySelector(".cor").value,
+    tamanho: card.querySelector(".tamanho").value,
+    quantidade: Number(card.querySelector(".quantidade").value)
+  };
 
-  
+  if (!produto.cor || !produto.tamanho || produto.quantidade <= 0) {
+    alert("Selecione cor, tamanho e quantidade.");
+    return;
+  }
+
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  carrinho.push(produto);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  atualizarContadorCarrinho();
+  alert("Produto adicionado ao carrinho ✅");
+}
+
+function atualizarContadorCarrinho() {
+  const contador = document.getElementById("contador-carrinho");
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  if (contador) contador.innerText = carrinho.length;
+}
+
+document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
 </script>
   
 </body>
