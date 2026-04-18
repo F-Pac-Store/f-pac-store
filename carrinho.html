@@ -288,20 +288,24 @@ function validarCamposCheckout() {
   const bairroConfirmado = autoselecionarBairro(bairroDigitado);
 
   if (bairroConfirmado) {
-    // bairro digitado exatamente igual a um válido
     inputBairro.classList.remove("invalido");
     inputBairro.classList.add("valido");
 
+    atualizarFreteETotal(bairroDigitado);
+
     btnFinalizar.disabled = !pagamento;
   } else if (bairroDigitado) {
-    // digitou algo, mas não é bairro válido
     inputBairro.classList.remove("valido");
     inputBairro.classList.add("invalido");
 
+    atualizarFreteETotal(null);
+
     btnFinalizar.disabled = true;
   } else {
-    // campo vazio
     inputBairro.classList.remove("valido", "invalido");
+
+    atualizarFreteETotal(null);
+
     btnFinalizar.disabled = true;
   }
 }
@@ -322,6 +326,30 @@ function autoselecionarBairro(valorDigitado) {
 
   // verifica correspondência EXATA
   return bairrosValidos.find(b => b === valorNormalizado) || null;
+}
+
+  function atualizarFreteETotal(bairroDigitado) {
+  const previewFrete = document.getElementById("frete-preview");
+  const previewTotal = document.getElementById("total-final-preview");
+
+  if (!bairroEhValido(bairroDigitado)) {
+    previewFrete.innerText = "Frete: —";
+    previewTotal.innerHTML = "<strong>Total com frete: —</strong>";
+    return;
+  }
+
+  const bairroNormalizado = normalizarBairro(bairroDigitado);
+  const frete = fretePorBairro[bairroNormalizado] ?? 20;
+
+  const totalProdutos = Number(
+    totalEl.innerText.replace("R$", "").replace(",", ".")
+  );
+
+  const totalFinal = totalProdutos + frete;
+
+  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
+  previewTotal.innerHTML =
+    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
 }
 
 function render() {
