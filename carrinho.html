@@ -266,40 +266,35 @@ input.invalido {
 <script>
 const lista = document.getElementById("lista");
 const totalEl = document.getElementById("total");
-const btnFinalizar = document.querySelector(".finalizar");
 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 const fretePorBairro = {
-  "floresta": 14,
-  "centro": 16,
-  "itaum": 12,
-  "espinheiros": 18,
-  "iririu": 17,
-  "avila": 15,
+  floresta: 14,
+  centro: 16,
+  itaum: 12,
+  espinheiros: 18,
+  iririu: 17,
   "boa vista": 17,
-  "atiradores": 17,
-  "jarivatuba": 13
+  atiradores: 17,
+  jarivatuba: 13
 };
 
 function normalizar(texto) {
-  return texto
-    .trim()
-    .toLowerCase()
+  return texto.trim().toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function bairroValido(bairro) {
-  return !!fretePorBairro[normalizar(bairro)];
-}
-
+/* ======================
+   RENDER SEM innerHTML
+   ====================== */
 function render() {
   lista.innerHTML = "";
   let total = 0;
 
   if (carrinho.length === 0) {
-    lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
+    lista.textContent = "🛒 Seu carrinho está vazio.";
     totalEl.innerText = "R$ 0,00";
     return;
   }
@@ -308,32 +303,89 @@ function render() {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
-    lista.innerHTML += `
-      <div class="item">
-        <img src="${p.imagem}" alt="${p.nome}">
-        <div class="info">
-          <strong>${p.nome}</strong>
-          <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
-          <p>${p.preco}</p>
+    const item = document.createElement("div");
+    item.className = "item";
 
-          <div class="qtd">
-            <button onclick="alterar(${i}, -1)">-</button>
-            <span>${p.quantidade}</span>
-            <button onclick="alterar(${i}, 1)">+</button>
-          </div>
+    const imgWrapper = document.createElement("div");
+    imgWrapper.innerHTML = p.imagem; // ✅ imagem já vem pronta
+    item.appendChild(imgWrapper.firstElementChild);
 
-          <button class="remover" onclick="remover(${i})">
-            Remover item
-          </button>
-        </div>
-      </div>
+    const info = document.createElement("div");
+    info.className = "info";
+
+    info.innerHTML = `
+      <strong>${p.nome}</strong>
+      <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
+      <p>${p.preco}</p>
     `;
+
+    const qtd = document.createElement("div");
+    qtd.className = "qtd";
+
+    const menos = document.createElement("button");
+    menos.textContent = "-";
+    menos.onclick = () => alterar(i, -1);
+
+    const span = document.createElement("span");
+    span.textContent = p.quantidade;
+
+    const mais = document.createElement("button");
+    mais.textContent = "+";
+    mais.onclick = () => alterar(i, 1);
+
+    qtd.append(menos, span, mais);
+    info.appendChild(qtd);
+
+    const removerBtn = document.createElement("button");
+    removerBtn.textContent = "Remover item";
+    removerBtn.className = "remover";
+    removerBtn.onclick = () => remover(i);
+
+    info.appendChild(removerBtn);
+    item.appendChild(info);
+    lista.appendChild(item);
   });
 
   totalEl.innerText = "R$ " + total.toFixed(2).replace(".", ",");
 }
-  
+
+function alterar(index, valor) {
+  carrinho[index].quantidade += valor;
+  if (carrinho[index].quantidade <= 0) carrinho.splice(index, 1);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  render();
+}
+
+function remover(index) {
+  carrinho.splice(index, 1);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  render();
+}
+
+function atualizarFrete() {
+  const bairro = normalizar(document.getElementById("bairro").value);
+  const frete = fretePorBairro[bairro];
+
+  const freteEl = document.getElementById("frete-preview");
+  const totalFinalEl = document.getElementById("total-final-preview");
+
+  if (!frete) {
+    freteEl.innerText = "Frete: —";
+    totalFinalEl.innerHTML = "<strong>Total com frete: —</strong>";
+    return;
+  }
+
+  const totalProdutos = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
+  const totalFinal = totalProdutos + frete;
+
+  freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
+  totalFinalEl.innerHTML = `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
+}
+
+document.getElementById("bairro").addEventListener("input", atualizarFrete);
+
 render();
+</script>
 
   function atualizarFrete() {
   const bairroDigitado = document.getElementById("bairro").value;
