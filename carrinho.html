@@ -253,6 +253,7 @@ input.invalido {
   </select>
 </div>
 
+  
 <button class="finalizar" onclick="finalizar()" disabled>
   Finalizar Pedido
 </button>
@@ -265,6 +266,7 @@ input.invalido {
 </div>
   
 <script>
+const btnFinalizar = document.querySelector(".finalizar");
 const lista = document.getElementById("lista");
 const totalEl = document.getElementById("total");
 
@@ -363,7 +365,7 @@ function salvar() {
 /* ===== FRETE ===== */
 document.getElementById("bairro").addEventListener("input", () => {
   const bairro = normalizar(document.getElementById("bairro").value);
-  const frete = fretePorBairro[bairro];
+  const frete = fretePorBairro[normalizar(bairro)] || 0;
   const freteEl = document.getElementById("frete-preview");
   const totalFinalEl = document.getElementById("total-final-preview");
 
@@ -373,7 +375,9 @@ document.getElementById("bairro").addEventListener("input", () => {
     return;
   }
 
-  const totalProdutos = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
+  const total = Number(
+  totalEl.innerText.replace("R$", "").replace(",", ".")
+);
   const totalFinal = totalProdutos + frete;
 
   freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
@@ -398,77 +402,18 @@ function finalizar() {
 }
 
 render();
-</script>
-
-  function atualizarFrete() {
-  const bairroDigitado = document.getElementById("bairro").value;
-  const freteEl = document.getElementById("frete-preview");
-  const totalFinalEl = document.getElementById("total-final-preview");
-
-  const bairro = normalizar(bairroDigitado);
-  const frete = fretePorBairro[bairro];
-
-  // Se bairro não existir
-  if (!frete) {
-    freteEl.innerText = "Frete: —";
-    totalFinalEl.innerHTML = "<strong>Total com frete: —</strong>";
-    return;
-  }
-
-    document.getElementById("bairro").addEventListener("input", atualizarFrete);
-
-  // Total dos produtos
-  const totalProdutos = Number(
-    totalEl.innerText.replace("R$", "").replace(",", ".")
-  );
-
-  const totalComFrete = totalProdutos + frete;
-
-  freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
-  totalFinalEl.innerHTML =
-    `<strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>`;
-}
-
-  function alterar(index, valor) {
-  carrinho[index].quantidade += valor;
-
-  if (carrinho[index].quantidade <= 0) {
-    carrinho.splice(index, 1);
-  }
-
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  render();
-}
-
-function remover(index) {
-  carrinho.splice(index, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  render();
-}
-
-
-  const total = Number(
-    totalEl.innerText.replace("R$", "").replace(",", ".")
-  );
-
-  const totalFinal = total + frete;
-
-  freteEl.innerText = `Frete: R$ ${frete.toFixed(2).replace(".", ",")}`;
-  totalFinalEl.innerHTML =
-    `<strong>Total com frete: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
-}
-
-  document.getElementById("bairro").addEventListener("input", atualizarFrete);
 
 function validar() {
-  const bairro = bairroValido(document.getElementById("bairro").value);
+  const bairro = normalizar(document.getElementById("bairro").value);
   const rua = document.getElementById("rua").value.trim();
   const numero = document.getElementById("numero").value.trim();
   const referencias = document.getElementById("referencias").value.trim();
   const pagamento = document.getElementById("pagamento").value;
 
+  const freteExiste = fretePorBairro[bairro];
+
   btnFinalizar.disabled = !(
-    bairro &&
+    freteExiste &&
     rua &&
     numero &&
     referencias &&
@@ -476,35 +421,12 @@ function validar() {
   );
 }
 
-["bairro","rua","numero","referencias"].forEach(id => {
+  ["bairro","rua","numero","referencias"].forEach(id => {
   document.getElementById(id).addEventListener("input", validar);
 });
+
 document.getElementById("pagamento").addEventListener("change", validar);
-
-function finalizar() {
-  const bairro = document.getElementById("bairro").value;
-  const rua = document.getElementById("rua").value;
-  const numero = document.getElementById("numero").value;
-  const referencias = document.getElementById("referencias").value;
-  const frete = fretePorBairro[normalizar(bairro)];
-  const total = Number(totalEl.innerText.replace("R$", ""));
-  const totalFinal = total + frete;
-
-  const msg = `
-📍 ENDEREÇO DE ENTREGA
-Bairro: ${bairro} – Joinville/SC
-Rua: ${rua}, Nº ${numero}
-Referências: ${referencias}
-
-🚚 Frete: R$ ${frete}
-💰 TOTAL: R$ ${totalFinal}
-`;
-
-  window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(msg)
-  );
-}
-</script>
+  
 </body>
 </html>
 
