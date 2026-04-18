@@ -210,9 +210,9 @@
 </div>
 
 <script>
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  const lista = document.getElementById("lista");
-  const totalEl = document.getElementById("total");
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+const lista = document.getElementById("lista");
+const totalEl = document.getElementById("total");
 
 const fretePorBairro = {
   "paranaguamirim": 7,
@@ -229,14 +229,12 @@ const fretePorBairro = {
   "itaum": 12,
   "floresta": 14,
   "guanabara": 13,
-
   "aventureiro": 18,
   "boa vista": 17,
   "comasa": 17,
   "espinheiros": 18,
   "iririu": 17,
   "jardim iririu": 17,
-
   "america": 17,
   "atiradores": 17,
   "bom retiro": 18,
@@ -246,204 +244,108 @@ const fretePorBairro = {
   "saguacu": 17,
   "santo antonio": 18,
   "jardim sofia": 18,
-
   "morro do meio": 20,
   "nova brasilia": 20,
   "sao marcos": 20
 };
 
-function normalizarBairro(valor) {
-  return valor
-    .trim()
-    .toLowerCase()
+function normalizarBairro(v) {
+  return v.trim().toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-  function render() {
+function render() {
   lista.innerHTML = "";
   let total = 0;
 
- const btnFinalizar = document.querySelector(".finalizar");
-
-  // ✅ Carrinho vazio → botão desativado
   if (carrinho.length === 0) {
     lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
     totalEl.innerText = "R$ 0,00";
-
-if (btnFinalizar) {
-  btnFinalizar.disabled = true;
-  btnFinalizar.style.opacity = "0.6";
-}
-
     return;
   }
 
-if (btnFinalizar) {
-  btnFinalizar.disabled = false;
-  btnFinalizar.style.opacity = "1";
-}
-
   carrinho.forEach((p, i) => {
-    let preco = Number(
-      p.preco.replace("R$", "").replace(",", ".")
-    );
+    const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     lista.innerHTML += `
-  <div class="item">
-    <img src="${p.imagem}" alt="${p.nome}">
-    <div class="info">
+      <div class="item">
+        ${p.imagem}
+        <div class="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>Preço: ${p.preco}</p>
-
           <div class="qtd">
             <button onclick="alterar(${i}, -1)">-</button>
             <span>${p.quantidade}</span>
             <button onclick="alterar(${i}, 1)">+</button>
           </div>
-
-          <button class="remover" onclick="remover(${i})">
-            Remover item
-          </button>
+          <button class="remover" onclick="remover(${i})">Remover item</button>
         </div>
-      </div>
-    `;
+      </div>`;
   });
 
-  totalEl.innerText = "R$ " + total.toFixed(2);
+  totalEl.innerText = `R$ ${total.toFixed(2)}`;
+}
+
+function alterar(i, v) {
+  carrinho[i].quantidade += v;
+  if (carrinho[i].quantidade <= 0) carrinho.splice(i, 1);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-// === Preview de frete e total ===
-const bairroInput = document.getElementById("bairro");
-const previewFrete = document.getElementById("frete-preview");
-const previewTotal = document.getElementById("total-final-preview");
-
-if (bairroInput && bairroInput.value) {
-  const bairroNormalizado = normalizarBairro(bairroInput.value);
-  const frete = fretePorBairro[bairroNormalizado] ?? 20;
-  const totalFinal = total + frete;
-
-  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
-  previewTotal.innerHTML =
-    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
-} else {
-  previewFrete.innerText = "Frete: —";
-  previewTotal.innerHTML =
-    "<strong>Total com frete: —</strong>";
-}
-    
+  render();
 }
 
-  // Atualiza o preview de frete quando o bairro mudar
-const bairroListener = document.getElementById("bairro");
-if (bairroListener) {
-  bairroListener.addEventListener("input", () => {
-    render();
-  });
+function remover(i) {
+  carrinho.splice(i, 1);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  render();
 }
 
-  function alterar(i, v) {
-    carrinho[i].quantidade += v;
-    if (carrinho[i].quantidade <= 0) carrinho.splice(i, 1);
-    render();
-  }
-
-  function remover(i) {
-    carrinho.splice(i, 1);
-    render();
-  }
-
-  function finalizar() {
+function finalizar() {
   const bairro = document.getElementById("bairro").value;
   const pagamento = document.getElementById("pagamento").value;
-const chavePix = "f.pac.store@gmail.com"; // ajuste para a sua chave real
+
   if (!bairro || !pagamento) {
-    alert("Informe o bairro e a forma de pagamento.");
+    alert("Informe o bairro e forma de pagamento.");
     return;
   }
 
-  let msg = "🟡 PEDIDO F PAC STORE\n\n";
+  const frete = fretePorBairro[normalizarBairro(bairro)] ?? 20;
+  const total = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
+  const totalFinal = total + frete;
 
+  let msg = "🟡 PEDIDO F PAC STORE\n\n";
   carrinho.forEach(p => {
-    msg +=
-      `👕 ${p.nome}\n` +
-      `🎨 Cor: ${p.cor} | 📏 Tamanho: ${p.tamanho}\n` +
-      `📦 Quantidade: ${p.quantidade}\n` +
-      `💰 ${p.preco}\n\n`;
+    msg += `${p.nome} - ${p.quantidade}x\n`;
   });
 
-// Calcula frete
-const bairroNormalizado = normalizarBairro(bairro);
-const frete = fretePorBairro[bairroNormalizado] ?? 20;
+  msg += `\n🚚 Bairro: ${bairro}\n💰 Total: R$ ${totalFinal.toFixed(2)}`;
 
-// Total dos produtos
-const valorProdutos = Number(
-  totalEl.innerText.replace("R$", "").replace(",", ".")
-);
-
-if (!fretePorBairro[bairroNormalizado]) {
-  msg += "⚠️ Frete calculado como valor padrão\n";
-}
-
-// Total final
-const totalFinal = valorProdutos + frete;
-// ✅ Gera QR Code Pix automaticamente
-if (pagamento === "Pix") {
-  const valor = totalFinal.toFixed(2);
-  const qrUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
-    encodeURIComponent(`pix:${chavePix}?amount=${valor}`);
-
-  const qrImg = document.getElementById("qr-img");
-  const qrBox = document.getElementById("pix-qrcode");
-
-  if (qrImg && qrBox) {
-    qrImg.src = qrUrl;
-    qrBox.style.display = "block";
-  }
-}
-
-msg += `🚚 Entrega: ${bairro}\n`;
-msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
-msg += `💳 Pagamento: ${pagamento}\n`;
-
-if (pagamento === "Pix") {
-  msg += `🔑 Chave Pix: ${chavePix}\n`;
-}
-
-msg +=
-  `\n✅ TOTAL: R$ ${totalFinal.toFixed(2)}\n\n` +
-  `Envio este pedido para confirmação.`;
-
-fetch(https://script.google.com/macros/s/AKfycbxWHR0AmN0yGU1TCJchxDkThVUV0dwkmhFdnP03k3ITCFLFRtQdq1muENMKJTmXhoA/exec, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    produtos: carrinho.map(p =>
-      `${p.nome} - ${p.cor} ${p.tamanho} x${p.quantidade}`
-    ).join(" | "),
-    bairro: bairro,
-    frete: frete,
-    pagamento: pagamento,
-    total: totalFinal
-  })
-})
-.then(res => res.text())
-.then(txt => console.log("SCRIPT OK:", txt))
-.catch(err => console.error("ERRO SCRIPT:", err));
+  fetch("https://script.google.com/macros/s/AKfycbxWHR0AmN0yGU1TCJchxDkThVUV0dwkmhFdnP03k3ITCFLFRtQdq1muENMKJTmXhoA/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      itens: carrinho,
+      bairro,
+      frete,
+      pagamento,
+      total: totalFinal
+    })
+  });
 
   window.open(
-  "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
-  "_blank"
-);
-  
+    "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
+
+  localStorage.removeItem("carrinho");
+  carrinho = [];
   render();
+}
+
+render();
 </script>
-  
 </body>
 </html>
 
