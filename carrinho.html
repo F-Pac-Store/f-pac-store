@@ -139,6 +139,17 @@
   background: #fff5f5;
 }
 
+    /* === Validação visual de endereço === */
+input.valido {
+  border: 2px solid #2ecc71;
+  background: #f0fff4;
+}
+
+input.invalido {
+  border: 2px solid #e74c3c;
+  background: #fff5f5;
+}
+
 /* Botão Finalizar desativado */
 .finalizar:disabled {
   opacity: 0.5;
@@ -291,6 +302,18 @@ const inputBairro = document.getElementById("bairro");
 const selectPagamento = document.getElementById("pagamento");
 const btnFinalizar = document.querySelector(".finalizar");
 
+  function validarCampoObrigatorio(input) {
+  if (input.value.trim() === "") {
+    input.classList.remove("valido");
+    input.classList.add("invalido");
+    return false;
+  } else {
+    input.classList.remove("invalido");
+    input.classList.add("valido");
+    return true;
+  }
+}
+
 function normalizarListaBairros() {
   return Object.keys(fretePorBairro);
 }
@@ -327,6 +350,14 @@ function validarCamposCheckout() {
   const pagamento = selectPagamento.value;
   const confirmacao = autoselecionarBairro(bairro);
 
+  const inputRua = document.getElementById("rua");
+const inputNumero = document.getElementById("numero");
+const inputReferencias = document.getElementById("referencias");
+
+const ruaValida = validarCampoObrigatorio(inputRua);
+const numeroValido = validarCampoObrigatorio(inputNumero);
+const referenciasValidas = validarCampoObrigatorio(inputReferencias);
+
   if (confirmacao) {
     inputBairro.classList.remove("invalido");
     inputBairro.classList.add("valido");
@@ -336,7 +367,13 @@ function validarCamposCheckout() {
 const numero = document.getElementById("numero").value.trim();
 const referencias = document.getElementById("referencias").value.trim();
 
-btnFinalizar.disabled = !(pagamento && rua && numero && referencias);
+btnFinalizar.disabled = !(
+  confirmacao &&
+  pagamento &&
+  ruaValida &&
+  numeroValido &&
+  referenciasValidas
+);
 
   } else if (bairro) {
     inputBairro.classList.remove("valido");
@@ -353,6 +390,10 @@ btnFinalizar.disabled = !(pagamento && rua && numero && referencias);
 
 inputBairro.addEventListener("input", validarCamposCheckout);
 selectPagamento.addEventListener("change", validarCamposCheckout);
+
+  document.getElementById("rua").addEventListener("input", validarCamposCheckout);
+document.getElementById("numero").addEventListener("input", validarCamposCheckout);
+document.getElementById("referencias").addEventListener("input", validarCamposCheckout);
 
   function normalizarListaBairros() {
   return Object.keys(fretePorBairro);
