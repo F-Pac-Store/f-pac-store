@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
+body {
+  padding-top: 140px; /* ✅ espaço para header fixo */
+}
+    
     body {
       font-family: 'Inter', sans-serif;
       background: #f5f5f5;
@@ -72,6 +76,50 @@
 
 <body>
 
+  <header class="header">
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+                <span class="logo-text">F PAC STORE</span>
+            </a>
+
+            <nav class="nav" id="nav">
+
+    <!-- LINKS DO MENU -->
+    <div class="menu-links">
+        <a href="#inicio">Início</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#criar" class="menu-vertical">Criar Camisa</a>
+    </div>
+
+   <!-- ICONES SOCIAIS -->
+<div class="menu-social">
+
+    <!-- ✅ Carrinho será reativado na Parte 1 -->
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+</div>
+
+</nav>
+
+            <button class="menu-toggle" id="toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </div>
+    </header>
+
   <div class="container">
     <h1>Catálogo Completo</h1>
     <p>Todas as estampas disponíveis</p>
@@ -108,4 +156,7 @@
   </div>
 
 </body>
+
+
+  
 </html>
