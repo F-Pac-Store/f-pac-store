@@ -875,7 +875,7 @@
   </a>
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/5547997465" target="_blank" aria-label="WhatsApp">
+  <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -948,12 +948,6 @@
   Catalogo Completo
   </a>
                 </div>
-
-            </div>
-    </section>
-
-    </div>
-    </div>
     </section>
 
     <!-- ============================= -->
@@ -1476,8 +1470,7 @@ document.querySelectorAll('.basica-card').forEach(card => {
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
-
-
+<script>
 function adicionarAoCarrinho(botao) {
   const card = botao.closest(".basica-card");
 
@@ -1490,7 +1483,7 @@ function adicionarAoCarrinho(botao) {
     nome: "Camisa F Pac Store",
     preco: parseFloat(
       card.querySelector(".preco").innerText
-        .replace("R$", "")
+        .replace("R$", "").replace(" ", "")
         .replace(",", ".")
     ),
     imagem: card.querySelector("img").src,
@@ -1517,7 +1510,8 @@ function adicionarAoCarrinho(botao) {
 function atualizarContadorCarrinho() {
   const contador = document.getElementById("contador-carrinho");
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  if (contador) contador.innerText = carrinho.length;
+  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+contador.innerText = total;
 }
 
 document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
