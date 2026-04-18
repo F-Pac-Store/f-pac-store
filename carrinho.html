@@ -245,13 +245,7 @@ input.invalido {
 
   <div class="campo">
     <label for="pagamento">Forma de pagamento</label>
-    <select id="pagamento">
-      <option value="">Selecione</option>
-      <option>Pix</option>
-      <option>Cartão de Crédito</option>
-      <option>Cartão de Débito</option>
-    </select>
-  </div>
+   
 </div>
 
 <button class="finalizar" onclick="finalizar()" disabled>
@@ -299,8 +293,7 @@ function render() {
 
     lista.innerHTML += `
       <div class="item">
-        ${p.imagem}
-        <div class="info">
+        <img src="${p.imagem}" alt="${="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>${p.preco}</p>
@@ -320,7 +313,6 @@ function render() {
   });
 
   totalEl.innerText = "R$ " + total.toFixed(2).replace(".", ",");
-}
   
   totalEl.innerText = "R$ " + total.toFixed(2);
 }
