@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Completo | F Pac Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte padrão -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .estampa {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    .estampa img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .estampa span {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Catálogo Completo</h1>
+    <p>Todas as estampas disponíveis</p>
+
+    <div class="catalogo-grid">
+
+      <!-- ESTAMPA 1 -->
+      <div class="estampa">
+        <img src="imagens/estampas/e1.jpeg">
+        <span>E01 – Tropa Urbana – Com Fundo</span>
+      </div>
+
+      <!-- ESTAMPA 2 -->
+      <div class="estampa">
+        <img src="imagens/estampas/e2.png">
+        <span>E01 – Tropa Urbana – Sem Fundo</span>
+      </div>
+
+      <!-- ESTAMPA 3 -->
+      <div class="estampa">
+        <img src="imagens/estampas/e3.jpeg">
+        <span>E02 – Tropa Urbana – Com Fundo</span>
+      </div>
+
+      <!-- ESTAMPA 4 -->
+      <div class="estampa">
+        <img src="imagens/estampas/e4.png">
+        <span>E02 – Tropa Urbana – Sem Fundo</span>
+      </div>
+
+      <!-- ✅ continue adicionando aqui -->
+
+    </div>
+  </div>
+
+</body>
+</html>
