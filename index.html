@@ -632,15 +632,17 @@
 .basica-grid {
   display: grid;
 
-  /* ✅ máximo de 5 cards por linha */
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* máximo 5 cards por linha */
+  grid-template-columns: repeat(5, 1fr);
 
-  gap: 24px;
-  justify-items: center;
-  align-items: start;
+  column-gap: 32px;  /* ✅ espaço horizontal REAL */
+  row-gap: 32px;     /* ✅ espaço vertical */
+
+  justify-items: stretch; /* ✅ cards ocupam a coluna */
+  align-items: stretch;
 
   width: 100%;
-  max-width: 1400px; /* controla largura total */
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -687,14 +689,14 @@
           margin-bottom: 40px;
         }
         
-         .basica-card {
+  .basica-card {
   background: #ffffff;
-  padding: 12px;
+  padding: 16px;          /* ✅ um pouco mais de respiro */
   border-radius: 12px;
 
-  width: 100%;
-  max-width: 240px;   /* ✅ menor */
-  min-height: 340px;  /* ✅ menor */
+  width: 100%;            /* ✅ ocupa a coluna inteira */
+  max-width: none;        /* ✅ remove limitação */
+  min-height: 340px;
 
   box-shadow: 0 6px 22px rgba(0,0,0,0.12);
   text-align: center;
