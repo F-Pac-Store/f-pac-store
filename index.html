@@ -1620,17 +1620,22 @@
 <script>
   let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-  function adicionarAoCarrinho(botao) {
-    const card = botao.closest(".basica-card");
+  function adicionarAoCarrinho(produto) {
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    const produto = {
-      nome: "Camiseta Force - F Pac Store",
-      preco: card.querySelector(".preco").innerText,
-      cor: card.querySelector(".cor")?.value || "",
-      tamanho: card.querySelector(".tamanho")?.value || "",
-      quantidade: Number(card.querySelector(".quantidade")?.value || 1),
-      imagem: card.querySelector("img")?.src || ""
-    };
+  carrinho.push({
+    nome: produto.nome,
+    preco: produto.preco,
+    imagem: produto.imagem,
+    cor: produto.cor,
+    tamanho: produto.tamanho,
+    quantidade: produto.quantidade
+  });
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  alert("Produto adicionado ao carrinho!");
+}
 
     // validação mínima
     if (!produto.cor || !produto.tamanho || produto.quantidade <= 0) {
