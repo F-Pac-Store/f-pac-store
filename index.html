@@ -1618,51 +1618,9 @@
 
 
 <script>
-function adicionarAoCarrinho(botao) {
-  const card = botao.closest(".basica-card");
 
-  const nome = "Camisa Básica F Pac Store";
-  const preco = card.querySelector(".preco")?.innerText || "R$ 0,00";
-  const imagem = card.querySelector("img")?.src || "";
 
-  const cor = card.querySelector(".cor")?.value;
-  const tamanho = card.querySelector(".tamanho")?.value;
-  const quantidade = Number(card.querySelector(".quantidade")?.value || 0);
-
-  if (!cor || !tamanho || quantidade <= 0) {
-    alert("Selecione cor, tamanho e quantidade.");
-    return;
-  }
-
-  const produto = {
-    nome,
-    preco,
-    imagem,
-    cor,
-    tamanho,
-    quantidade
-  };
-
-  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  carrinho.push(produto);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  atualizarContadorCarrinho();
-  alert("Produto adicionado ao carrinho ✅");
-}
-
-    atualizarContadorCarrinho();
-    alert("Produto adicionado ao carrinho ✅");
-  }
-
-  function atualizarContadorCarrinho() {
-    const contador = document.getElementById("contador-carrinho");
-    if (contador) {
-      contador.innerText = carrinho.length;
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
+  
 </script>
   
 </body>
