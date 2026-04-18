@@ -292,13 +292,19 @@ function render() {
   lista.innerHTML = "";
   let total = 0;
 
+  if (carrinho.length === 0) {
+    lista.innerHTML = "<p>🛒 Seu carrinho está vazio.</p>";
+    totalEl.innerText = "R$ 0,00";
+    return;
+  }
+
   carrinho.forEach((p, i) => {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
     lista.innerHTML += `
       <div class="item">
-        <img src="${p       <div class="info">
+        <img src="${p.imagem}" altlass="info">
           <strong>${p.nome}</strong>
           <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
           <p>${p.preco}</p>
