@@ -269,21 +269,27 @@ function render() {
     const preco = Number(p.preco.replace("R$", "").replace(",", "."));
     total += preco * p.quantidade;
 
-    lista.innerHTML += `
-      <div class="item">
-        ${p.imagem}
-        <div class="info">
-          <strong>${p.nome}</strong>
-          <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
-          <p>Preço: ${p.preco}</p>
-          <div class="qtd">
-            <button onclick="alterar(${i}, -1)">-</button>
-            <span>${p.quantidade}</span>
-            <button onclick="alterar(${i}, 1)">+</button>
-          </div>
-          <button class="remover" onclick="remover(${i})">Remover item</button>
-        </div>
-      </div>`;
+  lista.innerHTML += `
+  <div class="item">
+    <img src="${p.imagem}" alt="${p.nome}">
+    <div class="info">
+      <strong>${p.nome}</strong>
+      <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
+      <p>Preço: ${p.preco}</p>
+
+      <div class="qtd">
+        <button onclick="alterar(${i}, -1)">-</button>
+        <span>${p.quantidade}</span>
+        <button onclick="alterar(${i}, 1)">+</button>
+      </div>
+
+      <button class="remover" onclick="remover(${i})">
+        Remover item
+      </button>
+    </div>
+  </div>
+`;
+
   });
 
   totalEl.innerText = `R$ ${total.toFixed(2)}`;
