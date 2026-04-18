@@ -343,6 +343,8 @@ render();
     return;
   }
 
+    document.getElementById("bairro").addEventListener("input", atualizarFrete);
+
   // Total dos produtos
   const totalProdutos = Number(
     totalEl.innerText.replace("R$", "").replace(",", ".")
