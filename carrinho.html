@@ -272,49 +272,73 @@ function normalizarBairro(v) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-  function bairroEhValido(bairroDigitado) {
+function bairroEhValido(bairroDigitado) {
   const bairroNormalizado = normalizarBairro(bairroDigitado);
-
-  // lista de bairros válidos (chaves do objeto de frete)
   const bairrosValidos = Object.keys(fretePorBairro);
-  const inputBairro = document.getElementById("bairro");
+  return bairrosValidos.includes(bairroNormalizado);
+}
+
+const inputBairro = document.getElementById("bairro");
 const selectPagamento = document.getElementById("pagamento");
 const btnFinalizar = document.querySelector(".finalizar");
 
+function normalizarListaBairros() {
+  return Object.keys(fretePorBairro);
+}
+
+function autoselecionarBairro(valorDigitado) {
+  const valorNormalizado = normalizarBairro(valorDigitado);
+  return normalizarListaBairros().find(b => b === valorNormalizado) || null;
+}
+
+function atualizarFreteETotal(bairroDigitado) {
+  const previewFrete = document.getElementById("frete-preview");
+  const previewTotal = document.getElementById("total-final-preview");
+
+  if (!bairroEhValido(bairroDigitado)) {
+    previewFrete.innerText = "Frete: —";
+    previewTotal.innerHTML = "<strong>Total com frete: —</strong>";
+    return;
+  }
+
+  const frete = fretePorBairro[normalizarBairro(bairroDigitado)];
+  const totalProdutos = Number(
+    totalEl.innerText.replace("R$", "").replace(",", ".")
+  );
+
+  const totalFinal = totalProdutos + frete;
+
+  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
+  previewTotal.innerHTML =
+    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
+}
+
 function validarCamposCheckout() {
-  const bairroDigitado = inputBairro.value;
+  const bairro = inputBairro.value;
   const pagamento = selectPagamento.value;
+  const confirmacao = autoselecionarBairro(bairro);
 
-  const bairroConfirmado = autoselecionarBairro(bairroDigitado);
-
-  if (bairroConfirmado) {
+  if (confirmacao) {
     inputBairro.classList.remove("invalido");
     inputBairro.classList.add("valido");
 
-    atualizarFreteETotal(bairroDigitado);
-
+    atualizarFreteETotal(bairro);
     btnFinalizar.disabled = !pagamento;
-  } else if (bairroDigitado) {
+  } else if (bairro) {
     inputBairro.classList.remove("valido");
     inputBairro.classList.add("invalido");
 
     atualizarFreteETotal(null);
-
     btnFinalizar.disabled = true;
   } else {
     inputBairro.classList.remove("valido", "invalido");
-
     atualizarFreteETotal(null);
-
     btnFinalizar.disabled = true;
   }
 }
-// Escuta mudanças
+
 inputBairro.addEventListener("input", validarCamposCheckout);
 selectPagamento.addEventListener("change", validarCamposCheckout);
-
-  return bairrosValidos.includes(bairroNormalizado);
-}
 
   function normalizarListaBairros() {
   return Object.keys(fretePorBairro);
