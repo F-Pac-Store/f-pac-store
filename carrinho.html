@@ -130,7 +130,7 @@ function renderCarrinho() {
     div.className = "item";
 
     div.innerHTML = `
-      <img src="${m}
+      ${item.imagem}
       <div class="info">
         <strong>${item.nome}</strong>
         <div>Cor: ${item.cor}</div>
@@ -149,6 +149,5 @@ function renderCarrinho() {
 
 renderCarrinho();
 </script>
-
 </body>
 </html>
