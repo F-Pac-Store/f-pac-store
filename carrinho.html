@@ -160,14 +160,23 @@
   <p id="frete-preview">Frete: —</p>
 <p id="total-final-preview"><strong>Total com frete: —</strong></p>
 <div class="checkout-form">
-  <div class="campo">
-    <label for="bairro">Bairro para entrega (Joinville)</label>
-<input
-  type="text" 
-  id="bairro" 
-  placeholder="Ex: Jardim Paraíso" 
-  list="lista-bairros"
-/>
+<div class="campo">
+  <label for="rua">Rua <span style="color:red">*</span></label>
+  <input
+    type="text"
+    id="rua"
+    placeholder="Ex: Rua das Palmeiras"
+  />
+</div>
+
+<div class="campo">
+  <label for="numero">Número <span style="color:red">*</span></label>
+  <input
+    type="text"
+    id="numero"
+    placeholder="Ex: 123"
+  />
+</div>
 
 <datalist id="lista-bairros">
   <option value="Adhemar Garcia">
@@ -323,7 +332,12 @@ function validarCamposCheckout() {
     inputBairro.classList.add("valido");
 
     atualizarFreteETotal(bairro);
-    btnFinalizar.disabled = !pagamento;
+    const rua = document.getElementById("rua").value.trim();
+const numero = document.getElementById("numero").value.trim();
+const referencias = document.getElementById("referencias").value.trim();
+
+btnFinalizar.disabled = !(pagamento && rua && numero && referencias);
+
   } else if (bairro) {
     inputBairro.classList.remove("valido");
     inputBairro.classList.add("invalido");
@@ -432,6 +446,14 @@ function remover(i) {
 function finalizar() {
   const bairro = document.getElementById("bairro").value;
   const pagamento = document.getElementById("pagamento").value;
+  const rua = document.getElementById("rua").value.trim();
+  const numero = document.getElementById("numero").value.trim();
+  const referencias = document.getElementById("referencias").value.trim();
+
+if (!rua || !numero || !referencias) {
+  alert("Informe Rua, Número e Referências para a entrega.");
+  return;
+}
 
   if (!bairro || !pagamento) {
     alert("Informe o bairro e a forma de pagamento.");
@@ -456,8 +478,13 @@ function finalizar() {
     msg += `${p.nome} - ${p.quantidade}x\n`;
   });
 
-  msg += `\n🚚 Bairro: ${bairro}\n💰 Total: R$ ${totalFinal.toFixed(2)}`;
-
+    msg +=
+  `\n📍 ENDEREÇO DE ENTREGA\n` +
+  `Bairro: ${bairro} – Joinville/SC\n` +
+  `Rua: ${rua}, Nº ${numero}\n` +
+  `Referências: ${referencias}\n` +
+  `\n🚚 Frete: R$ ${frete.toFixed(2)}\n` +
+  `💰 TOTAL: R$ ${totalFinal.toFixed(2)}`;
   fetch("https://script.google.com/macros/s/AKfycbxWHR0AmN0yGU1TCJchxDkThVUV0dwkmhFdnP03k3ITCFLFRtQdq1muENMKJTmXhoA/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
