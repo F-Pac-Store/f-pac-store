@@ -255,6 +255,15 @@ function normalizarBairro(v) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+  function bairroEhValido(bairroDigitado) {
+  const bairroNormalizado = normalizarBairro(bairroDigitado);
+
+  // lista de bairros válidos (chaves do objeto de frete)
+  const bairrosValidos = Object.keys(fretePorBairro);
+
+  return bairrosValidos.includes(bairroNormalizado);
+}
+
 function render() {
   lista.innerHTML = "";
   let total = 0;
@@ -313,7 +322,16 @@ function finalizar() {
   const pagamento = document.getElementById("pagamento").value;
 
   if (!bairro || !pagamento) {
-    alert("Informe o bairro e forma de pagamento.");
+    alert("Informe o bairro e a forma de pagamento.");
+    return;
+  }
+
+  // ✅ valida se o bairro está na lista
+  if (!bairroEhValido(bairro)) {
+    alert(
+      "Bairro inválido.\n\n" +
+      "Selecione um bairro da lista para entrega em Joinville."
+    );
     return;
   }
 
