@@ -1482,21 +1482,13 @@ document.querySelectorAll('.basica-card').forEach(card => {
 function adicionarAoCarrinho(botao) {
   const card = botao.closest(".basica-card");
 
-  const cor = card.querySelector(".cor");
-  const tamanho = card.querySelector(".tamanho");
-  const quantidade = card.querySelector(".quantidade");
-
-  const etapaTamanho = card.querySelector(".etapa-tamanho");
-  const etapaQtd = card.querySelector(".etapa-quantidade");
-  const etapaFinalizar = card.querySelector(".etapa-finalizar");
-
   const produto = {
     nome: "Camisa Básica F Pac Store",
     preco: card.querySelector(".preco").innerText,
-    imagem: card.querySelector("img").src,
-    cor: cor.value,
-    tamanho: tamanho.value,
-    quantidade: Number(quantidade.value)
+    imagem: card.querySelector("img").getAttribute("src"),
+    cor: card.querySelector(".cor").value,
+    tamanho: card.querySelector(".tamanho").value,
+    quantidade: Number(card.querySelector(".quantidade").value)
   };
 
   if (!produto.cor || !produto.tamanho || produto.quantidade <= 0) {
@@ -1504,31 +1496,21 @@ function adicionarAoCarrinho(botao) {
     return;
   }
 
-  // ✅ salva no carrinho
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
   carrinho.push(produto);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
   atualizarContadorCarrinho();
-
-  /* ============================= */
-  /* 🔁 RESET REAL DO CARD */
-  /* ============================= */
-
-  cor.selectedIndex = 0;
-  tamanho.selectedIndex = 0;
-  quantidade.value = "";
-  
-  etapaTamanho.classList.add("oculta");
-  etapaQtd.classList.add("oculta");
-  etapaFinalizar.classList.add("oculta");
-
-  etapaTamanho.classList.remove("visivel");
-  etapaQtd.classList.remove("visivel");
-  etapaFinalizar.classList.remove("visivel");
-
   alert("Produto adicionado ao carrinho ✅");
 }
+
+function atualizarContadorCarrinho() {
+  const contador = document.getElementById("contador-carrinho");
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  if (contador) contador.innerText = carrinho.length;
+}
+
+document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
 </script>
   
 </body>
