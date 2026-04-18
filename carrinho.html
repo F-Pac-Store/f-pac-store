@@ -282,28 +282,29 @@ const selectPagamento = document.getElementById("pagamento");
 const btnFinalizar = document.querySelector(".finalizar");
 
 function validarCamposCheckout() {
-  const bairro = inputBairro.value;
+  const bairroDigitado = inputBairro.value;
   const pagamento = selectPagamento.value;
 
-  // Validação do bairro
-  if (bairro && bairroEhValido(bairro)) {
+  const bairroConfirmado = autoselecionarBairro(bairroDigitado);
+
+  if (bairroConfirmado) {
+    // bairro digitado exatamente igual a um válido
     inputBairro.classList.remove("invalido");
     inputBairro.classList.add("valido");
-  } else if (bairro) {
+
+    btnFinalizar.disabled = !pagamento;
+  } else if (bairroDigitado) {
+    // digitou algo, mas não é bairro válido
     inputBairro.classList.remove("valido");
     inputBairro.classList.add("invalido");
-  } else {
-    inputBairro.classList.remove("valido", "invalido");
-  }
 
-  // Habilita botão SOMENTE se tudo estiver ok
-  if (bairroEhValido(bairro) && pagamento) {
-    btnFinalizar.disabled = false;
+    btnFinalizar.disabled = true;
   } else {
+    // campo vazio
+    inputBairro.classList.remove("valido", "invalido");
     btnFinalizar.disabled = true;
   }
 }
-
 // Escuta mudanças
 inputBairro.addEventListener("input", validarCamposCheckout);
 selectPagamento.addEventListener("change", validarCamposCheckout);
