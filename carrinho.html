@@ -130,37 +130,20 @@ function renderCarrinho() {
     div.className = "item";
 
     div.innerHTML = `
-      <img src="${item.imagem}" alt="${item">
-        <strong>${item.nome}</strong>
-        <div>Cor: ${item.cor}</div>
-        <div>Tamanho: ${item.tamanho}</div>
-        <div class="qtd">Quantidade: ${item.quantidade}</div>
-        <div><strong>${item.preco}</strong></div>
+  <img src="${item.imagem}" alt="${item.nome}">
+  
+  <div class="info">
+    <strong>${item.nome}</strong>
+    <div>Cor: ${item.cor}</div>
+    <div>Tamanho: ${item.tamanho}</div>
+    <div class="qtd">Quantidade: ${item.quantidade}</div>
+    <div><strong>${item.preco}</strong></div>
 
-        <button onclick="removerItem(${index})"
-          style="margin-top:10px;background:none;border:none;color:red;font-weight:bold;cursor:pointer">
-          Remover
-        </button>
-      </div>
-    `;
-
-    lista.appendChild(div);
-  });
-
-  totalEl.innerText =
-    "R$ " + total.toFixed(2).replace(".", ",");
-}
-
-function removerItem(index) {
-  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-  carrinho.splice(index, 1);
-
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  renderCarrinho();
-}
-renderCarrinho();
-</script>
+    <button onclick="removerItem(${index})"
+      style="margin-top:10px;background:none;border:none;color:red;font-weight:bold;cursor:pointer">
+      Remover
+    </button>
+  </div>
+`;
 </body>
 </html>
