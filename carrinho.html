@@ -127,6 +127,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+    /* === Validação visual do bairro === */
+#bairro.valido {
+  border: 2px solid #2ecc71;
+  background: #f0fff4;
+}
+
+#bairro.invalido {
+  border: 2px solid #e74c3c;
+  background: #fff5f5;
+}
+
+/* Botão Finalizar desativado */
+.finalizar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
     
   </style>
 </head>
@@ -198,7 +215,7 @@
   </div>
 </div>
 
-<button class="finalizar" onclick="finalizar()">
+<button class="finalizar" onclick="finalizar()" disabled>
   Finalizar Pedido
 </button>
 
@@ -260,6 +277,36 @@ function normalizarBairro(v) {
 
   // lista de bairros válidos (chaves do objeto de frete)
   const bairrosValidos = Object.keys(fretePorBairro);
+  const inputBairro = document.getElementById("bairro");
+const selectPagamento = document.getElementById("pagamento");
+const btnFinalizar = document.querySelector(".finalizar");
+
+function validarCamposCheckout() {
+  const bairro = inputBairro.value;
+  const pagamento = selectPagamento.value;
+
+  // Validação do bairro
+  if (bairro && bairroEhValido(bairro)) {
+    inputBairro.classList.remove("invalido");
+    inputBairro.classList.add("valido");
+  } else if (bairro) {
+    inputBairro.classList.remove("valido");
+    inputBairro.classList.add("invalido");
+  } else {
+    inputBairro.classList.remove("valido", "invalido");
+  }
+
+  // Habilita botão SOMENTE se tudo estiver ok
+  if (bairroEhValido(bairro) && pagamento) {
+    btnFinalizar.disabled = false;
+  } else {
+    btnFinalizar.disabled = true;
+  }
+}
+
+// Escuta mudanças
+inputBairro.addEventListener("input", validarCamposCheckout);
+selectPagamento.addEventListener("change", validarCamposCheckout);
 
   return bairrosValidos.includes(bairroNormalizado);
 }
