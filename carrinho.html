@@ -217,7 +217,7 @@ input.invalido {
     <option>Cartão de Débito</option>
   </select>
 </div>
-
+  
 <datalist id="lista-bairros">
   <option value="Adhemar Garcia">
   <option value="América">
@@ -274,108 +274,57 @@ input.invalido {
 </div>
   
 </div>
-
 <script>
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 const lista = document.getElementById("lista");
 const totalEl = document.getElementById("total");
+const btnFinalizar = document.querySelector(".finalizar");
+
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 const fretePorBairro = {
-  "paranaguamirim": 7,
-  "joao costa": 12,
-  "jarivatuba": 13,
-  "adhemar garcia": 13,
-  "ulysses guimaraes": 13,
-  "fatima": 14,
-  "santa catarina": 14,
-  "profipo": 14,
-  "parque guarani": 13,
-  "petropolis": 13,
-  "boehmerwald": 13,
-  "itaum": 12,
   "floresta": 14,
-  "guanabara": 13,
-  "aventureiro": 18,
-  "boa vista": 17,
-  "comasa": 17,
-  "espinheiros": 18,
-  "iririu": 17,
-  "jardim iririu": 17,
-  "america": 17,
-  "atiradores": 17,
-  "bom retiro": 18,
   "centro": 16,
-  "costa e silva": 18,
-  "gloria": 17,
-  "saguacu": 17,
-  "santo antonio": 18,
-  "jardim sofia": 18,
-  "morro do meio": 20,
-  "nova brasilia": 20,
-  "sao marcos": 20
+  "itaum": 12
 };
 
-function normalizarBairro(v) {
-  return v.trim().toLowerCase()
+function normalizar(texto) {
+  return texto
+    .trim()
+    .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function bairroEhValido(bairroDigitado) {
-  const bairroNormalizado = normalizarBairro(bairroDigitado);
-  const bairrosValidos = Object.keys(fretePorBairro);
-  return bairrosValidos.includes(bairroNormalizado);
+function bairroValido(bairro) {
+  return !!fretePorBairro[normalizar(bairro)];
 }
 
-const inputBairro = document.getElementById("bairro");
-const selectPagamento = document.getElementById("pagamento");
-const btnFinalizar = document.querySelector(".finalizar");
+function render() {
+  lista.innerHTML = "";
+  let total = 0;
 
-  function validarCampoObrigatorio(input) {
-  if (input.value.trim() === "") {
-    input.classList.remove("valido");
-    input.classList.add("invalido");
-    return false;
-  } else {
-    input.classList.remove("invalido");
-    input.classList.add("valido");
-    return true;
-  }
+  carrinho.forEach(p => {
+    const preco = Number(p.preco.replace("R$", "").replace(",", "."));
+    total += preco * p.quantidade;
+
+    lista.innerHTML += `
+      <div class="item">
+        <img src="${p.imagem<div class="info">
+          <strong>${p.nome}</strong>
+          <p>${p.cor} | ${p.tamanho}</p>
+          <p>${p.preco}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  totalEl.innerText = "R$ " + total.toFixed(2);
 }
 
-function normalizarListaBairros() {
-  return Object.keys(fretePorBairro);
-}
+render();
 
-function autoselecionarBairro(valorDigitado) {
-  const valorNormalizado = normalizarBairro(valorDigitado);
-  return normalizarListaBairros().find(b => b === valorNormalizado) || null;
-}
-
-function atualizarFreteETotal(bairroDigitado) {
-  const previewFrete = document.getElementById("frete-preview");
-  const previewTotal = document.getElementById("total-final-preview");
-
-  if (!bairroEhValido(bairroDigitado)) {
-    previewFrete.innerText = "Frete: —";
-    previewTotal.innerHTML = "<strong>Total com frete: —</strong>";
-    return;
-  }
-
-  const frete = fretePorBairro[normalizarBairro(bairroDigitado)];
-  const totalProdutos = Number(
-    totalEl.innerText.replace("R$", "").replace(",", ".")
-  );
-
-  const totalFinal = totalProdutos + frete;
-
-  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
-  previewTotal.innerHTML =
-    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
-}
-
-function validarCamposCheckout() {
-  const bairro = bairroEhValido(document.getElementById("bairro").value);
+function validar() {
+  const bairro = bairroValido(document.getElementById("bairro").value);
   const rua = document.getElementById("rua").value.trim();
   const numero = document.getElementById("numero").value.trim();
   const referencias = document.getElementById("referencias").value.trim();
@@ -390,169 +339,34 @@ function validarCamposCheckout() {
   );
 }
 
-  } else if (bairro) {
-    inputBairro.classList.remove("valido");
-    inputBairro.classList.add("invalido");
-
-    atualizarFreteETotal(null);
-    btnFinalizar.disabled = true;
-  } else {
-    inputBairro.classList.remove("valido", "invalido");
-    atualizarFreteETotal(null);
-    btnFinalizar.disabled = true;
-  }
-}
-
-inputBairro.addEventListener("input", validarCamposCheckout);
-selectPagamento.addEventListener("change", validarCamposCheckout);
-
-document.getElementById("bairro").addEventListener("input", validarCamposCheckout);
-document.getElementById("rua").addEventListener("input", validarCamposCheckout);
-document.getElementById("numero").addEventListener("input", validarCamposCheckout);
-document.getElementById("referencias").addEventListener("input", validarCamposCheckout);
-document.getElementById("pagamento").addEventListener("change", validarCamposCheckout);
-
-  function normalizarListaBairros() {
-  return Object.keys(fretePorBairro);
-}
-
-function autoselecionarBairro(valorDigitado) {
-  const valorNormalizado = normalizarBairro(valorDigitado);
-  const bairrosValidos = normalizarListaBairros();
-
-  // verifica correspondência EXATA
-  return bairrosValidos.find(b => b === valorNormalizado) || null;
-}
-
-  function atualizarFreteETotal(bairroDigitado) {
-  const previewFrete = document.getElementById("frete-preview");
-  const previewTotal = document.getElementById("total-final-preview");
-
-  if (!bairroEhValido(bairroDigitado)) {
-    previewFrete.innerText = "Frete: —";
-    previewTotal.innerHTML = "<strong>Total com frete: —</strong>";
-    return;
-  }
-
-  const bairroNormalizado = normalizarBairro(bairroDigitado);
-  const frete = fretePorBairro[bairroNormalizado] ?? 20;
-
-  const totalProdutos = Number(
-    totalEl.innerText.replace("R$", "").replace(",", ".")
-  );
-
-  const totalFinal = totalProdutos + frete;
-
-  previewFrete.innerText = `Frete: R$ ${frete.toFixed(2)}`;
-  previewTotal.innerHTML =
-    `<strong>Total com frete: R$ ${totalFinal.toFixed(2)}</strong>`;
-}
-
-function render() {
-  lista.innerHTML += `
-  <div class="item">
-    <img src="${p.imagem}" alt="${p.nome}">
-    <div class="info">
-      <strong>${p.nome}</strong>
-      <p>Cor: ${p.cor} | Tamanho: ${p.tamanho}</p>
-      <p>Preço: ${p.preco}</p>
-
-      <div class="qtd">
-        <button onclick="alterar(${i}, -1)">-</button>
-        <span>${p.quantidade}</span>
-        <button onclick="alterar(${i}, 1)">+</button>
-      </div>
-
-      <button class="remover" onclick="remover(${i})">
-        Remover item
-      </button>
-    </div>
-  </div>
-`;
-
-  });
-
-  totalEl.innerText = `R$ ${total.toFixed(2)}`;
-}
-
-function alterar(i, v) {
-  carrinho[i].quantidade += v;
-  if (carrinho[i].quantidade <= 0) carrinho.splice(i, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  render();
-}
-
-function remover(i) {
-  carrinho.splice(i, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  render();
-}
+["bairro","rua","numero","referencias"].forEach(id => {
+  document.getElementById(id).addEventListener("input", validar);
+});
+document.getElementById("pagamento").addEventListener("change", validar);
 
 function finalizar() {
   const bairro = document.getElementById("bairro").value;
-  const pagamento = document.getElementById("pagamento").value;
-  const rua = document.getElementById("rua").value.trim();
-  const numero = document.getElementById("numero").value.trim();
-  const referencias = document.getElementById("referencias").value.trim();
-
-if (!rua || !numero || !referencias) {
-  alert("Informe Rua, Número e Referências para a entrega.");
-  return;
-}
-
-  if (!bairro || !pagamento) {
-    alert("Informe o bairro e a forma de pagamento.");
-    return;
-  }
-
-  // ✅ valida se o bairro está na lista
-  if (!bairroEhValido(bairro)) {
-    alert(
-      "Bairro inválido.\n\n" +
-      "Selecione um bairro da lista para entrega em Joinville."
-    );
-    return;
-  }
-
-  const frete = fretePorBairro[normalizarBairro(bairro)] ?? 20;
-  const total = Number(totalEl.innerText.replace("R$", "").replace(",", "."));
+  const rua = document.getElementById("rua").value;
+  const numero = document.getElementById("numero").value;
+  const referencias = document.getElementById("referencias").value;
+  const frete = fretePorBairro[normalizar(bairro)];
+  const total = Number(totalEl.innerText.replace("R$", ""));
   const totalFinal = total + frete;
 
-  let msg = "🟡 PEDIDO F PAC STORE\n\n";
-  carrinho.forEach(p => {
-    msg += `${p.nome} - ${p.quantidade}x\n`;
-  });
+  const msg = `
+📍 ENDEREÇO DE ENTREGA
+Bairro: ${bairro} – Joinville/SC
+Rua: ${rua}, Nº ${numero}
+Referências: ${referencias}
 
-    msg +=
-  `\n📍 ENDEREÇO DE ENTREGA\n` +
-  `Bairro: ${bairro} – Joinville/SC\n` +
-  `Rua: ${rua}, Nº ${numero}\n` +
-  `Referências: ${referencias}\n` +
-  `\n🚚 Frete: R$ ${frete.toFixed(2)}\n` +
-  `💰 TOTAL: R$ ${totalFinal.toFixed(2)}`;
-  fetch("https://script.google.com/macros/s/AKfycbxWHR0AmN0yGU1TCJchxDkThVUV0dwkmhFdnP03k3ITCFLFRtQdq1muENMKJTmXhoA/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      itens: carrinho,
-      bairro,
-      frete,
-      pagamento,
-      total: totalFinal
-    })
-  });
+🚚 Frete: R$ ${frete}
+💰 TOTAL: R$ ${totalFinal}
+`;
 
   window.open(
-    "https://wa.me/5547997465602?text=" + encodeURIComponent(msg),
-    "_blank"
+    "https://wa.me/5547997465602?text=" + encodeURIComponent(msg)
   );
-
-  localStorage.removeItem("carrinho");
-  carrinho = [];
-  render();
 }
-
-render();
 </script>
 </body>
 </html>
