@@ -851,13 +851,13 @@
 .catalogo-destaque-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* ✅ 2 por linha */
-  gap: 24px;
+  gap: 36px;                             /* ✅ mais espaço */
 }
 
 .estampa-destaque {
   background: #f9f9f9;
   border-radius: 14px;
-  padding: 12px;
+  padding: 20px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.15);
   transition: transform 0.25s ease;
 }
@@ -868,15 +868,15 @@
 
 .estampa-destaque img {
   width: 100%;
-  height: 220px;          /* ✅ imagem realmente maior */
+  height: 300px;          /* ✅ imagem realmente maior */
   max-width: none;        /* ✅ remove o limite que travava */
   object-fit: contain;    /* mantém a arte inteira */
   margin: 0 auto 12px;
 }
 
-      @media (min-width: 768px) {
+    @media (min-width: 1024px) {
   .estampa-destaque img {
-    height: 260px; /* ✅ mais impacto no desktop */
+    height: 340px;
   }
 }
 
