@@ -215,14 +215,17 @@
             }
         
             @media (min-width: 768px) {
-              .nav {
-                display: flex;
-              }
-        
-              .menu-toggle {
-                display: none;
-              }
-            }
+  .nav {
+    display: flex;
+    margin-left: auto; /* ✅ empurra o menu totalmente para a direita */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .menu-toggle {
+    display: none; /* ✅ remove o botão do layout no desktop */
+  }
+}
         
         /* ============================= */
         /* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
