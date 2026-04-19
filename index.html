@@ -172,8 +172,7 @@
            .nav {
   display: none;
   gap: 25px;
-  margin-left: auto; /* ✅ empurra o menu para o canto direito */
-}
+
         /* LINKS DO MENU (PADRONIZAÇÃO) */
         /* Mesma fonte, tamanho e peso */
             
@@ -214,16 +213,26 @@
               gap: 15px;
             }
         
-            @media (min-width: 768px) {
+@media (min-width: 768px) {
   .nav {
     display: flex;
-    margin-left: auto; /* ✅ empurra o menu totalmente para a direita */
     align-items: center;
+    gap: 40px;          /* espaço entre menu e ícones */
+    margin-left: auto; /* ✅ empurra TUDO para a direita */
+  }
+
+  .menu-links {
+    display: flex;
     gap: 30px;
   }
 
+  .menu-social {
+    display: flex;
+    gap: 18px;
+  }
+
   .menu-toggle {
-    display: none; /* ✅ remove o botão do layout no desktop */
+    display: none; /* hamburger só no mobile */
   }
 }
         
