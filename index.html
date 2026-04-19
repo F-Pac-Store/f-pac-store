@@ -157,16 +157,41 @@
             }
         
             @media (min-width: 768px) {
-              .logo-img {
-                max-height: 90px;
-              }
-        
-              .logo-text {
-          color: #FFC107;
-          -webkit-text-stroke: 1.5px #000;
-          text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-        }
-            }
+
+  .logo-img {
+    max-height: 90px;
+  }
+
+  .logo-text {
+    color: #FFC107;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  }
+
+  /* ✅ MENU + ÍCONES COMO ANTES */
+  .nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* empurra tudo para a direita */
+  }
+
+  .menu-links {
+    display: flex;
+    gap: 28px; /* espaço entre os links */
+  }
+
+  .menu-social {
+    display: flex;
+    gap: 14px;
+    margin-left: 24px; /* ✅ separação visual dos ícones */
+  }
+
+  .menu-toggle {
+    display: none; /* hamburger só no mobile */
+  }
+}
+
+      
             /* MENU DE NAVEGAÇÃO */
         
             .nav {
@@ -211,16 +236,6 @@
               left: 0;
               padding: 20px;
               gap: 15px;
-            }
-        
-            @media (min-width: 768px) {
-              .nav {
-                display: flex;
-              }
-        
-              .menu-toggle {
-                display: none;
-              }
             }
         
         /* ============================= */
