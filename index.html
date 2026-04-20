@@ -515,12 +515,22 @@
 /* ============================= */
 /* SUBTÍTULOS PADRÃO */
 /* ============================= */
-.catalogo-descricao,
-.criar-camisa > .container > p {
+.subtitulo-secao {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 40px;
   text-align: center;
   font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
   color: #666;
-  margin-bottom: 40px;
+}
+
+      @media (max-width: 768px) {
+  .subtitulo-secao {
+    font-size: 1.05rem;
+    margin: 0 auto 32px;
+  }
 }
 
 /* Quando a seção tem subtítulo abaixo do título */
@@ -1016,9 +1026,9 @@
   <div class="container">
 
     <h2>Nossas Estampas</h2>
-    <p class="catalogo-descricao">
-      Destaques do nosso catálogo exclusivo
-    </p>
+<p class="subtitulo-secao">
+  Destaques do nosso catálogo exclusivo.
+</p>
 
    <div class="catalogo-destaque-grid">
 
@@ -1071,10 +1081,9 @@
     <div class="container">
 
         <h2>Nossos Produtos</h2>
-<p class="nossos produtos-descricao">
-      Variedade de opções pra você escolher
-    </p>
-      
+<p class="subtitulo-secao">
+  Variedade de opções para você escolher.
+</p>      
 
         <div class="grid">
 
@@ -1111,8 +1120,10 @@
 <section class="basica" id="basica">
     <div class="container">
 
-        <h2>Camisas Force</h2>
-        <p>Modelo pronto com valor fixo</p>
+<h2>Camisas Force</h2>
+<p class="subtitulo-secao">
+  Modelo pronto com valor fixo.
+</p>
 
         <div class="basica-grid">
 
@@ -1204,8 +1215,10 @@
 <section class="basica" id="mark">
     <div class="container">
 
-        <h2>Camisas Mark</h2>
-        <p>Modelo pronto com valor fixo</p>
+<h2>Camisas Mark</h2>
+<p class="subtitulo-secao">
+  Modelo pronto com valor fixo.
+</p>
 
         <div class="basica-grid">
 
@@ -1298,8 +1311,10 @@
     <section class="criar-camisa" id="criar">
         <div class="container">
 
-            <h2>Personalizar Camisa</h2>
-            <p>Monte a camisa do jeito</p>
+<h2>Personalizar Camisa</h2>
+<p class="subtitulo-secao">
+  Monte a camisa do seu jeito.
+</p>
 
             <div class="basica-card">
 
