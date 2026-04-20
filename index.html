@@ -243,10 +243,9 @@
         
         .hero {
   position: relative;
-  margin-top: 90px;
-
-  /* ✅ ocupa exatamente a viewport */
-  min-height: calc(110vh - 140px);
+  margin-top: 0;          /* ✅ remove deslocamento global */
+  min-height: 100vh;      /* ✅ altura correta */
+}
 
   background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
   background-size: cover;
