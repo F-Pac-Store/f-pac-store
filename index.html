@@ -1,4 +1,3 @@
-deixar a logo e a logo texto bem no canto esquerdo
                                                                         <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -863,21 +862,7 @@ deixar a logo e a logo texto bem no canto esquerdo
         .basica-card.disponivel:hover {
           transform: translateY(-6px) scale(1.02);
         }
-        
-        /* PREVIEW DA CAMISA */
-        
-        .preview-camisa {
-          position: relative;
-          width: 260px;
-          margin: 0 auto 20px;
-        }
-        
-        .preview-camisa img {
-          width: 100%;
-          display: block;
-          border-radius: 6px;
-        }
-        
+              
         .estampa-preview {
   display: none;
 }
@@ -904,19 +889,7 @@ deixar a logo e a logo texto bem no canto esquerdo
   display: block;
 }
 
-/* ============================= */
-/* SEÇÃO PERSONALIZAR CAMISA */
-/* ============================= */
-.criar-camisa {
-  padding: 20px 0 80px;
-  min-height: calc(100vh - 120px);
-}
 
-.criar-camisa .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 /* ============================= */
 /* CATÁLOGO DESTAQUE – HOME */
@@ -1108,7 +1081,6 @@ section#mark .painel-flutuante button {
         <a href="#inicio">Início</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#produtos">Produtos</a>
-        <a href="#criar" class="menu-vertical">Criar Camisa</a>
     </div>
 
    <!-- ICONES SOCIAIS -->
@@ -1585,118 +1557,6 @@ section#mark .painel-flutuante button {
 </section>
 
 
-    <!-- ============================= -->
-    <!-- CAMISETA PRIME -->
-    <!-- ============================= -->
-
-    <section class="criar-camisa" id="criar">
-        <div class="container">
-
-         <h2>Personalizar Camisa</h2>
-<p class="subtitulo-secao">Monte a camisa do seu jeito.</p>
-
-<div class="basica-card" id="prime-card">
-
-  <!-- PREVIEW -->
-  <div class="preview-camisa">
-    <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
-  </div>
-
-  <p class="preco">R$ 69,90</p>
-
-  <!-- ============================= -->
-  <!-- ETAPA 1 – COR -->
-  <!-- ============================= -->
-  <div class="etapa visivel" id="prime-etapa-cor">
-    <label>Cor</label>
-    <select id="prime-cor">
-      <option value="">Selecione</option>
-      <option>Preta</option>
-      <option>Branca</option>
-      <option>Off White</option>
-    </select>
-  </div>
-
-  <!-- ============================= -->
-  <!-- ETAPA 2 – TAMANHO -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-etapa-tamanho">
-    <label>Tamanho</label>
-    <select id="prime-tamanho">
-      <option value="">Selecione</option>
-      <option>M</option>
-      <option>G</option>
-    </select>
-  </div>
-
-  <!-- ============================= -->
-  <!-- ETAPA 3 – QTD DE ESTAMPAS -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-etapa-qtd-estampa">
-    <label>Quantidade de Estampas</label>
-    <select id="prime-qtd-estampa">
-      <option value="">Selecione</option>
-      <option value="1">1 Estampa</option>
-      <option value="2">2 Estampas</option>
-    </select>
-  </div>
-
-  <!-- ============================= -->
-  <!-- ESTAMPA 1 -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-estampa-1">
-    <p><strong>Estampa 1:</strong> <span id="prime-estampa-1-nome">Nenhuma</span></p>
-
-    <button type="button" id="btn-escolher-estampa-1">
-      Escolher Estampa 1
-    </button>
-
-    <label>Local da Estampa</label>
-    <select id="prime-local-1">
-      <option value="">Selecione</option>
-      <option>Peito</option>
-      <option>Costas</option>
-      <option>Manga</option>
-    </select>
-  </div>
-
-  <!-- ============================= -->
-  <!-- ESTAMPA 2 -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-estampa-2">
-    <p><strong>Estampa 2:</strong> <span id="prime-estampa-2-nome">Nenhuma</span></p>
-
-    <button type="button" id="btn-escolher-estampa-2">
-      Escolher Estampa 2
-    </button>
-
-    <label>Local da Estampa</label>
-    <select id="prime-local-2">
-      <option value="">Selecione</option>
-      <option>Peito</option>
-      <option>Costas</option>
-      <option>Manga</option>
-    </select>
-  </div>
-
-  <!-- ============================= -->
-  <!-- QTD DE CAMISAS -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-qtd-camisas">
-    <label>Quantidade de Camisas</label>
-    <input type="number" id="prime-quantidade" min="1" value="1">
-  </div>
-
-  <!-- ============================= -->
-  <!-- FINALIZAR -->
-  <!-- ============================= -->
-  <div class="etapa oculta" id="prime-finalizar">
-    <button id="prime-adicionar">
-      Adicionar ao Carrinho
-    </button>
-  </div>
-
-</div>
 
     </section>
 
@@ -1891,140 +1751,7 @@ function adicionarAoCarrinho(botao) {
   <script>
 
 <script>
-/* =============================
-   FLUXO PRIME – PERSONALIZAR
-============================= */
 
-const primeCor = document.getElementById('prime-cor');
-const primeTamanho = document.getElementById('prime-tamanho');
-const primeQtdEstampa = document.getElementById('prime-qtd-estampa');
-
-const etapaTamanho = document.getElementById('prime-etapa-tamanho');
-const etapaQtdEstampa = document.getElementById('prime-etapa-qtd-estampa');
-
-const estampa1 = document.getElementById('prime-estampa-1');
-const estampa2 = document.getElementById('prime-estampa-2');
-
-const qtdCamisas = document.getElementById('prime-qtd-camisas');
-const finalizar = document.getElementById('prime-finalizar');
-
-/* ETAPA 1 → COR */
-primeCor.addEventListener('change', () => {
-  if (primeCor.value) {
-    etapaTamanho.classList.remove('oculta');
-    etapaTamanho.classList.add('visivel');
-  } else {
-    etapaTamanho.classList.add('oculta');
-  }
-
-  // reset abaixo
-  etapaQtdEstampa.classList.add('oculta');
-  estampa1.classList.add('oculta');
-  estampa2.classList.add('oculta');
-  qtdCamisas.classList.add('oculta');
-  finalizar.classList.add('oculta');
-});
-
-/* ETAPA 2 → TAMANHO */
-primeTamanho.addEventListener('change', () => {
-  if (primeTamanho.value) {
-    etapaQtdEstampa.classList.remove('oculta');
-    etapaQtdEstampa.classList.add('visivel');
-  } else {
-    etapaQtdEstampa.classList.add('oculta');
-  }
-
-  estampa1.classList.add('oculta');
-  estampa2.classList.add('oculta');
-  qtdCamisas.classList.add('oculta');
-  finalizar.classList.add('oculta');
-});
-
-/* ETAPA 3 → QTD DE ESTAMPAS */
-primeQtdEstampa.addEventListener('change', () => {
-  const qtd = primeQtdEstampa.value;
-
-  // limpa tudo abaixo
-  estampa1.classList.add('oculta');
-  estampa2.classList.add('oculta');
-  qtdCamisas.classList.add('oculta');
-  finalizar.classList.add('oculta');
-
-  if (qtd === '1') {
-    estampa1.classList.remove('oculta');
-  }
-
-  if (qtd === '2') {
-    estampa1.classList.remove('oculta');
-    estampa2.classList.remove('oculta');
-  }
-});
-
-/* APÓS ESCOLHER LOCAIS (por enquanto manual) */
-document.getElementById('prime-local-1').addEventListener('change', liberarFinal);
-document.getElementById('prime-local-2').addEventListener('change', liberarFinal);
-
-function liberarFinal() {
-  qtdCamisas.classList.remove('oculta');
-  finalizar.classList.remove('oculta');
-}
-</script>
-
-  <script>
-/* =============================
-   PRIME → IR PARA CATÁLOGO
-============================= */
-
-document.getElementById('btn-escolher-estampa-1')
-  .addEventListener('click', () => {
-    localStorage.setItem('primeSlot', '1');
-    window.location.href = 'catalogo.html';
-  });
-
-document.getElementById('btn-escolher-estampa-2')
-  .addEventListener('click', () => {
-    localStorage.setItem('primeSlot', '2');
-    window.location.href = 'catalogo.html';
-  });
-</script>
-
-  <script>
-/* =============================
-   PRIME ← RECEBER ESTAMPA
-============================= */
-
-window.addEventListener('load', () => {
-
-  const e1 = localStorage.getItem('primeEstampa1');
-  const e2 = localStorage.getItem('primeEstampa2');
-
-  if (e1) {
-    document.getElementById('prime-estampa-1-nome').textContent = e1;
-    document.getElementById('prime-estampa-1').classList.remove('oculta');
-  }
-
-  if (e2) {
-    document.getElementById('prime-estampa-2-nome').textContent = e2;
-    document.getElementById('prime-estampa-2').classList.remove('oculta');
-  }
-});
-</script>
-
-<script>
-/* =============================
-   CORREÇÃO DO FLUXO PRIME
-   (SINCRONIZA ESTADO INICIAL)
-============================= */
-
-window.addEventListener('load', () => {
-
-  // Se a cor já estiver selecionada, dispara o fluxo
-  const primeCor = document.getElementById('prime-cor');
-  if (primeCor && primeCor.value !== '') {
-    primeCor.dispatchEvent(new Event('change'));
-  }
-
-});
 </script>
   
 </body>
