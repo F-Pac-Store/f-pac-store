@@ -888,21 +888,21 @@ deixar a logo e a logo texto bem no canto esquerdo
           flex-direction: column;
           align-items: center;
         }
-        
+
 /* ============================= */
-/* EVITA QUE Force e Mark QUEBREM O PAINEL FLUTUANTE */
+/* REGRA EXCLUSIVA PARA FORCE / MARK */
 /* ============================= */
 
-/* mantém comportamento antigo SOMENTE fora de Force/Mark */
-body:not(#basica):not(#mark) .basica-card .etapa {
-  opacity: 1;
-  transform: none;
+#basica .basica-card .etapa,
+#mark .basica-card .etapa {
+  opacity: inherit;
+  transform: inherit;
 }
 
-body:not(#basica):not(#mark) .basica-card .oculta {
-  display: none;
+#basica .basica-card .oculta,
+#mark .basica-card .oculta {
+  display: block;
 }
-
 
 /* ============================= */
 /* SEÇÃO PERSONALIZAR CAMISA */
