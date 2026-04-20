@@ -973,6 +973,64 @@ section#basica {
     grid-template-columns: 1fr;
   }
 }
+
+      /* ============================= */
+/* FORCE / MARK - CARD NÃO ESTICA */
+/* ============================= */
+
+/* deixa os cards com altura fixa suficiente */
+section#basica .basica-card,
+section#mark .basica-card {
+  min-height: 560px;
+  justify-content: flex-start;
+}
+
+/* etapas com animação sem esticar o card */
+section#basica .etapa,
+section#mark .etapa {
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  margin-top: 0;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin-top 0.3s ease;
+}
+
+/* sobrescreve o display:none só nessas duas seções */
+section#basica .etapa.oculta,
+section#mark .etapa.oculta {
+  display: block;
+}
+
+/* quando a etapa estiver visível */
+section#basica .etapa.visivel,
+section#mark .etapa.visivel {
+  max-height: 90px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 8px;
+}
+
+/* botão final ocupa menos altura */
+section#basica .etapa.etapa-finalizar.visivel,
+section#mark .etapa.etapa-finalizar.visivel {
+  max-height: 70px;
+}
+
+/* inputs ocupam a largura toda */
+section#basica .etapa select,
+section#basica .etapa input,
+section#basica .etapa button,
+section#mark .etapa select,
+section#mark .etapa input,
+section#mark .etapa button {
+  width: 100%;
+}
       
     </style>
 </head>
