@@ -492,22 +492,6 @@
 /* TÍTULO + SUBTÍTULO IGUAIS NAS 3 SEÇÕES */
 /* ============================= */
 
-/* Mesmo espaço acima do bloco nas 3 seções */
-.catalogo-destaque {
-  padding-top: 60px;
-}
-
-/* Mesmo título nas 3 seções */
-.catalogo-destaque h2,
-.produtos h2 {
-  margin: 0 0 12px;
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--text);
-}
-
 /* Mesmo subtítulo nas 3 seções */
 .subtitulo-secao {
   width: 100%;
@@ -524,29 +508,7 @@
   margin: 0 auto 24px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .catalogo-destaque {
-  padding-top: 60px;
-}
-
-@media (max-width: 768px) {
-  .catalogo-destaque h2,
-  .produtos h2 {
-    font-size: 2rem;
-  }
-}
-
-  .subtitulo-secao {
-    font-size: 1.05rem;
-    margin: 0 auto 32px;
-  }
-}
-
-      .produtos .subtitulo-secao {
-  margin: 0 auto 24px;
-}
-        
+       
             .grid {
               display: grid;
               grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1158,7 +1120,8 @@ section#mark .painel-flutuante button {
 <!-- ============================= -->
 <!-- PRODUTOS -->
 <!-- ============================= -->
-
+  
+<section class="produtos" id="produtos">
     <div class="container">
 
         <h2>Nossos Produtos</h2>
