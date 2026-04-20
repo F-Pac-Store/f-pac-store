@@ -1238,7 +1238,14 @@ section#mark .painel-flutuante button {
                 <img src="imagens/logo-nas-costas.png" alt="Camiseta Premium">
                 <h3>Prime</h3>
                 <p>Criar do seu jeito</p>
-                <a href="#criar" class="btn btn-destaque">Criar Camisa</a>
+                <a
+  href="https://wa.me/5547997465602?text=Quero%20criar%20uma%20camisa%20personalizada"
+  class="btn btn-destaque"
+  target="_blank"
+>
+  Criar Camisa
+</a>
+
             </div>
 
         </div>
@@ -1579,7 +1586,7 @@ section#mark .painel-flutuante button {
 
 
     <!-- ============================= -->
-    <!-- CAMISETA PREMIUM -->
+    <!-- CAMISETA PRIME -->
     <!-- ============================= -->
 
     <section class="criar-camisa" id="criar">
@@ -1589,7 +1596,6 @@ section#mark .painel-flutuante button {
 <p class="subtitulo-secao">
   Monte a camisa do seu jeito.
 </p>
-
             <div class="basica-card">
 
                 <!-- PREVIEW DA CAMISA -->
@@ -1605,88 +1611,9 @@ section#mark .painel-flutuante button {
                 <p class="preco" id="preco-premium">R$ 69,90</p>
 
                 <!-- ETAPA 1: COR -->
-                <div class="etapa">
-                    <label>Cor</label>
-<select id="prime-cor">
-                        <option value="">Selecione</option>
-                        <option>Preta</option>
-                        <option>Branca</option>
-                        <option>Off White</option>
-                    </select>
-                </div>
-
+               
                 <!-- ETAPA 2: TAMANHO -->
-                <div class="step hidden" id="step-tamanho">
-  <label>Tamanho</label>
-  <select id="prime-tamanho">
-    <option value="">Selecione</option>
-    <option>M</option>
-    <option>G</option>
-  </select>
-</div>
-
-              <div class="step hidden" id="step-qtd-estampas">
-  <label>Quantidade de Estampas</label>
-  <select id="prime-qtd-estampas">
-    <option value="">Selecione</option>
-    <option value="1">1 Estampa</option>
-    <option value="2">2 Estampas</option>
-  </select>
-</div>
-
-<div class="step hidden" id="step-estampa-1">
-  <label>Estampa 1</label>
-  <button id="btn-estampa-1" type="button">
-    Escolher Estampa
-  </button>
-
-  <!-- ✅ nome/código da estampa -->
-  <small id="nome-estampa-1" style="display:none; margin-top:6px; font-weight:600;"></small>
-</div>
-
-              <div class="step hidden" id="step-local-1">
-  <label>Local da Estampa</label>
-  <select id="prime-local-1">
-    <option value="">Selecione</option>
-    <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
-    <option>Costas</option>
-  </select>
-</div>
-              
-<div class="step hidden" id="step-estampa-2">
-  <label>Estampa 2</label>
-  <button id="btn-estampa-2" type="button">
-    Escolher Estampa
-  </button>
-
-  <!-- ✅ nome/código da estampa -->
-  <small id="nome-estampa-2" style="display:none; margin-top:6px; font-weight:600;"></small>
-</div>
-
-              <div class="step hidden" id="step-local-2">
-  <label>Local da Estampa 2</label>
-  <select id="prime-local-2">
-    <option value="">Selecione</option>
-    <option>Peito Central</option>
-    <option>Peito LE</option>
-    <option>Peito LD</option>
-    <option>Costas</option>
-  </select>
-</div>
-
-              <div class="step hidden" id="step-qtd-camisas">
-  <label>Quantidade de Camisas</label>
-  <input type="number" id="prime-qtd-camisas" min="1">
-</div>
-
-
-              <div class="step hidden" id="step-finalizar">
-  <button id="btn-add-carrinho" type="button">
-    Adicionar ao Carrinho
-  </button>
-</div>
+                
 
             </div>
         </div>
@@ -1713,132 +1640,6 @@ section#mark .painel-flutuante button {
     });
   });
 </script>
-
-    <script>
-        function mostrarEstampas() {
-          const qtd = Number(document.getElementById('qtd-estampas').value);
-        
-          if (document.getElementById('estampa1')) {
-            document.getElementById('estampa1').style.display =
-              qtd >= 1 ? 'block' : 'none';
-          }
-        
-          if (document.getElementById('estampa2')) {
-            document.getElementById('estampa2').style.display =
-              qtd === 2 ? 'block' : 'none';
-          }
-        }
-    </script>
-
-    <script>
-        function comprarPremium() {
-          const cor = document.getElementById('cor-premium').value;
-          const tamanho = document.getElementById('tamanho-premium').value;
-          const qtdCamisas = document.getElementById('qtd-camisas').value;
-          const qtdEstampas = document.getElementById('qtd-estampas').value;
-          const preco = document.getElementById('preco-premium').innerText;
-        
-          let detalhesEstampas = '';
-        
-          if (qtdEstampas >= 1) {
-            detalhesEstampas +=
-              `\nEstampa 1:` +
-              `\n• Arte: ${arte1.value}` +
-              `\n• Posição: ${pos1.value}` +
-              `\n• Fundo: ${fundo1.value}\n`;
-          }
-        
-          if (qtdEstampas == 2) {
-            detalhesEstampas +=
-              `\nEstampa 2:` +
-              `\n• Arte: ${arte2.value}` +
-              `\n• Posição: ${pos2.value}` +
-              `\n• Fundo: ${fundo2.value}\n`;
-          }
-        
-          const mensagem =
-            `Olá! Quero criar minha Camiseta Premium.\n\n` +
-            `Cor: ${cor}\n` +
-            `Tamanho: ${tamanho}\n` +
-            `Quantidade de camisas: ${qtdCamisas}\n` +
-            `Quantidade de estampas: ${qtdEstampas}\n` +
-            `${detalhesEstampas}\n` +
-            `Valor estimado: ${preco}`;
-        
-          window.open(
-            "https://wa.me/5547997465602?text=" + encodeURIComponent(mensagem),
-            "_blank"
-          );
-        }
-    </script>
-
-    <script>
-        function calcularPrecoPremium() {
-          let precoBase = 69.90;
-        
-          const qtdEstampas = Number(
-            document.getElementById('qtd-estampas').value
-          );
-        
-          const qtdCamisas = Number(
-            document.getElementById('qtd-camisas').value
-          );
-        
-          // Acréscimo por quantidade de estampas
-          if (qtdEstampas === 1) precoBase += 10;
-          if (qtdEstampas === 2) precoBase += 30;
-        
-          const total = precoBase * qtdCamisas;
-        
-          const precoEl = document.getElementById('preco-premium');
-          if (precoEl) {
-            precoEl.innerText =
-              'R$ ' + total.toLocaleString('pt-BR', {
-                minimumFractionDigits: 2
-              });
-          }
-        }
-    </script>
-
-    <script>
-        function atualizarPreviewPosicao(posicao) {
-          const estampa = document.getElementById('preview-estampa');
-          if (!estampa) return;
-        
-          switch (posicao) {
-            case 'Peito Central':
-              estampa.style.top = '35%';
-              estampa.style.left = '50%';
-              break;
-        
-            case 'Peito LE':
-              estampa.style.top = '35%';
-              estampa.style.left = '35%';
-              break;
-        
-            case 'Peito LD':
-              estampa.style.top = '35%';
-              estampa.style.left = '65%';
-              break;
-        
-            case 'Costas':
-              estampa.style.top = '55%';
-              estampa.style.left = '50%';
-              break;
-          }
-        
-          estampa.style.transform = 'translate(-50%, -50%)';
-        }
-    </script>
-
-    <script>
-        function atualizarPreviewArte(arte) {
-          const estampa = document.getElementById('preview-estampa');
-          if (!estampa) return;
-        
-          estampa.innerText = arte;
-        }
-    </script>
 
    <script>
 document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
@@ -1969,236 +1770,6 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
     </datalist>
 
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* ============================= */
-  /* FLUXO PRIME – CRIAR CAMISA */
-  /* ============================= */
-
-  const estadoPrime = {
-    cor: null,
-    tamanho: null,
-    qtdEstampas: null,
-    estampa1: null,
-    local1: null,
-    estampa2: null,
-    local2: null,
-    qtdCamisas: null
-  };
-
-  function mostrar(id) {
-    const el = document.getElementById(id);
-    if (el) el.classList.remove('hidden');
-  }
-
-  function esconder(id) {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('hidden');
-  }
-
-  function resetarPrime() {
-    Object.keys(estadoPrime).forEach(k => estadoPrime[k] = null);
-
-    document.getElementById('prime-cor').value = '';
-    document.getElementById('prime-tamanho').value = '';
-    document.getElementById('prime-qtd-estampas').value = '';
-    document.getElementById('prime-qtd-camisas').value = '';
-
-    esconder('step-tamanho');
-    esconder('step-qtd-estampas');
-    esconder('step-estampa-1');
-    esconder('step-local-1');
-    esconder('step-estampa-2');
-    esconder('step-local-2');
-    esconder('step-qtd-camisas');
-    esconder('step-finalizar');
-  }
-
-  // 🔥 garante estado inicial
-  resetarPrime();
-
-  /* COR -> TAMANHO */
-  document.getElementById('prime-cor').addEventListener('change', e => {
-    estadoPrime.cor = e.target.value;
-    if (estadoPrime.cor) mostrar('step-tamanho');
-  });
-
-  /* TAMANHO -> QTD ESTAMPAS */
-  document.getElementById('prime-tamanho').addEventListener('change', e => {
-    estadoPrime.tamanho = e.target.value;
-    if (estadoPrime.tamanho) mostrar('step-qtd-estampas');
-  });
-
-  /* QTD ESTAMPAS */
-document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
-  estadoPrime.qtdEstampas = e.target.value;
-
-  // limpa etapas seguintes
-  esconder('step-estampa-1');
-  esconder('step-estampa-2');
-  esconder('step-local-1');
-  esconder('step-local-2');
-  esconder('step-qtd-camisas');
-  esconder('step-finalizar');
-
-  // ✅ sempre mostra Estampa 1
-  if (estadoPrime.qtdEstampas === '1') {
-    mostrar('step-estampa-1');
-  }
-
-  // ✅ se for 2 estampas, mostra AS DUAS DE UMA VEZ
-  if (estadoPrime.qtdEstampas === '2') {
-    mostrar('step-estampa-1');
-    mostrar('step-estampa-2');
-  }
-});
-
-  /* ============================= */
-/* ESTAMPA 1 / ESTAMPA 2 */
-/* ============================= */
-
-const btnEstampa1 = document.getElementById('btn-estampa-1');
-const btnEstampa2 = document.getElementById('btn-estampa-2');
-
-if (btnEstampa1) {
-  btnEstampa1.addEventListener('click', () => {
-    localStorage.setItem('prime-estampa-alvo', '1');
-    window.location.href = 'catalogo.html';
-  });
-}
-
-if (btnEstampa2) {
-  btnEstampa2.addEventListener('click', () => {
-    localStorage.setItem('prime-estampa-alvo', '2');
-    window.location.href = 'catalogo.html';
-  });
-}
-
- /* ============================= */
-/* RETORNO DO CATÁLOGO */
-/* ============================= */
-
-const estampaEscolhida = localStorage.getItem('estampaSelecionada');
-const alvo = localStorage.getItem('prime-estampa-alvo');
-
-if (estampaEscolhida && alvo) {
-
-  if (alvo === '1') {
-  estadoPrime.estampa1 = estampaEscolhida;
-
-  const nome1 = document.getElementById('nome-estampa-1');
-  nome1.innerText = `Estampa escolhida: ${estampaEscolhida}`;
-  nome1.style.display = 'block';
-}
-
-if (alvo === '2') {
-  estadoPrime.estampa2 = estampaEscolhida;
-
-  const nome2 = document.getElementById('nome-estampa-2');
-  nome2.innerText = `Estampa escolhida: ${estampaEscolhida}`;
-  nome2.style.display = 'block';
-}
-
-  localStorage.removeItem('estampaSelecionada');
-  localStorage.removeItem('prime-estampa-alvo');
-}
-
-/* ============================= */
-/* GARANTIR ESTAMPA 2 QUANDO QTD = 2 */
-/* ============================= */
-
-function verificarEstampa2() {
-  if (
-    estadoPrime.qtdEstampas === '2' &&
-    estadoPrime.estampa1 &&
-    estadoPrime.local1
-  ) {
-    mostrar('step-estampa-2');
-  }
-}
-
-  function atualizarFluxoPrime() {
-
-  // 1 estampa
-  if (estadoPrime.qtdEstampas === '1') {
-
-    if (estadoPrime.estampa1 && !estadoPrime.local1) {
-      mostrar('step-local-1');
-      return;
-    }
-
-    if (estadoPrime.local1) {
-      mostrar('step-qtd-camisas');
-      return;
-    }
-  }
-
-  // 2 estampas
-  if (estadoPrime.qtdEstampas === '2') {
-
-    if (!estadoPrime.estampa1 || !estadoPrime.estampa2) {
-      return; // ainda escolhendo estampas
-    }
-
-    if (estadoPrime.estampa1 && estadoPrime.estampa2 && !estadoPrime.local1) {
-      mostrar('step-local-1');
-      return;
-    }
-
-    if (estadoPrime.local1 && !estadoPrime.local2) {
-      mostrar('step-local-2');
-      return;
-    }
-
-    if (estadoPrime.local1 && estadoPrime.local2) {
-      mostrar('step-qtd-camisas');
-      return;
-    }
-  }
-}
-
-  /* LOCAL 1 */
-document.getElementById('prime-local-1').addEventListener('change', e => {
-  estadoPrime.local1 = e.target.value;
-  atualizarFluxoPrime();
-});
-
-  /* LOCAL 2 */
-  document.getElementById('prime-local-2').addEventListener('change', e => {
-  estadoPrime.local2 = e.target.value;
-  atualizarFluxoPrime();
-});
-
-  /* QTD CAMISAS */
-  document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
-  estadoPrime.qtdCamisas = Number(e.target.value);
-
-  // 🔒 BLOQUEIO: se tiver 2 estampas, exige estampa 2 completa
-  if (
-    estadoPrime.qtdEstampas === '2' &&
-    (!estadoPrime.estampa2 || !estadoPrime.local2)
-  ) {
-    esconder('step-finalizar');
-    alert('Você selecionou 2 estampas. Escolha a Estampa 2 e o local antes de continuar.');
-    return;
-  }
-
-  if (estadoPrime.qtdCamisas > 0) {
-    mostrar('step-finalizar');
-  }
-});
-
-  /* ADICIONAR AO CARRINHO */
-  document.getElementById('btn-add-carrinho').addEventListener('click', () => {
-    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    carrinho.push({ ...estadoPrime });
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    alert('Produto adicionado ao carrinho!');
-    resetarPrime();
-  });
-
-});
-</script>
   
 </body>
 
