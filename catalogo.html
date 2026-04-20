@@ -244,12 +244,22 @@ verificar
 </main>
 
   <script>
-    function selecionarEstampa(estampa) {
-      localStorage.setItem('estampaSelecionada', estampa);
-      window.location.href = 'index.html#criar';
-    }
-  </script>
+function selecionarEstampa(codigoEstampa) {
+
+  const slot = localStorage.getItem('primeSlot'); // "1" ou "2"
+
+  if (slot === '1') {
+    localStorage.setItem('primeEstampa1', codigoEstampa);
+  }
+
+  if (slot === '2') {
+    localStorage.setItem('primeEstampa2', codigoEstampa);
+  }
+
+  // volta para o Prime
+  window.location.href = 'index.html#criar';
+}
+</script>
 
 </body>
 </html>
-``
