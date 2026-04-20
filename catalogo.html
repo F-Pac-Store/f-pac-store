@@ -175,10 +175,32 @@ verificar
     }
 
     @media (max-width: 480px) {
-      .catalogo-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+  .catalogo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================= */
+/* AJUSTES DE LAYOUT DO CATÁLOGO */
+/* ============================= */
+
+.secao-catalogo {
+  margin-bottom: 60px;
+}
+
+.secao-catalogo .titulo-secao {
+  text-align: center;
+  color: #666;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin: 40px 0 30px;
+  font-weight: 600;
+}
+
+.secao-catalogo .catalogo-grid {
+  margin-top: 20px;
+}
+</style>
   </style>
 </head>
 
@@ -195,7 +217,7 @@ verificar
   </header>
 
   <!-- CATÁLOGO -->
-  <main class="catalogo-page">
+<main class="catalogo-page">
   <div class="container">
 
     <h1>Catálogo Completo</h1>
@@ -203,42 +225,46 @@ verificar
     <!-- ============================= -->
     <!-- COM FUNDO -->
     <!-- ============================= -->
-    <p>Todas as estampas com fundo</p>
+    <section class="secao-catalogo">
 
-    <div class="catalogo-grid">
+      <p class="titulo-secao">Todas as estampas com fundo</p>
 
-      <div class="estampa" onclick="selecionarEstampa('CF-001')">
-        <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
-        <span>E01 – Tropa Urbana – Com Fundo</span>
+      <div class="catalogo-grid">
+
+        <div class="estampa" onclick="selecionarEstampa('CF-001')">
+          <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
+          <span>E01 – Tropa Urbana – Com Fundo</span>
+        </div>
+
+        <div class="estampa" onclick="selecionarEstampa('CF-002')">
+          <img src="imagens/estampas/e3.jpeg" alt="E02 – Tropa Urbana – Com Fundo">
+          <span>E02 – Tropa Urbana – Com Fundo</span>
+        </div>
+
       </div>
-
-      <div class="estampa" onclick="selecionarEstampa('CF-002')">
-        <img src="imagens/estampas/e3.jpeg" alt="E02 – Tropa Urbana – Com Fundo">
-        <span>E02 – Tropa Urbana – Com Fundo</span>
-      </div>
-
-      <!-- adicione mais COM FUNDO aqui -->
-    </div>
+    </section>
 
     <!-- ============================= -->
     <!-- SEM FUNDO -->
     <!-- ============================= -->
-    <p class="subtitulo-centralizado">Todas as estampas Sem fundo</p>
+    <section class="secao-catalogo">
 
-    <div class="catalogo-grid">
+      <p class="titulo-secao">Todas as estampas sem fundo</p>
 
-      <div class="estampa" onclick="selecionarEstampa('SF-001')">
-        <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
-        <span>E01 – Tropa Urbana – Sem Fundo</span>
+      <div class="catalogo-grid">
+
+        <div class="estampa" onclick="selecionarEstampa('SF-001')">
+          <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
+          <span>E01 – Tropa Urbana – Sem Fundo</span>
+        </div>
+
+        <div class="estampa" onclick="selecionarEstampa('SF-002')">
+          <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
+          <span>E02 – Tropa Urbana – Sem Fundo</span>
+        </div>
+
       </div>
-
-      <div class="estampa" onclick="selecionarEstampa('SF-002')">
-        <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
-        <span>E02 – Tropa Urbana – Sem Fundo</span>
-      </div>
-
-      <!-- adicione mais SEM FUNDO aqui -->
-    </div>
+    </section>
 
   </div>
 </main>
