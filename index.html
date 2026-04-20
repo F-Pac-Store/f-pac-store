@@ -85,12 +85,13 @@ nao mover o site inteiro, apenas essa aba para baixo
             /* VARIÁVEIS DE CORES GLOBAIS */
             
             :root {
-              --primary: #003366;
-              --accent: #FFC107;
-              --bg: #f5f5f5;
-              --text: #333;
-              --white: #fff;
-            }
+  --primary: #003366;
+  --accent: #FFC107;
+  --bg: #f5f5f5;
+  --text: #333;
+  --white: #fff;
+  --header-height: 120px;
+}
         
             * {
               margin: 0;
@@ -100,6 +101,11 @@ nao mover o site inteiro, apenas essa aba para baixo
 
         html, body {
   min-height: 100%;
+}
+      
+      html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
         
             body {
