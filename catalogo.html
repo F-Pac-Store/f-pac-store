@@ -592,6 +592,16 @@
     });
   </script>
 
+<script>
+function selecionarEstampa(estampaEscolhida) {
+  // salva a estampa escolhida
+  localStorage.setItem('estampaSelecionada', estampaEscolhida);
+
+  // volta para a tela de criar camisa
+  window.location.href = 'index.html#criar';
+}
+</script>
+  
 </body>
 </html>
 ``
