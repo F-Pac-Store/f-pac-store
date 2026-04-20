@@ -231,20 +231,7 @@
                 display: none;
               }
             }
-        
-        /* ============================= */
-        /* CRIAR CAMISA - 100% HORIZONTAL NO MOBILE */
-        @media (max-width: 768px) {
-          .menu-vertical {
-            writing-mode: horizontal-tb; /* garante horizontal */
-            white-space: nowrap;         /* NÃO quebra linha */
-            display: inline-block;       /* evita empilhamento */
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--accent);
-          }
-        }
-        
+               
             /* HERO CAPA DO SITE */
         
         .hero {
@@ -319,9 +306,7 @@
           display: inline-block;
           transition: background 0.3s ease, transform 0.2s ease;
         }
-        
-           /* CTA DOMINANTE — CAMISA PREMIUM */
-        
+              
         .btn-destaque {
           background: linear-gradient(
             135deg,
@@ -514,8 +499,7 @@
 
 /* Mesmo título nas 3 seções */
 .catalogo-destaque h2,
-.produtos h2,
-.criar-camisa h2 {
+.produtos h2 {
   margin: 0 0 12px;
   text-align: center;
   font-size: 2.4rem;
@@ -546,10 +530,12 @@
   padding-top: 60px;
 }
 
+@media (max-width: 768px) {
   .catalogo-destaque h2,
-  .produtos h2,
+  .produtos h2 {
     font-size: 2rem;
   }
+}
 
   .subtitulo-secao {
     font-size: 1.05rem;
