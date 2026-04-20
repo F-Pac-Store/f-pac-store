@@ -625,35 +625,36 @@
             /* ============================= */
         /* CAMISA FORCE */
         /* ============================= */
-        /* Ajuste de rolagem para header fixo */
 
+/* ✅ GRID PRINCIPAL – DESKTOP E NOTEBOOK */
 .basica-grid {
   display: grid;
 
-  /* ✅ força exatamente 5 cards por linha */
+  /* ✅ sempre 5 cards por linha */
   grid-template-columns: repeat(5, 1fr);
 
-  gap: 20px; /* ✅ diminui o espaço entre os cards */
-
-  justify-items: center;
+  gap: 32px;               /* espaçamento equilibrado */
+  justify-items: center;   /* centraliza os cards */
   align-items: start;
 
   width: 100%;
-  max-width: 1300px; /* ✅ evita espaço vazio exagerado */
-  margin: 0 auto;
+  max-width: 1300px;       /* evita excesso de largura */
+  margin: 0 auto;          /* centraliza o bloco */
 }
 
       /* Tablet */
-@media (max-width: 1200px) {
+/* 📱 Tablets e celulares médios */
+@media (max-width: 768px) {
   .basica-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 por linha */
+    gap: 24px;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* 📱 Celulares pequenos */
+@media (max-width: 480px) {
   .basica-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* ✅ 1 por linha */
   }
 }
         
@@ -696,7 +697,7 @@
   border-radius: 12px;
 
   width: 100%;            /* ocupa a coluna */
-  max-width: 220px;       /* ✅ cabe 5 por linha */
+  max-width: 230px;       /* ✅ cabe 5 por linha */
   min-height: 340px;
 
   box-shadow: 0 6px 22px rgba(0,0,0,0.12);
