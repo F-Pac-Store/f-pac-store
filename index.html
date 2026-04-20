@@ -1592,31 +1592,112 @@ section#mark .painel-flutuante button {
     <section class="criar-camisa" id="criar">
         <div class="container">
 
-<h2>Personalizar Camisa</h2>
-<p class="subtitulo-secao">
-  Monte a camisa do seu jeito.
-</p>
-            <div class="basica-card">
+         <h2>Personalizar Camisa</h2>
+<p class="subtitulo-secao">Monte a camisa do seu jeito.</p>
 
-                <!-- PREVIEW DA CAMISA -->
+<div class="basica-card" id="prime-card">
 
-                <div class="preview-camisa">
-                    <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
+  <!-- PREVIEW -->
+  <div class="preview-camisa">
+    <img src="imagens/logo-no-peito.jpg" alt="Preview Camisa">
+  </div>
 
-                    <div id="preview-estampa" class="estampa-preview">
-                  
-                    </div>
-                </div>
+  <p class="preco">R$ 69,90</p>
 
-                <p class="preco" id="preco-premium">R$ 69,90</p>
+  <!-- ============================= -->
+  <!-- ETAPA 1 – COR -->
+  <!-- ============================= -->
+  <div class="etapa visivel" id="prime-etapa-cor">
+    <label>Cor</label>
+    <select id="prime-cor">
+      <option value="">Selecione</option>
+      <option>Preta</option>
+      <option>Branca</option>
+      <option>Off White</option>
+    </select>
+  </div>
 
-                <!-- ETAPA 1: COR -->
-               
-                <!-- ETAPA 2: TAMANHO -->
-                
+  <!-- ============================= -->
+  <!-- ETAPA 2 – TAMANHO -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-etapa-tamanho">
+    <label>Tamanho</label>
+    <select id="prime-tamanho">
+      <option value="">Selecione</option>
+      <option>M</option>
+      <option>G</option>
+    </select>
+  </div>
 
-            </div>
-        </div>
+  <!-- ============================= -->
+  <!-- ETAPA 3 – QTD DE ESTAMPAS -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-etapa-qtd-estampa">
+    <label>Quantidade de Estampas</label>
+    <select id="prime-qtd-estampa">
+      <option value="">Selecione</option>
+      <option value="1">1 Estampa</option>
+      <option value="2">2 Estampas</option>
+    </select>
+  </div>
+
+  <!-- ============================= -->
+  <!-- ESTAMPA 1 -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-estampa-1">
+    <p><strong>Estampa 1:</strong> <span id="prime-estampa-1-nome">Nenhuma</span></p>
+
+    <button type="button" id="btn-escolher-estampa-1">
+      Escolher Estampa 1
+    </button>
+
+    <label>Local da Estampa</label>
+    <select id="prime-local-1">
+      <option value="">Selecione</option>
+      <option>Peito</option>
+      <option>Costas</option>
+      <option>Manga</option>
+    </select>
+  </div>
+
+  <!-- ============================= -->
+  <!-- ESTAMPA 2 -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-estampa-2">
+    <p><strong>Estampa 2:</strong> <span id="prime-estampa-2-nome">Nenhuma</span></p>
+
+    <button type="button" id="btn-escolher-estampa-2">
+      Escolher Estampa 2
+    </button>
+
+    <label>Local da Estampa</label>
+    <select id="prime-local-2">
+      <option value="">Selecione</option>
+      <option>Peito</option>
+      <option>Costas</option>
+      <option>Manga</option>
+    </select>
+  </div>
+
+  <!-- ============================= -->
+  <!-- QTD DE CAMISAS -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-qtd-camisas">
+    <label>Quantidade de Camisas</label>
+    <input type="number" id="prime-quantidade" min="1" value="1">
+  </div>
+
+  <!-- ============================= -->
+  <!-- FINALIZAR -->
+  <!-- ============================= -->
+  <div class="etapa oculta" id="prime-finalizar">
+    <button id="prime-adicionar">
+      Adicionar ao Carrinho
+    </button>
+  </div>
+
+</div>
+
     </section>
 
     <footer class="footer">
