@@ -2105,6 +2105,48 @@ window.addEventListener('load', () => {
 /* ============================= */
 /* LOCAIS DAS ESTAMPAS */
 /* ============================= */
+
+document.getElementById('prime-local-1').addEventListener('change', e => {
+  estadoPrime.local1 = e.target.value;
+  if (estadoPrime.local1) {
+    if (estadoPrime.qtdEstampas === "2") {
+      mostrar('step-estampa-2');
+    } else {
+      mostrar('step-qtd-camisas');
+    }
+  }
+});
+
+document.getElementById('prime-local-2').addEventListener('change', e => {
+  estadoPrime.local2 = e.target.value;
+  if (estadoPrime.local2) {
+    mostrar('step-qtd-camisas');
+  }
+});
+
+/* ============================= */
+/* QUANTIDADE DE CAMISAS */
+/* ============================= */
+
+document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
+  estadoPrime.qtdCamisas = Number(e.target.value);
+  if (estadoPrime.qtdCamisas > 0) {
+    mostrar('step-finalizar');
+  }
+});
+
+/* ============================= */
+/* ADICIONAR AO CARRINHO */
+/* ============================= */
+
+document.getElementById('btn-add-carrinho').addEventListener('click', () => {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  carrinho.push({ ...estadoPrime });
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+  alert('Produto adicionado ao carrinho!');
+  resetarPrime();
+});
   
 </body>
 
