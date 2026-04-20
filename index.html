@@ -886,20 +886,20 @@
           align-items: center;
         }
         
-        /* ============================= */
-        /* ESTAMPAS BÁSICAS – VISUAL DE CATÁLOGO */
-        /* ============================= */
-        
-        /* Remove efeito de formulário ligado */
-        .basica-card .etapa {
-          opacity: 1;
-          transform: none;
-        }
-        
-        /* Mantém etapas escondidas só quando realmente ocultas */
-        .basica-card .oculta {
+/* ============================= */
+/* EVITA QUE Force e Mark QUEBREM O PAINEL FLUTUANTE */
+/* ============================= */
+
+/* mantém comportamento antigo SOMENTE fora de Force/Mark */
+body:not(#basica):not(#mark) .basica-card .etapa {
+  opacity: 1;
+  transform: none;
+}
+
+body:not(#basica):not(#mark) .basica-card .oculta {
   display: none;
 }
+
 
 /* ============================= */
 /* SEÇÃO PERSONALIZAR CAMISA */
