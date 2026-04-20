@@ -499,11 +499,40 @@
           align-items: center;
         }
            
-            .produtos h2 {
-              text-align: center;
-              margin-bottom: 40px;
-              font-size: 2rem;
-            }
+/* ============================= */
+/* TÍTULOS PADRÃO DAS SEÇÕES */
+/* ============================= */
+.catalogo-destaque h2,
+.produtos h2,
+.criar-camisa h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+/* ============================= */
+/* SUBTÍTULOS PADRÃO */
+/* ============================= */
+.catalogo-descricao,
+.criar-camisa > .container > p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Quando a seção tem subtítulo abaixo do título */
+.catalogo-destaque h2,
+.criar-camisa h2 {
+  margin-bottom: 12px;
+}
+
+/* Produtos não tem subtítulo logo abaixo */
+.produtos h2 {
+  margin-bottom: 40px;
+}
         
             .grid {
               display: grid;
@@ -844,8 +873,22 @@
         
         /* Mantém etapas escondidas só quando realmente ocultas */
         .basica-card .oculta {
-          display: none;
-        }
+  display: none;
+}
+
+/* ============================= */
+/* SEÇÃO PERSONALIZAR CAMISA */
+/* ============================= */
+.criar-camisa {
+  padding: 40px 0 80px;
+  min-height: calc(100vh - 120px);
+}
+
+.criar-camisa .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* ============================= */
 /* CATÁLOGO DESTAQUE – HOME */
