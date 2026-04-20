@@ -2009,7 +2009,24 @@ window.addEventListener('load', () => {
   }
 });
 </script>
-    
+
+<script>
+/* =============================
+   CORREÇÃO DO FLUXO PRIME
+   (SINCRONIZA ESTADO INICIAL)
+============================= */
+
+window.addEventListener('load', () => {
+
+  // Se a cor já estiver selecionada, dispara o fluxo
+  const primeCor = document.getElementById('prime-cor');
+  if (primeCor && primeCor.value !== '') {
+    primeCor.dispatchEvent(new Event('change'));
+  }
+
+});
+</script>
+  
 </body>
 
 </html>
