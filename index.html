@@ -500,11 +500,21 @@
         }
            
 /* ============================= */
-/* TÍTULOS PADRÃO DAS SEÇÕES */
+/* TÍTULO + SUBTÍTULO IGUAIS NAS 3 SEÇÕES */
 /* ============================= */
+
+/* Mesmo espaço acima do bloco nas 3 seções */
+.catalogo-destaque,
+.produtos,
+.criar-camisa {
+  padding-top: 60px;
+}
+
+/* Mesmo título nas 3 seções */
 .catalogo-destaque h2,
 .produtos h2,
 .criar-camisa h2 {
+  margin: 0 0 12px;
   text-align: center;
   font-size: 2.4rem;
   font-weight: 800;
@@ -512,9 +522,7 @@
   color: var(--text);
 }
 
-/* ============================= */
-/* SUBTÍTULOS PADRÃO */
-/* ============================= */
+/* Mesmo subtítulo nas 3 seções */
 .subtitulo-secao {
   width: 100%;
   max-width: 650px;
@@ -526,22 +534,24 @@
   color: #666;
 }
 
-      @media (max-width: 768px) {
+/* Mobile */
+@media (max-width: 768px) {
+  .catalogo-destaque,
+  .produtos,
+  .criar-camisa {
+    padding-top: 50px;
+  }
+
+  .catalogo-destaque h2,
+  .produtos h2,
+  .criar-camisa h2 {
+    font-size: 2rem;
+  }
+
   .subtitulo-secao {
     font-size: 1.05rem;
     margin: 0 auto 32px;
   }
-}
-
-/* Quando a seção tem subtítulo abaixo do título */
-.catalogo-destaque h2,
-.criar-camisa h2 {
-  margin-bottom: 12px;
-}
-
-/* Produtos não tem subtítulo logo abaixo */
-.produtos h2 {
-  margin-bottom: 40px;
 }
         
             .grid {
