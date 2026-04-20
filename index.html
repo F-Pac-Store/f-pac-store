@@ -1889,7 +1889,69 @@ function adicionarAoCarrinho(botao) {
     </datalist>
 
   <script>
-  
+
+<script>
+/* =============================
+   FLUXO PRIME – PERSONALIZAR
+============================= */
+
+const primeCor = document.getElementById('prime-cor');
+const primeTamanho = document.getElementById('prime-tamanho');
+const primeQtdEstampa = document.getElementById('prime-qtd-estampa');
+
+const etapaTamanho = document.getElementById('prime-etapa-tamanho');
+const etapaQtdEstampa = document.getElementById('prime-etapa-qtd-estampa');
+
+const estampa1 = document.getElementById('prime-estampa-1');
+const estampa2 = document.getElementById('prime-estampa-2');
+
+const qtdCamisas = document.getElementById('prime-qtd-camisas');
+const finalizar = document.getElementById('prime-finalizar');
+
+/* ETAPA 1 → COR */
+primeCor.addEventListener('change', () => {
+  if (primeCor.value) {
+    etapaTamanho.classList.remove('oculta');
+    etapaTamanho.classList.add('visivel');
+  } else {
+    etapaTamanho.classList.add('oculta');
+  }
+
+  // reset abaixo
+  etapaQtdEstampa.classList.add('oculta');
+  estampa1.classList.add('oculta');
+  estampa2.classList.add('oculta');
+  qtdCamisas.classList.add('oculta');
+  finalizar.classList.add('oculta');
+});
+
+/* ETAPA 2 → TAMANHO */
+primeTamanho.addEventListener('change', () => {
+  if (primeTamanho.value) {
+    etapaQtdEstampa.classList.remove('oculta');
+    etapaQtdEstampa.classList.add('visivel');
+  } else {
+    etapaQtdEstampa.classList.add('oculta');
+  }
+
+  estampa1.classList.add('oculta');
+  estampa2.classList.add('oculta');
+  qtdCamisas.classList.add('oculta');
+  finalizar.classList.add('oculta');
+});
+
+/* ETAPA 3 → QTD DE ESTAMPAS */
+primeQtdEstampa.addEventListener('change', () => {
+  const qtd = primeQtdEstampa.value;
+
+  // limpa tudo abaixo
+  estampa1.classList.add('oculta');
+  estampa2.classList.add('oculta');
+  qtdCamisas.classList.add('oculta');
+  finalizar.classList.add('oculta');
+}
+</script>
+    
 </body>
 
 </html>
