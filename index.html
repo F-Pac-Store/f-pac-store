@@ -28,8 +28,6 @@ deixar a logo e a logo texto bem no canto esquerdo
   crossorigin="anonymous"
 />
 
-  
-
     <style>
 
       .step.hidden {
@@ -1916,7 +1914,9 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
 </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener('DOMContentLoaded', () => {
+  resetarPrime();
+});
           const cards = document.querySelectorAll(".basica-card");
         
           cards.forEach(card => {
@@ -2009,12 +2009,12 @@ const estadoPrime = {
 /* Helpers visuais */
 function mostrar(id) {
   const el = document.getElementById(id);
-  if (el) el.style.display = 'block';
+  if (el) el.classList.remove('hidden');
 }
 
 function esconder(id) {
   const el = document.getElementById(id);
-  if (el) el.style.display = 'none';
+  if (el) el.classList.add('hidden');
 }
 
 function resetarPrime() {
