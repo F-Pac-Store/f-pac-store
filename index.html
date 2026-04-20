@@ -1995,162 +1995,116 @@ document.addEventListener('DOMContentLoaded', () => {
     </datalist>
 
   <script>
-/* ============================= */
-/* FLUXO PRIME – CRIAR CAMISA */
-/* ============================= */
+document.addEventListener('DOMContentLoaded', () => {
 
-const estadoPrime = {
-  cor: null,
-  tamanho: null,
-  qtdEstampas: null,
-  estampa1: null,
-  local1: null,
-  estampa2: null,
-  local2: null,
-  qtdCamisas: null
-};
+  /* ============================= */
+  /* FLUXO PRIME – CRIAR CAMISA */
+  /* ============================= */
 
-/* Helpers visuais */
-function mostrar(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('hidden');
-}
+  const estadoPrime = {
+    cor: null,
+    tamanho: null,
+    qtdEstampas: null,
+    estampa1: null,
+    local1: null,
+    estampa2: null,
+    local2: null,
+    qtdCamisas: null
+  };
 
-function esconder(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.add('hidden');
-}
-
-function resetarPrime() {
-  Object.keys(estadoPrime).forEach(k => estadoPrime[k] = null);
-
-  document.getElementById('prime-cor').value = '';
-  document.getElementById('prime-tamanho').value = '';
-  document.getElementById('prime-qtd-estampas').value = '';
-  document.getElementById('prime-qtd-camisas').value = '';
-
-  esconder('step-tamanho');
-  esconder('step-qtd-estampas');
-  esconder('step-estampa-1');
-  esconder('step-local-1');
-  esconder('step-estampa-2');
-  esconder('step-local-2');
-  esconder('step-qtd-camisas');
-  esconder('step-finalizar');
-}
-
-/* ============================= */
-/* EVENTOS SEQUENCIAIS */
-/* ============================= */
-
-document.getElementById('prime-cor').addEventListener('change', e => {
-  estadoPrime.cor = e.target.value || null;
-  if (estadoPrime.cor) mostrar('step-tamanho');
-});
-
-document.getElementById('prime-tamanho').addEventListener('change', e => {
-  estadoPrime.tamanho = e.target.value || null;
-  if (estadoPrime.tamanho) mostrar('step-qtd-estampas');
-});
-
-document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
-  estadoPrime.qtdEstampas = e.target.value;
-  esconder('step-estampa-1');
-  esconder('step-estampa-2');
-  esconder('step-local-1');
-  esconder('step-local-2');
-  esconder('step-qtd-camisas');
-
-  if (estadoPrime.qtdEstampas === "1") {
-    mostrar('step-estampa-1');
+  function mostrar(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('hidden');
   }
 
-  if (estadoPrime.qtdEstampas === "2") {
-    mostrar('step-estampa-1');
-  }
-});
-
-/* ============================= */
-/* CATÁLOGO – ESCOLHA DA ESTAMPA */
-/* ============================= */
-
-document.getElementById('btn-estampa-1').addEventListener('click', () => {
-  localStorage.setItem('prime-estampa-alvo', '1');
-  window.location.href = 'catalogo.html';
-});
-
-document.getElementById('btn-estampa-2').addEventListener('click', () => {
-  localStorage.setItem('prime-estampa-alvo', '2');
-  window.location.href = 'catalogo.html';
-});
-
-/* ============================= */
-/* RETORNO DO CATÁLOGO */
-/* ============================= */
-
-window.addEventListener('load', () => {
-  const estampaEscolhida = localStorage.getItem('estampaSelecionada');
-  const alvo = localStorage.getItem('prime-estampa-alvo');
-
-  if (estampaEscolhida && alvo === '1') {
-    estadoPrime.estampa1 = estampaEscolhida;
-    mostrar('step-local-1');
+  function esconder(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
   }
 
-  if (estampaEscolhida && alvo === '2') {
-    estadoPrime.estampa2 = estampaEscolhida;
-    mostrar('step-local-2');
+  function resetarPrime() {
+    Object.keys(estadoPrime).forEach(k => estadoPrime[k] = null);
+
+    document.getElementById('prime-cor').value = '';
+    document.getElementById('prime-tamanho').value = '';
+    document.getElementById('prime-qtd-estampas').value = '';
+    document.getElementById('prime-qtd-camisas').value = '';
+
+    esconder('step-tamanho');
+    esconder('step-qtd-estampas');
+    esconder('step-estampa-1');
+    esconder('step-local-1');
+    esconder('step-estampa-2');
+    esconder('step-local-2');
+    esconder('step-qtd-camisas');
+    esconder('step-finalizar');
   }
 
-  localStorage.removeItem('estampaSelecionada');
-  localStorage.removeItem('prime-estampa-alvo');
-});
+  // 🔥 garante estado inicial
+  resetarPrime();
 
-/* ============================= */
-/* LOCAIS DAS ESTAMPAS */
-/* ============================= */
+  /* COR -> TAMANHO */
+  document.getElementById('prime-cor').addEventListener('change', e => {
+    estadoPrime.cor = e.target.value;
+    if (estadoPrime.cor) mostrar('step-tamanho');
+  });
 
-document.getElementById('prime-local-1').addEventListener('change', e => {
-  estadoPrime.local1 = e.target.value;
-  if (estadoPrime.local1) {
-    if (estadoPrime.qtdEstampas === "2") {
+  /* TAMANHO -> QTD ESTAMPAS */
+  document.getElementById('prime-tamanho').addEventListener('change', e => {
+    estadoPrime.tamanho = e.target.value;
+    if (estadoPrime.tamanho) mostrar('step-qtd-estampas');
+  });
+
+  /* QTD ESTAMPAS */
+  document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
+    estadoPrime.qtdEstampas = e.target.value;
+
+    esconder('step-estampa-1');
+    esconder('step-estampa-2');
+    esconder('step-local-1');
+    esconder('step-local-2');
+    esconder('step-qtd-camisas');
+
+    if (estadoPrime.qtdEstampas === '1' || estadoPrime.qtdEstampas === '2') {
+      mostrar('step-estampa-1');
+    }
+  });
+
+  /* LOCAL 1 */
+  document.getElementById('prime-local-1').addEventListener('change', e => {
+    estadoPrime.local1 = e.target.value;
+    if (estadoPrime.qtdEstampas === '2') {
       mostrar('step-estampa-2');
     } else {
       mostrar('step-qtd-camisas');
     }
-  }
-});
+  });
 
-document.getElementById('prime-local-2').addEventListener('change', e => {
-  estadoPrime.local2 = e.target.value;
-  if (estadoPrime.local2) {
+  /* LOCAL 2 */
+  document.getElementById('prime-local-2').addEventListener('change', e => {
+    estadoPrime.local2 = e.target.value;
     mostrar('step-qtd-camisas');
-  }
+  });
+
+  /* QTD CAMISAS */
+  document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
+    estadoPrime.qtdCamisas = Number(e.target.value);
+    if (estadoPrime.qtdCamisas > 0) {
+      mostrar('step-finalizar');
+    }
+  });
+
+  /* ADICIONAR AO CARRINHO */
+  document.getElementById('btn-add-carrinho').addEventListener('click', () => {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    carrinho.push({ ...estadoPrime });
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('Produto adicionado ao carrinho!');
+    resetarPrime();
+  });
+
 });
-
-/* ============================= */
-/* QUANTIDADE DE CAMISAS */
-/* ============================= */
-
-document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
-  estadoPrime.qtdCamisas = Number(e.target.value);
-  if (estadoPrime.qtdCamisas > 0) {
-    mostrar('step-finalizar');
-  }
-});
-
-/* ============================= */
-/* ADICIONAR AO CARRINHO */
-/* ============================= */
-
-document.getElementById('btn-add-carrinho').addEventListener('click', () => {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  carrinho.push({ ...estadoPrime });
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-  alert('Produto adicionado ao carrinho!');
-  resetarPrime();
-});
+</script>
   
 </body>
 
