@@ -10,82 +10,203 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all
-  
+  <!-- Fonte blacklisted -->
+  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous">
+
   <style>
+    :root {
+      --primary: #003366;
+      --accent: #FFC107;
+      --bg: #f5f5f5;
+      --text: #333;
+      --white: #fff;
+      --header-height: 120px;
+    }
 
-  :root {
-  --primary: #003366;
-  --accent: #FFC107;
-  --bg: #f5f5f5;
-  --text: #333;
-  --white: #fff;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* MENU */
-.menu-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-}
+    html, body {
+      min-height: 100%;
+    }
 
-.menu-social {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.menu-social i {
-  font-size: 2.4rem;
-}
-
-.menu-social a {
-  transition: transform 0.2s ease;
-}
-
-.menu-social a:hover {
-  transform: scale(1.15);
-}
-
-/* WhatsApp */
-.menu-social .fa-whatsapp {
-  color: #25D366;
-}
-
-/* Instagram */
-.menu-social .fa-instagram {
-  background: radial-gradient(circle at 30% 110%,
-    #fdf497 0%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285AEB 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-    
     body {
-  font-family: 'Inter', sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding-top: 140px; /* ✅ espaço para o header */
-}
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: var(--header-height);
+    }
 
     .container {
       max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    h1 {
+    /* HEADER */
+    .header {
+      background: var(--primary);
+      color: var(--white);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+      padding: 0 15px;
+    }
+
+    /* LOGO */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      max-height: 85px;
+    }
+
+    .logo-text {
+      font-family: 'blacklisted', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      line-height: 1;
+      color: #000000;
+      -webkit-text-stroke: 2.3px #FFC107;
+      display: flex;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .logo-img {
+        max-height: 90px;
+      }
+
+      .logo-text {
+        color: #FFC107;
+        -webkit-text-stroke: 1.5px #000;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      }
+    }
+
+    /* MENU */
+    .nav {
+      display: none;
+      gap: 25px;
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+    }
+
+    .menu-social {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .menu-social i {
+      font-size: 2.4rem;
+    }
+
+    .menu-social a {
+      transition: transform 0.2s ease;
+    }
+
+    .menu-social a:hover {
+      transform: scale(1.15);
+    }
+
+    .menu-social .fa-whatsapp {
+      color: #25D366;
+    }
+
+    .menu-social .fa-instagram {
+      background: radial-gradient(circle at 30% 110%,
+        #fdf497 0%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285AEB 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .menu-toggle {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      background: var(--primary);
+      top: var(--header-height);
+      left: 0;
+      padding: 20px;
+      gap: 15px;
+    }
+
+    @media (min-width: 768px) {
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    /* PÁGINA DO CATÁLOGO */
+    .catalogo-page {
+      padding: 40px 0 80px;
+    }
+
+    .catalogo-page h1 {
       text-align: center;
       margin-bottom: 10px;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text);
     }
 
-    p {
+    .catalogo-page p {
       text-align: center;
       color: #555;
       margin-bottom: 40px;
+      font-size: 1.1rem;
     }
 
     .catalogo-grid {
@@ -100,6 +221,11 @@
       padding: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
       text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .estampa:hover {
+      transform: translateY(-4px);
     }
 
     .estampa img {
@@ -110,209 +236,141 @@
     }
 
     .estampa span {
+      display: block;
       font-size: 0.85rem;
       font-weight: 600;
+      color: var(--text);
     }
 
-    @media (max-width: 768px) {
+    /* RESPONSIVO */
+    @media (max-width: 1024px) {
       .catalogo-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
-.header {
-              background: var(--primary);
-              color: var(--white);
-              position: fixed;
-              width: 100%;
-              top: 0;
-              z-index: 1000;
-            }
-        /* HEADER - FAIXA DO MENU (DESKTOP) */
-        
-        .header-content {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        
-          height: 120px;      /* aumenta a faixa azul */
-          padding: 0 15px;   /* respiro lateral */
-        }
-        
-            /* LOGO */
-        
-            .logo {
-              display: flex;
-              align-items: center;
-              gap: 14px;
-              text-decoration: none;
-            }
-        
-            .logo-img {
-              max-height: 85px;
-            }
-        
-            .logo-text {
-              font-family: 'blacklisted', sans-serif;
-              font-size: 2.2rem;
-              letter-spacing: 3px;
-              line-height: 1;
-              color: #000000;
-              -webkit-text-stroke: 2.3px #FFC107;
-              display: flex;
-              align-items: center;
-            }
-        
-            @media (min-width: 768px) {
-              .logo-img {
-                max-height: 90px;
-              }
-        
-              .logo-text {
-          color: #FFC107;
-          -webkit-text-stroke: 1.5px #000;
-          text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-        }
-            }
-            /* MENU DE NAVEGAÇÃO */
-        
-            .nav {
-              display: none;
-              gap: 25px;
-            }
-        /* LINKS DO MENU (PADRONIZAÇÃO) */
-        /* Mesma fonte, tamanho e peso */
-            
-        .nav a {
-          font-family: 'Inter', sans-serif; /* Fonte única */
-          font-size: 1rem;                  /* Mesmo tamanho */
-          font-weight: 600;                 /* Mesmo peso */
-          color: white;
-          text-decoration: none;
-        }
-        
-            .menu-toggle {
-              font-size: 2rem;
-              background: none;
-              border: none;
-              color: white;
-            }
-        
-        /* Hover opcional (desktop) */
-        
-        .menu-toggle {
-          font-size: 1.6rem;
-          background: none;
-          border: none;
-          color: white;
-          transition: color 0.3s ease;
-        }
-        
-            .nav.active {
-              display: flex;
-              flex-direction: column;
-              position: absolute;
-              width: 100%;
-              background: var(--primary);
-              top: 90px;
-              left: 0;
-              padding: 20px;
-              gap: 15px;
-            }
-        
-            @media (min-width: 768px) {
-              .nav {
-                display: flex;
-              }
-        
-              .menu-toggle {
-                display: none;
-              }
-            }
-    
-  </style>
+    @media (max-width: 768px) {
+      .catalogo-page {
+        padding: 30px 0 60px;
+      }
 
+      .catalogo-page h1 {
+        font-size: 2rem;
+      }
+
+      .catalogo-page p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
+      .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .estampa {
+        padding: 10px;
+      }
+
+      .estampa span {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .catalogo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
+<body>
+
   <header class="header">
-        <div class="container header-content">
+    <div class="container header-content">
 
-            <a href="#" class="logo">
-                <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-                <span class="logo-text">F PAC STORE</span>
-            </a>
+      <a href="index.html" class="logo">
+        <img src="imagens/logo-fpac.png" class="logo-img" alt="Logo F Pac Store">
+        <span class="logo-text">F PAC STORE</span>
+      </a>
 
-            <nav class="nav" id="nav">
-
-    <!-- LINKS DO MENU -->
-    <div class="menu-links">
-  <a href="index.html">Início</a>
-  <a href="catalogo.html">Catálogo</a>
-  <a href="index.html#produtos">Produtos</a>
-  <a href="index.html#criar" class="menu-vertical">Criar Camisa</a>
-</div>
-
-   <!-- ICONES SOCIAIS -->
-<div class="menu-social">
-
-    <!-- ✅ Carrinho será reativado na Parte 1 -->
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Instagram -->
-    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-
-</div>
-
-</nav>
-
-            <button class="menu-toggle" id="toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-
+      <nav class="nav" id="nav">
+        <div class="menu-links">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="index.html#produtos">Produtos</a>
+          <a href="index.html#criar">Criar Camisa</a>
         </div>
-    </header>
 
-  <div class="container">
-    <h1>Catálogo Completo</h1>
-    <p>Todas as estampas disponíveis</p>
+        <div class="menu-social">
+          <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
 
-    <div class="catalogo-grid">
+          <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </nav>
 
-      <!-- ESTAMPA 1 -->
-      <div class="estampa">
-        <img src="imagens/estampas/e1.jpeg">
-        <span>E01 – Tropa Urbana – Com Fundo</span>
-      </div>
-
-      <!-- ESTAMPA 2 -->
-      <div class="estampa">
-        <img src="imagens/estampas/e2.png">
-        <span>E01 – Tropa Urbana – Sem Fundo</span>
-      </div>
-
-      <!-- ESTAMPA 3 -->
-      <div class="estampa">
-        <img src="imagens/estampas/e3.jpeg">
-        <span>E02 – Tropa Urbana – Com Fundo</span>
-      </div>
-
-      <!-- ESTAMPA 4 -->
-      <div class="estampa">
-        <img src="imagens/estampas/e4.png">
-        <span>E02 – Tropa Urbana – Sem Fundo</span>
-      </div>
-
-      <!-- ✅ continue adicionando aqui -->
+      <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
 
     </div>
-  </div>
+  </header>
+
+  <main class="catalogo-page">
+    <div class="container">
+      <h1>Catálogo Completo</h1>
+      <p>Todas as estampas disponíveis</p>
+
+      <div class="catalogo-grid">
+
+        <!-- ESTAMPA 1 -->
+        <div class="estampa">
+          <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
+          <span>E01 – Tropa Urbana – Com Fundo</span>
+        </div>
+
+        <!-- ESTAMPA 2 -->
+        <div class="estampa">
+          <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
+          <span>E01 – Tropa Urbana – Sem Fundo</span>
+        </div>
+
+        <!-- ESTAMPA 3 -->
+        <div class="estampa">
+          <img src="imagens/estampas/e3.jpeg" alt="E02 – Tropa Urbana – Com Fundo">
+          <span>E02 – Tropa Urbana – Com Fundo</span>
+        </div>
+
+        <!-- ESTAMPA 4 -->
+        <div class="estampa">
+          <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
+          <span>E02 – Tropa Urbana – Sem Fundo</span>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const toggle = document.getElementById('toggle');
+    const nav = document.getElementById('nav');
+
+    toggle.onclick = () => {
+      nav.classList.toggle('active');
+    };
+
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+  </script>
 
 </body>
-
 </html>
+``
