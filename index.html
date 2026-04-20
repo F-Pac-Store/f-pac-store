@@ -1987,6 +1987,28 @@ document.getElementById('btn-escolher-estampa-2')
     window.location.href = 'catalogo.html';
   });
 </script>
+
+  <script>
+/* =============================
+   PRIME ← RECEBER ESTAMPA
+============================= */
+
+window.addEventListener('load', () => {
+
+  const e1 = localStorage.getItem('primeEstampa1');
+  const e2 = localStorage.getItem('primeEstampa2');
+
+  if (e1) {
+    document.getElementById('prime-estampa-1-nome').textContent = e1;
+    document.getElementById('prime-estampa-1').classList.remove('oculta');
+  }
+
+  if (e2) {
+    document.getElementById('prime-estampa-2-nome').textContent = e2;
+    document.getElementById('prime-estampa-2').classList.remove('oculta');
+  }
+});
+</script>
     
 </body>
 
