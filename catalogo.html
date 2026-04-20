@@ -1,25 +1,43 @@
-organizar de forma que na pagina apareca só cada modelo de estampa sem ficar cortado ou aparecendo parte de outra aba
+verificar os erros, fazer as correcoes e me mandar de volta o arquivo pronto pra cola
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Catálogo Completo | F Pac Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fontes -->
+  <!-- Fonte padrão -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Fonte blacklisted -->
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous">
 
   <style>
+
+    /* SUBTÍTULO ENTRE ESTAMPAS */
+.subtitulo-centralizado {
+  grid-column: 1 / -1;   /* ocupa todas as colunas do grid */
+  text-align: center;   /* centraliza o texto */
+  margin: 30px 0;       /* espaço acima e abaixo */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+    
     :root {
       --primary: #003366;
       --accent: #FFC107;
@@ -35,35 +53,44 @@ organizar de forma que na pagina apareca só cada modelo de estampa sem ficar co
       box-sizing: border-box;
     }
 
+    html, body {
+      min-height: 100%;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
       padding-top: var(--header-height);
     }
 
     .container {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       padding: 0 20px;
     }
 
     /* HEADER */
     .header {
       background: var(--primary);
+      color: var(--white);
       position: fixed;
       width: 100%;
       top: 0;
+      left: 0;
       z-index: 1000;
     }
 
     .header-content {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       height: var(--header-height);
+      padding: 0 15px;
     }
 
+    /* LOGO */
     .logo {
       display: flex;
       align-items: center;
@@ -79,82 +106,153 @@ organizar de forma que na pagina apareca só cada modelo de estampa sem ficar co
       font-family: 'blacklisted', sans-serif;
       font-size: 2.2rem;
       letter-spacing: 3px;
-      color: #FFC107;
-      -webkit-text-stroke: 1.5px #000;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+      line-height: 1;
+      color: #000000;
+      -webkit-text-stroke: 2.3px #FFC107;
+      display: flex;
+      align-items: center;
     }
 
-    /* CATÁLOGO */
+    @media (min-width: 768px) {
+      .logo-img {
+        max-height: 90px;
+      }
+
+      .logo-text {
+        color: #FFC107;
+        -webkit-text-stroke: 1.5px #000;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      }
+    }
+
+    /* MENU */
+    .nav {
+      display: none;
+      gap: 25px;
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+    }
+
+    .menu-social {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .menu-social i {
+      font-size: 2.4rem;
+    }
+
+    .menu-social a {
+      transition: transform 0.2s ease;
+    }
+
+    .menu-social a:hover {
+      transform: scale(1.15);
+    }
+
+    .menu-social .fa-whatsapp {
+      color: #25D366;
+    }
+
+    .menu-social .fa-instagram {
+      background: radial-gradient(circle at 30% 110%,
+        #fdf497 0%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285AEB 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .menu-toggle {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      background: var(--primary);
+      top: var(--header-height);
+      left: 0;
+      padding: 20px;
+      gap: 15px;
+    }
+
+    @media (min-width: 768px) {
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    /* PÁGINA DO CATÁLOGO */
     .catalogo-page {
       padding: 40px 0 80px;
     }
 
     .catalogo-page h1 {
       text-align: center;
+      margin-bottom: 10px;
       font-size: 2.4rem;
       font-weight: 800;
+      color: var(--text);
     }
 
     .catalogo-page p {
       text-align: center;
-      margin-bottom: 30px;
-      color: #666;
+      color: #555;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
     }
 
-    .catalogo-grid {
-  display: grid;
-
-  /* ✅ 5 cards por linha no desktop */
-  grid-template-columns: repeat(5, 1fr);
-
-  /* ✅ espaço menor entre os cards */
-  gap: 14px;
-
-  /* ✅ evita grid muito largo */
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
     .estampa {
-  background: #fff;
-  border-radius: 10px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
 
-  /* ✅ card mais compacto */
-  padding: 8px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  text-align: center;
-  cursor: pointer;
-
-  transition: transform 0.2s ease;
-}
     .estampa:hover {
       transform: translateY(-4px);
     }
 
     .estampa img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-
-  /* ✅ mantém a imagem inteira visível */
-  object-fit: contain;
-
-  margin-bottom: 6px;
-}
-
-    .estampa span {
-      font-size: .85rem;
-      font-weight: 600;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      margin-bottom: 8px;
     }
 
-    /* SUBTÍTULO CENTRAL */
-    .subtitulo-centralizado {
-      grid-column: 1 / -1;
-      text-align: center;
-      margin: 30px 0;
-      font-size: 1.1rem;
+    .estampa span {
+      display: block;
+      font-size: 0.85rem;
       font-weight: 600;
-      color: #555;
+      color: var(--text);
     }
 
     /* RESPONSIVO */
@@ -165,8 +263,30 @@ organizar de forma que na pagina apareca só cada modelo de estampa sem ficar co
     }
 
     @media (max-width: 768px) {
+      .catalogo-page {
+        padding: 30px 0 60px;
+      }
+
+      .catalogo-page h1 {
+        font-size: 2rem;
+      }
+
+      .catalogo-page p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
       .catalogo-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .estampa {
+        padding: 10px;
+      }
+
+      .estampa span {
+        font-size: 0.8rem;
       }
     }
 
@@ -180,62 +300,104 @@ organizar de forma que na pagina apareca só cada modelo de estampa sem ficar co
 
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="container header-content">
+
       <a href="index.html" class="logo">
-        <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+        <img src="imagens/logo-fpac.png" class="logo-img" alt="Logo F Pac Store">
         <span class="logo-text">F PAC STORE</span>
       </a>
+
+      <nav class="nav" id="nav">
+        <div class="menu-links">
+  <a href="index.html">Início</a>
+  <a href="index.html#catalogo">Catálogo</a>
+  <a href="index.html#produtos">Produtos</a>
+  <a href="index.html#criar">Criar Camisa</a>
+</div>
+
+
+        <div class="menu-social">
+          <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+
+          <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </nav>
+
+      <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
     </div>
   </header>
 
-  <!-- CATÁLOGO -->
   <main class="catalogo-page">
     <div class="container">
-
       <h1>Catálogo Completo</h1>
       <p>Todas as estampas com fundo</p>
 
       <div class="catalogo-grid">
 
-        <!-- COM FUNDO -->
-        <div class="estampa" onclick="selecionarEstampa('CF-001')">
-          <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
-          <span>E01 – Tropa Urbana – Com Fundo</span>
-        </div>
+        <!-- ESTAMPA 1 -->
 
-        <div class="estampa" onclick="selecionarEstampa('CF-002')">
-          <img src="imagens/estampas/e3.jpeg" alt="E02 – Tropa Urbana – Com Fundo">
-          <span>E02 – Tropa Urbana – Com Fundo</span>
-        </div>
+<!-- ESTAMPAS COM FUNDO -->
+<div class="estampa" onclick="selecionarEstampa('CF-001')">
+  <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo</div>
 
-        <!-- SUBTÍTULO -->
-        <p class="subtitulo-centralizado">Todas as estampas Sem fundo</p>
+<!-- SUBTÍTULO CENTRAL -->
+<p class="subtitulo-centralizado">Todas as estampas Sem fundo</p>
 
-        <!-- SEM FUNDO -->
-        <div class="estampa" onclick="selecionarEstampa('SF-001')">
-          <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
-          <span>E01 – Tropa Urbana – Sem Fundo</span>
-        </div>
-
-        <div class="estampa" onclick="selecionarEstampa('SF-002')">
-          <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
-          <span>E02 – Tropa Urbana – Sem Fundo</span>
-        </div>
+<!-- ESTAMPAS SEM FUNDO -->
+<div class="estampa">
+  <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Sem Fundo</div>
 
       </div>
-
     </div>
   </main>
 
   <script>
-    function selecionarEstampa(estampa) {
-      localStorage.setItem('estampaSelecionada', estampa);
-      window.location.href = 'index.html#criar';
-    }
+    const toggle = document.getElementById('toggle');
+    const nav = document.getElementById('nav');
+
+    toggle.onclick = () => {
+      nav.classList.toggle('active');
+    };
+
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
   </script>
 
+<script>
+function selecionarEstampa(estampaEscolhida) {
+  // salva a estampa escolhida
+  localStorage.setItem('estampaSelecionada', estampaEscolhida);
+
+  // volta para a tela de criar camisa
+  window.location.href = 'index.html#criar';
+}
+</script>
+  
 </body>
+
+    <div class="catalogo-grid">
+
+  <div class="estampa" onclick="selecionarEstampa('CF-001')">
+    <img src="imagens/estampas/e1.jpeg" alt="E01 – Urbana – Com Fundo</span>
+  </div>
+
+  <p class="subtitulo-centralizado">Todas as estampas Sem fundo</p>
+
+  <div class="estampa">
+    <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana –undo</span>
+  </div>
+
+</div>
+    
 </html>
-``
