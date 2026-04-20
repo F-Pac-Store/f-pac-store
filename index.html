@@ -1837,49 +1837,83 @@ section#mark .painel-flutuante button {
         }
     </script>
 
-    <script>
-document.querySelectorAll('.basica-card').forEach(card => {
+   <script>
+document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
 
   const cor = card.querySelector('.cor');
   const tamanho = card.querySelector('.tamanho');
   const qtd = card.querySelector('.quantidade');
+
   const etapaTamanho = card.querySelector('.etapa-tamanho');
   const etapaQtd = card.querySelector('.etapa-quantidade');
   const finalizar = card.querySelector('.etapa-finalizar');
 
-  if (etapaTamanho) etapaTamanho.classList.add('oculta');
-  if (etapaQtd) etapaQtd.classList.add('oculta');
-  if (finalizar) finalizar.classList.add('oculta');
+  const painel = card.querySelector('.painel-flutuante');
 
-  if (cor) {
-    cor.addEventListener('change', () => {
-      if (etapaTamanho) etapaTamanho.classList.remove('oculta');
-      if (etapaTamanho) etapaTamanho.classList.add('visivel');
-
-      if (etapaQtd) etapaQtd.classList.add('oculta');
-      if (finalizar) finalizar.classList.add('oculta');
-    });
+  function esconder(el) {
+    if (!el) return;
+    el.classList.add('oculta');
+    el.classList.remove('visivel');
   }
 
-  if (tamanho) {
-    tamanho.addEventListener('change', () => {
-      if (etapaQtd) etapaQtd.classList.remove('oculta');
-      if (etapaQtd) etapaQtd.classList.add('visivel');
-
-      if (finalizar) finalizar.classList.add('oculta');
-    });
+  function mostrar(el) {
+    if (!el) return;
+    el.classList.remove('oculta');
+    el.classList.add('visivel');
   }
 
-  if (qtd) {
-    qtd.addEventListener('input', () => {
-      if (Number(qtd.value) > 0) {
-        finalizar.classList.remove('oculta');
-        finalizar.classList.add('visivel');
-      } else {
-        finalizar.classList.add('oculta');
-      }
-    });
+  function atualizarPainel() {
+    const aberto =
+      etapaTamanho?.classList.contains('visivel') ||
+      etapaQtd?.classList.contains('visivel') ||
+      finalizar?.classList.contains('visivel');
+
+    card.classList.toggle('aberto', aberto);
   }
+
+  esconder(etapaTamanho);
+  esconder(etapaQtd);
+  esconder(finalizar);
+  atualizarPainel();
+
+  cor?.addEventListener('change', () => {
+    if (cor.value) {
+      mostrar(etapaTamanho);
+    } else {
+      esconder(etapaTamanho);
+    }
+
+    esconder(etapaQtd);
+    esconder(finalizar);
+
+    if (tamanho) tamanho.value = '';
+    if (qtd) qtd.value = 0;
+
+    atualizarPainel();
+  });
+
+  tamanho?.addEventListener('change', () => {
+    if (tamanho.value) {
+      mostrar(etapaQtd);
+    } else {
+      esconder(etapaQtd);
+    }
+
+    esconder(finalizar);
+    if (qtd) qtd.value = 0;
+
+    atualizarPainel();
+  });
+
+  qtd?.addEventListener('input', () => {
+    if (Number(qtd.value) > 0) {
+      mostrar(finalizar);
+    } else {
+      esconder(finalizar);
+    }
+
+    atualizarPainel();
+  });
 });
 </script>
 
