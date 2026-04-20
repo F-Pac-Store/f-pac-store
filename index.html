@@ -2084,29 +2084,20 @@ const alvo = localStorage.getItem('prime-estampa-alvo');
 if (estampaEscolhida && alvo) {
 
   if (alvo === '1') {
-    estadoPrime.estampa1 = estampaEscolhida;
+  estadoPrime.estampa1 = estampaEscolhida;
 
-    // ✅ mostra nome/código da estampa 1
-    const nome1 = document.getElementById('nome-estampa-1');
-    nome1.innerText = `Estampa escolhida: ${estampaEscolhida}`;
-    nome1.style.display = 'block';
+  const nome1 = document.getElementById('nome-estampa-1');
+  nome1.innerText = `Estampa escolhida: ${estampaEscolhida}`;
+  nome1.style.display = 'block';
+}
 
-    // ✅ segue fluxo correto
-    mostrar('step-local-1');
-    verificarEstampa2();
-  }
-  
+if (alvo === '2') {
+  estadoPrime.estampa2 = estampaEscolhida;
 
-  if (alvo === '2') {
-    estadoPrime.estampa2 = estampaEscolhida;
-
-    // ✅ mostra nome/código da estampa 2
-    const nome2 = document.getElementById('nome-estampa-2');
-    nome2.innerText = `Estampa escolhida: ${estampaEscolhida}`;
-    nome2.style.display = 'block';
-
-    mostrar('step-local-2');
-  }
+  const nome2 = document.getElementById('nome-estampa-2');
+  nome2.innerText = `Estampa escolhida: ${estampaEscolhida}`;
+  nome2.style.display = 'block';
+}
 
   localStorage.removeItem('estampaSelecionada');
   localStorage.removeItem('prime-estampa-alvo');
@@ -2126,21 +2117,56 @@ function verificarEstampa2() {
   }
 }
 
+  function atualizarFluxoPrime() {
+
+  // 1 estampa
+  if (estadoPrime.qtdEstampas === '1') {
+
+    if (estadoPrime.estampa1 && !estadoPrime.local1) {
+      mostrar('step-local-1');
+      return;
+    }
+
+    if (estadoPrime.local1) {
+      mostrar('step-qtd-camisas');
+      return;
+    }
+  }
+
+  // 2 estampas
+  if (estadoPrime.qtdEstampas === '2') {
+
+    if (!estadoPrime.estampa1 || !estadoPrime.estampa2) {
+      return; // ainda escolhendo estampas
+    }
+
+    if (estadoPrime.estampa1 && estadoPrime.estampa2 && !estadoPrime.local1) {
+      mostrar('step-local-1');
+      return;
+    }
+
+    if (estadoPrime.local1 && !estadoPrime.local2) {
+      mostrar('step-local-2');
+      return;
+    }
+
+    if (estadoPrime.local1 && estadoPrime.local2) {
+      mostrar('step-qtd-camisas');
+      return;
+    }
+  }
+}
+
   /* LOCAL 1 */
 document.getElementById('prime-local-1').addEventListener('change', e => {
   estadoPrime.local1 = e.target.value;
-
-  verificarEstampa2();
-
-  if (estadoPrime.qtdEstampas !== '2') {
-    mostrar('step-qtd-camisas');
-  }
+  atualizarFluxoPrime();
 });
 
   /* LOCAL 2 */
   document.getElementById('prime-local-2').addEventListener('change', e => {
   estadoPrime.local2 = e.target.value;
-  mostrar('step-qtd-camisas');
+  atualizarFluxoPrime();
 });
 
   /* QTD CAMISAS */
