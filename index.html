@@ -1969,6 +1969,24 @@ function liberarFinal() {
   finalizar.classList.remove('oculta');
 }
 </script>
+
+  <script>
+/* =============================
+   PRIME → IR PARA CATÁLOGO
+============================= */
+
+document.getElementById('btn-escolher-estampa-1')
+  .addEventListener('click', () => {
+    localStorage.setItem('primeSlot', '1');
+    window.location.href = 'catalogo.html';
+  });
+
+document.getElementById('btn-escolher-estampa-2')
+  .addEventListener('click', () => {
+    localStorage.setItem('primeSlot', '2');
+    window.location.href = 'catalogo.html';
+  });
+</script>
     
 </body>
 
