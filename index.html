@@ -1949,6 +1949,24 @@ primeQtdEstampa.addEventListener('change', () => {
   estampa2.classList.add('oculta');
   qtdCamisas.classList.add('oculta');
   finalizar.classList.add('oculta');
+
+  if (qtd === '1') {
+    estampa1.classList.remove('oculta');
+  }
+
+  if (qtd === '2') {
+    estampa1.classList.remove('oculta');
+    estampa2.classList.remove('oculta');
+  }
+});
+
+/* APÓS ESCOLHER LOCAIS (por enquanto manual) */
+document.getElementById('prime-local-1').addEventListener('change', liberarFinal);
+document.getElementById('prime-local-2').addEventListener('change', liberarFinal);
+
+function liberarFinal() {
+  qtdCamisas.classList.remove('oculta');
+  finalizar.classList.remove('oculta');
 }
 </script>
     
