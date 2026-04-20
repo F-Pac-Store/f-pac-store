@@ -2084,7 +2084,9 @@ if (estampaEscolhida && alvo) {
 
     // ✅ segue fluxo correto
     mostrar('step-local-1');
+    verificarEstampa2();
   }
+  
 
   if (alvo === '2') {
     estadoPrime.estampa2 = estampaEscolhida;
@@ -2101,13 +2103,27 @@ if (estampaEscolhida && alvo) {
   localStorage.removeItem('prime-estampa-alvo');
 }
 
+/* ============================= */
+/* GARANTIR ESTAMPA 2 QUANDO QTD = 2 */
+/* ============================= */
+
+function verificarEstampa2() {
+  if (
+    estadoPrime.qtdEstampas === '2' &&
+    estadoPrime.estampa1 &&
+    estadoPrime.local1
+  ) {
+    mostrar('step-estampa-2');
+  }
+}
+
   /* LOCAL 1 */
-  document.getElementById('prime-local-1').addEventListener('change', e => {
+document.getElementById('prime-local-1').addEventListener('change', e => {
   estadoPrime.local1 = e.target.value;
 
-  if (estadoPrime.qtdEstampas === '2') {
-    mostrar('step-estampa-2');
-  } else {
+  verificarEstampa2();
+
+  if (estadoPrime.qtdEstampas !== '2') {
     mostrar('step-qtd-camisas');
   }
 });
