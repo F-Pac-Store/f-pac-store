@@ -1634,11 +1634,14 @@ section#mark .painel-flutuante button {
   </select>
 </div>
 
-              <div class="step hidden" id="step-estampa-1">
+<div class="step hidden" id="step-estampa-1">
   <label>Estampa 1</label>
   <button id="btn-estampa-1" type="button">
     Escolher Estampa
   </button>
+
+  <!-- ✅ nome/código da estampa -->
+  <small id="nome-estampa-1" style="display:none; margin-top:6px; font-weight:600;"></small>
 </div>
 
               <div class="step hidden" id="step-local-1">
@@ -1651,11 +1654,15 @@ section#mark .painel-flutuante button {
     <option>Costas</option>
   </select>
 </div>
-              <div class="step hidden" id="step-estampa-2">
+              
+<div class="step hidden" id="step-estampa-2">
   <label>Estampa 2</label>
   <button id="btn-estampa-2" type="button">
     Escolher Estampa
   </button>
+
+  <!-- ✅ nome/código da estampa -->
+  <small id="nome-estampa-2" style="display:none; margin-top:6px; font-weight:600;"></small>
 </div>
 
               <div class="step hidden" id="step-local-2">
@@ -2058,7 +2065,7 @@ if (btnEstampa2) {
   });
 }
 
-  /* ============================= */
+ /* ============================= */
 /* RETORNO DO CATÁLOGO */
 /* ============================= */
 
@@ -2069,34 +2076,47 @@ if (estampaEscolhida && alvo) {
 
   if (alvo === '1') {
     estadoPrime.estampa1 = estampaEscolhida;
+
+    // ✅ mostra nome/código da estampa 1
+    const nome1 = document.getElementById('nome-estampa-1');
+    nome1.innerText = `Estampa escolhida: ${estampaEscolhida}`;
+    nome1.style.display = 'block';
+
+    // ✅ segue fluxo correto
     mostrar('step-local-1');
   }
 
   if (alvo === '2') {
     estadoPrime.estampa2 = estampaEscolhida;
+
+    // ✅ mostra nome/código da estampa 2
+    const nome2 = document.getElementById('nome-estampa-2');
+    nome2.innerText = `Estampa escolhida: ${estampaEscolhida}`;
+    nome2.style.display = 'block';
+
     mostrar('step-local-2');
   }
 
-  // limpeza
   localStorage.removeItem('estampaSelecionada');
   localStorage.removeItem('prime-estampa-alvo');
 }
 
   /* LOCAL 1 */
   document.getElementById('prime-local-1').addEventListener('change', e => {
-    estadoPrime.local1 = e.target.value;
-    if (estadoPrime.qtdEstampas === '2') {
-      mostrar('step-estampa-2');
-    } else {
-      mostrar('step-qtd-camisas');
-    }
-  });
+  estadoPrime.local1 = e.target.value;
+
+  if (estadoPrime.qtdEstampas === '2') {
+    mostrar('step-estampa-2');
+  } else {
+    mostrar('step-qtd-camisas');
+  }
+});
 
   /* LOCAL 2 */
   document.getElementById('prime-local-2').addEventListener('change', e => {
-    estadoPrime.local2 = e.target.value;
-    mostrar('step-qtd-camisas');
-  });
+  estadoPrime.local2 = e.target.value;
+  mostrar('step-qtd-camisas');
+});
 
   /* QTD CAMISAS */
   document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
