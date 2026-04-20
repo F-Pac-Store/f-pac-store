@@ -2136,11 +2136,22 @@ document.getElementById('prime-local-1').addEventListener('change', e => {
 
   /* QTD CAMISAS */
   document.getElementById('prime-qtd-camisas').addEventListener('input', e => {
-    estadoPrime.qtdCamisas = Number(e.target.value);
-    if (estadoPrime.qtdCamisas > 0) {
-      mostrar('step-finalizar');
-    }
-  });
+  estadoPrime.qtdCamisas = Number(e.target.value);
+
+  // 🔒 BLOQUEIO: se tiver 2 estampas, exige estampa 2 completa
+  if (
+    estadoPrime.qtdEstampas === '2' &&
+    (!estadoPrime.estampa2 || !estadoPrime.local2)
+  ) {
+    esconder('step-finalizar');
+    alert('Você selecionou 2 estampas. Escolha a Estampa 2 e o local antes de continuar.');
+    return;
+  }
+
+  if (estadoPrime.qtdCamisas > 0) {
+    mostrar('step-finalizar');
+  }
+});
 
   /* ADICIONAR AO CARRINHO */
   document.getElementById('btn-add-carrinho').addEventListener('click', () => {
