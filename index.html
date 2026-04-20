@@ -1383,6 +1383,15 @@
           };
     </script>
 
+  <script>
+  // Fecha o menu mobile ao clicar em qualquer link
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+  });
+</script>
+
     <script>
         function mostrarEstampas() {
           const qtd = Number(document.getElementById('qtd-estampas').value);
