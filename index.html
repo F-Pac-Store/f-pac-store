@@ -1,3 +1,4 @@
+nao mover o site inteiro, apenas essa aba para baixo
                                                                         <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -243,9 +244,10 @@
         
         .hero {
   position: relative;
-  margin-top: 0;          /* ✅ remove deslocamento global */
-  min-height: 100vh;      /* ✅ altura correta */
-}
+  margin-top: 90px;
+
+  /* ✅ ocupa exatamente a viewport */
+  min-height: calc(110vh - 140px);
 
   background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
   background-size: cover;
@@ -656,11 +658,14 @@
     grid-template-columns: 1fr; /* ✅ 1 por linha */
   }
 }
-      
-/* ✅ AJUSTE APENAS PARA "ESCOLHER CAMISA" */
+
+      /* ✅ OFFSET CORRETO PARA LINKS ÂNCORA COM HEADER FIXO */
+#inicio,
+#catalogo,
+#produtos,
 #basica,
 #mark {
-  scroll-margin-top: 140px;
+  scroll-margin-top: 110px;
 }
     
         .basica h2,
