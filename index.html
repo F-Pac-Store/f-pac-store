@@ -1913,40 +1913,7 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
 });
 </script>
 
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  // ✅ inicia fluxo Prime corretamente
-  if (typeof resetarPrime === 'function') {
-    resetarPrime();
-  }
-
-  // ✅ controle de estoque (FORCE / MARK)
-  const cards = document.querySelectorAll(".basica-card");
-
-  cards.forEach(card => {
-    const img = card.querySelector("img");
-    const controls = card.querySelectorAll("select, input, button");
-
-    if (!img) return;
-
-    const isEsgotado = img.src.includes("esgotado");
-
-    if (isEsgotado) {
-      card.classList.add("bloqueado");
-      card.classList.remove("disponivel");
-      controls.forEach(el => el.disabled = true);
-    } else {
-      card.classList.remove("bloqueado");
-      card.classList.add("disponivel");
-      controls.forEach(el => el.disabled = false);
-    }
-  });
-
-});
-</script>
-
-    <datalist id="bairros-joinville">
+        <datalist id="bairros-joinville">
         <!-- Centro -->
         <option value="Centro">
 
