@@ -100,10 +100,18 @@
     }
 
     .catalogo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+  display: grid;
+
+  /* ✅ 5 cards por linha no desktop */
+  grid-template-columns: repeat(5, 1fr);
+
+  /* ✅ espaço menor entre os cards */
+  gap: 14px;
+
+  /* ✅ evita grid muito largo */
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
     .estampa {
       background: #fff;
