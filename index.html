@@ -31,6 +31,10 @@ deixar a logo e a logo texto bem no canto esquerdo
   
 
     <style>
+
+      .step.hidden {
+  display: none;
+}
         /* MENU INTERNO */
         
         .menu-links {
@@ -1071,6 +1075,20 @@ section#mark .painel-flutuante input,
 section#mark .painel-flutuante button {
   width: 100%;
 }
+
+      /* ============================= */
+/* AJUSTE 2 — LOGO NO CANTO ESQUERDO */
+/* ============================= */
+
+.header .container.header-content {
+  max-width: 100%;
+  padding-left: 8px;   /* ajuste fino */
+  padding-right: 15px;
+}
+
+.header .logo {
+  margin-left: 0;
+}
       
     </style>
 </head>
@@ -1591,7 +1609,7 @@ section#mark .painel-flutuante button {
                 <!-- ETAPA 1: COR -->
                 <div class="etapa">
                     <label>Cor</label>
-                    <select id="cor-premium" onchange="mostrarTamanhoPremium(); calcularPrecoPremium()">
+<select id="prime-cor">
                         <option value="">Selecione</option>
                         <option>Preta</option>
                         <option>Branca</option>
@@ -1600,91 +1618,70 @@ section#mark .painel-flutuante button {
                 </div>
 
                 <!-- ETAPA 2: TAMANHO -->
-                <div class="etapa oculta" id="etapa-tamanho-premium">
-                    <label>Tamanho</label>
-                    <select id="tamanho-premium" onchange="mostrarQtdCamisas(); calcularPrecoPremium()">
-                        <option value="">Selecione</option>
-                        <option>M</option>
-                        <option>G</option>
-                    </select>
-                </div>
+                <div class="step hidden" id="step-tamanho">
+  <label>Tamanho</label>
+  <select id="prime-tamanho">
+    <option value="">Selecione</option>
+    <option>M</option>
+    <option>G</option>
+  </select>
+</div>
 
-                <!-- ETAPA 3: QTD CAMISAS -->
-                <div class="etapa oculta" id="etapa-qtd-camisas">
-                    <label>Quantidade de Camisas</label>
-                    <input type="number" id="qtd-camisas" value="0" min="0" onchange="mostrarQtdEstampas(); calcularPrecoPremium()">
-                </div>
+              <div class="step hidden" id="step-qtd-estampas">
+  <label>Quantidade de Estampas</label>
+  <select id="prime-qtd-estampas">
+    <option value="">Selecione</option>
+    <option value="1">1 Estampa</option>
+    <option value="2">2 Estampas</option>
+  </select>
+</div>
 
-                <!-- ETAPA 4: QTD ESTAMPAS -->
-                <div class="etapa oculta" id="etapa-qtd-estampas">
-                    <label>Quantidade de Estampas</label>
-                    <select id="qtd-estampas" onchange="mostrarEstampas(); mostrarFinalizar(); calcularPrecoPremium()">
-                        <option value="0">Nenhuma</option>
-                        <option value="1">1 Estampa</option>
-                        <option value="2">2 Estampas</option>
-                    </select>
-                </div>
+              <div class="step hidden" id="step-estampa-1">
+  <label>Estampa 1</label>
+  <button id="btn-estampa-1" type="button">
+    Escolher Estampa
+  </button>
+</div>
 
-                <!-- ETAPA 5: FINALIZAR -->
-                <div class="etapa oculta" id="etapa-finalizar-premium">
-                    <button onclick="comprarPremium()">Finalizar Compra</button>
-                </div>
+              <div class="step hidden" id="step-local-1">
+  <label>Local da Estampa</label>
+  <select id="prime-local-1">
+    <option value="">Selecione</option>
+    <option>Peito Central</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
+    <option>Costas</option>
+  </select>
+</div>
+              <div class="step hidden" id="step-estampa-2">
+  <label>Estampa 2</label>
+  <button id="btn-estampa-2" type="button">
+    Escolher Estampa
+  </button>
+</div>
 
-                <div id="estampa1" style="display:none;">
+              <div class="step hidden" id="step-local-2">
+  <label>Local da Estampa 2</label>
+  <select id="prime-local-2">
+    <option value="">Selecione</option>
+    <option>Peito Central</option>
+    <option>Peito LE</option>
+    <option>Peito LD</option>
+    <option>Costas</option>
+  </select>
+</div>
 
-                    <hr>
-                    <strong>Estampa 1</strong>
+              <div class="step hidden" id="step-qtd-camisas">
+  <label>Quantidade de Camisas</label>
+  <input type="number" id="prime-qtd-camisas" min="1">
+</div>
 
-                    <label>Posição da Estampa</label>
-                    <select id="pos1" onchange="atualizarPreviewPosicao(this.value)">
-                        <option>Peito Central</option>
-                        <option>Peito LE</option>
-                        <option>Peito LD</option>
-                        <option>Costas</option>
-                    </select>
 
-                    <label>Fundo</label>
-                    <select id="fundo1">
-                        <option>Com fundo</option>
-                        <option>Sem fundo</option>
-                    </select>
-
-                    <label>Escolha a Estampa</label>
-                    <select id="arte1" onchange="atualizarPreviewArte(this.value)">
-                        <option>E01 – Tropa Urbana</option>
-                        <option>E02 – Tropa Urbana</option>
-                        <option>E03 – Outra Estampa</option>
-                    </select>
-
-                </div>
-
-                <div id="estampa2" style="display:none;">
-
-                    <hr>
-                    <strong>Estampa 2</strong>
-
-                    <label>Posição da Estampa</label>
-                    <select id="pos2">
-                        <option>Peito Central</option>
-                        <option>Peito LE</option>
-                        <option>Peito LD</option>
-                        <option>Costas</option>
-                    </select>
-
-                    <label>Fundo</label>
-                    <select id="fundo2">
-                        <option>Com fundo</option>
-                        <option>Sem fundo</option>
-                    </select>
-
-                    <label>Escolha a Estampa</label>
-                    <select id="arte2">
-                        <option>E01 – Tropa Urbana</option>
-                        <option>E02 – Tropa Urbana</option>
-                        <option>E03 – Outra Estampa</option>
-                    </select>
-
-                </div>
+              <div class="step hidden" id="step-finalizar">
+  <button id="btn-add-carrinho" type="button">
+    Adicionar ao Carrinho
+  </button>
+</div>
 
             </div>
         </div>
@@ -1992,6 +1989,122 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
+
+  <script>
+/* ============================= */
+/* FLUXO PRIME – CRIAR CAMISA */
+/* ============================= */
+
+const estadoPrime = {
+  cor: null,
+  tamanho: null,
+  qtdEstampas: null,
+  estampa1: null,
+  local1: null,
+  estampa2: null,
+  local2: null,
+  qtdCamisas: null
+};
+
+/* Helpers visuais */
+function mostrar(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'block';
+}
+
+function esconder(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'none';
+}
+
+function resetarPrime() {
+  Object.keys(estadoPrime).forEach(k => estadoPrime[k] = null);
+
+  document.getElementById('prime-cor').value = '';
+  document.getElementById('prime-tamanho').value = '';
+  document.getElementById('prime-qtd-estampas').value = '';
+  document.getElementById('prime-qtd-camisas').value = '';
+
+  esconder('step-tamanho');
+  esconder('step-qtd-estampas');
+  esconder('step-estampa-1');
+  esconder('step-local-1');
+  esconder('step-estampa-2');
+  esconder('step-local-2');
+  esconder('step-qtd-camisas');
+  esconder('step-finalizar');
+}
+
+/* ============================= */
+/* EVENTOS SEQUENCIAIS */
+/* ============================= */
+
+document.getElementById('prime-cor').addEventListener('change', e => {
+  estadoPrime.cor = e.target.value || null;
+  if (estadoPrime.cor) mostrar('step-tamanho');
+});
+
+document.getElementById('prime-tamanho').addEventListener('change', e => {
+  estadoPrime.tamanho = e.target.value || null;
+  if (estadoPrime.tamanho) mostrar('step-qtd-estampas');
+});
+
+document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
+  estadoPrime.qtdEstampas = e.target.value;
+  esconder('step-estampa-1');
+  esconder('step-estampa-2');
+  esconder('step-local-1');
+  esconder('step-local-2');
+  esconder('step-qtd-camisas');
+
+  if (estadoPrime.qtdEstampas === "1") {
+    mostrar('step-estampa-1');
+  }
+
+  if (estadoPrime.qtdEstampas === "2") {
+    mostrar('step-estampa-1');
+  }
+});
+
+/* ============================= */
+/* CATÁLOGO – ESCOLHA DA ESTAMPA */
+/* ============================= */
+
+document.getElementById('btn-estampa-1').addEventListener('click', () => {
+  localStorage.setItem('prime-estampa-alvo', '1');
+  window.location.href = 'catalogo.html';
+});
+
+document.getElementById('btn-estampa-2').addEventListener('click', () => {
+  localStorage.setItem('prime-estampa-alvo', '2');
+  window.location.href = 'catalogo.html';
+});
+
+/* ============================= */
+/* RETORNO DO CATÁLOGO */
+/* ============================= */
+
+window.addEventListener('load', () => {
+  const estampaEscolhida = localStorage.getItem('estampaSelecionada');
+  const alvo = localStorage.getItem('prime-estampa-alvo');
+
+  if (estampaEscolhida && alvo === '1') {
+    estadoPrime.estampa1 = estampaEscolhida;
+    mostrar('step-local-1');
+  }
+
+  if (estampaEscolhida && alvo === '2') {
+    estadoPrime.estampa2 = estampaEscolhida;
+    mostrar('step-local-2');
+  }
+
+  localStorage.removeItem('estampaSelecionada');
+  localStorage.removeItem('prime-estampa-alvo');
+});
+
+/* ============================= */
+/* LOCAIS DAS ESTAMPAS */
+/* ============================= */
   
 </body>
 
