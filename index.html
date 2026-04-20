@@ -1721,6 +1721,44 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
 });
 </script>
 
+  <script>
+function adicionarAoCarrinho(botao) {
+
+  // ✅ Aviso visual
+  alert('✅ Adicionado ao Carrinho!');
+
+  // 🔍 Encontra o card correto
+  const card = botao.closest('.basica-card');
+  if (!card) return;
+
+  // 🎯 Campos do card
+  const cor = card.querySelector('.cor');
+  const tamanho = card.querySelector('.tamanho');
+  const quantidade = card.querySelector('.quantidade');
+
+  const etapaTamanho = card.querySelector('.etapa-tamanho');
+  const etapaQtd = card.querySelector('.etapa-quantidade');
+  const finalizar = card.querySelector('.etapa-finalizar');
+
+  // 🔄 RESET DOS CAMPOS
+  if (cor) cor.value = '';
+  if (tamanho) tamanho.value = '';
+  if (quantidade) quantidade.value = 0;
+
+  // 🔒 FECHA O PAINEL FLUTUANTE
+  etapaTamanho?.classList.remove('visivel');
+  etapaQtd?.classList.remove('visivel');
+  finalizar?.classList.remove('visivel');
+
+  etapaTamanho?.classList.add('oculta');
+  etapaQtd?.classList.add('oculta');
+  finalizar?.classList.add('oculta');
+
+  // 🔙 Volta card ao estado inicial
+  card.classList.remove('aberto');
+}
+</script>
+
         <datalist id="bairros-joinville">
         <!-- Centro -->
         <option value="Centro">
