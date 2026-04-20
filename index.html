@@ -2030,19 +2030,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* QTD ESTAMPAS */
-  document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
-    estadoPrime.qtdEstampas = e.target.value;
+document.getElementById('prime-qtd-estampas').addEventListener('change', e => {
+  estadoPrime.qtdEstampas = e.target.value;
 
-    esconder('step-estampa-1');
-    esconder('step-estampa-2');
-    esconder('step-local-1');
-    esconder('step-local-2');
-    esconder('step-qtd-camisas');
+  // limpa etapas seguintes
+  esconder('step-estampa-1');
+  esconder('step-estampa-2');
+  esconder('step-local-1');
+  esconder('step-local-2');
+  esconder('step-qtd-camisas');
+  esconder('step-finalizar');
 
-    if (estadoPrime.qtdEstampas === '1' || estadoPrime.qtdEstampas === '2') {
-      mostrar('step-estampa-1');
-    }
-  });
+  // ✅ sempre mostra Estampa 1
+  if (estadoPrime.qtdEstampas === '1') {
+    mostrar('step-estampa-1');
+  }
+
+  // ✅ se for 2 estampas, mostra AS DUAS DE UMA VEZ
+  if (estadoPrime.qtdEstampas === '2') {
+    mostrar('step-estampa-1');
+    mostrar('step-estampa-2');
+  }
+});
 
   /* ============================= */
 /* ESTAMPA 1 / ESTAMPA 2 */
