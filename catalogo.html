@@ -351,29 +351,27 @@ function selecionarEstampa(codigoEstampa) {
   window.location.href = 'index.html#criar';
 }
 
-/* ============================= */
-/* ADD AO CARRINHO               */
-/* ============================= */
+<script>
 function adicionarCarrinho(nome, preco, img) {
-  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-  const existente = carrinho.find(item => item.nome === nome);
+  const carrinho = obterCarrinho();
 
-  if (existente) {
-    existente.qtd += 1;
-  } else {
-    carrinho.push({
-      nome,
-      preco,
-      img,
-      qtd: 1
-    });
-  }
+  const item = {
+    sku: 'ESTAMPA-' + Date.now(),
+    nome: nome,
+    cor: '—',
+    tamanho: '—',
+    qtd: 1,
+    preco: preco,
+    subtotal: preco
+  };
 
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  carrinho.itens.push(item);
+  salvarCarrinho(carrinho);
+
+  atualizarQtdCarrinho();
   window.location.href = 'carrinho.html';
 }
-    
 </script>
 
 <script>
