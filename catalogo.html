@@ -233,17 +233,17 @@ verificar
       <span class="logo-text">F PAC STORE</span>
     </a>
 
-    <!-- NAVEGAÇÃO -->
+    <!-- MENU -->
     <nav class="nav" id="nav">
 
-      <!-- LINKS DO MENU -->
+      <!-- LINKS -->
       <div class="menu-links">
         <a href="index.html#inicio">Início</a>
         <a href="index.html#catalogo">Catálogo</a>
         <a href="index.html#produtos">Produtos</a>
       </div>
 
-      <!-- CARRINHO + REDES -->
+      <!-- ÍCONES -->
       <div class="menu-social">
 
         <!-- CARRINHO -->
@@ -369,24 +369,6 @@ function adicionarCarrinho(nome, preco, img) {
   window.location.href = 'carrinho.html';
 }
 
-    /* ============================= */
-/* ATUALIZAR ÍCONE DO CARRINHO  */
-/* ============================= */
-function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
-
-  const qtd = document.getElementById('carrinhoQtd');
-  if (qtd) {
-    qtd.textContent = totalItens;
-    qtd.style.display = totalItens > 0 ? 'block' : 'none';
-  }
-}
-
-atualizarQtdCarrinho();
-  
-</script>
-
 <script>
 const toggle = document.getElementById('toggle');
 const nav = document.getElementById('nav');
@@ -404,13 +386,9 @@ if (toggle && nav) {
 }
 </script>
 
-  <script>
-/* ============================= */
-/* ATUALIZAR ÍCONE DO CARRINHO  */
-/* ============================= */
+<script>
 function atualizarQtdCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
   const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
 
   const qtd = document.getElementById('carrinhoQtd');
@@ -427,5 +405,22 @@ function atualizarQtdCarrinho() {
 document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
 
+<script>
+const toggle = document.getElementById('toggle');
+const nav = document.getElementById('nav');
+
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+  });
+}
+</script>
+  
 </body>
 </html>
