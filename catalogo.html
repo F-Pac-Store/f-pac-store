@@ -5,104 +5,78 @@
     <meta charset="UTF-8">
     <title>Catálogo Completo | F Pac Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- FONTES -->
-    <link rel="preconnect" href="https://fonts.googleapis.comf=" https://fonts.gstatic.com " crossoriginm/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheetcdnfonts.com/css/blacklisted" rel="stylesheetlink rel=" stylesheet "
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css "
-    crossorigin="anonymousent: #FFC107; --bg: #f5f5f5; --text: #333; --white: #fff; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding-top: 120px; } .container
-    { max-width: 1200px; margin: auto; padding: 0 20px; } /*=============================* / /* MENU – IGUAL AO INDEX */ /*=============================* / .header { background: var(--primary); position: fixed; width: 100%; top: 0; z-index: 1000; } .header-content
-    { max-width: 100%; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; height: 120px; } .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; } .logo-img { max-height: 85px; } .logo-text { font-family:
-    'blacklisted', sans-serif; font-size: 2.2rem; letter-spacing: 3px; color: #FFC107; -webkit-text-stroke: 1.5px #000; text-shadow: 2px 2px 6px rgba(0,0,0,.6); } .nav { display: none; align-items: center; gap: 30px; } .menu-links { display: flex; gap: 25px; } .menu-links
-    a { color: #fff; font-weight: 600; text-decoration: none; } .menu-social { display: flex; gap: 15px; align-items: center; } .menu-social i { font-size: 2.6rem; } .menu-toggle { font-size: 2rem; background: none; border: none; color: #fff; } .nav.active
-    { display: flex; flex-direction: column; position: absolute; top: 120px; left: 0; width: 100%; background: var(--primary); padding: 20px; gap: 20px; } @media (min-width: 768px) { .nav { display: flex; } .menu-toggle { display: none; } } .carrinho-icone
-    { position: relative; } .carrinho-icone i { color: var(--accent); font-size: 2.6rem; } .carrinho-qtd { position: absolute; top: -6px; right: -10px; background: var(--accent); color: #000; font-size: .7rem; padding: 2px 6px; border-radius: 50%; font-weight:
-    700; } /*=============================* / /* CATÁLOGO */ /*=============================* / main { padding: 40px 0 80px; } h1 { text-align: center; margin-bottom: 40px; font-size: 2.4rem; font-weight: 800; } .secao-catalogo { margin-bottom: 60px;
-    } .titulo-secao { text-align: center; color: #666; border-top: 1px solid #ddd; padding-top: 20px; margin: 40px 0; font-weight: 600; } .catalogo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; } .estampa
-    { background: #fff; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,.12); } .estampa img { width: 100%; height: 160px; object-fit: contain; } .estampa span { display: block; font-size: .85rem; font-weight:
-    600; margin: 6px 0; } .estampa button { width: 100%; padding: 8px; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer; } </style>
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <style>
+        :root { --primary: #003366; --accent: #FFC107; --bg: #f5f5f5; --text: #333; --white: #fff; --header-height: 120px; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding-top: var(--header-height); } .container { max-width: 1200px; margin: auto; padding: 0 20px; } /* HEADER */ .header { background: var(--primary); position: fixed; width: 100%; top: 0; z-index: 1000; } .header-content { display: flex; justify-content: space-between; align-items: center; height: var(--header-height); } .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; } .logo-img { max-height: 85px; } .logo-text { font-family: 'blacklisted', sans-serif; font-size: 2.2rem; letter-spacing: 3px; color: #FFC107; -webkit-text-stroke: 1.5px #000; text-shadow: 2px 2px 6px rgba(0, 0, 0, .6); } /* CATÁLOGO */ .catalogo-page { padding: 40px 0 80px; } .catalogo-page h1 { text-align: center; font-size: 2.4rem; font-weight: 800; } .catalogo-grid { display: grid; /* ✅ 5 cards por linha no desktop */ grid-template-columns: repeat(5, 1fr); /* ✅ espaço menor entre os cards */ gap: 14px; /* ✅ evita grid muito largo */ max-width: 1200px; margin: 0 auto; } .estampa { background: #fff; border-radius: 10px; /* ✅ card mais compacto */ padding: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); text-align: center; cursor: pointer; transition: transform 0.2s ease; } .estampa:hover { transform: translateY(-4px); } .estampa img { width: 100%; aspect-ratio: 1 / 1; /* ✅ mantém a imagem inteira visível */ object-fit: contain; margin-bottom: 6px; } .estampa span { font-size: .85rem; font-weight: 600; } /* RESPONSIVO */ @media (max-width: 1024px) { .catalogo-grid { grid-template-columns: repeat(3, 1fr); } } @media (max-width: 768px) { .catalogo-grid { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 480px) { .catalogo-grid { grid-template-columns: 1fr; } } /* ============================= */ /* AJUSTES DE LAYOUT DO CATÁLOGO */ /* ============================= */ .secao-catalogo { margin-bottom: 60px; } .secao-catalogo .titulo-secao { text-align: center; color: #666; border-top: 1px solid #ddd; padding-top: 20px; margin: 40px 0 30px; font-weight: 600; } .secao-catalogo .catalogo-grid { margin-top: 20px; } /* ÍCONE DO CARRINHO */ .carrinho-icone { position: relative; color: #fff; font-size: 1.6rem; text-decoration: none; } .carrinho-icone i { pointer-events: none; } .carrinho-qtd { position: absolute; top: -6px; right: -10px; background: red; color: #fff; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: 700; } /* BOTÃO ADICIONAR AO CARRINHO */ .estampa button { margin-top: 8px; width: 100%; padding: 6px; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; } .estampa button:hover { background: #002244; }
+    </style>
 </head>
 
 <body>
-
     <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="logons/logo-fpac.png" class="logo-img" alt="F PacORE</span>
-    </a>
-
-    <nav class=" nav " id="nav ">
-      <div class="menu-links ">
-        <a href="index.htmlício</a>
-            <a href="index.html#catalog</a>
-        <a href=" index.html#prodtos</a>
-        </div>
-
-        <a href="carrinho.html" class="carrinhod fa-cart-shopping"></i>
-            <span class="carrinho-qtd" id="carrinhoQtd">0</span>
-        </a>
-
-        <div class="menu-social">
-            <a href="https://wa.me/5547997465602" target="_blank"></i>
-            </a>
-            <a href="https://instagram.com/f_pac_store/" target="_tagram"></i>
-            </a>
-        </div>
-        </nav>
-
-        <button class="menu-toggle" id="toggle">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="container header-content">
+            <!-- LOGO -->
+            <a href="index.html" class="logo"> <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store"> <span class="logo-text">F PAC STORE</span> </a>
+            <!-- MENU -->
+            <nav class="nav" id="nav">
+                <!-- LINKS -->
+                <div class="menu-links"> <a href="index.html#inicio">Início</a> <a href="index.html#catalogo">Catálogo</a> <a href="index.html#produtos">Produtos</a> </div>
+                <!-- ÍCONES -->
+                <div class="menu-social">
+                    <!-- CARRINHO -->
+                    <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho"> <i class="fa-solid fa-cart-shopping"></i> <span class="carrinho-qtd" id="carrinhoQtd">0</span> </a>
+                    <!-- WHATSAPP -->
+                    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp"> <i class="fab fa-whatsapp"></i> </a>
+                    <!-- INSTAGRAM -->
+                    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram"> <i class="fab fa-instagram"></i> </a>
+                </div>
+            </nav>
+            <!-- BOTÃO MOBILE -->
+            <button class="menu-toggle" id="toggle" aria-label="Abrir menu"> <i class="fas fa-bars"></i> </button>
         </div>
     </header>
-
-    <main class="container">
-        <h1>Catálogo Completo</h1>
-
-        <section class="secao-catalogo">
-            <p class="titulo-secao">Todas as estampas com fundo</p>
-            <div class="catalogo-grid">
-                <div class="estampa">
-                    <img src="imagens/estampas       <span>Tropa Urbana – Com Fundo</span>
-        <button onclick=" adicionarCarrinho( 'Tropa Urbana – Com Fundo',49.9) ">Adicionar ao carrinho</button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<script>
-function obterCarrinho() {
-  return JSON.parse(localStorage.getItem('carrinho')) || {
-    id: 'FPAC-' + Date.now(),
-    itens: [],
-    total: 0
-  };
-}
-
-function salvarCarrinho(c) {
-  c.total = c.itens.reduce((s,i)=>s+i.subtotal,0);
-  localStorage.setItem('carrinho', JSON.stringify(c));
-}
-
-function adicionarCarrinho(nome, preco) {
-  const c = obterCarrinho();
-  c.itens.push({
-    nome, cor:'—', tamanho:'—', qtd:1, preco, subtotal:preco
-  });
-  salvarCarrinho(c);
-  atualizarQtdCarrinho();
-  window.location.href = 'carrinho.html';
-}
-
-function atualizarQtdCarrinho() {
-  const c = JSON.parse(localStorage.getItem('carrinho'));
-  const el = document.getElementById('carrinhoQtd');
-  if (!c || !el) return;
-  el.textContent = c.itens.reduce((s,i)=>s+i.qtd,0);
-}
-document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-
-/* MENU MOBILE */
-toggle.onclick = ()=> nav.classList.toggle('active');
-</script>
-
+    <!-- CATÁLOGO -->
+    <main class="catalogo-page">
+        <div class="container">
+            <h1>Catálogo Completo</h1>
+            <!-- ============================= -->
+            <!-- COM FUNDO -->
+            <!-- ============================= -->
+            <section class="secao-catalogo">
+                <p class="titulo-secao">Todas as estampas com fundo</p>
+                <div class="catalogo-grid">
+                    <div class="estampa" onclick="selecionarEstampa('CF-001')"> <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo"> <span>E01 – Tropa Urbana – Com Fundo</span>
+                        <button onclick="event.stopPropagation(); adicionarCarrinho( 'E01 – Tropa Urbana – Com Fundo', 49.90, 'imagens/estampas/e1.jpeg' )">
+                            Adicionar ao carrinho </button>
+                    </div>
+                </div>
+            </section>
+            <!-- ============================= -->
+            <!-- SEM FUNDO -->
+            <!-- ============================= -->
+            <section class="secao-catalogo">
+                <p class="titulo-secao">Todas as estampas sem fundo</p>
+                <div class="catalogo-grid">
+                    <div class="estampa" onclick="selecionarEstampa('SF-001')"> <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo"> <span>E01 – Tropa Urbana – Sem Fundo</span> </div>
+                    <div class="estampa" onclick="selecionarEstampa('SF-002')"> <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo"> <span>E02 – Tropa Urbana – Sem Fundo</span> </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        function selecionarEstampa(codigoEstampa) { const slot = localStorage.getItem('primeSlot'); if (slot === '1') { localStorage.setItem('primeEstampa1', codigoEstampa); } if (slot === '2') { localStorage.setItem('primeEstampa2', codigoEstampa); } window.location.href = 'index.html#criar'; } <script> function adicionarCarrinho(nome, preco, img) { const carrinho = obterCarrinho(); const item = { sku: 'ESTAMPA-' + Date.now(), nome: nome, cor: '—', tamanho: '—', qtd: 1, preco: preco, subtotal: preco }; carrinho.itens.push(item); salvarCarrinho(carrinho); atualizarQtdCarrinho(); window.location.href = 'carrinho.html'; }
+    </script>
+    <script>
+        function atualizarQtdCarrinho() { const carrinho = JSON.parse(localStorage.getItem('carrinho')) || []; const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0); const qtd = document.getElementById('carrinhoQtd'); if (!qtd) return; if (totalItens > 0) { qtd.textContent = totalItens; qtd.style.display = 'block'; } else { qtd.style.display = 'none'; } } document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+    </script>
+    <script>
+        const toggle = document.getElementById('toggle'); const nav = document.getElementById('nav'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('active'); }); document.querySelectorAll('.nav a').forEach(link => { link.addEventListener('click', () => { nav.classList.remove('active'); }); }); }
+    </script>
 </body>
+
 </html>
