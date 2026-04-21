@@ -7,18 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+  https://fonts.googleapis.com
+  https://fonts.gstatic.com
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+  https://fonts.cdnfonts.com/css/blacklisted
 
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous">
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 
   <style>
     :root {
@@ -233,60 +228,31 @@
   </style>
 </head>
 
-<script>
-fetch('menu.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('menu').innerHTML = html;
-
-    // ATIVA MENU MOBILE
-    const toggle = document.getElementById('toggle');
-    const nav = document.getElementById('nav');
-
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      document.querySelectorAll('.nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
-    }
-
-    // ATUALIZA CONTADOR DO CARRINHO
-    atualizarQtdCarrinho();
-  });
-</script>
-  
 <body>
-  
-<div id="menu"></div>
 
 <header class="header">
   <div class="header-content">
 
-    <a href="index.html" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+    index.html
+      imagens/logo-fpac.png
       <span class="logo-text">F PAC STORE</span>
     </a>
 
     <nav class="nav" id="nav">
       <div class="menu-links">
-        <a href="index.html#inicio">Início</a>
-        <a href="index.html#catalogo">Catálogo</a>
-        <a href="index.html#produtos">Produtos</a>
+        index.html#inicioInício</a>
+        index.html#catalogoCatálogo</a>
+        index.html#produtosProdutos</a>
       </div>
 
-      <a href="carrinho.html" class="carrinho-icone">
+      carrinho.html
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="carrinho-qtd" id="carrinhoQtd">0</span>
       </a>
 
       <div class="menu-social">
-        <a href="https://wa.me/5547997465602" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/f_pac_store/" target="_blank"><i class="fab fa-instagram"></i></a>
+        https://wa.me/5547997465602<i class="fab fa-whatsapp"></i></a>
+        https://instagram.com/f_pac_store/<i class="fab fa-instagram"></i></a>
       </div>
     </nav>
 
@@ -306,7 +272,7 @@ fetch('menu.html')
 
       <div class="catalogo-grid">
         <div class="estampa">
-          <img src="imagens/estampas/e1.jpeg">
+          imagens/estampas/e1.jpeg
           <span>Tropa Urbana – Com Fundo</span>
           <button onclick="adicionarCarrinho('Tropa Urbana – Com Fundo', 49.90)">
             Adicionar ao carrinho
