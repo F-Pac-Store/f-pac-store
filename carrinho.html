@@ -40,7 +40,11 @@ button {
 <p class="total" id="total"></p>
 
 <button onclick="finalizarCompra()">Finalizar Compra pelo WhatsApp</button>
+<button onclick="limparCarrinho()" style="margin-top:10px; background:#ccc; color:#000;">
+  Limpar Carrinho
+</button>
 
+  
 <script>
 const lista = document.getElementById('lista');
 const totalEl = document.getElementById('total');
@@ -76,11 +80,14 @@ if (!carrinho || carrinho.itens.length === 0) {
     div.className = 'item';
 
     div.innerHTML = `
-      <strong>${item.nome}</strong><br>
-      Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
-      Quantidade: ${item.qtd}<br>
-      Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}
-    `;
+  <strong>${item.nome}</strong><br>
+  Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
+  Quantidade: ${item.qtd}<br>
+  Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}<br>
+  <button onclick="removerItem(${index})" style="margin-top:8px;background:#ff5555;color:#fff;">
+    Remover
+  </button>
+`;
 
     lista.appendChild(div);
   });
@@ -119,6 +126,33 @@ mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
     '_blank'
   );
 }
+</script>
+
+  <script>
+function limparCarrinho() {
+  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
+
+  localStorage.removeItem('carrinho');
+  window.location.reload();
+}
+
+    <script>
+function limparCarrinho() {
+  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
+
+  localStorage.removeItem('carrinho');
+  window.location.reload();
+}
+
+/* ✅ ADICIONE AQUI */
+function removerItem(index) {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  carrinho.itens.splice(index, 1);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  window.location.reload();
+}
+</script>
+    
 </script>
 
 </body>
