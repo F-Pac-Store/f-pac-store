@@ -144,7 +144,7 @@
         }
     </script>
 
-    <script>
+<script>
 function limparCarrinho() {
   if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
   localStorage.removeItem('carrinho');
@@ -154,17 +154,20 @@ function limparCarrinho() {
 function removerItem(index) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
   carrinho.itens.splice(index, 1);
+
+  carrinho.total = carrinho.itens.reduce(
+    (soma, item) => soma + item.subtotal,
+    0
+  );
+
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   window.location.reload();
 }
 
-<script>
 function atualizarTelaCarrinho() {
   location.reload();
 }
-</script>
-        
-<script>
+
 function alterarQuantidade(index, novaQtd) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
   if (!carrinho) return;
@@ -179,7 +182,7 @@ function alterarQuantidade(index, novaQtd) {
       carrinho.itens[index].preco * qtd;
   }
 
-  /* ✅ RECALCULA O TOTAL */
+  /* ✅ RECALCULA TOTAL */
   carrinho.total = carrinho.itens.reduce(
     (soma, item) => soma + item.subtotal,
     0
@@ -187,9 +190,10 @@ function alterarQuantidade(index, novaQtd) {
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
-  /* ✅ ATUALIZA A TELA SEM RELOAD */
+  /* ✅ ATUALIZA TELA */
   atualizarTelaCarrinho();
 }
+</script>
 </script>
 
 </body>
