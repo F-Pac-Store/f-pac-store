@@ -2,176 +2,220 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Carrinho | F Pac Store</title>
-    <style>
-        body {
-          font-family: Inter, sans-serif;
-          background: #f5f5f5;
-          padding: 40px;
-        }
-        h1 { text-align: center; }
-        .item {
-          background: #fff;
-          padding: 15px;
-          margin-bottom: 12px;
-          border-radius: 8px;
-        }
-        .total {
-          font-size: 1.3rem;
-          font-weight: bold;
-          text-align: right;
-        }
-        button {
-          background: #25D366;
-          color: #fff;
-          border: none;
-          padding: 14px;
-          width: 100%;
-          border-radius: 6px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Carrinho | F Pac Store</title>
+
+<style>
+:root {
+  --primary:#003366;
+  --accent:#FFC107;
+  --success:#28c75f;
+  --danger:#ff4d4f;
+  --bg:#f4f6f8;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  padding:40px 16px;
+}
+
+.carrinho-wrap {
+  width:100%;
+  max-width:900px;
+}
+
+.carrinho-topo {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.carrinho-topo h1 {
+  margin:0;
+  font-size:2rem;
+}
+
+.btn-voltar {
+  background:var(--primary);
+  color:white;
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:6px;
+  font-weight:600;
+}
+
+.card {
+  background:white;
+  border-radius:12px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.pedido-id {
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.item {
+  border:1px solid #eee;
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.item strong {
+  font-size:1.05rem;
+}
+
+.item-linha {
+  margin-top:6px;
+  font-size:0.9rem;
+}
+
+.item input {
+  width:80px;
+  padding:6px;
+  margin-left:6px;
+}
+
+.subtotal {
+  margin-top:8px;
+  font-weight:700;
+}
+
+.btn-remover {
+  margin-top:12px;
+  background:var(--danger);
+  color:white;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.total {
+  margin-top:24px;
+  font-size:1.6rem;
+  font-weight:800;
+  text-align:right;
+}
+
+.acoes {
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.btn-finalizar {
+  background:var(--success);
+  color:white;
+  border:none;
+  padding:16px;
+  border-radius:8px;
+  font-size:1rem;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn-limpar {
+  background:#ddd;
+  color:#333;
+  border:none;
+  padding:14px;
+  border-radius:6px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.vazio {
+  text-align:center;
+  font-size:1.1rem;
+}
+</style>
 </head>
 
 <body>
 
+<div class="carrinho-wrap">
+
+  <div class="carrinho-topo">
     <h1>Seu Carrinho</h1>
- <p style="margin-bottom:20px;">
-  <a href="index.html"
-     style="display:inline-block;padding:10px 16px;background:#003366;
-            color:white;border-radius:6px;font-weight:600;text-decoration:none;">
-    ⬅ Voltar ao início
-  </a>
-</p>
+    <a href="index.html" class="btn-voltar">⬅ Voltar ao início</a>
+  </div>
+
+  <div class="card">
     <div id="lista"></div>
-    <p class="total" id="total"></p>
+    <div class="total" id="total"></div>
 
-    <button onclick="finalizarCompra()">Finalizar Compra</button>
-    <button onclick="limparCarrinho()" style="margin-top:10px; background:#ccc; color:#000;">
+    <div class="acoes">
+      <button class="btn-finalizar" onclick="finalizarCompra()">
+        Finalizar Compra
+      </button>
+
+      <button class="btn-limpar" onclick="limparCarrinho()">
         Limpar Carrinho
-    </button>
+      </button>
+    </div>
+  </div>
 
-
-    <script>
-        const lista = document.getElementById('lista');
-        const totalEl = document.getElementById('total');
-        
-        const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-        
-        /* ============================= */
-        /* VERIFICAÇÃO BÁSICA            */
-        /* ============================= */
-        
-        if (!carrinho || carrinho.itens.length === 0) {
-          lista.innerHTML = '<p>Carrinho vazio.</p>';
-          totalEl.innerHTML = '';
-        } else {
-        
-          /* ============================= */
-          /* MOSTRAR ID DO PEDIDO          */
-          /* ============================= */
-        
-          const pedidoEl = document.createElement('p');
-          pedidoEl.style.fontWeight = 'bold';
-          pedidoEl.style.marginBottom = '15px';
-          pedidoEl.innerText = `Pedido: ${carrinho.id}`;
-          lista.appendChild(pedidoEl);
-        
-          /* ============================= */
-          /* LISTAR ITENS                  */
-          /* ============================= */
-        
-          carrinho.itens.forEach((item, index) => {
-        
-            const div = document.createElement('div');
-            div.className = 'item';
-        
-            div.innerHTML = `
-          <strong>${item.nome}</strong><br>
-          Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
-          Quantidade:
-        <input 
-          type="number"
-          min="1"
-          value="${item.qtd}"
-          onchange="alterarQuantidade(${index}, this.value)"
-          style="width:70px; margin-left:6px;"
-        ><br>
-          Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}<br>
-          <button onclick="removerItem(${index})" style="margin-top:8px;background:#ff5555;color:#fff;">
-            Remover
-          </button>
-        `;
-        
-            lista.appendChild(div);
-          });
-        
-          /* ============================= */
-          /* MOSTRAR TOTAL                 */
-          /* ============================= */
-        
-          totalEl.innerHTML =
-            'Total do Pedido: R$ ' +
-            carrinho.total.toFixed(2).replace('.', ',');
-        
-        }
-        
-        /* ============================= */
-        /* FINALIZAR NO WHATSAPP         */
-        /* ============================= */
-        
-        function finalizarCompra() {
-        
-          let mensagem = `Olá! Quero finalizar meu pedido:%0A%0A`;
-        
-          mensagem += `Pedido: ${carrinho.id}%0A%0A`;
-        
-          carrinho.itens.forEach(item => {
-            mensagem += `• ${item.nome} (${item.cor}, ${item.tamanho}) x${item.qtd}%0A`;
-          });
-        
-          mensagem += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}%0A`;
-          mensagem += `%0AForma de pagamento: Pix (Mercado Pago)%0A%0A`;
-        mensagem += `Link para pagamento:%0A`;
-        mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
-        
-          window.open(
-            `https://wa.me/5547997465602?text=${mensagem}`,
-            '_blank'
-          );
-        }
-    </script>
+</div>
 
 <script>
-function limparCarrinho() {
-  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
-  localStorage.removeItem('carrinho');
-  window.location.reload();
-}
+const lista = document.getElementById('lista');
+const totalEl = document.getElementById('total');
+const carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
-function removerItem(index) {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-  carrinho.itens.splice(index, 1);
+if (!carrinho || carrinho.itens.length === 0) {
+  lista.innerHTML = '<p class="vazio">Carrinho vazio.</p>';
+  totalEl.innerHTML = '';
+} else {
 
-  carrinho.total = carrinho.itens.reduce(
-    (soma, item) => soma + item.subtotal,
-    0
-  );
+  lista.innerHTML = `<p class="pedido-id">Pedido: ${carrinho.id}</p>`;
 
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  window.location.reload();
-}
+  carrinho.itens.forEach((item, index) => {
+    lista.innerHTML += `
+      <div class="item">
+        <strong>${item.nome}</strong>
 
-function atualizarTelaCarrinho() {
-  location.reload();
+        <div class="item-linha">
+          Cor: ${item.cor} | Tamanho: ${item.tamanho}
+        </div>
+
+        <div class="item-linha">
+          Quantidade:
+          <input type="number" min="1"
+            value="${item.qtd}"
+            onchange="alterarQuantidade(${index}, this.value)">
+        </div>
+
+        <div class="subtotal">
+          Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}
+        </div>
+
+        <button class="btn-remover" onclick="removerItem(${index})">
+          Remover
+        </button>
+      </div>
+    `;
+  });
+
+  totalEl.innerHTML =
+    'Total do Pedido: R$ ' +
+    carrinho.total.toFixed(2).replace('.', ',');
 }
 
 function alterarQuantidade(index, novaQtd) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-  if (!carrinho) return;
-
   const qtd = Number(novaQtd);
 
   if (qtd <= 0) {
@@ -182,19 +226,49 @@ function alterarQuantidade(index, novaQtd) {
       carrinho.itens[index].preco * qtd;
   }
 
-  /* ✅ RECALCULA TOTAL */
   carrinho.total = carrinho.itens.reduce(
-    (soma, item) => soma + item.subtotal,
-    0
+    (s,i) => s+i.subtotal, 0
   );
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  location.reload();
+}
 
-  /* ✅ ATUALIZA TELA */
-  atualizarTelaCarrinho();
+function removerItem(index) {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  carrinho.itens.splice(index,1);
+  carrinho.total = carrinho.itens.reduce(
+    (s,i)=>s+i.subtotal,0
+  );
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  location.reload();
+}
+
+function limparCarrinho() {
+  if (confirm('Deseja limpar o carrinho?')) {
+    localStorage.removeItem('carrinho');
+    location.reload();
+  }
+}
+
+function finalizarCompra() {
+  let msg = `Olá! Quero finalizar meu pedido:%0A%0A`;
+  msg += `Pedido: ${carrinho.id}%0A%0A`;
+
+  carrinho.itens.forEach(i => {
+    msg += `• ${i.nome} (${i.cor}, ${i.tamanho}) x${i.qtd}%0A`;
+  });
+
+  msg += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}`;
+  msg += `%0A%0APagamento: Pix`;
+
+  window.open(
+    `https://wa.me/5547997465602?text=${msg}`,
+    '_blank'
+  );
 }
 </script>
 
 </body>
-
 </html>
+``
