@@ -181,20 +181,66 @@ verificar
 .secao-catalogo .catalogo-grid {
   margin-top: 20px;
 }
+
+/* ÍCONE DO CARRINHO */
+.carrinho-icone {
+  position: relative;
+  color: #fff;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+.carrinho-icone i {
+  pointer-events: none;
+}
+
+.carrinho-qtd {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+    /* BOTÃO ADICIONAR AO CARRINHO */
+.estampa button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.estampa button:hover {
+  background: #002244;
+}
+    
 </style>
-</head>
+<header class="header">
+  <div class="container header-content">
 
-<body>
+    <!-- LOGO -->
+    <a href="index.html" class="logo">
+      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+      <span class="logo-text">F PAC STORE</span>
+    </a>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-content">
-      <a href="index.html" class="logo">
-        <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-        <span class="logo-text">F PAC STORE</span>
-      </a>
-    </div>
-  </header>
+    <!-- CARRINHO -->
+    <a href="carrinho.html" class="carrinho-icone">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+    </a>
+
+  </div>
+</header>
 
   <!-- CATÁLOGO -->
 <main class="catalogo-page">
@@ -291,7 +337,23 @@ function adicionarCarrinho(nome, preco, img) {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   window.location.href = 'carrinho.html';
 }
-</script>
+
+    /* ============================= */
+/* ATUALIZAR ÍCONE DO CARRINHO  */
+/* ============================= */
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+
+  const qtd = document.getElementById('carrinhoQtd');
+  if (qtd) {
+    qtd.textContent = totalItens;
+    qtd.style.display = totalItens > 0 ? 'block' : 'none';
+  }
+}
+
+atualizarQtdCarrinho();
+  
 </script>
 
 </body>
