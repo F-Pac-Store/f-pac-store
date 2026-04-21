@@ -1624,21 +1624,11 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
 });
 </script>
 
- <script>
+<script>
 function adicionarAoCarrinho(botao) {
 
   const card = botao.closest('.basica-card');
   if (!card) return;
-
-  const nomeProduto =
-    card.closest('#basica') ? 'Camisa Force' :
-    card.closest('#mark')   ? 'Camisa Mark'  :
-    'Camisa';
-
-  const precoTexto = card.querySelector('.preco').innerText;
-  const preco = Number(
-    precoTexto.replace('R$', '').replace(',', '.').trim()
-  );
 
   const cor = card.querySelector('.cor').value;
   const tamanho = card.querySelector('.tamanho').value;
@@ -1649,30 +1639,34 @@ function adicionarAoCarrinho(botao) {
     return;
   }
 
+  const preco = Number(
+    card.querySelector('.preco').innerText
+      .replace('R$', '')
+      .replace(',', '.')
+      .trim()
+  );
+
+  const carrinho = obterCarrinho();
+
   const item = {
-    nome: nomeProduto,
-    preco: preco,
+    sku: (card.closest('#basica') ? 'FORCE' : 'MARK') + '-' + Date.now(),
+    nome: card.closest('#basica') ? 'Camisa Force' : 'Camisa Mark',
     cor: cor,
     tamanho: tamanho,
-    qtd: qtd
+    qtd: qtd,
+    preco: preco,
+    subtotal: preco * qtd
   };
 
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  carrinho.push(item);
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  carrinho.itens.push(item);
+  salvarCarrinho(carrinho);
 
   atualizarQtdCarrinho();
 
   alert('✅ Produto adicionado ao carrinho!');
-
-  // reset visual
-  card.querySelector('.cor').value = '';
-  card.querySelector('.tamanho').value = '';
-  card.querySelector('.quantidade').value = 0;
-  card.classList.remove('aberto');
 }
 </script>
-
+  
         <datalist id="bairros-joinville">
         <!-- Centro -->
         <option value="Centro">
@@ -1722,26 +1716,24 @@ function adicionarAoCarrinho(botao) {
     </datalist>
 
 <script>
-/* ============================= */
-/* ATUALIZAR ÍCONE DO CARRINHO  */
-/* ============================= */
 function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  const el = document.getElementById('carrinhoQtd');
+  if (!el || !carrinho) return;
 
-  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+  const total = carrinho.itens.reduce(
+    (soma, item) => soma + item.qtd,
+    0
+  );
 
-  const qtd = document.getElementById('carrinhoQtd');
-  if (!qtd) return;
-
-  if (totalItens > 0) {
-    qtd.textContent = totalItens;
-    qtd.style.display = 'block';
+  if (total > 0) {
+    el.textContent = total;
+    el.style.display = 'block';
   } else {
-    qtd.style.display = 'none';
+    el.style.display = 'none';
   }
 }
 
-// ✅ roda sempre que a página carregar
 document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
 
