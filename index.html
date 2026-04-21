@@ -1624,40 +1624,51 @@ document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(ca
 });
 </script>
 
-  <script>
+ <script>
 function adicionarAoCarrinho(botao) {
 
-  // ✅ Aviso visual
-  alert('✅ Adicionado ao Carrinho!');
-
-  // 🔍 Encontra o card correto
   const card = botao.closest('.basica-card');
   if (!card) return;
 
-  // 🎯 Campos do card
-  const cor = card.querySelector('.cor');
-  const tamanho = card.querySelector('.tamanho');
-  const quantidade = card.querySelector('.quantidade');
+  const nomeProduto =
+    card.closest('#basica') ? 'Camisa Force' :
+    card.closest('#mark')   ? 'Camisa Mark'  :
+    'Camisa';
 
-  const etapaTamanho = card.querySelector('.etapa-tamanho');
-  const etapaQtd = card.querySelector('.etapa-quantidade');
-  const finalizar = card.querySelector('.etapa-finalizar');
+  const precoTexto = card.querySelector('.preco').innerText;
+  const preco = Number(
+    precoTexto.replace('R$', '').replace(',', '.').trim()
+  );
 
-  // 🔄 RESET DOS CAMPOS
-  if (cor) cor.value = '';
-  if (tamanho) tamanho.value = '';
-  if (quantidade) quantidade.value = 0;
+  const cor = card.querySelector('.cor').value;
+  const tamanho = card.querySelector('.tamanho').value;
+  const qtd = Number(card.querySelector('.quantidade').value);
 
-  // 🔒 FECHA O PAINEL FLUTUANTE
-  etapaTamanho?.classList.remove('visivel');
-  etapaQtd?.classList.remove('visivel');
-  finalizar?.classList.remove('visivel');
+  if (!cor || !tamanho || qtd <= 0) {
+    alert('Preencha cor, tamanho e quantidade.');
+    return;
+  }
 
-  etapaTamanho?.classList.add('oculta');
-  etapaQtd?.classList.add('oculta');
-  finalizar?.classList.add('oculta');
+  const item = {
+    nome: nomeProduto,
+    preco: preco,
+    cor: cor,
+    tamanho: tamanho,
+    qtd: qtd
+  };
 
-  // 🔙 Volta card ao estado inicial
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  carrinho.push(item);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+  atualizarQtdCarrinho();
+
+  alert('✅ Produto adicionado ao carrinho!');
+
+  // reset visual
+  card.querySelector('.cor').value = '';
+  card.querySelector('.tamanho').value = '';
+  card.querySelector('.quantidade').value = 0;
   card.classList.remove('aberto');
 }
 </script>
