@@ -110,7 +110,9 @@ function finalizarCompra() {
   });
 
   mensagem += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}%0A`;
-  mensagem += `Pagamento via Pix (Mercado Pago)`;
+  mensagem += `%0AForma de pagamento: Pix (Mercado Pago)%0A%0A`;
+mensagem += `Link para pagamento:%0A`;
+mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
 
   window.open(
     `https://wa.me/5547997465602?text=${mensagem}`,
