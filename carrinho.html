@@ -159,7 +159,7 @@ body {
 
   <div class="carrinho-topo">
     <h1>Seu Carrinho</h1>
-    <a href="index.html" class="btn-voltar>⬅ Voltar ao início</a>
+    <a href="index.html" class="btn-voltar">⬅ Voltar ao início</a>
   </div>
 
   <div class="card">
@@ -167,13 +167,14 @@ body {
     <div class="total" id="total"></div>
 
     <div class="acoes">
-      <button class="btn-finalizar" onclick="finalizarCompra()">
-        Finalizar Compra
-      </button>
+      <button type="button" class="btn-finalizar" onclick="finalizarCompra()">
+  Finalizar Compra
+</button>
 
-      <button class="btn-limpar" onclick="limparCarrinho()">
-        Limpar Carrinho
-      </button>
+<button type="button" class="btn-limpar" onclick="limparCarrinho()">
+  Limpar Carrinho
+</button>
+
     </div>
   </div>
 
@@ -203,8 +204,8 @@ if (!carrinho || carrinho.itens.length === 0) {
         <div class="item-linha">
           Quantidade:
           <input type="number" min="1"
-            value="${item.qtd}"
-            onchange="alterarQuantidade(${index}, this.value)">
+  value="${item.qtd}"
+  oninput="alterarQuantidade(event, ${index}, this.value)">
         </div>
 
         <div class="subtotal">
@@ -223,8 +224,13 @@ if (!carrinho || carrinho.itens.length === 0) {
     carrinho.total.toFixed(2).replace('.', ',');
 }
 
-function alterarQuantidade(index, novaQtd) {
+function alterarQuantidade(event, index, novaQtd) {
+  event.preventDefault();
+  event.stopPropagation();
+
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  if (!carrinho) return;
+
   const qtd = Number(novaQtd);
 
   if (qtd <= 0) {
@@ -236,10 +242,12 @@ function alterarQuantidade(index, novaQtd) {
   }
 
   carrinho.total = carrinho.itens.reduce(
-    (s,i) => s+i.subtotal, 0
+    (s, i) => s + i.subtotal, 0
   );
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+  // ✅ Atualiza sem sair da página
   location.reload();
 }
 
