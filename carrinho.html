@@ -45,34 +45,77 @@ button {
 const lista = document.getElementById('lista');
 const totalEl = document.getElementById('total');
 
-const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-let total = 0;
+const carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
-carrinho.forEach(item => {
-  const div = document.createElement('div');
-  div.className = 'item';
-  div.innerHTML = `
-    <strong>${item.nome}</strong><br>
-    Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
-    Quantidade: ${item.qtd}<br>
-    Preço unitário: R$ ${item.preco.toFixed(2).replace('.', ',')}
-  `;
-  lista.appendChild(div);
-  total += item.preco * item.qtd;
-});
+/* ============================= */
+/* VERIFICAÇÃO BÁSICA            */
+/* ============================= */
 
-totalEl.innerText = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
+if (!carrinho || carrinho.itens.length === 0) {
+  lista.innerHTML = '<p>Carrinho vazio.</p>';
+  totalEl.innerHTML = '';
+} else {
+
+  /* ============================= */
+  /* MOSTRAR ID DO PEDIDO          */
+  /* ============================= */
+
+  const pedidoEl = document.createElement('p');
+  pedidoEl.style.fontWeight = 'bold';
+  pedidoEl.style.marginBottom = '15px';
+  pedidoEl.innerText = `Pedido: ${carrinho.id}`;
+  lista.appendChild(pedidoEl);
+
+  /* ============================= */
+  /* LISTAR ITENS                  */
+  /* ============================= */
+
+  carrinho.itens.forEach((item, index) => {
+
+    const div = document.createElement('div');
+    div.className = 'item';
+
+    div.innerHTML = `
+      <strong>${item.nome}</strong><br>
+      Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
+      Quantidade: ${item.qtd}<br>
+      Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}
+    `;
+
+    lista.appendChild(div);
+  });
+
+  /* ============================= */
+  /* MOSTRAR TOTAL                 */
+  /* ============================= */
+
+  totalEl.innerHTML =
+    'Total do Pedido: R$ ' +
+    carrinho.total.toFixed(2).replace('.', ',');
+
+}
+
+/* ============================= */
+/* FINALIZAR NO WHATSAPP         */
+/* ============================= */
 
 function finalizarCompra() {
-  let mensagem = 'Olá! Quero finalizar meu pedido:%0A%0A';
 
-  carrinho.forEach(item => {
+  let mensagem = `Olá! Quero finalizar meu pedido:%0A%0A`;
+
+  mensagem += `Pedido: ${carrinho.id}%0A%0A`;
+
+  carrinho.itens.forEach(item => {
     mensagem += `• ${item.nome} (${item.cor}, ${item.tamanho}) x${item.qtd}%0A`;
   });
 
-  mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+  mensagem += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}%0A`;
+  mensagem += `Pagamento via Pix (Mercado Pago)`;
 
-  window.open(`https://wa.me/5547997465602?text=${mensagem}`, '_blank');
+  window.open(
+    `https://wa.me/5547997465602?text=${mensagem}`,
+    '_blank'
+  );
 }
 </script>
 
