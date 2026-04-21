@@ -1,197 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Carrinho | F Pac Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Inter, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .carrinho {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .item {
-      display: grid;
-      grid-template-columns: 80px 1fr 120px 80px;
-      gap: 12px;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      padding: 12px 0;
-    }
-
-    .item img {
-      width: 80px;
-      border-radius: 6px;
-    }
-
-    .item-info h3 {
-      font-size: 1rem;
-      margin: 0 0 6px;
-    }
-
-    .item-info small {
-      color: #666;
-    }
-
-    .item input {
-      width: 60px;
-      padding: 6px;
-      text-align: center;
-    }
-
-    .item button {
-      background: #c62828;
-      color: #fff;
-      border: none;
-      padding: 6px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .total {
-      text-align: right;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-top: 20px;
-    }
-
-    .acoes {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
-    }
-
-    .acoes button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .continuar {
-      background: #ccc;
-    }
-
-    .finalizar {
-      background: #003366;
-      color: #fff;
-    }
-
-    .vazio {
-      text-align: center;
-      color: #666;
-      padding: 40px 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Carrinho | F Pac Store</title>
+<style>
+body {
+  font-family: Inter, sans-serif;
+  background: #f5f5f5;
+  padding: 40px;
+}
+h1 { text-align: center; }
+.item {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+.total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: right;
+}
+button {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
 
-<h1>Meu Carrinho</h1>
+<h1>Seu Carrinho</h1>
+<div id="lista"></div>
+<p class="total" id="total"></p>
 
-<div class="carrinho" id="carrinho"></div>
+<button onclick="finalizarCompra()">Finalizar Compra pelo WhatsApp</button>
 
 <script>
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+const lista = document.getElementById('lista');
+const totalEl = document.getElementById('total');
 
-function renderCarrinho() {
-  const container = document.getElementById('carrinho');
-  container.innerHTML = '';
+const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+let total = 0;
 
-  if (carrinho.length === 0) {
-    container.innerHTML = '<p class="vazio">Seu carrinho está vazio.</p>';
-    return;
-  }
+carrinho.forEach(item => {
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.innerHTML = `
+    <strong>${item.nome}</strong><br>
+    Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
+    Quantidade: ${item.qtd}<br>
+    Preço unitário: R$ ${item.preco.toFixed(2).replace('.', ',')}
+  `;
+  lista.appendChild(div);
+  total += item.preco * item.qtd;
+});
 
-  let total = 0;
+totalEl.innerText = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
 
-  carrinho.forEach((item, index) => {
-    total += item.preco * item.qtd;
+function finalizarCompra() {
+  let mensagem = 'Olá! Quero finalizar meu pedido:%0A%0A';
 
-    container.innerHTML += `
-      <div class="item">
-        <img src="${        <div class="item-info">
-          <h3>${item.nome}</h3>
-          <small>R$ ${item.preco.toFixed(2)}</small>
-        </div>
-
-        <input type="number" min="1" value="${item.qtd}"
-          onchange="alterarQtd(${index}, this.value)">
-
-        <button onclick="removerItem(${index})">X</button>
-      </div>
-    `;
+  carrinho.forEach(item => {
+    mensagem += `• ${item.nome} (${item.cor}, ${item.tamanho}) x${item.qtd}%0A`;
   });
 
-  container.innerHTML += `
-    <div class="total">Total: R$ ${total.toFixed(2)}</div>
+  mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
 
-    <div class="acoes">
-      <button class="continuar" onclick="history.back()">Continuar comprando</button>
-      <button class="finalizar" onclick="finalizar()">Finalizar pedido</button>
-    </div>
-  `;
+  window.open(`https://wa.me/5547997465602?text=${mensagem}`, '_blank');
 }
-
-function alterarQtd(index, qtd) {
-  carrinho[index].qtd = parseInt(qtd);
-  salvar();
-}
-
-function removerItem(index) {
-  carrinho.splice(index, 1);
-  salvar();
-}
-
-function salvar() {
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  renderCarrinho();
-}
-
-function finalizar() {
-  alert('Aqui entra o checkout (WhatsApp, Pix, etc)');
-}
-
-renderCarrinho();
-</script>
-
-  <script>
-/* ============================= */
-/* ATUALIZAR ÍCONE DO CARRINHO  */
-/* ============================= */
-function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
-
-  const qtd = document.getElementById('carrinhoQtd');
-  if (!qtd) return;
-
-  if (totalItens > 0) {
-    qtd.textContent = totalItens;
-    qtd.style.display = 'block';
-  } else {
-    qtd.style.display = 'none';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
 
 </body>
