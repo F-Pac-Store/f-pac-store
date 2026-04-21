@@ -1716,18 +1716,23 @@ function adicionarAoCarrinho(botao) {
 /* ============================= */
 function atualizarQtdCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
   const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
 
   const qtd = document.getElementById('carrinhoQtd');
-  if (qtd) {
+  if (!qtd) return;
+
+  if (totalItens > 0) {
     qtd.textContent = totalItens;
-    qtd.style.display = totalItens > 0 ? 'block' : 'none';
+    qtd.style.display = 'block';
+  } else {
+    qtd.style.display = 'none';
   }
 }
 
-atualizarQtdCarrinho();
+// ✅ roda sempre que a página carregar
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
-  
-</body>
 
+</body>
 </html>
