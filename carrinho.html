@@ -128,7 +128,7 @@ mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
 }
 </script>
 
-  <script>
+<script>
 function limparCarrinho() {
   if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
 
@@ -136,23 +136,12 @@ function limparCarrinho() {
   window.location.reload();
 }
 
-    <script>
-function limparCarrinho() {
-  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
-
-  localStorage.removeItem('carrinho');
-  window.location.reload();
-}
-
-/* ✅ ADICIONE AQUI */
 function removerItem(index) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
   carrinho.itens.splice(index, 1);
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   window.location.reload();
 }
-</script>
-    
 </script>
 
 </body>
