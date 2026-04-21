@@ -1000,29 +1000,34 @@ section#mark .painel-flutuante button {
   margin-left: 0;
 }
 
-/* ÍCONE DO CARRINHO */
+/* ============================= */
+/* ÍCONE DO CARRINHO NO MENU     */
+/* ============================= */
+
 .carrinho-icone {
   position: relative;
-  color: var(--accent);        /* ✅ AMARELO */
-  font-size: 2.6rem;           /* ✅ MESMO TAMANHO DO WHATS */
   text-decoration: none;
+}
+
+/* ÍCONE EM SI (FORÇA TAMANHO E COR) */
+.carrinho-icone i {
+  font-size: 2.6rem;          /* ✅ IGUAL WHATS */
+  color: var(--accent);       /* ✅ AMARELO */
   transition: transform 0.2s ease;
 }
 
-.carrinho-icone:hover {
-  transform: scale(1.15);      /* ✅ MESMO HOVER DOS OUTROS */
+/* hover igual redes sociais */
+.carrinho-icone:hover i {
+  transform: scale(1.15);
 }
 
-.carrinho-icone i {
-  pointer-events: none;
-}
-
+/* contador */
 .carrinho-qtd {
   position: absolute;
   top: -6px;
   right: -10px;
-  background: #FFC107;   /* amarelo */
-  color: #000;           /* contraste */
+  background: #FFC107;
+  color: #000;
   font-size: 0.7rem;
   padding: 2px 6px;
   border-radius: 50%;
