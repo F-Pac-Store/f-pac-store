@@ -233,7 +233,36 @@
   </style>
 </head>
 
+<script>
+fetch('menu.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('menu').innerHTML = html;
+
+    // ATIVA MENU MOBILE
+    const toggle = document.getElementById('toggle');
+    const nav = document.getElementById('nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('active');
+        });
+      });
+    }
+
+    // ATUALIZA CONTADOR DO CARRINHO
+    atualizarQtdCarrinho();
+  });
+</script>
+  
 <body>
+  
+<div id="menu"></div>
 
 <header class="header">
   <div class="header-content">
