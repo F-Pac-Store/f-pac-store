@@ -158,15 +158,37 @@ function removerItem(index) {
   window.location.reload();
 }
 
+<script>
+function atualizarTelaCarrinho() {
+  location.reload();
+}
+</script>
+        
+<script>
 function alterarQuantidade(index, novaQtd) {
   const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  if (!carrinho) return;
 
-  const item = carrinho.itens[index];
-  item.qtd = Number(novaQtd);
-  item.subtotal = item.qtd * item.preco;
+  const qtd = Number(novaQtd);
+
+  if (qtd <= 0) {
+    carrinho.itens.splice(index, 1);
+  } else {
+    carrinho.itens[index].qtd = qtd;
+    carrinho.itens[index].subtotal =
+      carrinho.itens[index].preco * qtd;
+  }
+
+  /* ✅ RECALCULA O TOTAL */
+  carrinho.total = carrinho.itens.reduce(
+    (soma, item) => soma + item.subtotal,
+    0
+  );
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  window.location.reload();
+
+  /* ✅ ATUALIZA A TELA SEM RELOAD */
+  atualizarTelaCarrinho();
 }
 </script>
 
