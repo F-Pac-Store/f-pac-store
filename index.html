@@ -1000,12 +1000,17 @@ section#mark .painel-flutuante button {
   margin-left: 0;
 }
 
-      /* ÍCONE DO CARRINHO */
+/* ÍCONE DO CARRINHO */
 .carrinho-icone {
   position: relative;
-  color: #fff;
-  font-size: 1.7rem;
+  color: var(--accent);        /* ✅ AMARELO */
+  font-size: 2.6rem;           /* ✅ MESMO TAMANHO DO WHATS */
   text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.carrinho-icone:hover {
+  transform: scale(1.15);      /* ✅ MESMO HOVER DOS OUTROS */
 }
 
 .carrinho-icone i {
@@ -1016,8 +1021,8 @@ section#mark .painel-flutuante button {
   position: absolute;
   top: -6px;
   right: -10px;
-  background: red;
-  color: #fff;
+  background: #FFC107;   /* amarelo */
+  color: #000;           /* contraste */
   font-size: 0.7rem;
   padding: 2px 6px;
   border-radius: 50%;
