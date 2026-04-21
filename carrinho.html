@@ -1,169 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<title>Carrinho | F Pac Store</title>
-<style>
-body {
-  font-family: Inter, sans-serif;
-  background: #f5f5f5;
-  padding: 40px;
-}
-h1 { text-align: center; }
-.item {
-  background: #fff;
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-}
-.total {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: right;
-}
-button {
-  background: #25D366;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  width: 100%;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Carrinho | F Pac Store</title>
+    <style>
+        body {
+          font-family: Inter, sans-serif;
+          background: #f5f5f5;
+          padding: 40px;
+        }
+        h1 { text-align: center; }
+        .item {
+          background: #fff;
+          padding: 15px;
+          margin-bottom: 12px;
+          border-radius: 8px;
+        }
+        .total {
+          font-size: 1.3rem;
+          font-weight: bold;
+          text-align: right;
+        }
+        button {
+          background: #25D366;
+          color: #fff;
+          border: none;
+          padding: 14px;
+          width: 100%;
+          border-radius: 6px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>Seu Carrinho</h1>
-<div id="lista"></div>
-<p class="total" id="total"></p>
+    <h1>Seu Carrinho</h1>
+    <div id="lista"></div>
+    <p class="total" id="total"></p>
 
-<button onclick="finalizarCompra()">Finalizar Compra pelo WhatsApp</button>
-<button onclick="limparCarrinho()" style="margin-top:10px; background:#ccc; color:#000;">
-  Limpar Carrinho
-</button>
+    <button onclick="finalizarCompra()">Finalizar Compra pelo WhatsApp</button>
+    <button onclick="limparCarrinho()" style="margin-top:10px; background:#ccc; color:#000;">
+        Limpar Carrinho
+    </button>
 
-  
-<script>
-const lista = document.getElementById('lista');
-const totalEl = document.getElementById('total');
 
-const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+    <script>
+        const lista = document.getElementById('lista');
+        const totalEl = document.getElementById('total');
+        
+        const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+        
+        /* ============================= */
+        /* VERIFICAÇÃO BÁSICA            */
+        /* ============================= */
+        
+        if (!carrinho || carrinho.itens.length === 0) {
+          lista.innerHTML = '<p>Carrinho vazio.</p>';
+          totalEl.innerHTML = '';
+        } else {
+        
+          /* ============================= */
+          /* MOSTRAR ID DO PEDIDO          */
+          /* ============================= */
+        
+          const pedidoEl = document.createElement('p');
+          pedidoEl.style.fontWeight = 'bold';
+          pedidoEl.style.marginBottom = '15px';
+          pedidoEl.innerText = `Pedido: ${carrinho.id}`;
+          lista.appendChild(pedidoEl);
+        
+          /* ============================= */
+          /* LISTAR ITENS                  */
+          /* ============================= */
+        
+          carrinho.itens.forEach((item, index) => {
+        
+            const div = document.createElement('div');
+            div.className = 'item';
+        
+            div.innerHTML = `
+          <strong>${item.nome}</strong><br>
+          Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
+          Quantidade:
+        <input 
+          type="number"
+          min="1"
+          value="${item.qtd}"
+          onchange="alterarQuantidade(${index}, this.value)"
+          style="width:70px; margin-left:6px;"
+        ><br>
+          Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}<br>
+          <button onclick="removerItem(${index})" style="margin-top:8px;background:#ff5555;color:#fff;">
+            Remover
+          </button>
+        `;
+        
+            lista.appendChild(div);
+          });
+        
+          /* ============================= */
+          /* MOSTRAR TOTAL                 */
+          /* ============================= */
+        
+          totalEl.innerHTML =
+            'Total do Pedido: R$ ' +
+            carrinho.total.toFixed(2).replace('.', ',');
+        
+        }
+        
+        /* ============================= */
+        /* FINALIZAR NO WHATSAPP         */
+        /* ============================= */
+        
+        function finalizarCompra() {
+        
+          let mensagem = `Olá! Quero finalizar meu pedido:%0A%0A`;
+        
+          mensagem += `Pedido: ${carrinho.id}%0A%0A`;
+        
+          carrinho.itens.forEach(item => {
+            mensagem += `• ${item.nome} (${item.cor}, ${item.tamanho}) x${item.qtd}%0A`;
+          });
+        
+          mensagem += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}%0A`;
+          mensagem += `%0AForma de pagamento: Pix (Mercado Pago)%0A%0A`;
+        mensagem += `Link para pagamento:%0A`;
+        mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
+        
+          window.open(
+            `https://wa.me/5547997465602?text=${mensagem}`,
+            '_blank'
+          );
+        }
+    </script>
 
-/* ============================= */
-/* VERIFICAÇÃO BÁSICA            */
-/* ============================= */
+    <script>
+        function limparCarrinho() {
+          if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
+        
+          localStorage.removeItem('carrinho');
+          window.location.reload();
+        }
+        
+        function removerItem(index) {
+          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+          carrinho.itens.splice(index, 1);
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+          window.location.reload();
+        }
+        
+          <script>
+        function alterarQuantidade(index, novaQtd) {
+          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+        
+          const item = carrinho.itens[index];
+          item.qtd = Number(novaQtd);
+          item.subtotal = item.qtd * item.preco;
+        
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+          window.location.reload();
+        }
+    </script>
 
-if (!carrinho || carrinho.itens.length === 0) {
-  lista.innerHTML = '<p>Carrinho vazio.</p>';
-  totalEl.innerHTML = '';
-} else {
-
-  /* ============================= */
-  /* MOSTRAR ID DO PEDIDO          */
-  /* ============================= */
-
-  const pedidoEl = document.createElement('p');
-  pedidoEl.style.fontWeight = 'bold';
-  pedidoEl.style.marginBottom = '15px';
-  pedidoEl.innerText = `Pedido: ${carrinho.id}`;
-  lista.appendChild(pedidoEl);
-
-  /* ============================= */
-  /* LISTAR ITENS                  */
-  /* ============================= */
-
-  carrinho.itens.forEach((item, index) => {
-
-    const div = document.createElement('div');
-    div.className = 'item';
-
-    div.innerHTML = `
-  <strong>${item.nome}</strong><br>
-  Cor: ${item.cor} | Tamanho: ${item.tamanho}<br>
-  Quantidade:
-<input 
-  type="number"
-  min="1"
-  value="${item.qtd}"
-  onchange="alterarQuantidade(${index}, this.value)"
-  style="width:70px; margin-left:6px;"
-><br>
-  Subtotal: R$ ${item.subtotal.toFixed(2).replace('.', ',')}<br>
-  <button onclick="removerItem(${index})" style="margin-top:8px;background:#ff5555;color:#fff;">
-    Remover
-  </button>
-`;
-
-    lista.appendChild(div);
-  });
-
-  /* ============================= */
-  /* MOSTRAR TOTAL                 */
-  /* ============================= */
-
-  totalEl.innerHTML =
-    'Total do Pedido: R$ ' +
-    carrinho.total.toFixed(2).replace('.', ',');
-
-}
-
-/* ============================= */
-/* FINALIZAR NO WHATSAPP         */
-/* ============================= */
-
-function finalizarCompra() {
-
-  let mensagem = `Olá! Quero finalizar meu pedido:%0A%0A`;
-
-  mensagem += `Pedido: ${carrinho.id}%0A%0A`;
-
-  carrinho.itens.forEach(item => {
-    mensagem += `• ${item.nome} (${item.cor}, ${item.tamanho}) x${item.qtd}%0A`;
-  });
-
-  mensagem += `%0ATotal: R$ ${carrinho.total.toFixed(2).replace('.', ',')}%0A`;
-  mensagem += `%0AForma de pagamento: Pix (Mercado Pago)%0A%0A`;
-mensagem += `Link para pagamento:%0A`;
-mensagem += `https://mpago.la/link.mercadopago.com.br/fpacstore`;
-
-  window.open(
-    `https://wa.me/5547997465602?text=${mensagem}`,
-    '_blank'
-  );
-}
-</script>
-
-<script>
-function limparCarrinho() {
-  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
-
-  localStorage.removeItem('carrinho');
-  window.location.reload();
-}
-
-function removerItem(index) {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-  carrinho.itens.splice(index, 1);
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  window.location.reload();
-}
-
-  <script>
-function alterarQuantidade(index, novaQtd) {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-
-  const item = carrinho.itens[index];
-  item.qtd = Number(novaQtd);
-  item.subtotal = item.qtd * item.preco;
-
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  window.location.reload();
-}
-</script>
-  
-</script>
+    </script>
 
 </body>
+
 </html>
