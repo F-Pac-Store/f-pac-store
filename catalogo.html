@@ -7,17 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous">
-
-  
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
@@ -26,7 +21,7 @@
       --bg: #f5f5f5;
       --text: #333;
       --white: #fff;
-      --header-height: 120px;
+      --header-height: 90px;
     }
 
     * {
@@ -45,7 +40,7 @@
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 0 20px;
+      padding: 0 16px;
     }
 
     /* HEADER */
@@ -67,326 +62,255 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       text-decoration: none;
     }
 
     .logo-img {
-      max-height: 85px;
+      max-height: 60px;
     }
 
     .logo-text {
       font-family: 'blacklisted', sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 3px;
+      font-size: 1.6rem;
       color: #FFC107;
-      -webkit-text-stroke: 1.5px #000;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+      -webkit-text-stroke: 1px #000;
+    }
+
+    /* MENU */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .menu-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+      font-size: 0.9rem;
+    }
+
+    .menu-social a {
+      color: #fff;
+      margin-left: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* MOBILE MENU */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+      }
+
+      .nav.active {
+        display: flex;
+      }
+
+      .menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .menu-social {
+        margin-top: 15px;
+      }
     }
 
     /* CATÁLOGO */
     .catalogo-page {
-      padding: 40px 0 80px;
+      padding: 30px 0 60px;
     }
 
-    .catalogo-page h1 {
+    h1 {
       text-align: center;
-      font-size: 2.4rem;
-      font-weight: 800;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .titulo-secao {
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      margin: 30px 0 20px;
     }
 
     .catalogo-grid {
-  display: grid;
-
-  /* ✅ 5 cards por linha no desktop */
-  grid-template-columns: repeat(5, 1fr);
-
-  /* ✅ espaço menor entre os cards */
-  gap: 14px;
-
-  /* ✅ evita grid muito largo */
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-    .estampa {
-  background: #fff;
-  border-radius: 10px;
-
-  /* ✅ card mais compacto */
-  padding: 8px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  text-align: center;
-  cursor: pointer;
-
-  transition: transform 0.2s ease;
-}
-    .estampa:hover {
-      transform: translateY(-4px);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
     }
 
-    .estampa img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-
-  /* ✅ mantém a imagem inteira visível */
-  object-fit: contain;
-
-  margin-bottom: 6px;
-}
-
-    .estampa span {
-      font-size: .85rem;
-      font-weight: 600;
-    }
-
-    /* RESPONSIVO */
     @media (max-width: 1024px) {
       .catalogo-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       .catalogo-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 480px) {
-  .catalogo-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    .estampa {
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-/* ============================= */
-/* AJUSTES DE LAYOUT DO CATÁLOGO */
-/* ============================= */
+    .estampa img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+    }
 
-.secao-catalogo {
-  margin-bottom: 60px;
-}
+    .estampa span {
+      display: block;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
 
-.secao-catalogo .titulo-secao {
-  text-align: center;
-  color: #666;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-  margin: 40px 0 30px;
-  font-weight: 600;
-}
+    .estampa button {
+      margin-top: 6px;
+      width: 100%;
+      padding: 6px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
 
-.secao-catalogo .catalogo-grid {
-  margin-top: 20px;
-}
+    /* CARRINHO */
+    .carrinho-icone {
+      position: relative;
+    }
 
-/* ÍCONE DO CARRINHO */
-.carrinho-icone {
-  position: relative;
-  color: #fff;
-  font-size: 1.6rem;
-  text-decoration: none;
-}
+    .carrinho-qtd {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: red;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
 
-.carrinho-icone i {
-  pointer-events: none;
-}
-
-.carrinho-qtd {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: red;
-  color: #fff;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 50%;
-  font-weight: 700;
-}
-
-    /* BOTÃO ADICIONAR AO CARRINHO */
-.estampa button {
-  margin-top: 8px;
-  width: 100%;
-  padding: 6px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.estampa button:hover {
-  background: #002244;
-}
-    
-</style>
-
-  </head>
+  </style>
+</head>
 
 <body>
 
 <header class="header">
   <div class="container header-content">
 
-    <!-- LOGO -->
     <a href="index.html" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
+      <img src="imagens/logo-fpac.png" class="logo-img">
+      <span class="logo-text">F PAC</span>
     </a>
 
-    <!-- MENU -->
     <nav class="nav" id="nav">
-
-      <!-- LINKS -->
       <div class="menu-links">
-        <a href="index.html#inicio">Início</a>
-        <a href="index.html#catalogo">Catálogo</a>
-        <a href="index.html#produtos">Produtos</a>
+        <a href="#">Início</a>
+        <a href="#">Catálogo</a>
+        <a href="#">Produtos</a>
       </div>
 
-      <!-- ÍCONES -->
       <div class="menu-social">
-
-        <!-- CARRINHO -->
-        <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho">
+        <a href="carrinho.html" class="carrinho-icone">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="carrinho-qtd" id="carrinhoQtd">0</span>
         </a>
-
-        <!-- WHATSAPP -->
-        <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-
-        <!-- INSTAGRAM -->
-        <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-
       </div>
     </nav>
 
-    <!-- BOTÃO MOBILE -->
-    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+    <button class="menu-toggle" id="toggle">
       <i class="fas fa-bars"></i>
     </button>
 
   </div>
 </header>
 
-  <!-- CATÁLOGO -->
 <main class="catalogo-page">
   <div class="container">
 
     <h1>Catálogo Completo</h1>
 
-    <!-- ============================= -->
-    <!-- COM FUNDO -->
-    <!-- ============================= -->
-    <section class="secao-catalogo">
+    <p class="titulo-secao">Estampas com fundo</p>
 
-      <p class="titulo-secao">Todas as estampas com fundo</p>
+    <div class="catalogo-grid">
 
-      <div class="catalogo-grid">
+      <div class="estampa" onclick="selecionarEstampa('CF-001')">
+        <img src="imagens/estampas/e1.jpeg">
+        <span>Tropa Urbana</span>
 
-        
-<div class="estampa" onclick="selecionarEstampa('CF-001')">
-  <img src="imagens/estampas/e1.jpeg" alt="E01 – Tropa Urbana – Com Fundo">
-  <span>E01 – Tropa Urbana – Com Fundo</span>
-
-  <button
-    onclick="event.stopPropagation(); adicionarCarrinho(
-      'E01 – Tropa Urbana – Com Fundo',
-      49.90,
-      'imagens/estampas/e1.jpeg'
-    )">
-    Adicionar ao carrinho
-  </button>
-</div>
-
+        <button onclick="event.stopPropagation(); adicionarCarrinho('Tropa Urbana',49.9)">
+          Adicionar
+        </button>
       </div>
-    </section>
 
-    <!-- ============================= -->
-    <!-- SEM FUNDO -->
-    <!-- ============================= -->
-    <section class="secao-catalogo">
-
-      <p class="titulo-secao">Todas as estampas sem fundo</p>
-
-      <div class="catalogo-grid">
-
-        <div class="estampa" onclick="selecionarEstampa('SF-001')">
-          <img src="imagens/estampas/e2.png" alt="E01 – Tropa Urbana – Sem Fundo">
-          <span>E01 – Tropa Urbana – Sem Fundo</span>
-        </div>
-
-        <div class="estampa" onclick="selecionarEstampa('SF-002')">
-          <img src="imagens/estampas/e4.png" alt="E02 – Tropa Urbana – Sem Fundo">
-          <span>E02 – Tropa Urbana – Sem Fundo</span>
-        </div>
-
-      </div>
-    </section>
+    </div>
 
   </div>
 </main>
 
-  <script>
+<script>
 function selecionarEstampa(codigoEstampa) {
-  const slot = localStorage.getItem('primeSlot');
-
-  if (slot === '1') {
-    localStorage.setItem('primeEstampa1', codigoEstampa);
-  }
-
-  if (slot === '2') {
-    localStorage.setItem('primeEstampa2', codigoEstampa);
-  }
-
-  window.location.href = 'index.html#criar';
+  localStorage.setItem('estampa', codigoEstampa);
+  window.location.href = 'index.html';
 }
+</script>
 
 <script>
-function adicionarCarrinho(nome, preco, img) {
+function adicionarCarrinho(nome, preco) {
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-  const carrinho = obterCarrinho();
+  carrinho.push({
+    nome,
+    preco,
+    qtd: 1
+  });
 
-  const item = {
-    sku: 'ESTAMPA-' + Date.now(),
-    nome: nome,
-    cor: '—',
-    tamanho: '—',
-    qtd: 1,
-    preco: preco,
-    subtotal: preco
-  };
-
-  carrinho.itens.push(item);
-  salvarCarrinho(carrinho);
-
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
   atualizarQtdCarrinho();
-  window.location.href = 'carrinho.html';
 }
 </script>
 
 <script>
 function atualizarQtdCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+  const total = carrinho.length;
 
-  const qtd = document.getElementById('carrinhoQtd');
-  if (!qtd) return;
-
-  if (totalItens > 0) {
-    qtd.textContent = totalItens;
-    qtd.style.display = 'block';
-  } else {
-    qtd.style.display = 'none';
-  }
+  const el = document.getElementById('carrinhoQtd');
+  if (el) el.textContent = total;
 }
 
 document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
@@ -396,18 +320,10 @@ document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 const toggle = document.getElementById('toggle');
 const nav = document.getElementById('nav');
 
-if (toggle && nav) {
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
-
-  document.querySelectorAll('.nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('active');
-    });
-  });
-}
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
 </script>
-  
+
 </body>
 </html>
