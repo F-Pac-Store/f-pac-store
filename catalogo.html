@@ -233,11 +233,42 @@ verificar
       <span class="logo-text">F PAC STORE</span>
     </a>
 
-    <!-- CARRINHO -->
-    <a href="carrinho.html" class="carrinho-icone">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="carrinho-qtd" id="carrinhoQtd">0</span>
-    </a>
+    <!-- NAVEGAÇÃO -->
+    <nav class="nav" id="nav">
+
+      <!-- LINKS DO MENU -->
+      <div class="menu-links">
+        <a href="index.html#inicio">Início</a>
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="index.html#produtos">Produtos</a>
+      </div>
+
+      <!-- CARRINHO + REDES -->
+      <div class="menu-social">
+
+        <!-- CARRINHO -->
+        <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+        </a>
+
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars"></i>
+    </button>
 
   </div>
 </header>
@@ -356,5 +387,23 @@ atualizarQtdCarrinho();
   
 </script>
 
+<script>
+const toggle = document.getElementById('toggle');
+const nav = document.getElementById('nav');
+
+if (toggle && nav) {
+  toggle.onclick = () => {
+    nav.classList.toggle('active');
+  };
+
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+  });
+}
+</script>
+
+  
 </body>
 </html>
