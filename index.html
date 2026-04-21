@@ -1033,6 +1033,126 @@ section#mark .painel-flutuante button {
   border-radius: 50%;
   font-weight: 700;
 }
+
+      /* ============================= */
+/* AJUSTES GERAIS PARA CELULAR   */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  /* ===== ESTRUTURA BASE ===== */
+
+  body {
+    padding: 16px 10px;
+  }
+
+  .container,
+  .carrinho-wrap {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* ===== HEADER ===== */
+
+  .header-content {
+    height: 90px;
+    padding: 0 10px;
+  }
+
+  .logo-img {
+    max-height: 60px;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  /* ===== HERO ===== */
+
+  .hero {
+    min-height: auto;
+    padding: 40px 16px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* ===== CARRINHO ===== */
+
+  .carrinho-topo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .carrinho-topo h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn-voltar {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* ITEM DO CARRINHO */
+
+  .item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .item-img {
+    width: 100%;
+    height: 160px;
+  }
+
+  .item-info strong {
+    font-size: 1rem;
+  }
+
+  .item-linha {
+    font-size: 0.85rem;
+  }
+
+  .item input {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  /* ===== TOTAL ===== */
+
+  .total {
+    font-size: 1.35rem;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  /* ===== BOTÕES ===== */
+
+  .acoes button {
+    font-size: 1rem;
+    padding: 16px;
+  }
+
+  .btn-remover {
+    margin-top: 14px;
+  }
+
+  .header {
+  position: relative;
+}
+
+.hero {
+  margin-top: 0;
+}
+}
       
     </style>
 </head>
