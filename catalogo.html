@@ -19,6 +19,42 @@
 
 <body>
 
+    <header class="header">
+  <div class="container header-content">
+
+    <!-- LOGO -->
+    <a href="index.html" class="logons/logo-fpac.png" class="logo-img" alt="F Pac Storepan>
+    </a>
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="nav" id="nav">
+
+      <div class="menu-links">
+        <a href="index.html#inicio>
+        <a href="index.html#catalogo/a>
+        <a href="index.html#produtos/a>
+      </div>
+
+      <!-- CARRINHO -->
+      <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho     <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+      </a>
+
+      <!-- REDES SOCIAIS -->
+      <div class="menu-social">
+        <a href="https://wa.me/5547997465602" target="_blank" aria-label="Whats       </a>
+        <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram    </a>
+      </div>
+
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+  </div>
+</header>
+
     <!-- CATÁLOGO -->
     <main class="catalogo-page">
         <div class="container">
@@ -48,14 +84,73 @@
         </div>
     </main>
     <script>
-        function selecionarEstampa(codigoEstampa) { const slot = localStorage.getItem('primeSlot'); if (slot === '1') { localStorage.setItem('primeEstampa1', codigoEstampa); } if (slot === '2') { localStorage.setItem('primeEstampa2', codigoEstampa); } window.location.href = 'index.html#criar'; } <script> function adicionarCarrinho(nome, preco, img) { const carrinho = obterCarrinho(); const item = { sku: 'ESTAMPA-' + Date.now(), nome: nome, cor: '—', tamanho: '—', qtd: 1, preco: preco, subtotal: preco }; carrinho.itens.push(item); salvarCarrinho(carrinho); atualizarQtdCarrinho(); window.location.href = 'carrinho.html'; }
-    </script>
-    <script>
-        function atualizarQtdCarrinho() { const carrinho = JSON.parse(localStorage.getItem('carrinho')) || []; const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0); const qtd = document.getElementById('carrinhoQtd'); if (!qtd) return; if (totalItens > 0) { qtd.textContent = totalItens; qtd.style.display = 'block'; } else { qtd.style.display = 'none'; } } document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-    </script>
-    <script>
-        const toggle = document.getElementById('toggle'); const nav = document.getElementById('nav'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('active'); }); document.querySelectorAll('.nav a').forEach(link => { link.addEventListener('click', () => { nav.classList.remove('active'); }); }); }
-    </script>
-</body>
+function selecionarEstampa(codigoEstampa) {
+  const slot = localStorage.getItem('primeSlot');
 
+  if (slot === '1') {
+    localStorage.setItem('primeEstampa1', codigoEstampa);
+  } else if (slot === '2') {
+    localStorage.setItem('primeEstampa2', codigoEstampa);
+  }
+
+  window.location.href = 'index.html#criar';
+}
+
+function adicionarCarrinho(nome, preco, img) {
+  const carrinho = obterCarrinho();
+
+  carrinho.itens.push({
+    sku: 'ESTAMPA-' + Date.now(),
+    nome: nome,
+    cor: '—',
+    tamanho: '—',
+    qtd: 1,
+    preco: preco,
+    subtotal: preco
+  });
+
+  salvarCarrinho(carrinho);
+  atualizarQtdCarrinho();
+  window.location.href = 'carrinho.html';
+}
+</script>
+
+    <script>
+    const toggle = document.getElementById('toggle');
+    const nav = document.getElementById('nav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+    }
+</script>
+
+<script>
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  const el = document.getElementById('carrinhoQtd');
+  if (!el || !carrinho) return;
+
+  const total = carrinho.itens.reduce(
+    (soma, item) => soma + item.qtd,
+    0
+  );
+
+  if (total > 0) {
+    el.textContent = total;
+    el.style.display = 'block';
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+</script>
+        
+</body>
 </html>
