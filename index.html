@@ -999,6 +999,30 @@ section#mark .painel-flutuante button {
 .header .logo {
   margin-left: 0;
 }
+
+      /* ÍCONE DO CARRINHO */
+.carrinho-icone {
+  position: relative;
+  color: #fff;
+  font-size: 1.7rem;
+  text-decoration: none;
+}
+
+.carrinho-icone i {
+  pointer-events: none;
+}
+
+.carrinho-qtd {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 700;
+}
       
     </style>
 </head>
@@ -1008,19 +1032,27 @@ section#mark .painel-flutuante button {
     <header class="header">
         <div class="container header-content">
 
-            <a href="index.html" class="logo">
-                <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-                <span class="logo-text">F PAC STORE</span>
-            </a>
+  <a href="index.html" class="logo">
+    <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+    <span class="logo-text">F PAC STORE</span>
+  </a>
 
-            <nav class="nav" id="nav">
+  <!-- ✅ CARRINHO -->
+  <a href="carrinho.html" class="carrinho-icone">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+  </a>
 
-    <!-- LINKS DO MENU -->
-    <div class="menu-links">
-        <a href="#inicio">Início</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#produtos">Produtos</a>
-    </div>
+  <nav class="nav" id="nav">
+    ...
+  </nav>
+
+  <button class="menu-toggle" id="toggle">
+    <i class="fas fa-bars"></i>
+  </button>
+
+</div>
+
 
    <!-- ICONES SOCIAIS -->
 <div class="menu-social">
@@ -1670,6 +1702,24 @@ function adicionarAoCarrinho(botao) {
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
+
+<script>
+/* ============================= */
+/* ATUALIZAR ÍCONE DO CARRINHO  */
+/* ============================= */
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+
+  const qtd = document.getElementById('carrinhoQtd');
+  if (qtd) {
+    qtd.textContent = totalItens;
+    qtd.style.display = totalItens > 0 ? 'block' : 'none';
+  }
+}
+
+atualizarQtdCarrinho();
+</script>
   
 </body>
 
