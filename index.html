@@ -1653,17 +1653,17 @@ function adicionarAoCarrinho(botao) {
   );
 
   const carrinho = obterCarrinho();
-
+  const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
   const item = {
-    sku: (card.closest('#basica') ? 'FORCE' : 'MARK') + '-' + Date.now(),
-    nome: card.closest('#basica') ? 'Camisa Force' : 'Camisa Mark',
-    cor,
-    tamanho,
-    qtd,
-    preco,
-    subtotal: preco * qtd
-  };
-
+  sku: (card.closest('#basica') ? 'FORCE' : 'MARK') + '-' + Date.now(),
+  nome: card.closest('#basica') ? 'Camisa Force' : 'Camisa Mark',
+  imagem: imgSrc,      // ✅ AQUI ESTÁ A IMAGEM
+  cor: cor,
+  tamanho: tamanho,
+  qtd: qtd,
+  preco: preco,
+  subtotal: preco * qtd
+};
   carrinho.itens.push(item);
   salvarCarrinho(carrinho);
   atualizarQtdCarrinho();
