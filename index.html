@@ -1,156 +1,1772 @@
-<!DOCTYPE html>
+                                                                        <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CONFIGURAÇÕES BÁSICAS DO SITE -->
 
-  <title>F Pac Store | Não é só roupa. É identidade!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-        content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade.">
-  <meta name="author" content="F Pac Store">
+    <title>F Pac Store | Não é só roupa. É identidade!</title>
 
-  <!-- FONTES -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+    <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum. Não é só roupa. É identidade. Vista atitude, exclusividade e estilo com a F Pac Store.">
+    <meta name="author" content="F Pac Store">
+    <!-- FONTES -->
 
-  <!-- FONT AWESOME -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous"
-  />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #003366;
-      --accent: #FFC107;
-      --bg: #f5f5f5;
-      --text: #333;
-      --white: #fff;
-      --header-height: 120px;
-    }
+    <!-- Fonte blacklisted -->
+    <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+<!-- Font Awesome (ícones do menu, WhatsApp e Instagram) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  crossorigin="anonymous"
+/>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <style>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding-top: var(--header-height);
-    }
+      .step.hidden {
+  display: none;
+}
+        /* MENU INTERNO */
+        
+        .menu-links {
+          display: flex;
+          gap: 25px;
+          align-items: center;
+        }
+        
+        /* ICONES SOCIAIS NO MENU */
+        
+        .menu-social {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+        }
+        /* ÍCONES SOCIAIS DO MENU */
+        /* Tamanho dos ícones Whats/Instagram */
+        
+        .menu-social i {
+          font-size: 2.6rem; /* <<< AUMENTE AQUI */
+        }
+        .menu-social a {
+          font-size: 2.3rem; /* AUMENTA OS ÍCONES */
+          transition: transform 0.2s ease;
+        }
+        
+        /* HOVER DOS ICONES */
+        
+        .menu-social a:hover {
+          color: var(--accent);
+          transform: scale(1.15);
+        }
+        
+        /* ============================= */
+        /* CORES OFICIAIS DOS ÍCONES */
+        /* ============================= */
+        
+      /* WhatsApp - verde oficial */
+        .menu-social a .fa-whatsapp {
+          color: #25D366;
+        }
+        
+        /* Instagram - gradiente oficial da marca */
+        
+        .menu-social a .fa-instagram {
+          background: radial-gradient(circle at 30% 110%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285AEB 90%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 15px;
-    }
+            /* VARIÁVEIS DE CORES GLOBAIS */
+            
+            :root {
+              --primary: #003366;
+              --accent: #FFC107;
+              --bg: #f5f5f5;
+              --text: #333;
+              --white: #fff;
+            }
+        
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
 
-    /* ============================= */
-    /* HERO                          */
-    /* ============================= */
+        html, body {
+  min-height: 100%;
+}
+        
+            body {
+              font-family: 'Inter', sans-serif;
+              background: var(--bg);
+              color: var(--text);
+              line-height: 1.6;
+            }
+        
+            .container {
+              max-width: 1200px;
+              margin: auto;
+              padding: 0 15px;
+            }
+        
+            /* HEADER */
+        
+            .header {
+              background: var(--primary);
+              color: var(--white);
+              position: fixed;
+              width: 100%;
+              top: 0;
+              z-index: 1000;
+            }
+        /* HEADER - FAIXA DO MENU (DESKTOP) */
+        
+        .header-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        
+          height: 120px;      /* aumenta a faixa azul */
+          padding: 0 15px;   /* respiro lateral */
+        }
+        
+            /* LOGO */
+        
+            .logo {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              text-decoration: none;
+            }
+        
+            .logo-img {
+              max-height: 85px;
+            }
+        
+            .logo-text {
+              font-family: 'blacklisted', sans-serif;
+              font-size: 2.2rem;
+              letter-spacing: 3px;
+              line-height: 1;
+              color: #000000;
+              -webkit-text-stroke: 2.3px #FFC107;
+              display: flex;
+              align-items: center;
+            }
+        
+            @media (min-width: 768px) {
+              .logo-img {
+                max-height: 90px;
+              }
+        
+              .logo-text {
+          color: #FFC107;
+          -webkit-text-stroke: 1.5px #000;
+          text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+            }
+            /* MENU DE NAVEGAÇÃO */
+        
+            .nav {
+              display: none;
+              gap: 25px;
+            }
+        /* LINKS DO MENU (PADRONIZAÇÃO) */
+        /* Mesma fonte, tamanho e peso */
+            
+        .nav a {
+          font-family: 'Inter', sans-serif; /* Fonte única */
+          font-size: 1rem;                  /* Mesmo tamanho */
+          font-weight: 600;                 /* Mesmo peso */
+          color: white;
+          text-decoration: none;
+        }
+        
+            .menu-toggle {
+              font-size: 2rem;
+              background: none;
+              border: none;
+              color: white;
+            }
+        
+        /* Hover opcional (desktop) */
+        
+        .menu-toggle {
+          font-size: 1.6rem;
+          background: none;
+          border: none;
+          color: white;
+          transition: color 0.3s ease;
+        }
+        
+            .nav.active {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              width: 100%;
+              background: var(--primary);
+              top: 90px;
+              left: 0;
+              padding: 20px;
+              gap: 15px;
+            }
+        
+            @media (min-width: 768px) {
+              .nav {
+                display: flex;
+              }
+        
+              .menu-toggle {
+                display: none;
+              }
+            }
+               
+            /* HERO CAPA DO SITE */
+        
+        .hero {
+  position: relative;
+  margin-top: 90px;
 
-    .hero {
-      position: relative;
-      min-height: calc(110vh - 140px);
-      background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
-      background-size: cover;
-      background-position: center 65%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
+  /* ✅ ocupa exatamente a viewport */
+  min-height: calc(110vh - 140px);
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-    }
+  background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+  background-size: cover;
+  background-position: center 65%;
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 960px;
-      padding: 80px 40px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
+  color: white;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+        
+           .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.65);
+          z-index: 1;
+        }
+        
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 960px;
+          width: 100%;
+        
+          padding: 80px 40px;
+          border-radius: 12px;
+        }
+        
+        /* HERO - MOBILE RETRATO */
+        /* Ajuste correto para celular */
+        
+        @media (max-width: 768px) and (orientation: portrait) {
+  .hero {
+    min-height: calc(110vh - 140px);
+    background-position: center 70%;
+  }
+}
+            
+            .hero h1 {
+              font-size: 2.8rem;
+              margin-bottom: 15px;
+              font-weight: 800;
+            }
+        
+            .hero p {
+              font-size: 1.2rem;
+              max-width: 650px;
+              margin: auto;
+              margin-bottom: 25px;
+            } 
+        /* BOTÃO PRINCIPAL */
+              
+            .btn {
+         background: rgba(255, 193, 7, 0.85); /* amarelo semi-transparente */
+          color: black;
+          padding: 15px 30px;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 5px;
+          display: inline-block;
+          transition: background 0.3s ease, transform 0.2s ease;
+        }
+              
+        .btn-destaque {
+          background: linear-gradient(
+            135deg,
+            #FFC107,
+            #ffb300
+          );
+          color: #000;
+          font-size: 1.05rem;
+          padding: 16px 36px;
+          font-weight: 800;
+          border-radius: 8px;
+        
+          box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+          transition: all 0.25s ease;
+        }
+        
+        .btn-destaque:hover {
+          transform: translateY(-3px) scale(1.04);
+          box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+        
+        .btn:hover {
+          background: #e6ad00;
+          transform: scale(1.05);
+        }
+        
+        /* CATÁLOGO DE ESTAMPAS */
+        
+        .catalogo {
+          padding: 80px 0 140px;   /* mais respiro embaixo */
+          min-height: auto;       /* ocupa a altura da tela */
+          background: #ffffff;
+        }
+        
+        .catalogo h2 {
+          text-align: center;
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+        }
+        
+        .catalogo-descricao {
+          text-align: center;
+          color: #666;
+          margin-bottom: 40px;
+        }
+        
+        .catalogo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+          gap: 18px;
+        }
+        
+        .estampa {
+          background: #f8f8f8;
+          border-radius: 8px;
+          overflow: hidden;
+          text-align: center;
+          transition: transform 0.2s ease;
+          cursor: pointer;
+        }
+        
+        .estampa img {
+  width: 100%;
+  height: 180px;              /* ✅ força área maior para a imagem */
+  object-fit: contain;        /* mantém a arte inteira visível */
+  padding: 4px;               /* ✅ reduz respiro interno */
+}
+      @media (min-width: 768px) {
+  .estampa img {
+    height: 220px; /* ✅ maior no desktop */
+  }
+}
+        
+        .estampa span {
+          display: block;
+          padding: 8px;
+          font-size: 0.85rem; /* texto mais compacto */
+          font-weight: 600;
+        }
+        
+           /* ============================= */
+        /* CTA CATÁLOGO – CARD MAIS ESTAMPAS */
+        /* ============================= */
+        
+        .catalogo-cta {
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+        }
+        
+        .catalogo-card {
+          width: 100%;
+          max-width: 180px;
+          aspect-ratio: 1 / 1;
+        
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        
+          background: var(--primary);
+          border-radius: 10px;
+          text-decoration: none;
+        
+          /* MAIS ESTAMPA DO CATALOGO */
+          font-family: 'blacklisted', sans-serif;
+          font-size: 1.3rem;
+          letter-spacing: 3.2px;
+          line-height: 1.35;
+        
+        
+        color: #FFC107;                  /* amarelo vivo */
+        -webkit-text-stroke: 1.3px #111; /* borda escura, mas mais fina */
+        
+        text-shadow:
+          1px 1px 0 rgba(0,0,0,0.8),
+          2px 2px 4px rgba(0,0,0,0.35);
+        
+          box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+          transition: all 0.3s ease;
+        }
+        
+        .catalogo-card:hover {
+          transform: translateY(-6px) scale(1.04);
+          box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        }
+        
+        @media (max-width: 768px) {
+          .catalogo-card {
+            max-width: 100%;
+            height: auto;
+            padding: 28px;
+            font-size: 0.95rem;
+          }
+        }
+           
+        /* ============================= */
+        /* BOTÃO MAIS ESTAMPAS */
+        /* ============================= */
+        .catalogo-cta {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+        }
+        
+        .catalogo-cta a {
+          text-decoration: none;
+        }
+        
+        .btn-outline {
+          background: transparent;
+          border: 2px solid var(--accent);
+          color: #000;
+          padding: 12px 32px;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+        
+        .btn-outline:hover {
+          background: var(--accent);
+          color: #000;
+          transform: scale(1.05);
+        }
+           
+            /* PRODUTOS */
+        
+.produtos {
+  padding: 30px 0 24px;
+  min-height: calc(100vh - 120px); /* ocupa a tela sem invadir o header */
+}
+        
+        .produtos .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+           
+/* ============================= */
+/* TÍTULO + SUBTÍTULO IGUAIS NAS 3 SEÇÕES */
+/* ============================= */
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-    }
+/* Mesmo subtítulo nas 3 seções */
+.subtitulo-secao {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666;
+}
 
-    .btn {
-      background: var(--accent);
-      color: #000;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      display: inline-block;
-    }
+  .produtos .subtitulo-secao {
+  margin: 0 auto 24px;
+}
 
-    /* ============================= */
-    /* FOOTER                        */
-    /* ============================= */
+       
+            .grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 25px;
+            }
 
-    .footer {
-      background: #001a33;
-      color: white;
-      padding: 25px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
+      /* PRODUTOS – cards lado a lado (RESPONSIVO DE VERDADE) */
+.produtos .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .produtos .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .produtos .grid {
+    grid-template-columns: 1fr;
+  }
+}
+        
+ .produtos .card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+        
+        /* IMAGENS DOS PRODUTOS */
+        /* Evita imagens gigantes no mobile */
+        
+        /* ============================= */
+        /* PRODUTOS - IMAGENS */
+        /* ============================= */
+        
+ .produtos .card img {
+  width: 100%;
+  height: 215px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+      
+ .produtos .card h3 {
+  margin: 6px 0 4px;
+  font-size: 0.98rem;
+}
+        
+.produtos .card p {
+  font-size: 0.84rem;
+  margin-bottom: 8px;
+}
+
+      .produtos .card .btn,
+.produtos .card .btn-destaque {
+  padding: 10px 16px;
+  font-size: 0.92rem;
+}
+        
+        /* ============================= */
+        /* PRODUTOS - MOBILE */
+        /* ============================= */
+        
+        @media (max-width: 768px) {
+          .card img {
+            aspect-ratio: 4 / 5;   /* formato mais elegante no celular */
+          }
+        }
+        
+        /* ============================= */
+        /* CATÁLOGO DE ESTAMPAS - MOBILE */
+        /* ============================= */
+        
+        @media (max-width: 768px) {
+          .catalogo-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+          }
+        
+          .estampa img {
+            padding: 6px;
+          }
+        
+          .estampa span {
+            font-size: 0.8rem;
+            padding: 6px;
+          }
+        }
+        
+        /* ============================= */
+        /* BOTÃO WHATSAPP */
+        /* ============================= */
+        
+        .whatsapp {
+          background: #25D366;
+          color: white;
+          padding: 12px;
+          display: block;
+          margin-top: 15px;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: 600;
+        }
+        
+            /* FOOTER */
+        
+            .footer {
+              background: #001a33;
+              color: white;
+              padding: 25px;
+              text-align: center;
+              font-size: 0.9rem;
+            }
+        
+            /* ============================= */
+        /* CAMISA FORCE */
+        /* ============================= */
+        /* Ajuste de rolagem para header fixo */
+
+.basica-grid {
+  display: grid;
+
+  /* ✅ força exatamente 5 cards por linha */
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 20px; /* ✅ diminui o espaço entre os cards */
+
+  justify-items: center;
+  align-items: start;
+
+  width: 100%;
+  max-width: 1300px; /* ✅ evita espaço vazio exagerado */
+  margin: 0 auto;
+}
+
+      /* Tablet */
+@media (max-width: 1200px) {
+  .basica-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .basica-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+        
+        #basica {
+  scroll-margin-top: 125px;
+}
+
+#mark {
+  scroll-margin-top: 130px;
+}
+       
+.basica {
+  min-height: calc(100vh - 120px);
+  padding: 36px 0 80px;
+}
+          
+           #inicio {
+          scroll-margin-top: 120px;
+        }
+           #produtos {
+          scroll-margin-top: 120px;
+        }
+        
+           #catalogo {
+          scroll-margin-top: 120px;
+        }
+        
+        .basica h2,
+        .basica p {
+          text-align: center;
+        }
+        
+        .basica p {
+          margin-bottom: 40px;
+        }
+        
+ .basica-card {
+  background: #ffffff;
+  padding: 14px;          /* um pouco menor */
+  border-radius: 12px;
+
+  width: 100%;            /* ocupa a coluna */
+  max-width: 220px;       /* ✅ cabe 5 por linha */
+  min-height: 340px;
+
+  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+        
+        @media (max-width: 768px) {
+        }
+        
+        .etapa {
+          margin-top: 8px;
+          opacity: 0;
+          transform: translateY(-6px);
+          transition: all 0.3s ease;
+        }
+        
+        .etapa.visivel {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+           /* Primeira etapa sempre visível */
+        .oculta {
+          display: none;
+        }
+        
+        .basica-card img {
+          width: 100%;
+          max-width: 180px;
+          height: auto;
+          aspect-ratio: 3 / 4;
+          object-fit: contain;
+          margin-bottom: 10px;
+        }
+        
+        .basica-card label {
+          display: block;
+          margin-top: 12px;
+          font-weight: 600;
+        }
+           .ajuda {
+          font-size: 0.8rem;
+          color: #666;
+          margin-top: 14px;
+        }
+        
+        .basica-card select,
+        .basica-card input {
+          width: 100%;
+          padding: 8px;
+          margin-top: 5px;
+        }
+        
+        .basica-card .preco {
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin: 6px 0;
+          min-height: 32px;   /* PASSO 3 – reserva altura fixa */
+        }
+        
+        .basica-card button {
+          margin-top: 12px;
+          width: 100%;
+          padding: 10px;
+          background: #FFC107;
+          border: none;
+          border-radius: 6px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        
+           /* ESTADO BLOQUEADO AUTOMÁTICO (CARDS ESGOTADOS) */
+        .basica-card.bloqueado {
+          opacity: 0.55;
+          pointer-events: none;
+        }
+        
+           /* DESTAQUE PARA CARD DISPONÍVEL */
+        .basica-card.disponivel {
+          border: 2px solid var(--accent);
+          box-shadow: 
+            0 0 0 2px rgba(255,193,7,0.25),
+            0 14px 30px rgba(0,0,0,0.2);
+          transform: translateY(-4px);
+          transition: all 0.3s ease;
+        }
+        
+        .basica-card.disponivel:hover {
+          transform: translateY(-6px) scale(1.02);
+        }
+        
+        /* Cards ficam independentes, como produtos */
+        .basica-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+/* ============================= */
+/* REGRA EXCLUSIVA PARA FORCE / MARK */
+/* ============================= */
+
+#basica .basica-card .etapa,
+#mark .basica-card .etapa {
+  opacity: inherit;
+  transform: inherit;
+}
+
+#basica .basica-card .oculta,
+#mark .basica-card .oculta {
+  display: block;
+}
+
+
+
+/* ============================= */
+/* CATÁLOGO DESTAQUE – HOME */
+/* ============================= */
+
+.catalogo-destaque {
+  background: #fff;
+  padding: 30px 0 90px;
+  text-align: center;
+}
+
+.catalogo-destaque-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 por linha */
+  gap: 36px;                             /* ✅ mais espaço */
+}
+
+.estampa-destaque {
+  background: #f9f9f9;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease;
+}
+
+.estampa-destaque:hover {
+  transform: translateY(-4px);
+}
+
+.estampa-destaque img {
+  width: 100%;
+  height: 280px;   /* 🔽 redução leve */
+  max-width: none;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+ @media (min-width: 1024px) {
+  .estampa-destaque img {
+    height: 310px; /* 🔽 equilíbrio final */
+  }
+}
+
+.estampa-destaque span {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .catalogo-destaque-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================= */
+/* PAINEL FLUTUANTE - FORCE / MARK */
+/* ============================= */
+
+/* permite sobrepor conteúdo abaixo */
+.basica,
+.basica .container,
+.basica-grid {
+  overflow: visible;
+}
+
+/* card vira referência para posicionamento absoluto */
+section#basica .basica-card,
+section#mark .basica-card {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* quando o painel abrir, esse card fica acima dos outros */
+section#basica .basica-card.aberto,
+section#mark .basica-card.aberto {
+  z-index: 30;
+}
+
+/* painel flutuante */
+section#basica .painel-flutuante,
+section#mark .painel-flutuante {
+  position: absolute;
+  top: calc(100% - 14px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 2px solid rgba(255, 193, 7, 0.9);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.16);
+  padding: 10px 12px 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+/* painel aparece quando o card estiver aberto */
+section#basica .basica-card.aberto .painel-flutuante,
+section#mark .basica-card.aberto .painel-flutuante {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* etapas dentro do painel */
+section#basica .painel-flutuante .etapa,
+section#mark .painel-flutuante .etapa {
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  margin-top: 0;
+  transition:
+    max-height 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    margin-top 0.25s ease;
+}
+
+/* sobrescreve o display:none */
+section#basica .painel-flutuante .etapa.oculta,
+section#mark .painel-flutuante .etapa.oculta {
+  display: block;
+}
+
+/* etapa visível */
+section#basica .painel-flutuante .etapa.visivel,
+section#mark .painel-flutuante .etapa.visivel {
+  max-height: 90px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 8px;
+}
+
+/* botão final */
+section#basica .painel-flutuante .etapa.etapa-finalizar.visivel,
+section#mark .painel-flutuante .etapa.etapa-finalizar.visivel {
+  max-height: 70px;
+}
+
+/* campos ocupam largura total */
+section#basica .painel-flutuante select,
+section#basica .painel-flutuante input,
+section#basica .painel-flutuante button,
+section#mark .painel-flutuante select,
+section#mark .painel-flutuante input,
+section#mark .painel-flutuante button {
+  width: 100%;
+}
+
+      /* ============================= */
+/* AJUSTE 2 — LOGO NO CANTO ESQUERDO */
+/* ============================= */
+
+.header .container.header-content {
+  max-width: 100%;
+  padding-left: 30px;   /* ajuste fino */
+  padding-right: 30px;
+}
+
+.header .logo {
+  margin-left: 0;
+}
+
+/* ============================= */
+/* ÍCONE DO CARRINHO NO MENU     */
+/* ============================= */
+
+.carrinho-icone {
+  position: relative;
+  text-decoration: none;
+}
+
+/* ÍCONE EM SI (FORÇA TAMANHO E COR) */
+.carrinho-icone i {
+  font-size: 2.6rem;          /* ✅ IGUAL WHATS */
+  color: var(--accent);       /* ✅ AMARELO */
+  transition: transform 0.2s ease;
+}
+
+/* hover igual redes sociais */
+.carrinho-icone:hover i {
+  transform: scale(1.15);
+}
+
+/* contador */
+.carrinho-qtd {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #FFC107;
+  color: #000;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+      
+    </style>
 </head>
 
 <body>
 
-<!-- ✅ MENU REUTILIZÁVEL -->
-<div id="menu"></div>
+    <header class="header">
+  <div class="container header-content">
 
-<!-- ✅ HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-overlay"></div>
+    <!-- LOGO -->
+    <a href="index.html" class="logo">
+      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
+      <span class="logo-text">F PAC STORE</span>
+    </a>
 
-  <div class="hero-content">
-    <h1>Não é só roupa. É identidade.</h1>
-    <p>
-      Camisas masculinas estampadas para quem se recusa a vestir o comum.
-    </p>
-    <a href="#produtos" class="btn">Comprar Agora</a>
+    <!-- NAVEGAÇÃO -->
+    <nav class="nav" id="nav">
+
+  <!-- LINKS DO MENU -->
+  <div class="menu-links">
+    <a href="#inicio">Início</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#produtos">Produtos</a>
+  </div>
+
+        <!-- ✅ CARRINHO NO MEIO -->
+  <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+  </a>
+
+  <!-- REDES SOCIAIS -->
+  <div class="menu-social">
+    <a href="https://wa.me/5547997465602" target="_blank" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://instagram.com/f_pac_store/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+</nav>
+
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+  </div>
+</header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>Não é só roupa. É identidade.</h1>
+            <p>
+                Camisas masculinas estampadas para quem se recusa a vestir o comum. Mais atitude, mais personalidade e estilo que fala antes de você.
+            </p>
+            <a href="#produtos" class="btn">
+ Comprar Já!
+</a>
+        </div>
+    </section>
+
+ <!-- ============================= -->
+<!-- CATÁLOGO – DESTAQUES (HOME) -->
+<!-- ============================= -->
+
+<section class="catalogo-destaque" id="catalogo">
+  <div class="container">
+
+    <h2>Nossas Estampas</h2>
+<p class="subtitulo-secao">
+  Destaques do nosso catálogo exclusivo.
+</p>
+
+   <div class="catalogo-destaque-grid">
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e1.jpeg">
+    <span>Posições de Tiro</span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/f-pac-store-cinza.png">
+    <span>F Pac Store - Academia </span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/e3.jpeg">
+    <span>Tropa Urbana</span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/f-pac-store.png">
+    <span>Não é so roupa, É identidade</span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/estampas/f-pac-não-é-so-roupa-é-identidade.png">
+    <span>Não é so roupa, É identidade - Sem fundo</span>
+  </div>
+
+  <div class="estampa-destaque">
+    <img src="imagens/logo-fpac.png">
+    <span>F PAC - Logo Colorida</span>
+  </div>
+
+</div>
+
+    <div class="catalogo-cta">
+      <a href="catalogo.html" class="btn btn-destaque">
+        Ver Catálogo Completo
+      </a>
+    </div>
+
   </div>
 </section>
+  
+<!-- ============================= -->
+<!-- PRODUTOS -->
+<!-- ============================= -->
+  
+<section class="produtos" id="produtos">
+    <div class="container">
 
-<!-- ⚠️ (seções de produtos continuam aqui – não removidas) -->
+        <h2>Nossos Produtos</h2>
+<p class="subtitulo-secao">
+  Variedade de opções para você escolher.
+</p>      
 
-<footer class="footer">
-  © 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
+        <div class="grid">
+
+            <div class="card">
+                <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
+                <h3>Force</h3>
+                <p>Camisas Prontas Com Texto</p>
+                <a href="#basica" class="btn">Escolher Camisa</a>
+            </div>
+
+           <div class="card">
+                <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
+                <h3>Mark</h3>
+                <p>Camisas Prontas Com Desenhos</p>
+                <a href="#mark" class="btn">Escolher Camisa</a>
+            </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 <!-- ============================= -->
-<!-- FUNÇÕES DO CARRINHO           -->
+<!-- CAMISA FORCE -->
 <!-- ============================= -->
+
+<section class="basica" id="basica">
+    <div class="container">
+
+<h2>Camisas Force</h2>
+<p class="subtitulo-secao">
+  Modelo pronto com valor fixo.
+</p>
+
+        <div class="basica-grid">
+
+            <!-- CAMISA 1 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+            </div>
+
+                      <!-- CAMISA 2 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+            </div>
+
+                      <!-- CAMISA 3 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+
+            </div>
+
+                      <!-- CAMISA 4 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+
+            </div>
+
+          
+
+            <!-- CAMISA 5 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+
+            </div>
+
+        </div> <!-- FECHA basica-grid -->
+
+    </div> <!-- FECHA container -->
+</section>
+
+  <!-- ============================= -->
+<!-- CAMISA MARK -->
+<!-- ============================= -->
+
+<section class="basica" id="mark">
+    <div class="container">
+
+<h2>Camisas Mark</h2>
+<p class="subtitulo-secao">
+  Modelo pronto com valor fixo.
+</p>
+
+        <div class="basica-grid">
+
+            <!-- CAMISA 1 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+
+            </div>
+
+            <!-- CAMISA 2 -->
+            <div class="basica-card">
+
+                <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
+                <p class="preco">R$ 89,90</p>
+
+                <div class="etapa visivel">
+    <label>Cor</label>
+    <select class="cor">
+        <option value="">Selecione</option>
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Off White</option>
+    </select>
+</div>
+
+<div class="painel-flutuante">
+
+    <div class="etapa etapa-tamanho oculta">
+        <label>Tamanho</label>
+        <select class="tamanho">
+            <option value="">Selecione</option>
+            <option>M</option>
+            <option>G</option>
+        </select>
+    </div>
+
+    <div class="etapa etapa-quantidade oculta">
+        <label>Quantidade</label>
+        <input type="number" class="quantidade" value="0" min="0">
+    </div>
+
+    <div class="etapa etapa-finalizar oculta">
+        <button onclick="adicionarAoCarrinho(this)">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+
+</div>
+            </div>
+
+        </div> <!-- FECHA basica-grid -->
+
+    </div> <!-- FECHA container -->
+</section>
+
+    <footer class="footer">
+        © 2026 F Pac Store — Não é só roupa. É identidade.
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('toggle');
+          const nav = document.getElementById('nav');
+        
+          toggle.onclick = () => {
+            nav.classList.toggle('active');
+          };
+    </script>
+
+  <script>
+  // Fecha o menu mobile ao clicar em qualquer link
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+  });
+</script>
+
+   <script>
+document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
+
+  const cor = card.querySelector('.cor');
+  const tamanho = card.querySelector('.tamanho');
+  const qtd = card.querySelector('.quantidade');
+
+  const etapaTamanho = card.querySelector('.etapa-tamanho');
+  const etapaQtd = card.querySelector('.etapa-quantidade');
+  const finalizar = card.querySelector('.etapa-finalizar');
+
+  const painel = card.querySelector('.painel-flutuante');
+
+  function esconder(el) {
+    if (!el) return;
+    el.classList.add('oculta');
+    el.classList.remove('visivel');
+  }
+
+  function mostrar(el) {
+    if (!el) return;
+    el.classList.remove('oculta');
+    el.classList.add('visivel');
+  }
+
+  function atualizarPainel() {
+    const aberto =
+      etapaTamanho?.classList.contains('visivel') ||
+      etapaQtd?.classList.contains('visivel') ||
+      finalizar?.classList.contains('visivel');
+
+    card.classList.toggle('aberto', aberto);
+  }
+
+  esconder(etapaTamanho);
+  esconder(etapaQtd);
+  esconder(finalizar);
+  atualizarPainel();
+
+  cor?.addEventListener('change', () => {
+    if (cor.value) {
+      mostrar(etapaTamanho);
+    } else {
+      esconder(etapaTamanho);
+    }
+
+    esconder(etapaQtd);
+    esconder(finalizar);
+
+    if (tamanho) tamanho.value = '';
+    if (qtd) qtd.value = 0;
+
+    atualizarPainel();
+  });
+
+  tamanho?.addEventListener('change', () => {
+    if (tamanho.value) {
+      mostrar(etapaQtd);
+    } else {
+      esconder(etapaQtd);
+    }
+
+    esconder(finalizar);
+    if (qtd) qtd.value = 0;
+
+    atualizarPainel();
+  });
+
+  qtd?.addEventListener('input', () => {
+    if (Number(qtd.value) > 0) {
+      mostrar(finalizar);
+    } else {
+      esconder(finalizar);
+    }
+
+    atualizarPainel();
+  });
+});
+</script>
 
 <script>
-function gerarIdPedido() {
-  const data = new Date();
-  return `FPAC-${data.getFullYear()}${String(data.getMonth()+1).padStart(2,'0')}${String(data.getDate()).padStart(2,'0')}-${String(Date.now()).slice(-4)}`;
+function adicionarAoCarrinho(botao) {
+
+  const card = botao.closest('.basica-card');
+  if (!card) return;
+
+  const cor = card.querySelector('.cor').value;
+  const tamanho = card.querySelector('.tamanho').value;
+  const qtd = Number(card.querySelector('.quantidade').value);
+
+  if (!cor || !tamanho || qtd <= 0) {
+    alert('Preencha cor, tamanho e quantidade.');
+    return;
+  }
+
+  const preco = Number(
+    card.querySelector('.preco').innerText
+      .replace('R$', '')
+      .replace(',', '.')
+      .trim()
+  );
+
+  const carrinho = obterCarrinho();
+
+  const item = {
+    sku: (card.closest('#basica') ? 'FORCE' : 'MARK') + '-' + Date.now(),
+    nome: card.closest('#basica') ? 'Camisa Force' : 'Camisa Mark',
+    cor: cor,
+    tamanho: tamanho,
+    qtd: qtd,
+    preco: preco,
+    subtotal: preco * qtd
+  };
+
+  carrinho.itens.push(item);
+  salvarCarrinho(carrinho);
+
+  atualizarQtdCarrinho();
+
+  alert('✅ Produto adicionado ao carrinho!');
+}
+</script>
+  
+        <datalist id="bairros-joinville">
+        <!-- Centro -->
+        <option value="Centro">
+
+            <!-- Norte -->
+            <option value="América">
+                <option value="Atiradores">
+                    <option value="Bom Retiro">
+                        <option value="Costa e Silva">
+                            <option value="Glória">
+                                <option value="Saguaçu">
+                                    <option value="Santo Antônio">
+
+                                        <!-- Leste -->
+                                        <option value="Aventureiro">
+                                            <option value="Comasa">
+                                                <option value="Espinheiros">
+                                                    <option value="Iririú">
+                                                        <option value="Jardim Iririú">
+                                                            <option value="Jardim Paraíso">
+                                                                <option value="Jardim Sofia">
+
+                                                                    <!-- Sul -->
+                                                                    <option value="Adhemar Garcia">
+                                                                        <option value="Boehmerwald">
+                                                                            <option value="Floresta">
+                                                                                <option value="Fátima">
+                                                                                    <option value="Guanabara">
+                                                                                        <option value="Itaum">
+                                                                                            <option value="Itinga">
+                                                                                                <option value="Jarivatuba">
+                                                                                                    <option value="João Costa">
+                                                                                                        <option value="Nova Brasília">
+                                                                                                            <option value="Paranaguamirim">
+                                                                                                                <option value="Petrópolis">
+                                                                                                                    <option value="Profipo">
+                                                                                                                        <option value="Santa Catarina">
+                                                                                                                            <option value="São Marcos">
+                                                                                                                                <option value="Ulysses Guimarães">
+
+                                                                                                                                    <!-- Oeste -->
+                                                                                                                                    <option value="Anita Garibaldi">
+                                                                                                                                        <option value="Bucarein">
+                                                                                                                                            <option value="Morro do Meio">
+                                                                                                                                                <option value="Vila Cubatão">
+                                                                                                                                                    <option value="Vila Nova">
+    </datalist>
+
+<script>
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  const el = document.getElementById('carrinhoQtd');
+  if (!el || !carrinho) return;
+
+  const total = carrinho.itens.reduce(
+    (soma, item) => soma + item.qtd,
+    0
+  );
+
+  if (total > 0) {
+    el.textContent = total;
+    el.style.display = 'block';
+  } else {
+    el.style.display = 'none';
+  }
 }
 
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+</script>
+
+<script>
+/* ============================= */
+/* NÚCLEO DO CARRINHO (PASSO 1)  */
+/* ============================= */
+
+/*
+  Esta função cria um ID único de pedido
+  Exemplo: FPAC-20260421-4821
+*/
+function gerarIdPedido() {
+  const data = new Date();
+  const ano = data.getFullYear();
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const dia = String(data.getDate()).padStart(2, '0');
+  const random = String(Date.now()).slice(-4);
+
+  return `FPAC-${ano}${mes}${dia}-${random}`;
+}
+
+/*
+  Esta função SEMPRE retorna um carrinho válido.
+  Se existir no localStorage, ela usa.
+  Se não existir, cria um novo.
+*/
 function obterCarrinho() {
-  const salvo = localStorage.getItem('carrinho');
-  if (salvo) return JSON.parse(salvo);
+  const carrinhoSalvo = localStorage.getItem('carrinho');
+
+  if (carrinhoSalvo) {
+    return JSON.parse(carrinhoSalvo);
+  }
 
   return {
     id: gerarIdPedido(),
@@ -161,58 +1777,18 @@ function obterCarrinho() {
   };
 }
 
+/*
+  Salva o carrinho e recalcula o total
+*/
 function salvarCarrinho(carrinho) {
   carrinho.total = carrinho.itens.reduce(
-    (s, item) => s + item.subtotal,
+    (soma, item) => soma + item.subtotal,
     0
   );
+
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
-
-function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-  const el = document.getElementById('carrinhoQtd');
-  if (!el || !carrinho) return;
-
-  const total = carrinho.itens.reduce((s, i) => s + i.qtd, 0);
-  if (total > 0) {
-    el.textContent = total;
-    el.style.display = 'block';
-  } else {
-    el.style.display = 'none';
-  }
-}
 </script>
-
-<!-- ============================= -->
-<!-- CARREGAR MENU (SEMPRE ÚLTIMO) -->
-<!-- ============================= -->
-
-<script>
-fetch('menu.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('menu').innerHTML = html;
-
-    // MENU MOBILE
-    const toggle = document.getElementById('toggle');
-    const nav = document.getElementById('nav');
-
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      document.querySelectorAll('.nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
-    }
-
-    atualizarQtdCarrinho();
-  });
-</script>
-
+  
 </body>
 </html>
