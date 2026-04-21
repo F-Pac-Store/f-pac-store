@@ -171,5 +171,28 @@ function finalizar() {
 renderCarrinho();
 </script>
 
+  <script>
+/* ============================= */
+/* ATUALIZAR ÍCONE DO CARRINHO  */
+/* ============================= */
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+
+  const qtd = document.getElementById('carrinhoQtd');
+  if (!qtd) return;
+
+  if (totalItens > 0) {
+    qtd.textContent = totalItens;
+    qtd.style.display = 'block';
+  } else {
+    qtd.style.display = 'none';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+</script>
+
 </body>
 </html>
