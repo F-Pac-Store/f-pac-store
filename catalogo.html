@@ -24,11 +24,7 @@
       --header-height: 90px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -43,7 +39,6 @@
       padding: 0 16px;
     }
 
-    /* HEADER */
     .header {
       background: var(--primary);
       position: fixed;
@@ -66,38 +61,28 @@
       text-decoration: none;
     }
 
-    .logo-img {
-      max-height: 60px;
-    }
+    .logo-img { max-height: 60px; }
 
     .logo-text {
-      font-family: 'blacklisted', sans-serif;
+      font-family: 'blacklisted';
       font-size: 1.6rem;
       color: #FFC107;
       -webkit-text-stroke: 1px #000;
     }
 
-    /* MENU */
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+    .nav { display: flex; gap: 20px; }
 
     .menu-links a {
       color: #fff;
       text-decoration: none;
-      margin-right: 10px;
       font-size: 0.9rem;
     }
 
     .menu-social a {
       color: #fff;
-      margin-left: 10px;
       font-size: 1.2rem;
     }
 
-    /* MOBILE MENU */
     .menu-toggle {
       display: none;
       background: none;
@@ -107,10 +92,7 @@
     }
 
     @media (max-width: 768px) {
-
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display: block; }
 
       .nav {
         position: absolute;
@@ -124,39 +106,15 @@
         padding: 20px 0;
       }
 
-      .nav.active {
-        display: flex;
-      }
-
-      .menu-links {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-      }
-
-      .menu-social {
-        margin-top: 15px;
-      }
+      .nav.active { display: flex; }
     }
 
-    /* CATÁLOGO */
-    .catalogo-page {
-      padding: 30px 0 60px;
-    }
+    .catalogo-page { padding: 30px 0 60px; }
 
     h1 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 20px;
-    }
-
-    .titulo-secao {
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #ddd;
-      padding-top: 20px;
-      margin: 30px 0 20px;
     }
 
     .catalogo-grid {
@@ -166,15 +124,11 @@
     }
 
     @media (max-width: 1024px) {
-      .catalogo-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .catalogo-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 600px) {
-      .catalogo-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .catalogo-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .estampa {
@@ -191,12 +145,6 @@
       object-fit: contain;
     }
 
-    .estampa span {
-      display: block;
-      font-size: 0.8rem;
-      margin-top: 6px;
-    }
-
     .estampa button {
       margin-top: 6px;
       width: 100%;
@@ -205,13 +153,9 @@
       color: #fff;
       border: none;
       border-radius: 6px;
-      font-size: 0.8rem;
     }
 
-    /* CARRINHO */
-    .carrinho-icone {
-      position: relative;
-    }
+    .carrinho-icone { position: relative; }
 
     .carrinho-qtd {
       position: absolute;
@@ -223,7 +167,6 @@
       padding: 2px 6px;
       border-radius: 50%;
     }
-
   </style>
 </head>
 
@@ -239,9 +182,9 @@
 
     <nav class="nav" id="nav">
       <div class="menu-links">
-        <a href="#">Início</a>
+        <a href="index.html#inicio">Início</a>
         <a href="#">Catálogo</a>
-        <a href="#">Produtos</a>
+        <a href="index.html#produtos">Produtos</a>
       </div>
 
       <div class="menu-social">
@@ -264,15 +207,13 @@
 
     <h1>Catálogo Completo</h1>
 
-    <p class="titulo-secao">Estampas com fundo</p>
-
     <div class="catalogo-grid">
 
-      <div class="estampa" onclick="selecionarEstampa('CF-001')">
+      <div class="estampa">
         <img src="imagens/estampas/e1.jpeg">
         <span>Tropa Urbana</span>
 
-        <button onclick="event.stopPropagation(); adicionarCarrinho('Tropa Urbana',49.9)">
+        <button onclick="adicionarCarrinho('Tropa Urbana',49.9)">
           Adicionar
         </button>
       </div>
@@ -283,40 +224,51 @@
 </main>
 
 <script>
-function selecionarEstampa(codigoEstampa) {
-  localStorage.setItem('estampa', codigoEstampa);
-  window.location.href = 'index.html';
+function obterCarrinho() {
+  const c = localStorage.getItem('carrinho');
+  if (c) return JSON.parse(c);
+
+  return {
+    id: Date.now(),
+    itens: [],
+    total: 0
+  };
 }
-</script>
 
-<script>
-function adicionarCarrinho(nome, preco) {
-  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-  carrinho.push({
-    nome,
-    preco,
-    qtd: 1
-  });
+function salvarCarrinho(carrinho) {
+  carrinho.total = carrinho.itens.reduce(
+    (soma, item) => soma + item.subtotal,
+    0
+  );
 
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function adicionarCarrinho(nome, preco) {
+  const carrinho = obterCarrinho();
+
+  carrinho.itens.push({
+    sku: 'EST-' + Date.now(),
+    nome: nome,
+    qtd: 1,
+    preco: preco,
+    subtotal: preco
+  });
+
+  salvarCarrinho(carrinho);
   atualizarQtdCarrinho();
 }
-</script>
 
-<script>
 function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  const total = carrinho.length;
+  const carrinho = obterCarrinho();
+  const total = carrinho.itens.reduce((s, i) => s + i.qtd, 0);
 
   const el = document.getElementById('carrinhoQtd');
   if (el) el.textContent = total;
 }
 
 document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-</script>
 
-<script>
 const toggle = document.getElementById('toggle');
 const nav = document.getElementById('nav');
 
