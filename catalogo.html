@@ -375,23 +375,6 @@ function adicionarCarrinho(nome, preco, img) {
 }
 
 <script>
-const toggle = document.getElementById('toggle');
-const nav = document.getElementById('nav');
-
-if (toggle && nav) {
-  toggle.onclick = () => {
-    nav.classList.toggle('active');
-  };
-
-  document.querySelectorAll('.nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('active');
-    });
-  });
-}
-</script>
-
-<script>
 function atualizarQtdCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
