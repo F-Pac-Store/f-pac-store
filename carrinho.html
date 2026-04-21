@@ -138,34 +138,30 @@
     </script>
 
     <script>
-        function limparCarrinho() {
-          if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
-        
-          localStorage.removeItem('carrinho');
-          window.location.reload();
-        }
-        
-        function removerItem(index) {
-          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-          carrinho.itens.splice(index, 1);
-          localStorage.setItem('carrinho', JSON.stringify(carrinho));
-          window.location.reload();
-        }
-        
-          <script>
-        function alterarQuantidade(index, novaQtd) {
-          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-        
-          const item = carrinho.itens[index];
-          item.qtd = Number(novaQtd);
-          item.subtotal = item.qtd * item.preco;
-        
-          localStorage.setItem('carrinho', JSON.stringify(carrinho));
-          window.location.reload();
-        }
-    </script>
+function limparCarrinho() {
+  if (!confirm('Tem certeza que deseja limpar o carrinho?')) return;
+  localStorage.removeItem('carrinho');
+  window.location.reload();
+}
 
-    </script>
+function removerItem(index) {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  carrinho.itens.splice(index, 1);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  window.location.reload();
+}
+
+function alterarQuantidade(index, novaQtd) {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+
+  const item = carrinho.itens[index];
+  item.qtd = Number(novaQtd);
+  item.subtotal = item.qtd * item.preco;
+
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  window.location.reload();
+}
+</script>
 
 </body>
 
