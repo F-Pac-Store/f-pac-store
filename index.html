@@ -1745,5 +1745,58 @@ function atualizarQtdCarrinho() {
 document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
 
+<script>
+/* ============================= */
+/* NÚCLEO DO CARRINHO (PASSO 1)  */
+/* ============================= */
+
+/*
+  Esta função cria um ID único de pedido
+  Exemplo: FPAC-20260421-4821
+*/
+function gerarIdPedido() {
+  const data = new Date();
+  const ano = data.getFullYear();
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const dia = String(data.getDate()).padStart(2, '0');
+  const random = String(Date.now()).slice(-4);
+
+  return `FPAC-${ano}${mes}${dia}-${random}`;
+}
+
+/*
+  Esta função SEMPRE retorna um carrinho válido.
+  Se existir no localStorage, ela usa.
+  Se não existir, cria um novo.
+*/
+function obterCarrinho() {
+  const carrinhoSalvo = localStorage.getItem('carrinho');
+
+  if (carrinhoSalvo) {
+    return JSON.parse(carrinhoSalvo);
+  }
+
+  return {
+    id: gerarIdPedido(),
+    criadoEm: new Date().toISOString(),
+    status: 'aberto',
+    itens: [],
+    total: 0
+  };
+}
+
+/*
+  Salva o carrinho e recalcula o total
+*/
+function salvarCarrinho(carrinho) {
+  carrinho.total = carrinho.itens.reduce(
+    (soma, item) => soma + item.subtotal,
+    0
+  );
+
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+</script>
+  
 </body>
 </html>
