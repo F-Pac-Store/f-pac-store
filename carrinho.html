@@ -2,29 +2,9 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho | F Pac Store</title>
+<meta charset="UTF-8">
+<title>Carrinho | F Pac Store</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Fonte Blacklisted -->
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
-
-  <!-- Font Awesome (ÍCONES DO MENU) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-
-  <!-- Header padrão -->
-  <link rel="stylesheet" href="css/header.css">
-
-  <style>
-    /* TODO O CSS DO CARRINHO (exatamente como já está) */
-  </style>
-</head>
-  
 <style>
 :root {
   --primary:#003366;   /* Azul F Pac */
@@ -38,16 +18,17 @@
 * { box-sizing:border-box; }
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  padding:40px 16px;
 }
 
 .carrinho-wrap {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 16px;
+  width:100%;
+  max-width:900px;
 }
 
 .carrinho-topo {
@@ -207,43 +188,6 @@ body {
 
 <body>
 
-    <header class="header">
-  <div class="container header-content">
-
-    <a href="index.html" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
-    </a>
-
-    <nav class="nav" id="nav">
-      <div class="menu-links">
-        <a href="index.html">Início</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="index.html#produtos">Produtos</a>
-      </div>
-
-      <a href="carrinho.html" class="carrinho-icone">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="carrinho-qtd" id="carrinhoQtd">0</span>
-      </a>
-
-      <div class="menu-social">
-        <a href="https://wa.me/5547997465602" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://instagram.com/f_pac_store/" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-    </nav>
-
-    <button class="menu-toggle" id="toggle" aria-label="Abrir menu">
-      <i class="fas fa-bars"></i>
-    </button>
-
-  </div>
-</header>
-
 <div class="carrinho-wrap">
 
   <div class="carrinho-topo">
@@ -270,7 +214,6 @@ body {
 </div>
 
 <script>
-
 const lista = document.getElementById('lista');
 const totalEl = document.getElementById('total');
 const carrinho = JSON.parse(localStorage.getItem('carrinho'));
@@ -393,37 +336,5 @@ function finalizarCompra() {
 }
 </script>
 
-  <script>
-const toggle = document.getElementById('toggle');
-const nav = document.getElementById('nav');
-
-if (toggle && nav) {
-  toggle.onclick = () => nav.classList.toggle('active');
-}
-</script>
-
-  <script>
-function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-  const el = document.getElementById('carrinhoQtd');
-  if (!el || !carrinho) return;
-
-  const total = carrinho.itens.reduce(
-    (soma, item) => soma + item.qtd,
-    0
-  );
-
-  if (total > 0) {
-    el.textContent = total;
-    el.style.display = 'block';
-  } else {
-    el.style.display = 'none';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-</script>
-
 </body>
-
 </html>
