@@ -940,6 +940,30 @@
       margin-top: 0;
     }
     }
+
+/* ============================= */
+/* CORREÇÃO MENU MOBILE (OBRIGATÓRIA) */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block !important;
+    position: relative;
+    z-index: 2000;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nav.active {
+    display: flex;
+    z-index: 1500;
+  }
+
+}
+        
     </style>
 </head>
 
