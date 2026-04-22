@@ -1,0 +1,169 @@
+/* ============================= */
+/* HEADER – PADRÃO DO INDEX      */
+/* ============================= */
+
+:root {
+  --primary: #003366;
+  --accent: #FFC107;
+}
+
+/* HEADER */
+.header {
+  background: var(--primary);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* CONTAINER DO HEADER */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px; /* ✅ PADRÃO DO INDEX */
+  padding: 0 15px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-img {
+  max-height: 85px;
+}
+
+.logo-text {
+  font-family: 'blacklisted', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  line-height: 1;
+  color: #000;
+  -webkit-text-stroke: 2.3px var(--accent);
+  display: flex;
+  align-items: center;
+}
+
+/* AJUSTE DESKTOP (como no index original) */
+@media (min-width: 768px) {
+  .logo-img {
+    max-height: 90px;
+  }
+
+  .logo-text {
+    color: var(--accent);
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  }
+}
+
+/* MENU */
+.nav {
+  display: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.menu-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+/* CARRINHO */
+.carrinho-icone {
+  position: relative;
+  text-decoration: none;
+}
+
+.carrinho-icone i {
+  font-size: 2.6rem;
+  color: var(--accent);
+}
+
+.carrinho-qtd {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* REDES SOCIAIS */
+.menu-social {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.menu-social a .fa-whatsapp {
+  color: #25D366;
+}
+
+.menu-social a .fa-instagram {
+  background: radial-gradient(
+    circle at 30% 110%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285AEB 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-social i {
+  font-size: 2.6rem;
+}
+
+/* BOTÃO MOBILE */
+.menu-toggle {
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* MENU MOBILE */
+.nav.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100%;
+  background: var(--primary);
+  padding: 20px;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+/* RESPONSIVO */
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+``
