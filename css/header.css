@@ -162,11 +162,12 @@ body {
 /* MENU MOBILE                   */
 /* ============================= */
 
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: white;
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--primary);
+  z-index: 9999; /* ✅ MAIS ALTO QUE A HERO */
 }
 
 .nav.active {
@@ -216,3 +217,9 @@ body {
     letter-spacing: 2px;
   }
 }
+
+.menu-toggle {
+  position: relative;
+  z-index: 10000; /* ✅ acima do header e da hero */
+}
+
