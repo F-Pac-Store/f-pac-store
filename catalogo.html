@@ -1,258 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Catálogo Completo | F Pac Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fontes -->
+  <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- ÍCONES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- HEADER GLOBAL -->
+  <link rel="stylesheet" href="css/header.css">
+
+  <!-- CSS DO CATÁLOGO -->
   <style>
     :root {
       --primary:#003366;
       --accent:#FFC107;
-      --bg:#f5f5f5;
-      --text:#333;
-      --header-height:120px;
+      --bg:#f4f6f8;
+      --text:#1f2933;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-
     body {
-      font-family:'Inter', sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      padding-top:var(--header-height);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      padding-top: 120px;
     }
 
     .container {
-      max-width:1200px;
-      margin:auto;
-      padding:0 20px;
-    }
-
-    /* HEADER */
-    .header {
-      background:var(--primary);
-      position:fixed;
-      top:0;
-      width:100%;
-      z-index:1000;
-    }
-
-    .header-content {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      height:var(--header-height);
-    }
-
-    .logo {
-      display:flex;
-      align-items:center;
-      gap:14px;
-      text-decoration:none;
-    }
-
-    .logo-img {
-      max-height:85px;
-    }
-
-    .logo-text {
-      font-family:'blacklisted',sans-serif;
-      font-size:2.2rem;
-      letter-spacing:3px;
-      color:#FFC107;
-      -webkit-text-stroke:1.5px #000;
-      text-shadow:2px 2px 6px rgba(0,0,0,.6);
-    }
-
-    .nav {
-      display:none;
-      gap:25px;
-      align-items:center;
-    }
-
-    .menu-links {
-      display:flex;
-      gap:25px;
-    }
-
-    .menu-links a {
-      color:#fff;
-      font-weight:600;
-      text-decoration:none;
-    }
-
-    .menu-social {
-      display:flex;
-      gap:15px;
-    }
-
-    .menu-social i {
-      font-size:2.4rem;
-    }
-
-    .menu-toggle {
-      font-size:2rem;
-      background:none;
-      border:none;
-      color:white;
-    }
-
-    .nav.active {
-      display:flex;
-      flex-direction:column;
-      position:absolute;
-      top:120px;
-      left:0;
-      width:100%;
-      background:var(--primary);
-      padding:20px;
-      gap:20px;
-    }
-
-    @media (min-width:768px) {
-      .nav { display:flex; }
-      .menu-toggle { display:none; }
-    }
-
-    .carrinho-icone {
-  position: relative;
-  text-decoration: none;
-}
-
-.carrinho-qtd {
-  position: absolute;
-  top: -8px;
-  right: -12px;
-  background: #FFC107;
-  color: #000;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 50%;
-  font-weight: 700;
-}
-
-    /* CATÁLOGO */
-    .catalogo-page {
-      padding:40px 0 80px;
-    }
-
-    .catalogo-page h1 {
-      text-align:center;
-      font-size:2.4rem;
-      margin-bottom:40px;
-      font-weight:800;
-    }
-
-    .catalogo-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-      gap:16px;
-    }
-
-    .estampa {
-      background:#fff;
-      border-radius:10px;
-      padding:8px;
-      text-align:center;
-      box-shadow:0 6px 18px rgba(0,0,0,.12);
-    }
-
-    .estampa img {
-      width:100%;
-      height:160px;
-      object-fit:contain;
-    }
-
-    .estampa span {
-      display:block;
-      font-size:.85rem;
-      font-weight:600;
-      margin:6px 0;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 16px;
     }
 
     /* ============================= */
-/* ÍCONES DO MENU – IGUAL INDEX  */
-/* ============================= */
+    /* CABEÇALHO DA PÁGINA           */
+    /* ============================= */
 
-.menu-social a .fa-whatsapp {
-  color: #25D366; /* verde oficial */
-}
+    .catalogo-header {
+      text-align: center;
+      padding: 40px 0;
+    }
 
-.menu-social a .fa-instagram {
-  background: radial-gradient(
-    circle at 30% 110%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285AEB 90%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .catalogo-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
 
-.menu-social i,
-.carrinho-icone i {
-  font-size: 2.6rem; /* mesmo tamanho do index */
-}
+    .catalogo-header p {
+      color: #555;
+      font-size: 1.1rem;
+    }
 
-/* ============================= */
-/* MENU MOBILE – IGUAL AO INDEX  */
-/* ============================= */
+    /* ============================= */
+    /* GRID DE PRODUTOS              */
+    /* ============================= */
 
-@media (max-width: 768px) {
+    .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+      padding-bottom: 80px;
+    }
 
-  /* centraliza tudo dentro do menu */
-  .nav.active {
-    align-items: center;
-    text-align: center;
-    gap: 22px;
-  }
+    .card-produto {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
 
-  /* garante que cada bloco fique centralizado */
-  .nav.active > * {
-    align-self: center;
-  }
+    .card-produto:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    }
 
-  /* LINKS */
-  .menu-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-  }
+    /* IMAGEM */
+    .card-produto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #f8fafc;
+      padding: 12px;
+    }
 
-  .menu-links a {
-    font-size: 1.1rem;
-  }
+    /* INFO */
+    .card-info {
+      padding: 14px;
+      text-align: center;
+    }
 
-  /* AGRUPA ÍCONES */
-  .carrinho-icone,
-  .menu-social {
-    display: flex;
-    justify-content: center;
-  }
+    .card-info span {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-  .menu-social {
-    gap: 24px;
-  }
-}
-
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .catalogo-header h1 {
+        font-size: 1.9rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
+<!-- HEADER IGUAL AO INDEX -->
 <header class="header">
   <div class="container header-content">
 
@@ -274,8 +141,12 @@
       </a>
 
       <div class="menu-social">
-        <a href="https://wa.me/5547997465602" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/f_pac_store/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5547997465602" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/f_pac_store/" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
     </nav>
 
@@ -286,34 +157,40 @@
   </div>
 </header>
 
-<main class="catalogo-page">
-  <div class="container">
-    <h1>Catálogo Completo</h1>
+<!-- CONTEÚDO -->
+<main class="container">
 
-    <div class="catalogo-grid">
-      <div class="estampa">
-  <img src="imagens/estampas/e1.jpeg" alt="Tropa Urbana – Com Fundo">
-  <span>Tropa Urbana – Com Fundo</span>
-</div>
+  <div class="catalogo-header">
+    <h1>Catálogo Completo</h1>
+    <p>Explore todas as estampas disponíveis da F Pac Store</p>
+  </div>
+
+  <div class="catalogo-grid">
+    <div class="card-produto">
+      <img src="imagens/estampas/e1.jpeg" alt="Tropa Urbana">
+      <div class="card-info">
+        <span>Tropa Urbana – Com Fundo</span>
+      </div>
     </div>
 
+    <!-- DUPLIQUE OS CARDS AQUI -->
   </div>
+
 </main>
 
 <script>
-const toggle = document.getElementById('toggle');
-const nav = document.getElementById('nav');
+  const toggle = document.getElementById('toggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) toggle.onclick = () => nav.classList.toggle('active');
 
-toggle.onclick = () => nav.classList.toggle('active');
+  function atualizarQtdCarrinho() {
+    const c = JSON.parse(localStorage.getItem('carrinho'));
+    const el = document.getElementById('carrinhoQtd');
+    if (!c || !el) return;
+    el.textContent = c.itens.reduce((s,i)=>s+i.qtd,0);
+  }
 
-function atualizarQtdCarrinho() {
-  const c = JSON.parse(localStorage.getItem('carrinho'));
-  const el = document.getElementById('carrinhoQtd');
-  if (!c || !el) return;
-  el.textContent = c.itens.reduce((s,i)=>s+i.qtd,0);
-}
-
-document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+  document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
 
 </body>
