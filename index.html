@@ -1433,23 +1433,7 @@
     <footer class="footer">
         © 2026 F Pac Store — Não é só roupa. É identidade.
     </footer>
-
-    <script>
-        const toggle = document.getElementById('toggle');
-          const nav = document.getElementById('nav');
-        
-          toggle.onclick = () => {
-            nav.classList.toggle('active');
-          };
-    </script>
-
-    <script>
-        // Fecha o menu mobile ao clicar em qualquer link
-          document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', () => {
-              nav.classList.remove('active');
-            });
-          });
+       
     </script>
 
     <script>
@@ -1720,6 +1704,26 @@
           localStorage.setItem('carrinho', JSON.stringify(carrinho));
         }
     </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('toggle');
+  const nav = document.getElementById('nav');
+
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+
+  // Fecha o menu ao clicar em qualquer link
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+  });
+});
+</script>
 
 </body>
 
