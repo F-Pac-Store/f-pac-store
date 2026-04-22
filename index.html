@@ -34,25 +34,117 @@
 
   <!-- CSS DA HOME (SEM HEADER AQUI) -->
   <style>
-    .step.hidden {
-      display: none;
-    }
+  .step.hidden {
+    display: none;
+  }
 
-    /* TODO O CSS DA HOME,
-       HERO, PRODUTOS, CATÁLOGO,
-       BASICA, MARK ETC
-       (EXATAMENTE COMO VOCÊ JÁ TINHA) */
+  /* ============================= */
+  /* AJUSTE GLOBAL COM HEADER FIXO */
+  /* ============================= */
 
-    /* ❌ NÃO EXISTE MAIS:
-       .header
-       .nav
-       .menu-links
-       .menu-social
-       .menu-toggle
-       .carrinho-icone
-       .carrinho-qtd
-    */
-  </style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    padding-top: 120px; /* ✅ evita o header cobrir o conteúdo */
+    background: #f4f6f8;
+  }
+
+  /* ============================= */
+  /* HERO */
+  /* ============================= */
+
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 120px);
+    background-image: url('https://raw.githubusercontent.com/F-Pac-Store/f-pac-store/main/imagens/capa%20de%20fundo.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 40px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  /* ============================= */
+  /* BOTÕES */
+  /* ============================= */
+
+  .btn {
+    background: #FFC107;
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn:hover {
+    background: #e6ad00;
+  }
+
+  .btn-destaque {
+    background: linear-gradient(135deg, #FFC107, #ffb300);
+  }
+
+  /* ============================= */
+  /* SEÇÕES */
+  /* ============================= */
+
+  section {
+    padding: 60px 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 16px;
+  }
+
+  .subtitulo-secao {
+    color: #666;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  /* ============================= */
+  /* FOOTER */
+  /* ============================= */
+
+  .footer {
+    background: #001a33;
+    color: #fff;
+    text-align: center;
+    padding: 24px;
+    font-size: 0.9rem;
+  }
+</style>
+
 </head>
 
 <body>
