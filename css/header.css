@@ -40,11 +40,6 @@ html, body {
   padding: 0 15px;
 }
 
-/* Compensação do header fixo */
-body {
-  padding-top: 120px;
-}
-
 /* ============================= */
 /* LOGO                          */
 /* ============================= */
