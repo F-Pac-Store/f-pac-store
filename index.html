@@ -103,11 +103,12 @@
     }
             
                 body {
-                  font-family: 'Inter', sans-serif;
-                  background: var(--bg);
-                  color: var(--text);
-                  line-height: 1.6;
-                }
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding-top: 120px; /* ✅ header fixo */
+}
             
                 .container {
                   max-width: 1200px;
@@ -1200,11 +1201,7 @@
       .btn-remover {
         margin-top: 14px;
       }
-    
-      .header {
-      position: relative;
-    }
-    
+      
     .hero {
       margin-top: 0;
     }
@@ -1213,6 +1210,64 @@
 </head>
 
 <body>
+
+    <script>
+/* ============================= */
+/* NÚCLEO DO CARRINHO (CORRETO) */
+/* ============================= */
+
+function gerarIdPedido() {
+  const data = new Date();
+  const ano = data.getFullYear();
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const dia = String(data.getDate()).padStart(2, '0');
+  const random = String(Date.now()).slice(-4);
+  return `FPAC-${ano}${mes}${dia}-${random}`;
+}
+
+function obterCarrinho() {
+  const carrinhoSalvo = localStorage.getItem('carrinho');
+
+  if (carrinhoSalvo) {
+    return JSON.parse(carrinhoSalvo);
+  }
+
+  const novoCarrinho = {
+    id: gerarIdPedido(),
+    criadoEm: new Date().toISOString(),
+    itens: [],
+    total: 0
+  };
+
+  localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+  return novoCarrinho;
+}
+
+function salvarCarrinho(carrinho) {
+  carrinho.total = carrinho.itens.reduce(
+    (soma, item) => soma + item.subtotal,
+    0
+  );
+
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function atualizarQtdCarrinho() {
+  const carrinho = obterCarrinho();
+  const el = document.getElementById('carrinhoQtd');
+  if (!el) return;
+
+  const total = carrinho.itens.reduce(
+    (soma, item) => soma + item.qtd,
+    0
+  );
+
+  el.textContent = total;
+  el.style.display = total > 0 ? 'block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+</script>
 
     <header class="header">
         <div class="container header-content">
@@ -1358,8 +1413,6 @@
                 </div>
 
             </div>
-
-        </div>
 
         </div>
     </section>
@@ -1914,81 +1967,6 @@
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
-
-    <script>
-        function atualizarQtdCarrinho() {
-          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-          const el = document.getElementById('carrinhoQtd');
-          if (!el || !carrinho) return;
-        
-          const total = carrinho.itens.reduce(
-            (soma, item) => soma + item.qtd,
-            0
-          );
-        
-          if (total > 0) {
-            el.textContent = total;
-            el.style.display = 'block';
-          } else {
-            el.style.display = 'none';
-          }
-        }
-        
-        document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-    </script>
-
-    <script>
-        /* ============================= */
-        /* NÚCLEO DO CARRINHO (PASSO 1)  */
-        /* ============================= */
-        
-        /*
-          Esta função cria um ID único de pedido
-          Exemplo: FPAC-20260421-4821
-        */
-        function gerarIdPedido() {
-          const data = new Date();
-          const ano = data.getFullYear();
-          const mes = String(data.getMonth() + 1).padStart(2, '0');
-          const dia = String(data.getDate()).padStart(2, '0');
-          const random = String(Date.now()).slice(-4);
-        
-          return `FPAC-${ano}${mes}${dia}-${random}`;
-        }
-        
-        /*
-          Esta função SEMPRE retorna um carrinho válido.
-          Se existir no localStorage, ela usa.
-          Se não existir, cria um novo.
-        */
-        function obterCarrinho() {
-          const carrinhoSalvo = localStorage.getItem('carrinho');
-        
-          if (carrinhoSalvo) {
-            return JSON.parse(carrinhoSalvo);
-          }
-        
-          return {
-            id: gerarIdPedido(),
-            criadoEm: new Date().toISOString(),
-            status: 'aberto',
-            itens: [],
-            total: 0
-          };
-        }
-        
-        /*
-          Salva o carrinho e recalcula o total
-        */
-        function salvarCarrinho(carrinho) {
-          carrinho.total = carrinho.itens.reduce(
-            (soma, item) => soma + item.subtotal,
-            0
-          );
-        
-          localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        }
-    </script>
 
 </body>
 
