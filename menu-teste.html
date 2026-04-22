@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste de Menu</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-content">
+
+    <!-- LOGO -->
+    <a href="#" class="logo">
+      <img src="imagens/logo.png" alt="Logo" class="logo-img">
+      <span class="logo-text">F-Pac</span>
+    </a>
+
+    <!-- BOTÃO MOBILE -->
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- MENU -->
+    <nav class="nav" id="navMenu">
+      <div class="menu-links">
+        <a href="#">Início</a>
+        <a href="#">Catálogo</a>
+        <a href="#">Contato</a>
+      </div>
+
+      <!-- REDES -->
+      <div class="menu-social">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+
+      <!-- CARRINHO -->
+      <a href="carrinho.html" class="carrinho-icone">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="carrinho-qtd">0</span>
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+  <h1 style="padding: 40px">Conteúdo de teste</h1>
+</main>
+
+<!-- JS -->
+<script src="js/menu.js"></script>
+
+  const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("navMenu");
+
+toggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
+
+</body>
+</html>
