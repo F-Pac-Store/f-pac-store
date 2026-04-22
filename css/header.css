@@ -2,6 +2,20 @@
 /* HEADER – PADRÃO DO INDEX      */
 /* ============================= */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #000; /* ou a cor base do fundo da hero */
+  overflow-x: hidden;
+}
+
+.hero {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
 :root {
   --primary: #003366;
   --accent: #FFC107;
