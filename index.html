@@ -1458,84 +1458,58 @@
         © 2026 F Pac Store — Não é só roupa. É identidade.
     </footer>
 
-        document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
-        
-          const cor = card.querySelector('.cor');
-          const tamanho = card.querySelector('.tamanho');
-          const qtd = card.querySelector('.quantidade');
-        
-          const etapaTamanho = card.querySelector('.etapa-tamanho');
-          const etapaQtd = card.querySelector('.etapa-quantidade');
-          const finalizar = card.querySelector('.etapa-finalizar');
-        
-          const painel = card.querySelector('.painel-flutuante');
-        
-          function esconder(el) {
-            if (!el) return;
-            el.classList.add('oculta');
-            el.classList.remove('visivel');
-          }
-        
-          function mostrar(el) {
-            if (!el) return;
-            el.classList.remove('oculta');
-            el.classList.add('visivel');
-          }
-        
-          function atualizarPainel() {
-            const aberto =
-              etapaTamanho?.classList.contains('visivel') ||
-              etapaQtd?.classList.contains('visivel') ||
-              finalizar?.classList.contains('visivel');
-        
-            card.classList.toggle('aberto', aberto);
-          }
-        
-          esconder(etapaTamanho);
-          esconder(etapaQtd);
-          esconder(finalizar);
-          atualizarPainel();
-        
-          cor?.addEventListener('change', () => {
-            if (cor.value) {
-              mostrar(etapaTamanho);
-            } else {
-              esconder(etapaTamanho);
-            }
-        
-            esconder(etapaQtd);
-            esconder(finalizar);
-        
-            if (tamanho) tamanho.value = '';
-            if (qtd) qtd.value = 0;
-        
-            atualizarPainel();
-          });
-        
-          tamanho?.addEventListener('change', () => {
-            if (tamanho.value) {
-              mostrar(etapaQtd);
-            } else {
-              esconder(etapaQtd);
-            }
-        
-            esconder(finalizar);
-            if (qtd) qtd.value = 0;
-        
-            atualizarPainel();
-          });
-        
-          qtd?.addEventListener('input', () => {
-            if (Number(qtd.value) > 0) {
-              mostrar(finalizar);
-            } else {
-              esconder(finalizar);
-            }
-        
-            atualizarPainel();
-          });
-        });
-    </script>
+        <script>
+document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
+
+  const cor = card.querySelector('.cor');
+  const tamanho = card.querySelector('.tamanho');
+  const qtd = card.querySelector('.quantidade');
+
+  const etapaTamanho = card.querySelector('.etapa-tamanho');
+  const etapaQtd = card.querySelector('.etapa-quantidade');
+  const finalizar = card.querySelector('.etapa-finalizar');
+
+  function esconder(el) {
+    if (!el) return;
+    el.classList.add('oculta');
+    el.classList.remove('visivel');
+  }
+
+  function mostrar(el) {
+    if (!el) return;
+    el.classList.remove('oculta');
+    el.classList.add('visivel');
+  }
+
+  esconder(etapaTamanho);
+  esconder(etapaQtd);
+  esconder(finalizar);
+
+  cor?.addEventListener('change', () => {
+    if (cor.value) mostrar(etapaTamanho);
+    else esconder(etapaTamanho);
+
+    esconder(etapaQtd);
+    esconder(finalizar);
+
+    if (tamanho) tamanho.value = '';
+    if (qtd) qtd.value = 0;
+  });
+
+  tamanho?.addEventListener('change', () => {
+    if (tamanho.value) mostrar(etapaQtd);
+    else esconder(etapaQtd);
+
+    esconder(finalizar);
+    if (qtd) qtd.value = 0;
+  });
+
+  qtd?.addEventListener('input', () => {
+    if (Number(qtd.value) > 0) mostrar(finalizar);
+    else esconder(finalizar);
+  });
+});
+</script>
 
     <script>
         function adicionarAoCarrinho(botao) {
