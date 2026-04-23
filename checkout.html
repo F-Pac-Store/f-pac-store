@@ -147,20 +147,22 @@ const obsCliente = document.getElementById('obs').value.trim();
     return;
   }
 
-  let mensagem = 
+  let mensagem =
 `🛒 *F PAC STORE*
 Não é só roupa. É identidade.
 
 ────────────────────
+
 🧾 *RESUMO DO PEDIDO*
 
-mensagem += `👤 Cliente: ${nome}\n`;
-mensagem += `📍 Bairro: ${bairro || '-'}\n`;
-mensagem += `🏠 Endereço: ${rua || '—'}, Nº ${numero || '—'}\n`;
-mensagem += `📞 WhatsApp: ${whatsapp}\n\n`;
+👤 Cliente: ${nome}
+📍 Bairro: ${bairro || '-'}
+🏠 Endereço: ${rua || '—'}, Nº ${numero || '—'}
+📞 WhatsApp: ${whatsapp}
 
 ────────────────────
 `;
+
 
   let total = 0;
 
