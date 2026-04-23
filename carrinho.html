@@ -318,23 +318,48 @@ function renderCarrinho() {
   let total = 0;
 
   carrinho.forEach(item => {
-    const subtotal = item.preco * item.quantidade;
-    total += subtotal;
+  const subtotal = item.preco * item.quantidade;
 
-    lista.innerHTML += `
-      <div class="item">
-        <div class="item-info">
-          <strong>${item.nome}</strong>
-          <div class="item-linha">Quantidade: ${item.quantidade}</div>
-          <div class="subtotal">R$ ${subtotal.toFixed(2)}</div>
+  lista.innerHTML += `
+    <div class="item">
 
-          <button class="btn-remover" onclick="removerItem('${item.id}')">
-            Remover
-          </button>
+      ${item.modelo === 'PRIME' ? `
+        <div class="pedido-id">
+          Nº do pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
         </div>
+
+        <strong>${item.nome}</strong>
+
+        <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
+        <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+
+        <div class="item-linha"><strong>Estampa:</strong> ${item.estampa}</div>
+        <div class="item-linha"><strong>Local da estampa:</strong> ${item.localEstampa}</div>
+        <div class="item-linha"><strong>Tamanho da estampa:</strong> ${item.tamanhoEstampa}</div>
+
+        ${item.observacoes ? `
+          <div class="item-linha">
+            <strong>Observações:</strong><br>
+            ${item.observacoes}
+          </div>
+        ` : ''}
+      ` : `
+        <strong>${item.nome}</strong>
+      `}
+
+      <div class="item-linha">Quantidade: ${item.quantidade}</div>
+
+      <div class="subtotal">
+        R$ ${subtotal.toFixed(2)}
       </div>
-    `;
-  });
+
+      <button class="btn-remover" onclick="removerItem('${item.id}')">
+        Remover
+      </button>
+
+    </div>
+  `;
+});
 
   totalEl.innerHTML = 'Total: <strong>R$ ' + total.toFixed(2) + '</strong>';
 }
