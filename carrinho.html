@@ -289,26 +289,6 @@ function salvarCarrinho(carrinho) {
   localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
 }
 
-function adicionarItem(item) {
-  const carrinho = getCarrinho();
-  const existente = carrinho.find(p => p.id === item.id);
-
-  if (existente) {
-    existente.quantidade += item.quantidade;
-  } else {
-    carrinho.push(item);
-  }
-
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-}
-
-function removerItem(id) {
-  const carrinho = getCarrinho().filter(item => item.id !== id);
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-}
-
 function atualizarContadorCarrinho() {
   const carrinho = getCarrinho();
   const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
@@ -319,7 +299,69 @@ function atualizarContadorCarrinho() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+</script>
+  
+  <script>
+function renderCarrinho() {
+  const lista = document.getElementById('lista');
+  const totalEl = document.getElementById('total');
+  const carrinho = getCarrinho();
+
+  lista.innerHTML = '';
+  totalEl.innerHTML = '';
+
+  if (carrinho.length === 0) {
+    lista.innerHTML = '<p class="vazio">Seu carrinho está vazio.</p>';
+    return;
+  }
+
+  let total = 0;
+
+  carrinho.forEach(item => {
+    const subtotal = item.preco * item.quantidade;
+    total += subtotal;
+
+    lista.innerHTML += `
+      <div class="item">
+        <div class="item-info">
+          <strong>${item.nome}</strong>
+          <div class="item-linha">Quantidade: ${item.quantidade}</div>
+          <div class="subtotal">R$ ${subtotal.toFixed(2)}</div>
+
+          <button class="btn-remover" onclick="removerItem('${item.id}')">
+            Remover
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  totalEl.innerHTML = 'Total: <strong>R$ ' + total.toFixed(2) + '</strong>';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  atualizarContadorCarrinho();
+  renderCarrinho();
+});
+</script>
+
+<script>
+function removerItem(id) {
+  const carrinho = getCarrinho().filter(item => item.id !== id);
+  salvarCarrinho(carrinho);
+  atualizarContadorCarrinho();
+  renderCarrinho();
+}
+
+function limparCarrinho() {
+  localStorage.removeItem('fpacCarrinho');
+  atualizarContadorCarrinho();
+  renderCarrinho();
+}
+
+function finalizarCompra() {
+  alert('Finalização será integrada no próximo passo.');
+}
 </script>
   
 </body>
