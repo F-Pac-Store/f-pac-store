@@ -319,6 +319,7 @@ function renderCarrinho() {
 
   carrinho.forEach(item => {
   const subtotal = item.preco * item.quantidade;
+    total += subtotal;
 
   let detalhes = '';
 
