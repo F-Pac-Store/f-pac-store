@@ -320,43 +320,62 @@ function renderCarrinho() {
   carrinho.forEach(item => {
   const subtotal = item.preco * item.quantidade;
 
-  lista.innerHTML += `
-    <div class="item">
+  let detalhes = '';
 
-      ${item.modelo === 'PRIME' ? `
-        <div class="pedido-id">
-          Nº do pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
-        </div>
-
-        <strong>${item.nome}</strong>
-
-        <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
-        <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
-
-        <div class="item-linha"><strong>Estampa:</strong> ${item.estampa}</div>
-        <div class="item-linha"><strong>Local da estampa:</strong> ${item.localEstampa}</div>
-        <div class="item-linha"><strong>Tamanho da estampa:</strong> ${item.tamanhoEstampa}</div>
-
-        ${item.observacoes ? `
-          <div class="item-linha">
-            <strong>Observações:</strong><br>
-            ${item.observacoes}
-          </div>
-        ` : ''}
-      ` : `
-        <strong>${item.nome}</strong>
-      `}
-
-      <div class="item-linha">Quantidade: ${item.quantidade}</div>
-
-      <div class="subtotal">
-        R$ ${subtotal.toFixed(2)}
+  // 🔥 PRIME (com personalização)
+  if (item.modelo === 'PRIME') {
+    detalhes = `
+      <div class="pedido-id">
+        Nº do Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
       </div>
 
-      <button class="btn-remover" onclick="removerItem('${item.id}')">
-        Remover
-      </button>
+      <strong>${item.nome}</strong>
 
+      <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
+      <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+
+      <div class="item-linha"><strong>Estampa:</strong> ${item.estampa}</div>
+      <div class="item-linha"><strong>Local da estampa:</strong> ${item.localEstampa}</div>
+      <div class="item-linha"><strong>Tamanho da estampa:</strong> ${item.tamanhoEstampa}</div>
+
+      ${item.observacoes ? `
+        <div class="item-linha">
+          <strong>Observações:</strong><br>
+          ${item.observacoes}
+        </div>
+      ` : ''}
+    `;
+  }
+
+  // ✅ FORCE e MARK (modelo pronto)
+  else {
+    detalhes = `
+      <strong>${item.nome}</strong>
+
+      <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
+      <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+    `;
+  }
+
+  lista.innerHTML += `
+    <div class="item">
+      <div class="item-info">
+
+        ${detalhes}
+
+        <div class="item-linha">
+          <strong>Quantidade:</strong> ${item.quantidade}
+        </div>
+
+        <div class="subtotal">
+          R$ ${subtotal.toFixed(2)}
+        </div>
+
+        <button class="btn-remover" onclick="removerItem('${item.id}')">
+          Remover
+        </button>
+
+      </div>
     </div>
   `;
 });
