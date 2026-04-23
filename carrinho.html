@@ -267,9 +267,9 @@ body {
   </button>
 
   <!-- LIMPAR CARRINHO -->
-  <button class="btn-limpar" onclick="limparCarrinho()">
-    Limpar Carrinho
-  </button>
+  <button class="btn-limpar" onclick="abrirModalLimpar()">
+  Limpar Carrinho
+</button>
         
 </div>
 
@@ -415,25 +415,6 @@ function removerItem(id) {
   renderCarrinho();
 }
 
-function limparCarrinho() {
-  const confirmar = confirm(
-    '⚠️ Tem certeza que deseja limpar o carrinho?\n\nEssa ação não pode ser desfeita.'
-  );
-
-  if (!confirmar) return;
-
-  localStorage.removeItem('fpacCarrinho');
-  atualizarContadorCarrinho();
-  renderCarrinho();
-
-  alert('✅ Carrinho limpo com sucesso!');
-}
-
-function finalizarCompra() {
-  alert('Finalização será integrada no próximo passo.');
-}
-</script>
-
   <script>
 function irParaCheckout() {
   const carrinho = getCarrinho();
@@ -444,6 +425,25 @@ function irParaCheckout() {
   }
 
   window.location.href = 'checkout.html';
+}
+</script>
+
+  <script>
+function abrirModalLimpar() {
+  document.getElementById('confirmarLimpeza').style.display = 'flex';
+}
+
+function fecharModalLimpar() {
+  document.getElementById('confirmarLimpeza').style.display = 'none';
+}
+
+function confirmarLimparCarrinho() {
+  localStorage.removeItem('fpacCarrinho');
+  atualizarContadorCarrinho();
+  renderCarrinho();
+
+  fecharModalLimpar();
+  alert('✅ Carrinho limpo com sucesso!');
 }
 </script>
 
