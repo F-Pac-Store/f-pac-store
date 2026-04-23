@@ -5,15 +5,47 @@
   <title>Checkout | F Pac Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/header.css">
+
   <style>
-    body { font-family: Inter, sans-serif; background:#f4f6f8; padding-top:120px }
-    .wrap { max-width:720px; margin:auto; padding:32px }
-    .card { background:#fff; padding:24px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.1) }
-    label { display:block; margin-top:16px; font-weight:600 }
-    input, textarea { width:100%; padding:12px; margin-top:6px }
-    button { margin-top:24px; width:100%; padding:16px; font-weight:800; background:#22c55e; border:none; color:#fff }
+    body {
+      font-family: Inter, sans-serif;
+      background:#f4f6f8;
+      padding-top:120px;
+    }
+    .wrap {
+      max-width:720px;
+      margin:auto;
+      padding:32px;
+    }
+    .card {
+      background:#fff;
+      padding:24px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+    }
+    label {
+      display:block;
+      margin-top:16px;
+      font-weight:600;
+    }
+    input, textarea {
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+    }
+    button {
+      margin-top:24px;
+      width:100%;
+      padding:16px;
+      font-weight:800;
+      background:#22c55e;
+      border:none;
+      color:#fff;
+      cursor:pointer;
+    }
   </style>
 </head>
+
 <body>
 
 <header class="header">
@@ -42,20 +74,15 @@
     <textarea id="obs"></textarea>
 
     <button type="button" onclick="confirmarCheckout()">
-  Confirmar Pedido
-</button>
-
       Confirmar Pedido
     </button>
   </div>
 </div>
 
 <script>
-
-<script>
-// =============================
-// FRETE POR BAIRRO – JOINVILLE
-// =============================
+/* =============================
+   FRETE POR BAIRRO – JOINVILLE
+============================= */
 const fretePorBairro = {
   "Paranaguamirim": 6,
   "Adhemar Garcia": 6,
@@ -93,9 +120,9 @@ const fretePorBairro = {
   "Jardim Sofia": 21
 };
 
-// =============================
-// CONFIRMAR CHECKOUT → WHATSAPP
-// =============================
+/* =============================
+   CONFIRMAR CHECKOUT → WHATSAPP
+============================= */
 function confirmarCheckout() {
   const nome = document.getElementById('nome').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
@@ -113,127 +140,62 @@ function confirmarCheckout() {
     return;
   }
 
-  let mensagem = `🛒 *F PAC STORE*\nNão é só roupa. É identidade.\n\n`;
-  mensagem += `────────────────────\n`;
-  mensagem += `🧾 *RESUMO DO PEDIDO*\n\n`;
+  let mensagem = 
+`🛒 *F PAC STORE*
+Não é só roupa. É identidade.
 
-  mensagem += `👤 Cliente: ${nome}\n`;
-  mensagem += `📍 Bairro: ${bairro || '-'}\n`;
-  mensagem += `📞 WhatsApp: ${whatsapp}\n\n`;
-  mensagem += `────────────────────\n`;
+────────────────────
+🧾 *RESUMO DO PEDIDO*
+
+👤 Cliente: ${nome}
+📍 Bairro: ${bairro || '-'}
+📞 WhatsApp: ${whatsapp}
+
+────────────────────
+`;
 
   let total = 0;
 
-  carrinho.forEach((item, index) => {
+  carrinho.forEach((item, i) => {
     const subtotal = item.preco * item.quantidade;
     total += subtotal;
 
-    mensagem += `👕 *ITEM ${String(index + 1).padStart(2,'0')}*\n`;
-    mensagem += `🆔 Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}\n`;
-    mensagem += `📦 Produto: ${item.nome}\n`;
-    mensagem += `🎨 Cor: ${item.cor}\n`;
-    mensagem += `👕 Tamanho: ${item.tamanho}\n\n`;
+    mensagem += 
+`👕 *ITEM ${String(i+1).padStart(2,'0')}*
+🆔 Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
+📦 Produto: ${item.nome}
+🎨 Cor: ${item.cor}
+👕 Tamanho: ${item.tamanho}
+`;
 
     if (item.modelo === 'PRIME') {
-      mensagem += `🖼️ Estampa: ${item.estampa}\n`;
-      mensagem += `📍 Local: ${item.localEstampa}\n`;
-      mensagem += `📐 Tamanho da estampa: ${item.tamanhoEstampa}\n\n`;
+      mensagem += 
+`🖼️ Estampa: ${item.estampa}
+📍 Local: ${item.localEstampa}
+📐 Tamanho da estampa: ${item.tamanhoEstampa}
+`;
     }
 
     if (item.observacoes) {
-      mensagem += `📝 Observações:\n${item.observacoes}\n\n`;
+      mensagem += `📝 Observações:\n${item.observacoes}\n`;
     }
 
-    mensagem += `🔢 Quantidade: ${item.quantidade}\n`;
-    mensagem += `💰 Subtotal: R$ ${subtotal.toFixed(2)}\n`;
-    mensagem += `────────────────────\n`;
+    mensagem += 
+`🔢 Quantidade: ${item.quantidade}
+💰 Subtotal: R$ ${subtotal.toFixed(2)}
+────────────────────
+`;
   });
 
   const frete = fretePorBairro[bairro] || 0;
   const totalComFrete = total + frete;
 
-  mensagem += `💵 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2)}\n`;
-  mensagem += `🚚 *Frete (${bairro || 'não informado'}):* R$ ${frete.toFixed(2)}\n`;
-  mensagem += `💰 *TOTAL + FRETE:* R$ ${totalComFrete.toFixed(2)}\n\n`;
+  mensagem += 
+`💵 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2)}
+🚚 *Frete (${bairro || 'não informado'}):* R$ ${frete.toFixed(2)}
+💰 *TOTAL + FRETE:* R$ ${totalComFrete.toFixed(2)}
 
-  if (obsCliente) {
-    mensagem += `🗒️ Observações do cliente:\n${obsCliente}\n\n`;
-  }
-
-  mensagem += `✅ Pedido enviado pelo site.`;
-
-  const numeroLoja = '5547997465602';
-  const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`;
-
-  window.location.href = url;
-}
-</script>
-
-function confirmarCheckout() {
-  const nome = document.getElementById('nome').value.trim();
-  const whatsapp = document.getElementById('whatsapp').value.trim();
-  const bairro = document.getElementById('bairro').value.trim();
-  const obsCliente = document.getElementById('obs').value.trim();
-
-  if (!nome || !whatsapp) {
-    alert('Preencha nome e WhatsApp.');
-    return;
-  }
-
-  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-  if (carrinho.length === 0) {
-    alert('Seu carrinho está vazio.');
-    return;
-  }
-
-  let mensagem = `🛒 *F PAC STORE*\nNão é só roupa. É identidade.\n\n`;
-  mensagem += `────────────────────\n`;
-  mensagem += `🧾 *RESUMO DO PEDIDO*\n\n`;
-
-  mensagem += `👤 Cliente: ${nome}\n`;
-  mensagem += `📍 Bairro: ${bairro || '-'}\n`;
-  mensagem += `📞 WhatsApp: ${whatsapp}\n\n`;
-  mensagem += `────────────────────\n`;
-
-  let total = 0;
-
-  carrinho.forEach((item, index) => {
-    const subtotal = item.preco * item.quantidade;
-    total += subtotal;
-
-    mensagem += `👕 *ITEM ${String(index + 1).padStart(2,'0')}*\n`;
-    mensagem += `🆔 Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}\n`;
-    mensagem += `📦 Produto: ${item.nome}\n`;
-    mensagem += `🎨 Cor: ${item.cor}\n`;
-    mensagem += `👕 Tamanho: ${item.tamanho}\n\n`;
-
-    if (item.modelo === 'PRIME') {
-      mensagem += `🖼️ Estampa: ${item.estampa}\n`;
-      mensagem += `📍 Local: ${item.localEstampa}\n`;
-      mensagem += `📐 Tamanho da estampa: ${item.tamanhoEstampa}\n\n`;
-    }
-
-    if (item.observacoes) {
-      mensagem += `📝 Observações:\n${item.observacoes}\n\n`;
-    }
-
-    mensagem += `🔢 Quantidade: ${item.quantidade}\n`;
-    mensagem += `💰 Subtotal: R$ ${subtotal.toFixed(2)}\n`;
-    mensagem += `────────────────────\n`;
-  });
-
-  const frete = fretePorBairro[bairro] || 0;
-  const totalComFrete = total + frete;
-
-  mensagem += `💵 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2)}\n`;
-  mensagem += `🚚 *Frete (${bairro || 'não informado'}):* R$ ${frete.toFixed(2)}\n`;
-  mensagem += `💰 *TOTAL + FRETE:* R$ ${totalComFrete.toFixed(2)}\n\n`;
-
-  if (obsCliente) {
-    mensagem += `🗒️ Observações do cliente:\n${obsCliente}\n\n`;
-  }
-
-  mensagem += `✅ Pedido enviado pelo site.`;
+✅ Pedido enviado pelo site.`;
 
   const numeroLoja = '5547997465602';
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`;
