@@ -1837,33 +1837,29 @@ function adicionarPrimeAoCarrinho(botao) {
   const pedido = gerarPedidoPrime();
 
   adicionarItem({
-    id: `PRIME-${Date.now()}`,
+  id: `PRIME-${Date.now()}`,
+  modelo: "PRIME",
+  nome: "Camisa PRIME – Personalizada",
 
-    pedido: pedido,
-    modelo: "PRIME",
-    nome: "Camisa PRIME – Personalizada",
+  // ✅ CAMPOS PADRÃO DO CARRINHO (OBRIGATÓRIOS)
+  quantidade: quantidadeCamisas,
+  preco: 109.90,
 
-    // camisa
-    cor: cor,
-    tamanho: tamanho,
-    quantidadeCamisas: quantidadeCamisas,
+  // ✅ CAMPOS ESPECÍFICOS DO PRIME
+  quantidadeCamisas: quantidadeCamisas,
+  precoUnitarioFinal: 109.90,
 
-    // estampa
-    estampa: estampa,
-    quantidadeEstampas: 1,
-    localEstampa: localEstampa,
-    tamanhoEstampa: tamanhoEstampa,
+  cor: cor,
+  tamanho: tamanho,
 
-    // valores
-    valorCamisa: 89.90,
-    precoUnitarioFinal: 109.90,
+  estampa: estampa,
+  quantidadeEstampas: 1,
+  localEstampa: localEstampa,
+  tamanhoEstampa: tamanhoEstampa,
 
-    // extras
-    observacoes: observacoes,
-
-    // imagem
-    imagem: "imagens/estampas/e3.jpeg"
-  });
+  observacoes: observacoes,
+  imagem: "imagens/estampas/e3.jpeg"
+});
 
   alert('✅ Camisa PRIME adicionada ao carrinho!');
 
