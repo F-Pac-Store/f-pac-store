@@ -349,13 +349,20 @@ function renderCarrinho() {
 
   // ✅ FORCE e MARK (modelo pronto)
   else {
-    detalhes = `
-      <strong>${item.nome}</strong>
+  detalhes = `
+    <strong>${item.nome}</strong>
 
-      <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
-      <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
-    `;
-  }
+    <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
+    <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+
+    ${item.observacoes ? `
+      <div class="item-linha">
+        <strong>Observações:</strong><br>
+        ${item.observacoes}
+      </div>
+    ` : ''}
+  `;
+}
 
   lista.innerHTML += `
     <div class="item">
