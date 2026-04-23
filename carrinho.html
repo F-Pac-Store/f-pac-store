@@ -416,11 +416,17 @@ function removerItem(id) {
 }
 
 function limparCarrinho() {
+  const confirmar = confirm(
+    '⚠️ Tem certeza que deseja limpar o carrinho?\n\nEssa ação não pode ser desfeita.'
+  );
+
+  if (!confirmar) return;
+
   localStorage.removeItem('fpacCarrinho');
   atualizarContadorCarrinho();
   renderCarrinho();
 
-  alert('✅ O carrinho foi limpo!');
+  alert('✅ Carrinho limpo com sucesso!');
 }
 
 function finalizarCompra() {
@@ -441,6 +447,59 @@ function irParaCheckout() {
 }
 </script>
 
+  <div id="confirmarLimpeza" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+">
+
+  <div style="
+    background:#fff;
+    padding:24px;
+    border-radius:12px;
+    max-width:360px;
+    width:90%;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  ">
+    <h3 style="margin-bottom:12px;">⚠️ Limpar carrinho?</h3>
+    <p style="font-size:0.95rem; margin-bottom:20px;">
+      Tem certeza que deseja remover todos os itens do carrinho?
+      <br><strong>Essa ação não poderá ser desfeita.</strong>
+    </p>
+
+    <div style="display:flex; gap:12px;">
+      <button onclick="confirmarLimparCarrinho()" style="
+        flex:1;
+        background:#ef4444;
+        color:#fff;
+        border:none;
+        padding:12px;
+        border-radius:8px;
+        font-weight:700;
+        cursor:pointer;
+      ">
+        Sim, limpar
+      </button>
+
+      <button onclick="fecharModalLimpar()" style="
+        flex:1;
+        background:#e5e7eb;
+        border:none;
+        padding:12px;
+        border-radius:8px;
+        font-weight:700;
+        cursor:pointer;
+      ">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
   
 </body>
 </html>
