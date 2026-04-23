@@ -260,10 +260,19 @@ body {
       <div class="total" id="total"></div>
 
       <div class="acoes">
-  <button class="btn-finalizar" onclick="window.location.href='checkout.html'" onclick="limparCarrinho()">
+
+  <!-- FINALIZAR PEDIDO -->
+  <button class="btn-finalizar" onclick="irParaCheckout()">
+    Finalizar Pedido
+  </button>
+
+  <!-- LIMPAR CARRINHO -->
+  <button class="btn-limpar" onclick="limparCarrinho()">
     Limpar Carrinho
   </button>
+
 </div>
+
     </div>
   </div>
 
@@ -416,6 +425,20 @@ function finalizarCompra() {
   alert('Finalização será integrada no próximo passo.');
 }
 </script>
+
+  <script>
+function irParaCheckout() {
+  const carrinho = getCarrinho();
+
+  if (carrinho.length === 0) {
+    alert('Seu carrinho está vazio.');
+    return;
+  }
+
+  window.location.href = 'checkout.html';
+}
+</script>
+
   
 </body>
 </html>
