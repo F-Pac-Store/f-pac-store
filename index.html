@@ -1761,6 +1761,14 @@
           });
         });
     </script>
+
+    <script>
+function gerarPedido() {
+  const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
+  const codigo = Math.floor(1000 + Math.random() * 9000);
+  return { data, codigo };
+}
+</script>
       
     <script>
 function adicionarAoCarrinho(botao) {
@@ -1787,12 +1795,29 @@ function adicionarAoCarrinho(botao) {
   const tipo = card.closest('#basica') ? 'FORCE' : 'MARK';
 
   // ✅ CARRINHO GLOBAL
-  adicionarItem({
-    id: `${tipo}-${Date.now()}`,
-    nome: `Camisa ${tipo}`,
-    preco: preco,
-    quantidade: quantidade
-  });
+  const pedido = gerarPedido();
+
+adicionarItem({
+  id: `${tipo}-${Date.now()}`,
+
+  // ✅ pedido
+  pedido: pedido,
+
+  // ✅ identificação
+  modelo: tipo,
+  nome: `Camisa ${tipo} - ${card.querySelector('img')?.alt || ''}`,
+
+  // ✅ padrão do carrinho
+  preco: preco,
+  quantidade: quantidade,
+
+  // ✅ dados para exibição
+  cor: cor,
+  tamanho: tamanho,
+
+  // ✅ mantém compatibilidade com PRIME
+  observacoes: 'Estampa com fundo'
+});
 
   alert('✅ Produto adicionado ao carrinho!');
 
