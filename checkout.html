@@ -132,7 +132,9 @@ function confirmarCheckout() {
   const nome = document.getElementById('nome').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
   const bairro = document.getElementById('bairro').value.trim();
-  const obsCliente = document.getElementById('obs').value.trim();
+const rua = document.getElementById('rua').value.trim();
+const numero = document.getElementById('numero').value.trim();
+const obsCliente = document.getElementById('obs').value.trim();
 
   if (!nome || !whatsapp) {
     alert('Preencha nome e WhatsApp.');
