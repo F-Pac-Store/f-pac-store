@@ -270,7 +270,7 @@ body {
   <button class="btn-limpar" onclick="limparCarrinho()">
     Limpar Carrinho
   </button>
-
+        
 </div>
 
     </div>
@@ -419,6 +419,8 @@ function limparCarrinho() {
   localStorage.removeItem('fpacCarrinho');
   atualizarContadorCarrinho();
   renderCarrinho();
+
+  alert('✅ O carrinho foi limpo!');
 }
 
 function finalizarCompra() {
