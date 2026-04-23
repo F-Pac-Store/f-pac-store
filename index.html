@@ -1800,72 +1800,49 @@
           });
         });
     </script>
-
+      
     <script>
-        function adicionarAoCarrinho(botao) {
-        
-          const card = botao.closest('.basica-card');
-          if (!card) return;
-        
-          const corSelect = card.querySelector('.cor');
-          const tamanhoSelect = card.querySelector('.tamanho');
-          const qtdInput = card.querySelector('.quantidade');
-        
-          const etapaTamanho = card.querySelector('.etapa-tamanho');
-          const etapaQtd = card.querySelector('.etapa-quantidade');
-          const finalizar = card.querySelector('.etapa-finalizar');
-        
-          const cor = corSelect.value;
-          const tamanho = tamanhoSelect.value;
-          const qtd = Number(qtdInput.value);
-        
-          if (!cor || !tamanho || qtd <= 0) {
-            alert('Preencha cor, tamanho e quantidade.');
-            return;
-          }
-        
-          const preco = Number(
-            card.querySelector('.preco').innerText
-              .replace('R$', '')
-              .replace(',', '.')
-              .trim()
-          );
-        
-          const carrinho = obterCarrinho();
-          const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
-          const item = {
-          sku: (card.closest('#basica') ? 'FORCE' : 'MARK') + '-' + Date.now(),
-          nome: card.closest('#basica') ? 'Camisa Force' : 'Camisa Mark',
-          imagem: imgSrc,      // ✅ AQUI ESTÁ A IMAGEM
-          cor: cor,
-          tamanho: tamanho,
-          qtd: qtd,
-          preco: preco,
-          subtotal: preco * qtd
-        };
-          carrinho.itens.push(item);
-          salvarCarrinho(carrinho);
-          atualizarQtdCarrinho();
-        
-          alert('✅ Produto adicionado ao carrinho!');
-        
-          /* ✅ RESET DAS SELEÇÕES */
-          corSelect.value = '';
-          tamanhoSelect.value = '';
-          qtdInput.value = 0;
-        
-          etapaTamanho.classList.add('oculta');
-          etapaTamanho.classList.remove('visivel');
-        
-          etapaQtd.classList.add('oculta');
-          etapaQtd.classList.remove('visivel');
-        
-          finalizar.classList.add('oculta');
-          finalizar.classList.remove('visivel');
-        
-          card.classList.remove('aberto');
-        }
-    </script>
+function adicionarAoCarrinho(botao) {
+
+  const card = botao.closest('.basica-card');
+  if (!card) return;
+
+  const cor = card.querySelector('.cor')?.value;
+  const tamanho = card.querySelector('.tamanho')?.value;
+  const quantidade = Number(card.querySelector('.quantidade')?.value);
+
+  if (!cor || !tamanho || quantidade <= 0) {
+    alert('Preencha cor, tamanho e quantidade.');
+    return;
+  }
+
+  const preco = Number(
+    card.querySelector('.preco').innerText
+      .replace('R$', '')
+      .replace(',', '.')
+      .trim()
+  );
+
+  const tipo = card.closest('#basica') ? 'FORCE' : 'MARK';
+
+  // ✅ CARRINHO GLOBAL
+  adicionarItem({
+    id: `${tipo}-${Date.now()}`,
+    nome: `Camisa ${tipo}`,
+    preco: preco,
+    quantidade: quantidade
+  });
+
+  alert('✅ Produto adicionado ao carrinho!');
+
+  // reset visual
+  card.querySelector('.cor').value = '';
+  card.querySelector('.tamanho').value = '';
+  card.querySelector('.quantidade').value = 0;
+
+  card.classList.remove('aberto');
+}
+</script>
 
     <datalist id="bairros-joinville">
         <!-- Centro -->
@@ -1914,81 +1891,6 @@
                                                                                                                                                 <option value="Vila Cubatão">
                                                                                                                                                     <option value="Vila Nova">
     </datalist>
-
-    <script>
-        function atualizarQtdCarrinho() {
-          const carrinho = JSON.parse(localStorage.getItem('carrinho'));
-          const el = document.getElementById('carrinhoQtd');
-          if (!el || !carrinho) return;
-        
-          const total = carrinho.itens.reduce(
-            (soma, item) => soma + item.qtd,
-            0
-          );
-        
-          if (total > 0) {
-            el.textContent = total;
-            el.style.display = 'block';
-          } else {
-            el.style.display = 'none';
-          }
-        }
-        
-        document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-    </script>
-
-    <script>
-        /* ============================= */
-        /* NÚCLEO DO CARRINHO (PASSO 1)  */
-        /* ============================= */
-        
-        /*
-          Esta função cria um ID único de pedido
-          Exemplo: FPAC-20260421-4821
-        */
-        function gerarIdPedido() {
-          const data = new Date();
-          const ano = data.getFullYear();
-          const mes = String(data.getMonth() + 1).padStart(2, '0');
-          const dia = String(data.getDate()).padStart(2, '0');
-          const random = String(Date.now()).slice(-4);
-        
-          return `FPAC-${ano}${mes}${dia}-${random}`;
-        }
-        
-        /*
-          Esta função SEMPRE retorna um carrinho válido.
-          Se existir no localStorage, ela usa.
-          Se não existir, cria um novo.
-        */
-        function obterCarrinho() {
-          const carrinhoSalvo = localStorage.getItem('carrinho');
-        
-          if (carrinhoSalvo) {
-            return JSON.parse(carrinhoSalvo);
-          }
-        
-          return {
-            id: gerarIdPedido(),
-            criadoEm: new Date().toISOString(),
-            status: 'aberto',
-            itens: [],
-            total: 0
-          };
-        }
-        
-        /*
-          Salva o carrinho e recalcula o total
-        */
-        function salvarCarrinho(carrinho) {
-          carrinho.total = carrinho.itens.reduce(
-            (soma, item) => soma + item.subtotal,
-            0
-          );
-        
-          localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        }
-    </script>
 
     <script>
 /* =============================
