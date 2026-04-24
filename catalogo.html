@@ -85,13 +85,15 @@
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  overflow: hidden;
   transition: transform .25s ease, box-shadow .25s ease;
   text-decoration: none;
   color: inherit;
 
-  max-width: 260px;   /* 🔼 card visivelmente maior */
-  min-height: 380px;  /* ✅ força presença visual */
+  max-width: 260px;
+  height: 100%;              /* ✅ ocupa toda a célula do grid */
+  display: flex;             /* ✅ controla o conteúdo interno */
+  flex-direction: column;    /* ✅ imagem em cima, texto embaixo */
+
   margin: 0 auto;
 }
 
@@ -103,18 +105,25 @@
     /* IMAGEM */
     .card-produto img {
   width: 100%;
-  height: 260px;      /* 🔼 imagem maior */
+  height: 260px;
+
   object-fit: contain;
+
+  display: block;
+  margin: 0 auto;            /* ✅ centraliza horizontalmente */
+
   background: #f8fafc;
-  padding: 6px;       /* 🔽 menos espaço vazio */
+  padding: 10px;             /* ✅ padding equilibrado */
+  box-sizing: border-box;    /* ✅ evita “comer” imagem */
 }
 
     /* INFO */
     .card-info {
-      padding: 14px;
-      text-align: center;
-    }
+  padding: 14px;
+  text-align: center;
 
+  margin-top: auto; /* ✅ empurra o texto para o fundo do card */
+}
     .card-info span {
   display: block;
   font-size: 1.05rem; /* 🔼 mais forte */
