@@ -95,6 +95,15 @@
   flex-direction: column;
 
   margin: 0 auto;
+      
+  position: relative;
+  overflow: hidden;
+
+}
+
+    .card-produto > * {
+  position: relative;
+  z-index: 1;
 }
 
     /* =============================
@@ -122,6 +131,55 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+    /* =============================
+   WATERMARK PIRÂMIDE – IDENTIDADE
+============================= */
+
+/* LINHA SUPERIOR (MENOR) */
+.card-produto::before {
+  content: "© 2026 F Pac Store";
+
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;        /* ✅ menor */
+  font-weight: 600;
+  letter-spacing: 0.12em;
+
+  color: rgba(0, 0, 0, 0.10);
+  text-align: center;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* LINHA INFERIOR (MAIOR) */
+.card-produto::after {
+  content: "Não é só roupa. É identidade.";
+
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;       /* ✅ maior */
+  font-weight: 600;
+  letter-spacing: 0.14em;   /* ✅ mais larga → pirâmide */
+
+  color: rgba(0, 0, 0, 0.10);
+  text-align: center;
+  white-space: nowrap;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
     .card-produto:hover {
