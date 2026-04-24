@@ -81,6 +81,20 @@
     <button type="button" onclick="confirmarCheckout()">
       Confirmar Pedido
     </button>
+
+<div id="mensagemEnviada" style="
+  display:none;
+  margin-top:20px;
+  padding:16px;
+  background:#22c55e;
+  color:#fff;
+  font-weight:800;
+  text-align:center;
+  border-radius:8px;
+">
+  ✅ Pedido enviado com sucesso!
+</div>
+    
   </div>
 </div>
 
@@ -128,13 +142,14 @@ const fretePorBairro = {
 /* =============================
    CONFIRMAR CHECKOUT → WHATSAPP
 ============================= */
+
 function confirmarCheckout() {
   const nome = document.getElementById('nome').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
   const bairro = document.getElementById('bairro').value.trim();
-const rua = document.getElementById('rua').value.trim();
-const numero = document.getElementById('numero').value.trim();
-const obsCliente = document.getElementById('obs').value.trim();
+  const rua = document.getElementById('rua').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const obsCliente = document.getElementById('obs').value.trim();
 
   if (!nome || !whatsapp) {
     alert('Preencha nome e WhatsApp.');
@@ -147,7 +162,7 @@ const obsCliente = document.getElementById('obs').value.trim();
     return;
   }
 
-  let mensagem =
+  let mensagem = 
 `🛒 *F PAC STORE*
 Não é só roupa. É identidade.
 
@@ -156,11 +171,11 @@ Não é só roupa. É identidade.
 
 👤 Cliente: ${nome}
 📍 Bairro: ${bairro || '-'}
-🏠 Endereço: ${rua || '—'}, Nº ${numero || '—'}
+🏠 Endereço: ${rua || '-'}, Nº ${numero || '-'}
 📞 WhatsApp: ${whatsapp}
+
 ────────────────────
 `;
-
 
   let total = 0;
 
@@ -169,7 +184,7 @@ Não é só roupa. É identidade.
     total += subtotal;
 
     mensagem += 
-`👕 *ITEM ${String(i+1).padStart(2,'0')}*
+`👕 *ITEM ${String(i + 1).padStart(2,'0')}*
 🆔 Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
 📦 Produto: ${item.nome}
 🎨 Cor: ${item.cor}
@@ -207,7 +222,21 @@ Não é só roupa. É identidade.
 
   const numeroLoja = '5547997465602';
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`;
-  window.location.href = url;
+
+  // ✅ Abre WhatsApp em nova aba
+  window.open(url, '_blank', 'noopener,noreferrer');
+
+  // ✅ Mensagem visual
+  document.getElementById('mensagemEnviada').style.display = 'block';
+
+  // ✅ Desativa botão
+  document.querySelector('button[onclick="confirmarCheckout()"]').disabled = true;
+
+  // ✅ Fecha ou redireciona
+  setTimeout(() => {
+    window.close();
+    setTimeout(() => window.location.href = 'index.html', 500);
+  }, 2500);
 }
 </script>
 
