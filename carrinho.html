@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/header.css">
 
   <!-- CSS DO CARRINHO -->
+  
 <style>
 
 :root {
@@ -191,6 +192,20 @@ body {
 }
 
 @media (max-width: 640px) {
+
+.item-linha {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qtd-controle {
+  justify-content: center;
+}
+
+.item-info {
+  margin-top: 8px;
+}
+  
   .item {
     grid-template-columns: 1fr;
     text-align: center;
@@ -286,6 +301,31 @@ body {
   min-width: 22px;
   text-align: center;
   font-weight: 700;
+  font-size: 0.95rem;
+}
+
+  /* 🔴 ITEM INCOMPLETO */
+.item-incompleto {
+  border: 2px solid #ef4444;
+  background: #fff5f5;
+}
+
+.item-incompleto::before {
+  content: "⚠️ Complete as opções do produto";
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b91c1c;
+  margin-bottom: 8px;
+}
+
+  /* 📱 Selects mais usáveis no mobile */
+.item select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
   font-size: 0.95rem;
 }
   
@@ -509,8 +549,10 @@ function renderCarrinho() {
 
   const temImagem = item.modelo === 'FORCE' || item.modelo === 'MARK';
 
+const incompleto = !item.cor || !item.tamanho;
+
 lista.innerHTML += `
-  <div class="item ${temImagem ? 'com-imagem' : 'sem-imagem'}">
+  <div class="item ${temImagem ? 'com-imagem' : 'sem-imagem'} ${incompleto ? 'item-incompleto' : ''}">
 
     ${temImagem ? `
       <div class="item-img">
@@ -580,6 +622,7 @@ function removerItem(id) {
   renderCarrinho();
 }
 
+<script>
 function irParaCheckout() {
   const carrinho = getCarrinho();
 
@@ -587,6 +630,20 @@ function irParaCheckout() {
     alert('Seu carrinho está vazio.');
     return;
   }
+
+  // 🔒 valida cor e tamanho
+  const incompleto = carrinho.find(item =>
+    !item.cor || !item.tamanho
+  );
+
+  if (incompleto) {
+    alert('⚠️ Escolha cor e tamanho de todos os produtos antes de finalizar.');
+    return;
+  }
+
+  window.location.href = 'checkout.html';
+}
+</script>
 
   window.location.href = 'checkout.html';
 }
