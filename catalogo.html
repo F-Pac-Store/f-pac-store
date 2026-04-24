@@ -75,21 +75,24 @@
     /* ============================= */
 
     .catalogo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px;
-      padding-bottom: 80px;
-    }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* ✅ exatamente 5 por linha */
+  gap: 24px;
+  padding-bottom: 80px;
+}
 
     .card-produto {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease;
-      text-decoration: none;
-      color: inherit;
-    }
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-decoration: none;
+  color: inherit;
+
+  max-width: 230px;  /* ✅ deixa o card um pouco maior */
+  margin: 0 auto;    /* ✅ centraliza dentro da coluna */
+}
 
     .card-produto:hover {
       transform: translateY(-6px);
