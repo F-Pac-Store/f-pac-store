@@ -499,8 +499,17 @@ function renderCarrinho() {
   `;
 }
 
-  lista.innerHTML += `
-  <div class="item">
+  const temImagem = item.modelo === 'FORCE' || item.modelo === 'MARK';
+
+lista.innerHTML += `
+  <div class="item ${temImagem ? 'com-imagem' : 'sem-imagem'}">
+
+    ${temImagem ? `
+      <div class="item-img">
+        <img src="${item.imagem}" alt="${item.nome}">
+      </div>
+    ` : ''}
+
     <div class="item-info">
 
       ${detalhes}
