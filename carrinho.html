@@ -21,7 +21,57 @@
   <link rel="stylesheet" href="css/header.css">
 
   <!-- CSS DO CARRINHO -->
+
+/* =============================
+   MELHORIA DE LEITURA DO ITEM
+============================= */
+
+/* Nome do produto */
+.item-info > strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+/* Linhas de informação */
+.item-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+
+  font-size: 0.9rem;
+  color: #374151; /* cinza escuro */
+  margin-top: 4px;
+}
+
+/* Rótulo (Cor, Tamanho, Quantidade) */
+.item-linha strong {
+  color: #111827;
+  font-weight: 600;
+  min-width: 130px;
+}
+
+/* Valor */
+.item-linha span,
+.item-linha:not(:has(strong)) {
+  color: #374151;
+}
+
+/* Preço */
+.subtotal {
+  margin-top: 12px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+}
+  
   <style>
+
 :root {
   --primary:#003366;
   --accent:#FFC107;
@@ -382,8 +432,9 @@ function renderCarrinho() {
       ${detalhes}
 
       <div class="item-linha">
-        <strong>Quantidade:</strong> ${item.quantidade}
-      </div>
+  <strong>Quantidade:</strong>
+  <span>${item.quantidade}</span>
+</div>
 
       <div class="subtotal">
         R$ ${subtotal.toFixed(2)}
