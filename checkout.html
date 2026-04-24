@@ -162,63 +162,74 @@ function confirmarCheckout() {
     return;
   }
 
-  let mensagem = 
+  // 🔹 Pedido (usa o primeiro item como referência)
+const pedidoInfo = carrinho[0]?.pedido
+  ? `${carrinho[0].pedido.data} - ${carrinho[0].pedido.codigo}`
+  : '—';
+
+/* =============================
+   CABEÇALHO
+============================= */
+let mensagem =
 `🛒 *F PAC STORE*
 Não é só roupa. É identidade.
 
 ────────────────────
 🧾 *RESUMO DO PEDIDO*
+🆔 Pedido: ${pedidoInfo}
 
-👤 Cliente: ${nome}
-📍 Bairro: ${bairro || '-'}
-🏠 Endereço: ${rua || '-'}, Nº ${numero || '-'}
-📞 WhatsApp: ${whatsapp}
-
-────────────────────
 `;
 
-  let total = 0;
+let total = 0;
 
-  carrinho.forEach((item, i) => {
-    const subtotal = item.preco * item.quantidade;
-    total += subtotal;
+/* =============================
+   ITENS DO PEDIDO (PADRÃO)
+============================= */
+carrinho.forEach((item, i) => {
+  const subtotal = item.preco * item.quantidade;
+  total += subtotal;
 
-    mensagem += 
+  mensagem +=
 `👕 *ITEM ${String(i + 1).padStart(2,'0')}*
-🆔 Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
 📦 Produto: ${item.nome}
 🎨 Cor: ${item.cor}
 👕 Tamanho: ${item.tamanho}
+🔢 Quantidade: ${item.quantidade}
+💰 Subtotal: R$ ${subtotal.toFixed(2)}
 `;
 
-    if (item.modelo === 'PRIME') {
-      mensagem += 
+  if (item.modelo === 'PRIME') {
+    mensagem +=
 `🖼️ Estampa: ${item.estampa}
 📍 Local: ${item.localEstampa}
 📐 Tamanho da estampa: ${item.tamanhoEstampa}
 `;
-    }
+  }
 
-    if (item.observacoes) {
-      mensagem += `📝 Observações:\n${item.observacoes}\n`;
-    }
+  mensagem += `\n────────────────────\n`;
+});
 
-    mensagem += 
-`🔢 Quantidade: ${item.quantidade}
-💰 Subtotal: R$ ${subtotal.toFixed(2)}
+/* =============================
+   ENTREGA + TOTAIS
+============================= */
+const frete = fretePorBairro[bairro] || 0;
+const totalComFrete = total + frete;
+
+mensagem +=
+`📍 *DADOS PARA ENTREGA*
+
+👤 Cliente: ${nome}
+📍 Bairro: ${bairro}
+🏠 Endereço: ${rua}, Nº ${numero}
+📞 WhatsApp: ${whatsapp}
+
 ────────────────────
+💵 *SUB TOTAL:* R$ ${total.toFixed(2)}
+🚚 *FRETE:* R$ ${frete.toFixed(2)}
+💰 *TOTAL DO PEDIDO:* R$ ${totalComFrete.toFixed(2)}
+
+✅ Pedido enviado pelo site.
 `;
-  });
-
-  const frete = fretePorBairro[bairro] || 0;
-  const totalComFrete = total + frete;
-
-  mensagem += 
-`💵 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2)}
-🚚 *Frete (${bairro || 'não informado'}):* R$ ${frete.toFixed(2)}
-💰 *TOTAL + FRETE:* R$ ${totalComFrete.toFixed(2)}
-
-✅ Pedido enviado pelo site.`;
 
   const numeroLoja = '5547997465602';
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`;
