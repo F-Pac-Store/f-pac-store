@@ -121,43 +121,6 @@
       color: var(--primary);
     }
 
-/* =============================
-   PADRÃO FORCE / MARK – CATÁLOGO
-============================= */
-
-.card-titulo {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 6px;
-}
-
-.card-preco {
-  display: block;
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #16a34a; /* verde elegante */
-  margin-bottom: 12px;
-}
-
-.card-btn {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--accent);
-  color: #000;
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.card-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
-    
     /* MOBILE */
     @media (max-width: 600px) {
       .catalogo-header h1 {
@@ -242,18 +205,12 @@
 
   <div class="catalogo-grid">
     <div class="card-produto">
-  <img src="imagens/estampas/e1.jpeg" alt="Tropa Urbana">
+      <img src="imagens/estampas/e1.jpeg" alt="Tropa Urbana">
+      <div class="card-info">
+        <span>Tropa Urbana – Com Fundo</span>
+      </div>
+    </div>
 
-  <div class="card-info">
-    <span class="card-titulo">Tropa Urbana – Com Fundo</span>
-    <span class="card-preco">R$ 89,90</span>
-
-    <a href="index.html#basica" class="card-btn">
-      Ver Estampa
-    </a>
-  </div>
-</div>
-    
     <!-- DUPLIQUE OS CARDS AQUI -->
   </div>
 
