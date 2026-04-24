@@ -92,6 +92,11 @@ body {
   margin-bottom: 16px;
 }
 
+  /* Quando não houver imagem no carrinho */
+.item {
+  grid-template-columns: 1fr;
+}
+
 .item-img {
   width: 90px;
   height: 110px;
@@ -208,6 +213,27 @@ body {
   font-size: 0.9rem;
   color: #374151;
   margin-top: 6px;
+}
+
+  /* Produto (nome longo - layout em bloco) */
+.item-produto {
+  margin-top: 6px;
+}
+
+.item-produto strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.item-produto span {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.3;
 }
 
 /* Produto (nome) */
@@ -428,7 +454,7 @@ function renderCarrinho() {
         Nº do Pedido: ${item.pedido?.data || ''} - ${item.pedido?.codigo || ''}
       </div>
 
-      <div class="item-linha item-destaque">
+      <div class="item-produto">
   <strong>Produto:</strong>
   <span>${item.nome}</span>
 </div>
@@ -452,7 +478,7 @@ function renderCarrinho() {
   // ✅ FORCE e MARK (modelo pronto)
   else {
   detalhes = `
-    <div class="item-linha item-destaque">
+    <div class="item-produto">
   <strong>Produto:</strong>
   <span>${item.nome}</span>
 </div>
@@ -485,9 +511,8 @@ function renderCarrinho() {
   </div>
 </div>
 
-      <div class="item-linha item-preco">
-  <strong>Preço:</strong>
-  <span>R$ ${subtotal.toFixed(2)}</span>
+      <div class="item-preco">
+  R$ ${subtotal.toFixed(2)}
 </div>
 
       <button class="btn-remover" onclick="removerItem('${item.id}')">
