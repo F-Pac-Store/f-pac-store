@@ -152,6 +152,55 @@
     grid-template-columns: 1fr;
   }
 }
+
+    /* =============================
+   MODAL PREVIEW DA ESTAMPA
+============================= */
+
+.modal-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-preview.ativo {
+  display: flex;
+}
+
+.modal-conteudo {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modal-conteudo img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #ef4444;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
     
   </style>
 </head>
@@ -206,7 +255,13 @@
 
   <div class="catalogo-grid">
     <div class="card-produto">
-      <img src="imagens/estampas/e1.jpeg" alt="Tropa Urbana">
+      <img
+  src="imagens/estampas/e1.jpeg" 
+  alt="Tropa Urbana" 
+  class="img-preview"
+  onclick="abrirPreview(this.src)"
+>
+
       <div class="card-info">
         <span>Tropa Urbana – Com Fundo</span>
       </div>
@@ -283,6 +338,36 @@ function atualizarContadorCarrinho() {
 }
 
 document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+</script>
+
+  <!-- MODAL DE PREVIEW DA ESTAMPA -->
+<div id="modalPreview" class="modal-preview">
+  <div class="modal-conteudo">
+    <button class="modal-fechar" onclick="fecharPreview()">×</button>
+    <img id="modalImagem" src="" alt="Preview da Estampa">
+  </div>
+</div>
+
+  <script>
+function abrirPreview(src) {
+  const modal = document.getElementById('modalPreview');
+  const img = document.getElementById('modalImagem');
+
+  img.src = src;
+  modal.classList.add('ativo');
+}
+
+function fecharPreview() {
+  const modal = document.getElementById('modalPreview');
+  modal.classList.remove('ativo');
+}
+
+/* Fecha ao clicar fora da imagem */
+document.getElementById('modalPreview').addEventListener('click', (e) => {
+  if (e.target.id === 'modalPreview') {
+    fecharPreview();
+  }
+});
 </script>
   
 </body>
