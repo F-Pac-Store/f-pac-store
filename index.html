@@ -959,11 +959,47 @@
       overflow: visible;
       z-index: 1;
     }
+
+        /* =====================================================
+   🔝 SOLUÇÃO DEFINITIVA DE Z-INDEX (FORCE / MARK > PRIME)
+===================================================== */
+
+/* PRIME SEMPRE MAIS ABAIXO */
+section#prime {
+  position: relative;
+  z-index: 0;
+}
+
+/* FORCE / MARK SEMPRE ACIMA DO PRIME */
+section#basica,
+section#mark {
+  position: relative;
+  z-index: 50;
+}
+
+/* CARD ABERTO SEMPRE NO TOPO ABSOLUTO */
+section#basica .basica-card.aberto,
+section#mark .basica-card.aberto {
+  z-index: 999;
+}
     
     /* quando um card está aberto, rebaixa os outros */
 section#basica .basica-card:not(.aberto),
 section#mark .basica-card:not(.aberto) {
   z-index: 1;
+}
+
+        /* 🔽 REBAIXA PRIME QUANDO OUTRO CARD ESTIVER ABERTO */
+section#prime {
+  position: relative;
+  z-index: 0;
+}
+
+/* 🔼 GARANTE FORCE / MARK SEMPRE ACIMA DE PRIME */
+section#basica,
+section#mark {
+  position: relative;
+  z-index: 50;
 }
     
     /* painel flutuante */
