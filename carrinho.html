@@ -240,6 +240,43 @@ body {
   border-radius: 8px;
   font-weight: 800;
 }
+
+  /* =============================
+   CONTROLE DE QUANTIDADE
+============================= */
+
+.qtd-linha {
+  align-items: center;
+}
+
+.qtd-controle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qtd-controle button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: #e5e7eb;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.qtd-controle button:hover {
+  background: #d1d5db;
+}
+
+.qtd-valor {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
   
   </style>
 </head>
@@ -446,8 +483,26 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCarrinho();
 });
 </script>
+  
 
 <script>
+function alterarQuantidade(id, delta) {
+  const carrinho = getCarrinho();
+  const item = carrinho.find(p => p.id === id);
+
+  if (!item) return;
+
+  item.quantidade += delta;
+
+  if (item.quantidade < 1) {
+    item.quantidade = 1;
+  }
+
+  salvarCarrinho(carrinho);
+  atualizarContadorCarrinho();
+  renderCarrinho();
+}
+
 function removerItem(id) {
   const carrinho = getCarrinho().filter(item => item.id !== id);
   salvarCarrinho(carrinho);
