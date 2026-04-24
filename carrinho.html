@@ -376,26 +376,26 @@ function renderCarrinho() {
 }
 
   lista.innerHTML += `
-    <div class="item">
-      <div class="item-info">
+  <div class="item">
+    <div class="item-info">
 
-        ${detalhes}
+      ${detalhes}
 
-        <div class="item-linha">
-          <strong>Quantidade:</strong> ${item.quantidade}
-        </div>
-
-        <div class="subtotal">
-          R$ ${subtotal.toFixed(2)}
-        </div>
-
-        <button class="btn-remover" onclick="removerItem('${item.id}')">
-          Remover
-        </button>
-
+      <div class="item-linha">
+        <strong>Quantidade:</strong> ${item.quantidade}
       </div>
+
+      <div class="subtotal">
+        R$ ${subtotal.toFixed(2)}
+      </div>
+
+      <button class="btn-remover" onclick="removerItem('${item.id}')">
+        Remover
+      </button>
+
     </div>
-  `;
+  </div>
+`;
 });
 
   totalEl.innerHTML = 'Total: <strong>R$ ' + total.toFixed(2) + '</strong>';
