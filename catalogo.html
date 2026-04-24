@@ -76,9 +76,9 @@
 
     .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* ✅ exatamente 5 por linha */
-  gap: 24px;
-  padding-bottom: 80px;
+  grid-template-columns: repeat(4, 1fr); /* ✅ 4 cards grandes por linha */
+  gap: 28px;                             /* ✅ mais respiro */
+  padding-bottom: 120px;                /* ✅ evita “corte” no final */
 }
 
     .card-produto {
@@ -89,10 +89,10 @@
   text-decoration: none;
   color: inherit;
 
-  max-width: 260px;
-  height: 100%;              /* ✅ ocupa toda a célula do grid */
-  display: flex;             /* ✅ controla o conteúdo interno */
-  flex-direction: column;    /* ✅ imagem em cima, texto embaixo */
+  max-width: 300px;      /* ✅ card realmente grande */
+  height: 100%;          /* ✅ nunca corta */
+  display: flex;
+  flex-direction: column;
 
   margin: 0 auto;
 }
@@ -105,16 +105,16 @@
     /* IMAGEM */
     .card-produto img {
   width: 100%;
-  height: 260px;
+  height: 280px;          /* ✅ proporcional ao card maior */
 
   object-fit: contain;
 
   display: block;
-  margin: 0 auto;            /* ✅ centraliza horizontalmente */
+  margin: 0 auto;
 
   background: #f8fafc;
-  padding: 10px;             /* ✅ padding equilibrado */
-  box-sizing: border-box;    /* ✅ evita “comer” imagem */
+  padding: 12px;
+  box-sizing: border-box;
 }
 
     /* INFO */
@@ -145,14 +145,13 @@
 /* Tablet */
 @media (max-width: 1200px) {
   .catalogo-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .catalogo-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
