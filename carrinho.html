@@ -22,56 +22,6 @@
 
   <!-- CSS DO CARRINHO -->
 
-/* =============================
-   MELHORIA DE LEITURA DO ITEM
-============================= */
-
-/* Nome do produto */
-.item-info > strong {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 8px;
-}
-
-/* Linhas de informação */
-.item-linha {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-
-  font-size: 0.9rem;
-  color: #374151; /* cinza escuro */
-  margin-top: 4px;
-}
-
-/* Rótulo (Cor, Tamanho, Quantidade) */
-.item-linha strong {
-  color: #111827;
-  font-weight: 600;
-  min-width: 130px;
-}
-
-/* Valor */
-.item-linha span,
-.item-linha:not(:has(strong)) {
-  color: #374151;
-}
-
-/* Preço */
-.subtotal {
-  margin-top: 12px;
-  background: #fef3c7;
-  color: #92400e;
-  font-size: 1rem;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 800;
-}
-  
-  <style>
-
 :root {
   --primary:#003366;
   --accent:#FFC107;
@@ -257,6 +207,53 @@ body {
     text-align: center;
   }
 }
+
+/* =============================
+   MELHORIA DE LEITURA DO ITEM
+============================= */
+
+/* Nome do produto */
+.item-info > strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+/* Linhas de informação (layout vertical limpo) */
+.item-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-top: 6px;
+}
+
+/* Rótulo */
+.item-linha strong {
+  color: #111827;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Valor */
+.item-linha span {
+  color: #374151;
+}
+
+/* Preço destacado */
+.subtotal {
+  margin-top: 12px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+}
+  
   </style>
 </head>
 
