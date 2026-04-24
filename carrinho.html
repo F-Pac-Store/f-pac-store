@@ -92,8 +92,13 @@ body {
   margin-bottom: 16px;
 }
 
-  /* Quando não houver imagem no carrinho */
-.item {
+  /* Item COM imagem (FORCE / MARK) */
+.item.com-imagem {
+  grid-template-columns: 90px 1fr;
+}
+
+/* Item SEM imagem (PRIME) */
+.item.sem-imagem {
   grid-template-columns: 1fr;
 }
 
