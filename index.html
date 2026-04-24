@@ -1909,23 +1909,18 @@ function adicionarProdutoBase(botao, modelo) {
   const imagem = card.querySelector('img')?.getAttribute('src');
 
   adicionarItem({
-    id: `${modelo}-${Date.now()}`,
-    modelo: modelo,
-    nome: `Camisa ${modelo}`,
+  id: `${modelo}-${Date.now()}`,
+  modelo: modelo,
+  nome: `Camisa ${modelo}`,
 
-    preco: preco,
-    quantidade: 1,
+  preco: preco,
+  quantidade: 1,
 
-    // 🔴 AINDA NÃO DEFINIDOS
-    cor: null,
-    tamanho: null,
+  cor: '',
+  tamanho: '',
 
-    imagem: imagem
-  });
-
-  window.location.href = 'carrinho.html';
-}
-</script>
+  imagem: imagem
+});
 
 </body>
 
