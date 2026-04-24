@@ -903,16 +903,24 @@
     }
     
     .estampa-destaque {
-      background: #f9f9f9;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-      transition: transform 0.25s ease;
-    }
+  background: #f9f9f9;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease;
+
+  border: 2px solid transparent;
+background:
+  linear-gradient(#f9f9f9, #f9f9f9) padding-box,
+  linear-gradient(135deg, #cfae70, #f5d98f, #b89545) border-box;
+}
     
     .estampa-destaque:hover {
-      transform: translateY(-4px);
-    }
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 3px rgba(212,175,55,0.35),
+    0 16px 30px rgba(0,0,0,0.25);
+}
     
     .estampa-destaque img {
       width: 100%;
