@@ -1846,24 +1846,21 @@ function adicionarAoCarrinho(botao) {
   // ✅ CARRINHO GLOBAL
   const pedido = gerarPedido();
 
+const imagem = card.querySelector('img')?.getAttribute('src');
+
 adicionarItem({
   id: `${tipo}-${Date.now()}`,
-
-  // ✅ pedido
   pedido: pedido,
-
-  // ✅ identificação
   modelo: tipo,
   nome: `Camisa ${tipo} - ${card.querySelector('img')?.alt || ''}`,
 
-  // ✅ padrão do carrinho
   preco: preco,
   quantidade: quantidade,
 
-  // ✅ dados para exibição
   cor: cor,
   tamanho: tamanho,
 
+  imagem: imagem // ✅ ESSENCIAL
 });
 
   alert('✅ Produto adicionado ao carrinho!');
