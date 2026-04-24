@@ -960,11 +960,11 @@
       z-index: 1;
     }
     
-    /* quando o painel abrir, esse card fica acima dos outros */
-    section#basica .basica-card.aberto,
-    section#mark .basica-card.aberto {
-      z-index: 30;
-    }
+    /* quando um card está aberto, rebaixa os outros */
+section#basica .basica-card:not(.aberto),
+section#mark .basica-card:not(.aberto) {
+  z-index: 1;
+}
     
     /* painel flutuante */
     section#basica .painel-flutuante,
@@ -1706,6 +1706,16 @@
             el.classList.remove('oculta');
             el.classList.add('visivel');
           }
+
+            function fecharOutrosCards() {
+  document
+    .querySelectorAll('#basica .basica-card.aberto, #mark .basica-card.aberto')
+    .forEach(outro => {
+      if (outro !== card) {
+        outro.classList.remove('aberto');
+      }
+    });
+}
         
           function atualizarPainel() {
             const aberto =
@@ -1722,11 +1732,14 @@
           atualizarPainel();
         
           cor?.addEventListener('change', () => {
-            if (cor.value) {
-              mostrar(etapaTamanho);
-            } else {
-              esconder(etapaTamanho);
-            }
+  fecharOutrosCards();        // ✅ fecha os outros cards
+  card.classList.add('aberto'); // ✅ garante este na frente
+
+  if (cor.value) {
+    mostrar(etapaTamanho);
+  } else {
+    esconder(etapaTamanho);
+  }
         
             esconder(etapaQtd);
             esconder(finalizar);
@@ -1819,12 +1832,25 @@ adicionarItem({
 
   alert('✅ Produto adicionado ao carrinho!');
 
-  // reset visual
-  card.querySelector('.cor').value = '';
-  card.querySelector('.tamanho').value = '';
-  card.querySelector('.quantidade').value = 0;
+  // reset dos campos
+card.querySelector('.cor').value = '';
+card.querySelector('.tamanho').value = '';
+card.querySelector('.quantidade').value = 0;
 
+// fecha todas as etapas internas
+card.querySelectorAll('.etapa').forEach(etapa => {
+  etapa.classList.remove('visivel');
+  etapa.classList.add('oculta');
+});
+
+// remove destaque / z-index
+card.classList.remove('aberto');
+
+// força refresh visual (corrige bug de z-index preso)
+requestAnimationFrame(() => {
   card.classList.remove('aberto');
+});
+
 }
 </script>
 
