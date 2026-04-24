@@ -1257,6 +1257,32 @@ section#mark {
       margin-top: 0;
     }
     }
+
+/* =============================
+   PADRÃO DOURADO – TODOS OS CARDS
+============================= */
+
+.card-gold {
+  border: 2px solid transparent;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, #cfae70, #f5d98f, #b89545) border-box;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* EFEITO HOVER PADRÃO */
+.card-gold:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 0 3px rgba(212,175,55,0.35),
+    0 18px 40px rgba(0,0,0,0.30);
+}
+        
     </style>
 </head>
 
@@ -1336,22 +1362,22 @@ section#mark {
 
             <div class="catalogo-destaque-grid">
 
-                <div class="estampa-destaque">
+               <div class="estampa-destaque card-gold">
                     <img src="imagens estampa/f-pac-color.png">
                     <span>F PAC</span>
                 </div>
 
-                <div class="estampa-destaque">
+               <div class="estampa-destaque card-gold">
                     <img src="imagens estampa/f-pac-camaleao.png">
                     <span>F PAC Camaleão</span>
                 </div>
 
-                <div class="estampa-destaque">
+               <div class="estampa-destaque card-gold">
                     <img src="imagens estampa/FP-preto.png">
                     <span>FP</span>
                 </div>
 
-                <div class="estampa-destaque">
+               <div class="estampa-destaque card-gold">
                     <img src="imagens estampa/FP-agua.png">
                     <span>FP Água</span>
                 </div>
@@ -1381,14 +1407,14 @@ section#mark {
 
             <div class="grid">
 
-                <div class="card">
+                <div class="card card-gold">
                     <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
                     <h3>Force</h3>
                     <p>Camisas Prontas Com Texto</p>
                     <a href="#basica" class="btn">Escolher Camisa</a>
                 </div>
 
-                <div class="card">
+                <div class="card card-gold">
                     <img src="imagens/logo-no-peito.jpg" alt="Camiseta Básica">
                     <h3>Mark</h3>
                     <p>Camisas Prontas Com Desenhos</p>
@@ -1424,7 +1450,7 @@ section#mark {
             <div class="basica-grid">
 
                 <!-- CAMISA 1 -->
-                <div class="basica-card">
+               <div class="basica-card card-gold">
 
                     <img src="imagens/logo-no-peito.jpg" alt="Camiseta Force">
                     <p class="preco">R$ 89,90</p>
@@ -1465,7 +1491,7 @@ section#mark {
                 </div>
 
                 <!-- CAMISA 2 -->
-                <div class="basica-card">
+               <div class="basica-card card-gold">
 
                     <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
                     <p class="preco">R$ 89,90</p>
@@ -1527,7 +1553,7 @@ section#mark {
             <div class="basica-grid">
 
                 <!-- CAMISA 1 -->
-                <div class="basica-card">
+               <div class="basica-card card-gold">
 
                     <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
                     <p class="preco">R$ 89,90</p>
@@ -1569,7 +1595,7 @@ section#mark {
                 </div>
 
                 <!-- CAMISA 2 -->
-                <div class="basica-card">
+               <div class="basica-card card-gold">
 
                     <img src="imagens/logo-nas-costas.png" alt="Camiseta Force">
                     <p class="preco">R$ 89,90</p>
@@ -1629,7 +1655,7 @@ section#mark {
 
     <div class="basica-grid">
 
-      <div class="basica-card">
+     <div class="basica-card card-gold">
 
         <img src="imagens/estampas/e3.jpeg" alt="Camisa PRIME">
 
