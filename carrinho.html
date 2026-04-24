@@ -452,7 +452,10 @@ function renderCarrinho() {
   // ✅ FORCE e MARK (modelo pronto)
   else {
   detalhes = `
-    <div class="item-nome">${item.nome}</div>
+    <div class="item-linha item-destaque">
+  <strong>Produto:</strong>
+  <span>${item.nome}</span>
+</div>
 
     <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
     <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
