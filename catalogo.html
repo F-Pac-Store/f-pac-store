@@ -189,20 +189,27 @@
 </main>
 
 <script>
-  const toggle = document.getElementById('toggle');
-  const nav = document.getElementById('nav');
-  if (toggle && nav) toggle.onclick = () => nav.classList.toggle('active');
+const toggle = document.getElementById('toggle');
+const nav = document.getElementById('nav');
+if (toggle && nav) toggle.onclick = () => nav.classList.toggle('active');
 
-  function atualizarQtdCarrinho() {
-    const c = JSON.parse(localStorage.getItem('carrinho'));
-    const el = document.getElementById('carrinhoQtd');
-    if (!c || !el) return;
-    el.textContent = c.itens.reduce((s,i)=>s+i.qtd,0);
-  }
+/* =============================
+   CONTADOR DO CARRINHO (PADRÃO)
+============================= */
+function atualizarQtdCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
 
-  document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+  const el = document.getElementById('carrinhoQtd');
+  if (!el) return;
+
+  el.textContent = total;
+  el.style.display = total > 0 ? 'inline-block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
 </script>
-
+  
 <script>
 /* =============================
    CARRINHO GLOBAL – F PAC STORE
