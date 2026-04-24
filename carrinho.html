@@ -391,6 +391,16 @@ function atualizarContadorCarrinho() {
   });
 }
 
+/* ✅ COLE EXATAMENTE AQUI */
+function atualizarCampo(id, campo, valor) {
+  const carrinho = getCarrinho();
+  const item = carrinho.find(p => p.id === id);
+  if (!item) return;
+
+  item[campo] = valor;
+  salvarCarrinho(carrinho);
+}
+
 </script>
   
   <script>
@@ -427,8 +437,25 @@ function renderCarrinho() {
   <span>${item.nome}</span>
 </div>
 
-      <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
-      <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+      <div class="item-linha">
+  <strong>Cor da camisa:</strong>
+  <select onchange="atualizarCampo('${item.id}', 'cor', this.value)">
+    <option value="">Selecione</option>
+    <option value="Preta" ${item.cor==='Preta'?'selected':''}>Preta</option>
+    <option value="Branca" ${item.cor==='Branca'?'selected':''}>Branca</option>
+    <option value="Off White" ${item.cor==='Off White'?'selected':''}>Off White</option>
+  </select>
+</div>
+
+<div class="item-linha">
+  <strong>Tamanho:</strong>
+  <select onchange="atualizarCampo('${item.id}', 'tamanho', this.value)">
+    <option value="">Selecione</option>
+    <option value="P" ${item.tamanho==='P'?'selected':''}>P</option>
+    <option value="M" ${item.tamanho==='M'?'selected':''}>M</option>
+    <option value="G" ${item.tamanho==='G'?'selected':''}>G</option>
+  </select>
+</div>
 
       <div class="item-linha"><strong>Estampa:</strong> ${item.estampa}</div>
       <div class="item-linha"><strong>Local da estampa:</strong> ${item.localEstampa}</div>
@@ -451,8 +478,25 @@ function renderCarrinho() {
   <span>${item.nome}</span>
 </div>
 
-    <div class="item-linha"><strong>Cor da camisa:</strong> ${item.cor}</div>
-    <div class="item-linha"><strong>Tamanho da camisa:</strong> ${item.tamanho}</div>
+    <div class="item-linha">
+  <strong>Cor da camisa:</strong>
+  <select onchange="atualizarCampo('${item.id}', 'cor', this.value)">
+    <option value="">Selecione</option>
+    <option value="Preta" ${item.cor==='Preta'?'selected':''}>Preta</option>
+    <option value="Branca" ${item.cor==='Branca'?'selected':''}>Branca</option>
+    <option value="Off White" ${item.cor==='Off White'?'selected':''}>Off White</option>
+  </select>
+</div>
+
+<div class="item-linha">
+  <strong>Tamanho:</strong>
+  <select onchange="atualizarCampo('${item.id}', 'tamanho', this.value)">
+    <option value="">Selecione</option>
+    <option value="P" ${item.tamanho==='P'?'selected':''}>P</option>
+    <option value="M" ${item.tamanho==='M'?'selected':''}>M</option>
+    <option value="G" ${item.tamanho==='G'?'selected':''}>G</option>
+  </select>
+</div>
 
     ${item.observacoes ? `
       <div class="item-linha">
