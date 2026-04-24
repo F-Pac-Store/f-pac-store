@@ -415,9 +415,14 @@ function renderCarrinho() {
 
       ${detalhes}
 
-      <div class="item-linha">
+      <div class="item-linha qtd-linha">
   <strong>Quantidade:</strong>
-  <span>${item.quantidade}</span>
+
+  <div class="qtd-controle">
+    <button onclick="alterarQuantidade('${item.id}', -1)">−</button>
+    <span class="qtd-valor">${item.quantidade}</span>
+    <button onclick="alterarQuantidade('${item.id}', 1)">+</button>
+  </div>
 </div>
 
       <div class="subtotal">
