@@ -1,3 +1,19 @@
+// =============================
+// STORAGE
+// =============================
+
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+}
+
+function salvarCarrinho(carrinho) {
+  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+}
+
+// =============================
+// ADICIONAR ITEM (COM VARIAÇÃO)
+// =============================
+
 function adicionarItem(item) {
   const carrinho = getCarrinho();
 
@@ -19,12 +35,38 @@ function adicionarItem(item) {
   window.location.href = "carrinho.html";
 }
 
-function removerItem(id) {
-  const carrinho = getCarrinho().filter(item => item.id !== id);
+// =============================
+// REMOVER ITEM
+// =============================
+
+function removerItem(id, cor, tamanho) {
+  const carrinho = getCarrinho().filter(item =>
+    !(item.id === id && item.cor === cor && item.tamanho === tamanho)
+  );
+
   salvarCarrinho(carrinho);
   renderCarrinho();
   atualizarContadorCarrinho();
 }
+
+// =============================
+// CONTADOR
+// =============================
+
+function atualizarContadorCarrinho() {
+  const carrinho = getCarrinho();
+  const total = carrinho.reduce((s, i) => s + i.quantidade, 0);
+
+  const el = document.getElementById('carrinhoQtd');
+  if (el) {
+    el.textContent = total;
+    el.style.display = total > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// =============================
+// RENDER CARRINHO
+// =============================
 
 function renderCarrinho() {
   const lista = document.getElementById('lista');
@@ -49,15 +91,29 @@ function renderCarrinho() {
         Qtd: ${item.quantidade}<br>
         ${ (preco * item.quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }
         <br>
-        <button onclick="removerItem('${item.id}')">Remover</button>
+        <button onclick="removerItem('${item.id}', '${item.cor}', '${item.tamanho}')">
+          Remover
+        </button>
         <hr>
       </div>
     `;
   });
 
   if (totalEl) {
-    totalEl.innerText = "Total: " + total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    totalEl.innerText = "Total: " + total.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
   }
 
   atualizarContadorCarrinho();
 }
+
+// =============================
+// INIT
+// =============================
+
+document.addEventListener('DOMContentLoaded', () => {
+  atualizarContadorCarrinho();
+  renderCarrinho();
+});
