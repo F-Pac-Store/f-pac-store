@@ -34,8 +34,9 @@
           margin: 0;
           font-family: 'Inter', sans-serif;
           background: var(--bg);
-          padding-top: 120px; /* header fixo */
-        }
+          padding-top: 120px;
+  padding-bottom: 80px;
+}
         
         .carrinho-wrap {
           max-width: 980px;
@@ -150,11 +151,15 @@
         }
         
         .total {
-          font-size: 1.8rem;
-          font-weight: 800;
-          color: var(--primary);
-          margin-bottom: 24px;
-        }
+  font-size: 2rem;
+  font-weight: 900;
+  color: #000;
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
         
         .acoes {
           display:flex;
@@ -289,6 +294,10 @@
           cursor: pointer;
           transition: background 0.2s ease;
         }
+
+        .qtd-controle button:active {
+  transform: scale(0.9);
+}
         
         .qtd-controle button:hover {
           background: #d1d5db;
@@ -325,6 +334,29 @@
           border: 1px solid #d1d5db;
           font-size: 0.95rem;
         }
+
+.checkout-fixo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+.checkout-fixo button {
+  width: 100%;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 10px;
+}
+        
     </style>
 </head>
 
@@ -383,6 +415,10 @@
                     <button class="btn-finalizar" onclick="irParaCheckout()">
                         Finalizar Pedido
                     </button>
+
+                    <p style="font-size:12px; text-align:center; margin-top:8px;">
+🔒 Compra 100% segura
+</p>
 
                     <!-- LIMPAR CARRINHO -->
                     <button class="btn-limpar" onclick="abrirModalLimpar()">
@@ -574,7 +610,7 @@
         </div>
         
               <button class="btn-remover" onclick="removerItem('${item.id}')">
-                Remover
+                🗑 Remover item
               </button>
         
             </div>
@@ -629,8 +665,6 @@ function irParaCheckout() {
   window.location.href = 'checkout.html';
 }
 </script>
-      
-    </script>
 
     <script>
         function alterarQuantidade(id, delta) {
@@ -722,6 +756,12 @@ function irParaCheckout() {
             </div>
         </div>
     </div>
+
+    <div class="checkout-fixo">
+  <button onclick="irParaCheckout()">
+    FINALIZAR COMPRA
+  </button>
+</div>
 
 </body>
 
