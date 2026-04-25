@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Carrinho</title>
-<script src="js/carrinho.js"></script>
+  <meta charset="UTF-8">
+  <title>Carrinho</title>
 </head>
 
 <body>
 
-<h1>Seu Carrinho</h1>
+  <h1>Seu Carrinho</h1>
 
-<div id="lista"></div>
-<h2 id="total"></h2>
+  <div id="lista"></div>
+  <h2 id="total"></h2>
 
-<script>
-const carrinho = getCarrinho();
-const lista = document.getElementById('lista');
-let total = 0;
+  <button onclick="finalizarWhatsApp()">
+    Finalizar no WhatsApp
+  </button>
 
-carrinho.forEach((item, i) => {
-
-  total += item.preco * item.quantidade;
-
-  lista.innerHTML += `
-    <div>
-      <p><strong>${item.nome}</strong></p>
-      <p>Cor: ${item.cor || '-'}</p>
-      <p>Tamanho: ${item.tamanho || '-'}</p>
-      <p>Qtd: ${item.quantidade}</p>
-      <p>R$ ${item.preco}</p>
-      <button onclick="removerItem(${i})">Remover</button>
-      <hr>
-    </div>
-  `;
-});
-
-document.getElementById('total').innerText = "Total: R$ " + total.toFixed(2);
-</script>
+  <!-- JS carregado SOMENTE aqui -->
+  <script src="js/carrinho.js"></script>
 
 </body>
 </html>
