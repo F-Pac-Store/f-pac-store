@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Camisa Force | F Pac Store</title>
+
+<link rel="stylesheet" href="style.css"> <!-- se quiser separar depois -->
+</head>
+
+<body>
+
+<header>
+  <h1>F PAC STORE</h1>
+</header>
+
+<section class="produto">
+
+  <!-- IMAGEM -->
+  <div class="produto-img">
+    <img src="imagens/logo-no-peito.jpg">
+  </div>
+
+  <!-- INFO -->
+  <div class="produto-info">
+
+    <h2>Camisa Force</h2>
+    <p class="preco">R$ 89,90</p>
+
+    <p class="descricao">
+      Camiseta premium, confortável e estilosa.
+    </p>
+
+    <!-- COR -->
+    <label>Cor</label>
+    <div class="opcoes">
+      <button onclick="selecionar(this, 'cor')">Preta</button>
+      <button onclick="selecionar(this, 'cor')">Branca</button>
+    </div>
+
+    <!-- TAMANHO -->
+    <label>Tamanho</label>
+    <div class="opcoes">
+      <button onclick="selecionar(this, 'tamanho')">P</button>
+      <button onclick="selecionar(this, 'tamanho')">M</button>
+      <button onclick="selecionar(this, 'tamanho')">G</button>
+      <button onclick="selecionar(this, 'tamanho')">GG</button>
+    </div>
+
+    <!-- BOTÃO -->
+    <button onclick="adicionarProduto()">Adicionar ao Carrinho</button>
+
+  </div>
+
+</section>
+
+<script>
+let produto = {
+  cor: null,
+  tamanho: null
+};
+
+function selecionar(botao, tipo) {
+  const grupo = botao.parentElement;
+
+  grupo.querySelectorAll('button').forEach(b => b.classList.remove('ativo'));
+  botao.classList.add('ativo');
+
+  produto[tipo] = botao.innerText;
+}
+
+function adicionarProduto() {
+  if (!produto.cor || !produto.tamanho) {
+    alert('Selecione cor e tamanho');
+    return;
+  }
+
+  const item = {
+    id: 'FORCE-' + Date.now(),
+    modelo: 'FORCE',
+    nome: 'Camisa Force',
+
+    preco: 89.90,
+    quantidade: 1,
+
+    cor: produto.cor,
+    tamanho: produto.tamanho,
+
+    imagem: "imagens/logo-no-peito.jpg"
+  };
+
+  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+  carrinho.push(item);
+  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+
+  alert('Produto adicionado ao carrinho!');
+}
+</script>
+
+</body>
+</html>
