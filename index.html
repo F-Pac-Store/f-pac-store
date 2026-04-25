@@ -1425,7 +1425,7 @@ section#mark {
                     <a href="produto-prime.html" class="btn btn-destaque">Criar Camisa PRIME</a>
                 </div>
 
-        </div>
+            </div>
     </section>
 
     <!-- ============================= -->
@@ -1613,134 +1613,134 @@ section#mark {
             © 2026 F Pac Store — Não é só roupa. É identidade.
         </footer>
 
-<script>
-/* =============================
-   MENU MOBILE
-============================= */
-const toggle = document.getElementById('toggle');
-const nav = document.getElementById('nav');
+        <script>
+            /* =============================
+               MENU MOBILE
+            ============================= */
+            const toggle = document.getElementById('toggle');
+            const nav = document.getElementById('nav');
+            
+            toggle.onclick = () => {
+              nav.classList.toggle('active');
+            };
+            
+            document.querySelectorAll('.nav a').forEach(link => {
+              link.addEventListener('click', () => {
+                nav.classList.remove('active');
+              });
+            });
+            
+            
+            /* =============================
+               CARRINHO GLOBAL
+            ============================= */
+            function getCarrinho() {
+              return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+            }
+            
+            function salvarCarrinho(carrinho) {
+              localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+            }
+            
+            function adicionarItem(item) {
+              const carrinho = getCarrinho();
+              const existente = carrinho.find(p => p.id === item.id);
+            
+              if (existente) {
+                existente.quantidade += item.quantidade;
+              } else {
+                carrinho.push(item);
+              }
+            
+              salvarCarrinho(carrinho);
+              atualizarContadorCarrinho();
+            
+              // redireciona
+              window.location.href = "carrinho.html";
+            }
+            
+            function removerItem(id) {
+              const carrinho = getCarrinho().filter(item => item.id !== id);
+              salvarCarrinho(carrinho);
+              atualizarContadorCarrinho();
+            }
+            
+            function atualizarContadorCarrinho() {
+              const carrinho = getCarrinho();
+              const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+            
+              document.querySelectorAll('#carrinhoQtd').forEach(el => {
+                el.textContent = total;
+                el.style.display = total > 0 ? 'inline-block' : 'none';
+              });
+            }
+            
+            document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+            
+            
+            /* =============================
+               PRIME – PEDIDO
+            ============================= */
+            function gerarPedidoPrime() {
+              const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
+              const codigo = Math.floor(1000 + Math.random() * 9000);
+              return { data, codigo };
+            }
+            
+            
+            /* =============================
+               PRIME – ADICIONAR AO CARRINHO
+            ============================= */
+            function adicionarPrimeAoCarrinho(botao) {
+            
+              const card = botao.closest('.basica-card');
+              if (!card) return;
+            
+              const cor = card.querySelector('.prime-cor')?.value;
+              const tamanho = card.querySelector('.prime-tamanho')?.value;
+              const estampa = card.querySelector('.prime-estampa')?.value;
+              const localEstampa = card.querySelector('.prime-local')?.value;
+              const tamanhoEstampa = card.querySelector('.prime-tamanho-estampa')?.value;
+              const quantidadeCamisas = Number(card.querySelector('.prime-qtd')?.value);
+              const observacoes = card.querySelector('.prime-obs')?.value;
+            
+              if (!cor || !tamanho || !estampa || quantidadeCamisas <= 0) {
+                alert('Preencha todos os campos obrigatórios da Camisa PRIME.');
+                return;
+              }
+            
+              const pedido = gerarPedidoPrime();
+            
+              adicionarItem({
+                id: `PRIME-${Date.now()}`,
+                modelo: "PRIME",
+                nome: "Camisa PRIME – Personalizada",
+            
+                quantidade: quantidadeCamisas,
+                preco: parseFloat(109.90),
+            
+                cor,
+                tamanho,
+                estampa,
+                localEstampa,
+                tamanhoEstampa,
+                observacoes,
+            
+                pedidoData: pedido.data,
+                pedidoCodigo: pedido.codigo,
+            
+                imagem: "imagens/estampas/e3.jpeg"
+              });
+            
+              // reset
+              card.querySelector('.prime-cor').value = '';
+              card.querySelector('.prime-tamanho').value = '';
+              card.querySelector('.prime-estampa').value = '';
+              card.querySelector('.prime-qtd').value = 1;
+              card.querySelector('.prime-obs').value = '';
+            }
+        </script>
 
-toggle.onclick = () => {
-  nav.classList.toggle('active');
-};
-
-document.querySelectorAll('.nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('active');
-  });
-});
-
-
-/* =============================
-   CARRINHO GLOBAL
-============================= */
-function getCarrinho() {
-  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-}
-
-function salvarCarrinho(carrinho) {
-  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-}
-
-function adicionarItem(item) {
-  const carrinho = getCarrinho();
-  const existente = carrinho.find(p => p.id === item.id);
-
-  if (existente) {
-    existente.quantidade += item.quantidade;
-  } else {
-    carrinho.push(item);
-  }
-
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-
-  // redireciona
-  window.location.href = "carrinho.html";
-}
-
-function removerItem(id) {
-  const carrinho = getCarrinho().filter(item => item.id !== id);
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-}
-
-function atualizarContadorCarrinho() {
-  const carrinho = getCarrinho();
-  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-
-  document.querySelectorAll('#carrinhoQtd').forEach(el => {
-    el.textContent = total;
-    el.style.display = total > 0 ? 'inline-block' : 'none';
-  });
-}
-
-document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
-
-
-/* =============================
-   PRIME – PEDIDO
-============================= */
-function gerarPedidoPrime() {
-  const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
-  const codigo = Math.floor(1000 + Math.random() * 9000);
-  return { data, codigo };
-}
-
-
-/* =============================
-   PRIME – ADICIONAR AO CARRINHO
-============================= */
-function adicionarPrimeAoCarrinho(botao) {
-
-  const card = botao.closest('.basica-card');
-  if (!card) return;
-
-  const cor = card.querySelector('.prime-cor')?.value;
-  const tamanho = card.querySelector('.prime-tamanho')?.value;
-  const estampa = card.querySelector('.prime-estampa')?.value;
-  const localEstampa = card.querySelector('.prime-local')?.value;
-  const tamanhoEstampa = card.querySelector('.prime-tamanho-estampa')?.value;
-  const quantidadeCamisas = Number(card.querySelector('.prime-qtd')?.value);
-  const observacoes = card.querySelector('.prime-obs')?.value;
-
-  if (!cor || !tamanho || !estampa || quantidadeCamisas <= 0) {
-    alert('Preencha todos os campos obrigatórios da Camisa PRIME.');
-    return;
-  }
-
-  const pedido = gerarPedidoPrime();
-
-  adicionarItem({
-    id: `PRIME-${Date.now()}`,
-    modelo: "PRIME",
-    nome: "Camisa PRIME – Personalizada",
-
-    quantidade: quantidadeCamisas,
-    preco: parseFloat(109.90),
-
-    cor,
-    tamanho,
-    estampa,
-    localEstampa,
-    tamanhoEstampa,
-    observacoes,
-
-    pedidoData: pedido.data,
-    pedidoCodigo: pedido.codigo,
-
-    imagem: "imagens/estampas/e3.jpeg"
-  });
-
-  // reset
-  card.querySelector('.prime-cor').value = '';
-  card.querySelector('.prime-tamanho').value = '';
-  card.querySelector('.prime-estampa').value = '';
-  card.querySelector('.prime-qtd').value = 1;
-  card.querySelector('.prime-obs').value = '';
-}
-</script>
-        
 </body>
 
 </html>
