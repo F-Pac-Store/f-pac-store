@@ -3,77 +3,77 @@
 
 <label>Cor</label>
 <select id="cor">
-  <option value="">Selecione</option>
-  <option>Preta</option>
-  <option>Branca</option>
+    <option value="">Selecione</option>
+    <option>Preta</option>
+    <option>Branca</option>
 </select>
 
 <label>Tamanho</label>
 <select id="tamanho">
-  <option value="">Selecione</option>
-  <option>P</option>
-  <option>M</option>
-  <option>G</option>
+    <option value="">Selecione</option>
+    <option>P</option>
+    <option>M</option>
+    <option>G</option>
 </select>
 
 <label>Estampa</label>
 <select id="estampa">
-  <option value="">Selecione</option>
-  <option>FP</option>
-  <option>Camaleão</option>
+    <option value="">Selecione</option>
+    <option>FP</option>
+    <option>Camaleão</option>
 </select>
 
 <label>Local</label>
 <select id="local">
-  <option>Peito</option>
-  <option>Costas</option>
+    <option>Peito</option>
+    <option>Costas</option>
 </select>
 
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1" min="1">
 
 <button onclick="adicionarPrime()">
-  Adicionar ao Carrinho
+    Adicionar ao Carrinho
 </button>
 <script>
-function adicionarPrime() {
-
-  const cor = document.getElementById('cor').value;
-  const tamanho = document.getElementById('tamanho').value;
-  const estampa = document.getElementById('estampa').value;
-  const local = document.getElementById('local').value;
-  const qtd = Number(document.getElementById('qtd').value);
-
-  if (!cor || !tamanho || !estampa || qtd <= 0) {
-    alert('Preencha todos os campos');
-    return;
-  }
-
-  const item = {
-    id: 'PRIME-' + Date.now(),
-    modelo: 'PRIME',
-    nome: 'Camisa PRIME',
-
-    preco: 109.90,
-    quantidade: qtd,
-
-    cor: cor,
-    tamanho: tamanho,
-    estampa: estampa,
-    localEstampa: local,
-
-    imagem: "imagens/estampas/e3.jpeg"
-  };
-
-  adicionarItem(item);
-
-  // 🔥 REDIRECIONAMENTO
-  window.location.href = "carrinho.html";
-}
-
-function adicionarItem(item) {
-  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-  carrinho.push(item);
-  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-}
+    function adicionarPrime() {
+    
+      const cor = document.getElementById('cor').value;
+      const tamanho = document.getElementById('tamanho').value;
+      const estampa = document.getElementById('estampa').value;
+      const local = document.getElementById('local').value;
+      const qtd = Number(document.getElementById('qtd').value);
+    
+      if (!cor || !tamanho || !estampa || qtd <= 0) {
+        alert('Preencha todos os campos');
+        return;
+      }
+    
+      const item = {
+        id: 'PRIME-' + Date.now(),
+        modelo: 'PRIME',
+        nome: 'Camisa PRIME',
+    
+        preco: 109.90,
+        quantidade: qtd,
+    
+        cor: cor,
+        tamanho: tamanho,
+        estampa: estampa,
+        localEstampa: local,
+    
+        imagem: "imagens/estampas/e3.jpeg"
+      };
+    
+      adicionarItem(item);
+    
+      // 🔥 REDIRECIONAMENTO
+      window.location.href = "carrinho.html";
+    }
+    
+    function adicionarItem(item) {
+      const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+      carrinho.push(item);
+      localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+    }
 </script>
