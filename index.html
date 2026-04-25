@@ -1741,58 +1741,6 @@ function adicionarPrimeAoCarrinho(botao) {
 }
 </script>
         
-            /* =============================
-               CARRINHO GLOBAL – F PAC STORE
-            ============================= */
-            
-            function getCarrinho() {
-              return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-            }
-            
-            function salvarCarrinho(carrinho) {
-              localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-            }
-            
-            function adicionarItem(item) {
-  const carrinho = getCarrinho();
-  const existente = carrinho.find(p => p.id === item.id);
-
-  if (existente) {
-    existente.quantidade += item.quantidade;
-  } else {
-    carrinho.push(item);
-  }
-
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-
-  // 🔥 REDIRECIONA AUTOMATICAMENTE
-  window.location.href = "carrinho.html";
-}
-            
-              salvarCarrinho(carrinho);
-              atualizarContadorCarrinho();
-            }
-            
-            function removerItem(id) {
-              const carrinho = getCarrinho().filter(item => item.id !== id);
-              salvarCarrinho(carrinho);
-              atualizarContadorCarrinho();
-            }
-            
-            function atualizarContadorCarrinho() {
-              const carrinho = getCarrinho();
-              const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-            
-              document.querySelectorAll('#carrinhoQtd').forEach(el => {
-                el.textContent = total;
-                el.style.display = total > 0 ? 'inline-block' : 'none';
-              });
-            }
-            
-            document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
-        </script>
-
 </body>
 
 </html>
