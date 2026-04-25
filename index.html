@@ -1732,7 +1732,7 @@ section#mark {
               return { data, codigo };
             }
         </script>
-            
+
         <script>
             /* =============================
                PRIME – ADICIONAR AO CARRINHO
@@ -1743,59 +1743,70 @@ section#mark {
               const codigo = Math.floor(1000 + Math.random() * 9000);
               return { data, codigo };
             }
-            
-            function adicionarPrimeAoCarrinho(botao) {
-            
-              const card = botao.closest('.basica-card');
-              if (!card) return;
-            
-              const cor = card.querySelector('.prime-cor')?.value;
-              const tamanho = card.querySelector('.prime-tamanho')?.value;
-              const estampa = card.querySelector('.prime-estampa')?.value;
-              const localEstampa = card.querySelector('.prime-local')?.value;
-              const tamanhoEstampa = card.querySelector('.prime-tamanho-estampa')?.value;
-              const quantidadeCamisas = Number(card.querySelector('.prime-qtd')?.value);
-              const observacoes = card.querySelector('.prime-obs')?.value;
-            
-              if (!cor || !tamanho || !estampa || quantidadeCamisas <= 0) {
-                alert('Preencha todos os campos obrigatórios da Camisa PRIME.');
-                return;
-              }
-            
-              const pedido = gerarPedidoPrime();
-            
-              adicionarItem({
-              id: `PRIME-${Date.now()}`,
-              modelo: "PRIME",
-              nome: "Camisa PRIME – Personalizada",
-            
-              // ✅ CAMPOS PADRÃO DO CARRINHO (OBRIGATÓRIOS)
-              quantidade: quantidadeCamisas,
-              preco: 109.90,
-            
-              // ✅ CAMPOS ESPECÍFICOS DO PRIME
-              quantidadeCamisas: quantidadeCamisas,
-              precoUnitarioFinal: 109.90,
-            
-              cor: cor,
-              tamanho: tamanho,
-            
-              estampa: estampa,
-              quantidadeEstampas: 1,
-              localEstampa: localEstampa,
-              tamanhoEstampa: tamanhoEstampa,
-            
-              observacoes: observacoes,
-              imagem: "imagens/estampas/e3.jpeg"
-            });
-            
-              // reset do formulário PRIME
-              card.querySelector('.prime-cor').value = '';
-              card.querySelector('.prime-tamanho').value = '';
-              card.querySelector('.prime-estampa').value = '';
-              card.querySelector('.prime-qtd').value = 1;
-              card.querySelector('.prime-obs').value = '';
-            }
+                       
+              <script>
+/* =============================
+   PRIME – ADICIONAR AO CARRINHO
+============================= */
+
+function gerarPedidoPrime() {
+  const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
+  const codigo = Math.floor(1000 + Math.random() * 9000);
+  return { data, codigo };
+}
+
+function adicionarPrimeAoCarrinho(botao) {
+
+  const card = botao.closest('.basica-card');
+  if (!card) return;
+
+  const cor = card.querySelector('.prime-cor')?.value;
+  const tamanho = card.querySelector('.prime-tamanho')?.value;
+  const estampa = card.querySelector('.prime-estampa')?.value;
+  const localEstampa = card.querySelector('.prime-local')?.value;
+  const tamanhoEstampa = card.querySelector('.prime-tamanho-estampa')?.value;
+  const quantidadeCamisas = Number(card.querySelector('.prime-qtd')?.value);
+  const observacoes = card.querySelector('.prime-obs')?.value;
+
+  if (!cor || !tamanho || !estampa || quantidadeCamisas <= 0) {
+    alert('Preencha todos os campos obrigatórios da Camisa PRIME.');
+    return;
+  }
+
+  const pedido = gerarPedidoPrime();
+
+  adicionarItem({
+    id: `PRIME-${Date.now()}`,
+    modelo: "PRIME",
+    nome: "Camisa PRIME – Personalizada",
+
+    // CAMPOS PADRÃO (OBRIGATÓRIOS)
+    quantidade: quantidadeCamisas,
+    preco: 109.90,
+
+    // CAMPOS ESPECÍFICOS
+    quantidadeCamisas: quantidadeCamisas,
+    precoUnitarioFinal: 109.90,
+
+    cor: cor,
+    tamanho: tamanho,
+
+    estampa: estampa,
+    quantidadeEstampas: 1,
+    localEstampa: localEstampa,
+    tamanhoEstampa: tamanhoEstampa,
+
+    observacoes: observacoes,
+    imagem: "imagens/estampas/e3.jpeg"
+  });
+
+  // RESET DO FORMULÁRIO
+  card.querySelector('.prime-cor').value = '';
+  card.querySelector('.prime-tamanho').value = '';
+  card.querySelector('.prime-estampa').value = '';
+  card.querySelector('.prime-qtd').value = 1;
+  card.querySelector('.prime-obs').value = '';
+}
         </script>
 
         <datalist id="bairros-joinville">
@@ -1898,33 +1909,6 @@ section#mark {
             
             document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
         </script>
-
-        <script>
-  const card = botao.closest('.basica-card');
-  if (!card) return;
-
-  const preco = Number(
-    card.querySelector('.preco').innerText
-      .replace('R$', '')
-      .replace(',', '.')
-      .trim()
-  );
-
-  const imagem = card.querySelector('img')?.getAttribute('src');
-
-  adicionarItem({
-  id: `${modelo}-${Date.now()}`,
-  modelo: modelo,
-  nome: `Camisa ${modelo}`,
-
-  preco: preco,
-  quantidade: 1,
-
-  cor: '',
-  tamanho: '',
-
-  imagem: imagem
-});
 
 </body>
 
