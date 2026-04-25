@@ -22,3 +22,52 @@
 <button id="btnComprar" onclick="adicionarProduto()" disabled>
   Adicionar ao Carrinho
 </button>
+<script>
+let produto = {
+  cor: null,
+  tamanho: null
+};
+
+function selecionar(botao, tipo) {
+  const grupo = botao.parentElement;
+  grupo.querySelectorAll('button').forEach(b => b.classList.remove('ativo'));
+  botao.classList.add('ativo');
+
+  produto[tipo] = botao.innerText;
+  validarBotao();
+}
+
+function validarBotao() {
+  const botao = document.getElementById('btnComprar');
+  botao.disabled = !(produto.cor && produto.tamanho);
+}
+
+function adicionarProduto() {
+
+  const item = {
+    id: 'MARK-' + Date.now(),
+    modelo: 'MARK',
+    nome: 'Camisa Mark',
+
+    preco: 89.90,
+    quantidade: 1,
+
+    cor: produto.cor,
+    tamanho: produto.tamanho,
+
+    imagem: "imagens/logo-no-peito.jpg"
+  };
+
+  adicionarItem(item);
+
+  // 🔥 REDIRECIONAMENTO AUTOMÁTICO
+  window.location.href = "carrinho.html";
+}
+
+/* carrinho global */
+function adicionarItem(item) {
+  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+  carrinho.push(item);
+  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+}
+</script>
