@@ -1,79 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime | F Pac Store</title>
+
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
+.card{max-width:500px;margin:auto;background:#fff;padding:20px;border-radius:10px}
+label{display:block;margin-top:10px}
+select,input,textarea{width:100%;padding:8px;margin-top:5px}
+button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
 <h2>Camisa PRIME</h2>
-<p class="preco">R$ 109,90</p>
 
 <label>Cor</label>
 <select id="cor">
-    <option value="">Selecione</option>
-    <option>Preta</option>
-    <option>Branca</option>
+<option>Preta</option>
+<option>Branca</option>
+<option>Off White</option>
 </select>
 
 <label>Tamanho</label>
 <select id="tamanho">
-    <option value="">Selecione</option>
-    <option>P</option>
-    <option>M</option>
-    <option>G</option>
+<option>M</option>
+<option>G</option>
 </select>
 
 <label>Estampa</label>
 <select id="estampa">
-    <option value="">Selecione</option>
-    <option>FP</option>
-    <option>Camaleão</option>
+<option>Tropa Urbana</option>
+<option>Não é só roupa</option>
 </select>
 
 <label>Local</label>
 <select id="local">
-    <option>Peito</option>
-    <option>Costas</option>
+<option>Peito</option>
+<option>Costas</option>
+</select>
+
+<label>Tamanho da Estampa</label>
+<select id="tamEstampa">
+<option>Pequena</option>
+<option>Média</option>
+<option>Grande</option>
 </select>
 
 <label>Quantidade</label>
-<input type="number" id="qtd" value="1" min="1">
+<input type="number" id="qtd" value="1">
 
-<button onclick="adicionarPrime()">
-    Adicionar ao Carrinho
-</button>
+<label>Observações</label>
+<textarea id="obs"></textarea>
+
+<button onclick="comprar()">Adicionar ao Carrinho</button>
+
+</div>
+
 <script>
-    function adicionarPrime() {
-    
-      const cor = document.getElementById('cor').value;
-      const tamanho = document.getElementById('tamanho').value;
-      const estampa = document.getElementById('estampa').value;
-      const local = document.getElementById('local').value;
-      const qtd = Number(document.getElementById('qtd').value);
-    
-      if (!cor || !tamanho || !estampa || qtd <= 0) {
-        alert('Preencha todos os campos');
-        return;
-      }
-    
-      const item = {
-        id: 'PRIME-' + Date.now(),
-        modelo: 'PRIME',
-        nome: 'Camisa PRIME',
-    
-        preco: 109.90,
-        quantidade: qtd,
-    
-        cor: cor,
-        tamanho: tamanho,
-        estampa: estampa,
-        localEstampa: local,
-    
-        imagem: "imagens/estampas/e3.jpeg"
-      };
-    
-      adicionarItem(item);
-    
-      // 🔥 REDIRECIONAMENTO
-      window.location.href = "carrinho.html";
-    }
-    
-    function adicionarItem(item) {
-      const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-      carrinho.push(item);
-      localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-    }
+function comprar(){
+
+const item={
+id:"PRIME-"+Date.now(),
+nome:"Camisa PRIME Personalizada",
+cor:document.getElementById("cor").value,
+tamanho:document.getElementById("tamanho").value,
+estampa:document.getElementById("estampa").value,
+local:document.getElementById("local").value,
+tamEstampa:document.getElementById("tamEstampa").value,
+observacoes:document.getElementById("obs").value,
+quantidade:Number(document.getElementById("qtd").value),
+preco:109.90
+}
+
+let carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
+carrinho.push(item)
+
+localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho))
+window.location.href="carrinho.html"
+}
 </script>
+
+</body>
+</html>
