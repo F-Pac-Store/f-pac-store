@@ -1407,13 +1407,13 @@ section#mark {
                 <div class="card card-gold">
                     <img src="cards/F-PAC-ESCRITA-peito C.png" <h3>Force</h3>
                     <p>Camisas Prontas Com Texto</p>
-                    <a href="produto-force.html" class="btn">Ver Produto</a>
+                    <a href="produto-force.html" class="btn">Comprar Agora</a>
                 </div>
 
                 <div class="card card-gold">
                     <img src="cards/FP-peito LE.png" <h3>Mark</h3>
                     <p>Camisas Prontas Com Desenhos</p>
-                    <a href="produto-mark.html" class="btn">Ver Produto</a>
+                    <a href="produto-mark.html" class="btn">Comprar Agora</a>
                 </div>
 
                 <div class="card card-prime card-gold">
@@ -1450,9 +1450,9 @@ section#mark {
                     <img src="imagens/logo-no-peito.jpg" alt="Camisa Force">
                     <p class="preco">R$ 89,90</p>
 
-                    <button onclick="adicionarProdutoBase(this, 'FORCE')">
-                        Escolher no Carrinho
-                    </button>
+                    <a href="produto-force.html" class="btn">
+  Comprar Agora
+</a>
 
                 </div>
 
@@ -1465,9 +1465,9 @@ section#mark {
                 <img src="imagens/logo-no-peito.jpg" alt="Camisa Force">
                 <p class="preco">R$ 89,90</p>
 
-                <button onclick="adicionarProdutoBase(this, 'FORCE')">
-                    Escolher no Carrinho
-                </button>
+                <a href="produto-force.html" class="btn">
+  Comprar Agora
+</a>
 
             </div>
 
@@ -1498,12 +1498,12 @@ section#mark {
 
                 <div class="basica-card card-gold">
 
-                    <img src="imagens/logo-no-peito.jpg" alt="Camisa Force">
+                    <img src="imagens/logo-no-peito.jpg" alt="Camisa Mark">
                     <p class="preco">R$ 89,90</p>
 
-                    <button onclick="adicionarProdutoBase(this, 'FORCE')">
-                        Escolher no Carrinho
-                    </button>
+                    <a href="produto-mark.html" class="btn">
+  Comprar Agora
+</a>
 
                 </div>
 
@@ -1512,12 +1512,12 @@ section#mark {
             <!-- CAMISA 2 -->
             <div class="basica-card card-gold">
 
-                <img src="imagens/logo-no-peito.jpg" alt="Camisa Force">
+                <img src="imagens/logo-no-peito.jpg" alt="Camisa Mark">
                 <p class="preco">R$ 89,90</p>
 
-                <button onclick="adicionarProdutoBase(this, 'FORCE')">
-                    Escolher no Carrinho
-                </button>
+                <a href="produto-mark.html" class="btn">
+  Comprar Agora
+</a>
 
             </div>
 
@@ -1789,8 +1789,6 @@ section#mark {
               imagem: "imagens/estampas/e3.jpeg"
             });
             
-              alert('✅ Camisa PRIME adicionada ao carrinho!');
-            
               // reset do formulário PRIME
               card.querySelector('.prime-cor').value = '';
               card.querySelector('.prime-tamanho').value = '';
@@ -1862,14 +1860,21 @@ section#mark {
             }
             
             function adicionarItem(item) {
-              const carrinho = getCarrinho();
-              const existente = carrinho.find(p => p.id === item.id);
-            
-              if (existente) {
-                existente.quantidade += item.quantidade;
-              } else {
-                carrinho.push(item);
-              }
+  const carrinho = getCarrinho();
+  const existente = carrinho.find(p => p.id === item.id);
+
+  if (existente) {
+    existente.quantidade += item.quantidade;
+  } else {
+    carrinho.push(item);
+  }
+
+  salvarCarrinho(carrinho);
+  atualizarContadorCarrinho();
+
+  // 🔥 REDIRECIONA AUTOMATICAMENTE
+  window.location.href = "carrinho.html";
+}
             
               salvarCarrinho(carrinho);
               atualizarContadorCarrinho();
@@ -1895,7 +1900,6 @@ section#mark {
         </script>
 
         <script>
-function adicionarProdutoBase(botao, modelo) {
   const card = botao.closest('.basica-card');
   if (!card) return;
 
