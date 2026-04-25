@@ -1,625 +1,581 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Catálogo Completo | F Pac Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Catálogo Completo | F Pac Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTES -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 
-  <!-- ÍCONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ÍCONES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- HEADER GLOBAL -->
-  <link rel="stylesheet" href="css/header.css">
+    <!-- HEADER GLOBAL -->
+    <link rel="stylesheet" href="css/header.css">
 
-  <!-- CSS DO CATÁLOGO -->
-  <style>
-    :root {
-      --primary:#003366;
-      --accent:#FFC107;
-      --bg:#f4f6f8;
-      --text:#1f2933;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      padding-top: 120px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 16px;
-    }
-
+    <!-- CSS DO CATÁLOGO -->
+    <style>
+        :root {
+          --primary:#003366;
+          --accent:#FFC107;
+          --bg:#f4f6f8;
+          --text:#1f2933;
+        }
+    
+        body {
+          margin: 0;
+          font-family: 'Inter', sans-serif;
+          background: var(--bg);
+          padding-top: 120px;
+        }
+    
+        .container {
+          max-width: 1200px;
+          margin: auto;
+          padding: 0 16px;
+        }
+    
+        /* ============================= */
+    /* HEADER ESTICADO IGUAL AO INDEX */
     /* ============================= */
-/* HEADER ESTICADO IGUAL AO INDEX */
-/* ============================= */
-
-.header .container {
-  max-width: 100%;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-    /* ============================= */
-    /* CABEÇALHO DA PÁGINA           */
-    /* ============================= */
-
-    .catalogo-header {
-      text-align: center;
-      padding: 40px 0;
+    
+    .header .container {
+      max-width: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
     }
-
-    .catalogo-header h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 10px;
+    
+        /* ============================= */
+        /* CABEÇALHO DA PÁGINA           */
+        /* ============================= */
+    
+        .catalogo-header {
+          text-align: center;
+          padding: 40px 0;
+        }
+    
+        .catalogo-header h1 {
+          font-size: 2.4rem;
+          font-weight: 800;
+          color: var(--primary);
+          margin-bottom: 10px;
+        }
+    
+        .catalogo-header p {
+          color: #555;
+          font-size: 1.1rem;
+        }
+    
+        /* ============================= */
+        /* GRID DE PRODUTOS              */
+        /* ============================= */
+    
+        .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* ✅ 4 cards grandes por linha */
+      gap: 32px;                             /* ✅ mais respiro */
+      padding-bottom: 120px;                /* ✅ evita “corte” no final */
     }
-
-    .catalogo-header p {
-      color: #555;
-      font-size: 1.1rem;
+    
+        .card-produto {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;
+      color: inherit;
+    
+      max-width: 320px;      /* ✅ card realmente grande */
+      height: 100%;          /* ✅ nunca corta */
+      display: flex;
+      flex-direction: column;
+    
+      margin: 0 auto;
+          
+      position: relative;
+      overflow: hidden;
+    
     }
-
-    /* ============================= */
-    /* GRID DE PRODUTOS              */
-    /* ============================= */
-
-    .catalogo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ✅ 4 cards grandes por linha */
-  gap: 32px;                             /* ✅ mais respiro */
-  padding-bottom: 120px;                /* ✅ evita “corte” no final */
-}
-
+    
+        .card-produto > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+        /* =============================
+       ANIMAÇÃO DE ENTRADA DOS CARDS
+    ============================= */
+    
     .card-produto {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  transition: transform .25s ease, box-shadow .25s ease;
-  text-decoration: none;
-  color: inherit;
-
-  max-width: 320px;      /* ✅ card realmente grande */
-  height: 100%;          /* ✅ nunca corta */
-  display: flex;
-  flex-direction: column;
-
-  margin: 0 auto;
-      
-  position: relative;
-  overflow: hidden;
-
-}
-
-    .card-produto > * {
-  position: relative;
-  z-index: 1;
-}
-
-    /* =============================
-   ANIMAÇÃO DE ENTRADA DOS CARDS
-============================= */
-
-.card-produto {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.6s ease forwards;
-}
-
-/* Delay progressivo para efeito cascata */
-.card-produto:nth-child(1) { animation-delay: 0.05s; }
-.card-produto:nth-child(2) { animation-delay: 0.10s; }
-.card-produto:nth-child(3) { animation-delay: 0.15s; }
-.card-produto:nth-child(4) { animation-delay: 0.20s; }
-.card-produto:nth-child(5) { animation-delay: 0.25s; }
-.card-produto:nth-child(6) { animation-delay: 0.30s; }
-.card-produto:nth-child(7) { animation-delay: 0.35s; }
-.card-produto:nth-child(8) { animation-delay: 0.40s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-    /* =============================
-   WATERMARK PIRÂMIDE – IDENTIDADE
-============================= */
-
-/* LINHA SUPERIOR (MENOR) */
-.card-produto::before {
-  content: "© 2026 F Pac Store";
-
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-18deg);
-
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;        /* ✅ menor */
-  font-weight: 600;
-  letter-spacing: 0.12em;
-
-  color: rgba(0, 0, 0, 0.10);
-  text-align: center;
-
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-/* LINHA INFERIOR (MAIOR) */
-.card-produto::after {
-  content: "Não é só roupa. É identidade.";
-
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-18deg);
-
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;       /* ✅ maior */
-  font-weight: 600;
-  letter-spacing: 0.14em;   /* ✅ mais larga → pirâmide */
-
-  color: rgba(0, 0, 0, 0.10);
-  text-align: center;
-  white-space: nowrap;
-
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-    .card-produto:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.6s ease forwards;
     }
-
-    /* IMAGEM */
-    .card-produto img {
-  width: 100%;
-  height: 310px;          /* ✅ proporcional ao card maior */
-
-  object-fit: contain;
-
-  display: block;
-  margin: 0 auto;
-
-  background: #f8fafc;
-  padding: 12px;
-  box-sizing: border-box;
-}
-
-    /* INFO */
-    .card-info {
-  padding: 14px;
-  text-align: center;
-
-  margin-top: auto; /* ✅ empurra o texto para o fundo do card */
-}
-    .card-info span {
-  display: block;
-  font-size: 1.05rem; /* 🔼 mais forte */
-  font-weight: 800;
-  color: var(--primary);
-}
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .catalogo-header h1 {
-        font-size: 1.9rem;
+    
+    /* Delay progressivo para efeito cascata */
+    .card-produto:nth-child(1) { animation-delay: 0.05s; }
+    .card-produto:nth-child(2) { animation-delay: 0.10s; }
+    .card-produto:nth-child(3) { animation-delay: 0.15s; }
+    .card-produto:nth-child(4) { animation-delay: 0.20s; }
+    .card-produto:nth-child(5) { animation-delay: 0.25s; }
+    .card-produto:nth-child(6) { animation-delay: 0.30s; }
+    .card-produto:nth-child(7) { animation-delay: 0.35s; }
+    .card-produto:nth-child(8) { animation-delay: 0.40s; }
+    
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-
-/* =============================
-   RESPONSIVIDADE DO GRID
-============================= */
-
-/* Tablet */
-@media (max-width: 1200px) {
-  .catalogo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .catalogo-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .catalogo-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-    /* =============================
-   MODAL PREVIEW DA ESTAMPA
-============================= */
-
-.modal-preview {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-preview.ativo {
-  display: flex;
-}
-
-.modal-conteudo {
-  position: relative;
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.modal-conteudo img {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  display: block;
-}
-
-.modal-fechar {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: #ef4444;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 800;
-  cursor: pointer;
-}
     
-  </style>
+        /* =============================
+       WATERMARK PIRÂMIDE – IDENTIDADE
+    ============================= */
+    
+    /* LINHA SUPERIOR (MENOR) */
+    .card-produto::before {
+      content: "© 2026 F Pac Store";
+    
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-18deg);
+    
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;        /* ✅ menor */
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    
+      color: rgba(0, 0, 0, 0.10);
+      text-align: center;
+    
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    
+    /* LINHA INFERIOR (MAIOR) */
+    .card-produto::after {
+      content: "Não é só roupa. É identidade.";
+    
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-18deg);
+    
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;       /* ✅ maior */
+      font-weight: 600;
+      letter-spacing: 0.14em;   /* ✅ mais larga → pirâmide */
+    
+      color: rgba(0, 0, 0, 0.10);
+      text-align: center;
+      white-space: nowrap;
+    
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    
+        .card-produto:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+        }
+    
+        /* IMAGEM */
+        .card-produto img {
+      width: 100%;
+      height: 310px;          /* ✅ proporcional ao card maior */
+    
+      object-fit: contain;
+    
+      display: block;
+      margin: 0 auto;
+    
+      background: #f8fafc;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+    
+        /* INFO */
+        .card-info {
+      padding: 14px;
+      text-align: center;
+    
+      margin-top: auto; /* ✅ empurra o texto para o fundo do card */
+    }
+        .card-info span {
+      display: block;
+      font-size: 1.05rem; /* 🔼 mais forte */
+      font-weight: 800;
+      color: var(--primary);
+    }
+    
+        /* MOBILE */
+        @media (max-width: 600px) {
+          .catalogo-header h1 {
+            font-size: 1.9rem;
+          }
+        }
+    
+    /* =============================
+       RESPONSIVIDADE DO GRID
+    ============================= */
+    
+    /* Tablet */
+    @media (max-width: 1200px) {
+      .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .catalogo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .catalogo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+        /* =============================
+       MODAL PREVIEW DA ESTAMPA
+    ============================= */
+    
+    .modal-preview {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    .modal-preview.ativo {
+      display: flex;
+    }
+    
+    .modal-conteudo {
+      position: relative;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    
+    .modal-conteudo img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+    }
+    
+    .modal-fechar {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #ef4444;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER IGUAL AO INDEX -->
-<header class="header">
-  <div class="container header-content">
+    <!-- HEADER IGUAL AO INDEX -->
+    <header class="header">
+        <div class="container header-content">
 
-    <a href="index.html" class="logo">
-      <img src="imagens%20estampa/f-pac-color.png" class="logo-img" alt="F Pac Store">
-      <span class="logo-text">F PAC STORE</span>
-    </a>
+            <a href="index.html" class="logo">
+                <img src="imagens%20estampa/f-pac-color.png" class="logo-img" alt="F Pac Store">
+                <span class="logo-text">F PAC STORE</span>
+            </a>
 
-    <nav class="nav" id="nav">
-      <div class="menu-links">
-        <a href="index.html">Início</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="index.html#produtos">Produtos</a>
-      </div>
+            <nav class="nav" id="nav">
+                <div class="menu-links">
+                    <a href="index.html">Início</a>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="index.html#produtos">Produtos</a>
+                </div>
 
-      <a href="carrinho.html" class="carrinho-icone">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="carrinho-qtd" id="carrinhoQtd">0</span>
-      </a>
+                <a href="carrinho.html" class="carrinho-icone">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+                </a>
 
-      <div class="menu-social">
-        <a href="https://wa.me/5547997465602" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://instagram.com/f_pac_store/" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-    </nav>
+                <div class="menu-social">
+                    <a href="https://wa.me/5547997465602" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com/f_pac_store/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </nav>
 
-    <button class="menu-toggle" id="toggle">
-      <i class="fas fa-bars"></i>
-    </button>
+            <button class="menu-toggle" id="toggle">
+                <i class="fas fa-bars"></i>
+            </button>
 
-  </div>
-</header>
+        </div>
+    </header>
 
-<!-- CONTEÚDO -->
-<main class="container">
+    <!-- CONTEÚDO -->
+    <main class="container">
 
-  <div class="catalogo-header">
-    <h1>Catálogo Completo</h1>
-    <p>Explore todas as estampas disponíveis da F Pac Store</p>
-  </div>
+        <div class="catalogo-header">
+            <h1>Catálogo Completo</h1>
+            <p>Explore todas as estampas disponíveis da F Pac Store</p>
+        </div>
 
-  <div class="catalogo-grid">
+        <div class="catalogo-grid">
 
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/f-pac-color.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>F PAC</span>
+            <div class="card-produto">
+                <img src="imagens%20estampa/f-pac-color.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>F PAC</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/f-pac-camaleao.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>F PAC Camaleão</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-004.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>F PAC Bordado</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/FP-preto.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>FP</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/FP-agua.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>FP Água</span>
+                </div>
+            </div>
+
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/CF-001.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>CF 001</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-001.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>SF 001</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/CF-002.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>CF 002</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-002.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>SF 002</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/CF-003.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>CF 003</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-003.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>SF 003</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/CF-019.jpeg" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>CF 019</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-019.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>SF 019</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/CF-020.jpeg" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>CF 020</span>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="imagens%20estampa/SF-020.png" onclick="abrirPreview(this.src)">
+                <div class="card-info">
+                    <span>SF 020</span>
+                </div>
+            </div>
+
+            <!-- DUPLIQUE OS CARD AQUI -->
+
+        </div>
+
+
+
+    </main>
+
+    <script>
+        const toggle = document.getElementById('toggle');
+        const nav = document.getElementById('nav');
+        if (toggle && nav) toggle.onclick = () => nav.classList.toggle('active');
+        
+        /* =============================
+           CONTADOR DO CARRINHO (PADRÃO)
+        ============================= */
+        function atualizarQtdCarrinho() {
+          const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+          const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+        
+          const el = document.getElementById('carrinhoQtd');
+          if (!el) return;
+        
+          el.textContent = total;
+          el.style.display = total > 0 ? 'inline-block' : 'none';
+        }
+        
+        document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
+    </script>
+
+    <script>
+        /* =============================
+           CARRINHO GLOBAL – F PAC STORE
+        ============================= */
+        
+        function getCarrinho() {
+          return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+        }
+        
+        function salvarCarrinho(carrinho) {
+          localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+        }
+        
+        function adicionarItem(item) {
+          const carrinho = getCarrinho();
+          const existente = carrinho.find(p => p.id === item.id);
+        
+          if (existente) {
+            existente.quantidade += item.quantidade;
+          } else {
+            carrinho.push(item);
+          }
+        
+          salvarCarrinho(carrinho);
+          atualizarContadorCarrinho();
+        }
+        
+        function removerItem(id) {
+          const carrinho = getCarrinho().filter(item => item.id !== id);
+          salvarCarrinho(carrinho);
+          atualizarContadorCarrinho();
+        }
+        
+        function atualizarContadorCarrinho() {
+          const carrinho = getCarrinho();
+          const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+        
+          document.querySelectorAll('#carrinhoQtd').forEach(el => {
+            el.textContent = total;
+            el.style.display = total > 0 ? 'inline-block' : 'none';
+          });
+        }
+        
+        document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+    </script>
+
+    <!-- MODAL DE PREVIEW DA ESTAMPA -->
+    <div id="modalPreview" class="modal-preview">
+        <div class="modal-conteudo">
+            <button class="modal-fechar" onclick="fecharPreview()">×</button>
+            <img id="modalImagem" src="" alt="Preview da Estampa">
+        </div>
     </div>
-  </div>
 
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/f-pac-camaleao.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>F PAC Camaleão</span>
-    </div>
-  </div>
+    <script>
+        function abrirPreview(src) {
+          const modal = document.getElementById('modalPreview');
+          const img = document.getElementById('modalImagem');
+        
+          img.src = src;
+          modal.classList.add('ativo');
+        }
+        
+        function fecharPreview() {
+          const modal = document.getElementById('modalPreview');
+          modal.classList.remove('ativo');
+        }
+        
+        /* Fecha ao clicar fora da imagem */
+        document.getElementById('modalPreview').addEventListener('click', (e) => {
+          if (e.target.id === 'modalPreview') {
+            fecharPreview();
+          }
+        });
+    </script>
 
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-004.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>F PAC Bordado</span>
-    </div>
-  </div>
+    <script>
+        const cards = document.querySelectorAll('.card-produto');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('aparecer');
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+        
+        cards.forEach(card => observer.observe(card));
+    </script>
 
-<div class="card-produto">
-    <img 
-      src="imagens%20estampa/FP-preto.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>FP</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/FP-agua.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>FP Água</span>
-    </div>
-  </div>
-
-
-  <div class="card-produto">
-    <img 
-      src="imagens%20estampa/CF-001.png" 
-       onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>CF 001</span>
-    </div>
-  </div>
-
-  <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-001.png" 
-        onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>SF 001</span>
-    </div>
-  </div>
-
-  <div class="card-produto">
-    <img 
-      src="imagens%20estampa/CF-002.png" 
-          onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>CF 002</span>
-    </div>
-  </div>
-
-  <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-002.png" 
-          onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>SF 002</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/CF-003.png" 
-          onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>CF 003</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-003.png" 
-          onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>SF 003</span>
-    </div>
-  </div>
-
-      <div class="card-produto">
-    <img 
-      src="imagens%20estampa/CF-019.jpeg" 
-        onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>CF 019</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-019.png" 
-       onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>SF 019</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/CF-020.jpeg" 
-       onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>CF 020</span>
-    </div>
-  </div>
-
-    <div class="card-produto">
-    <img 
-      src="imagens%20estampa/SF-020.png" 
-      onclick="abrirPreview(this.src)"
-    >
-    <div class="card-info">
-      <span>SF 020</span>
-    </div>
-  </div>
-
-    <!-- DUPLIQUE OS CARD AQUI -->
-    
-</div>
-
-
-
-</main>
-
-<script>
-const toggle = document.getElementById('toggle');
-const nav = document.getElementById('nav');
-if (toggle && nav) toggle.onclick = () => nav.classList.toggle('active');
-
-/* =============================
-   CONTADOR DO CARRINHO (PADRÃO)
-============================= */
-function atualizarQtdCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-
-  const el = document.getElementById('carrinhoQtd');
-  if (!el) return;
-
-  el.textContent = total;
-  el.style.display = total > 0 ? 'inline-block' : 'none';
-}
-
-document.addEventListener('DOMContentLoaded', atualizarQtdCarrinho);
-</script>
-  
-<script>
-/* =============================
-   CARRINHO GLOBAL – F PAC STORE
-============================= */
-
-function getCarrinho() {
-  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-}
-
-function salvarCarrinho(carrinho) {
-  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-}
-
-function adicionarItem(item) {
-  const carrinho = getCarrinho();
-  const existente = carrinho.find(p => p.id === item.id);
-
-  if (existente) {
-    existente.quantidade += item.quantidade;
-  } else {
-    carrinho.push(item);
-  }
-
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-}
-
-function removerItem(id) {
-  const carrinho = getCarrinho().filter(item => item.id !== id);
-  salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-}
-
-function atualizarContadorCarrinho() {
-  const carrinho = getCarrinho();
-  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-
-  document.querySelectorAll('#carrinhoQtd').forEach(el => {
-    el.textContent = total;
-    el.style.display = total > 0 ? 'inline-block' : 'none';
-  });
-}
-
-document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
-</script>
-
-  <!-- MODAL DE PREVIEW DA ESTAMPA -->
-<div id="modalPreview" class="modal-preview">
-  <div class="modal-conteudo">
-    <button class="modal-fechar" onclick="fecharPreview()">×</button>
-    <img id="modalImagem" src="" alt="Preview da Estampa">
-  </div>
-</div>
-
-  <script>
-function abrirPreview(src) {
-  const modal = document.getElementById('modalPreview');
-  const img = document.getElementById('modalImagem');
-
-  img.src = src;
-  modal.classList.add('ativo');
-}
-
-function fecharPreview() {
-  const modal = document.getElementById('modalPreview');
-  modal.classList.remove('ativo');
-}
-
-/* Fecha ao clicar fora da imagem */
-document.getElementById('modalPreview').addEventListener('click', (e) => {
-  if (e.target.id === 'modalPreview') {
-    fecharPreview();
-  }
-});
-</script>
-
-  <script>
-const cards = document.querySelectorAll('.card-produto');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('aparecer');
-    }
-  });
-}, {
-  threshold: 0.2
-});
-
-cards.forEach(card => observer.observe(card));
-</script>
-  
 </body>
+
 </html>
