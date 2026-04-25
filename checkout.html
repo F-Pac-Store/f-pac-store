@@ -1,257 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Checkout | F Pac Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
+  <meta charset="UTF-8">
+  <title>Checkout | F Pac Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/header.css">
 
-    <style>
-        body {
-          font-family: Inter, sans-serif;
-          background:#f4f6f8;
-          padding-top:120px;
-        }
-        .wrap {
-          max-width:720px;
-          margin:auto;
-          padding:32px;
-        }
-        .card {
-          background:#fff;
-          padding:24px;
-          border-radius:12px;
-          box-shadow:0 10px 30px rgba(0,0,0,.1);
-        }
-        label {
-          display:block;
-          margin-top:16px;
-          font-weight:600;
-        }
-        input, textarea {
-          width:100%;
-          padding:12px;
-          margin-top:6px;
-        }
-        button {
-          margin-top:24px;
-          width:100%;
-          padding:16px;
-          font-weight:800;
-          background:#22c55e;
-          border:none;
-          color:#fff;
-          cursor:pointer;
-        }
-    </style>
+  <style>
+    body {
+      font-family: Inter, sans-serif;
+      background:#f4f6f8;
+      padding-top:120px;
+    }
+    .wrap {
+      max-width:720px;
+      margin:auto;
+      padding:32px;
+    }
+    .card {
+      background:#fff;
+      padding:24px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+    }
+    label {
+      display:block;
+      margin-top:16px;
+      font-weight:600;
+    }
+    input, textarea {
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+    }
+    button {
+      margin-top:24px;
+      width:100%;
+      padding:16px;
+      font-weight:800;
+      background:#22c55e;
+      border:none;
+      color:#fff;
+      cursor:pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="container header-content">
-            <a href="index.html" class="logo">
-                <img src="imagens/logo-fpac.png" class="logo-img">
-                <span class="logo-text">F PAC STORE</span>
-            </a>
-        </div>
-    </header>
+<header class="header">
+  <div class="container header-content">
+    <a href="index.html" class="logo">
+      <img src="imagens/logo-fpac.png" class="logo-img">
+      <span class="logo-text">F PAC STORE</span>
+    </a>
+  </div>
+</header>
 
-    <div class="wrap">
-        <div class="card">
-            <h2>Dados para Finalização</h2>
+<div class="wrap">
+  <div class="card">
+    <h2>Dados para Finalização</h2>
 
-            <label>Nome completo</label>
-            <input id="nome">
+    <label>Nome completo</label>
+    <input id="nome">
 
-            <label>WhatsApp</label>
-            <input id="whatsapp" placeholder="DDD + número">
+    <label>WhatsApp</label>
+    <input id="whatsapp" placeholder="DDD + número">
 
-            <label>Bairro</label>
-            <input id="bairro" list="bairros-joinville">
-            <label>Rua / Avenida</label>
-            <input id="rua" placeholder="Ex: Rua das cidades">
+    <label>Bairro</label>
+    <input id="bairro">
 
-            <label>Número</label>
-            <input id="numero" placeholder="Ex: 123">
+    <label>Rua / Avenida</label>
+    <input id="rua">
 
-            <label>Observações do pedido</label>
-            <textarea id="obs"></textarea>
+    <label>Número</label>
+    <input id="numero">
 
-            <button type="button" onclick="confirmarCheckout()">
-                Confirmar Pedido
-            </button>
+    <label>Observações do pedido</label>
+    <textarea id="obs"></textarea>
 
-            <div id="mensagemEnviada" style="
-  display:none;
-  margin-top:20px;
-  padding:16px;
-  background:#22c55e;
-  color:#fff;
-  font-weight:800;
-  text-align:center;
-  border-radius:8px;
-">
-                ✅ Pedido enviado com sucesso!
-            </div>
+    <button type="button" onclick="confirmarCheckout()">
+      Confirmar Pedido
+    </button>
 
-        </div>
+    <div id="mensagemEnviada" style="
+      display:none;
+      margin-top:20px;
+      padding:16px;
+      background:#22c55e;
+      color:#fff;
+      font-weight:800;
+      text-align:center;
+      border-radius:8px;
+    ">
+      ✅ Pedido enviado com sucesso!
     </div>
+  </div>
+</div>
 
-    <script>
-        /* =============================
-           FRETE POR BAIRRO – JOINVILLE
-        ============================= */
-        const fretePorBairro = {
-          "Paranaguamirim": 6,
-          "Adhemar Garcia": 6,
-          "Ulysses Guimarães": 6,
-          "João Costa": 6,
-        
-          "Jarivatuba": 11,
-          "Itaum": 11,
-          "Petrópolis": 11,
-          "Floresta": 11,
-          "Santa Catarina": 11,
-          "Guanabara": 11,
-          "Fátima": 11,
-        
-          "Profipo": 16,
-          "Boehmerwald": 16,
-          "São Marcos": 16,
-          "Anita Garibaldi": 16,
-          "Bucarein": 16,
-          "Centro": 16,
-        
-          "Nova Brasília": 21,
-          "América": 21,
-          "Atiradores": 21,
-          "Bom Retiro": 21,
-          "Costa e Silva": 21,
-          "Glória": 21,
-          "Saguaçu": 21,
-          "Santo Antônio": 21,
-          "Aventureiro": 21,
-          "Comasa": 21,
-          "Espinheiros": 21,
-          "Iririú": 21,
-          "Jardim Iririú": 21,
-          "Jardim Sofia": 21
-        };
-        
-        /* =============================
-           CONFIRMAR CHECKOUT → WHATSAPP
-        ============================= */
-        
-        function confirmarCheckout() {
-          const nome = document.getElementById('nome').value.trim();
-          const whatsapp = document.getElementById('whatsapp').value.trim();
-          const bairro = document.getElementById('bairro').value.trim();
-          const rua = document.getElementById('rua').value.trim();
-          const numero = document.getElementById('numero').value.trim();
-          const obsCliente = document.getElementById('obs').value.trim();
-        
-          if (!nome || !whatsapp) {
-            alert('Preencha nome e WhatsApp.');
-            return;
-          }
-        
-          const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-          if (carrinho.length === 0) {
-            alert('Seu carrinho está vazio.');
-            return;
-          }
-        
-          // 🔹 Pedido (usa o primeiro item como referência)
-        const pedidoInfo = carrinho[0]?.pedido
-          ? `${carrinho[0].pedido.data} - ${carrinho[0].pedido.codigo}`
-          : '—';
-        
-        /* =============================
-           CABEÇALHO
-        ============================= */
-        let mensagem =
-        `🛒 *F PAC STORE*
-        Não é só roupa. É identidade.
-        
-        ────────────────────
-        🧾 *RESUMO DO PEDIDO*
-        🆔 Pedido: ${pedidoInfo}
-        
-        `;
-        
-        let total = 0;
-        
-        /* =============================
-           ITENS DO PEDIDO (PADRÃO)
-        ============================= */
-        carrinho.forEach((item, i) => {
-          const subtotal = item.preco * item.quantidade;
-          total += subtotal;
-        
-          mensagem +=
-        `👕 *ITEM ${String(i + 1).padStart(2,'0')}*
-        📦 Produto: ${item.nome}
-        🎨 Cor: ${item.cor}
-        👕 Tamanho: ${item.tamanho}
-        🔢 Quantidade: ${item.quantidade}
-        💰 Subtotal: R$ ${subtotal.toFixed(2)}
-        `;
-        
-          if (item.modelo === 'PRIME') {
-            mensagem +=
-        `🖼️ Estampa: ${item.estampa}
-        📍 Local: ${item.localEstampa}
-        📐 Tamanho da estampa: ${item.tamanhoEstampa}
-        `;
-          }
-        
-          mensagem += `\n────────────────────\n`;
-        });
-        
-        /* =============================
-           ENTREGA + TOTAIS
-        ============================= */
-        const frete = fretePorBairro[bairro] || 0;
-        const totalComFrete = total + frete;
-        
-        mensagem +=
-        `📍 *DADOS PARA ENTREGA*
-        
-        👤 Cliente: ${nome}
-        📍 Bairro: ${bairro}
-        🏠 Endereço: ${rua}, Nº ${numero}
-        📞 WhatsApp: ${whatsapp}
-        
-        ────────────────────
-        💵 *SUB TOTAL:* R$ ${total.toFixed(2)}
-        🚚 *FRETE:* R$ ${frete.toFixed(2)}
-        💰 *TOTAL DO PEDIDO:* R$ ${totalComFrete.toFixed(2)}
-        
-        ✅ Pedido enviado pelo site.
-        `;
-        
-          const numeroLoja = '5547997465602';
-          const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(mensagem)}`;
-        
-          // ✅ Abre WhatsApp em nova aba
-          window.open(url, '_blank', 'noopener,noreferrer');
-        
-          // ✅ Mensagem visual
-          document.getElementById('mensagemEnviada').style.display = 'block';
-        
-          // ✅ Desativa botão
-          document.querySelector('button[onclick="confirmarCheckout()"]').disabled = true;
-        
-          // ✅ Fecha ou redireciona
-          setTimeout(() => {
-            window.close();
-            setTimeout(() => window.location.href = 'index.html', 500);
-          }, 2500);
-        }
-    </script>
+<!-- ✅ UM ÚNICO JS COM TODA A LÓGICA -->
+<script src="js/checkout.js"></script>
 
 </body>
-
 </html>
