@@ -1,170 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<script src="js/carrinho.js"></script>
 
-<head>
+<script>
+let produto = { cor: null, tamanho: null };
 
-    <style>
-        .produto {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 40px;
-          padding: 40px;
-        }
-        
-        .produto-img img {
-          width: 100%;
-          max-width: 400px;
-        }
-        
-        .produto-info {
-          max-width: 400px;
-        }
-        
-        .opcoes {
-          display: flex;
-          gap: 10px;
-          margin: 10px 0;
-        }
-        
-        .opcoes button {
-          padding: 10px 15px;
-          border: 2px solid #ccc;
-          background: #fff;
-          cursor: pointer;
-        }
-        
-        .opcoes button.ativo {
-          border-color: #FFC107;
-          background: #fff8e1;
-        }
-    </style>
+function selecionar(botao, tipo) {
+  const grupo = botao.parentElement;
+  grupo.querySelectorAll('button').forEach(b => b.classList.remove('ativo'));
+  botao.classList.add('ativo');
+  produto[tipo] = botao.innerText;
+}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+function adicionarProduto() {
 
-    <title>Camisa Force | F Pac Store</title>
+  if (!produto.cor || !produto.tamanho) {
+    alert('Selecione cor e tamanho');
+    return;
+  }
 
-    <link rel="stylesheet" href="style.css">
-    <!-- se quiser separar depois -->
-</head>
+  adicionarItem({
+    id: 'FORCE-' + Date.now(),
+    modelo: 'FORCE',
+    nome: 'Camisa Force',
+    preco: 89.90,
+    quantidade: 1,
+    cor: produto.cor,
+    tamanho: produto.tamanho,
+    imagem: "imagens/logo-no-peito.jpg"
+  });
 
-<body>
-
-    <header>
-        <h1>F PAC STORE</h1>
-    </header>
-
-    <section class="produto">
-
-        <!-- IMAGEM -->
-        <div class="produto-img">
-            <img src="imagens/logo-no-peito.jpg">
-        </div>
-
-        <!-- INFO -->
-        <div class="produto-info">
-
-            <h2>Camisa Force</h2>
-            <p class="preco">R$ 89,90</p>
-
-            <p class="descricao">
-                Camiseta premium, confortável e estilosa.
-            </p>
-
-            <!-- COR -->
-            <label>Cor</label>
-            <div class="opcoes">
-                <button onclick="selecionar(this, 'cor')">Preta</button>
-                <button onclick="selecionar(this, 'cor')">Branca</button>
-            </div>
-
-            <!-- TAMANHO -->
-            <label>Tamanho</label>
-            <div class="opcoes">
-                <button onclick="selecionar(this, 'tamanho')">P</button>
-                <button onclick="selecionar(this, 'tamanho')">M</button>
-                <button onclick="selecionar(this, 'tamanho')">G</button>
-                <button onclick="selecionar(this, 'tamanho')">GG</button>
-            </div>
-
-            <!-- BOTÃO -->
-            <button id="btnComprar" onclick="adicionarProduto()" disabled>
-                Adicionar ao Carrinho
-            </button>
-
-        </div>
-
-    </section>
-
-    <script>
-        let produto = {
-          cor: null,
-          tamanho: null
-        };
-        
-        function selecionar(botao, tipo) {
-          const grupo = botao.parentElement;
-        
-          grupo.querySelectorAll('button').forEach(b => b.classList.remove('ativo'));
-          botao.classList.add('ativo');
-        
-          produto[tipo] = botao.innerText;
-        
-          validarBotao();
-        }
-        
-        function validarBotao() {
-          const botao = document.getElementById('btnComprar');
-        
-          if (produto.cor && produto.tamanho) {
-            botao.disabled = false;
-          } else {
-            botao.disabled = true;
-          }
-        }
-        
-        function adicionarProduto() {
-        
-          if (!produto.cor || !produto.tamanho) {
-            alert('Selecione cor e tamanho');
-            return;
-          }
-        
-          const item = {
-            id: 'FORCE-' + Date.now(),
-            modelo: 'FORCE',
-            nome: 'Camisa Force',
-        
-            preco: 89.90,
-            quantidade: 1,
-        
-            cor: produto.cor,
-            tamanho: produto.tamanho,
-        
-            imagem: "imagens/logo-no-peito.jpg"
-          };
-        
-          adicionarItem(item);
-        
-          alert('Produto adicionado ao carrinho!');
-        }
-        
-        /* CARRINHO GLOBAL */
-        function adicionarItem(item) {
-          const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-        
-          const existente = carrinho.find(p => p.id === item.id);
-        
-          if (existente) {
-            existente.quantidade += item.quantidade;
-          } else {
-            carrinho.push(item);
-          }
-        
-          localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
-        }
-    </script>
-
-</body>
-
-</html>
+}
+</script>
