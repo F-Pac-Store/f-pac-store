@@ -1,11 +1,52 @@
+// =============================
+// CARRINHO
+// =============================
+
 function getCarrinho() {
   return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
 }
 
+// =============================
+// FRETE POR BAIRRO
+// =============================
+
+const fretePorBairro = {
+  "Paranaguamirim": 5,
+  "Adhemar Garcia": 5,
+  "Centro": 8
+};
+
+function calcularFrete(bairro) {
+  return fretePorBairro[bairro] || 10;
+}
+
+// =============================
+// CLIENTE (AUTO SAVE)
+// =============================
+
+function salvarCliente(cliente) {
+  localStorage.setItem('fpacCliente', JSON.stringify(cliente));
+}
+
+function carregarCliente() {
+  return JSON.parse(localStorage.getItem('fpacCliente')) || {};
+}
+
+// =============================
+// GERAR PEDIDO
+// =============================
+
 function gerarPedido() {
   const agora = new Date();
+
+  const codigo =
+    "FP" +
+    agora.toISOString().slice(2,10).replace(/-/g,'') +
+    "-" +
+    Math.floor(Math.random() * 1000);
+
   return {
-    codigo: "FP" + Date.now(),
+    codigo,
     data: agora.toLocaleDateString('pt-BR'),
     hora: agora.toLocaleTimeString('pt-BR')
   };
@@ -14,11 +55,14 @@ function gerarPedido() {
 // =============================
 // RENDER RESUMO
 // =============================
+
 function renderResumo() {
   const carrinho = getCarrinho();
   const el = document.getElementById('resumoPedido');
 
-  if (!el || carrinho.length === 0) {
+  if (!el) return;
+
+  if (carrinho.length === 0) {
     el.innerHTML = "Carrinho vazio";
     return;
   }
@@ -33,7 +77,7 @@ function renderResumo() {
     html += `
       <div>
         <strong>${item.nome}</strong><br>
-        Qtd: ${item.quantidade}<br>
+        Qtd: ${item.quantidade}
       </div>
       <hr>
     `;
@@ -45,29 +89,31 @@ function renderResumo() {
 }
 
 // =============================
-// VALIDAÇÃO
+// VALIDAR
 // =============================
-function validar() {
-  const nome = document.getElementById('nome').value.trim();
-  const whatsapp = document.getElementById('whatsapp').value.trim();
-  const bairro = document.getElementById('bairro').value.trim();
-  const rua = document.getElementById('rua').value.trim();
-  const numero = document.getElementById('numero').value.trim();
 
-  return nome && whatsapp && bairro && rua && numero;
+function validar() {
+  const campos = ["nome", "whatsapp", "bairro", "rua", "numero"];
+
+  return campos.every(id =>
+    document.getElementById(id).value.trim() !== ""
+  );
 }
 
 // =============================
-// FINALIZAR
+// FINALIZAR PEDIDO
 // =============================
+
 function confirmarCheckout() {
+
+  const btn = document.getElementById('btnFinalizar');
+  if (btn.disabled) return;
 
   if (!validar()) {
     document.getElementById('erro').style.display = "block";
     return;
   }
 
-  const btn = document.getElementById('btnFinalizar');
   btn.disabled = true;
 
   const carrinho = getCarrinho();
@@ -79,6 +125,8 @@ function confirmarCheckout() {
   const rua = document.getElementById('rua').value;
   const numeroCasa = document.getElementById('numero').value;
   const obs = document.getElementById('obs').value;
+
+  const frete = calcularFrete(bairro);
 
   let msg = `🛒 *NOVO PEDIDO*\n\n`;
   msg += `📦 Pedido: ${pedido.codigo}\n`;
@@ -96,13 +144,23 @@ function confirmarCheckout() {
     total += preco * item.quantidade;
   });
 
+  msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
+
+  total += frete;
+
   msg += `💰 Total: R$ ${total.toFixed(2)}\n\n`;
 
-  msg += `👤 Cliente: ${nome}\n`;
-  msg += `📱 WhatsApp: ${whatsapp}\n`;
-  msg += `📍 Endereço: ${rua}, ${numeroCasa} - ${bairro}\n`;
+  msg += `👤 ${nome}\n`;
+  msg += `📱 ${whatsapp}\n`;
+  msg += `📍 ${rua}, ${numeroCasa} - ${bairro}\n`;
 
-  if (obs) msg += `📝 Obs: ${obs}\n`;
+  if (obs) msg += `📝 ${obs}\n`;
+
+  // PIX
+  msg += `\n💳 PIX: 47997465602\n👤 F Pac Store`;
+
+  // SALVAR CLIENTE
+  salvarCliente({ nome, whatsapp, bairro, rua, numeroCasa });
 
   const numeroLoja = "5547997465602";
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(msg)}`;
@@ -116,5 +174,20 @@ function confirmarCheckout() {
   }, 1200);
 }
 
-// INIT
-document.addEventListener('DOMContentLoaded', renderResumo);
+// =============================
+// AUTO PREENCHER
+// =============================
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderResumo();
+
+  const cliente = carregarCliente();
+
+  if (cliente.nome) {
+    document.getElementById('nome').value = cliente.nome;
+    document.getElementById('whatsapp').value = cliente.whatsapp;
+    document.getElementById('bairro').value = cliente.bairro;
+    document.getElementById('rua').value = cliente.rua;
+    document.getElementById('numero').value = cliente.numeroCasa;
+  }
+});
