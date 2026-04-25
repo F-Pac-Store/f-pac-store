@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+<style>
+.produto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px;
+}
+
+.produto-img img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.produto-info {
+  max-width: 400px;
+}
+
+.opcoes {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.opcoes button {
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.opcoes button.ativo {
+  border-color: #FFC107;
+  background: #fff8e1;
+}
+</style>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -49,7 +86,9 @@
     </div>
 
     <!-- BOTÃO -->
-    <button onclick="adicionarProduto()">Adicionar ao Carrinho</button>
+    <button id="btnComprar" onclick="adicionarProduto()" disabled>
+  Adicionar ao Carrinho
+</button>
 
   </div>
 
@@ -68,9 +107,22 @@ function selecionar(botao, tipo) {
   botao.classList.add('ativo');
 
   produto[tipo] = botao.innerText;
+
+  validarBotao();
+}
+
+function validarBotao() {
+  const botao = document.getElementById('btnComprar');
+
+  if (produto.cor && produto.tamanho) {
+    botao.disabled = false;
+  } else {
+    botao.disabled = true;
+  }
 }
 
 function adicionarProduto() {
+
   if (!produto.cor || !produto.tamanho) {
     alert('Selecione cor e tamanho');
     return;
@@ -90,11 +142,24 @@ function adicionarProduto() {
     imagem: "imagens/logo-no-peito.jpg"
   };
 
-  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
-  carrinho.push(item);
-  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+  adicionarItem(item);
 
   alert('Produto adicionado ao carrinho!');
+}
+
+/* CARRINHO GLOBAL */
+function adicionarItem(item) {
+  const carrinho = JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+
+  const existente = carrinho.find(p => p.id === item.id);
+
+  if (existente) {
+    existente.quantidade += item.quantidade;
+  } else {
+    carrinho.push(item);
+  }
+
+  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
 }
 </script>
 
