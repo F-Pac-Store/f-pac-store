@@ -1,25 +1,32 @@
 /* ============================= */
-/* GLOBAL BASE (PARA TODAS PÁGINAS) */
+/* RESET GLOBAL                  */
 /* ============================= */
 
-html, body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
   width: 100%;
   min-height: 100%;
   background: #f4f6f8;
- /* fundo global definitivo */
   overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Variáveis globais */
+/* ============================= */
+/* VARIÁVEIS                     */
+/* ============================= */
+
 :root {
   --primary: #003366;
   --accent: #FFC107;
 }
 
 /* ============================= */
-/* HEADER FIXO PADRÃO            */
+/* HEADER FIXO                   */
 /* ============================= */
 
 .header {
@@ -28,7 +35,7 @@ html, body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 /* Conteúdo do header */
@@ -36,7 +43,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 120px; /* desktop */
+  height: 120px;
   padding: 0 15px;
 }
 
@@ -53,25 +60,16 @@ html, body {
 
 .logo-img {
   max-height: 85px;
+  width: auto;
 }
 
 .logo-text {
   font-family: 'blacklisted', sans-serif;
   font-size: 2.2rem;
   letter-spacing: 3px;
-  line-height: 1;
   color: var(--accent);
   -webkit-text-stroke: 1.5px #000;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-}
-
-/* Desktop fino */
-@media (min-width: 768px) {
-  .logo-img {
-    max-height: 90px;
-  }
 }
 
 /* ============================= */
@@ -84,16 +82,10 @@ html, body {
   align-items: center;
 }
 
-.menu-links {
-  display: flex;
-  gap: 25px;
-}
-
 .nav a {
-  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -145,7 +137,6 @@ html, body {
   background: radial-gradient(
     circle at 30% 110%,
     #fdf497 0%,
-    #fdf497 5%,
     #fd5949 45%,
     #d6249f 60%,
     #285AEB 90%
@@ -157,14 +148,6 @@ html, body {
 /* ============================= */
 /* MENU MOBILE                   */
 /* ============================= */
-
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: var(--primary);
-  z-index: 9999; /* ✅ MAIS ALTO QUE A HERO */
-}
 
 .nav.active {
   display: flex;
@@ -180,19 +163,23 @@ html, body {
   text-align: center;
 }
 
-/* Desktop */
+/* ============================= */
+/* RESPONSIVO                    */
+/* ============================= */
+
 @media (min-width: 768px) {
   .nav {
     display: flex;
   }
+
+  .logo-img {
+    max-height: 90px;
+  }
+
   .menu-toggle {
     display: none;
   }
 }
-
-/* ============================= */
-/* MOBILE                        */
-/* ============================= */
 
 @media (max-width: 600px) {
   .header-content {
@@ -214,8 +201,25 @@ html, body {
   }
 }
 
+/* ============================= */
+/* MENU TOGGLE                   */
+/* ============================= */
+
 .menu-toggle {
   position: relative;
-  z-index: 10000; /* ✅ acima do header e da hero */
+  z-index: 10000;
 }
 
+/* ============================= */
+/* BOTÕES (UX PREMIUM)           */
+/* ============================= */
+
+button {
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
