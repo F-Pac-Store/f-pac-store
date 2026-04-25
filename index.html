@@ -1307,7 +1307,7 @@ section#mark {
                 <!-- ✅ CARRINHO NO MEIO -->
                 <a href="carrinho.html" class="carrinho-icone" aria-label="Carrinho">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="carrinho-qtd" id="carrinhoQtd">0</span>
+                    <span class="carrinho-qtd" class="carrinho-qtd">0</span>
                 </a>
 
                 <!-- REDES SOCIAIS -->
@@ -1405,26 +1405,25 @@ section#mark {
             <div class="grid">
 
                 <div class="card card-gold">
-                    <img src="cards/F-PAC-ESCRITA-peito C.png" <h3>Force</h3>
+                    <img src="cards/F-PAC-ESCRITA-peito C.png">
+                    <h3>Force</h3>
                     <p>Camisas Prontas Com Texto</p>
                     <a href="produto-force.html" class="btn">Comprar Agora</a>
                 </div>
 
                 <div class="card card-gold">
-                    <img src="cards/FP-peito LE.png" <h3>Mark</h3>
+                    <img src="cards/FP-peito LE.png">
+                    <h3>Mark</h3>
                     <p>Camisas Prontas Com Desenhos</p>
                     <a href="produto-mark.html" class="btn">Comprar Agora</a>
                 </div>
 
                 <div class="card card-prime card-gold">
-                    <img src="cards/F-PAC- costas.png" <h3>Prime</h3>
+                    <img src="cards/F-PAC- costas.png">
+                    <h3>Prime</h3>
                     <p>Criar Camisa Do Seu Jeito</p>
                     <a href="produto-prime.html" class="btn btn-destaque">Criar Camisa PRIME</a>
                 </div>
-
-            </div>
-
-        </div>
 
         </div>
     </section>
@@ -1614,147 +1613,84 @@ section#mark {
             © 2026 F Pac Store — Não é só roupa. É identidade.
         </footer>
 
-        <script>
-            const toggle = document.getElementById('toggle');
-              const nav = document.getElementById('nav');
-            
-              toggle.onclick = () => {
-                nav.classList.toggle('active');
-              };
-        </script>
-
-        <script>
-            // Fecha o menu mobile ao clicar em qualquer link
-              document.querySelectorAll('.nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                  nav.classList.remove('active');
-                });
-              });
-        </script>
-
-        <script>
-            document.querySelectorAll('#basica .basica-card, #mark .basica-card').forEach(card => {
-            
-              const cor = card.querySelector('.cor');
-              const tamanho = card.querySelector('.tamanho');
-              const qtd = card.querySelector('.quantidade');
-            
-              const etapaTamanho = card.querySelector('.etapa-tamanho');
-              const etapaQtd = card.querySelector('.etapa-quantidade');
-              const finalizar = card.querySelector('.etapa-finalizar');
-            
-              const painel = card.querySelector('.painel-flutuante');
-            
-              function esconder(el) {
-                if (!el) return;
-                el.classList.add('oculta');
-                el.classList.remove('visivel');
-              }
-            
-              function mostrar(el) {
-                if (!el) return;
-                el.classList.remove('oculta');
-                el.classList.add('visivel');
-              }
-    
-                function fecharOutrosCards() {
-      document
-        .querySelectorAll('#basica .basica-card.aberto, #mark .basica-card.aberto')
-        .forEach(outro => {
-          if (outro !== card) {
-            outro.classList.remove('aberto');
-          }
-        });
-    }
-            
-              function atualizarPainel() {
-                const aberto =
-                  etapaTamanho?.classList.contains('visivel') ||
-                  etapaQtd?.classList.contains('visivel') ||
-                  finalizar?.classList.contains('visivel');
-            
-                card.classList.toggle('aberto', aberto);
-              }
-            
-              esconder(etapaTamanho);
-              esconder(etapaQtd);
-              esconder(finalizar);
-              atualizarPainel();
-            
-              cor?.addEventListener('change', () => {
-      fecharOutrosCards();        // ✅ fecha os outros cards
-      card.classList.add('aberto'); // ✅ garante este na frente
-    
-      if (cor.value) {
-        mostrar(etapaTamanho);
-      } else {
-        esconder(etapaTamanho);
-      }
-            
-                esconder(etapaQtd);
-                esconder(finalizar);
-            
-                if (tamanho) tamanho.value = '';
-                if (qtd) qtd.value = 0;
-            
-                atualizarPainel();
-              });
-            
-              tamanho?.addEventListener('change', () => {
-                if (tamanho.value) {
-                  mostrar(etapaQtd);
-                } else {
-                  esconder(etapaQtd);
-                }
-            
-                esconder(finalizar);
-                if (qtd) qtd.value = 0;
-            
-                atualizarPainel();
-              });
-            
-              qtd?.addEventListener('input', () => {
-                if (Number(qtd.value) > 0) {
-                  mostrar(finalizar);
-                } else {
-                  esconder(finalizar);
-                }
-            
-                atualizarPainel();
-              });
-            });
-        </script>
-
-        <script>
-            function gerarPedido() {
-              const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
-              const codigo = Math.floor(1000 + Math.random() * 9000);
-              return { data, codigo };
-            }
-        </script>
-
-        <script>
-            /* =============================
-               PRIME – ADICIONAR AO CARRINHO
-            ============================= */
-            
-            function gerarPedidoPrime() {
-              const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
-              const codigo = Math.floor(1000 + Math.random() * 9000);
-              return { data, codigo };
-            }
-                       
-              <script>
+<script>
 /* =============================
-   PRIME – ADICIONAR AO CARRINHO
+   MENU MOBILE
 ============================= */
+const toggle = document.getElementById('toggle');
+const nav = document.getElementById('nav');
 
+toggle.onclick = () => {
+  nav.classList.toggle('active');
+};
+
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+  });
+});
+
+
+/* =============================
+   CARRINHO GLOBAL
+============================= */
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+}
+
+function salvarCarrinho(carrinho) {
+  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+}
+
+function adicionarItem(item) {
+  const carrinho = getCarrinho();
+  const existente = carrinho.find(p => p.id === item.id);
+
+  if (existente) {
+    existente.quantidade += item.quantidade;
+  } else {
+    carrinho.push(item);
+  }
+
+  salvarCarrinho(carrinho);
+  atualizarContadorCarrinho();
+
+  // redireciona
+  window.location.href = "carrinho.html";
+}
+
+function removerItem(id) {
+  const carrinho = getCarrinho().filter(item => item.id !== id);
+  salvarCarrinho(carrinho);
+  atualizarContadorCarrinho();
+}
+
+function atualizarContadorCarrinho() {
+  const carrinho = getCarrinho();
+  const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+
+  document.querySelectorAll('#carrinhoQtd').forEach(el => {
+    el.textContent = total;
+    el.style.display = total > 0 ? 'inline-block' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+
+
+/* =============================
+   PRIME – PEDIDO
+============================= */
 function gerarPedidoPrime() {
   const data = new Date().toLocaleDateString('pt-BR').replace(/\//g, '.');
   const codigo = Math.floor(1000 + Math.random() * 9000);
   return { data, codigo };
 }
 
+
+/* =============================
+   PRIME – ADICIONAR AO CARRINHO
+============================= */
 function adicionarPrimeAoCarrinho(botao) {
 
   const card = botao.closest('.basica-card');
@@ -1780,84 +1716,31 @@ function adicionarPrimeAoCarrinho(botao) {
     modelo: "PRIME",
     nome: "Camisa PRIME – Personalizada",
 
-    // CAMPOS PADRÃO (OBRIGATÓRIOS)
     quantidade: quantidadeCamisas,
-    preco: 109.90,
+    preco: parseFloat(109.90),
 
-    // CAMPOS ESPECÍFICOS
-    quantidadeCamisas: quantidadeCamisas,
-    precoUnitarioFinal: 109.90,
+    cor,
+    tamanho,
+    estampa,
+    localEstampa,
+    tamanhoEstampa,
+    observacoes,
 
-    cor: cor,
-    tamanho: tamanho,
+    pedidoData: pedido.data,
+    pedidoCodigo: pedido.codigo,
 
-    estampa: estampa,
-    quantidadeEstampas: 1,
-    localEstampa: localEstampa,
-    tamanhoEstampa: tamanhoEstampa,
-
-    observacoes: observacoes,
     imagem: "imagens/estampas/e3.jpeg"
   });
 
-  // RESET DO FORMULÁRIO
+  // reset
   card.querySelector('.prime-cor').value = '';
   card.querySelector('.prime-tamanho').value = '';
   card.querySelector('.prime-estampa').value = '';
   card.querySelector('.prime-qtd').value = 1;
   card.querySelector('.prime-obs').value = '';
 }
-        </script>
-
-        <datalist id="bairros-joinville">
-            <!-- Centro -->
-            <option value="Centro">
-
-                <!-- Norte -->
-                <option value="América">
-                    <option value="Atiradores">
-                        <option value="Bom Retiro">
-                            <option value="Costa e Silva">
-                                <option value="Glória">
-                                    <option value="Saguaçu">
-                                        <option value="Santo Antônio">
-
-                                            <!-- Leste -->
-                                            <option value="Aventureiro">
-                                                <option value="Comasa">
-                                                    <option value="Espinheiros">
-                                                        <option value="Iririú">
-                                                            <option value="Jardim Iririú">
-                                                                <option value="Jardim Paraíso">
-                                                                    <option value="Jardim Sofia">
-
-                                                                        <!-- Sul -->
-                                                                        <option value="Adhemar Garcia">
-                                                                            <option value="Boehmerwald">
-                                                                                <option value="Floresta">
-                                                                                    <option value="Fátima">
-                                                                                        <option value="Guanabara">
-                                                                                            <option value="Itaum">
-                                                                                                <option value="Itinga">
-                                                                                                    <option value="Jarivatuba">
-                                                                                                        <option value="João Costa">
-                                                                                                            <option value="Nova Brasília">
-                                                                                                                <option value="Paranaguamirim">
-                                                                                                                    <option value="Petrópolis">
-                                                                                                                        <option value="Profipo">
-                                                                                                                            <option value="Santa Catarina">
-                                                                                                                                <option value="São Marcos">
-                                                                                                                                    <option value="Ulysses Guimarães">
-
-                                                                                                                                        <!-- Oeste -->
-                                                                                                                                        <option value="Anita Garibaldi">
-                                                                                                                                            <option value="Bucarein">
-                                                                                                                                                <option value="Morro do Meio">
-                                                                                                                                                    <option value="Vila Cubatão">
-                                                                                                                                                        <option value="Vila Nova">
-        </datalist>
-
-        <script>
+</script>
+        
             /* =============================
                CARRINHO GLOBAL – F PAC STORE
             ============================= */
