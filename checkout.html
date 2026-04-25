@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Checkout | F Pac Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/header.css">
+<meta charset="UTF-8">
+<title>Checkout | F Pac Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Inter, sans-serif;
-      background:#f4f6f8;
-      padding-top:120px;
-    }
-    .wrap {
-      max-width:720px;
-      margin:auto;
-      padding:32px;
-    }
-    .card {
-      background:#fff;
-      padding:24px;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
-    }
-    label {
-      display:block;
-      margin-top:16px;
-      font-weight:600;
-    }
-    input, textarea {
-      width:100%;
-      padding:12px;
-      margin-top:6px;
-    }
-    button {
-      margin-top:24px;
-      width:100%;
-      padding:16px;
-      font-weight:800;
-      background:#22c55e;
-      border:none;
-      color:#fff;
-      cursor:pointer;
-    }
-  </style>
+<link rel="stylesheet" href="css/header.css">
+
+<style>
+body {
+  font-family: Inter, sans-serif;
+  background:#f4f6f8;
+  padding-top:120px;
+}
+
+.wrap {
+  max-width:720px;
+  margin:auto;
+  padding:32px;
+}
+
+.card {
+  background:#fff;
+  padding:24px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+label {
+  display:block;
+  margin-top:16px;
+  font-weight:600;
+}
+
+input, textarea {
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+}
+
+button {
+  margin-top:24px;
+  width:100%;
+  padding:16px;
+  font-weight:800;
+  background:#22c55e;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+
+.resumo {
+  background:#f9f9f9;
+  padding:16px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+.total {
+  font-weight:800;
+  margin-top:10px;
+}
+
+.erro {
+  color:red;
+  font-size:0.85rem;
+  display:none;
+}
+</style>
 </head>
 
 <body>
@@ -59,29 +83,35 @@
 
 <div class="wrap">
   <div class="card">
-    <h2>Dados para Finalização</h2>
+
+    <h2>Finalizar Pedido</h2>
+
+    <!-- RESUMO -->
+    <div class="resumo" id="resumoPedido"></div>
 
     <label>Nome completo</label>
     <input id="nome">
 
     <label>WhatsApp</label>
-    <input id="whatsapp" placeholder="DDD + número">
+    <input id="whatsapp" placeholder="47999999999">
 
     <label>Bairro</label>
     <input id="bairro">
 
-    <label>Rua / Avenida</label>
+    <label>Rua</label>
     <input id="rua">
 
     <label>Número</label>
     <input id="numero">
 
-    <label>Observações do pedido</label>
+    <label>Observações</label>
     <textarea id="obs"></textarea>
 
-    <button type="button" onclick="confirmarCheckout()">
+    <button id="btnFinalizar" onclick="confirmarCheckout()">
       Confirmar Pedido
     </button>
+
+    <div id="erro" class="erro">Preencha todos os campos obrigatórios</div>
 
     <div id="mensagemEnviada" style="
       display:none;
@@ -93,12 +123,12 @@
       text-align:center;
       border-radius:8px;
     ">
-      ✅ Pedido enviado com sucesso!
+      Pedido enviado! Redirecionando para WhatsApp...
     </div>
+
   </div>
 </div>
 
-<!-- ✅ UM ÚNICO JS COM TODA A LÓGICA -->
 <script src="js/checkout.js"></script>
 
 </body>
