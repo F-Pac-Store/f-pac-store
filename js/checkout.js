@@ -1,169 +1,133 @@
 // =============================
-// CARRINHO
+// BASE
 // =============================
-
 function getCarrinho() {
   return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
 }
-
-// =============================
-// FRETE POR BAIRRO
-// =============================
-
-const fretePorBairro = {
-  "Paranaguamirim": 5,
-  "Adhemar Garcia": 5,
-  "Centro": 8
-};
-
-function calcularFrete(bairro) {
-  return fretePorBairro[bairro] || 10;
-}
-
-// =============================
-// CLIENTE (AUTO SAVE)
-// =============================
 
 function salvarCliente(cliente) {
   localStorage.setItem('fpacCliente', JSON.stringify(cliente));
 }
 
-function carregarCliente() {
+function getCliente() {
   return JSON.parse(localStorage.getItem('fpacCliente')) || {};
 }
 
 // =============================
-// GERAR PEDIDO
+// FRETE POR BAIRRO (AJUSTA AQUI)
 // =============================
+const fretePorBairro = {
+  "Paranaguamirim": 5,
+  "Adhemar Garcia": 5,
+  "Ulysses Guimarães": 6,
+  "Floresta": 8
+};
 
+// =============================
+// PEDIDO
+// =============================
 function gerarPedido() {
   const agora = new Date();
-
-  const codigo =
-    "FP" +
-    agora.toISOString().slice(2,10).replace(/-/g,'') +
-    "-" +
-    Math.floor(Math.random() * 1000);
-
   return {
-    codigo,
+    codigo: "FP" + Date.now().toString().slice(-6),
     data: agora.toLocaleDateString('pt-BR'),
     hora: agora.toLocaleTimeString('pt-BR')
   };
 }
 
 // =============================
-// RENDER RESUMO
+// RESUMO
 // =============================
-
 function renderResumo() {
   const carrinho = getCarrinho();
   const el = document.getElementById('resumoPedido');
 
-  if (!el) return;
-
-  if (carrinho.length === 0) {
+  if (!el || carrinho.length === 0) {
     el.innerHTML = "Carrinho vazio";
     return;
   }
 
-  let html = "";
   let total = 0;
+  let html = "";
 
   carrinho.forEach(item => {
     const preco = Number(item.preco) || 0;
     total += preco * item.quantidade;
 
-    html += `
-      <div>
-        <strong>${item.nome}</strong><br>
-        Qtd: ${item.quantidade}
-      </div>
-      <hr>
-    `;
+    html += `<div>${item.nome} - Qtd: ${item.quantidade}</div>`;
   });
 
   html += `<div class="total">Total: R$ ${total.toFixed(2)}</div>`;
-
   el.innerHTML = html;
 }
 
 // =============================
-// VALIDAR
+// AUTO PREENCHER
 // =============================
+function preencherCliente() {
+  const c = getCliente();
 
-function validar() {
-  const campos = ["nome", "whatsapp", "bairro", "rua", "numero"];
+  if (!c.nome) return;
 
-  return campos.every(id =>
-    document.getElementById(id).value.trim() !== ""
-  );
+  document.getElementById('nome').value = c.nome || "";
+  document.getElementById('whatsapp').value = c.whatsapp || "";
+  document.getElementById('bairro').value = c.bairro || "";
+  document.getElementById('rua').value = c.rua || "";
+  document.getElementById('numero').value = c.numero || "";
 }
 
 // =============================
-// FINALIZAR PEDIDO
+// FINALIZAR
 // =============================
-
 function confirmarCheckout() {
 
-  const btn = document.getElementById('btnFinalizar');
-  if (btn.disabled) return;
+  const nome = document.getElementById('nome').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+  const bairro = document.getElementById('bairro').value.trim();
+  const rua = document.getElementById('rua').value.trim();
+  const numero = document.getElementById('numero').value.trim();
+  const obs = document.getElementById('obs').value;
 
-  if (!validar()) {
+  if (!nome || !whatsapp || !bairro || !rua || !numero) {
     document.getElementById('erro').style.display = "block";
     return;
   }
 
-  btn.disabled = true;
-
   const carrinho = getCarrinho();
   const pedido = gerarPedido();
 
-  const nome = document.getElementById('nome').value;
-  const whatsapp = document.getElementById('whatsapp').value;
-  const bairro = document.getElementById('bairro').value;
-  const rua = document.getElementById('rua').value;
-  const numeroCasa = document.getElementById('numero').value;
-  const obs = document.getElementById('obs').value;
-
-  const frete = calcularFrete(bairro);
-
+  let total = 0;
   let msg = `🛒 *NOVO PEDIDO*\n\n`;
+
   msg += `📦 Pedido: ${pedido.codigo}\n`;
   msg += `📅 ${pedido.data} ${pedido.hora}\n\n`;
 
-  let total = 0;
-
   carrinho.forEach(item => {
     const preco = Number(item.preco) || 0;
-
-    msg += `• ${item.nome}\n`;
-    msg += `Qtd: ${item.quantidade}\n`;
-    msg += `R$ ${(preco * item.quantidade).toFixed(2)}\n\n`;
-
     total += preco * item.quantidade;
+
+    msg += `• ${item.nome}\nQtd: ${item.quantidade}\n`;
   });
 
-  msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
-
+  // FRETE
+  const frete = fretePorBairro[bairro] || 10;
   total += frete;
 
+  msg += `\n🚚 Frete: R$ ${frete.toFixed(2)}\n`;
   msg += `💰 Total: R$ ${total.toFixed(2)}\n\n`;
 
-  msg += `👤 ${nome}\n`;
-  msg += `📱 ${whatsapp}\n`;
-  msg += `📍 ${rua}, ${numeroCasa} - ${bairro}\n`;
+  msg += `👤 ${nome}\n📱 ${whatsapp}\n`;
+  msg += `📍 ${rua}, ${numero} - ${bairro}\n`;
 
   if (obs) msg += `📝 ${obs}\n`;
 
   // PIX
-  msg += `\n💳 PIX: 47997465602\n👤 F Pac Store`;
-
-  // SALVAR CLIENTE
-  salvarCliente({ nome, whatsapp, bairro, rua, numeroCasa });
+  msg += `\n💳 Pagamento via PIX\n`;
 
   const numeroLoja = "5547997465602";
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(msg)}`;
+
+  salvarCliente({ nome, whatsapp, bairro, rua, numero });
 
   document.getElementById('mensagemEnviada').style.display = "block";
 
@@ -174,20 +138,8 @@ function confirmarCheckout() {
   }, 1200);
 }
 
-// =============================
-// AUTO PREENCHER
-// =============================
-
+// INIT
 document.addEventListener('DOMContentLoaded', () => {
   renderResumo();
-
-  const cliente = carregarCliente();
-
-  if (cliente.nome) {
-    document.getElementById('nome').value = cliente.nome;
-    document.getElementById('whatsapp').value = cliente.whatsapp;
-    document.getElementById('bairro').value = cliente.bairro;
-    document.getElementById('rua').value = cliente.rua;
-    document.getElementById('numero').value = cliente.numeroCasa;
-  }
+  preencherCliente();
 });
