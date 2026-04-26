@@ -14,7 +14,7 @@ function getCliente() {
 }
 
 // =============================
-// FRETE POR BAIRRO (AJUSTA AQUI)
+// FRETE POR BAIRRO
 // =============================
 const fretePorBairro = {
   "Paranaguamirim": 5,
@@ -36,14 +36,16 @@ function gerarPedido() {
 }
 
 // =============================
-// RESUMO
+// RESUMO DO CARRINHO
 // =============================
 function renderResumo() {
   const carrinho = getCarrinho();
   const el = document.getElementById('resumoPedido');
 
-  if (!el || carrinho.length === 0) {
-    el.innerHTML = "Carrinho vazio";
+  if (!el) return;
+
+  if (carrinho.length === 0) {
+    el.innerHTML = "<p>Carrinho vazio</p>";
     return;
   }
 
@@ -54,46 +56,62 @@ function renderResumo() {
     const preco = Number(item.preco) || 0;
     total += preco * item.quantidade;
 
-    html += `<div>${item.nome} - Qtd: ${item.quantidade}</div>`;
+    html += `
+      <div style="margin-bottom:8px;">
+        ${item.nome} - Qtd: ${item.quantidade}
+      </div>
+    `;
   });
 
-  html += `<div class="total">Total: R$ ${total.toFixed(2)}</div>`;
+  html += `<hr><strong>Total produtos: R$ ${total.toFixed(2)}</strong>`;
   el.innerHTML = html;
 }
 
 // =============================
-// AUTO PREENCHER
+// AUTO PREENCHER CLIENTE
 // =============================
 function preencherCliente() {
   const c = getCliente();
 
   if (!c.nome) return;
 
-  document.getElementById('nome').value = c.nome || "";
-  document.getElementById('whatsapp').value = c.whatsapp || "";
-  document.getElementById('bairro').value = c.bairro || "";
-  document.getElementById('rua').value = c.rua || "";
-  document.getElementById('numero').value = c.numero || "";
+  const set = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.value = val || "";
+  };
+
+  set('nome', c.nome);
+  set('whatsapp', c.whatsapp);
+  set('bairro', c.bairro);
+  set('rua', c.rua);
+  set('numero', c.numero);
 }
 
 // =============================
-// FINALIZAR
+// FINALIZAR PEDIDO
 // =============================
 function confirmarCheckout() {
 
-  const nome = document.getElementById('nome').value.trim();
-  const whatsapp = document.getElementById('whatsapp').value.trim();
-  const bairro = document.getElementById('bairro').value.trim();
-  const rua = document.getElementById('rua').value.trim();
-  const numero = document.getElementById('numero').value.trim();
-  const obs = document.getElementById('obs').value;
+  const nome = document.getElementById('nome')?.value.trim();
+  const whatsapp = document.getElementById('whatsapp')?.value.trim();
+  const bairro = document.getElementById('bairro')?.value.trim();
+  const rua = document.getElementById('rua')?.value.trim();
+  const numero = document.getElementById('numero')?.value.trim();
+  const obs = document.getElementById('obs')?.value || "";
 
   if (!nome || !whatsapp || !bairro || !rua || !numero) {
-    document.getElementById('erro').style.display = "block";
+    const erro = document.getElementById('erro');
+    if (erro) erro.style.display = "block";
     return;
   }
 
   const carrinho = getCarrinho();
+
+  if (carrinho.length === 0) {
+    alert("Carrinho vazio");
+    return;
+  }
+
   const pedido = gerarPedido();
 
   let total = 0;
@@ -106,39 +124,41 @@ function confirmarCheckout() {
     const preco = Number(item.preco) || 0;
     total += preco * item.quantidade;
 
-    msg += `• ${item.nome}\nQtd: ${item.quantidade}\n`;
+    msg += `• ${item.nome}\nQtd: ${item.quantidade}\n\n`;
   });
 
   // FRETE
-  const frete = fretePorBairro[bairro] || 10;
+  const frete = fretePorBairro[bairro] ?? 10;
   total += frete;
 
-  msg += `\n🚚 Frete: R$ ${frete.toFixed(2)}\n`;
+  msg += `🚚 Frete: R$ ${frete.toFixed(2)}\n`;
   msg += `💰 Total: R$ ${total.toFixed(2)}\n\n`;
 
   msg += `👤 ${nome}\n📱 ${whatsapp}\n`;
   msg += `📍 ${rua}, ${numero} - ${bairro}\n`;
 
-  if (obs) msg += `📝 ${obs}\n`;
+  if (obs) msg += `📝 Obs: ${obs}\n`;
 
-  // PIX
-  msg += `\n💳 Pagamento via PIX\n`;
+  msg += `\n💳 Pagamento via PIX`;
 
   const numeroLoja = "5547997465602";
   const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(msg)}`;
 
   salvarCliente({ nome, whatsapp, bairro, rua, numero });
 
-  document.getElementById('mensagemEnviada').style.display = "block";
+  const ok = document.getElementById('mensagemEnviada');
+  if (ok) ok.style.display = "block";
 
   setTimeout(() => {
     window.open(url, "_blank");
     localStorage.removeItem('fpacCarrinho');
     window.location.href = "index.html";
-  }, 1200);
+  }, 1000);
 }
 
+// =============================
 // INIT
+// =============================
 document.addEventListener('DOMContentLoaded', () => {
   renderResumo();
   preencherCliente();
