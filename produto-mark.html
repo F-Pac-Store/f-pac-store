@@ -6,52 +6,216 @@
 <title>Mark | F Pac Store</title>
 
 <style>
-body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
-.card{max-width:400px;margin:auto;background:#fff;padding:20px;border-radius:10px;text-align:center}
-img{width:100%;height:250px;object-fit:contain}
-button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;font-weight:bold}
+body{
+  font-family:Arial;
+  background:#f5f5f5;
+  margin:0;
+  padding:20px;
+}
+
+.card{
+  max-width:400px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+img{
+  width:100%;
+  height:250px;
+  object-fit:contain;
+}
+
+button{
+  background:#FFC107;
+  border:none;
+  padding:12px;
+  width:100%;
+  margin-top:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+label{
+  display:block;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+/* =========================
+   CORES
+========================= */
+
+.cores{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:10px;
+}
+
+.cor{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:0.2s;
+}
+
+.cor:hover{
+  transform:scale(1.1);
+}
+
+.cor.ativo{
+  border:2px solid #000;
+}
+
+/* cores */
+.branco{
+  background:#fff;
+  border:1px solid #ccc;
+}
+
+.preto{
+  background:#000;
+}
+
+.offwhite{
+  background:#e8dccb;
+}
+
+/* bloqueio estoque */
+.cor.indisponivel{
+  opacity:0.3;
+  pointer-events:none;
+  filter:grayscale(100%);
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
+
 <img src="imagens/logo-no-peito.jpg">
 
 <h2>Camisa Mark</h2>
 <p>Modelo com estampas</p>
 
+<!-- TAMANHO -->
 <label>Tamanho</label>
 <select id="tamanho">
-<option>P</option>
-<option>M</option>
-<option>G</option>
-<option>GG</option>
+  <option>P</option>
+  <option>M</option>
+  <option>G</option>
+  <option>GG</option>
 </select>
 
+<!-- COR -->
+<label>Cor</label>
+
+<div class="cores">
+
+  <div class="cor branco" id="cor-Branco" onclick="selecionarCor('Branco')"></div>
+  <div class="cor preto" id="cor-Preto" onclick="selecionarCor('Preto')"></div>
+  <div class="cor offwhite" id="cor-Off White" onclick="selecionarCor('Off White')"></div>
+
+</div>
+
+<input type="hidden" id="cor" value="Branco">
+
+<!-- QUANTIDADE -->
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1" min="1">
 
+<!-- BOTÃO -->
 <button onclick="comprar()">Adicionar ao Carrinho</button>
+
 </div>
 
 <script>
+
+// =========================
+// ESTOQUE DE CORES
+// =========================
+
+const estoqueCores = {
+  "Branco": true,
+  "Preto": false,   // ❌ indisponível
+  "Off White": true
+};
+
+// =========================
+// BLOQUEIO AUTOMÁTICO
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  Object.keys(estoqueCores).forEach(cor => {
+    if (!estoqueCores[cor]) {
+      const el = document.getElementById("cor-" + cor);
+      if (el) el.classList.add("indisponivel");
+    }
+  });
+
+});
+
+// =========================
+// SELEÇÃO DE COR
+// =========================
+
+function selecionarCor(cor){
+
+  if (!estoqueCores[cor]) return;
+
+  document.getElementById("cor").value = cor;
+
+  document.querySelectorAll(".cor").forEach(el=>{
+    el.classList.remove("ativo");
+  });
+
+  if(cor === "Branco") document.querySelector(".branco").classList.add("ativo");
+  if(cor === "Preto") document.querySelector(".preto").classList.add("ativo");
+  if(cor === "Off White") document.querySelector(".offwhite").classList.add("ativo");
+}
+
+// =========================
+// ADICIONAR AO CARRINHO
+// =========================
+
 function comprar(){
-const item={
-id:"MARK-"+Date.now(),
-nome:"Camisa Mark",
-tamanho:document.getElementById("tamanho").value,
-quantidade:Number(document.getElementById("qtd").value),
-preco:89.90,
-imagem:"imagens/logo-no-peito.jpg"
+
+const cor = document.getElementById("cor").value;
+
+// bloqueio final de segurança
+if (!estoqueCores[cor]) {
+  alert("Cor indisponível");
+  return;
 }
 
-let carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
-carrinho.push(item)
-
-localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho))
-window.location.href="carrinho.html"
+const item = {
+id: "MARK-" + Date.now(),
+nome: "Camisa Mark",
+tamanho: document.getElementById("tamanho").value,
+cor: cor,
+quantidade: Number(document.getElementById("qtd").value),
+preco: 89.90,
+imagem: "imagens/logo-no-peito.jpg"
 }
+
+let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+
+carrinho.push(item);
+
+localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
+
+window.location.href = "carrinho.html";
+
+}
+
 </script>
 
 </body>
