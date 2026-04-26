@@ -34,7 +34,6 @@ color:var(--text);
 .header{
 background:var(--primary);
 backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
 position:fixed;
 width:100%;
 top:0;
@@ -60,6 +59,7 @@ transition:0.3s;
 height:70px;
 }
 
+/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -86,7 +86,6 @@ color:#FFC107;
 display:flex;
 gap:30px;
 align-items:center;
-white-space:nowrap;
 }
 
 .nav a{
@@ -95,7 +94,7 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* BOTÃO */
+/* BOTÃO MENU */
 .menu-toggle{
 display:none;
 flex-direction:column;
@@ -186,14 +185,18 @@ position:fixed;
 top:0;
 right:-100%;
 height:100vh;
-width:260px;
-background:rgba(0,51,102,0.9);
+width:200px; /* MAIS FINO */
+background:rgba(0,51,102,0.95);
 backdrop-filter:blur(12px);
 flex-direction:column;
 align-items:flex-start;
-padding:120px 20px;
-gap:25px;
-transition:0.4s ease;
+padding:110px 20px;
+gap:20px;
+transition:0.3s ease;
+}
+
+.nav a{
+font-size:16px;
 }
 
 .nav.active{
@@ -204,11 +207,11 @@ right:0;
 display:flex;
 }
 
+/* OVERLAY */
 .overlay{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(3px);
+background:rgba(0,0,0,0.4);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
@@ -257,7 +260,7 @@ visibility:visible;
 
 <section class="hero" id="inicio">
 <div class="hero-content">
-<h1> </h1>
+<h1>Não é só roupa. É identidade.</h1>
 <p>Vista atitude e exclusividade.</p>
 <a href="#produtos" class="btn">Comprar</a>
 </div>
@@ -267,6 +270,7 @@ visibility:visible;
 <h2 style="text-align:center">Produtos</h2>
 
 <div class="grid">
+
 <div class="card">
 <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
 <h3>Force</h3>
@@ -284,6 +288,7 @@ visibility:visible;
 <h3>Prime</h3>
 <a href="#" class="btn">Personalizar</a>
 </div>
+
 </div>
 </section>
 
@@ -298,17 +303,24 @@ const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 const overlay = document.getElementById("overlay");
 
+function fecharMenu(){
+menuToggle.classList.remove("active");
+navMenu.classList.remove("active");
+overlay.classList.remove("active");
+}
+
 menuToggle.onclick = () => {
 menuToggle.classList.toggle("active");
 navMenu.classList.toggle("active");
 overlay.classList.toggle("active");
 };
 
-overlay.onclick = () => {
-menuToggle.classList.remove("active");
-navMenu.classList.remove("active");
-overlay.classList.remove("active");
-};
+overlay.onclick = fecharMenu;
+
+/* FECHAR AO CLICAR EM QUALQUER OPÇÃO */
+document.querySelectorAll(".nav a").forEach(link => {
+link.addEventListener("click", fecharMenu);
+});
 
 /* SCROLL HEADER */
 window.addEventListener("scroll", () => {
