@@ -95,6 +95,39 @@ label{
   pointer-events:none;
   filter:grayscale(100%);
 }
+
+/* =========================
+   TAMANHOS (FORCE)
+========================= */
+
+.sizes{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:10px;
+}
+
+.size{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ccc;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.size:hover{
+  background:#eee;
+}
+
+.size.ativo{
+  background:#000;
+  color:#fff;
+}
+  
 </style>
 </head>
 
@@ -107,14 +140,16 @@ label{
 <h2>Camisa Force</h2>
 <p>Modelo pronto</p>
 
-<!-- TAMANHO -->
 <label>Tamanho</label>
-<select id="tamanho">
-  <option>P</option>
-  <option>M</option>
-  <option>G</option>
-  <option>GG</option>
-</select>
+
+<div class="sizes">
+  <div class="size ativo" onclick="selecionarTamanho('P', this)">P</div>
+  <div class="size" onclick="selecionarTamanho('M', this)">M</div>
+  <div class="size" onclick="selecionarTamanho('G', this)">G</div>
+  <div class="size" onclick="selecionarTamanho('GG', this)">GG</div>
+</div>
+
+<input type="hidden" id="tamanho" value="P">
 
 <!-- COR -->
 <label>Cor</label>
@@ -153,6 +188,17 @@ const estoqueCores = {
 // =========================
 // BLOQUEIO AUTOMÁTICO
 // =========================
+
+function selecionarTamanho(tamanho, el){
+
+  document.getElementById("tamanho").value = tamanho;
+
+  document.querySelectorAll(".size").forEach(s=>{
+    s.classList.remove("ativo");
+  });
+
+  el.classList.add("ativo");
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
