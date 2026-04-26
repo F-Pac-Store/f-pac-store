@@ -5,7 +5,10 @@
 <title>Catálogo Completo | F Pac Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- ICONES -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -26,7 +29,7 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER (IGUAL AO INDEX) ================= */
+/* ================= HEADER ================= */
 
 .header{
 background:var(--primary);
@@ -38,9 +41,7 @@ z-index:1000;
 transition:.3s;
 }
 
-.header.shrink{
-background:#003366ee;
-}
+.header.shrink{background:#003366ee}
 
 .header-content{
 display:flex;
@@ -83,6 +84,12 @@ font-size:1rem;
 /* DROPDOWN */
 .dropdown{position:relative}
 
+.dropdown-btn{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
 .dropdown-menu{
 position:absolute;
 top:150%;
@@ -95,22 +102,30 @@ box-shadow:0 10px 30px rgba(0,0,0,.4);
 opacity:0;
 visibility:hidden;
 transform:translateY(-10px);
-transition:.3s;
+transition:.3s ease;
+z-index:2000;
 }
 
 .dropdown.open .dropdown-menu{
 opacity:1;
 visibility:visible;
-transform:none;
+transform:translateY(0);
 }
 
 .dropdown-menu a{
 display:block;
 padding:14px 18px;
 color:white;
+text-decoration:none;
+transition:.25s;
 }
 
-/* ================= HERO CATÁLOGO ================= */
+.dropdown-menu a:hover{
+background:rgba(255,255,255,.1);
+color:#FFC107;
+}
+
+/* ================= HERO ================= */
 
 .hero{
 margin-top:100px;
@@ -146,7 +161,7 @@ margin-top:10px;
 color:#ddd;
 }
 
-/* ================= GRID ================= */
+/* ================= CATÁLOGO ================= */
 
 .container{
 max-width:1200px;
@@ -189,49 +204,6 @@ font-weight:800;
 color:var(--primary);
 }
 
-/* ================= MODAL ================= */
-
-.modal-preview{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.modal-preview.ativo{display:flex}
-
-.modal-conteudo{
-background:#fff;
-border-radius:12px;
-padding:16px;
-max-width:90vw;
-max-height:90vh;
-position:relative;
-}
-
-.modal-conteudo img{
-max-width:100%;
-max-height:80vh;
-object-fit:contain;
-}
-
-.modal-fechar{
-position:absolute;
-top:-10px;
-right:-10px;
-width:34px;
-height:34px;
-border-radius:50%;
-border:none;
-background:#ef4444;
-color:white;
-font-size:20px;
-cursor:pointer;
-}
-
 </style>
 </head>
 
@@ -240,18 +212,20 @@ cursor:pointer;
 <header class="header" id="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
+      <img src="assets/img/logos/f-pac-color.png" alt="F Pac Store">
     </a>
 
     <nav class="nav">
       <a href="index.html">Início</a>
 
       <div class="dropdown" id="dropdownProdutos">
-        <button id="btnProdutos">Produtos <i class="fa fa-chevron-down"></i></button>
+        <button class="dropdown-btn" id="btnProdutos">
+          Produtos <i class="fa fa-chevron-down"></i>
+        </button>
         <div class="dropdown-menu">
-          <a href="force.html">Force</a>
-          <a href="mark.html">Mark</a>
-          <a href="prime.html">Prime</a>
+          <a href="produto-force.html">Force</a>
+          <a href="marca-do-produto.html">Mark</a>
+          <a href="produto-prime.html">Prime</a>
         </div>
       </div>
 
@@ -270,53 +244,28 @@ cursor:pointer;
 <main class="container">
   <div class="catalogo-grid">
 
-    <div class="card-produto" onclick="abrirPreview(this.querySelector('img').src)">
-      <img src="assets/img/estampas/f-pac-color.png">
-      <div class="card-info">F PAC</div>
+    <div class="card-produto" onclick="location.hrefard-info">F PAC Camaleão</div>
     </div>
-
-    <div class="card-produto" onclick="abrirPreview(this.querySelector('img').src)">
-      <img src="assets/img/estampas/f-pac-camaleao.png">
-      <div class="card-info">F PAC Camaleão</div>
-    </div>
-
-    <!-- DUPLIQUE OS CARDS -->
 
   </div>
 </main>
 
-<div id="modalPreview" class="modal-preview">
-  <div class="modal-conteudo">
-    <button class="modal-fechar" onclick="fecharPreview()">×</button>
-    <img id="modalImagem">
-  </div>
-</div>
-
 <script>
-// header shrink
 window.addEventListener("scroll",()=>{
 document.getElementById("header")
 .classList.toggle("shrink",window.scrollY>50);
 });
 
-// dropdown
 const dropdown=document.getElementById("dropdownProdutos");
-document.getElementById("btnProdutos").onclick=e=>{
+const btn=document.getElementById("btnProdutos");
+
+btn.onclick=e=>{
 e.stopPropagation();
 dropdown.classList.toggle("open");
 };
-document.onclick=()=>dropdown.classList.remove("open");
 
-// modal
-function abrirPreview(src){
-document.getElementById("modalImagem").src=src;
-document.getElementById("modalPreview").classList.add("ativo");
-}
-function fecharPreview(){
-document.getElementById("modalPreview").classList.remove("ativo");
-}
+document.onclick=()=>dropdown.classList.remove("open");
 </script>
 
 </body>
 </html>
-``
