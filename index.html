@@ -7,7 +7,6 @@
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -40,9 +39,7 @@ z-index:1000;
 transition:.3s;
 }
 
-.header.shrink{
-background:#003366ee;
-}
+.header.shrink{background:#003366ee}
 
 .header-content{
 display:flex;
@@ -53,14 +50,11 @@ padding:0 20px;
 transition:.3s;
 }
 
-.header.shrink .header-content{
-height:70px;
-}
+.header.shrink .header-content{height:70px}
 
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
 text-decoration:none;
 }
 
@@ -73,11 +67,6 @@ transition:.3s;
 height:50px;
 }
 
-.logo-text{
-font-family:'blacklisted';
-color:#FFC107;
-}
-
 /* ================= NAV ================= */
 
 .nav{
@@ -86,7 +75,6 @@ gap:30px;
 align-items:center;
 }
 
-/* links e botão */
 .nav a,
 .nav button{
 color:white;
@@ -98,11 +86,9 @@ cursor:pointer;
 font-size:1rem;
 }
 
-/* ================= DROPDOWN PRODUTOS ================= */
+/* ================= DROPDOWN ================= */
 
-.dropdown{
-position:relative;
-}
+.dropdown{position:relative}
 
 .dropdown-btn{
 display:flex;
@@ -165,10 +151,7 @@ inset:0;
 background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.6));
 }
 
-.hero-content{
-position:relative;
-z-index:1;
-}
+.hero-content{position:relative;z-index:1}
 
 .btn{
 background:#FFC107;
@@ -212,10 +195,7 @@ padding:20px;
 gap:10px;
 }
 
-.card-overlay h3{
-color:white;
-font-size:1.2rem;
-}
+.card-overlay h3{color:white}
 
 /* ================= DROP ================= */
 
@@ -238,9 +218,7 @@ margin:0 auto;
 
 /* ================= PRODUTOS ================= */
 
-section{
-padding:80px 20px;
-}
+section{padding:80px 20px}
 
 .produtos-grid{
 display:grid;
@@ -266,21 +244,17 @@ padding:20px;
 
 <header class="header" id="header">
   <div class="header-content">
-
     <a href="index.html" class="logo">
       <img src="assets/img/logos/f-pac-color.png" class="logo-img">
-      <span class="logo-text">F PAC</span>
     </a>
 
     <nav class="nav">
       <a href="#inicio">Início</a>
 
-      <!-- PRODUTOS COM DROPDOWN -->
       <div class="dropdown" id="dropdownProdutos">
         <button class="dropdown-btn" id="btnProdutos">
           Produtos <i class="fa fa-chevron-down"></i>
         </button>
-
         <div class="dropdown-menu">
           <a href="force.html">Force</a>
           <a href="mark.html">Mark</a>
@@ -290,7 +264,6 @@ padding:20px;
 
       <a href="catalogo.html">Catálogo</a>
     </nav>
-
   </div>
 </header>
 
@@ -337,26 +310,17 @@ padding:20px;
 <div class="produtos-grid">
   <a href="force.html" class="card-full">
     <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-    <div class="card-overlay">
-      <h3>Force</h3>
-      <span class="btn">Comprar</span>
-    </div>
+    <div class="card-overlay"><h3>Force</h3></div>
   </a>
 
   <a href="mark.html" class="card-full">
     <img src="assets/img/cards/FP-peito C.png">
-    <div class="card-overlay">
-      <h3>Mark</h3>
-      <span class="btn">Comprar</span>
-    </div>
+    <div class="card-overlay"><h3>Mark</h3></div>
   </a>
 
   <a href="prime.html" class="card-full">
     <img src="assets/img/cards/F-PAC-frente-e-costas.png">
-    <div class="card-overlay">
-      <h3>Prime</h3>
-      <span class="btn">Personalizar</span>
-    </div>
+    <div class="card-overlay"><h3>Prime</h3></div>
   </a>
 </div>
 </section>
@@ -366,24 +330,20 @@ padding:20px;
 </footer>
 
 <script>
-// Header shrink
 window.addEventListener("scroll",()=>{
 document.getElementById("header")
-.classList.toggle("shrink",window.scrollY > 50);
+.classList.toggle("shrink",window.scrollY>50);
 });
 
-// Dropdown Produtos
-const dropdown = document.getElementById("dropdownProdutos");
-const btn = document.getElementById("btnProdutos");
+const dropdown=document.getElementById("dropdownProdutos");
+const btn=document.getElementById("btnProdutos");
 
-btn.addEventListener("click",e=>{
+btn.onclick=e=>{
 e.stopPropagation();
 dropdown.classList.toggle("open");
-});
+};
 
-document.addEventListener("click",()=>{
-dropdown.classList.remove("open");
-});
+document.onclick=()=>dropdown.classList.remove("open");
 </script>
 
 </body>
