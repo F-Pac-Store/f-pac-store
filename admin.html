@@ -2,11 +2,71 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Admin Estoque</title>
+<title>Admin Estoque | F Pac Store</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#111;
+  color:#fff;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+}
+
+.card{
+  background:#1c1c1c;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+input,select{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border:none;
+  border-radius:6px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#22c55e;
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+td,th{
+  padding:10px;
+  border-bottom:1px solid #333;
+  text-align:center;
+}
+
+h2{margin:0 0 10px 0}
+</style>
 </head>
 
 <body>
 
+<div class="container">
+
+<!-- PAINEL -->
+<div class="card">
 <h2>📦 Painel de Estoque</h2>
 
 <select id="produto">
@@ -26,12 +86,33 @@
 <input id="G" placeholder="G">
 <input id="GG" placeholder="GG">
 
-<button onclick="salvar()">Salvar Estoque</button>
+<button onclick="salvar()">Salvar / Atualizar Estoque</button>
+</div>
+
+<!-- LISTA -->
+<div class="card">
+<h2>📊 Estoque Atual</h2>
+<table>
+<thead>
+<tr>
+<th>Produto</th>
+<th>Cor</th>
+<th>P</th>
+<th>M</th>
+<th>G</th>
+<th>GG</th>
+</tr>
+</thead>
+<tbody id="lista"></tbody>
+</table>
+</div>
+
+</div>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, setDoc } 
+import { getFirestore, doc, setDoc, getDocs, collection } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -43,20 +124,57 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+/* =========================
+   SALVAR / ATUALIZAR ESTOQUE
+========================= */
 window.salvar = async () => {
 
 const produto = document.getElementById("produto").value;
 const cor = document.getElementById("cor").value;
 
 await setDoc(doc(db, "estoque", produto + "_" + cor), {
-  P: Number(P.value),
-  M: Number(M.value),
-  G: Number(G.value),
-  GG: Number(GG.value)
+  P: Number(P.value || 0),
+  M: Number(M.value || 0),
+  G: Number(G.value || 0),
+  GG: Number(GG.value || 0)
 });
 
-alert("Estoque atualizado");
+alert("Estoque atualizado com sucesso!");
+
+carregarEstoque();
 };
+
+/* =========================
+   LISTAR ESTOQUE (VISUAL SHOPIFY)
+========================= */
+async function carregarEstoque(){
+
+const snap = await getDocs(collection(db,"estoque"));
+
+const lista = document.getElementById("lista");
+lista.innerHTML = "";
+
+snap.forEach(docu => {
+
+const d = docu.data();
+const [produto, cor] = docu.id.split("_");
+
+lista.innerHTML += `
+<tr>
+<td>${produto}</td>
+<td>${cor}</td>
+<td>${d.P || 0}</td>
+<td>${d.M || 0}</td>
+<td>${d.G || 0}</td>
+<td>${d.GG || 0}</td>
+</tr>
+`;
+
+});
+
+}
+
+document.addEventListener("DOMContentLoaded", carregarEstoque);
 
 </script>
 
