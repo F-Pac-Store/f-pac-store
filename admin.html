@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Admin Estoque</title>
+</head>
+
+<body>
+
+<h2>📦 Painel de Estoque</h2>
+
+<select id="produto">
+  <option>PRIME</option>
+  <option>MARK</option>
+  <option>FORCE</option>
+</select>
+
+<select id="cor">
+  <option>Branco</option>
+  <option>Preto</option>
+  <option>OffWhite</option>
+</select>
+
+<input id="P" placeholder="P">
+<input id="M" placeholder="M">
+<input id="G" placeholder="G">
+<input id="GG" placeholder="GG">
+
+<button onclick="salvar()">Salvar Estoque</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, setDoc } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.salvar = async () => {
+
+const produto = document.getElementById("produto").value;
+const cor = document.getElementById("cor").value;
+
+await setDoc(doc(db, "estoque", produto + "_" + cor), {
+  P: Number(P.value),
+  M: Number(M.value),
+  G: Number(G.value),
+  GG: Number(GG.value)
+});
+
+alert("Estoque atualizado");
+};
+
+</script>
+
+</body>
+</html>
