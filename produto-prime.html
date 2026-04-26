@@ -44,10 +44,7 @@ button{
   cursor:pointer;
 }
 
-/* =========================
-   CORES (BOLINHAS)
-========================= */
-
+/* CORES */
 .cores{
   display:flex;
   gap:12px;
@@ -63,33 +60,45 @@ button{
   transition:0.2s;
 }
 
-.cor:hover{
-  transform:scale(1.1);
-}
+.cor:hover{transform:scale(1.15);}
+.cor.ativo{border:2px solid #000;}
 
-.cor.ativo{
-  border:2px solid #000;
-}
+.branco{background:#fff;border:1px solid #ccc;}
+.preto{background:#000;}
+.offwhite{background:#f3e9dc;}
 
-/* cores */
-.branco{
-  background:#fff;
-  border:1px solid #ccc;
-}
-
-.preto{
-  background:#000;
-}
-
-.offwhite{
-  background:#e8dccb;
-}
-
-/* bloqueado */
 .cor.indisponivel{
-  opacity:0.3;
+  opacity:0.25;
   pointer-events:none;
   filter:grayscale(100%);
+}
+
+/* TAMANHOS */
+.sizes{
+  display:flex;
+  gap:10px;
+  margin-top:8px;
+}
+
+.size{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ccc;
+  cursor:pointer;
+  font-weight:bold;
+  border-radius:6px;
+  background:#fff;
+  transition:0.2s;
+}
+
+.size:hover{transform:scale(1.05);}
+.size.ativo{
+  background:#000;
+  color:#fff;
+  border-color:#000;
 }
 </style>
 </head>
@@ -100,41 +109,42 @@ button{
 
 <h2>Camisa PRIME</h2>
 
-<!-- COR -->
+<!-- CORES -->
 <label>Cor</label>
 
 <div class="cores">
-
   <div class="cor branco" id="cor-Branco" onclick="selecionarCor('Branco')"></div>
   <div class="cor preto" id="cor-Preto" onclick="selecionarCor('Preto')"></div>
   <div class="cor offwhite" id="cor-Off White" onclick="selecionarCor('Off White')"></div>
-
 </div>
 
 <input type="hidden" id="cor" value="Branco">
 
 <!-- TAMANHO -->
 <label>Tamanho</label>
-<select id="tamanho">
-<option>M</option>
-<option>G</option>
-</select>
 
-<!-- ESTAMPA -->
+<div class="sizes">
+  <div class="size" onclick="selecionarTamanho('P')">P</div>
+  <div class="size" onclick="selecionarTamanho('M')">M</div>
+  <div class="size" onclick="selecionarTamanho('G')">G</div>
+  <div class="size" onclick="selecionarTamanho('GG')">GG</div>
+</div>
+
+<input type="hidden" id="tamanho" value="M">
+
+<!-- RESTO -->
 <label>Estampa</label>
 <select id="estampa">
 <option>Tropa Urbana</option>
 <option>Não é só roupa</option>
 </select>
 
-<!-- LOCAL -->
 <label>Local</label>
 <select id="local">
 <option>Peito</option>
 <option>Costas</option>
 </select>
 
-<!-- TAM ESTAMPA -->
 <label>Tamanho da Estampa</label>
 <select id="tamEstampa">
 <option>Pequena</option>
@@ -142,11 +152,9 @@ button{
 <option>Grande</option>
 </select>
 
-<!-- QTD -->
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1">
 
-<!-- OBS -->
 <label>Observações</label>
 <textarea id="obs"></textarea>
 
@@ -156,85 +164,64 @@ button{
 
 <script>
 
-// =========================
-// ESTOQUE DE CORES
-// =========================
-
 const estoqueCores = {
   "Branco": true,
-  "Preto": false,   // ❌ indisponível
+  "Preto": false,
   "Off White": true
 };
 
-// =========================
-// BLOQUEIO AUTOMÁTICO
-// =========================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  Object.keys(estoqueCores).forEach(cor => {
-    if (!estoqueCores[cor]) {
-      const el = document.getElementById("cor-" + cor);
-      if (el) el.classList.add("indisponivel");
+// bloqueio
+document.addEventListener("DOMContentLoaded", ()=>{
+  Object.keys(estoqueCores).forEach(cor=>{
+    if(!estoqueCores[cor]){
+      const el=document.getElementById("cor-"+cor);
+      if(el) el.classList.add("indisponivel");
     }
   });
-
 });
 
-// =========================
-// SELEÇÃO DE COR
-// =========================
-
+// cor
 function selecionarCor(cor){
-
-  if (!estoqueCores[cor]) return;
-
+  if(!estoqueCores[cor]) return;
   document.getElementById("cor").value = cor;
-
-  document.querySelectorAll(".cor").forEach(el=>{
-    el.classList.remove("ativo");
-  });
-
-  if(cor === "Branco") document.querySelector(".branco").classList.add("ativo");
-  if(cor === "Preto") document.querySelector(".preto").classList.add("ativo");
-  if(cor === "Off White") document.querySelector(".offwhite").classList.add("ativo");
+  document.querySelectorAll(".cor").forEach(e=>e.classList.remove("ativo"));
+  if(cor==="Branco") document.querySelector(".branco").classList.add("ativo");
+  if(cor==="Preto") document.querySelector(".preto").classList.add("ativo");
+  if(cor==="Off White") document.querySelector(".offwhite").classList.add("ativo");
 }
 
-// =========================
-// ADICIONAR AO CARRINHO
-// =========================
+// tamanho
+function selecionarTamanho(t){
+  document.getElementById("tamanho").value = t;
+  document.querySelectorAll(".size").forEach(e=>e.classList.remove("ativo"));
+  if(t==="P") document.querySelectorAll(".size")[0].classList.add("ativo");
+  if(t==="M") document.querySelectorAll(".size")[1].classList.add("ativo");
+  if(t==="G") document.querySelectorAll(".size")[2].classList.add("ativo");
+  if(t==="GG") document.querySelectorAll(".size")[3].classList.add("ativo");
+}
 
+// carrinho
 function comprar(){
+const cor=document.getElementById("cor").value;
+if(!estoqueCores[cor]) return alert("Cor indisponível");
 
-const cor = document.getElementById("cor").value;
-
-// segurança final
-if (!estoqueCores[cor]) {
-  alert("Cor indisponível");
-  return;
-}
-
-const item = {
-id: "PRIME-" + Date.now(),
-nome: "Camisa PRIME Personalizada",
-cor: cor,
-tamanho: document.getElementById("tamanho").value,
-estampa: document.getElementById("estampa").value,
-local: document.getElementById("local").value,
-tamEstampa: document.getElementById("tamEstampa").value,
-observacoes: document.getElementById("obs").value,
-quantidade: Number(document.getElementById("qtd").value),
-preco: 109.90
+const item={
+id:"PRIME-"+Date.now(),
+nome:"Camisa PRIME",
+cor,
+tamanho:document.getElementById("tamanho").value,
+estampa:document.getElementById("estampa").value,
+local:document.getElementById("local").value,
+tamEstampa:document.getElementById("tamEstampa").value,
+observacoes:document.getElementById("obs").value,
+quantidade:Number(document.getElementById("qtd").value),
+preco:109.90
 };
 
-let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-
-carrinho.push(item);
-
-localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
-
-window.location.href = "carrinho.html";
-
+let c=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+c.push(item);
+localStorage.setItem("fpacCarrinho",JSON.stringify(c));
+window.location.href="carrinho.html";
 }
 
 </script>
