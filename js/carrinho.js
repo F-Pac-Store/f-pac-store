@@ -105,7 +105,7 @@ function atualizarContadorCarrinho() {
 // =============================
 function renderCarrinho() {
   const lista = document.getElementById('lista');
-  const totalEl = document.getElementById('total');
+  const totalEl = document.getElementById('totalFinal');
 
   if (!lista) return;
 
