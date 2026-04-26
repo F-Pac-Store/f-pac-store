@@ -8,7 +8,6 @@
 <title>F Pac Store | Não é só roupa. É identidade!</title>
 
 <meta name="description" content="Camisas masculinas estampadas para quem se recusa a vestir o comum.">
-<meta name="author" content="F Pac Store">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
@@ -77,22 +76,32 @@ font-weight:600;
 /* HERO */
 .hero{
 margin-top:100px;
-height:90vh;
-background:url('assets/img/hero-002.png') center/cover no-repeat;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
-color:white;
-position:relative;
 }
 
-/* REMOVEU OVERLAY */
+/* IMAGEM SEM CORTE */
+.hero img{
+width:100%;
+height:auto;
+display:block;
+object-fit:contain;
+}
 
-/* MELHORIA: leve sombra no texto pra manter leitura */
+/* TEXTO SOBRE IMAGEM */
 .hero-content{
-z-index:2;
-text-shadow:0 2px 10px rgba(0,0,0,0.6);
+position:absolute;
+text-align:center;
+color:white;
+text-shadow:0 2px 10px rgba(0,0,0,0.7);
+padding:20px;
+}
+
+.hero-content h1{
+font-size:32px;
+margin-bottom:10px;
 }
 
 .btn{
@@ -102,6 +111,8 @@ text-decoration:none;
 color:black;
 font-weight:bold;
 border-radius:5px;
+display:inline-block;
+margin-top:10px;
 }
 
 /* GRID */
@@ -165,6 +176,8 @@ padding:20px;
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+
+<img src="assets/img/hero-002.png" alt="Capa F Pac">
 
 <div class="hero-content">
 <h1>Não é só roupa. É identidade.</h1>
