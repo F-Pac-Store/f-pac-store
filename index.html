@@ -124,12 +124,24 @@ transform:rotate(-45deg) translate(6px,-6px);
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-002.png') center / cover no-repeat;
+
+/* AJUSTE PRINCIPAL */
+background:url('assets/img/hero-002.png') center no-repeat;
+background-size:cover;
+
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
+}
+
+/* DESKTOP - NÃO CORTA IMAGEM */
+@media (min-width:1024px){
+  .hero{
+    background-size:contain;
+    background-color:#000;
+  }
 }
 
 .hero-content{
@@ -185,7 +197,7 @@ position:fixed;
 top:0;
 right:-100%;
 height:100vh;
-width:200px; /* MAIS FINO */
+width:200px;
 background:rgba(0,51,102,0.95);
 backdrop-filter:blur(12px);
 flex-direction:column;
@@ -317,7 +329,6 @@ overlay.classList.toggle("active");
 
 overlay.onclick = fecharMenu;
 
-/* FECHAR AO CLICAR EM QUALQUER OPÇÃO */
 document.querySelectorAll(".nav a").forEach(link => {
 link.addEventListener("click", fecharMenu);
 });
