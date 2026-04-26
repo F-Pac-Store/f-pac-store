@@ -30,13 +30,11 @@ function adicionarItem(item) {
   }
 
   salvarCarrinho(carrinho);
-  atualizarContadorCarrinho();
-
   window.location.href = "carrinho.html";
 }
 
 // =============================
-// ALTERAR QUANTIDADE (+ / -)
+// ALTERAR QUANTIDADE
 // =============================
 function alterarQuantidade(id, tamanho, cor, delta) {
   const carrinho = getCarrinho();
@@ -67,7 +65,7 @@ function removerItem(id, tamanho, cor) {
   const key = `${id}-${tamanho}-${cor}`;
   const el = document.querySelector(`[data-id="${key}"]`);
 
-  const removerDoStorage = () => {
+  const remove = () => {
     const carrinho = getCarrinho().filter(item =>
       !(item.id === id && item.tamanho === tamanho && item.cor === cor)
     );
@@ -80,15 +78,14 @@ function removerItem(id, tamanho, cor) {
     el.style.transition = "all 0.3s ease";
     el.style.opacity = "0";
     el.style.transform = "translateX(30px)";
-
-    setTimeout(removerDoStorage, 300);
+    setTimeout(remove, 300);
   } else {
-    removerDoStorage();
+    remove();
   }
 }
 
 // =============================
-// CONTADOR CARRINHO
+// CONTADOR
 // =============================
 function atualizarContadorCarrinho() {
   const carrinho = getCarrinho();
@@ -112,11 +109,11 @@ function renderCarrinho() {
   const carrinho = getCarrinho();
   lista.innerHTML = "";
 
-  let total = 0;
+  let subtotal = 0;
 
   carrinho.forEach(item => {
     const preco = Number(item.preco) || 0;
-    total += preco * item.quantidade;
+    subtotal += preco * item.quantidade;
 
     const key = `${item.id}-${item.tamanho}-${item.cor}`;
 
@@ -139,102 +136,17 @@ function renderCarrinho() {
           </div>
 
           <br>
-          ${(preco * item.quantidade).toLocaleString('pt-BR',{
-            style:'currency',
-            currency:'BRL'
-          })}
+          ${(preco * item.quantidade).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
         </div>
 
-        <button onclick="removerItem('${item.id}','${item.tamanho}','${item.cor}')">
-          X
-        </button>
+        <button onclick="removerItem('${item.id}','${item.tamanho}','${item.cor}')">X</button>
 
       </div>
     `;
   });
 
-  if (totalEl) {
-    totalEl.innerText = "Total: " + total.toLocaleString('pt-BR',{
-      style:'currency',
-      currency:'BRL'
-    });
-  }
-
-  atualizarContadorCarrinho();
-}
-
-// =============================
-// FRETE POR CEP (TEMPO REAL)
-// =============================
-
-async function calcularFrete() {
-  const cep = document.getElementById('cep').value.replace(/\D/g, '');
-  const resultado = document.getElementById('freteResultado');
-
-  if (cep.length !== 8) {
-    resultado.innerHTML = "CEP inválido";
-    return;
-  }
-
-  resultado.innerHTML = "Calculando...";
-
-  try {
-    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    const data = await res.json();
-
-    if (data.erro) {
-      resultado.innerHTML = "CEP não encontrado";
-      return;
-    }
-
-    const uf = data.uf;
-    const frete = definirFrete(uf);
-
-    localStorage.setItem('fpacFrete', frete);
-
-    resultado.innerHTML = `
-      📍 ${data.localidade} - ${uf}<br>
-      🚚 Frete: <strong>${frete.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong>
-    `;
-
-    atualizarTotalComFrete();
-
-  } catch (err) {
-    resultado.innerHTML = "Erro ao calcular frete";
-  }
-}
-
-function definirFrete(uf) {
-  const sul = ["PR", "SC", "RS"];
-  const sudeste = ["SP", "RJ", "MG", "ES"];
-
-  const resto = [
-    "BA","GO","DF","MT","MS",
-    "AM","PA","CE","PE","MA","RN","PB","PI","AL","SE","TO","AC","AP","RO","RR"
-  ];
-
-  if (sul.includes(uf)) return 9.90;
-  if (sudeste.includes(uf)) return 14.90;
-  if (resto.includes(uf)) return 19.90;
-
-  return 24.90;
-}
-
-function atualizarTotalComFrete() {
-  const carrinho = getCarrinho();
-
-  let subtotal = 0;
-
-  carrinho.forEach(item => {
-    const preco = Number(item.preco) || 0;
-    subtotal += preco * item.quantidade;
-  });
-
   const frete = Number(localStorage.getItem('fpacFrete')) || 0;
-
   const totalFinal = subtotal + frete;
-
-  const totalEl = document.getElementById('totalFinal');
 
   if (totalEl) {
     totalEl.innerHTML = `
@@ -243,12 +155,88 @@ function atualizarTotalComFrete() {
       <strong>Total: ${totalFinal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong>
     `;
   }
+
+  atualizarContadorCarrinho();
 }
 
 // =============================
-// INIT
+// FRETE AUTOMÁTICO POR CEP
 // =============================
+
+let timeoutFrete;
+
 document.addEventListener('DOMContentLoaded', () => {
   atualizarContadorCarrinho();
   renderCarrinho();
+
+  const cepInput = document.getElementById('cep');
+  if (!cepInput) return;
+
+  cepInput.addEventListener('input', () => {
+    let cep = cepInput.value.replace(/\D/g, '');
+    cepInput.value = cep;
+
+    const resultado = document.getElementById('freteResultado');
+
+    if (cep.length < 8) {
+      resultado.innerHTML = "";
+      localStorage.removeItem('fpacFrete');
+      renderCarrinho();
+      return;
+    }
+
+    clearTimeout(timeoutFrete);
+
+    timeoutFrete = setTimeout(() => {
+      calcularFreteAuto(cep);
+    }, 600);
+  });
 });
+
+// =============================
+// CÁLCULO FRETE
+// =============================
+async function calcularFreteAuto(cep) {
+  const resultado = document.getElementById('freteResultado');
+
+  resultado.innerHTML = "Calculando frete...";
+
+  try {
+    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await res.json();
+
+    if (data.erro) {
+      resultado.innerHTML = "CEP inválido";
+      return;
+    }
+
+    const frete = definirFrete(data.uf);
+
+    localStorage.setItem('fpacFrete', frete);
+
+    resultado.innerHTML = `
+      📍 ${data.localidade} - ${data.uf}<br>
+      🚚 Frete: <strong>${frete.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong>
+    `;
+
+    renderCarrinho();
+
+  } catch (err) {
+    resultado.innerHTML = "Erro ao calcular frete";
+  }
+}
+
+// =============================
+// REGRA DE FRETE
+// =============================
+function definirFrete(uf) {
+  const sul = ["PR", "SC", "RS"];
+  const sudeste = ["SP", "RJ", "MG", "ES"];
+  const outros = ["BA","GO","DF","MT","MS","AM","PA","CE","PE","MA","RN","PB","PI","AL","SE","TO","AC","AP","RO","RR"];
+
+  if (sul.includes(uf)) return 9.90;
+  if (sudeste.includes(uf)) return 14.90;
+  if (outros.includes(uf)) return 19.90;
+
+  return 24.90;
+}
