@@ -5,15 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Force | F Pac Store</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
 <style>
-body{
-  font-family:Arial;
-  background:#f5f5f5;
-  margin:0;
-  padding:20px;
-}
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
 
 .card{
   max-width:400px;
@@ -22,112 +15,32 @@ body{
   padding:20px;
   border-radius:10px;
   text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-img{
-  width:100%;
-  height:250px;
-  object-fit:contain;
-}
+img{width:100%;height:250px;object-fit:contain}
 
 button{
-  background:#FFC107;
-  border:none;
-  padding:12px;
   width:100%;
+  padding:12px;
   margin-top:15px;
-  font-weight:bold;
+  background:#000;
+  color:#fff;
+  border:none;
   cursor:pointer;
-}
-
-label{
-  display:block;
-  margin-top:10px;
-  font-weight:bold;
-}
-
-/* =========================
-   CORES
-========================= */
-
-.cores{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  margin-top:10px;
-}
-
-.cor{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  cursor:pointer;
-  border:2px solid transparent;
-  transition:0.2s;
-}
-
-.cor:hover{
-  transform:scale(1.1);
-}
-
-.cor.ativo{
-  border:2px solid #000;
 }
 
 /* CORES */
-.branco{
-  background:#fff;
-  border:1px solid #ccc;
-}
+.cores{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.cor{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.cor.ativo{border:2px solid #000}
+.branco{background:#fff;border:1px solid #ccc}
+.preto{background:#000}
+.offwhite{background:#f3e9dc}
 
-.preto{
-  background:#000;
-}
-
-.offwhite{
-  background:#e8dccb;
-}
-
-/* BLOQUEADO */
-.cor.indisponivel{
-  opacity:0.3;
-  pointer-events:none;
-  filter:grayscale(100%);
-}
-
-/* =========================
-   TAMANHOS (FORCE)
-========================= */
-
-.sizes{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  margin-top:10px;
-}
-
-.size{
-  width:45px;
-  height:45px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #ccc;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.size:hover{
-  background:#eee;
-}
-
-.size.ativo{
-  background:#000;
-  color:#fff;
-}
-  
+/* TAMANHOS */
+.sizes{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.size{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border:1px solid #ccc;border-radius:6px;cursor:pointer}
+.size.ativo{background:#000;color:#fff}
 </style>
 </head>
 
@@ -138,140 +51,37 @@ label{
 <img src="imagens/logo-no-peito.jpg">
 
 <h2>Camisa Force</h2>
-<p>Modelo pronto</p>
 
-<label>Tamanho</label>
-
-<div class="sizes">
-  <div class="size ativo" onclick="selecionarTamanho('P', this)">P</div>
-  <div class="size" onclick="selecionarTamanho('M', this)">M</div>
-  <div class="size" onclick="selecionarTamanho('G', this)">G</div>
-  <div class="size" onclick="selecionarTamanho('GG', this)">GG</div>
-</div>
-
-<input type="hidden" id="tamanho" value="P">
-
-<!-- COR -->
 <label>Cor</label>
-
 <div class="cores">
-
-  <div class="cor branco" id="cor-Branco" onclick="selecionarCor('Branco')"></div>
-  <div class="cor preto" id="cor-Preto" onclick="selecionarCor('Preto')"></div>
-  <div class="cor offwhite" id="cor-Off White" onclick="selecionarCor('Off White')"></div>
-
+  <div class="cor branco" onclick="selCor('Branco')"></div>
+  <div class="cor preto" onclick="selCor('Preto')"></div>
+  <div class="cor offwhite" onclick="selCor('Off White')"></div>
 </div>
-
 <input type="hidden" id="cor" value="Branco">
 
-<!-- QUANTIDADE -->
+<label>Tamanho</label>
+<div class="sizes">
+  <div class="size" onclick="selTam('P')">P</div>
+  <div class="size" onclick="selTam('M')">M</div>
+  <div class="size" onclick="selTam('G')">G</div>
+  <div class="size" onclick="selTam('GG')">GG</div>
+</div>
+<input type="hidden" id="tamanho" value="M">
+
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1" min="1">
 
-<!-- BOTÃO -->
 <button onclick="comprar()">Adicionar ao Carrinho</button>
 
 </div>
 
-<script>
-
-// =========================
-// ESTOQUE DE CORES
-// =========================
-
-const estoqueCores = {
-  "Branco": true,
-  "Preto": false,       // ❌ sem stock
-  "Off White": true
-};
-
-// =========================
-// BLOQUEIO AUTOMÁTICO
-// =========================
-
-function selecionarTamanho(tamanho, el){
-
-  document.getElementById("tamanho").value = tamanho;
-
-  document.querySelectorAll(".size").forEach(s=>{
-    s.classList.remove("ativo");
-  });
-
-  el.classList.add("ativo");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  Object.keys(estoqueCores).forEach(cor => {
-    if (!estoqueCores[cor]) {
-      const el = document.getElementById("cor-" + cor);
-      if (el) el.classList.add("indisponivel");
-    }
-  });
-
-});
-
-// =========================
-// SELEÇÃO DE COR
-// =========================
-
-function selecionarCor(cor){
-
-  if (!estoqueCores[cor]) return;
-
-  document.getElementById("cor").value = cor;
-
-  document.querySelectorAll(".cor").forEach(el=>{
-    el.classList.remove("ativo");
-  });
-
-  if(cor === "Branco") document.querySelector(".branco").classList.add("ativo");
-  if(cor === "Preto") document.querySelector(".preto").classList.add("ativo");
-  if(cor === "Off White") document.querySelector(".offwhite").classList.add("ativo");
-}
-
-// =========================
-// ADICIONAR AO CARRINHO
-// =========================
-
-function comprar(){
-
-const cor = document.getElementById("cor").value;
-
-if (!estoqueCores[cor]) {
-  alert("Cor indisponível");
-  return;
-}
-
-const item = {
-id: "FORCE-" + Date.now(),
-nome: "Camisa Force",
-tamanho: document.getElementById("tamanho").value,
-cor: cor,
-quantidade: Number(document.getElementById("qtd").value),
-preco: 89.90,
-imagem: "imagens/logo-no-peito.jpg"
-}
-
-let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-
-carrinho.push(item);
-
-localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
-
-window.location.href = "carrinho.html";
-
-}
-
-</script>
-
-  <script type="module">
+<script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc } 
+import { getFirestore, doc, getDoc, updateDoc, increment } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* 🔥 CONFIG FIREBASE (substituir pelos teus dados) */
 const firebaseConfig = {
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
@@ -281,57 +91,79 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-/* =========================
-   VERIFICA ESTOQUE
-========================= */
 async function temEstoque(produto, cor, tamanho){
-
-  const snap = await getDoc(
-    doc(db, "estoque", produto + "_" + cor)
-  );
-
+  const snap = await getDoc(doc(db,"estoque",produto+"_"+cor));
   if(!snap.exists()) return false;
-
-  const data = snap.data();
-
-  return (data[tamanho] || 0) > 0;
+  return (snap.data()[tamanho]||0)>0;
 }
 
-/* =========================
-   COMPRA COM BLOQUEIO
-========================= */
+async function atualizar(){
+  const ok = await temEstoque(
+    "FORCE",
+    document.getElementById("cor").value,
+    document.getElementById("tamanho").value
+  );
+
+  const btn = document.querySelector("button");
+  btn.disabled = !ok;
+  btn.style.background = ok ? "#000" : "#999";
+  btn.innerText = ok ? "Adicionar ao Carrinho" : "Esgotado";
+}
+
+window.selCor = async function(cor){
+  document.getElementById("cor").value = cor;
+
+  document.querySelectorAll(".cor").forEach(e=>e.classList.remove("ativo"));
+  if(cor==="Branco")document.querySelector(".branco").classList.add("ativo");
+  if(cor==="Preto")document.querySelector(".preto").classList.add("ativo");
+  if(cor==="Off White")document.querySelector(".offwhite").classList.add("ativo");
+
+  await atualizar();
+}
+
+window.selTam = async function(t){
+  document.getElementById("tamanho").value = t;
+
+  document.querySelectorAll(".size").forEach(e=>e.classList.remove("ativo"));
+
+  const map={P:0,M:1,G:2,GG:3};
+  document.querySelectorAll(".size")[map[t]].classList.add("ativo");
+
+  await atualizar();
+}
+
 window.comprar = async function(){
 
-  const produto = "PRIME"; // ajusta por produto (MARK / FORCE / PRIME)
   const cor = document.getElementById("cor").value;
   const tamanho = document.getElementById("tamanho").value;
   const qtd = Number(document.getElementById("qtd").value);
 
-  // 🔒 BLOQUEIO DE ESTOQUE (COR + TAMANHO)
-  const ok = await temEstoque(produto, cor, tamanho);
-
-  if(!ok){
-    alert("Sem estoque para essa variação");
+  if(!await temEstoque("FORCE",cor,tamanho)){
+    alert("Sem estoque");
     return;
   }
 
-  // 🛒 carrinho
-  let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-
-  carrinho.push({
-    id: produto + "-" + Date.now(),
-    nome: "Camisa " + produto,
-    cor,
-    tamanho,
-    quantidade: qtd,
-    preco: 109.90
+  await updateDoc(doc(db,"estoque","FORCE_"+cor),{
+    [tamanho]:increment(-qtd)
   });
 
-  localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
+  let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
 
-  // 🔁 redireciona
-  window.location.href = "carrinho.html";
-};
+  carrinho.push({
+    id:"FORCE-"+Date.now(),
+    nome:"Camisa Force",
+    cor,
+    tamanho,
+    quantidade:qtd,
+    preco:89.90
+  });
+
+  localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho));
+
+  window.location.href="carrinho.html";
+}
+
+document.addEventListener("DOMContentLoaded",atualizar);
 
 </script>
 
