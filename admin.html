@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Admin Estoque | F Pac Store</title>
+<title>Admin Shopify F Pac</title>
 
 <style>
 body{
@@ -14,7 +14,7 @@ body{
 }
 
 .container{
-  max-width:700px;
+  max-width:900px;
   margin:auto;
 }
 
@@ -65,9 +65,9 @@ h2{margin:0 0 10px 0}
 
 <div class="container">
 
-<!-- PAINEL -->
+<!-- ================= ESTOQUE ================= -->
 <div class="card">
-<h2>📦 Painel de Estoque</h2>
+<h2>📦 Estoque</h2>
 
 <select id="produto">
   <option>PRIME</option>
@@ -86,10 +86,10 @@ h2{margin:0 0 10px 0}
 <input id="G" placeholder="G">
 <input id="GG" placeholder="GG">
 
-<button onclick="salvar()">Salvar / Atualizar Estoque</button>
+<button onclick="salvar()">Salvar Estoque</button>
 </div>
 
-<!-- LISTA -->
+<!-- ================= LISTA ESTOQUE ================= -->
 <div class="card">
 <h2>📊 Estoque Atual</h2>
 <table>
@@ -107,26 +107,33 @@ h2{margin:0 0 10px 0}
 </table>
 </div>
 
+<!-- ================= PEDIDOS ================= -->
+<div class="card">
+<h2>📦 Pedidos</h2>
+<div id="pedidos"></div>
+</div>
+
 </div>
 
 <!-- ================= FIREBASE ================= -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { 
-getFirestore, 
-doc, 
-setDoc, 
-getDocs, 
-collection 
+import {
+getFirestore,
+doc,
+setDoc,
+getDocs,
+collection,
+updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-import { 
-getAuth, 
-onAuthStateChanged 
+import {
+getAuth,
+onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-/* ================= FIREBASE CONFIG ================= */
+/* FIREBASE CONFIG */
 const firebaseConfig = {
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
@@ -137,16 +144,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-/* ================= 🔒 BLOQUEIO DE LOGIN ================= */
+/* ================= LOGIN BLOQUEIO ================= */
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
   } else {
     carregarEstoque();
+    carregarPedidos();
   }
 });
 
-/* ================= SALVAR ESTOQUE ================= */
+/* ================= ESTOQUE ================= */
 window.salvar = async () => {
 
 const produto = document.getElementById("produto").value;
@@ -159,8 +167,7 @@ await setDoc(doc(db, "estoque", produto + "_" + cor), {
   GG: Number(GG.value || 0)
 });
 
-alert("Estoque atualizado com sucesso!");
-
+alert("Estoque atualizado");
 carregarEstoque();
 };
 
@@ -172,25 +179,66 @@ const snap = await getDocs(collection(db,"estoque"));
 const lista = document.getElementById("lista");
 lista.innerHTML = "";
 
-snap.forEach(docu => {
+snap.forEach(d => {
 
-const d = docu.data();
-const [produto, cor] = docu.id.split("_");
+const data = d.data();
+const [produto, cor] = d.id.split("_");
 
 lista.innerHTML += `
 <tr>
 <td>${produto}</td>
 <td>${cor}</td>
-<td>${d.P || 0}</td>
-<td>${d.M || 0}</td>
-<td>${d.G || 0}</td>
-<td>${d.GG || 0}</td>
+<td>${data.P || 0}</td>
+<td>${data.M || 0}</td>
+<td>${data.G || 0}</td>
+<td>${data.GG || 0}</td>
 </tr>
 `;
 
 });
 
 }
+
+/* ================= PEDIDOS ================= */
+async function carregarPedidos(){
+
+const snap = await getDocs(collection(db,"pedidos"));
+
+const box = document.getElementById("pedidos");
+box.innerHTML = "";
+
+snap.forEach(p => {
+
+const d = p.data();
+
+box.innerHTML += `
+<div style="background:#222;padding:12px;margin:10px 0;border-radius:8px">
+
+<strong>Cliente:</strong> ${d.cliente || "Sem nome"}<br>
+<strong>Total:</strong> R$ ${d.total || 0}<br>
+<strong>Status:</strong> ${d.status || "pendente"}<br>
+
+<button onclick="atualizarStatus('${p.id}','enviado')">
+Marcar como enviado
+</button>
+
+</div>
+`;
+
+});
+
+}
+
+/* ================= ATUALIZAR STATUS ================= */
+window.atualizarStatus = async (id,status) => {
+
+await updateDoc(doc(db,"pedidos",id),{
+  status: status
+});
+
+carregarPedidos();
+
+};
 
 </script>
 
