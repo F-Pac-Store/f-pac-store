@@ -7,6 +7,7 @@
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -19,11 +20,6 @@
 --accent:#FFC107;
 --bg:#f5f5f5;
 --text:#333;
---white:#fff;
-}
-
-html{
-scroll-behavior:smooth;
 }
 
 body{
@@ -40,13 +36,10 @@ position:fixed;
 width:100%;
 top:0;
 z-index:1000;
-transition:0.3s;
+transition:.3s;
 }
 
-.header.shrink{
-height:70px;
-background:#003366ee;
-}
+.header.shrink{background:#003366ee}
 
 .header-content{
 display:flex;
@@ -54,101 +47,121 @@ justify-content:space-between;
 align-items:center;
 height:100px;
 padding:0 20px;
-transition:0.3s;
+transition:.3s;
 }
 
-.header.shrink .header-content{
-height:70px;
-}
+.header.shrink .header-content{height:70px}
 
 /* LOGO */
 .logo{
 display:flex;
 align-items:center;
+gap:10px;
 text-decoration:none;
 }
 
-.logo-img{
-height:70px;
-transition:0.3s;
-}
+.logo-img{height:70px;transition:.3s}
+.header.shrink .logo-img{height:50px}
 
-.header.shrink .logo-img{
-height:50px;
+.logo-text{
+font-family:'blacklisted';
+color:#FFC107;
 }
 
 /* MENU */
-.nav{
-display:flex;
-gap:30px;
-align-items:center;
-}
-
-.nav a{
-color:white;
-text-decoration:none;
-font-weight:600;
-}
-
-/* MENU MOBILE */
-.menu-toggle{
-display:none;
-flex-direction:column;
-cursor:pointer;
-gap:5px;
-z-index:1100;
-}
-
-.menu-toggle span{
-width:28px;
-height:3px;
-background:white;
-transition:0.3s;
-}
-
-.menu-toggle.active span:nth-child(1){
-transform:rotate(45deg) translate(5px,5px);
-}
-.menu-toggle.active span:nth-child(2){
-opacity:0;
-}
-.menu-toggle.active span:nth-child(3){
-transform:rotate(-45deg) translate(6px,-6px);
-}
+.nav{display:flex;gap:30px}
+.nav a{color:white;text-decoration:none;font-weight:600}
 
 /* HERO */
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center 35%/cover;
+background:url('assets/img/hero-003.png') no-repeat center 35% / cover;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 position:relative;
+color:white;
 }
 
 .hero::after{
 content:'';
 position:absolute;
 inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,0.35),rgba(0,0,0,0.6));
+background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.6));
 }
 
-.hero-content{
-position:relative;
-z-index:1;
-}
+.hero-content{position:relative;z-index:1}
 
 .btn{
 background:#FFC107;
 padding:12px 25px;
-text-decoration:none;
-color:black;
-font-weight:bold;
 border-radius:6px;
+color:black;
+font-weight:800;
+text-decoration:none;
 }
 
-/* GRID */
+/* ======================= */
+/* DESTAQUE DE COLEÇÃO     */
+/* ======================= */
+
+.drop{
+background:#0b0b0b;
+color:white;
+padding:80px 20px;
+}
+
+.drop h2{
+text-align:center;
+margin-bottom:10px;
+}
+
+.drop p{
+text-align:center;
+max-width:600px;
+margin:0 auto 40px;
+color:#ccc;
+}
+
+.drop-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:0 auto;
+}
+
+.drop-card{
+position:relative;
+height:380px;
+border-radius:16px;
+overflow:hidden;
+text-decoration:none;
+}
+
+.drop-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.drop-card:hover img{transform:scale(1.08)}
+
+.drop-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.75),transparent);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:20px;
+}
+
+/* PRODUTOS */
+section{padding:60px 20px}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -160,6 +173,7 @@ background:white;
 padding:15px;
 border-radius:10px;
 text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
 .card img{
@@ -168,11 +182,7 @@ height:200px;
 object-fit:contain;
 }
 
-section{
-padding:60px 20px;
-scroll-margin-top:110px;
-}
-
+/* FOOTER */
 .footer{
 background:#001a33;
 color:white;
@@ -180,93 +190,88 @@ text-align:center;
 padding:20px;
 }
 
-/* MOBILE */
-@media (max-width:768px){
-.nav{
-position:fixed;
-top:0;
-right:-100%;
-height:100vh;
-width:200px;
-background:rgba(0,51,102,0.95);
-flex-direction:column;
-padding:110px 20px;
-transition:0.3s;
-}
-.nav.active{right:0;}
-.menu-toggle{display:flex;}
-
-.overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.4);
-opacity:0;
-visibility:hidden;
-transition:0.3s;
-}
-.overlay.active{
-opacity:1;
-visibility:visible;
-}
-}
 </style>
 </head>
 
 <body>
 
 <header class="header" id="header">
-<div class="header-content">
+  <div class="header-content">
+    <a href="#" class="logo">
+      <img src="assets/img/logos/f-pac-color.png" class="logo-img">
+      <span class="logo-text">F PAC</span>
+    </a>
 
-<a href="#inicio" class="logo">
-<img src="assets/img/logos/f-pac-color.png" class="logo-img">
-</a>
-
-<div class="menu-toggle" id="menuToggle">
-<span></span><span></span><span></span>
-</div>
-
-<nav class="nav" id="navMenu">
-<a href="#inicio">Início</a>
-<a href="#produtos">Produtos</a>
-<a href="catalogo.html">Catálogo</a>
-<a href="carrinho.html">
-<i class="fa-solid fa-cart-shopping"></i>
-<span id="carrinhoQtd">0</span>
-</a>
-</nav>
-
-</div>
+    <nav class="nav">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="catalogo.html">Catálogo</a>
+    </nav>
+  </div>
 </header>
 
-<div class="overlay" id="overlay"></div>
-
 <section class="hero" id="inicio">
-<div class="hero-content">
-<a href="#produtos" class="btn">Comprar Agora!</a>
-</div>
+  <div class="hero-content">
+    <a href="catalogo.html" class="btn">Comprar Agora</a>
+  </div>
+</section>
+
+<!-- ======================= -->
+<!-- DROP EM DESTAQUE        -->
+<!-- ======================= -->
+
+<section class="drop">
+  <h2>Drop em Destaque</h2>
+  <p>Lançamentos selecionados que representam a identidade F PAC.</p>
+
+  <div class="drop-grid">
+    <a href="catalogo.html" class="drop-card">
+      <img src="assets/img/drops/drop-1.jpg">
+      <div class="drop-overlay">
+        <h3>Black Series</h3>
+        <span class="btn">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="catalogo.html" class="drop-card">
+      <img src="assets/img/drops/drop-2.jpg">
+      <div class="drop-overlay">
+        <h3>Prime Collection</h3>
+        <span class="btn">Explorar</span>
+      </div>
+    </a>
+
+    <a href="catalogo.html" class="drop-card">
+      <img src="assets/img/drops/drop-3.jpg">
+      <div class="drop-overlay">
+        <h3>Limited Drop</h3>
+        <span class="btn">Últimas peças</span>
+      </div>
+    </a>
+  </div>
 </section>
 
 <section id="produtos">
 <h2 style="text-align:center">Produtos</h2>
 
 <div class="grid">
-<div class="card">
-<img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-<h3>Force</h3>
-<a href="#" class="btn">Comprar</a>
-</div>
+  <div class="card">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    <h3>Force</h3>
+    <a href="catalogo.html" class="btn">Comprar</a>
+  </div>
 
-<div class="card">
-<img src="assets/img/cards/FP-peito C.png">
-<h3>Mark</h3>
-<a href="#" class="btn">Comprar</a>
-</div>
+  <div class="card">
+    <img src="assets/img/cards/FP-peito C.png">
+    <h3>Mark</h3>
+    <a href="catalogo.html" class="btn">Comprar</a>
+  </div>
 
-<div class="card">
-<img src="assets/img/cards/F-PAC-frente-e-costas.png">
-<h3>Prime</h3>
-<a href="#" class="btn">Personalizar</a>
-</div>
+  <div class="card">
+    <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+    <h3>Prime</h3>
+    <a href="catalogo.html" class="btn">Personalizar</a>
+  </div>
 </div>
 </section>
 
@@ -275,43 +280,10 @@ visibility:visible;
 </footer>
 
 <script>
-const menuToggle=document.getElementById("menuToggle");
-const navMenu=document.getElementById("navMenu");
-const overlay=document.getElementById("overlay");
-
-function fecharMenu(){
-menuToggle.classList.remove("active");
-navMenu.classList.remove("active");
-overlay.classList.remove("active");
-}
-
-menuToggle.onclick=()=>{
-menuToggle.classList.toggle("active");
-navMenu.classList.toggle("active");
-overlay.classList.toggle("active");
-};
-
-overlay.onclick=fecharMenu;
-
-document.querySelectorAll("#navMenu a").forEach(link=>{
-link.addEventListener("click",fecharMenu);
-});
-
 window.addEventListener("scroll",()=>{
 document.getElementById("header")
-.classList.toggle("shrink",window.scrollY>50);
+.classList.toggle("shrink",window.scrollY>50)
 });
-
-// carrinho
-function getCarrinho(){
-return JSON.parse(localStorage.getItem('fpacCarrinho'))||[]
-}
-function atualizarCarrinho(){
-const carrinho=getCarrinho()
-const total=carrinho.reduce((s,i)=>s+i.quantidade,0)
-document.getElementById("carrinhoQtd").innerText=total
-}
-document.addEventListener("DOMContentLoaded", atualizarCarrinho);
 </script>
 
 </body>
