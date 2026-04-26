@@ -109,12 +109,24 @@ h2{margin:0 0 10px 0}
 
 </div>
 
+<!-- ================= FIREBASE ================= -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDocs, collection } 
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { 
+getFirestore, 
+doc, 
+setDoc, 
+getDocs, 
+collection 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+import { 
+getAuth, 
+onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+/* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
@@ -123,10 +135,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-/* =========================
-   SALVAR / ATUALIZAR ESTOQUE
-========================= */
+/* ================= 🔒 BLOQUEIO DE LOGIN ================= */
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+  } else {
+    carregarEstoque();
+  }
+});
+
+/* ================= SALVAR ESTOQUE ================= */
 window.salvar = async () => {
 
 const produto = document.getElementById("produto").value;
@@ -144,9 +164,7 @@ alert("Estoque atualizado com sucesso!");
 carregarEstoque();
 };
 
-/* =========================
-   LISTAR ESTOQUE (VISUAL SHOPIFY)
-========================= */
+/* ================= LISTAR ESTOQUE ================= */
 async function carregarEstoque(){
 
 const snap = await getDocs(collection(db,"estoque"));
@@ -173,8 +191,6 @@ lista.innerHTML += `
 });
 
 }
-
-document.addEventListener("DOMContentLoaded", carregarEstoque);
 
 </script>
 
