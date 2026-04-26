@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
@@ -27,8 +24,7 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header{
 background:var(--primary);
 backdrop-filter:blur(10px);
@@ -52,23 +48,14 @@ transition:.3s;
 
 .header.shrink .header-content{height:70px}
 
-.logo{
-display:flex;
-align-items:center;
-text-decoration:none;
-}
-
 .logo-img{
 height:70px;
 transition:.3s;
 }
 
-.header.shrink .logo-img{
-height:50px;
-}
+.header.shrink .logo-img{height:50px}
 
-/* ================= NAV ================= */
-
+/* NAV */
 .nav{
 display:flex;
 gap:30px;
@@ -86,8 +73,7 @@ cursor:pointer;
 font-size:1rem;
 }
 
-/* ================= DROPDOWN ================= */
-
+/* DROPDOWN */
 .dropdown{position:relative}
 
 .dropdown-btn{
@@ -131,8 +117,7 @@ background:rgba(255,255,255,.1);
 color:#FFC107;
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
@@ -162,14 +147,12 @@ font-weight:800;
 text-decoration:none;
 }
 
-/* ================= CARDS ================= */
-
+/* CARDS */
 .card-full{
 position:relative;
 height:380px;
 border-radius:18px;
 overflow:hidden;
-text-decoration:none;
 display:block;
 }
 
@@ -180,9 +163,7 @@ object-fit:cover;
 transition:.6s ease;
 }
 
-.card-full:hover img{
-transform:scale(1.08);
-}
+.card-full:hover img{transform:scale(1.08)}
 
 .card-overlay{
 position:absolute;
@@ -197,27 +178,22 @@ gap:10px;
 
 .card-overlay h3{color:white}
 
-/* ================= DROP ================= */
-
+/* DROP */
 .drop{
 background:#0b0b0b;
 padding:80px 20px;
 color:white;
 }
 
-.drop h2{text-align:center;margin-bottom:10px}
-.drop p{text-align:center;color:#ccc;margin-bottom:40px}
-
 .drop-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 max-width:1200px;
-margin:0 auto;
+margin:40px auto;
 }
 
-/* ================= PRODUTOS ================= */
-
+/* PRODUTOS */
 section{padding:80px 20px}
 
 .produtos-grid{
@@ -228,15 +204,13 @@ max-width:1200px;
 margin:40px auto 0;
 }
 
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 .footer{
 background:#001a33;
 color:white;
 text-align:center;
 padding:20px;
 }
-
 </style>
 </head>
 
@@ -244,7 +218,7 @@ padding:20px;
 
 <header class="header" id="header">
   <div class="header-content">
-    <a href="index.html" class="logo">
+    <a href="index.html">
       <img src="assets/img/logos/f-pac-color.png" class="logo-img">
     </a>
 
@@ -256,9 +230,9 @@ padding:20px;
           Produtos <i class="fa fa-chevron-down"></i>
         </button>
         <div class="dropdown-menu">
-          <a href="force.html">Force</a>
-          <a href="mark.html">Mark</a>
-          <a href="prime.html">Prime</a>
+          <a href="produto-force.html">Force</a>
+          <a href="marca-do-produto.html">Mark</a>
+          <a href="produto-prime.html">Prime</a>
         </div>
       </div>
 
@@ -274,8 +248,7 @@ padding:20px;
 </section>
 
 <section class="drop">
-  <h2>Drop em Destaque</h2>
-  <p>Lançamentos que representam a identidade F PAC</p>
+  <h2 style="text-align:center">Drop em Destaque</h2>
 
   <div class="drop-grid">
     <a href="catalogo.html" class="card-full">
@@ -308,17 +281,17 @@ padding:20px;
 <h2 style="text-align:center">Produtos</h2>
 
 <div class="produtos-grid">
-  <a href="force.html" class="card-full">
+  <a href="produto-force.html" class="card-full">
     <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
     <div class="card-overlay"><h3>Force</h3></div>
   </a>
 
-  <a href="mark.html" class="card-full">
+  <a href="marca-do-produto.html" class="card-full">
     <img src="assets/img/cards/FP-peito C.png">
     <div class="card-overlay"><h3>Mark</h3></div>
   </a>
 
-  <a href="prime.html" class="card-full">
+  <a href="produto-prime.html" class="card-full">
     <img src="assets/img/cards/F-PAC-frente-e-costas.png">
     <div class="card-overlay"><h3>Prime</h3></div>
   </a>
@@ -342,7 +315,6 @@ btn.onclick=e=>{
 e.stopPropagation();
 dropdown.classList.toggle("open");
 };
-
 document.onclick=()=>dropdown.classList.remove("open");
 </script>
 
