@@ -6,11 +6,91 @@
 <title>Prime | F Pac Store</title>
 
 <style>
-body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
-.card{max-width:500px;margin:auto;background:#fff;padding:20px;border-radius:10px}
-label{display:block;margin-top:10px}
-select,input,textarea{width:100%;padding:8px;margin-top:5px}
-button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;font-weight:bold}
+body{
+  font-family:Arial;
+  background:#f5f5f5;
+  margin:0;
+  padding:20px;
+}
+
+.card{
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+label{
+  display:block;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+select,input,textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+}
+
+button{
+  background:#FFC107;
+  border:none;
+  padding:12px;
+  width:100%;
+  margin-top:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* =========================
+   CORES (BOLINHAS)
+========================= */
+
+.cores{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.cor{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:0.2s;
+}
+
+.cor:hover{
+  transform:scale(1.1);
+}
+
+.cor.ativo{
+  border:2px solid #000;
+}
+
+/* cores */
+.branco{
+  background:#fff;
+  border:1px solid #ccc;
+}
+
+.preto{
+  background:#000;
+}
+
+.offwhite{
+  background:#e8dccb;
+}
+
+/* bloqueado */
+.cor.indisponivel{
+  opacity:0.3;
+  pointer-events:none;
+  filter:grayscale(100%);
+}
 </style>
 </head>
 
@@ -20,31 +100,41 @@ button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;fo
 
 <h2>Camisa PRIME</h2>
 
+<!-- COR -->
 <label>Cor</label>
-<select id="cor">
-<option>Preta</option>
-<option>Branca</option>
-<option>Off White</option>
-</select>
 
+<div class="cores">
+
+  <div class="cor branco" id="cor-Branco" onclick="selecionarCor('Branco')"></div>
+  <div class="cor preto" id="cor-Preto" onclick="selecionarCor('Preto')"></div>
+  <div class="cor offwhite" id="cor-Off White" onclick="selecionarCor('Off White')"></div>
+
+</div>
+
+<input type="hidden" id="cor" value="Branco">
+
+<!-- TAMANHO -->
 <label>Tamanho</label>
 <select id="tamanho">
 <option>M</option>
 <option>G</option>
 </select>
 
+<!-- ESTAMPA -->
 <label>Estampa</label>
 <select id="estampa">
 <option>Tropa Urbana</option>
 <option>Não é só roupa</option>
 </select>
 
+<!-- LOCAL -->
 <label>Local</label>
 <select id="local">
 <option>Peito</option>
 <option>Costas</option>
 </select>
 
+<!-- TAM ESTAMPA -->
 <label>Tamanho da Estampa</label>
 <select id="tamEstampa">
 <option>Pequena</option>
@@ -52,9 +142,11 @@ button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;fo
 <option>Grande</option>
 </select>
 
+<!-- QTD -->
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1">
 
+<!-- OBS -->
 <label>Observações</label>
 <textarea id="obs"></textarea>
 
@@ -63,27 +155,88 @@ button{background:#FFC107;border:none;padding:12px;width:100%;margin-top:15px;fo
 </div>
 
 <script>
+
+// =========================
+// ESTOQUE DE CORES
+// =========================
+
+const estoqueCores = {
+  "Branco": true,
+  "Preto": false,   // ❌ indisponível
+  "Off White": true
+};
+
+// =========================
+// BLOQUEIO AUTOMÁTICO
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  Object.keys(estoqueCores).forEach(cor => {
+    if (!estoqueCores[cor]) {
+      const el = document.getElementById("cor-" + cor);
+      if (el) el.classList.add("indisponivel");
+    }
+  });
+
+});
+
+// =========================
+// SELEÇÃO DE COR
+// =========================
+
+function selecionarCor(cor){
+
+  if (!estoqueCores[cor]) return;
+
+  document.getElementById("cor").value = cor;
+
+  document.querySelectorAll(".cor").forEach(el=>{
+    el.classList.remove("ativo");
+  });
+
+  if(cor === "Branco") document.querySelector(".branco").classList.add("ativo");
+  if(cor === "Preto") document.querySelector(".preto").classList.add("ativo");
+  if(cor === "Off White") document.querySelector(".offwhite").classList.add("ativo");
+}
+
+// =========================
+// ADICIONAR AO CARRINHO
+// =========================
+
 function comprar(){
 
-const item={
-id:"PRIME-"+Date.now(),
-nome:"Camisa PRIME Personalizada",
-cor:document.getElementById("cor").value,
-tamanho:document.getElementById("tamanho").value,
-estampa:document.getElementById("estampa").value,
-local:document.getElementById("local").value,
-tamEstampa:document.getElementById("tamEstampa").value,
-observacoes:document.getElementById("obs").value,
-quantidade:Number(document.getElementById("qtd").value),
-preco:109.90
+const cor = document.getElementById("cor").value;
+
+// segurança final
+if (!estoqueCores[cor]) {
+  alert("Cor indisponível");
+  return;
 }
 
-let carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
-carrinho.push(item)
+const item = {
+id: "PRIME-" + Date.now(),
+nome: "Camisa PRIME Personalizada",
+cor: cor,
+tamanho: document.getElementById("tamanho").value,
+estampa: document.getElementById("estampa").value,
+local: document.getElementById("local").value,
+tamEstampa: document.getElementById("tamEstampa").value,
+observacoes: document.getElementById("obs").value,
+quantidade: Number(document.getElementById("qtd").value),
+preco: 109.90
+};
 
-localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho))
-window.location.href="carrinho.html"
+let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+
+carrinho.push(item);
+
+localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
+
+window.location.href = "carrinho.html";
+
 }
+
 </script>
 
 </body>
