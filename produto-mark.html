@@ -2,24 +2,83 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mark | F Pac Store</title>
 
 <style>
-body{font-family:Arial;background:#f5f5f5;padding:20px;margin:0}
-.card{max-width:400px;margin:auto;background:#fff;padding:20px;border-radius:10px;text-align:center}
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
 
+.card{
+  max-width:400px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+img{
+  width:100%;
+  height:250px;
+  object-fit:contain;
+}
+
+label{display:block;margin-top:10px;font-weight:bold}
+
+input{width:100%;padding:10px;margin-top:5px}
+
+button{
+  background:#000;
+  color:#fff;
+  border:none;
+  padding:12px;
+  width:100%;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* CORES */
 .cores{display:flex;gap:10px;justify-content:center;margin-top:10px}
-.cor{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+
+.cor{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+
 .cor:hover{transform:scale(1.1)}
 .cor.ativo{border:2px solid #000}
+
 .branco{background:#fff;border:1px solid #ccc}
 .preto{background:#000}
 .offwhite{background:#f3e9dc}
-.cor.indisponivel{opacity:.25;pointer-events:none;filter:grayscale(100%)}
 
+.cor.indisponivel{
+  opacity:.3;
+  pointer-events:none;
+}
+
+/* TAMANHOS */
 .sizes{display:flex;gap:10px;justify-content:center;margin-top:10px}
-.size{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border:1px solid #ccc;cursor:pointer;border-radius:6px}
-.size.ativo{background:#000;color:#fff}
+
+.size{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ccc;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.size.ativo{
+  background:#000;
+  color:#fff;
+}
 </style>
 </head>
 
@@ -27,76 +86,97 @@ body{font-family:Arial;background:#f5f5f5;padding:20px;margin:0}
 
 <div class="card">
 
-<img src="imagens/logo-no-peito.jpg" style="width:100%;height:250px;object-fit:contain">
+<img src="imagens/logo-no-peito.jpg">
 
 <h2>Camisa Mark</h2>
 
 <label>Cor</label>
+
 <div class="cores">
 <div class="cor branco" onclick="selCor('Branco')"></div>
 <div class="cor preto" onclick="selCor('Preto')"></div>
 <div class="cor offwhite" onclick="selCor('Off White')"></div>
 </div>
+
 <input type="hidden" id="cor" value="Branco">
 
 <label>Tamanho</label>
+
 <div class="sizes">
 <div class="size" onclick="selTam('P')">P</div>
 <div class="size" onclick="selTam('M')">M</div>
 <div class="size" onclick="selTam('G')">G</div>
 <div class="size" onclick="selTam('GG')">GG</div>
 </div>
+
 <input type="hidden" id="tamanho" value="M">
 
 <label>Quantidade</label>
 <input type="number" id="qtd" value="1">
 
-<button onclick="comprar()">Adicionar</button>
+<button onclick="comprar()">Adicionar ao Carrinho</button>
 
 </div>
 
 <script>
-const estoqueCores={"Branco":true,"Preto":false,"Off White":true};
 
+const estoqueCores = {
+  "Branco": true,
+  "Preto": false,
+  "Off White": true
+};
+
+// bloqueio cores
 document.addEventListener("DOMContentLoaded",()=>{
 Object.keys(estoqueCores).forEach(c=>{
 if(!estoqueCores[c]){
-let el=document.getElementById("cor-"+c);
+const el=document.querySelector(".cor."+c.toLowerCase().replace(" ",""));
 if(el) el.classList.add("indisponivel");
 }
 });
 });
 
-function selCor(c){
-if(!estoqueCores[c])return;
-document.getElementById("cor").value=c;
+// cor
+function selCor(cor){
+if(!estoqueCores[cor]) return;
+
+document.getElementById("cor").value = cor;
+
 document.querySelectorAll(".cor").forEach(e=>e.classList.remove("ativo"));
-if(c==="Branco")document.querySelector(".branco").classList.add("ativo");
-if(c==="Preto")document.querySelector(".preto").classList.add("ativo");
-if(c==="Off White")document.querySelector(".offwhite").classList.add("ativo");
+
+if(cor==="Branco")document.querySelector(".branco").classList.add("ativo");
+if(cor==="Preto")document.querySelector(".preto").classList.add("ativo");
+if(cor==="Off White")document.querySelector(".offwhite").classList.add("ativo");
 }
 
+// tamanho
 function selTam(t){
-document.getElementById("tamanho").value=t;
+document.getElementById("tamanho").value = t;
 document.querySelectorAll(".size").forEach(e=>e.classList.remove("ativo"));
 }
 
+// carrinho
 function comprar(){
-const cor=document.getElementById("cor").value;
-if(!estoqueCores[cor])return alert("Indisponível");
 
-let c=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
-c.push({
+const cor=document.getElementById("cor").value;
+
+if(!estoqueCores[cor]) return alert("Indisponível");
+
+let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+
+carrinho.push({
 id:"MARK-"+Date.now(),
 nome:"Camisa Mark",
 cor,
 tamanho:document.getElementById("tamanho").value,
 quantidade:Number(document.getElementById("qtd").value),
-preco:89.9
+preco:89.90
 });
-localStorage.setItem("fpacCarrinho",JSON.stringify(c));
+
+localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho));
 window.location.href="carrinho.html";
 }
+
 </script>
 
 </body>
