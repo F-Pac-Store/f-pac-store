@@ -179,5 +179,75 @@ window.location.href="carrinho.html";
 
 </script>
 
+  <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* 🔥 CONFIG FIREBASE (substituir pelos teus dados) */
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* =========================
+   VERIFICA ESTOQUE
+========================= */
+async function temEstoque(produto, cor, tamanho){
+
+  const snap = await getDoc(
+    doc(db, "estoque", produto + "_" + cor)
+  );
+
+  if(!snap.exists()) return false;
+
+  const data = snap.data();
+
+  return (data[tamanho] || 0) > 0;
+}
+
+/* =========================
+   COMPRA COM BLOQUEIO
+========================= */
+window.comprar = async function(){
+
+  const produto = "PRIME"; // ajusta por produto (MARK / FORCE / PRIME)
+  const cor = document.getElementById("cor").value;
+  const tamanho = document.getElementById("tamanho").value;
+  const qtd = Number(document.getElementById("qtd").value);
+
+  // 🔒 BLOQUEIO DE ESTOQUE (COR + TAMANHO)
+  const ok = await temEstoque(produto, cor, tamanho);
+
+  if(!ok){
+    alert("Sem estoque para essa variação");
+    return;
+  }
+
+  // 🛒 carrinho
+  let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+
+  carrinho.push({
+    id: produto + "-" + Date.now(),
+    nome: "Camisa " + produto,
+    cor,
+    tamanho,
+    quantidade: qtd,
+    preco: 109.90
+  });
+
+  localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
+
+  // 🔁 redireciona
+  window.location.href = "carrinho.html";
+};
+
+</script>
+
 </body>
 </html>
