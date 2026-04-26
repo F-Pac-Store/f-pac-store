@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,34 +119,68 @@ opacity:0;
 transform:rotate(-45deg) translate(6px,-6px);
 }
 
-/* HERO */
+/* ========================= */
+/* HERO – AJUSTE DEFINITIVO */
+/* ========================= */
+
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
 
-/* AJUSTE PRINCIPAL */
-background:url('assets/img/hero-003.png') center no-repeat;
+background-image:url('assets/img/hero-003.png');
+background-repeat:no-repeat;
 background-size:cover;
+
+/* foco principal (camiseta + frase) */
+background-position:center 35%;
 
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
+
+position:relative;
 }
 
-/* DESKTOP - NÃO CORTA IMAGEM */
-@media (min-width:1024px){
-  .hero{
-    background-size:contain;
-    background-color:#000;
-  }
+/* Overlay leve para proteger a frase */
+.hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0.35),
+rgba(0,0,0,0.6)
+);
 }
 
 .hero-content{
+position:relative;
+z-index:1;
 text-shadow:0 3px 15px rgba(0,0,0,0.7);
 }
 
+/* DESKTOP GRANDE */
+@media (min-width:1200px){
+.hero{
+background-position:center 30%;
+}
+}
+
+/* MOBILE */
+@media (max-width:768px){
+.hero{
+height:80vh;
+background-position:center top;
+}
+
+.hero-content{
+padding:0 15px;
+}
+}
+
+/* BOTÃO */
 .btn{
 background:#FFC107;
 padding:12px 25px;
@@ -189,9 +222,8 @@ text-align:center;
 padding:20px;
 }
 
-/* MOBILE */
+/* MOBILE MENU */
 @media (max-width:768px){
-
 .nav{
 position:fixed;
 top:0;
@@ -207,19 +239,10 @@ gap:20px;
 transition:0.3s ease;
 }
 
-.nav a{
-font-size:16px;
-}
+.nav.active{right:0;}
 
-.nav.active{
-right:0;
-}
+.menu-toggle{display:flex;}
 
-.menu-toggle{
-display:flex;
-}
-
-/* OVERLAY */
 .overlay{
 position:fixed;
 inset:0;
@@ -233,72 +256,64 @@ transition:0.3s;
 opacity:1;
 visibility:visible;
 }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header class="header" id="header">
-<div class="header-content">
+  <div class="header-content">
+    <a href="#" class="logo">
+      <img src="assets/img/logos/f-pac-color.png" class="logo-img">
+      <span class="logo-text">F PAC</span>
+    </a>
 
-<a href="#" class="logo">
-<img src="assets/img/logos/f-pac-color.png" class="logo-img">
-<span class="logo-text">F PAC</span>
-</a>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
 
-<div class="menu-toggle" id="menuToggle">
-<span></span>
-<span></span>
-<span></span>
-</div>
-
-<nav class="nav" id="navMenu">
-<a href="#inicio">Início</a>
-<a href="#produtos">Produtos</a>
-<a href="catalogo.html">Catálogo</a>
-<a href="carrinho.html">
-<i class="fa-solid fa-cart-shopping"></i>
-<span id="carrinhoQtd">0</span>
-</a>
-</nav>
-
-</div>
+    <nav class="nav" id="navMenu">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="carrinho.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="carrinhoQtd">0</span>
+      </a>
+    </nav>
+  </div>
 </header>
 
 <div class="overlay" id="overlay"></div>
 
 <section class="hero" id="inicio">
-<div class="hero-content">
-<a href="#produtos" class="btn">Comprar Agora!</a>
-</div>
+  <div class="hero-content">
+    <a href="#produtos" class="btn">Comprar Agora!</a>
+  </div>
 </section>
 
 <section id="produtos">
 <h2 style="text-align:center">Produtos</h2>
 
 <div class="grid">
+  <div class="card">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    <h3>Force</h3>
+    <a href="#" class="btn">Comprar</a>
+  </div>
 
-<div class="card">
-<img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-<h3>Force</h3>
-<a href="#" class="btn">Comprar</a>
-</div>
+  <div class="card">
+    <img src="assets/img/cards/FP-peito C.png">
+    <h3>Mark</h3>
+    <a href="#" class="btn">Comprar</a>
+  </div>
 
-<div class="card">
-<img src="assets/img/cards/FP-peito C.png">
-<h3>Mark</h3>
-<a href="#" class="btn">Comprar</a>
-</div>
-
-<div class="card">
-<img src="assets/img/cards/F-PAC-frente-e-costas.png">
-<h3>Prime</h3>
-<a href="#" class="btn">Personalizar</a>
-</div>
-
+  <div class="card">
+    <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+    <h3>Prime</h3>
+    <a href="#" class="btn">Personalizar</a>
+  </div>
 </div>
 </section>
 
@@ -307,8 +322,6 @@ visibility:visible;
 </footer>
 
 <script>
-
-/* MENU */
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 const overlay = document.getElementById("overlay");
@@ -327,29 +340,20 @@ overlay.classList.toggle("active");
 
 overlay.onclick = fecharMenu;
 
-document.querySelectorAll(".nav a").forEach(link => {
-link.addEventListener("click", fecharMenu);
-});
-
-/* SCROLL HEADER */
 window.addEventListener("scroll", () => {
-const header = document.getElementById("header");
-header.classList.toggle("shrink", window.scrollY > 50);
+document.getElementById("header")
+.classList.toggle("shrink", window.scrollY > 50);
 });
 
-/* CARRINHO */
 function getCarrinho(){
 return JSON.parse(localStorage.getItem('fpacCarrinho'))||[]
 }
-
 function atualizarCarrinho(){
 const carrinho=getCarrinho()
 const total=carrinho.reduce((s,i)=>s+i.quantidade,0)
 document.getElementById("carrinhoQtd").innerText=total
 }
-
-document.addEventListener("DOMContentLoaded",atualizarCarrinho)
-
+document.addEventListener("DOMContentLoaded", atualizarCarrinho);
 </script>
 
 </body>
