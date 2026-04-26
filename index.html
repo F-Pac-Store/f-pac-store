@@ -7,7 +7,6 @@
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/blacklisted" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -20,12 +19,9 @@
 --accent:#FFC107;
 --bg:#f5f5f5;
 --text:#333;
---white:#fff;
 }
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 font-family:'Inter',sans-serif;
@@ -41,13 +37,10 @@ position:fixed;
 width:100%;
 top:0;
 z-index:1000;
-transition:0.3s;
+transition:.3s;
 }
 
-.header.shrink{
-height:70px;
-background:#003366ee;
-}
+.header.shrink{background:#003366ee;}
 
 .header-content{
 display:flex;
@@ -55,53 +48,59 @@ justify-content:space-between;
 align-items:center;
 height:100px;
 padding:0 20px;
-transition:0.3s;
+transition:.3s;
 }
 
-.header.shrink .header-content{
-height:70px;
-}
+.header.shrink .header-content{height:70px;}
 
-/* LOGO */
+/* LOGO PREMIUM */
 .logo{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 text-decoration:none;
 }
 
-.logo-img{
-height:70px;
-transition:0.3s;
-}
-
-.header.shrink .logo-img{
+/* SVG LOGO */
+.logo-svg{
 height:50px;
+transition:.4s cubic-bezier(.2,.8,.2,1);
+filter:drop-shadow(0 0 0px #FFC107);
 }
 
-/* AJUSTE PROFISSIONAL DO TEXTO */
+/* TEXTO */
 .logo-text{
-font-family:'blacklisted';
-color:#FFC107;
-
-/* escala responsiva inteligente */
-font-size:clamp(18px, 2.2vw, 26px);
-
 font-weight:800;
+font-size:clamp(18px,2.2vw,26px);
+color:#FFC107;
 letter-spacing:1px;
-transition:0.3s;
+transition:.3s;
 }
 
-/* redução proporcional no shrink */
-.header.shrink .logo-text{
-font-size:clamp(16px, 2vw, 22px);
+/* HOVER PROFISSIONAL */
+.logo:hover .logo-svg{
+transform:translateY(-2px) scale(1.05);
+filter:drop-shadow(0 0 8px #FFC107);
+}
+
+.logo:hover .logo-text{
+transform:translateY(-2px);
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+.logo{
+animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 /* MENU */
 .nav{
 display:flex;
 gap:30px;
-align-items:center;
 }
 
 .nav a{
@@ -116,31 +115,19 @@ display:none;
 flex-direction:column;
 cursor:pointer;
 gap:5px;
-z-index:1100;
 }
 
 .menu-toggle span{
 width:28px;
 height:3px;
 background:white;
-transition:0.3s;
-}
-
-.menu-toggle.active span:nth-child(1){
-transform:rotate(45deg) translate(5px,5px);
-}
-.menu-toggle.active span:nth-child(2){
-opacity:0;
-}
-.menu-toggle.active span:nth-child(3){
-transform:rotate(-45deg) translate(6px,-6px);
 }
 
 /* HERO */
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center 35%/cover;
+background:url('assets/img/hero-003.png') center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -151,19 +138,16 @@ position:relative;
 content:'';
 position:absolute;
 inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,0.35),rgba(0,0,0,0.6));
+background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.6));
 }
 
-.hero-content{
-position:relative;
-z-index:1;
-}
+.hero-content{z-index:1;}
 
 .btn{
 background:#FFC107;
 padding:12px 25px;
-text-decoration:none;
 color:black;
+text-decoration:none;
 font-weight:bold;
 border-radius:6px;
 }
@@ -193,42 +177,23 @@ padding:60px 20px;
 scroll-margin-top:110px;
 }
 
-.footer{
-background:#001a33;
-color:white;
-text-align:center;
-padding:20px;
-}
-
 /* MOBILE */
-@media (max-width:768px){
+@media(max-width:768px){
 .nav{
 position:fixed;
-top:0;
 right:-100%;
+top:0;
 height:100vh;
 width:200px;
-background:rgba(0,51,102,0.95);
+background:#003366;
 flex-direction:column;
 padding:110px 20px;
-transition:0.3s;
+transition:.3s;
 }
 .nav.active{right:0;}
 .menu-toggle{display:flex;}
+}
 
-.overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.4);
-opacity:0;
-visibility:hidden;
-transition:0.3s;
-}
-.overlay.active{
-opacity:1;
-visibility:visible;
-}
-}
 </style>
 </head>
 
@@ -238,8 +203,15 @@ visibility:visible;
 <div class="header-content">
 
 <a href="#inicio" class="logo">
-<img src="assets/img/logos/f-pac-color.png" class="logo-img">
+
+<!-- SVG ICON -->
+<svg class="logo-svg" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="40" stroke="#FFC107" stroke-width="6" fill="none"/>
+<path d="M30 65 L50 30 L70 65 Z" fill="#FFC107"/>
+</svg>
+
 <span class="logo-text">F PAC</span>
+
 </a>
 
 <div class="menu-toggle" id="menuToggle">
@@ -249,21 +221,15 @@ visibility:visible;
 <nav class="nav" id="navMenu">
 <a href="#inicio">Início</a>
 <a href="#produtos">Produtos</a>
-<a href="catalogo.html">Catálogo</a>
-<a href="carrinho.html">
-<i class="fa-solid fa-cart-shopping"></i>
-<span id="carrinhoQtd">0</span>
-</a>
+<a href="#">Catálogo</a>
 </nav>
 
 </div>
 </header>
 
-<div class="overlay" id="overlay"></div>
-
 <section class="hero" id="inicio">
 <div class="hero-content">
-<a href="#produtos" class="btn">Comprar Agora!</a>
+<a href="#produtos" class="btn">Comprar Agora</a>
 </div>
 </section>
 
@@ -274,50 +240,18 @@ visibility:visible;
 <div class="card">
 <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
 <h3>Force</h3>
-<a href="#" class="btn">Comprar</a>
 </div>
 
 <div class="card">
 <img src="assets/img/cards/FP-peito C.png">
 <h3>Mark</h3>
-<a href="#" class="btn">Comprar</a>
+</div>
 </div>
 
-<div class="card">
-<img src="assets/img/cards/F-PAC-frente-e-costas.png">
-<h3>Prime</h3>
-<a href="#" class="btn">Personalizar</a>
-</div>
-</div>
 </section>
 
-<footer class="footer">
-© 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
-
 <script>
-const menuToggle=document.getElementById("menuToggle");
-const navMenu=document.getElementById("navMenu");
-const overlay=document.getElementById("overlay");
-
-function fecharMenu(){
-menuToggle.classList.remove("active");
-navMenu.classList.remove("active");
-overlay.classList.remove("active");
-}
-
-menuToggle.onclick=()=>{
-menuToggle.classList.toggle("active");
-navMenu.classList.toggle("active");
-overlay.classList.toggle("active");
-};
-
-overlay.onclick=fecharMenu;
-
-document.querySelectorAll("#navMenu a").forEach(link=>{
-link.addEventListener("click",fecharMenu);
-});
-
+// HEADER SHRINK
 window.addEventListener("scroll",()=>{
 document.getElementById("header")
 .classList.toggle("shrink",window.scrollY>50);
