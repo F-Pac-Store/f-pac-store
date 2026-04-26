@@ -17,7 +17,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---primary:#003366;
+--primary:#003366cc;
 --accent:#FFC107;
 --bg:#f5f5f5;
 --text:#333;
@@ -33,11 +33,18 @@ color:var(--text);
 /* HEADER */
 .header{
 background:var(--primary);
-color:white;
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
 position:fixed;
 width:100%;
 top:0;
 z-index:1000;
+transition:0.3s;
+}
+
+.header.shrink{
+height:70px;
+background:#003366ee;
 }
 
 .header-content{
@@ -46,6 +53,11 @@ justify-content:space-between;
 align-items:center;
 height:100px;
 padding:0 20px;
+transition:0.3s;
+}
+
+.header.shrink .header-content{
+height:70px;
 }
 
 .logo{
@@ -55,15 +67,27 @@ gap:10px;
 text-decoration:none;
 }
 
-.logo-img{height:70px}
+.logo-img{
+height:70px;
+transition:0.3s;
+}
+
+.header.shrink .logo-img{
+height:50px;
+}
 
 .logo-text{
 font-family:'blacklisted';
 color:#FFC107;
 }
 
-/* MENU */
-.nav{display:flex;gap:25px;align-items:center}
+/* MENU DESKTOP */
+.nav{
+display:flex;
+gap:30px;
+align-items:center;
+white-space:nowrap;
+}
 
 .nav a{
 color:white;
@@ -71,39 +95,48 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* HERO AJUSTADO */
+/* BOTÃO */
+.menu-toggle{
+display:none;
+flex-direction:column;
+cursor:pointer;
+gap:5px;
+z-index:1100;
+}
+
+.menu-toggle span{
+width:28px;
+height:3px;
+background:white;
+transition:0.3s;
+}
+
+.menu-toggle.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+.menu-toggle.active span:nth-child(2){
+opacity:0;
+}
+.menu-toggle.active span:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* HERO */
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-002.png') center center / cover no-repeat;
+background:url('assets/img/hero-002.png') center / cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-position:relative;
 }
 
-/* POSIÇÃO MAIS INTELIGENTE (evita cortar topo importante) */
-@media (max-width:768px){
-.hero{
-background-position:center top;
-}
-}
-
-/* TEXTO */
 .hero-content{
-z-index:2;
 text-shadow:0 3px 15px rgba(0,0,0,0.7);
-padding:20px;
 }
 
-.hero-content h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-/* BOTÃO */
 .btn{
 background:#FFC107;
 padding:12px 25px;
@@ -136,10 +169,8 @@ height:200px;
 object-fit:contain;
 }
 
-/* SEÇÕES */
 section{padding:60px 20px}
 
-/* FOOTER */
 .footer{
 background:#001a33;
 color:white;
@@ -147,12 +178,55 @@ text-align:center;
 padding:20px;
 }
 
+/* MOBILE */
+@media (max-width:768px){
+
+.nav{
+position:fixed;
+top:0;
+right:-100%;
+height:100vh;
+width:260px;
+background:rgba(0,51,102,0.9);
+backdrop-filter:blur(12px);
+flex-direction:column;
+align-items:flex-start;
+padding:120px 20px;
+gap:25px;
+transition:0.4s ease;
+}
+
+.nav.active{
+right:0;
+}
+
+.menu-toggle{
+display:flex;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(3px);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header class="header">
+<header class="header" id="header">
 <div class="header-content">
 
 <a href="#" class="logo">
@@ -160,11 +234,16 @@ padding:20px;
 <span class="logo-text">F PAC</span>
 </a>
 
-<nav class="nav">
+<div class="menu-toggle" id="menuToggle">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<nav class="nav" id="navMenu">
 <a href="#inicio">Início</a>
 <a href="#produtos">Produtos</a>
 <a href="catalogo.html">Catálogo</a>
-
 <a href="carrinho.html">
 <i class="fa-solid fa-cart-shopping"></i>
 <span id="carrinhoQtd">0</span>
@@ -174,7 +253,8 @@ padding:20px;
 </div>
 </header>
 
-<!-- HERO -->
+<div class="overlay" id="overlay"></div>
+
 <section class="hero" id="inicio">
 <div class="hero-content">
 <h1>Não é só roupa. É identidade.</h1>
@@ -183,30 +263,27 @@ padding:20px;
 </div>
 </section>
 
-<!-- PRODUTOS -->
 <section id="produtos">
 <h2 style="text-align:center">Produtos</h2>
 
 <div class="grid">
-
 <div class="card">
 <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
 <h3>Force</h3>
-<a href="produto-force.html" class="btn">Comprar</a>
+<a href="#" class="btn">Comprar</a>
 </div>
 
 <div class="card">
 <img src="assets/img/cards/FP-peito C.png">
 <h3>Mark</h3>
-<a href="produto-mark.html" class="btn">Comprar</a>
+<a href="#" class="btn">Comprar</a>
 </div>
 
 <div class="card">
 <img src="assets/img/cards/F-PAC-frente-e-costas.png">
 <h3>Prime</h3>
-<a href="produto-prime.html" class="btn">Personalizar</a>
+<a href="#" class="btn">Personalizar</a>
 </div>
-
 </div>
 </section>
 
@@ -215,6 +292,31 @@ padding:20px;
 </footer>
 
 <script>
+
+/* MENU */
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+const overlay = document.getElementById("overlay");
+
+menuToggle.onclick = () => {
+menuToggle.classList.toggle("active");
+navMenu.classList.toggle("active");
+overlay.classList.toggle("active");
+};
+
+overlay.onclick = () => {
+menuToggle.classList.remove("active");
+navMenu.classList.remove("active");
+overlay.classList.remove("active");
+};
+
+/* SCROLL HEADER */
+window.addEventListener("scroll", () => {
+const header = document.getElementById("header");
+header.classList.toggle("shrink", window.scrollY > 50);
+});
+
+/* CARRINHO */
 function getCarrinho(){
 return JSON.parse(localStorage.getItem('fpacCarrinho'))||[]
 }
@@ -226,6 +328,7 @@ document.getElementById("carrinhoQtd").innerText=total
 }
 
 document.addEventListener("DOMContentLoaded",atualizarCarrinho)
+
 </script>
 
 </body>
