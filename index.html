@@ -66,7 +66,7 @@ height:70px;
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
+gap:12px;
 text-decoration:none;
 }
 
@@ -79,12 +79,25 @@ transition:0.3s;
 height:50px;
 }
 
+/* AJUSTE PROFISSIONAL DO TEXTO */
 .logo-text{
 font-family:'blacklisted';
 color:#FFC107;
+
+/* escala responsiva inteligente */
+font-size:clamp(18px, 2.2vw, 26px);
+
+font-weight:800;
+letter-spacing:1px;
+transition:0.3s;
 }
 
-/* MENU DESKTOP */
+/* redução proporcional no shrink */
+.header.shrink .logo-text{
+font-size:clamp(16px, 2vw, 22px);
+}
+
+/* MENU */
 .nav{
 display:flex;
 gap:30px;
@@ -97,7 +110,7 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* BOTÃO MENU */
+/* MENU MOBILE */
 .menu-toggle{
 display:none;
 flex-direction:column;
@@ -127,18 +140,10 @@ transform:rotate(-45deg) translate(6px,-6px);
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-
-background-image:url('assets/img/hero-003.png');
-background-repeat:no-repeat;
-background-size:cover;
-background-position:center 35%;
-
+background:url('assets/img/hero-003.png') no-repeat center 35%/cover;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
-color:white;
-
 position:relative;
 }
 
@@ -146,18 +151,178 @@ position:relative;
 content:'';
 position:absolute;
 inset:0;
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0.35),
-rgba(0,0,0,0.6)
-);
+background:linear-gradient(to bottom,rgba(0,0,0,0.35),rgba(0,0,0,0.6));
 }
 
 .hero-content{
 position:relative;
 z-index:1;
-text-shadow:0 3px 15px rgba(0,0,0,0.7);
 }
 
-/* DESKTOP GRANDE */
-@media
+.btn{
+background:#FFC107;
+padding:12px 25px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+border-radius:6px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:contain;
+}
+
+section{
+padding:60px 20px;
+scroll-margin-top:110px;
+}
+
+.footer{
+background:#001a33;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+.nav{
+position:fixed;
+top:0;
+right:-100%;
+height:100vh;
+width:200px;
+background:rgba(0,51,102,0.95);
+flex-direction:column;
+padding:110px 20px;
+transition:0.3s;
+}
+.nav.active{right:0;}
+.menu-toggle{display:flex;}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.4);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+}
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header" id="header">
+<div class="header-content">
+
+<a href="#inicio" class="logo">
+<img src="assets/img/logos/f-pac-color.png" class="logo-img">
+<span class="logo-text">F PAC</span>
+</a>
+
+<div class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</div>
+
+<nav class="nav" id="navMenu">
+<a href="#inicio">Início</a>
+<a href="#produtos">Produtos</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="carrinho.html">
+<i class="fa-solid fa-cart-shopping"></i>
+<span id="carrinhoQtd">0</span>
+</a>
+</nav>
+
+</div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<section class="hero" id="inicio">
+<div class="hero-content">
+<a href="#produtos" class="btn">Comprar Agora!</a>
+</div>
+</section>
+
+<section id="produtos">
+<h2 style="text-align:center">Produtos</h2>
+
+<div class="grid">
+<div class="card">
+<img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+<h3>Force</h3>
+<a href="#" class="btn">Comprar</a>
+</div>
+
+<div class="card">
+<img src="assets/img/cards/FP-peito C.png">
+<h3>Mark</h3>
+<a href="#" class="btn">Comprar</a>
+</div>
+
+<div class="card">
+<img src="assets/img/cards/F-PAC-frente-e-costas.png">
+<h3>Prime</h3>
+<a href="#" class="btn">Personalizar</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+© 2026 F Pac Store — Não é só roupa. É identidade.
+</footer>
+
+<script>
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const overlay=document.getElementById("overlay");
+
+function fecharMenu(){
+menuToggle.classList.remove("active");
+navMenu.classList.remove("active");
+overlay.classList.remove("active");
+}
+
+menuToggle.onclick=()=>{
+menuToggle.classList.toggle("active");
+navMenu.classList.toggle("active");
+overlay.classList.toggle("active");
+};
+
+overlay.onclick=fecharMenu;
+
+document.querySelectorAll("#navMenu a").forEach(link=>{
+link.addEventListener("click",fecharMenu);
+});
+
+window.addEventListener("scroll",()=>{
+document.getElementById("header")
+.classList.toggle("shrink",window.scrollY>50);
+});
+</script>
+
+</body>
+</html>
