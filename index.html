@@ -28,14 +28,16 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* ================================================= */
+/* HEADER                                            */
+/* ================================================= */
 
 .header{
 background:var(--primary);
 backdrop-filter:blur(10px);
 position:fixed;
-top:0;
 width:100%;
+top:0;
 z-index:1000;
 transition:.3s;
 }
@@ -43,10 +45,10 @@ transition:.3s;
 .header.shrink{background:#003366ee}
 
 .header-content{
-height:100px;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
+height:100px;
 padding:0 20px;
 transition:.3s;
 }
@@ -68,76 +70,20 @@ font-family:'blacklisted';
 color:#FFC107;
 }
 
-/* ================= MENU ================= */
+.nav{display:flex;gap:30px}
+.nav a{color:white;text-decoration:none;font-weight:600}
 
-.nav{
-display:flex;
-gap:30px;
-align-items:center;
-position:relative;
-}
-
-.nav a,
-.nav button{
-color:white;
-font-weight:600;
-text-decoration:none;
-background:none;
-border:none;
-cursor:pointer;
-font-size:1rem;
-}
-
-/* ===== Dropdown Produtos ===== */
-
-.dropdown{
-position:relative;
-}
-
-.dropdown-menu{
-position:absolute;
-top:140%;
-left:0;
-background:#001a33;
-min-width:180px;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-opacity:0;
-visibility:hidden;
-transform:translateY(-10px);
-transition:.3s ease;
-z-index:2000;
-}
-
-.dropdown.open .dropdown-menu{
-opacity:1;
-visibility:visible;
-transform:translateY(0);
-}
-
-.dropdown-menu a{
-display:block;
-padding:14px 18px;
-color:white;
-text-decoration:none;
-transition:.3s;
-}
-
-.dropdown-menu a:hover{
-background:rgba(255,255,255,.1);
-color:var(--accent);
-}
-
-/* ================= HERO ================= */
+/* ================================================= */
+/* HERO                                              */
+/* ================================================= */
 
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center 35%/cover;
+background:url('assets/img/hero-003.png') no-repeat center 35% / cover;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 position:relative;
 color:white;
 }
@@ -160,7 +106,88 @@ font-weight:800;
 text-decoration:none;
 }
 
-/* ================= FOOTER ================= */
+/* ================================================= */
+/* DROP / CARDS PADRÃO (USADO EM DESTAQUE E PRODUTOS) */
+/* ================================================= */
+
+.card-full{
+position:relative;
+height:380px;
+border-radius:18px;
+overflow:hidden;
+text-decoration:none;
+display:block;
+}
+
+.card-full img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s ease;
+}
+
+.card-full:hover img{
+transform:scale(1.08);
+}
+
+.card-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15));
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:20px;
+gap:10px;
+}
+
+.card-overlay h3{
+color:white;
+font-size:1.2rem;
+}
+
+.card-overlay .btn{
+width:max-content;
+}
+
+/* ================================================= */
+/* DESTAQUE DE COLEÇÃO                               */
+/* ================================================= */
+
+.drop{
+background:#0b0b0b;
+padding:80px 20px;
+color:white;
+}
+
+.drop h2{text-align:center;margin-bottom:10px}
+.drop p{text-align:center;color:#ccc;margin-bottom:40px}
+
+.drop-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:0 auto;
+}
+
+/* ================================================= */
+/* PRODUTOS – MESMO ESTILO DO DROP                   */
+/* ================================================= */
+
+section{padding:80px 20px}
+
+.produtos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:40px auto 0;
+}
+
+/* ================================================= */
+/* FOOTER                                           */
+/* ================================================= */
 
 .footer{
 background:#001a33;
@@ -176,31 +203,15 @@ padding:20px;
 
 <header class="header" id="header">
   <div class="header-content">
-
-    <a href="index.html" class="logo">
+    <a href="#" class="logo">
       <img src="assets/img/logos/f-pac-color.png" class="logo-img">
       <span class="logo-text">F PAC</span>
     </a>
 
     <nav class="nav">
-
       <a href="#inicio">Início</a>
-
-      <!-- DROPDOWN PRODUTOS -->
-      <div class="dropdown" id="dropdownProdutos">
-        <button id="btnProdutos">
-          Produtos <i class="fa fa-chevron-down"></i>
-        </button>
-
-        <div class="dropdown-menu">
-          <a href="force.html">Force</a>
-          <a href="mark.html">Mark</a>
-          <a href="prime.html">Prime</a>
-        </div>
-      </div>
-
+      <a href="#produtos">Produtos</a>
       <a href="catalogo.html">Catálogo</a>
-
     </nav>
   </div>
 </header>
@@ -211,31 +222,587 @@ padding:20px;
   </div>
 </section>
 
+<!-- ========================== -->
+<!-- DROP EM DESTAQUE           -->
+<!-- ========================== -->
+
+<section class="drop">
+  <h2>Drop em Destaque</h2>
+  <p>Lançamentos que representam a identidade F PAC</p>
+
+  <div class="drop-grid">
+    <a href="catalogo.html" class="card-full">
+      <img src="assets/img/cards/destaque-01.png">
+      <div class="card-overlay">
+        <h3>Black Series</h3>
+        <span class="btn">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="catalogo.html" class="card-full">
+      <img src="assets/img/cards/destaque-02.png">
+      <div class="card-overlay">
+        <h3>Prime Drop</h3>
+        <span class="btn">Explorar</span>
+      </div>
+    </a>
+
+    <a href="catalogo.html" class="card-full">
+      <img src="assets/img/logos/FP-branco.png">
+      <div class="card-overlay">
+        <h3>Limited</h3>
+        <span class="btn">Últimas peças</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ========================== -->
+<!-- PRODUTOS                  -->
+<!-- ========================== -->
+
+<section id="produtos">
+<h2 style="text-align:center">Produtos</h2>
+
+<div class="produtos-grid">
+
+  <a href="catalogo.html" class="card-full">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    <div class="card-overlay">
+      <h3>Force</h3>
+      <span class="btn">Comprar</span>
+    </div>
+  </a>
+
+  <a href="catalogo.html" class="card-full">
+    <img src="assets/img/cards/FP-peito C.png">
+    <div class="card-overlay">
+      <h3>Mark</h3>
+      <span class="btn">Comprar</span>
+    </div>
+  </a>
+
+  <a href="catalogo.html" class="card-full">
+    <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+    <div class="card-overlay">
+      <h3>Prime</h3>
+      <span class="btn">Personalizar</span>
+    </div>
+  </a>
+
+</div>
+</section>
+
 <footer class="footer">
 © 2026 F Pac Store — Não é só roupa. É identidade.
 </footer>
 
 <script>
-/* HEADER SHRINK */
 window.addEventListener("scroll",()=>{
-  document.getElementById("header")
-  .classList.toggle("shrink",window.scrollY>50);
-});
-
-/* DROPDOWN PRODUTOS */
-const dropdown = document.getElementById("dropdownProdutos");
-const btn = document.getElementById("btnProdutos");
-
-btn.addEventListener("click", e => {
-  e.stopPropagation();
-  dropdown.classList.toggle("open");
-});
-
-/* Fechar ao clicar fora */
-document.addEventListener("click",()=>{
-  dropdown.classList.remove("open");
+document.getElementById("header")
+.classList.toggle("shrink",window.scrollY > 50);
 });
 </script>
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Force | F Pac Store</title>
+
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
+
+.card{
+  max-width:400px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+}
+
+img{width:100%;height:250px;object-fit:contain}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#000;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+/* CORES */
+.cores{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.cor{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.cor.ativo{border:2px solid #000}
+.branco{background:#fff;border:1px solid #ccc}
+.preto{background:#000}
+.offwhite{background:#f3e9dc}
+
+/* TAMANHOS */
+.sizes{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.size{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border:1px solid #ccc;border-radius:6px;cursor:pointer}
+.size.ativo{background:#000;color:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="imagens/logo-no-peito.jpg">
+
+<h2>Camisa Force</h2>
+
+<label>Cor</label>
+<div class="cores">
+  <div class="cor branco" onclick="selCor('Branco')"></div>
+  <div class="cor preto" onclick="selCor('Preto')"></div>
+  <div class="cor offwhite" onclick="selCor('Off White')"></div>
+</div>
+<input type="hidden" id="cor" value="Branco">
+
+<label>Tamanho</label>
+<div class="sizes">
+  <div class="size" onclick="selTam('P')">P</div>
+  <div class="size" onclick="selTam('M')">M</div>
+  <div class="size" onclick="selTam('G')">G</div>
+  <div class="size" onclick="selTam('GG')">GG</div>
+</div>
+<input type="hidden" id="tamanho" value="M">
+
+<label>Quantidade</label>
+<input type="number" id="qtd" value="1" min="1">
+
+<button onclick="comprar()">Adicionar ao Carrinho</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, increment } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function temEstoque(produto, cor, tamanho){
+  const snap = await getDoc(doc(db,"estoque",produto+"_"+cor));
+  if(!snap.exists()) return false;
+  return (snap.data()[tamanho]||0)>0;
+}
+
+async function atualizar(){
+  const ok = await temEstoque(
+    "FORCE",
+    document.getElementById("cor").value,
+    document.getElementById("tamanho").value
+  );
+
+  const btn = document.querySelector("button");
+  btn.disabled = !ok;
+  btn.style.background = ok ? "#000" : "#999";
+  btn.innerText = ok ? "Adicionar ao Carrinho" : "Esgotado";
+}
+
+window.selCor = async function(cor){
+  document.getElementById("cor").value = cor;
+
+  document.querySelectorAll(".cor").forEach(e=>e.classList.remove("ativo"));
+  if(cor==="Branco")document.querySelector(".branco").classList.add("ativo");
+  if(cor==="Preto")document.querySelector(".preto").classList.add("ativo");
+  if(cor==="Off White")document.querySelector(".offwhite").classList.add("ativo");
+
+  await atualizar();
+}
+
+window.selTam = async function(t){
+  document.getElementById("tamanho").value = t;
+
+  document.querySelectorAll(".size").forEach(e=>e.classList.remove("ativo"));
+
+  const map={P:0,M:1,G:2,GG:3};
+  document.querySelectorAll(".size")[map[t]].classList.add("ativo");
+
+  await atualizar();
+}
+
+window.comprar = async function(){
+
+  const cor = document.getElementById("cor").value;
+  const tamanho = document.getElementById("tamanho").value;
+  const qtd = Number(document.getElementById("qtd").value);
+
+  if(!await temEstoque("FORCE",cor,tamanho)){
+    alert("Sem estoque");
+    return;
+  }
+
+  await updateDoc(doc(db,"estoque","FORCE_"+cor),{
+    [tamanho]:increment(-qtd)
+  });
+
+  let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+
+  carrinho.push({
+    id:"FORCE-"+Date.now(),
+    nome:"Camisa Force",
+    cor,
+    tamanho,
+    quantidade:qtd,
+    preco:89.90
+  });
+
+  localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho));
+
+  window.location.href="carrinho.html";
+}
+
+document.addEventListener("DOMContentLoaded",atualizar);
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark | F Pac Store</title>
+
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
+
+.card{
+  max-width:400px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+}
+
+img{width:100%;height:250px;object-fit:contain}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#000;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+/* CORES */
+.cores{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.cor{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.cor.ativo{border:2px solid #000}
+.branco{background:#fff;border:1px solid #ccc}
+.preto{background:#000}
+.offwhite{background:#f3e9dc}
+
+/* TAMANHOS */
+.sizes{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.size{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border:1px solid #ccc;border-radius:6px;cursor:pointer}
+.size.ativo{background:#000;color:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="imagens/logo-no-peito.jpg">
+
+<h2>Camisa Mark</h2>
+
+<label>Cor</label>
+<div class="cores">
+  <div class="cor branco" onclick="selCor('Branco')"></div>
+  <div class="cor preto" onclick="selCor('Preto')"></div>
+  <div class="cor offwhite" onclick="selCor('Off White')"></div>
+</div>
+<input type="hidden" id="cor" value="Branco">
+
+<label>Tamanho</label>
+<div class="sizes">
+  <div class="size" onclick="selTam('P')">P</div>
+  <div class="size" onclick="selTam('M')">M</div>
+  <div class="size" onclick="selTam('G')">G</div>
+  <div class="size" onclick="selTam('GG')">GG</div>
+</div>
+<input type="hidden" id="tamanho" value="M">
+
+<label>Quantidade</label>
+<input type="number" id="qtd" value="1" min="1">
+
+<button onclick="comprar()">Adicionar ao Carrinho</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, increment } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ESTOQUE */
+async function temEstoque(produto, cor, tamanho){
+  const snap = await getDoc(doc(db,"estoque",produto+"_"+cor));
+  if(!snap.exists()) return false;
+  return (snap.data()[tamanho]||0)>0;
+}
+
+/* BOTÃO DINÂMICO */
+async function atualizar(){
+  const ok = await temEstoque(
+    "MARK",
+    document.getElementById("cor").value,
+    document.getElementById("tamanho").value
+  );
+
+  const btn = document.querySelector("button");
+  btn.disabled = !ok;
+  btn.style.background = ok ? "#000" : "#999";
+  btn.innerText = ok ? "Adicionar ao Carrinho" : "Esgotado";
+}
+
+/* COR */
+window.selCor = async function(cor){
+  document.getElementById("cor").value = cor;
+
+  document.querySelectorAll(".cor").forEach(e=>e.classList.remove("ativo"));
+  if(cor==="Branco")document.querySelector(".branco").classList.add("ativo");
+  if(cor==="Preto")document.querySelector(".preto").classList.add("ativo");
+  if(cor==="Off White")document.querySelector(".offwhite").classList.add("ativo");
+
+  await atualizar();
+}
+
+/* TAMANHO */
+window.selTam = async function(t){
+  document.getElementById("tamanho").value = t;
+
+  document.querySelectorAll(".size").forEach(e=>e.classList.remove("ativo"));
+
+  const map={P:0,M:1,G:2,GG:3};
+  document.querySelectorAll(".size")[map[t]].classList.add("ativo");
+
+  await atualizar();
+}
+
+/* COMPRA */
+window.comprar = async function(){
+
+  const cor = document.getElementById("cor").value;
+  const tamanho = document.getElementById("tamanho").value;
+  const qtd = Number(document.getElementById("qtd").value);
+
+  if(!await temEstoque("MARK",cor,tamanho)){
+    alert("Sem estoque");
+    return;
+  }
+
+  await updateDoc(doc(db,"estoque","MARK_"+cor),{
+    [tamanho]:increment(-qtd)
+  });
+
+  let carrinho = JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+
+  carrinho.push({
+    id:"MARK-"+Date.now(),
+    nome:"Camisa Mark",
+    cor,
+    tamanho,
+    quantidade:qtd,
+    preco:89.90
+  });
+
+  localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho));
+
+  window.location.href="carrinho.html";
+}
+
+document.addEventListener("DOMContentLoaded",atualizar);
+
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime | F Pac Store</title>
+
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
+
+.card{
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+}
+
+label{display:block;margin-top:10px;font-weight:bold}
+input,select{width:100%;padding:8px;margin-top:5px}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#000;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+/* CORES */
+.cores{display:flex;gap:10px;margin-top:10px}
+.cor{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.cor.ativo{border:2px solid #000}
+.branco{background:#fff;border:1px solid #ccc}
+.preto{background:#000}
+.offwhite{background:#f3e9dc}
+
+/* TAMANHOS */
+.sizes{display:flex;gap:10px;margin-top:10px}
+.size{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border:1px solid #ccc;border-radius:6px;cursor:pointer}
+.size.ativo{background:#000;color:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Camisa PRIME</h2>
+
+<label>Cor</label>
+<div class="cores">
+<div class="cor branco" onclick="selCor('Branco')"></div>
+<div class="cor preto" onclick="selCor('Preto')"></div>
+<div class="cor offwhite" onclick="selCor('Off White')"></div>
+</div>
+<input type="hidden" id="cor" value="Branco">
+
+<label>Tamanho</label>
+<div class="sizes">
+<div class="size" onclick="selTam('P')">P</div>
+<div class="size" onclick="selTam('M')">M</div>
+<div class="size" onclick="selTam('G')">G</div>
+<div class="size" onclick="selTam('GG')">GG</div>
+</div>
+<input type="hidden" id="tamanho" value="M">
+
+<label>Quantidade</label>
+<input type="number" id="qtd" value="1">
+
+<button onclick="comprar()">Adicionar ao Carrinho</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, increment } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function temEstoque(produto, cor, tamanho){
+  const snap = await getDoc(doc(db,"estoque",produto+"_"+cor));
+  if(!snap.exists()) return false;
+  return (snap.data()[tamanho]||0)>0;
+}
+
+async function atualizar(){
+  const ok = await temEstoque("PRIME",
+  document.getElementById("cor").value,
+  document.getElementById("tamanho").value);
+
+  const btn=document.querySelector("button");
+  btn.disabled=!ok;
+  btn.style.background=ok?"#000":"#999";
+  btn.innerText=ok?"Adicionar ao Carrinho":"Esgotado";
+}
+
+window.selCor=async function(c){
+document.getElementById("cor").value=c;
+await atualizar();
+}
+
+window.selTam=async function(t){
+document.getElementById("tamanho").value=t;
+await atualizar();
+}
+
+window.comprar=async function(){
+
+const cor=document.getElementById("cor").value;
+const tam=document.getElementById("tamanho").value;
+const qtd=Number(document.getElementById("qtd").value);
+
+if(!await temEstoque("PRIME",cor,tam)){
+alert("Sem estoque");
+return;
+}
+
+await updateDoc(doc(db,"estoque","PRIME_"+cor),{
+[tam]:increment(-qtd)
+});
+
+let c=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+
+c.push({id:"PRIME-"+Date.now(),nome:"PRIME",cor,tamanho:tam,quantidade:qtd,preco:109.9});
+
+localStorage.setItem("fpacCarrinho",JSON.stringify(c));
+
+window.location.href="carrinho.html";
+}
+
+document.addEventListener("DOMContentLoaded",atualizar);
+
+</script>
+
+</body>
+</html>
+
