@@ -2,186 +2,272 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Produto | F PAC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F Pac Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
+:root{
+--primary:#003366;
+--accent:#FFC107;
+--bg:#f5f5f5;
+--text:#333;
+}
+
 body{
 font-family:'Inter',sans-serif;
-background:#f5f5f5;
-color:#333;
+background:var(--bg);
+color:var(--text);
 }
 
 /* HEADER */
 .header{
-background:#003366;
-padding:20px;
-text-align:center;
+background:rgba(0,51,102,.92);
+backdrop-filter:blur(10px);
+position:fixed;
+top:0;width:100%;z-index:1000;
 }
 
-.header a{
+.header-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+height:100px;
+padding:0 20px;
+}
+
+.logo img{height:70px}
+
+.nav{display:flex;gap:30px}
+.nav a{color:#fff;text-decoration:none;font-weight:600}
+
+/* HERO */
+.hero{
+margin-top:100px;
+height:70vh;
+background:url('assets/img/hero-003.png') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
 color:white;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.6);
+}
+
+.hero-content{position:relative;z-index:1}
+
+.btn{
+background:var(--accent);
+padding:14px 30px;
+border-radius:10px;
+font-weight:800;
+color:black;
 text-decoration:none;
-font-weight:700;
 }
 
-/* PRODUTO */
-.produto{
-max-width:1100px;
-margin:60px auto;
-padding:20px;
+/* DROP */
+.drop{
+background:#0b0b0b;
+color:white;
+padding:80px 20px;
+}
+
+.drop-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:auto;
 }
 
-/* IMAGEM */
-.produto-img img{
-width:100%;
+.card-full{
 border-radius:18px;
-background:#fff;
-padding:20px;
+overflow:hidden;
+height:360px;
+display:block;
 }
 
-/* INFO */
-.produto-info h1{
+.card-full img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* PRODUTOS */
+.produtos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:80px auto;
+}
+
+/* PROVA SOCIAL FINAL */
+.social-proof{
+background:#fff;
+padding:80px 20px;
+}
+
+.social-wrap{
+max-width:1100px;
+margin:auto;
+}
+
+.social-numbers{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+text-align:center;
+margin-bottom:50px;
+}
+
+.social-box h3{
 font-size:2rem;
+color:var(--primary);
+}
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-bottom:50px;
+}
+
+.review{
+background:#f9fafb;
+padding:20px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.review-header{
+display:flex;
+align-items:center;
+gap:12px;
 margin-bottom:10px;
 }
 
-.produto-info .tagline{
-font-weight:600;
-color:#555;
-margin-bottom:20px;
+.review-header img{
+width:42px;height:42px;border-radius:50%;object-fit:cover;
 }
 
-.beneficios{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-bottom:20px;
-}
-
-.beneficios div{
-background:#fff;
-padding:14px;
-border-radius:12px;
-font-weight:600;
+.comment-form{
+max-width:500px;
+margin:auto;
 text-align:center;
 }
 
-/* DESCRIÇÃO */
-.descricao{
-margin-bottom:30px;
-line-height:1.6;
+.comment-form input,
+.comment-form textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:8px;
+border:1px solid #ccc;
 }
 
-/* CTA */
-.btn{
-display:block;
-background:#000;
+.comment-form button{
+background:#000;color:white;
+border:none;padding:12px;
+border-radius:8px;font-weight:700;width:100%;
+}
+
+/* FOOTER */
+.footer{
+background:#001a33;
 color:white;
 text-align:center;
-padding:16px;
-border-radius:12px;
-font-weight:800;
-text-decoration:none;
-}
-
-/* PROVA SOCIAL */
-.prova{
-margin-top:60px;
-background:#fff;
 padding:30px;
-border-radius:16px;
-}
-
-.comentario{
-margin-bottom:20px;
-}
-
-.comentario strong{
-display:block;
-margin-bottom:6px;
-}
-
-/* INFO EXTRA */
-.extra{
-margin-top:30px;
-font-size:.9rem;
-color:#555;
-line-height:1.6;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.produto{
-grid-template-columns:1fr;
-}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <a href="catalogo.html">← Voltar ao catálogo</a>
-</div>
-
-<!-- PRODUTO -->
-<section class="produto">
-
-  <!-- IMAGEM -->
-  <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC">
+<header class="header">
+  <div class="header-content">
+    index.html
+      assets/img/logos/f-pac-color.png
+    </a>
+    <nav class="nav">
+      catalogo.htmlCatálogo</a>
+    </nav>
   </div>
+</header>
 
-  <!-- INFO -->
-  <div class="produto-info">
-    <h1>Camisa F PAC</h1>
-    <p class="tagline">Não é só roupa. É identidade.</p>
-
-    <div class="beneficios">
-      <div>✔ Qualidade premium</div>
-      <div>✔ Produção sob demanda</div>
-      <div>✔ Caimento confortável</div>
-      <div>✔ Estilo autêntico</div>
-    </div>
-
-    <div class="descricao">
-      Essa peça foi pensada pra quem não veste qualquer coisa.
-      Tecido encorpado, estampa com presença e acabamento que dá pra sentir no toque.
-      Ideal pra usar no dia a dia sem perder estilo.
-    </div>
-
-    <a href="#" class="btn">Adicionar ao carrinho</a>
-
-    <div class="extra">
-      • Produção sob demanda<br>
-      • Envio para todo o Brasil<br>
-      • Troca facilitada
-    </div>
-  </div>
-
-</section>
-
-<!-- PROVA SOCIAL DO PRODUTO -->
-<section class="prova">
-  <div class="comentario">
-    <strong>Lucas M.</strong>
-    Curti demais o tecido e o caimento. Camisa diferente do comum.
-  </div>
-
-  <div class="comentario">
-    <strong>Renan S.</strong>
-    Produto entregue rápido e com qualidade real. Valeu muito a pena.
+<section class="hero">
+  <div class="hero-content">
+    catalogo.htmlComprar Agora</a>
   </div>
 </section>
+
+<section class="drop">
+  <div class="drop-grid">
+    catalogo.html
+      assets/img/cards/destaque-01.png
+    </a>
+    catalogo.html
+      assets/img/cards/destaque-02.png
+    </a>
+  </div>
+</section>
+
+<section class="produtos-grid">
+  produto.html?id=forceassets/img/cards/F-PAC-ESCRITA-peito C.png</a>
+  produto.html?id=markassets/img/cards/FP-peito C.png</a>
+  produto.html?id=primeassets/img/cards/F-PAC-frente-e-costas.png</a>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="social-proof">
+  <div class="social-wrap">
+
+    <div class="social-numbers">
+      <div class="social-box"><h3>+30</h3><p>Pedidos enviados</p></div>
+      <div class="social-box"><h3>Brasil</h3><p>Clientes de vários estados</p></div>
+      <div class="social-box"><h3>4.9★</h3><p>Avaliação média</p></div>
+    </div>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="review-header">
+          assets/img/avatars/user1.jpg
+          <strong>Lucas M.</strong>
+        </div>
+        <p>Camisa chegou rápido demais. Tecido bom de verdade.</p>
+      </div>
+      <div class="review">
+        <div class="review-header">
+          assets/img/avatars/user2.jpg
+          <strong>Renan S.</strong>
+        </div>
+        <p>Veste muito bem. Não parece camisa comum.</p>
+      </div>
+    </div>
+
+    <div class="comment-form">
+      <h3>Deixe seu comentário</h3>
+      <input type="text" placeholder="Seu nome">
+      <textarea rows="4" placeholder="O que você achou?"></textarea>
+      <button>Enviar comentário</button>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+© 2026 F Pac Store — Não é só roupa. É identidade.
+</footer>
 
 </body>
 </html>
