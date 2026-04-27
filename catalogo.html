@@ -134,6 +134,21 @@ body{
   letter-spacing:2px;
 }
 
+/* ICONES MENU MOBILE */
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+}
+
+.mobile-menu .icons a{
+  position:relative;
+}
+
+.mobile-menu .icons i{
+  font-size:1.7rem;
+}
+
 /* CONTAINER */
 .container{
   max-width:1200px;
@@ -229,6 +244,21 @@ body{
     <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
   </nav>
+
+  <div class="icons">
+    <a href="carrinho.html" class="icon-cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" id="cartCountMobile">0</span>
+    </a>
+
+    <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
 </div>
 
 <main class="container">
@@ -243,7 +273,6 @@ body{
   </div>
 
   <div class="produtos-grid">
-
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-color.png</div>
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-camaleao.png</div>
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-black.png</div>
@@ -254,7 +283,6 @@ body{
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-shadow.png</div>
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-outline.png</div>
     <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-classic.png</div>
-
   </div>
 
 </main>
@@ -281,6 +309,7 @@ window.addEventListener("scroll",()=>{
 function atualizarCarrinho(){
   const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
   document.getElementById("cartCount").innerText=carrinho.length
+  document.getElementById("cartCountMobile").innerText=carrinho.length
 }
 atualizarCarrinho()
 </script>
