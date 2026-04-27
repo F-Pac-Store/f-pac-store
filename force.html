@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>FORCE | F PAC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f5f5}
+
+/* HEADER */
+.header{background:#003366;padding:20px;text-align:center}
+.header a{color:white;text-decoration:none;font-weight:700}
+
+/* LAYOUT */
+.produto{
+max-width:1100px;
+margin:60px auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+padding:20px;
+}
+
+.produto-img img{
+width:100%;
+border-radius:18px;
+background:#fff;
+padding:20px;
+}
+
+.produto-info h1{font-size:2.2rem}
+.tag{margin:10px 0 20px;color:#555;font-weight:600}
+
+.beneficios{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin:20px 0;
+}
+
+.beneficios div{
+background:#fff;
+padding:14px;
+border-radius:10px;
+font-weight:600;
+text-align:center;
+}
+
+.descricao{margin:20px 0;line-height:1.6}
+
+.btn{
+display:block;
+background:#000;
+color:#fff;
+text-align:center;
+padding:18px;
+border-radius:12px;
+font-weight:800;
+text-decoration:none;
+}
+
+/* PROVA */
+.prova{margin:60px auto;max-width:900px}
+.comentario{background:#fff;padding:20px;border-radius:12px;margin-bottom:15px}
+
+@media(max-width:768px){
+.produto{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<a href="catalogo.html">← Voltar</a>
+</div>
+
+<section class="produto">
+
+<div class="produto-img">
+<img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+</div>
+
+<div class="produto-info">
+<h1>Camisa FORCE</h1>
+<p class="tag">Presença não se pede. Se impõe.</p>
+
+<div class="beneficios">
+<div>✔ Tecido encorpado premium</div>
+<div>✔ Caimento estruturado</div>
+<div>✔ Alta durabilidade</div>
+<div>✔ Estilo forte e marcante</div>
+</div>
+
+<div class="descricao">
+A FORCE foi criada pra quem não passa despercebido. 
+Modelagem firme, tecido mais pesado e presença visual agressiva.
+Não é básica. É posicionamento.
+</div>
+
+<a href="#" class="btn">Comprar Agora</a>
+
+</div>
+
+</section>
+
+<section class="prova">
+<div class="comentario"><strong>Lucas R.</strong> — Camisa pesada, qualidade absurda.</div>
+<div class="comentario"><strong>Bruno K.</strong> — Dá outra postura no corpo.</div>
+</section>
+
+</body>
+</html>
