@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
@@ -25,18 +24,13 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header{
 background:rgba(0,51,102,.92);
 backdrop-filter:blur(10px);
 position:fixed;
-top:0;
-width:100%;
-z-index:1000;
-transition:.3s;
+top:0;width:100%;z-index:1000;
 }
-
-.header.shrink{background:#003366}
 
 .header-content{
 display:flex;
@@ -44,84 +38,18 @@ justify-content:space-between;
 align-items:center;
 height:100px;
 padding:0 20px;
-transition:.3s;
 }
 
-.header.shrink .header-content{height:70px}
+.logo img{height:70px}
 
-.logo img{
-height:70px;
-transition:.3s;
-}
+.nav{display:flex;gap:30px}
+.nav a{color:#fff;text-decoration:none;font-weight:600}
 
-.header.shrink .logo img{height:50px}
-
-/* NAV */
-.nav{
-display:flex;
-gap:30px;
-align-items:center;
-}
-
-.nav a,
-.nav button{
-color:#fff;
-background:none;
-border:none;
-font-weight:600;
-text-decoration:none;
-cursor:pointer;
-font-size:1rem;
-}
-
-/* DROPDOWN */
-.dropdown{position:relative}
-
-.dropdown-btn{
-display:flex;
-align-items:center;
-gap:6px;
-}
-
-.dropdown-menu{
-position:absolute;
-top:150%;
-left:0;
-background:#001a33;
-min-width:180px;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
-opacity:0;
-visibility:hidden;
-transform:translateY(-10px);
-transition:.3s;
-z-index:2000;
-}
-
-.dropdown.open .dropdown-menu{
-opacity:1;
-visibility:visible;
-transform:none;
-}
-
-.dropdown-menu a{
-display:block;
-padding:14px 18px;
-color:white;
-text-decoration:none;
-}
-
-.dropdown-menu a:hover{
-background:rgba(255,255,255,.1);
-color:var(--accent);
-}
-
-/* ================= HERO ================= */
+/* HERO */
 .hero{
 margin-top:100px;
-height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center / cover;
+height:70vh;
+background:url('assets/img/hero-003.png') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -133,13 +61,10 @@ color:white;
 content:'';
 position:absolute;
 inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.65));
+background:rgba(0,0,0,.6);
 }
 
-.hero-content{
-position:relative;
-z-index:1;
-}
+.hero-content{position:relative;z-index:1}
 
 .btn{
 background:var(--accent);
@@ -150,15 +75,12 @@ color:black;
 text-decoration:none;
 }
 
-/* ================= DROP ================= */
+/* DROP */
 .drop{
 background:#0b0b0b;
-padding:80px 20px;
 color:white;
+padding:80px 20px;
 }
-
-.drop h2{text-align:center;font-size:2rem;margin-bottom:10px}
-.drop p{text-align:center;color:#ccc;margin-bottom:40px}
 
 .drop-grid{
 display:grid;
@@ -169,33 +91,28 @@ margin:auto;
 }
 
 .card-full{
-position:relative;
-height:380px;
 border-radius:18px;
 overflow:hidden;
+height:360px;
 display:block;
-text-decoration:none;
 }
 
 .card-full img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.6s ease;
 }
 
-.card-full:hover img{transform:scale(1.08)}
-
-.card-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15));
-display:flex;
-justify-content:flex-end;
-padding:20px;
+/* PRODUTOS */
+.produtos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:80px auto;
 }
 
-/* ================= PROVA SOCIAL ================= */
+/* PROVA SOCIAL FINAL */
 .social-proof{
 background:#fff;
 padding:80px 20px;
@@ -204,13 +121,13 @@ padding:80px 20px;
 .social-wrap{
 max-width:1100px;
 margin:auto;
-text-align:center;
 }
 
 .social-numbers{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:30px;
+text-align:center;
 margin-bottom:50px;
 }
 
@@ -219,45 +136,50 @@ font-size:2rem;
 color:var(--primary);
 }
 
-.social-box p{
-margin-top:6px;
-font-weight:600;
-color:#555;
-}
-
 .reviews{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
+margin-bottom:50px;
 }
 
 .review{
 background:#f9fafb;
+padding:20px;
 border-radius:14px;
-padding:24px;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
-text-align:left;
 }
 
-.review p{
-font-style:italic;
-margin-bottom:12px;
+.review-header{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:10px;
 }
 
-.review span{
-font-weight:700;
-color:var(--primary);
+.review-header img{
+width:42px;height:42px;border-radius:50%;object-fit:cover;
 }
 
-/* ================= PRODUTOS ================= */
-section{padding:80px 20px}
-
-.produtos-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-max-width:1200px;
+.comment-form{
+max-width:500px;
 margin:auto;
+text-align:center;
+}
+
+.comment-form input,
+.comment-form textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.comment-form button{
+background:#000;color:white;
+border:none;padding:12px;
+border-radius:8px;font-weight:700;width:100%;
 }
 
 /* FOOTER */
@@ -265,48 +187,31 @@ margin:auto;
 background:#001a33;
 color:white;
 text-align:center;
-padding:30px 20px;
+padding:30px;
 }
 </style>
 </head>
 
 <body>
 
-<header class="header" id="header">
+<header class="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F Pac Store">
+      <img src="assets/img/logos/f-pac-color.png">
     </a>
-
     <nav class="nav">
-      <a href="#inicio">Início</a>
-
-      <div class="dropdown" id="dropdownProdutos">
-        <button class="dropdown-btn" id="btnProdutos">
-          Produtos <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="dropdown-menu">
-          <a href="produto.html?id=force">Force</a>
-          <a href="produto.html?id=mark">Mark</a>
-          <a href="produto.html?id=prime">Prime</a>
-        </div>
-      </div>
-
       <a href="catalogo.html">Catálogo</a>
     </nav>
   </div>
 </header>
 
-<section class="hero" id="inicio">
+<section class="hero">
   <div class="hero-content">
     <a href="catalogo.html" class="btn">Comprar Agora</a>
   </div>
 </section>
 
 <section class="drop">
-  <h2>Drop em Destaque</h2>
-  <p>Lançamentos que representam a identidade F PAC</p>
-
   <div class="drop-grid">
     <a href="catalogo.html" class="card-full">
       <img src="assets/img/cards/destaque-01.png">
@@ -317,74 +222,52 @@ padding:30px 20px;
   </div>
 </section>
 
-<!-- ================= PROVA SOCIAL ================= -->
+<section class="produtos-grid">
+  <a href="produto.html?id=force" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
+  <a href="produto.html?id=mark" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
+  <a href="produto.html?id=prime" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
+</section>
+
+<!-- PROVA SOCIAL -->
 <section class="social-proof">
   <div class="social-wrap">
 
     <div class="social-numbers">
-      <div class="social-box">
-        <h3>+2.000</h3>
-        <p>Pedidos enviados</p>
-      </div>
-      <div class="social-box">
-        <h3>Brasil inteiro</h3>
-        <p>Clientes em todos os estados</p>
-      </div>
-      <div class="social-box">
-        <h3>4.9★</h3>
-        <p>Avaliação dos clientes</p>
-      </div>
+      <div class="social-box"><h3>+30</h3><p>Pedidos enviados</p></div>
+      <div class="social-box"><h3>Brasil</h3><p>Clientes de vários estados</p></div>
+      <div class="social-box"><h3>4.9★</h3><p>Avaliação média</p></div>
     </div>
 
     <div class="reviews">
       <div class="review">
-        <p>“Qualidade absurda, camisa veste muito bem. Dá pra sentir que é outra pegada.”</p>
-        <span>Cliente F PAC</span>
+        <div class="review-header">
+          <img src="assets/img/avatars/user1.jpg">
+          <strong>Lucas M.</strong>
+        </div>
+        <p>Camisa chegou rápido demais. Tecido bom de verdade.</p>
       </div>
       <div class="review">
-        <p>“Entrega rápida e acabamento impecável. Já vou comprar outra.”</p>
-        <span>Cliente F PAC</span>
+        <div class="review-header">
+          <img src="assets/img/avatars/user2.jpg">
+          <strong>Renan S.</strong>
+        </div>
+        <p>Veste muito bem. Não parece camisa comum.</p>
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="comment-form">
+      <h3>Deixe seu comentário</h3>
+      <input type="text" placeholder="Seu nome">
+      <textarea rows="4" placeholder="O que você achou?"></textarea>
+      <button>Enviar comentário</button>
+    </div>
 
-<section id="produtos">
-  <h2 style="text-align:center">Produtos</h2>
-
-  <div class="produtos-grid">
-    <a href="produto.html?id=force" class="card-full">
-      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-    </a>
-    <a href="produto.html?id=mark" class="card-full">
-      <img src="assets/img/cards/FP-peito C.png">
-    </a>
-    <a href="produto.html?id=prime" class="card-full">
-      <img src="assets/img/cards/F-PAC-frente-e-costas.png">
-    </a>
   </div>
 </section>
 
 <footer class="footer">
 © 2026 F Pac Store — Não é só roupa. É identidade.
 </footer>
-
-<script>
-window.addEventListener("scroll",()=>{
-document.getElementById("header")
-.classList.toggle("shrink",window.scrollY>50);
-});
-
-const dropdown=document.getElementById("dropdownProdutos");
-const btn=document.getElementById("btnProdutos");
-
-btn.onclick=e=>{
-e.stopPropagation();
-dropdown.classList.toggle("open");
-};
-document.onclick=()=>dropdown.classList.remove("open");
-</script>
 
 </body>
 </html>
