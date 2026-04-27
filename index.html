@@ -84,6 +84,22 @@ body{
   cursor:pointer;
 }
 
+/* ================= OVERLAY ================= */
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.35s ease;
+  z-index:1500;
+}
+
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
 /* ================= MOBILE MENU ================= */
 .mobile-menu{
   position:fixed;
@@ -93,11 +109,15 @@ body{
   height:100vh;
   background:#001a33;
   padding:30px 20px;
-  transition:.3s ease;
+  transition:transform .45s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform:translateX(100%);
   z-index:2000;
 }
 
-.mobile-menu.active{ right:0 }
+.mobile-menu.active{
+  transform:translateX(0);
+  right:0;
+}
 
 .mobile-menu .close{
   color:white;
@@ -126,16 +146,15 @@ body{
   display:flex;
   gap:24px;
   margin-top:60px;
-  align-items:center;
 }
 
 .mobile-menu .icons a{
   font-size:1.5rem;
 }
 
-.mobile-menu .cart{ color:var(--accent); }
-.mobile-menu .whatsapp{ color:#25D366 }
-.mobile-menu .instagram{ color:#E1306C }
+.mobile-menu .cart{color:var(--accent)}
+.mobile-menu .whatsapp{color:#25D366}
+.mobile-menu .instagram{color:#E1306C}
 
 /* ================= RESPONSIVO ================= */
 @media(max-width:768px){
@@ -172,21 +191,23 @@ body{
       </a>
     </nav>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu-toggle" onclick="openMenu()">☰</div>
   </div>
 </header>
 
+<!-- OVERLAY -->
+<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
+
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <div class="close" onclick="toggleMenu()">✕</div>
+  <div class="close" onclick="closeMenu()">✕</div>
 
   <nav>
-    <a href="#topo" onclick="scrollTopo();toggleMenu()">INÍCIO</a>
-    <a href="#produtos" onclick="toggleMenu()">PRODUTOS</a>
+    <a href="#topo" onclick="scrollTopo();closeMenu()">INÍCIO</a>
+    <a href="#produtos" onclick="closeMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
   </nav>
 
-  <!-- CARRINHO À ESQUERDA DO WHATSAPP -->
   <div class="icons">
     <a href="carrinho.html" class="cart">
       <i class="fa-solid fa-cart-shopping"></i>
@@ -204,8 +225,17 @@ body{
 <section id="produtos"></section>
 
 <script>
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("active");
+const menu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("overlay");
+
+function openMenu(){
+  menu.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeMenu(){
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
 }
 
 function scrollTopo(){
@@ -222,4 +252,3 @@ atualizarCarrinho();
 
 </body>
 </html>
-``
