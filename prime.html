@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>PRIME | F PAC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f5f5}
+
+.header{background:#003366;padding:20px;text-align:center}
+.header a{color:white;text-decoration:none;font-weight:700}
+
+.produto{
+max-width:1100px;
+margin:60px auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+padding:20px;
+}
+
+.produto-img img{
+width:100%;
+border-radius:18px;
+background:#fff;
+padding:20px;
+}
+
+.produto-info h1{font-size:2.2rem}
+.tag{margin:10px 0 20px;color:#555;font-weight:600}
+
+.beneficios{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin:20px 0;
+}
+
+.beneficios div{
+background:#fff;
+padding:14px;
+border-radius:10px;
+font-weight:600;
+text-align:center;
+}
+
+.descricao{margin:20px 0;line-height:1.6}
+
+.btn{
+display:block;
+background:#000;
+color:#fff;
+text-align:center;
+padding:18px;
+border-radius:12px;
+font-weight:800;
+text-decoration:none;
+}
+
+.prova{margin:60px auto;max-width:900px}
+.comentario{background:#fff;padding:20px;border-radius:12px;margin-bottom:15px}
+
+@media(max-width:768px){
+.produto{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<a href="catalogo.html">← Voltar</a>
+</div>
+
+<section class="produto">
+
+<div class="produto-img">
+<img src="assets/img/cards/F-PAC-frente-e-costas.png">
+</div>
+
+<div class="produto-info">
+<h1>Camisa PRIME</h1>
+<p class="tag">Equilíbrio perfeito entre conforto e estilo.</p>
+
+<div class="beneficios">
+<div>✔ Tecido leve e resistente</div>
+<div>✔ Caimento confortável</div>
+<div>✔ Ideal para uso diário</div>
+<div>✔ Base para qualquer estampa</div>
+</div>
+
+<div class="descricao">
+A PRIME é a base da F PAC.
+Versátil, confortável e pronta pra qualquer situação.
+Se você quer uma peça coringa, é essa.
+</div>
+
+<a href="#" class="btn">Comprar Agora</a>
+
+</div>
+
+</section>
+
+<section class="prova">
+<div class="comentario"><strong>Matheus L.</strong> — Uso todo dia, confortável demais.</div>
+<div class="comentario"><strong>João V.</strong> — Melhor custo-benefício.</div>
+</section>
+
+</body>
+</html>
