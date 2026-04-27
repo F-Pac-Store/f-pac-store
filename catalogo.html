@@ -2,152 +2,274 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Catálogo Completo | F Pac Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo | F Pac Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---primary:#003366cc;
---accent:#FFC107;
---bg:#f5f5f5;
---text:#333;
+  --primary:#003366;
+  --accent:#FFC107;
+  --bg:#f5f5f5;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
 }
 
-/* HEADER */
+/* HEADER (IGUAL INDEX) */
 .header{
-background:var(--primary);
-backdrop-filter:blur(10px);
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
-transition:.3s;
+  background:var(--primary);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  transition:.35s;
 }
-
-.header.shrink{background:#003366ee}
 
 .header-content{
-display:flex;
-justify-content:space-between;
-align-items:center;
-height:100px;
-padding:0 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:100px;
+  padding:0 30px;
+  transition:.35s;
 }
 
-.logo img{height:70px}
+.logo img{
+  height:70px;
+  transition:.35s;
+}
+
+.header.shrink .header-content{height:58px}
+.header.shrink .logo img{height:38px}
 
 /* NAV */
 .nav{
-display:flex;
-gap:30px;
-align-items:center;
+  display:flex;
+  align-items:center;
+  gap:42px;
 }
 
-.nav a,
-.nav button{
-color:white;
-text-decoration:none;
-font-weight:600;
-background:none;
-border:none;
-cursor:pointer;
+.nav a{
+  text-decoration:none;
+  color:white;
+  font-size:.9rem;
+  font-weight:500;
+  letter-spacing:2px;
 }
 
-/* HERO */
-.hero{
-margin-top:100px;
-height:260px;
-background:url('assets/img/hero-003.png') center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
+/* ICONES */
+.icon-cart{color:var(--accent);font-size:1.6rem;position:relative}
+.icon-whatsapp{color:#25D366;font-size:1.6rem}
+.icon-instagram{color:#E1306C;font-size:1.6rem}
+
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-10px;
+  background:var(--accent);
+  color:#000;
+  font-size:11px;
+  font-weight:800;
+  border-radius:50%;
+  padding:3px 6px;
 }
 
+/* MOBILE */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
+.mobile-overlay.active{opacity:1;visibility:visible}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:220px;
+  height:100vh;
+  background:#001a33;
+  padding:30px 20px;
+  transform:translateX(100%);
+  transition:.45s;
+  z-index:2000;
+}
+.mobile-menu.active{transform:translateX(0)}
+
+.mobile-menu .close{
+  text-align:right;
+  color:white;
+  font-size:1.6rem;
+  margin-bottom:40px;
+  cursor:pointer;
+}
+
+.mobile-menu nav{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+.mobile-menu nav a{
+  color:white;
+  text-decoration:none;
+  letter-spacing:2px;
+}
+
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+}
+
+/* CONTAINER */
 .container{
-max-width:1200px;
-margin:auto;
-padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
+  padding:140px 20px 80px;
 }
 
-.catalogo-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
+/* GRID */
+.produtos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
+/* CARD SEM IMAGEM */
 .card-produto{
-background:#fff;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,.12);
-cursor:pointer;
-overflow:hidden;
+  height:180px;
+  background:white;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:1.1rem;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  transition:.25s;
 }
 
-.card-produto img{
-width:100%;
-height:280px;
-object-fit:contain;
-padding:16px;
+.card-produto:hover{
+  transform:translateY(-5px);
 }
-.card-info{
-font-weight:800;
-text-align:center;
-padding:14px;
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-toggle{display:block}
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
+<header class="header" id="header">
   <div class="header-content">
     <a href="index.html" class="logo">
       <img src="assets/img/logos/f-pac-color.png">
     </a>
+
     <nav class="nav">
-      <a href="index.html">Início</a>
-      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html">INÍCIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+
+      <a href="carrinho.html" class="icon-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
     </nav>
+
+    <div class="menu-toggle" onclick="openMenu()">☰</div>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Catálogo Completo</h1>
-</section>
+<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close" onclick="closeMenu()">✕</div>
+
+  <nav>
+    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
+    <a href="catalogo.html">CATÁLOGO</a>
+  </nav>
+
+  <div class="icons">
+    <a href="carrinho.html" class="icon-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a href="https://wa.me/5547997465602" class="icon-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</div>
 
 <main class="container">
-<div class="catalogo-grid">
+  <div class="produtos-grid">
 
-  <div class="card-produto" onclick="location='produto.html?id=force'">
-    <img src="assets/img/estampas/f-pac-color.png">
-    <div class="card-info">Force</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 01</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 02</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 03</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 04</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 05</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 06</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 07</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 08</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 09</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 10</div>
+
   </div>
-
-  <div class="card-produto" onclick=
-    <img src="assets/img/estampas/f-pac-camaleao.png">
-    <div class="card-info">Mark</div>
-  </div>
-
-  <div class="card-produto" onclick="location='produto.html?id=prime'">
-    <img src="assets/img/estampas/f-pac-color.png">
-    <div class="card-info">Prime</div>
-  </div>
-
-</div>
 </main>
+
+<script>
+const header=document.getElementById("header");
+const menu=document.getElementById("mobileMenu");
+const overlay=document.getElementById("overlay");
+
+function openMenu(){
+  menu.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeMenu(){
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("shrink",window.scrollY>80)
+})
+
+function atualizarCarrinho(){
+  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
+  document.getElementById("cartCount").innerText=carrinho.length
+}
+atualizarCarrinho()
+</script>
 
 </body>
 </html>
-``
