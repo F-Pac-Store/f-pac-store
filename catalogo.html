@@ -160,6 +160,12 @@
       object-fit: contain;
     }
 
+    /* fallback caso imagem não carregue */
+    .placeholder {
+      color: #999;
+      font-size: 14px;
+    }
+
     @media(max-width:768px) {
       .nav {
         display: none
@@ -213,16 +219,10 @@
     </div>
 
     <div class="produtos-grid">
+
+      <!-- PRODUTOS COM IMAGEM -->
       <div class="card-produto">
         <img src="assets/img/logos/f-pac-color.png">
-      </div>
-
-      <div class="card-produto">
-        <img src=" ">
-      </div>
-
-      <div class="card-produto">
-        <img src=" ">
       </div>
 
       <div class="card-produto">
@@ -230,24 +230,7 @@
       </div>
 
       <div class="card-produto">
-        <img src=" ">
-      </div>
-
-<div class="produtos-grid">
-      <div class="card-produto">
-        <img src=" ">
-      </div>
-
-      <div class="card-produto">
         <img src="assets/img/estampas/f-pac-camaleao.png">
-      </div>
-
-      <div class="card-produto">
-        <img src=" ">
-      </div>
-
-      <div class="card-produto">
-        <img src=" ">
       </div>
 
       <div class="card-produto">
@@ -255,27 +238,29 @@
       </div>
 
       <div class="card-produto">
-        <img src=" ">
-      </div>
-
-      <div class="card-produto">
-        <img src=" ">
-      </div>
-
-      <div class="card-produto">
         <img src="assets/img/estampas/f-pac-bordado.png">
       </div>
 
+      <!-- IMPORTANTE: renomear arquivo sem espaço -->
+      <!-- de: FP -pixel.png -->
+      <!-- para: FP-pixel.png -->
       <div class="card-produto">
-        <img src=" ">
+        <img src="assets/img/estampas/FP-pixel.png">
+      </div>
+
+      <!-- CARDS VAZIOS (placeholder) -->
+      <div class="card-produto">
+        <span class="placeholder">Em breve</span>
       </div>
 
       <div class="card-produto">
-        <img src="assets/img/estampas/FP -pixel.png">
+        <span class="placeholder">Em breve</span>
       </div>
 
-  
-      
+      <div class="card-produto">
+        <span class="placeholder">Em breve</span>
+      </div>
+
     </div>
 
   </main>
