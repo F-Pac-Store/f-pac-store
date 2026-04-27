@@ -6,7 +6,7 @@
 <title>Catálogo | F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,14 +22,14 @@ body{
   background:var(--bg);
 }
 
-/* HEADER */
+/* ================= HEADER (IGUAL AO INDEX) ================= */
 .header{
   background:var(--primary);
   position:fixed;
   top:0;
   width:100%;
   z-index:1000;
-  transition:.35s;
+  transition:.35s ease;
 }
 
 .header-content{
@@ -38,18 +38,17 @@ body{
   align-items:center;
   height:100px;
   padding:0 30px;
-  transition:.35s;
+  transition:.35s ease;
 }
 
 .logo img{
   height:70px;
-  transition:.35s;
+  transition:.35s ease;
 }
 
 .header.shrink .header-content{height:58px}
 .header.shrink .logo img{height:38px}
 
-/* NAV */
 .nav{
   display:flex;
   align-items:center;
@@ -64,10 +63,14 @@ body{
   letter-spacing:2px;
 }
 
-/* ICONES */
-.icon-cart{color:var(--accent);font-size:1.6rem;position:relative}
-.icon-whatsapp{color:#25D366;font-size:1.6rem}
-.icon-instagram{color:#E1306C;font-size:1.6rem}
+.nav a i{
+  font-size:1.9rem;
+}
+
+.icon-cart{position:relative}
+.icon-cart i{color:var(--accent)}
+.icon-whatsapp i{color:#25D366}
+.icon-instagram i{color:#E1306C}
 
 .cart-badge{
   position:absolute;
@@ -81,7 +84,7 @@ body{
   padding:3px 6px;
 }
 
-/* MOBILE */
+/* MENU MOBILE */
 .menu-toggle{
   display:none;
   font-size:2rem;
@@ -109,16 +112,16 @@ body{
   background:#001a33;
   padding:30px 20px;
   transform:translateX(100%);
-  transition:.45s;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
   z-index:2000;
 }
 .mobile-menu.active{transform:translateX(0)}
 
 .mobile-menu .close{
-  text-align:right;
   color:white;
   font-size:1.6rem;
   margin-bottom:40px;
+  text-align:right;
   cursor:pointer;
 }
 
@@ -131,35 +134,31 @@ body{
 .mobile-menu nav a{
   color:white;
   text-decoration:none;
+  font-size:1rem;
   letter-spacing:2px;
 }
 
-/* ICONES MENU MOBILE */
 .mobile-menu .icons{
   display:flex;
   gap:24px;
   margin-top:60px;
 }
 
-.mobile-menu .icons a{
-  position:relative;
-}
+.mobile-menu .icons i{font-size:2rem}
+.mobile-menu .icon-cart i{color:var(--accent)}
+.mobile-menu .icon-whatsapp i{color:#25D366}
+.mobile-menu .icon-instagram i{color:#E1306C}
 
-.mobile-menu .icons i{
-  font-size:1.7rem;
-}
-
-/* CONTAINER */
+/* ================= CONTEÚDO ================= */
 .container{
   max-width:1200px;
   margin:auto;
   padding:140px 20px 80px;
 }
 
-/* TITULO */
 .titulo{
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:40px;
 }
 
 .titulo h1{
@@ -176,15 +175,12 @@ body{
   line-height:1.5;
 }
 
-/* GRID */
 .produtos-grid{
-  margin-top:50px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 
-/* CARD */
 .card-produto{
   height:180px;
   background:white;
@@ -192,19 +188,16 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   font-weight:700;
   cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.1);
   transition:.25s;
-  padding:20px;
 }
 
 .card-produto:hover{
   transform:translateY(-5px);
 }
 
-/* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
@@ -222,11 +215,20 @@ body{
 
     <nav class="nav">
       <a href="index.html">INÍCIO</a>
+      <a href="index.html#produtos">PRODUTOS</a>
       <a href="catalogo.html">CATÁLOGO</a>
 
       <a href="carrinho.html" class="icon-cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+        <i class="fa-brands fa-instagram"></i>
       </a>
     </nav>
 
@@ -246,45 +248,24 @@ body{
   </nav>
 
   <div class="icons">
-    <a href="carrinho.html" class="icon-cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="cart-badge" id="cartCountMobile">0</span>
-    </a>
-
-    <a href="https://wa.me/5547997465602" class="icon-whatsapp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
+    <a href="carrinho.html" class="icon-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a href="https://wa.me/5547997465602" class="icon-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
   </div>
 </div>
 
 <main class="container">
-
   <div class="titulo">
     <h1>Catálogo Completo</h1>
-    <p>
-      Escolha a estampa que mais combina com você. Todas as artes deste catálogo
-      são aplicadas no modelo de camisa <strong>PRIME</strong>, permitindo que você personalize
-      sua peça do seu jeito.
-    </p>
+    <p>Escolha a estampa que mais combina com você. Todas as artes são aplicadas no modelo PRIME.</p>
   </div>
 
   <div class="produtos-grid">
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-color.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-camaleao.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-black.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-gold.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-minimal.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-line.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-bold.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-shadow.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-outline.png</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-classic.png</div>
+    <div class="card-produto">f-pac-color.png</div>
+    <div class="card-produto">f-pac-camaleao.png</div>
+    <div class="card-produto">f-pac-black.png</div>
+    <div class="card-produto">f-pac-gold.png</div>
   </div>
-
 </main>
 
 <script>
@@ -296,7 +277,6 @@ function openMenu(){
   menu.classList.add("active");
   overlay.classList.add("active");
 }
-
 function closeMenu(){
   menu.classList.remove("active");
   overlay.classList.remove("active");
@@ -307,11 +287,11 @@ window.addEventListener("scroll",()=>{
 })
 
 function atualizarCarrinho(){
-  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
-  document.getElementById("cartCount").innerText=carrinho.length
-  document.getElementById("cartCountMobile").innerText=carrinho.length
+  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+  const badge=document.getElementById("cartCount");
+  if(badge) badge.innerText=carrinho.length;
 }
-atualizarCarrinho()
+atualizarCarrinho();
 </script>
 
 </body>
