@@ -25,7 +25,7 @@ body{font-family:'Inter',sans-serif}
   top:0;
   width:100%;
   z-index:1000;
-  transition:all .35s ease;
+  transition:.35s ease;
 }
 
 .header-content{
@@ -61,21 +61,24 @@ body{font-family:'Inter',sans-serif}
   letter-spacing:2px;
 }
 
-/* ÍCONES DESKTOP */
+/* ===== ÍCONES PADRÃO (DESKTOP + MOBILE) ===== */
 .icon-cart{
   color:var(--accent);
   font-size:1.8rem;
   position:relative;
 }
+
 .icon-whatsapp{
   color:#25D366;
   font-size:1.8rem;
 }
+
 .icon-instagram{
   color:#E1306C;
   font-size:1.8rem;
 }
 
+/* BADGE */
 .cart-badge{
   position:absolute;
   top:-6px;
@@ -144,23 +147,16 @@ body{font-family:'Inter',sans-serif}
   letter-spacing:2px;
 }
 
-/* ÍCONES MOBILE (COR + TAMANHO) */
+/* ÍCONES MOBILE (MESMO PADRÃO + MAIOR) */
 .mobile-menu .icons{
   display:flex;
   gap:24px;
   margin-top:60px;
 }
 
-.mobile-menu .icon-cart{
-  color:var(--accent);
-  font-size:2rem;
-}
-.mobile-menu .icon-whatsapp{
-  color:#25D366;
-  font-size:2rem;
-}
-.mobile-menu .icon-instagram{
-  color:#E1306C;
+.mobile-menu .icons .icon-cart,
+.mobile-menu .icons .icon-whatsapp,
+.mobile-menu .icons .icon-instagram{
   font-size:2rem;
 }
 
@@ -213,7 +209,6 @@ section{padding:80px 20px}
   margin:auto;
 }
 
-/* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
@@ -225,7 +220,7 @@ section{padding:80px 20px}
 
 <header class="header" id="header">
   <div class="header-content">
-    <a href="#" onclick="scrollTopo()" class="logo">
+    <a href="#" class="logo" onclick="scrollTopo()">
       <img src="assets/img/logos/f-pac-color.png">
     </a>
 
@@ -315,3 +310,4 @@ atualizarCarrinho();
 
 </body>
 </html>
+``
