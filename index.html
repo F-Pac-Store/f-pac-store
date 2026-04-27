@@ -38,33 +38,35 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 height:100px;
-padding:0 20px;
+padding:0 30px;
 }
 
 .logo img{height:70px}
 
 .nav{
 display:flex;
-gap:26px;
 align-items:center;
+gap:42px; /* MAIS ESPAÇO */
 }
 
 .nav a{
 text-decoration:none;
 display:flex;
 align-items:center;
-gap:6px;
-font-size:1.25rem;
+font-size:1.6rem; /* ÍCONES MAIORES */
+transition:transform .2s ease;
 }
 
-/* Início */
-.nav .inicio{
+.nav a:hover{
+transform:scale(1.08);
+}
+
+/* Home */
+.nav .home{
 color:#fff;
-font-weight:800;
-font-size:1rem;
 }
 
-/* Ícone Produtos (camisa) */
+/* Produtos (camisa) */
 .nav .produtos{
 color:var(--accent);
 }
@@ -83,8 +85,8 @@ color:var(--accent);
 /* Badge carrinho */
 .cart-badge{
 position:absolute;
-top:-8px;
-right:-10px;
+top:-10px;
+right:-12px;
 background:var(--accent);
 color:#000;
 font-size:11px;
@@ -106,7 +108,7 @@ color:#E1306C;
 .hero{
 margin-top:100px;
 height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center / cover;
+background:url('assets/img/hero-003.png') no-repeat center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -115,12 +117,13 @@ text-align:center;
 
 .btn{
 background:var(--accent);
-padding:16px 34px;
+padding:16px 36px;
 border-radius:30px;
 font-weight:800;
 color:black;
 text-decoration:none;
 display:inline-block;
+font-size:1rem;
 }
 
 /* ================= DROP ================= */
@@ -181,10 +184,12 @@ padding:30px 20px;
     </a>
 
     <nav class="nav">
-      <!-- Início -->
-      <a href="#inicio" class="inicio">Início</a>
+      <!-- Home -->
+      <a href="#inicio" class="home" title="Início">
+        <i class="fa-solid fa-house"></i>
+      </a>
 
-      <!-- Produtos (camisa) -->
+      <!-- Produtos -->
       <a href="#produtos" class="produtos" title="Produtos">
         <i class="fa-solid fa-shirt"></i>
       </a>
@@ -201,12 +206,12 @@ padding:30px 20px;
       </a>
 
       <!-- WhatsApp -->
-      <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
+      <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp" title="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
 
       <!-- Instagram -->
-      <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram">
+      <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram" title="Instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
     </nav>
