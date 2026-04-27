@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo | F Pac Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo | F Pac Store</title>
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="CSS/global.css">
-
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-
-  <!-- ICONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="CSS/global.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-  <!-- ✅ HEADER REUTILIZÁVEL (PASSO 5) -->
-  <div id="header-placeholder"></div>
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo">
+      <img src="assets/img/logos/f-pac-color.png">
+    </a>
 
-  <!-- ================= CONTEÚDO DO CATÁLOGO ================= -->
-  <main class="container">
+    <nav class="nav">
+      <a href="index.html">INÍCIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+    </nav>
+  </div>
+</header>
 
-    <div class="titulo">
-      <h1>Catálogo Completo</h1>
-      <p>
-        Escolha a estampa que mais combina com você. Todas as artes deste catálogo
-        são aplicadas no modelo de camisa <strong>PRIME</strong>, permitindo que
-        você personalize sua peça do seu jeito.
-      </p>
-    </div>
+<main class="container">
+  <h1>Catálogo Completo</h1>
+  <p>Escolha a estampa que mais combina com você.</p>
+</main>
 
-    <div class="produtos-grid">
-      <div class="card-produto" onclick="location.href='carrinho onclick="location.href='carrinho.html'" onclick="location.href='carrinho.html'uto" onclick="location.href='carrinho.htmlo" onclick="location.href='carrinho.html'" onclick="location.href='carrinho-produto" onclick="location.href='carrinho.htmlduto" onclick="location.href='carrinho.html'-- ================= CARREGAMENTO DO HEADER + JS ================= -->
-  <script>
-    // Carrega o header reutilizável
-    fetch('inclui/header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-placeholder').innerHTML = html;
-
-        // Carrega o JS do header somente após o HTML existir
-        const script = document.createElement('script');
-        script.src = 'js/header.js';
-        document.body.appendChild(script);
-      })
-      .catch(err => console.error('Erro ao carregar header:', err));
-  </script>
-
+<footer>© F PAC</footer>
 </body>
 </html>
