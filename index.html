@@ -6,7 +6,6 @@
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -15,171 +14,97 @@
 --primary:#003366;
 --accent:#FFC107;
 --bg:#f5f5f5;
---text:#333;
+--text:#fff;
 }
 
 body{
 font-family:'Inter',sans-serif;
 background:var(--bg);
-color:var(--text);
 }
 
 /* HEADER */
 .header{
-background:rgba(0,51,102,.92);
-backdrop-filter:blur(10px);
-position:fixed;
-top:0;width:100%;z-index:1000;
-}
-
-.header-content{
+background:#003366;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-height:100px;
-padding:0 20px;
 }
 
-.logo img{height:70px}
+.header img{
+height:55px;
+}
 
-.nav{display:flex;gap:30px}
-.nav a{color:#fff;text-decoration:none;font-weight:600}
+.header a{
+color:white;
+text-decoration:none;
+font-weight:700;
+}
 
-/* HERO */
+/* HERO CORRIGIDO */
 .hero{
-margin-top:100px;
-height:70vh;
-background:url('assets/img/hero-003.png') center/cover;
+height:85vh;
+background:url('assets/img/hero-003.png') center/cover no-repeat;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-color:white;
+text-align:center;
 }
 
 .hero::after{
 content:'';
 position:absolute;
 inset:0;
-background:rgba(0,0,0,.6);
+/* overlay LEVE, não apaga a imagem */
+background:linear-gradient(
+  180deg,
+  rgba(0,0,0,.25) 0%,
+  rgba(0,0,0,.45) 100%
+);
 }
 
-.hero-content{position:relative;z-index:1}
+.hero-content{
+position:relative;
+z-index:1;
+max-width:600px;
+padding:20px;
+}
+
+.hero h1{
+font-size:2.5rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.1rem;
+margin-bottom:30px;
+}
 
 .btn{
 background:var(--accent);
-padding:14px 30px;
-border-radius:10px;
+color:#000;
+padding:14px 34px;
+border-radius:30px;
 font-weight:800;
-color:black;
 text-decoration:none;
-}
-
-/* DROP */
-.drop{
-background:#0b0b0b;
-color:white;
-padding:80px 20px;
-}
-
-.drop-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-max-width:1200px;
-margin:auto;
-}
-
-.card-full{
-border-radius:18px;
-overflow:hidden;
-height:360px;
-display:block;
-}
-
-.card-full img{
-width:100%;
-height:100%;
-object-fit:cover;
+display:inline-block;
 }
 
 /* PRODUTOS */
-.produtos-grid{
+.produtos{
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
-max-width:1200px;
-margin:80px auto;
 }
 
-/* PROVA SOCIAL FINAL */
-.social-proof{
-background:#fff;
-padding:80px 20px;
-}
-
-.social-wrap{
-max-width:1100px;
-margin:auto;
-}
-
-.social-numbers{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-text-align:center;
-margin-bottom:50px;
-}
-
-.social-box h3{
-font-size:2rem;
-color:var(--primary);
-}
-
-.reviews{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-margin-bottom:50px;
-}
-
-.review{
-background:#f9fafb;
-padding:20px;
-border-radius:14px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.review-header{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:10px;
-}
-
-.review-header img{
-width:42px;height:42px;border-radius:50%;object-fit:cover;
-}
-
-.comment-form{
-max-width:500px;
-margin:auto;
-text-align:center;
-}
-
-.comment-form input,
-.comment-form textarea{
+.produtos img{
 width:100%;
-padding:12px;
-margin-bottom:12px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-.comment-form button{
-background:#000;color:white;
-border:none;padding:12px;
-border-radius:8px;font-weight:700;width:100%;
+border-radius:16px;
 }
 
 /* FOOTER */
@@ -188,6 +113,7 @@ background:#001a33;
 color:white;
 text-align:center;
 padding:30px;
+font-size:.9rem;
 }
 </style>
 </head>
@@ -195,74 +121,22 @@ padding:30px;
 <body>
 
 <header class="header">
-  <div class="header-content">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
-    </a>
-    <nav class="nav">
-      <a href="catalogo.html">Catálogo</a>
-    </nav>
-  </div>
+  <img src="assets/img/logos/f-pac-color.png" alt="F Pac">
+  <a href="catalogo.html">Catálogo</a>
 </header>
 
 <section class="hero">
   <div class="hero-content">
+    <h1>Não é só roupa.<br>É identidade.</h1>
+    <p>Estilo, atitude e presença em cada detalhe.</p>
     <a href="catalogo.html" class="btn">Comprar Agora</a>
   </div>
 </section>
 
-<section class="drop">
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full">
-      <img src="assets/img/cards/destaque-01.png">
-    </a>
-    <a href="catalogo.html" class="card-full">
-      <img src="assets/img/cards/destaque-02.png">
-    </a>
-  </div>
-</section>
-
-<section class="produtos-grid">
-  <a href="produto.html?id=force" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-  <a href="produto.html?id=mark" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-  <a href="produto.html?id=prime" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
-</section>
-
-<!-- PROVA SOCIAL -->
-<section class="social-proof">
-  <div class="social-wrap">
-
-    <div class="social-numbers">
-      <div class="social-box"><h3>+30</h3><p>Pedidos enviados</p></div>
-      <div class="social-box"><h3>Brasil</h3><p>Clientes de vários estados</p></div>
-      <div class="social-box"><h3>4.9★</h3><p>Avaliação média</p></div>
-    </div>
-
-    <div class="reviews">
-      <div class="review">
-        <div class="review-header">
-          <img src="assets/img/avatars/user1.jpg">
-          <strong>Lucas M.</strong>
-        </div>
-        <p>Camisa chegou rápido demais. Tecido bom de verdade.</p>
-      </div>
-      <div class="review">
-        <div class="review-header">
-          <img src="assets/img/avatars/user2.jpg">
-          <strong>Renan S.</strong>
-        </div>
-        <p>Veste muito bem. Não parece camisa comum.</p>
-      </div>
-    </div>
-
-    <div class="comment-form">
-      <h3>Deixe seu comentário</h3>
-      <input type="text" placeholder="Seu nome">
-      <textarea rows="4" placeholder="O que você achou?"></textarea>
-      <button>Enviar comentário</button>
-    </div>
-
-  </div>
+<section class="produtos">
+  <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+  <img src="assets/img/cards/FP-peito C.png">
+  <img src="assets/img/cards/F-PAC-frente-e-costas.png">
 </section>
 
 <footer class="footer">
