@@ -1,187 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Produto | F PAC</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto | F Pac Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-font-family:'Inter',sans-serif;
-background:#f5f5f5;
-color:#333;
-}
-
-/* HEADER */
-.header{
-background:#003366;
-padding:20px;
-text-align:center;
-}
-
-.header a{
-color:white;
-text-decoration:none;
-font-weight:700;
-}
-
-/* PRODUTO */
-.produto{
-max-width:1100px;
-margin:60px auto;
-padding:20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
-
-/* IMAGEM */
-.produto-img img{
-width:100%;
-border-radius:18px;
-background:#fff;
-padding:20px;
-}
-
-/* INFO */
-.produto-info h1{
-font-size:2rem;
-margin-bottom:10px;
-}
-
-.produto-info .tagline{
-font-weight:600;
-color:#555;
-margin-bottom:20px;
-}
-
-.beneficios{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-bottom:20px;
-}
-
-.beneficios div{
-background:#fff;
-padding:14px;
-border-radius:12px;
-font-weight:600;
-text-align:center;
-}
-
-/* DESCRIÇÃO */
-.descricao{
-margin-bottom:30px;
-line-height:1.6;
-}
-
-/* CTA */
-.btn{
-display:block;
-background:#000;
-color:white;
-text-align:center;
-padding:16px;
-border-radius:12px;
-font-weight:800;
-text-decoration:none;
-}
-
-/* PROVA SOCIAL */
-.prova{
-margin-top:60px;
-background:#fff;
-padding:30px;
-border-radius:16px;
-}
-
-.comentario{
-margin-bottom:20px;
-}
-
-.comentario strong{
-display:block;
-margin-bottom:6px;
-}
-
-/* INFO EXTRA */
-.extra{
-margin-top:30px;
-font-size:.9rem;
-color:#555;
-line-height:1.6;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.produto{
-grid-template-columns:1fr;
-}
-}
-</style>
+  CSS/global.css
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <a href="catalogo.html">← Voltar ao catálogo</a>
-</div>
+<div id="header-placeholder"></div>
 
-<!-- PRODUTO -->
-<section class="produto">
+<main class="container" style="padding-top:140px">
 
-  <!-- IMAGEM -->
-  <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC">
-  </div>
-
-  <!-- INFO -->
-  <div class="produto-info">
+  <div style="max-width:800px;margin:auto;text-align:center">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" style="width:100%;max-width:300px">
     <h1>Camisa F PAC</h1>
-    <p class="tagline">Não é só roupa. É identidade.</p>
-
-    <div class="beneficios">
-      <div>✔ Qualidade premium</div>
-      <div>✔ Produção sob demanda</div>
-      <div>✔ Caimento confortável</div>
-      <div>✔ Estilo autêntico</div>
-    </div>
-
-    <div class="descricao">
-      Essa peça foi pensada pra quem não veste qualquer coisa.
-      Tecido encorpado, estampa com presença e acabamento que dá pra sentir no toque.
-      Ideal pra usar no dia a dia sem perder estilo.
-    </div>
-
-    <a href="#" class="btn">Adicionar ao carrinho</a>
-
-    <div class="extra">
-      • Produção sob demanda<br>
-      • Envio para todo o Brasil<br>
-      • Troca facilitada
-    </div>
+    <p>Modelo PRIME – Alta qualidade</p>
+    <button onclick="adicionarCarrinho()">Adicionar ao Carrinho</button>
   </div>
 
-</section>
+</main>
 
-<!-- PROVA SOCIAL DO PRODUTO -->
-<section class="prova">
-  <div class="comentario">
-    <strong>Lucas M.</strong>
-    Curti demais o tecido e o caimento. Camisa diferente do comum.
-  </div>
+<script>
+fetch('inclui/header.html')
+  .then(r=>r.text())
+  .then(html=>{
+    document.getElementById('header-placeholder').innerHTML=html;
+    const s=document.createElement('script');
+    s.src='js/header.js';
+    document.body.appendChild(s);
+  });
 
-  <div class="comentario">
-    <strong>Renan S.</strong>
-    Produto entregue rápido e com qualidade real. Valeu muito a pena.
-  </div>
-</section>
+function adicionarCarrinho(){
+  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+  carrinho.push({nome:"Camisa F PAC"});
+  localStorage.setItem("fpacCarrinho",JSON.stringify(carrinho));
+  alert("Produto adicionado!");
+}
+</script>
 
 </body>
 </html>
