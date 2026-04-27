@@ -5,15 +5,10 @@
 <title>Catálogo Completo | F Pac Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-<!-- ICONES -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
@@ -29,8 +24,7 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header{
 background:var(--primary);
 backdrop-filter:blur(10px);
@@ -49,19 +43,9 @@ justify-content:space-between;
 align-items:center;
 height:100px;
 padding:0 20px;
-transition:.3s;
 }
 
-.header.shrink .header-content{height:70px}
-
-.logo img{
-height:70px;
-transition:.3s;
-}
-
-.header.shrink .logo img{
-height:50px;
-}
+.logo img{height:70px}
 
 /* NAV */
 .nav{
@@ -78,90 +62,18 @@ font-weight:600;
 background:none;
 border:none;
 cursor:pointer;
-font-size:1rem;
 }
 
-/* DROPDOWN */
-.dropdown{position:relative}
-
-.dropdown-btn{
-display:flex;
-align-items:center;
-gap:6px;
-}
-
-.dropdown-menu{
-position:absolute;
-top:150%;
-left:0;
-background:#001a33;
-min-width:180px;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
-opacity:0;
-visibility:hidden;
-transform:translateY(-10px);
-transition:.3s ease;
-z-index:2000;
-}
-
-.dropdown.open .dropdown-menu{
-opacity:1;
-visibility:visible;
-transform:translateY(0);
-}
-
-.dropdown-menu a{
-display:block;
-padding:14px 18px;
-color:white;
-text-decoration:none;
-transition:.25s;
-}
-
-.dropdown-menu a:hover{
-background:rgba(255,255,255,.1);
-color:#FFC107;
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
 margin-top:100px;
 height:260px;
-background:url('assets/img/hero-003.png') no-repeat center / cover;
+background:url('assets/img/hero-003.png') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
 color:white;
-text-align:center;
 }
-
-.hero::after{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.7));
-}
-
-.hero-content{
-position:relative;
-z-index:1;
-}
-
-.hero h1{
-font-size:2.5rem;
-font-weight:800;
-}
-
-.hero p{
-margin-top:10px;
-color:#ddd;
-}
-
-/* ================= CATÁLOGO ================= */
 
 .container{
 max-width:1200px;
@@ -179,93 +91,63 @@ gap:30px;
 background:#fff;
 border-radius:16px;
 box-shadow:0 10px 30px rgba(0,0,0,.12);
-overflow:hidden;
-transition:.3s;
 cursor:pointer;
-}
-
-.card-produto:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 50px rgba(0,0,0,.2);
+overflow:hidden;
 }
 
 .card-produto img{
 width:100%;
 height:280px;
 object-fit:contain;
-background:#f8fafc;
 padding:16px;
 }
-
 .card-info{
+font-weight:800;
 text-align:center;
 padding:14px;
-font-weight:800;
-color:var(--primary);
 }
-
 </style>
 </head>
 
 <body>
 
-<header class="header" id="header">
+<header class="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F Pac Store">
+      <img src="assets/img/logos/f-pac-color.png">
     </a>
-
     <nav class="nav">
       <a href="index.html">Início</a>
-
-      <div class="dropdown" id="dropdownProdutos">
-        <button class="dropdown-btn" id="btnProdutos">
-          Produtos <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="dropdown-menu">
-          <a href="produto-force.html">Force</a>
-          <a href="marca-do-produto.html">Mark</a>
-          <a href="produto-prime.html">Prime</a>
-        </div>
-      </div>
-
       <a href="catalogo.html">Catálogo</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Catálogo Completo</h1>
-    <p>Explore todas as estampas disponíveis da F Pac Store</p>
-  </div>
+  <h1>Catálogo Completo</h1>
 </section>
 
 <main class="container">
-  <div class="catalogo-grid">
+<div class="catalogo-grid">
 
-    <div class="card-produto" onclick="location.hrefard-info">F PAC Camaleão</div>
-    </div>
-
+  <div class="card-produto" onclick="location='produto.html?id=force'">
+    <img src="assets/img/estampas/f-pac-color.png">
+    <div class="card-info">Force</div>
   </div>
+
+  <div class="card-produto" onclick="location='produto.html?id=mark'">
+    <img src="assets/img/estampas/f-pac-camaleao.png">
+    <div class="card-info">Mark</div>
+  </div>
+
+  <div class="card-produto" onclick="location='produto.html?id=prime'">
+    <img src="assets/img/estampas/f-pac-color.png">
+    <div class="card-info">Prime</div>
+  </div>
+
+</div>
 </main>
-
-<script>
-window.addEventListener("scroll",()=>{
-document.getElementById("header")
-.classList.toggle("shrink",window.scrollY>50);
-});
-
-const dropdown=document.getElementById("dropdownProdutos");
-const btn=document.getElementById("btnProdutos");
-
-btn.onclick=e=>{
-e.stopPropagation();
-dropdown.classList.toggle("open");
-};
-
-document.onclick=()=>dropdown.classList.remove("open");
-</script>
 
 </body>
 </html>
+``
