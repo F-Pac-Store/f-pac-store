@@ -150,24 +150,15 @@ color:black;
 text-decoration:none;
 }
 
-/* ================= DROP DESTAQUE ================= */
+/* ================= DROP ================= */
 .drop{
 background:#0b0b0b;
 padding:80px 20px;
 color:white;
 }
 
-.drop h2{
-text-align:center;
-font-size:2rem;
-margin-bottom:10px;
-}
-
-.drop p{
-text-align:center;
-color:#ccc;
-margin-bottom:40px;
-}
+.drop h2{text-align:center;font-size:2rem;margin-bottom:10px}
+.drop p{text-align:center;color:#ccc;margin-bottom:40px}
 
 .drop-grid{
 display:grid;
@@ -177,14 +168,13 @@ max-width:1200px;
 margin:auto;
 }
 
-/* CARD */
 .card-full{
 position:relative;
 height:380px;
 border-radius:18px;
 overflow:hidden;
-text-decoration:none;
 display:block;
+text-decoration:none;
 }
 
 .card-full img{
@@ -194,24 +184,69 @@ object-fit:cover;
 transition:.6s ease;
 }
 
-.card-full:hover img{
-transform:scale(1.08);
-}
+.card-full:hover img{transform:scale(1.08)}
 
 .card-overlay{
 position:absolute;
 inset:0;
 background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15));
 display:flex;
-flex-direction:column;
 justify-content:flex-end;
 padding:20px;
-gap:10px;
 }
 
-.card-overlay h3{
-color:white;
-font-size:1.4rem;
+/* ================= PROVA SOCIAL ================= */
+.social-proof{
+background:#fff;
+padding:80px 20px;
+}
+
+.social-wrap{
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+.social-numbers{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-bottom:50px;
+}
+
+.social-box h3{
+font-size:2rem;
+color:var(--primary);
+}
+
+.social-box p{
+margin-top:6px;
+font-weight:600;
+color:#555;
+}
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.review{
+background:#f9fafb;
+border-radius:14px;
+padding:24px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:left;
+}
+
+.review p{
+font-style:italic;
+margin-bottom:12px;
+}
+
+.review span{
+font-weight:700;
+color:var(--primary);
 }
 
 /* ================= PRODUTOS ================= */
@@ -230,7 +265,7 @@ margin:auto;
 background:#001a33;
 color:white;
 text-align:center;
-padding:20px;
+padding:30px 20px;
 }
 </style>
 </head>
@@ -268,7 +303,6 @@ padding:20px;
   </div>
 </section>
 
-<!-- ================= DROP EM DESTAQUE ================= -->
 <section class="drop">
   <h2>Drop em Destaque</h2>
   <p>Lançamentos que representam a identidade F PAC</p>
@@ -276,23 +310,42 @@ padding:20px;
   <div class="drop-grid">
     <a href="catalogo.html" class="card-full">
       <img src="assets/img/cards/destaque-01.png">
-      <div class="card-overlay">
-        <span class="btn">Ver catálogo</span>
-      </div>
     </a>
-
-        <a href="catalogo.html" class="card-full">
-      <img src="assets/img/logos/FP-branco.png">
-      <div class="card-overlay">
-      </div>
-    </a>
-
     <a href="catalogo.html" class="card-full">
       <img src="assets/img/cards/destaque-02.png">
-      <div class="card-overlay">
-        <span class="btn">Explorar</span>
-      </div>
     </a>
+  </div>
+</section>
+
+<!-- ================= PROVA SOCIAL ================= -->
+<section class="social-proof">
+  <div class="social-wrap">
+
+    <div class="social-numbers">
+      <div class="social-box">
+        <h3>+2.000</h3>
+        <p>Pedidos enviados</p>
+      </div>
+      <div class="social-box">
+        <h3>Brasil inteiro</h3>
+        <p>Clientes em todos os estados</p>
+      </div>
+      <div class="social-box">
+        <h3>4.9★</h3>
+        <p>Avaliação dos clientes</p>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <div class="review">
+        <p>“Qualidade absurda, camisa veste muito bem. Dá pra sentir que é outra pegada.”</p>
+        <span>Cliente F PAC</span>
+      </div>
+      <div class="review">
+        <p>“Entrega rápida e acabamento impecável. Já vou comprar outra.”</p>
+        <span>Cliente F PAC</span>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -303,17 +356,12 @@ padding:20px;
   <div class="produtos-grid">
     <a href="produto.html?id=force" class="card-full">
       <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-      <div class="card-overlay"><h3>Force</h3></div>
     </a>
-
     <a href="produto.html?id=mark" class="card-full">
       <img src="assets/img/cards/FP-peito C.png">
-      <div class="card-overlay"><h3>Mark</h3></div>
     </a>
-
     <a href="produto.html?id=prime" class="card-full">
       <img src="assets/img/cards/F-PAC-frente-e-costas.png">
-      <div class="card-overlay"><h3>Prime</h3></div>
     </a>
   </div>
 </section>
