@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho | F Pac Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho | F PAC</title>
 
-  CSS/global.css
-  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+<link rel="stylesheet" href="CSS/global.css">
 </head>
 
 <body>
 
-<div id="header-placeholder"></div>
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo">F PAC</a>
+  </div>
+</header>
 
-<main class="container" style="padding-top:140px">
-
-  <h1 style="text-align:center">Carrinho</h1>
-
-  <div id="lista-carrinho"></div>
-
-  <button onclick="location.href='checkout.html'" style="margin-top:20tch('inclui/header.html')
-  .then(r=>r.text())
-  .then(html=>{
-    document.getElementById('header-placeholder').innerHTML=html;
-    const s=document.createElement('script');
-    s.src='js/header.js';
-    document.body.appendChild(s);
-  });
-
-/* EXEMPLO SIMPLES DE LISTA */
-const lista=document.getElementById("lista-carrinho");
-const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
-if(carrinho.length===0){
-  lista.innerHTML="<p>Carrinho vazio.</p>";
-}else{
-  carrinho.forEach(item=>{
-    lista.innerHTML+=`<div class="item-resumo">${item.nome}</div>`;
-  });
-}
-</script>
+<main class="container">
+  <h1>Seu Carrinho</h1>
+  <p>Carrinho vazio.</p>
+</main>
 
 </body>
 </html>
