@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F Pac Store</title>
+<title>Catálogo | F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,11 +14,15 @@
 :root{
   --primary:#003366;
   --accent:#FFC107;
+  --bg:#f5f5f5;
 }
 
-body{font-family:'Inter',sans-serif}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+}
 
-/* ================= HEADER ================= */
+/* ================= HEADER (IGUAL AO INDEX) ================= */
 .header{
   background:var(--primary);
   position:fixed;
@@ -42,11 +46,9 @@ body{font-family:'Inter',sans-serif}
   transition:.35s ease;
 }
 
-/* HEADER SHRINK */
 .header.shrink .header-content{height:58px}
 .header.shrink .logo img{height:38px}
 
-/* ================= NAV DESKTOP ================= */
 .nav{
   display:flex;
   align-items:center;
@@ -61,17 +63,14 @@ body{font-family:'Inter',sans-serif}
   letter-spacing:2px;
 }
 
-/* TAMANHO DOS ÍCONES */
 .nav a i{
   font-size:1.9rem;
 }
 
-/* CORES DOS ÍCONES */
+.icon-cart{position:relative}
 .icon-cart i{color:var(--accent)}
 .icon-whatsapp i{color:#25D366}
 .icon-instagram i{color:#E1306C}
-
-.icon-cart{position:relative}
 
 .cart-badge{
   position:absolute;
@@ -85,7 +84,7 @@ body{font-family:'Inter',sans-serif}
   padding:3px 6px;
 }
 
-/* ================= MENU MOBILE ================= */
+/* MENU MOBILE */
 .menu-toggle{
   display:none;
   font-size:2rem;
@@ -93,7 +92,6 @@ body{font-family:'Inter',sans-serif}
   cursor:pointer;
 }
 
-/* OVERLAY */
 .mobile-overlay{
   position:fixed;
   inset:0;
@@ -105,7 +103,6 @@ body{font-family:'Inter',sans-serif}
 }
 .mobile-overlay.active{opacity:1;visibility:visible}
 
-/* MOBILE MENU */
 .mobile-menu{
   position:fixed;
   top:0;
@@ -147,74 +144,60 @@ body{font-family:'Inter',sans-serif}
   margin-top:60px;
 }
 
-.mobile-menu .icons i{
-  font-size:2rem;
-}
-
+.mobile-menu .icons i{font-size:2rem}
 .mobile-menu .icon-cart i{color:var(--accent)}
 .mobile-menu .icon-whatsapp i{color:#25D366}
 .mobile-menu .icon-instagram i{color:#E1306C}
 
-/* ================= HERO ================= */
-.hero{
-  margin-top:100px;
-  height:calc(100vh - 100px);
-  background:url('assets/img/hero-003.png') no-repeat center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.btn{
-  background:var(--accent);
-  padding:16px 36px;
-  border-radius:30px;
-  font-weight:800;
-  color:black;
-  text-decoration:none;
-}
-
-/* ================= DESTAQUES ================= */
-.drop{
-  background:#0b0b0b;
-  color:white;
-  padding:80px 20px;
-}
-
-.drop-title{text-align:center;font-size:2rem;font-weight:800}
-.drop-subtitle{text-align:center;color:#ccc;margin:10px 0 40px}
-
-.drop-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+/* ================= CONTEÚDO ================= */
+.container{
   max-width:1200px;
   margin:auto;
+  padding:140px 20px 80px;
 }
 
-.card-full{
-  height:380px;
-  border-radius:18px;
-  overflow:hidden;
-}
-.card-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.titulo{
+  text-align:center;
+  margin-bottom:40px;
 }
 
-/* ================= PRODUTOS ================= */
-section{padding:80px 20px}
+.titulo h1{
+  font-size:2rem;
+  font-weight:800;
+}
+
+.titulo p{
+  margin-top:10px;
+  color:#666;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.5;
+}
 
 .produtos-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
-  max-width:1200px;
-  margin:auto;
 }
 
-/* RESPONSIVO */
+.card-produto{
+  height:180px;
+  background:white;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  transition:.25s;
+}
+
+.card-produto:hover{
+  transform:translateY(-5px);
+}
+
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
@@ -226,13 +209,13 @@ section{padding:80px 20px}
 
 <header class="header" id="header">
   <div class="header-content">
-    <a href="#" class="logo" onclick="scrollTopo()">
+    <a href="index.html" class="logo">
       <img src="assets/img/logos/f-pac-color.png">
     </a>
 
     <nav class="nav">
-      <a href="#" onclick="scrollTopo()">INÍCIO</a>
-      <a href="#produtos">PRODUTOS</a>
+      <a href="index.html">INÍCIO</a>
+      <a href="index.html#produtos">PRODUTOS</a>
       <a href="catalogo.html">CATÁLOGO</a>
 
       <a href="carrinho.html" class="icon-cart">
@@ -259,8 +242,8 @@ section{padding:80px 20px}
   <div class="close" onclick="closeMenu()">✕</div>
 
   <nav>
-    <a href="#" onclick="scrollTopo();closeMenu()">INÍCIO</a>
-    <a href="#produtos" onclick="closeMenu()">PRODUTOS</a>
+    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
+    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
   </nav>
 
@@ -271,46 +254,42 @@ section{padding:80px 20px}
   </div>
 </div>
 
-<section class="hero">
-  <a href="#produtos" class="btn">Comprar Agora</a>
-</section>
-
-<section class="drop">
-  <h2 class="drop-title">Destaques da Semana</h2>
-  <p class="drop-subtitle">Peças em evidência escolhidas pela F PAC</p>
-
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
+<main class="container">
+  <div class="titulo">
+    <h1>Catálogo Completo</h1>
+    <p>Escolha a estampa que mais combina com você. Todas as artes são aplicadas no modelo PRIME.</p>
   </div>
-</section>
-
-<section id="produtos">
-  <h2 style="text-align:center">Produtos</h2>
 
   <div class="produtos-grid">
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
+    <div class="card-produto">f-pac-color.png</div>
+    <div class="card-produto">f-pac-camaleao.png</div>
+    <div class="card-produto">f-pac-black.png</div>
+    <div class="card-produto">f-pac-gold.png</div>
   </div>
-</section>
+</main>
 
 <script>
-const header = document.getElementById("header");
-const menu = document.getElementById("mobileMenu");
-const overlay = document.getElementById("overlay");
+const header=document.getElementById("header");
+const menu=document.getElementById("mobileMenu");
+const overlay=document.getElementById("overlay");
 
-function openMenu(){ menu.classList.add("active"); overlay.classList.add("active"); }
-function closeMenu(){ menu.classList.remove("active"); overlay.classList.remove("active"); }
-function scrollTopo(){ window.scrollTo({top:0,behavior:'smooth'}); }
+function openMenu(){
+  menu.classList.add("active");
+  overlay.classList.add("active");
+}
+function closeMenu(){
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+}
 
 window.addEventListener("scroll",()=>{
-  header.classList.toggle("shrink", window.scrollY > 80);
-});
+  header.classList.toggle("shrink",window.scrollY>80)
+})
 
 function atualizarCarrinho(){
-  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-  document.getElementById("cartCount").innerText = carrinho.length;
+  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+  const badge=document.getElementById("cartCount");
+  if(badge) badge.innerText=carrinho.length;
 }
 atualizarCarrinho();
 </script>
