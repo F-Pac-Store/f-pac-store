@@ -1,145 +1,180 @@
-// =============================
-// BASE
-// =============================
-function getCarrinho() {
-  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Checkout | F Pac Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Inter,sans-serif;
+background:#f5f5f5;
+padding-top:120px;
 }
 
-function salvarCliente(cliente) {
-  localStorage.setItem('fpacCliente', JSON.stringify(cliente));
+/* HEADER */
+.header{
+background:#003366;
+position:fixed;
+top:0;
+width:100%;
+height:100px;
+display:flex;
+align-items:center;
+padding:0 20px;
+z-index:1000;
 }
 
-function getCliente() {
-  return JSON.parse(localStorage.getItem('fpacCliente')) || {};
+.header a{
+color:white;
+text-decoration:none;
+font-weight:700;
 }
 
-// =============================
-// FRETE POR BAIRRO (AJUSTA AQUI)
-// =============================
-const fretePorBairro = {
-  "Paranaguamirim": 5,
-  "Adhemar Garcia": 5,
-  "Ulysses Guimarães": 6,
-  "Floresta": 8
-};
-
-// =============================
-// PEDIDO
-// =============================
-function gerarPedido() {
-  const agora = new Date();
-  return {
-    codigo: "FP" + Date.now().toString().slice(-6),
-    data: agora.toLocaleDateString('pt-BR'),
-    hora: agora.toLocaleTimeString('pt-BR')
-  };
+/* CONTAINER */
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
 }
 
-// =============================
-// RESUMO
-// =============================
-function renderResumo() {
-  const carrinho = getCarrinho();
-  const el = document.getElementById('resumoPedido');
-
-  if (!el || carrinho.length === 0) {
-    el.innerHTML = "Carrinho vazio";
-    return;
-  }
-
-  let total = 0;
-  let html = "";
-
-  carrinho.forEach(item => {
-    const preco = Number(item.preco) || 0;
-    total += preco * item.quantidade;
-
-    html += `<div>${item.nome} - Qtd: ${item.quantidade}</div>`;
-  });
-
-  html += `<div class="total">Total: R$ ${total.toFixed(2)}</div>`;
-  el.innerHTML = html;
+/* CARD */
+.card{
+background:#fff;
+border-radius:16px;
+padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+margin-bottom:30px;
 }
 
-// =============================
-// AUTO PREENCHER
-// =============================
-function preencherCliente() {
-  const c = getCliente();
-
-  if (!c.nome) return;
-
-  document.getElementById('nome').value = c.nome || "";
-  document.getElementById('whatsapp').value = c.whatsapp || "";
-  document.getElementById('bairro').value = c.bairro || "";
-  document.getElementById('rua').value = c.rua || "";
-  document.getElementById('numero').value = c.numero || "";
+h1,h2{
+margin-bottom:15px;
 }
 
-// =============================
-// FINALIZAR
-// =============================
-function confirmarCheckout() {
-
-  const nome = document.getElementById('nome').value.trim();
-  const whatsapp = document.getElementById('whatsapp').value.trim();
-  const bairro = document.getElementById('bairro').value.trim();
-  const rua = document.getElementById('rua').value.trim();
-  const numero = document.getElementById('numero').value.trim();
-  const obs = document.getElementById('obs').value;
-
-  if (!nome || !whatsapp || !bairro || !rua || !numero) {
-    document.getElementById('erro').style.display = "block";
-    return;
-  }
-
-  const carrinho = getCarrinho();
-  const pedido = gerarPedido();
-
-  let total = 0;
-  let msg = `🛒 *NOVO PEDIDO*\n\n`;
-
-  msg += `📦 Pedido: ${pedido.codigo}\n`;
-  msg += `📅 ${pedido.data} ${pedido.hora}\n\n`;
-
-  carrinho.forEach(item => {
-    const preco = Number(item.preco) || 0;
-    total += preco * item.quantidade;
-
-    msg += `• ${item.nome}\nQtd: ${item.quantidade}\n`;
-  });
-
-  // FRETE
-  const frete = fretePorBairro[bairro] || 10;
-  total += frete;
-
-  msg += `\n🚚 Frete: R$ ${frete.toFixed(2)}\n`;
-  msg += `💰 Total: R$ ${total.toFixed(2)}\n\n`;
-
-  msg += `👤 ${nome}\n📱 ${whatsapp}\n`;
-  msg += `📍 ${rua}, ${numero} - ${bairro}\n`;
-
-  if (obs) msg += `📝 ${obs}\n`;
-
-  // PIX
-  msg += `\n💳 Pagamento via PIX\n`;
-
-  const numeroLoja = "5547997465602";
-  const url = `https://wa.me/${numeroLoja}?text=${encodeURIComponent(msg)}`;
-
-  salvarCliente({ nome, whatsapp, bairro, rua, numero });
-
-  document.getElementById('mensagemEnviada').style.display = "block";
-
-  setTimeout(() => {
-    window.open(url, "_blank");
-    localStorage.removeItem('fpacCarrinho');
-    window.location.href = "index.html";
-  }, 1200);
+/* RESUMO */
+#resumoPedido div{
+margin-bottom:8px;
 }
 
-// INIT
-document.addEventListener('DOMContentLoaded', () => {
-  renderResumo();
-  preencherCliente();
-});
+.total{
+margin-top:15px;
+font-size:1.2rem;
+font-weight:800;
+}
+
+/* FORM */
+label{
+display:block;
+margin-top:12px;
+font-weight:600;
+}
+
+input, textarea, select{
+width:100%;
+margin-top:6px;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+font-family:inherit;
+}
+
+textarea{resize:none}
+
+/* ERRO */
+#erro{
+display:none;
+background:#fee2e2;
+color:#7f1d1d;
+padding:10px;
+border-radius:8px;
+margin-top:15px;
+}
+
+/* BOTÃO */
+.btn{
+margin-top:25px;
+width:100%;
+padding:16px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:12px;
+font-weight:800;
+cursor:pointer;
+}
+
+.btn:hover{
+opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="carrinho.html">← Voltar ao carrinho</a>
+</header>
+
+<div class="container">
+
+  <!-- RESUMO -->
+  <div class="card">
+    <h2>Resumo do Pedido</h2>
+    <div id="resumoPedido"></div>
+    <div class="total">
+      Total: <span id="totalPedido"></span>
+    </div>
+  </div>
+
+  <!-- DADOS -->
+  <div class="card">
+    <h2>Dados para entrega</h2>
+
+    <label>Nome</label>
+    <input type="text" id="nome">
+
+    <label>WhatsApp</label>
+    <input type="text" id="whatsapp" placeholder="DDD + número">
+
+    <label>Bairro</label>
+    <input type="text" id="bairro">
+
+    <label>Rua</label>
+    <input type="text" id="rua">
+
+    <label>Número</label>
+    <input type="text" id="numero">
+
+    <label>Observações (opcional)</label>
+    <textarea id="obs" rows="3"></textarea>
+
+    <div id="erro">Preencha todos os campos obrigatórios.</div>
+
+    <button class="btn" onclick="confirmarCheckout()">
+      Finalizar pedido pelo WhatsApp
+    </button>
+  </div>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/carrinho.js"></script>
+<script src="checkout.js"></script>
+
+<script>
+/* Mapeia elementos para o checkout.js */
+const nomeEl = document.getElementById("nome");
+const whatsappEl = document.getElementById("whatsapp");
+const bairroEl = document.getElementById("bairro");
+const ruaEl = document.getElementById("rua");
+const numeroEl = document.getElementById("numero");
+const obsEl = document.getElementById("obs");
+const erroEl = document.getElementById("erro");
+</script>
+
+</body>
+</html>
