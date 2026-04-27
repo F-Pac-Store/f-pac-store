@@ -1,92 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho | F Pac Store</title>
+<meta charset="UTF-8">
+<title>Carrinho | F Pac Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="css/header.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: Inter, sans-serif;
-      background: #f4f6f8;
-      padding-top: 120px;
-    }
+<style>
+body{
+font-family:Inter,sans-serif;
+background:#f5f5f5;
+margin:0;
+padding-top:120px;
+}
 
-    .wrap {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
+.header{
+background:#003366;
+position:fixed;
+top:0;
+width:100%;
+height:100px;
+display:flex;
+align-items:center;
+padding:0 20px;
+}
 
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.1);
-    }
+.header a{
+color:white;
+text-decoration:none;
+font-weight:700;
+}
 
-    h1 {
-      margin-bottom: 20px;
-    }
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
 
-    button {
-      width: 100%;
-      padding: 16px;
-      margin-top: 20px;
-      background: #22c55e;
-      border: none;
-      color: #fff;
-      font-weight: 800;
-      cursor: pointer;
-    }
-  </style>
+.card{
+background:#fff;
+border-radius:16px;
+padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:16px;
+}
+
+.item strong{display:block}
+
+.qtd{
+width:60px;
+padding:6px;
+}
+
+.remove{
+background:none;
+border:none;
+color:#d00;
+cursor:pointer;
+}
+
+.total{
+margin-top:20px;
+font-size:1.3rem;
+font-weight:800;
+}
+
+.btn{
+margin-top:30px;
+width:100%;
+padding:16px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:800;
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
-  <div class="container header-content">
-    <a href="index.html" class="logo">
-      <img src="imagens/logo-fpac.png" class="logo-img">
-      <span class="logo-text">F PAC STORE</span>
-    </a>
-  </div>
+  index.html← Continuar comprando</a>
 </header>
 
-<div class="wrap">
+<div class="container">
   <div class="card">
 
-    <h1>Seu Carrinho</h1>
+    <h1>Seu carrinho</h1>
 
-    <!-- LISTA -->
     <div id="lista"></div>
 
-    <!-- TOTAL -->
-    <div id="totalFinal" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
+    <div class="total" id="total"></div>
 
-    <div style="margin:20px 0;">
-  <h3>Calcular frete</h3>
+    <button class="btn" onclick="window.location.href='checkout.html'"></script>
 
-  <input type="text" id="cep" placeholder="Digite seu CEP"
-         style="padding:8px; width:160px;">
+<script>
+function renderCarrinho(){
+  const lista = document.getElementById("lista");
+  const totalDiv = document.getElementById("total");
+  const carrinho = getCarrinho();
 
-  <div id="freteResultado" style="margin-top:10px;"></div>
-</div>
+  lista.innerHTML = "";
 
-    <!-- BOTÃO -->
-    <button onclick="window.location.href='checkout.html'">
-      Ir para Checkout
-    </button>
+  if(carrinho.length === 0){
+    lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+    totalDiv.innerText = "";
+    return;
+  }
 
-  </div>
-</div>
+  carrinho.forEach((item,index)=>{
+    const div = document.createElement("div");
+    div.className="item";
+    div.innerHTML = `
+      <div>
+        <strong>${item.nome}</strong>
+        <small>${item.variacao?.cor || ""} ${item.variacao?.tamanho || ""}</small>
+      </div>
+      <input class="qtd" type="number" min="1"
+        value="${item.quantidade}"
+        onchange="atualizarQuantidade(${index},this.value)">
+      <span>R$ ${(item.preco*item.quantidade).toFixed(2)}</span>
+      <button class="remove" onclick="removerItem(${index});renderCarrinho()">x</button>
+    `;
+    lista.appendChild(div);
+  });
 
-<!-- JS CENTRAL -->
-<script src="js/carrinho.js"></script>
+  totalDiv.innerText = "Total: R$ " + calcularTotal().toFixed(2);
+}
+
+renderCarrinho();
+</script>
 
 </body>
 </html>
