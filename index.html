@@ -27,6 +27,7 @@ body{
   top:0;
   width:100%;
   z-index:1000;
+  transition:height .35s ease, box-shadow .35s ease;
 }
 
 .header-content{
@@ -35,9 +36,22 @@ body{
   align-items:center;
   height:100px;
   padding:0 30px;
+  transition:height .35s ease;
 }
 
-.logo img{height:70px}
+.logo img{
+  height:70px;
+  transition:height .35s ease;
+}
+
+/* === HEADER SHRINK === */
+.header.shrink .header-content{
+  height:68px;
+}
+
+.header.shrink .logo img{
+  height:48px;
+}
 
 /* DESKTOP NAV */
 .nav{
@@ -84,7 +98,7 @@ body{
   cursor:pointer;
 }
 
-/* OVERLAY */
+/* ================= OVERLAY ================= */
 .mobile-overlay{
   position:fixed;
   inset:0;
@@ -99,7 +113,7 @@ body{
   visibility:visible;
 }
 
-/* MOBILE MENU */
+/* ================= MOBILE MENU ================= */
 .mobile-menu{
   position:fixed;
   top:0;
@@ -171,56 +185,6 @@ body{
   text-decoration:none;
 }
 
-/* DESTAQUES */
-.drop{
-  background:#0b0b0b;
-  color:white;
-  padding:80px 20px;
-}
-
-.drop-title{
-  text-align:center;
-  font-size:2rem;
-  font-weight:800;
-}
-
-.drop-subtitle{
-  text-align:center;
-  color:#ccc;
-  margin:10px 0 40px;
-}
-
-.drop-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-
-.card-full{
-  height:380px;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.card-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* PRODUTOS */
-section{padding:80px 20px}
-
-.produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-
 /* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
@@ -231,7 +195,7 @@ section{padding:80px 20px}
 
 <body>
 
-<header class="header">
+<header class="header" id="header">
   <div class="header-content">
     <a href="#topo" onclick="scrollTopo()" class="logo">
       <img src="assets/img/logos/f-pac-color.png">
@@ -273,8 +237,8 @@ section{padding:80px 20px}
 
   <div class="icons">
     <a href="carrinho.html" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
-    <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/5547997465602" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/f_pac_store" class="instagram"><i class="fa-brands fa-instagram"></i></a>
   </div>
 </div>
 
@@ -284,27 +248,10 @@ section{padding:80px 20px}
   <a href="#produtos" class="btn">Comprar Agora</a>
 </section>
 
-<section class="drop">
-  <h2 class="drop-title">Destaques da Semana</h2>
-  <p class="drop-subtitle">Peças em evidência escolhidas pela F PAC</p>
-
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
-  </div>
-</section>
-
-<section id="produtos">
-  <h2 style="text-align:center">Produtos</h2>
-
-  <div class="produtos-grid">
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
-  </div>
-</section>
+<section id="produtos" style="height:1200px"></section>
 
 <script>
+const header = document.getElementById("header");
 const menu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("overlay");
 
@@ -317,8 +264,17 @@ function closeMenu(){
   overlay.classList.remove("active");
 }
 function scrollTopo(){
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0, behavior:'smooth'});
 }
+
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 80){
+    header.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+  }
+});
+
 function atualizarCarrinho(){
   const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
   document.getElementById("cartCount").innerText = carrinho.length;
