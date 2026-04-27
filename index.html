@@ -2,10 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F Pac Store</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -50,7 +47,6 @@ align-items:center;
 }
 
 .nav a{
-color:white;
 text-decoration:none;
 font-weight:600;
 display:flex;
@@ -58,30 +54,46 @@ align-items:center;
 gap:6px;
 }
 
-/* Botão Início */
+/* Início */
 .nav .inicio{
+color:#fff;
 font-weight:800;
 }
 
-/* Ícones redes sociais */
+/* Produtos */
+.nav .produtos{
+color:#fff;
+}
+
+/* Carrinho */
+.nav .cart{
+position:relative;
+color:var(--accent);
+font-size:1.3rem;
+}
+
+/* Badge carrinho */
+.cart-badge{
+position:absolute;
+top:-8px;
+right:-10px;
+background:var(--accent);
+color:#000;
+font-size:11px;
+font-weight:800;
+border-radius:50%;
+padding:3px 6px;
+}
+
+/* Redes sociais */
 .nav .whatsapp{
 color:#25D366;
-font-size:1.2rem;
+font-size:1.3rem;
 }
 
 .nav .instagram{
 color:#E1306C;
-font-size:1.2rem;
-}
-
-/* Carrinho badge */
-.cart-badge{
-background:var(--accent);
-color:#000;
-font-size:12px;
-font-weight:800;
-border-radius:50%;
-padding:3px 7px;
+font-size:1.3rem;
 }
 
 /* ================= HERO ================= */
@@ -94,8 +106,6 @@ align-items:center;
 justify-content:center;
 text-align:center;
 }
-
-.hero-content{max-width:600px}
 
 .btn{
 background:var(--accent);
@@ -113,9 +123,6 @@ background:#0b0b0b;
 padding:80px 20px;
 color:white;
 }
-
-.drop h2{text-align:center;font-size:2rem;margin-bottom:10px}
-.drop p{text-align:center;color:#ccc;margin-bottom:40px}
 
 .drop-grid{
 display:grid;
@@ -169,10 +176,10 @@ padding:30px 20px;
 
     <nav class="nav">
       <a href="#inicio" class="inicio">Início</a>
+      <a href="#produtos" class="produtos">Produtos</a>
 
-      <a href="#produtos">Produtos</a>
-
-      <a href="carrinho.html">
+      <!-- Carrinho só ícone -->
+      <a href="carrinho.html" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
@@ -189,15 +196,10 @@ padding:30px 20px;
 </header>
 
 <section class="hero" id="inicio">
-  <div class="hero-content">
-    <a href="#produtos" class="btn">Comprar Agora</a>
-  </div>
+  <a href="#produtos" class="btn">Comprar Agora</a>
 </section>
 
 <section class="drop">
-  <h2>Drop em Destaque</h2>
-  <p>Lançamentos que representam a identidade F PAC</p>
-
   <div class="drop-grid">
     <a href="catalogo.html" class="card-full">
       <img src="assets/img/cards/destaque-01.png">
@@ -210,7 +212,6 @@ padding:30px 20px;
 
 <section id="produtos">
   <h2 style="text-align:center">Produtos</h2>
-
   <div class="produtos-grid">
     <a href="produto.html" class="card-full">
       <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
@@ -238,3 +239,5 @@ atualizarCarrinho();
 
 </body>
 </html>
+<title>F Pac Store</title>
+
