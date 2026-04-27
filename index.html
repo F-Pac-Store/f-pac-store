@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F Pac Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -48,28 +51,33 @@ align-items:center;
 
 .nav a{
 text-decoration:none;
-font-weight:600;
 display:flex;
 align-items:center;
 gap:6px;
+font-size:1.25rem;
 }
 
 /* Início */
 .nav .inicio{
 color:#fff;
 font-weight:800;
+font-size:1rem;
 }
 
-/* Produtos */
+/* Ícone Produtos (camisa) */
 .nav .produtos{
-color:#fff;
+color:var(--accent);
+}
+
+/* Catálogo */
+.nav .catalogo{
+color:#4ade80;
 }
 
 /* Carrinho */
 .nav .cart{
 position:relative;
 color:var(--accent);
-font-size:1.3rem;
 }
 
 /* Badge carrinho */
@@ -88,12 +96,10 @@ padding:3px 6px;
 /* Redes sociais */
 .nav .whatsapp{
 color:#25D366;
-font-size:1.3rem;
 }
 
 .nav .instagram{
 color:#E1306C;
-font-size:1.3rem;
 }
 
 /* ================= HERO ================= */
@@ -175,19 +181,31 @@ padding:30px 20px;
     </a>
 
     <nav class="nav">
+      <!-- Início -->
       <a href="#inicio" class="inicio">Início</a>
-      <a href="#produtos" class="produtos">Produtos</a>
 
-      <!-- Carrinho só ícone -->
-      <a href="carrinho.html" class="cart">
+      <!-- Produtos (camisa) -->
+      <a href="#produtos" class="produtos" title="Produtos">
+        <i class="fa-solid fa-shirt"></i>
+      </a>
+
+      <!-- Catálogo -->
+      <a href="catalogo.html" class="catalogo" title="Catálogo">
+        <i class="fa-solid fa-book-open"></i>
+      </a>
+
+      <!-- Carrinho -->
+      <a href="carrinho.html" class="cart" title="Carrinho">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
 
+      <!-- WhatsApp -->
       <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
 
+      <!-- Instagram -->
       <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
@@ -239,5 +257,3 @@ atualizarCarrinho();
 
 </body>
 </html>
-<title>F Pac Store</title>
-
