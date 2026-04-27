@@ -33,29 +33,13 @@
             transition:.35s ease;
         }
 
-        .logo img{
-            height:70px;
-            transition:.35s ease;
-        }
-
+        .logo img{height:70px;transition:.35s ease}
         .header.shrink .header-content{height:58px}
         .header.shrink .logo img{height:38px}
 
         /* NAV */
-        .nav{
-            display:flex;
-            align-items:center;
-            gap:42px;
-        }
-
-        .nav a{
-            text-decoration:none;
-            color:white;
-            font-size:.9rem;
-            font-weight:500;
-            letter-spacing:2px;
-        }
-
+        .nav{display:flex;align-items:center;gap:42px}
+        .nav a{text-decoration:none;color:white;font-size:.9rem;font-weight:500;letter-spacing:2px}
         .nav a i{font-size:1.9rem}
 
         .icon-cart i{color:var(--accent)}
@@ -63,7 +47,6 @@
         .icon-instagram i{color:#E1306C}
 
         .icon-cart{position:relative}
-
         .cart-badge{
             position:absolute;
             top:-6px;
@@ -77,12 +60,7 @@
         }
 
         /* MOBILE */
-        .menu-toggle{
-            display:none;
-            font-size:2rem;
-            color:white;
-            cursor:pointer;
-        }
+        .menu-toggle{display:none;font-size:2rem;color:white;cursor:pointer}
 
         .mobile-overlay{
             position:fixed;
@@ -94,56 +72,7 @@
             z-index:1500;
         }
 
-        .mobile-overlay.active{
-            opacity:1;
-            visibility:visible;
-        }
-
-        .mobile-menu{
-            position:fixed;
-            top:0;
-            right:0;
-            width:220px;
-            height:100vh;
-            background:#001a33;
-            padding:30px 20px;
-            transform:translateX(100%);
-            transition:.45s cubic-bezier(.4,0,.2,1);
-            z-index:2000;
-        }
-
-        .mobile-menu.active{
-            transform:translateX(0);
-        }
-
-        .mobile-menu .close{
-            color:white;
-            font-size:1.6rem;
-            margin-bottom:40px;
-            text-align:right;
-            cursor:pointer;
-        }
-
-        .mobile-menu nav{
-            display:flex;
-            flex-direction:column;
-            gap:32px;
-        }
-
-        .mobile-menu nav a{
-            color:white;
-            text-decoration:none;
-            font-size:1rem;
-            letter-spacing:2px;
-        }
-
-        .mobile-menu .icons{
-            display:flex;
-            gap:24px;
-            margin-top:60px;
-        }
-
-        .mobile-menu .icons i{font-size:2rem}
+        .mobile-overlay.active{opacity:1;visibility:visible}
 
         /* HERO */
         .hero{
@@ -165,12 +94,7 @@
         }
 
         /* DESTAQUES */
-        .drop{
-            background:#0b0b0b;
-            color:white;
-            padding:80px 20px;
-        }
-
+        .drop{background:#0b0b0b;color:white;padding:80px 20px}
         .drop-title{text-align:center;font-size:2rem;font-weight:800}
         .drop-subtitle{text-align:center;color:#ccc;margin:10px 0 40px}
 
@@ -188,11 +112,7 @@
             overflow:hidden;
         }
 
-        .card-full img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
+        .card-full img{width:100%;height:100%;object-fit:cover}
 
         /* PRODUTOS */
         section{padding:80px 20px}
@@ -217,7 +137,7 @@
 <header class="header" id="header">
     <div class="header-content">
         <a href="#" class="logo" onclick="scrollTopo()">
-            <img src="assets/img/logos/f-pac-color.png">
+            <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
         </a>
 
         <nav class="nav">
@@ -239,11 +159,9 @@
             </a>
         </nav>
 
-        <div class="menu-toggle" onclick="openMenu()">☰</div>
+        <div class="menu-toggle">☰</div>
     </div>
 </header>
-
-<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
 
 <section class="hero">
     <a href="#produtos" class="btn">Comprar Agora</a>
@@ -268,16 +186,18 @@
 
     <div class="produtos-grid">
 
-        <!-- CARD 1 → força.html -->
+        <!-- CARD 1 → FORÇA -->
         <a href="força.html" class="card-full">
             <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
         </a>
 
-        <a href="prime.html" class="card-full">
+        <!-- CARD 2 → MARK -->
+        <a href="mark.html" class="card-full">
             <img src="assets/img/cards/FP-peito C.png">
         </a>
 
-        <a href="produto.html" class="card-full">
+        <!-- CARD 3 → PRIME -->
+        <a href="prime.html" class="card-full">
             <img src="assets/img/cards/F-PAC-frente-e-costas.png">
         </a>
 
@@ -286,18 +206,6 @@
 
 <script>
     const header = document.getElementById("header");
-    const menu = document.getElementById("mobileMenu");
-    const overlay = document.getElementById("overlay");
-
-    function openMenu(){
-        menu?.classList.add("active");
-        overlay?.classList.add("active");
-    }
-
-    function closeMenu(){
-        menu?.classList.remove("active");
-        overlay?.classList.remove("active");
-    }
 
     function scrollTopo(){
         window.scrollTo({top:0,behavior:'smooth'});
