@@ -27,7 +27,7 @@ body{
   top:0;
   width:100%;
   z-index:1000;
-  transition:height .35s ease, box-shadow .35s ease;
+  transition:all .35s ease;
 }
 
 .header-content{
@@ -36,7 +36,7 @@ body{
   align-items:center;
   height:100px;
   padding:0 30px;
-  transition:height .35s ease;
+  transition:all .35s ease;
 }
 
 .logo img{
@@ -44,16 +44,11 @@ body{
   transition:height .35s ease;
 }
 
-/* === HEADER SHRINK === */
-.header.shrink .header-content{
-  height:68px;
-}
+/* SHRINK */
+.header.shrink .header-content{height:68px}
+.header.shrink .logo img{height:48px}
 
-.header.shrink .logo img{
-  height:48px;
-}
-
-/* DESKTOP NAV */
+/* NAV DESKTOP */
 .nav{
   display:flex;
   align-items:center;
@@ -68,8 +63,7 @@ body{
   letter-spacing:2px;
 }
 
-/* ÍCONES DESKTOP */
-.nav .cart{
+.cart{
   position:relative;
   font-size:1.4rem;
   color:var(--accent);
@@ -87,10 +81,10 @@ body{
   padding:3px 6px;
 }
 
-.nav .whatsapp{font-size:1.4rem;color:#25D366}
-.nav .instagram{font-size:1.4rem;color:#E1306C}
+.whatsapp{font-size:1.4rem;color:#25D366}
+.instagram{font-size:1.4rem;color:#E1306C}
 
-/* HAMBURGUER */
+/* MENU MOBILE */
 .menu-toggle{
   display:none;
   font-size:1.8rem;
@@ -98,22 +92,19 @@ body{
   cursor:pointer;
 }
 
-/* ================= OVERLAY ================= */
+/* OVERLAY */
 .mobile-overlay{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.45);
   opacity:0;
   visibility:hidden;
-  transition:.35s ease;
+  transition:.3s;
   z-index:1500;
 }
-.mobile-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
+.mobile-overlay.active{opacity:1;visibility:visible}
 
-/* ================= MOBILE MENU ================= */
+/* MOBILE MENU */
 .mobile-menu{
   position:fixed;
   top:0;
@@ -123,17 +114,15 @@ body{
   background:#001a33;
   padding:30px 20px;
   transform:translateX(100%);
-  transition:transform .45s cubic-bezier(0.4,0,0.2,1);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
   z-index:2000;
 }
-.mobile-menu.active{
-  transform:translateX(0);
-}
+.mobile-menu.active{transform:translateX(0)}
 
 .mobile-menu .close{
   text-align:right;
-  font-size:1.6rem;
   color:white;
+  font-size:1.6rem;
   margin-bottom:40px;
   cursor:pointer;
 }
@@ -148,7 +137,6 @@ body{
   color:white;
   text-decoration:none;
   font-size:1rem;
-  font-weight:500;
   letter-spacing:2px;
 }
 
@@ -161,10 +149,6 @@ body{
 .mobile-menu .icons a{
   font-size:1.5rem;
 }
-
-.mobile-menu .cart{color:var(--accent)}
-.mobile-menu .whatsapp{color:#25D366}
-.mobile-menu .instagram{color:#E1306C}
 
 /* HERO */
 .hero{
@@ -183,6 +167,54 @@ body{
   font-weight:800;
   color:black;
   text-decoration:none;
+}
+
+/* DESTAQUES */
+.drop{
+  background:#0b0b0b;
+  color:white;
+  padding:80px 20px;
+}
+
+.drop-title{
+  text-align:center;
+  font-size:2rem;
+  font-weight:800;
+}
+
+.drop-subtitle{
+  text-align:center;
+  color:#ccc;
+  margin:10px 0 40px;
+}
+
+.drop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card-full{
+  height:380px;
+  border-radius:18px;
+  overflow:hidden;
+  display:block;
+}
+.card-full img{width:100%;height:100%;object-fit:cover}
+
+/* PRODUTOS */
+section{
+  padding:80px 20px;
+}
+
+.produtos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
 }
 
 /* RESPONSIVO */
@@ -211,13 +243,8 @@ body{
         <span class="cart-badge" id="cartCount">0</span>
       </a>
 
-      <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
+      <a href="https://wa.me/5547997465602" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/f_pac_store" class="instagram"><i class="fa-brands fa-instagram"></i></a>
     </nav>
 
     <div class="menu-toggle" onclick="openMenu()">☰</div>
@@ -248,7 +275,25 @@ body{
   <a href="#produtos" class="btn">Comprar Agora</a>
 </section>
 
-<section id="produtos" style="height:1200px"></section>
+<section class="drop">
+  <h2 class="drop-title">Destaques da Semana</h2>
+  <p class="drop-subtitle">Peças em evidência escolhidas pela F PAC</p>
+
+  <div class="drop-grid">
+    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
+    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
+  </div>
+</section>
+
+<section id="produtos">
+  <h2 style="text-align:center">Produtos</h2>
+
+  <div class="produtos-grid">
+    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
+    <a href="produto.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
+    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
+  </div>
+</section>
 
 <script>
 const header = document.getElementById("header");
@@ -266,18 +311,12 @@ function closeMenu(){
 function scrollTopo(){
   window.scrollTo({top:0, behavior:'smooth'});
 }
-
-window.addEventListener("scroll", () => {
-  if(window.scrollY > 80){
-    header.classList.add("shrink");
-  } else {
-    header.classList.remove("shrink");
-  }
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("shrink", window.scrollY>80);
 });
-
 function atualizarCarrinho(){
-  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-  document.getElementById("cartCount").innerText = carrinho.length;
+  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
+  document.getElementById("cartCount").innerText=carrinho.length;
 }
 atualizarCarrinho();
 </script>
