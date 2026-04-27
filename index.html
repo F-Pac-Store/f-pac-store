@@ -12,165 +12,174 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---primary:#003366;
---accent:#FFC107;
---bg:#f5f5f5;
---text:#333;
+  --primary:#003366;
+  --accent:#FFC107;
+  --bg:#f5f5f5;
+  --text:#333;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
 /* ================= HEADER ================= */
 .header{
-background:#003366;
-position:fixed;
-top:0;
-width:100%;
-z-index:1000;
+  background:#003366;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
 }
 
 .header-content{
-display:flex;
-justify-content:space-between;
-align-items:center;
-height:100px;
-padding:0 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:100px;
+  padding:0 30px;
 }
 
-.logo img{height:70px}
+.logo img{
+  height:70px;
+}
 
 .nav{
-display:flex;
-align-items:center;
-gap:42px; /* MAIS ESPAÇO */
+  display:flex;
+  align-items:center;
+  gap:48px;
 }
 
+/* LINKS DE TEXTO */
 .nav a{
-text-decoration:none;
-display:flex;
-align-items:center;
-font-size:1.6rem; /* ÍCONES MAIORES */
-transition:transform .2s ease;
+  text-decoration:none;
+  font-size:1.1rem;
+  font-weight:700;
+  letter-spacing:1px;
+  color:white;
+  transition:opacity .2s ease;
 }
 
 .nav a:hover{
-transform:scale(1.08);
+  opacity:.8;
 }
 
-/* Home */
-.nav .home{
-color:#fff;
-}
+/* Destaques */
+.nav .produtos{color:var(--accent);}
+.nav .catalogo{color:#4ade80;}
 
-/* Produtos (camisa) */
-.nav .produtos{
-color:var(--accent);
-}
-
-/* Catálogo */
-.nav .catalogo{
-color:#4ade80;
-}
-
-/* Carrinho */
+/* ================= CARRINHO ================= */
 .nav .cart{
-position:relative;
-color:var(--accent);
+  position:relative;
+  font-size:1.4rem;
+  color:var(--accent);
 }
 
 /* Badge carrinho */
 .cart-badge{
-position:absolute;
-top:-10px;
-right:-12px;
-background:var(--accent);
-color:#000;
-font-size:11px;
-font-weight:800;
-border-radius:50%;
-padding:3px 6px;
+  position:absolute;
+  top:-10px;
+  right:-12px;
+  background:var(--accent);
+  color:#000;
+  font-size:12px;
+  font-weight:800;
+  border-radius:50%;
+  padding:4px 7px;
 }
 
-/* Redes sociais */
+/* ================= REDES SOCIAIS ================= */
 .nav .whatsapp{
-color:#25D366;
+  font-size:1.4rem;
+  color:#25D366;
 }
 
 .nav .instagram{
-color:#E1306C;
+  font-size:1.4rem;
+  color:#E1306C;
 }
 
 /* ================= HERO ================= */
 .hero{
-margin-top:100px;
-height:calc(100vh - 100px);
-background:url('assets/img/hero-003.png') no-repeat center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+  margin-top:100px;
+  height:calc(100vh - 100px);
+  background:url('assets/img/hero-003.png') no-repeat center / cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 .btn{
-background:var(--accent);
-padding:16px 36px;
-border-radius:30px;
-font-weight:800;
-color:black;
-text-decoration:none;
-display:inline-block;
-font-size:1rem;
+  background:var(--accent);
+  padding:16px 36px;
+  border-radius:30px;
+  font-weight:800;
+  color:black;
+  text-decoration:none;
 }
 
-/* ================= DROP ================= */
+/* ================= DESTAQUES ================= */
 .drop{
-background:#0b0b0b;
-padding:80px 20px;
-color:white;
+  background:#0b0b0b;
+  padding:80px 20px;
+  color:white;
+}
+
+.drop-title{
+  text-align:center;
+  font-size:2rem;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.drop-subtitle{
+  text-align:center;
+  color:#ccc;
+  margin-bottom:40px;
 }
 
 .drop-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-max-width:1200px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
 }
 
 .card-full{
-height:380px;
-border-radius:18px;
-overflow:hidden;
-display:block;
+  height:380px;
+  border-radius:18px;
+  overflow:hidden;
+  display:block;
 }
 
 .card-full img{
-width:100%;
-height:100%;
-object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 /* ================= PRODUTOS ================= */
-section{padding:80px 20px}
+section{
+  padding:80px 20px;
+}
 
 .produtos-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-max-width:1200px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
 }
 
 /* ================= FOOTER ================= */
 .footer{
-background:#001a33;
-color:white;
-text-align:center;
-padding:30px 20px;
+  background:#001a33;
+  color:white;
+  text-align:center;
+  padding:30px 20px;
 }
 </style>
 </head>
@@ -184,33 +193,21 @@ padding:30px 20px;
     </a>
 
     <nav class="nav">
-      <!-- Home -->
-      <a href="#inicio" class="home" title="Início">
-        <i class="fa-solid fa-house"></i>
-      </a>
+      <!-- TEXTO -->
+      <a href="#inicio">INÍCIO</a>
+      <a href="#produtos" class="produtos">PRODUTOS</a>
+      <a href="catalogo.html" class="catalogo">CATÁLOGO</a>
 
-      <!-- Produtos -->
-      <a href="#produtos" class="produtos" title="Produtos">
-        <i class="fa-solid fa-shirt"></i>
-      </a>
-
-      <!-- Catálogo -->
-      <a href="catalogo.html" class="catalogo" title="Catálogo">
-        <i class="fa-solid fa-book-open"></i>
-      </a>
-
-      <!-- Carrinho -->
+      <!-- ÍCONES -->
       <a href="carrinho.html" class="cart" title="Carrinho">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
 
-      <!-- WhatsApp -->
       <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp" title="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
 
-      <!-- Instagram -->
       <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram" title="Instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
@@ -223,6 +220,9 @@ padding:30px 20px;
 </section>
 
 <section class="drop">
+  <h2 class="drop-title">Destaques da Semana</h2>
+  <p class="drop-subtitle">Peças em evidência escolhidas pela F PAC</p>
+
   <div class="drop-grid">
     <a href="catalogo.html" class="card-full">
       <img src="assets/img/cards/destaque-01.png">
@@ -235,6 +235,7 @@ padding:30px 20px;
 
 <section id="produtos">
   <h2 style="text-align:center">Produtos</h2>
+
   <div class="produtos-grid">
     <a href="produto.html" class="card-full">
       <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
