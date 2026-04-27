@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>F Pac Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,14 +14,10 @@
 :root{
   --primary:#003366;
   --accent:#FFC107;
-  --bg:#f5f5f5;
-  --text:#333;
 }
 
 body{
   font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
 }
 
 /* ================= HEADER ================= */
@@ -52,15 +48,13 @@ body{
 
 .nav a{
   text-decoration:none;
-  font-size:1.1rem;
-  font-weight:700;
-  letter-spacing:1px;
   color:white;
+  font-size:.95rem;
+  font-weight:500;
+  letter-spacing:2px;
 }
 
-.nav .produtos{color:var(--accent)}
-.nav .catalogo{color:#4ade80}
-
+/* ÍCONES DESKTOP */
 .nav .cart{
   position:relative;
   font-size:1.4rem;
@@ -69,14 +63,14 @@ body{
 
 .cart-badge{
   position:absolute;
-  top:-10px;
-  right:-12px;
+  top:-8px;
+  right:-10px;
   background:var(--accent);
   color:#000;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
   border-radius:50%;
-  padding:4px 7px;
+  padding:3px 6px;
 }
 
 .nav .whatsapp{font-size:1.4rem;color:#25D366}
@@ -95,7 +89,7 @@ body{
   position:fixed;
   top:0;
   right:-100%;
-  width:280px;
+  width:220px;
   height:100vh;
   background:#001a33;
   padding:30px 20px;
@@ -103,125 +97,45 @@ body{
   z-index:2000;
 }
 
-.mobile-menu.active{
-  right:0;
-}
+.mobile-menu.active{ right:0 }
 
 .mobile-menu .close{
   color:white;
   font-size:1.6rem;
   text-align:right;
-  margin-bottom:30px;
+  margin-bottom:40px;
   cursor:pointer;
 }
 
 .mobile-menu nav{
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:32px;
 }
 
 .mobile-menu nav a{
   color:white;
-  font-size:1.2rem;
-  font-weight:700;
   text-decoration:none;
+  font-size:1rem;
+  font-weight:500;
+  letter-spacing:2px;
 }
 
-.mobile-menu .cart{
-  color:var(--accent);
+/* ÍCONES MOBILE */
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+  align-items:center;
+}
+
+.mobile-menu .icons a{
   font-size:1.5rem;
 }
 
-.mobile-menu .social{
-  display:flex;
-  gap:20px;
-  margin-top:40px;
-}
-
-.mobile-menu .social a{
-  font-size:1.6rem;
-}
-
-.mobile-menu .whatsapp{color:#25D366}
-.mobile-menu .instagram{color:#E1306C}
-
-/* ================= HERO ================= */
-.hero{
-  margin-top:100px;
-  height:calc(100vh - 100px);
-  background:url('assets/img/hero-003.png') no-repeat center / cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.btn{
-  background:var(--accent);
-  padding:16px 36px;
-  border-radius:30px;
-  font-weight:800;
-  color:black;
-  text-decoration:none;
-}
-
-/* ================= DESTAQUES ================= */
-.drop{
-  background:#0b0b0b;
-  padding:80px 20px;
-  color:white;
-}
-
-.drop-title{
-  text-align:center;
-  font-size:2rem;
-  font-weight:800;
-}
-
-.drop-subtitle{
-  text-align:center;
-  color:#ccc;
-  margin:10px 0 40px;
-}
-
-.drop-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-
-.card-full{
-  height:380px;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.card-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ================= PRODUTOS ================= */
-section{padding:80px 20px}
-
-.produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* ================= FOOTER ================= */
-.footer{
-  background:#001a33;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
-}
+.mobile-menu .cart{ color:var(--accent); }
+.mobile-menu .whatsapp{ color:#25D366 }
+.mobile-menu .instagram{ color:#E1306C }
 
 /* ================= RESPONSIVO ================= */
 @media(max-width:768px){
@@ -235,14 +149,14 @@ section{padding:80px 20px}
 
 <header class="header">
   <div class="header-content">
-    <a href="#inicio" class="logo">
+    <a href="#topo" onclick="scrollTopo()" class="logo">
       <img src="assets/img/logos/f-pac-color.png" alt="F Pac Store">
     </a>
 
     <nav class="nav">
-      <a href="#inicio">INÍCIO</a>
-      <a href="#produtos" class="produtos">PRODUTOS</a>
-      <a href="catalogo.html" class="catalogo">CATÁLOGO</a>
+      <a href="#topo" onclick="scrollTopo()">INÍCIO</a>
+      <a href="#produtos">PRODUTOS</a>
+      <a href="catalogo.html">CATÁLOGO</a>
 
       <a href="carrinho.html" class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -267,15 +181,16 @@ section{padding:80px 20px}
   <div class="close" onclick="toggleMenu()">✕</div>
 
   <nav>
-    <a href="#inicio" onclick="toggleMenu()">INÍCIO</a>
+    <a href="#topo" onclick="scrollTopo();toggleMenu()">INÍCIO</a>
     <a href="#produtos" onclick="toggleMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
-    <a href="carrinho.html" class="cart">
-      <i class="fa-solid fa-cart-shopping"></i> Carrinho
-    </a>
   </nav>
 
-  <div class="social">
+  <!-- CARRINHO À ESQUERDA DO WHATSAPP -->
+  <div class="icons">
+    <a href="carrinho.html" class="cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </a>
     <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -285,45 +200,26 @@ section{padding:80px 20px}
   </div>
 </div>
 
-<section class="hero" id="inicio">
-  <a href="#produtos" class="btn">Comprar Agora</a>
-</section>
-
-<section class="drop">
-  <h2 class="drop-title">Destaques da Semana</h2>
-  <p class="drop-subtitle">Peças em evidência escolhidas pela F PAC</p>
-
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
-  </div>
-</section>
-
-<section id="produtos">
-  <h2 style="text-align:center">Produtos</h2>
-  <div class="produtos-grid">
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-    <a href="produto.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
-  </div>
-</section>
-
-<footer class="footer">
-© 2026 F Pac Store — Não é só roupa. É identidade.
-</footer>
+<a id="topo"></a>
+<section id="produtos"></section>
 
 <script>
-function atualizarCarrinho(){
-  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-  document.getElementById("cartCount").innerText = carrinho.length;
-}
-atualizarCarrinho();
-
 function toggleMenu(){
   document.getElementById("mobileMenu").classList.toggle("active");
 }
+
+function scrollTopo(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function atualizarCarrinho(){
+  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+  const badge = document.getElementById("cartCount");
+  if(badge) badge.innerText = carrinho.length;
+}
+atualizarCarrinho();
 </script>
 
 </body>
 </html>
-
+``
