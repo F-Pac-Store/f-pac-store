@@ -2,10 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Produto | F Pac Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F Pac Store</title>
 
-<!-- FONTES -->
 https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
 https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 
@@ -13,10 +12,10 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---primary:#003366;
+--primary:#003366cc;
 --accent:#FFC107;
 --bg:#f5f5f5;
---text:#1f2933;
+--text:#333;
 }
 
 body{
@@ -25,16 +24,18 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= HEADER PADRÃO ================= */
-
+/* HEADER */
 .header{
-background:rgba(0,51,102,.92);
+background:var(--primary);
 backdrop-filter:blur(10px);
 position:fixed;
 width:100%;
 top:0;
 z-index:1000;
+transition:.3s;
 }
+
+.header.shrink{background:#003366ee}
 
 .header-content{
 display:flex;
@@ -47,125 +48,169 @@ transition:.3s;
 
 .header.shrink .header-content{height:70px}
 
-.logo img{
+.logo-img{
 height:70px;
 transition:.3s;
 }
 
-.header.shrink .logo img{height:50px}
+.header.shrink .logo-img{height:50px}
 
+/* NAV */
 .nav{
 display:flex;
 gap:30px;
 align-items:center;
 }
 
-.nav a{
+.nav a,
+.nav button{
 color:white;
 text-decoration:none;
 font-weight:600;
+background:none;
+border:none;
+cursor:pointer;
+font-size:1rem;
 }
 
-/* ================= PÁGINA PRODUTO ================= */
+/* DROPDOWN */
+.dropdown{position:relative}
 
-.main{
-margin-top:120px;
+.dropdown-btn{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.dropdown-menu{
+position:absolute;
+top:150%;
+left:0;
+background:#001a33;
+min-width:180px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+opacity:0;
+visibility:hidden;
+transform:translateY(-10px);
+transition:.3s ease;
+z-index:2000;
+}
+
+.dropdown.open .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+display:block;
+padding:14px 18px;
+color:white;
+text-decoration:none;
+transition:.25s;
+}
+
+.dropdown-menu a:hover{
+background:rgba(255,255,255,.1);
+color:#FFC107;
+}
+
+/* HERO */
+.hero{
+margin-top:100px;
+height:calc(100vh - 100px);
+background:url('assets/img/hero-003.png') no-repeat center 35% / cover;
 display:flex;
 justify-content:center;
-padding:40px 20px;
+align-items:center;
+position:relative;
+color:white;
 }
 
-.card-produto{
-background:#fff;
+.hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.6));
+}
+
+.hero-content{position:relative;z-index:1}
+
+.btn{
+background:#FFC107;
+padding:12px 25px;
+border-radius:8px;
+color:black;
+font-weight:800;
+text-decoration:none;
+}
+
+/* CARDS */
+.card-full{
+position:relative;
+height:380px;
 border-radius:18px;
-padding:24px;
-max-width:520px;
-width:100%;
-box-shadow:0 10px 40px rgba(0,0,0,.15);
-text-align:center;
-}
-
-.card-produto img{
-width:100%;
-height:320px;
-object-fit:contain;
-background:#f8fafc;
-border-radius:12px;
-margin-bottom:20px;
-}
-
-h1{
-font-size:1.8rem;
-margin-bottom:10px;
-}
-
-/* ================= VARIAÇÕES ================= */
-
-.label{
-margin-top:16px;
-font-weight:600;
+overflow:hidden;
 display:block;
 }
 
-.opcoes{
-display:flex;
-gap:12px;
-justify-content:center;
-margin:10px 0;
-}
-
-.cor{
-width:30px;
-height:30px;
-border-radius:50%;
-cursor:pointer;
-border:2px solid transparent;
-}
-
-.cor.ativo{border-color:#000}
-
-.branco{background:#fff;border:1px solid #ccc}
-.preto{background:#000}
-.offwhite{background:#f3e9dc}
-
-.size{
-width:42px;
-height:42px;
-border-radius:8px;
-border:1px solid #ccc;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-weight:600;
-}
-
-.size.ativo{
-background:#000;
-color:#fff;
-}
-
-/* ================= AÇÃO ================= */
-
-input[type="number"]{
-width:80px;
-padding:6px;
-text-align:center;
-margin-top:6px;
-}
-
-.btn{
+.card-full img{
 width:100%;
-margin-top:24px;
-padding:14px;
-background:#000;
-color:#fff;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:800;
+height:100%;
+object-fit:cover;
+transition:.6s ease;
 }
 
+.card-full:hover img{transform:scale(1.08)}
+
+.card-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15));
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:20px;
+gap:10px;
+}
+
+.card-overlay h3{color:white}
+
+/* DROP */
+.drop{
+background:#0b0b0b;
+padding:80px 20px;
+color:white;
+}
+
+.drop-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:40px auto;
+}
+
+/* PRODUTOS */
+section{padding:80px 20px}
+
+.produtos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:40px auto 0;
+}
+
+/* FOOTER */
+.footer{
+background:#001a33;
+color:white;
+text-align:center;
+padding:20px;
+}
 </style>
 </head>
 
@@ -173,136 +218,105 @@ font-weight:800;
 
 <header class="header" id="header">
   <div class="header-content">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
+    index.html
+      assets/img/logos/f-pac-color.png
     </a>
 
     <nav class="nav">
-      <a href="index.html">Início</a>
-      <a href="catalogo.html">Catálogo</a>
-      <a href="carrinho.html">Carrinho</a>
+      #inicio>
+
+      <div class="dropdown" id="dropdownProdutos">
+        <button class="dropdown-btn" id="btnProdutos">
+          Produtos <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu">
+          produto-force.html
+          marca-do-produto.html>
+          produto-prime.html>
+        </div>
+      </div>
+
+      catalogo.htmlCatálogo</a>
     </nav>
   </div>
 </header>
 
-<main class="main">
-  <div class="card-produto">
-
-    <img id="produtoImagem" src="" alt="Produto F Pac">
-
-    <h1 id="produtoNome">Produto</h1>
-
-    <span class="label">Cor</span>
-    <div class="opcoes">
-      <div class="cor branco ativo" onclick="selCor('Branco')"></div>
-      <div class="cor preto" onclick="selCor('Preto')"></div>
-      <div class="cor offwhite" onclick="selCor('Off White')"></div>
-    </div>
-
-    <span class="label">Tamanho</span>
-    <div class="opcoes">
-      <div class="size" onclick="selTam('P')">P</div>
-      <div class="size ativo" onclick="selTam('M')">M</div>
-      <div class="size" onclick="selTam('G')">G</div>
-      <div class="size" onclick="selTam('GG')">GG</div>
-    </div>
-
-    <span class="label">Quantidade</span><br>
-    <input type="number" id="qtd" value="1" min="1">
-
-    <button class="btn" onclick="comprar()">Adicionar ao Carrinho</button>
-
-    <input type="hidden" id="cor" value="Branco">
-    <input type="hidden" id="tamanho" value="M">
-
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    catalogo.htmlComprar Agora</a>
   </div>
-</main>
+</section>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc } 
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+<section class="drop">
+  <h2 style="text-align:center">Drop em Destaque</h2>
 
-/* CONFIG FIREBASE */
-const app = initializeApp({
-  apiKey:"SUA_API_KEY",
-  authDomain:"SEU_PROJETO.firebaseapp.com",
-  projectId:"SEU_PROJETO"
-});
-const db = getFirestore(app);
+  <div class="drop-grid">
+    catalogo.html
+      assets/img/cards/destaque-01.png
+      <div class="card-overlay">
+        <h3>Black Series</h3>
+        <span class="btn">Ver catálogo</span>
+      </div>
+    </a>
 
-/* PRODUTOS */
-const produtos = {
-  force:{
-    nome:"Camisa Force",
-    preco:89.90,
-    estoque:"FORCE",
-    imagem:"assets/img/cards/F-PAC-ESCRITA-peito C.png"
-  },
-  mark:{
-    nome:"Camisa Mark",
-    preco:89.90,
-    estoque:"MARK",
-    imagem:"assets/img/cards/FP-peito C.png"
-  },
-  prime:{
-    nome:"Camisa Prime",
-    preco:109.90,
-    estoque:"PRIME",
-    imagem:"assets/img/cards/F-PAC-frente-e-costas.png"
-  }
-};
+    catalogo.html
+      assets/img/cards/destaque-02.png
+      <div class="card-overlay">
+        <h3>Prime Drop</h3>
+        <span class="btn">Explorar</span>
+      </div>
+    </a>
 
-/* STATE */
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+    catalogo.html
+      assets/img/logos/FP-branco.png
+      <div class="card-overlay">
+        <h3>Limited</h3>
+        <span class="btn">Últimas peças</span>
+      </div>
+    </a>
+  </div>
+</section>
 
-const produto = produtos[id];
-if(!produto){
-  location.href="catalogo.html";
-}
+<section id="produtos">
+<h2 style="text-align:center">Produtos</h2>
 
-/* SET PRODUTO */
-document.getElementById("produtoNome").innerText = produto.nome;
-document.getElementById("produtoImagem").src = produto.imagem;
+<div class="produtos-grid">
+  produto-force.html
+    assets/img/cards/F-PAC-ESCRITA-peito C.png
+    <div class="card-overlay"><h3>Force</h3></div>
+  </a>
 
-const corInput = document.getElementById("cor");
-const tamInput = document.getElementById("tamanho");
-const qtdInput = document.getElementById("qtd");
+  marca-do-produto.html
+    assets/img/cards/FP-peito C.png
+    <div class="card-overlay"><h3>Mark</h3></div>
+  </a>
 
-window.selCor = c => corInput.value = c;
-window.selTam = t => tamInput.value = t;
+  produto-prime.html
+    assets/img/cards/F-PAC-frente-e-costas.png
+    <div class="card-overlay"><h3>Prime</h3></div>
+  </a>
+</div>
+</section>
 
-async function temEstoque(){
-  const snap = await getDoc(doc(db,"estoque",produto.estoque+"_"+corInput.value));
-  return snap.exists() && (snap.data()[tamInput.value]||0)>0;
-}
+<footer class="footer">
+© 2026 F Pac Store — Não é só roupa. É identidade.
+</footer>
 
-window.comprar = async ()=>{
-  if(!await temEstoque()){
-    alert("Produto sem estoque");
-    return;
-  }
-
-  const item={
-    id:id,
-    nome:produto.nome,
-    preco:produto.preco,
-    quantidade:Number(qtdInput.value),
-    variacao:{cor:corInput.value,tamanho:tamInput.value}
-  };
-
-  adicionarItem(item);
-  location.href="carrinho.html";
-};
-
-/* HEADER SHRINK */
+<script>
 window.addEventListener("scroll",()=>{
-document.getElementById("header").classList.toggle("shrink",scrollY>50);
+document.getElementById("header")
+.classList.toggle("shrink",window.scrollY>50);
 });
-</script>
 
-<script src="js/carrinho.js"></script>
+const dropdown=document.getElementById("dropdownProdutos");
+const btn=document.getElementById("btnProdutos");
+
+btn.onclick=e=>{
+e.stopPropagation();
+dropdown.classList.toggle("open");
+};
+document.onclick=()=>dropdown.classList.remove("open");
+</script>
 
 </body>
 </html>
