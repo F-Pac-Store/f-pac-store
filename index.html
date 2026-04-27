@@ -1,159 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset;<meta charset="UTF-8">
-  --bg:#f5f5f5;
-  --text:#333;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F Pac Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--primary:#003366;
+--accent:#FFC107;
+--bg:#f5f5f5;
+--text:#333;
 }
 
 body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
 }
 
 /* ================= HEADER ================= */
 .header{
-  background:#003366;
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
+background:#003366;
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
 }
 
 .header-content{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:100px;
-  padding:0 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+height:100px;
+padding:0 30px;
 }
 
-.logo img{
-  height:70px;
-}
+.logo img{height:70px}
 
 .nav{
-  display:flex;
-  align-items:center;
-  gap:48px; /* MAIS ESPAÇAMENTO */
+display:flex;
+align-items:center;
+gap:42px; /* MAIS ESPAÇO */
 }
 
 .nav a{
-  text-decoration:none;
-  font-size:1.25rem;
-  font-weight:600;
-  color:white;
-  transition:opacity .2s ease;
+text-decoration:none;
+display:flex;
+align-items:center;
+font-size:1.6rem; /* ÍCONES MAIORES */
+transition:transform .2s ease;
 }
 
 .nav a:hover{
-  opacity:.8;
+transform:scale(1.08);
 }
 
-/* Destaques individuais */
+/* Home */
+.nav .home{
+color:#fff;
+}
+
+/* Produtos (camisa) */
 .nav .produtos{
-  color:var(--accent);
+color:var(--accent);
 }
 
+/* Catálogo */
 .nav .catalogo{
-  color:#4ade80;
+color:#4ade80;
 }
 
+/* Carrinho */
 .nav .cart{
-  position:relative;
-  color:var(--accent);
+position:relative;
+color:var(--accent);
 }
 
 /* Badge carrinho */
 .cart-badge{
-  position:absolute;
-  top:-10px;
-  right:-14px;
-  background:var(--accent);
-  color:#000;
-  font-size:12px;
-  font-weight:800;
-  border-radius:50%;
-  padding:4px 7px;
+position:absolute;
+top:-10px;
+right:-12px;
+background:var(--accent);
+color:#000;
+font-size:11px;
+font-weight:800;
+border-radius:50%;
+padding:3px 6px;
 }
 
-/* Redes sociais em texto */
+/* Redes sociais */
 .nav .whatsapp{
-  color:#25D366;
+color:#25D366;
 }
 
 .nav .instagram{
-  color:#E1306C;
+color:#E1306C;
 }
 
 /* ================= HERO ================= */
 .hero{
-  margin-top:100px;
-  height:calc(100vh - 100px);
-  background:url('assets/img/hero-003.png') no-repeat center / cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+margin-top:100px;
+height:calc(100vh - 100px);
+background:url('assets/img/hero-003.png') no-repeat center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
 
 .btn{
-  background:var(--accent);
-  padding:16px 36px;
-  border-radius:30px;
-  font-weight:800;
-  color:black;
-  text-decoration:none;
+background:var(--accent);
+padding:16px 36px;
+border-radius:30px;
+font-weight:800;
+color:black;
+text-decoration:none;
+display:inline-block;
+font-size:1rem;
 }
 
 /* ================= DROP ================= */
 .drop{
-  background:#0b0b0b;
-  padding:80px 20px;
-  color:white;
+background:#0b0b0b;
+padding:80px 20px;
+color:white;
 }
 
 .drop-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:auto;
 }
 
 .card-full{
-  height:380px;
-  border-radius:18px;
-  overflow:hidden;
-  display:block;
+height:380px;
+border-radius:18px;
+overflow:hidden;
+display:block;
 }
 
 .card-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 /* ================= PRODUTOS ================= */
-section{
-  padding:80px 20px;
-}
+section{padding:80px 20px}
 
 .produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1200px;
+margin:auto;
 }
 
 /* ================= FOOTER ================= */
 .footer{
-  background:#001a33;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
+background:#001a33;
+color:white;
+text-align:center;
+padding:30px 20px;
 }
 </style>
 </head>
@@ -167,21 +184,35 @@ section{
     </a>
 
     <nav class="nav">
-      <a href="#inicio">Início</a>
-      <a href="#produtos" class="produtos">Produtos</a>
-      <a href="catalogo.html" class="catalogo">Catálogo</a>
+      <!-- Home -->
+      <a href="#inicio" class="home" title="Início">
+        <i class="fa-solid fa-house"></i>
+      </a>
 
-      <a href="carrinho.html" class="cart">
-        Carrinho
+      <!-- Produtos -->
+      <a href="#produtos" class="produtos" title="Produtos">
+        <i class="fa-solid fa-shirt"></i>
+      </a>
+
+      <!-- Catálogo -->
+      <a href="catalogo.html" class="catalogo" title="Catálogo">
+        <i class="fa-solid fa-book-open"></i>
+      </a>
+
+      <!-- Carrinho -->
+      <a href="carrinho.html" class="cart" title="Carrinho">
+        <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
 
-      <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
-        WhatsApp
+      <!-- WhatsApp -->
+      <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
 
-      <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram">
-        Instagram
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/f_pac_store" target="_blank" class="instagram" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
       </a>
     </nav>
   </div>
@@ -231,13 +262,3 @@ atualizarCarrinho();
 
 </body>
 </html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F Pac Store</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-:root{
-  --primary:#003366;
