@@ -34,19 +34,19 @@ body{font-family:'Inter',sans-serif}
   align-items:center;
   height:100px;
   padding:0 30px;
-  transition:all .35s ease;
+  transition:.35s ease;
 }
 
 .logo img{
   height:70px;
-  transition:height .35s ease;
+  transition:.35s ease;
 }
 
-/* SHRINK MAIS FORTE */
+/* SHRINK */
 .header.shrink .header-content{height:58px}
 .header.shrink .logo img{height:38px}
 
-/* NAV DESKTOP */
+/* ================= NAV DESKTOP ================= */
 .nav{
   display:flex;
   align-items:center;
@@ -62,9 +62,19 @@ body{font-family:'Inter',sans-serif}
 }
 
 /* ÍCONES DESKTOP */
-.icon-cart{color:var(--accent);font-size:1.6rem;position:relative}
-.icon-whatsapp{color:#25D366;font-size:1.6rem}
-.icon-instagram{color:#E1306C;font-size:1.6rem}
+.icon-cart{
+  color:var(--accent);
+  font-size:1.8rem;
+  position:relative;
+}
+.icon-whatsapp{
+  color:#25D366;
+  font-size:1.8rem;
+}
+.icon-instagram{
+  color:#E1306C;
+  font-size:1.8rem;
+}
 
 .cart-badge{
   position:absolute;
@@ -78,7 +88,7 @@ body{font-family:'Inter',sans-serif}
   padding:3px 6px;
 }
 
-/* MENU MOBILE */
+/* ================= MENU MOBILE ================= */
 .menu-toggle{
   display:none;
   font-size:2rem;
@@ -114,10 +124,10 @@ body{font-family:'Inter',sans-serif}
 .mobile-menu.active{transform:translateX(0)}
 
 .mobile-menu .close{
-  text-align:right;
   color:white;
   font-size:1.6rem;
   margin-bottom:40px;
+  text-align:right;
   cursor:pointer;
 }
 
@@ -134,16 +144,27 @@ body{font-family:'Inter',sans-serif}
   letter-spacing:2px;
 }
 
+/* ÍCONES MOBILE (COR + TAMANHO) */
 .mobile-menu .icons{
   display:flex;
   gap:24px;
   margin-top:60px;
 }
 
-.mobile-menu .icons i{
-  font-size:1.7rem;
+.mobile-menu .icon-cart{
+  color:var(--accent);
+  font-size:2rem;
+}
+.mobile-menu .icon-whatsapp{
+  color:#25D366;
+  font-size:2rem;
+}
+.mobile-menu .icon-instagram{
+  color:#E1306C;
+  font-size:2rem;
 }
 
+/* ================= HERO ================= */
 .hero{
   margin-top:100px;
   height:calc(100vh - 100px);
@@ -162,7 +183,7 @@ body{font-family:'Inter',sans-serif}
   text-decoration:none;
 }
 
-/* DESTAQUES */
+/* ================= DESTAQUES ================= */
 .drop{background:#0b0b0b;color:white;padding:80px 20px}
 .drop-title{text-align:center;font-size:2rem;font-weight:800}
 .drop-subtitle{text-align:center;color:#ccc;margin:10px 0 40px}
@@ -182,7 +203,7 @@ body{font-family:'Inter',sans-serif}
 }
 .card-full img{width:100%;height:100%;object-fit:cover}
 
-/* PRODUTOS */
+/* ================= PRODUTOS ================= */
 section{padding:80px 20px}
 .produtos-grid{
   display:grid;
@@ -192,6 +213,7 @@ section{padding:80px 20px}
   margin:auto;
 }
 
+/* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
@@ -285,12 +307,11 @@ window.addEventListener("scroll",()=>{
 })
 
 function atualizarCarrinho(){
-  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[]
+  const carrinho=JSON.parse(localStorage.getItem("fpacCarrinho"))||[];
   document.getElementById("cartCount").innerText=carrinho.length
 }
-atualizarCarrinho()
+atualizarCarrinho();
 </script>
 
 </body>
 </html>
-``
