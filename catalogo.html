@@ -22,7 +22,7 @@ body{
   background:var(--bg);
 }
 
-/* HEADER (IGUAL INDEX) */
+/* HEADER */
 .header{
   background:var(--primary);
   position:fixed;
@@ -134,12 +134,6 @@ body{
   letter-spacing:2px;
 }
 
-.mobile-menu .icons{
-  display:flex;
-  gap:24px;
-  margin-top:60px;
-}
-
 /* CONTAINER */
 .container{
   max-width:1200px;
@@ -147,14 +141,35 @@ body{
   padding:140px 20px 80px;
 }
 
+/* TITULO */
+.titulo{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.titulo h1{
+  font-size:2rem;
+  font-weight:800;
+}
+
+.titulo p{
+  margin-top:10px;
+  color:#666;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.5;
+}
+
 /* GRID */
 .produtos-grid{
+  margin-top:50px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 
-/* CARD SEM IMAGEM */
+/* CARD */
 .card-produto{
   height:180px;
   background:white;
@@ -162,11 +177,12 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:800;
-  font-size:1.1rem;
+  text-align:center;
+  font-weight:700;
   cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,.1);
   transition:.25s;
+  padding:20px;
 }
 
 .card-produto:hover{
@@ -197,14 +213,6 @@ body{
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
-
-      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
     </nav>
 
     <div class="menu-toggle" onclick="openMenu()">☰</div>
@@ -218,31 +226,37 @@ body{
 
   <nav>
     <a href="index.html" onclick="closeMenu()">INÍCIO</a>
+    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
   </nav>
-
-  <div class="icons">
-    <a href="carrinho.html" class="icon-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-    <a href="https://wa.me/5547997465602" class="icon-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
-  </div>
 </div>
 
 <main class="container">
+
+  <div class="titulo">
+    <h1>Catálogo Completo</h1>
+    <p>
+      Escolha a estampa que mais combina com você. Todas as artes deste catálogo
+      são aplicadas no modelo de camisa <strong>PRIME</strong>, permitindo que você personalize
+      sua peça do seu jeito.
+    </p>
+  </div>
+
   <div class="produtos-grid">
 
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 01</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 02</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 03</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 04</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 05</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 06</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 07</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 08</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 09</div>
-    <div class="card-produto" onclick="location.href='carrinho.html'">Produto 10</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-color.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-camaleao.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-black.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-gold.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-minimal.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-line.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-bold.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-shadow.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-outline.png</div>
+    <div class="card-produto" onclick="location.href='carrinho.html'">f-pac-classic.png</div>
 
   </div>
+
 </main>
 
 <script>
