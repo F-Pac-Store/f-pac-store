@@ -1,24 +1,25 @@
 // =============================
-// CARRINHO GLOBAL
+// CARRINHO GLOBAL F PAC
 // =============================
 
+const CARRINHO_KEY = "fpacCarrinho";
+
+// ===== UTIL =====
 function getCarrinho() {
-  return JSON.parse(localStorage.getItem('fpacCarrinho')) || [];
+  return JSON.parse(localStorage.getItem(CARRINHO_KEY)) || [];
 }
 
 function salvarCarrinho(carrinho) {
-  localStorage.setItem('fpacCarrinho', JSON.stringify(carrinho));
+  localStorage.setItem(CARRINHO_KEY, JSON.stringify(carrinho));
 }
 
-// =============================
-// ADICIONAR ITEM
-// =============================
+// ===== ADICIONAR ITEM =====
 function adicionarItem(item) {
-  let carrinho = getCarrinho();
+  const carrinho = getCarrinho();
 
   const index = carrinho.findIndex(i =>
     i.id === item.id &&
-    JSON.stringify(i.variacao) === JSON.stringify(item.variacao)
+    JSON.stringify(i.variacao || {}) === JSON.stringify(item.variacao || {})
   );
 
   if (index >= 0) {
@@ -28,34 +29,45 @@ function adicionarItem(item) {
   }
 
   salvarCarrinho(carrinho);
+  atualizarBadge();
 }
 
-// =============================
-// REMOVER ITEM
-// =============================
+// ===== REMOVER ITEM =====
 function removerItem(index) {
-  let carrinho = getCarrinho();
+  const carrinho = getCarrinho();
   carrinho.splice(index, 1);
   salvarCarrinho(carrinho);
+  atualizarBadge();
 }
 
-// =============================
-// ATUALIZAR QUANTIDADE
-// =============================
+// ===== ATUALIZAR QUANTIDADE =====
 function atualizarQuantidade(index, quantidade) {
-  let carrinho = getCarrinho();
-  if (carrinho[index]) {
+  const carrinho = getCarrinho();
+
+  if (!carrinho[index]) return;
+
+  if (quantidade <= 0) {
+    carrinho.splice(index, 1);
+  } else {
     carrinho[index].quantidade = quantidade;
   }
+
   salvarCarrinho(carrinho);
+  atualizarBadge();
 }
 
-// =============================
-// TOTAL
-// =============================
+// ===== TOTAL =====
 function calcularTotal() {
-  let carrinho = getCarrinho();
-  return carrinho.reduce((total, item) => {
+  return getCarrinho().reduce((total, item) => {
     return total + item.preco * item.quantidade;
   }, 0);
+}
+
+// ===== BADGE DO MENU =====
+function atualizarBadge() {
+  const badge = document.getElementById("cartCount");
+  if (!badge) return;
+
+  const totalItens = getCarrinho().reduce((s,i)=>s+i.quantidade,0);
+  badge.innerText = totalItens;
 }
