@@ -6,7 +6,7 @@
 <title>F Pac Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,6 +14,12 @@
 :root{
   --primary:#003366;
   --accent:#FFC107;
+  --bg:#f5f5f5;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
 }
 
 /* ================= HEADER ================= */
@@ -33,7 +39,9 @@
   padding:0 30px;
 }
 
-.logo img{height:70px}
+.logo img{
+  height:70px;
+}
 
 /* DESKTOP NAV */
 .nav{
@@ -46,11 +54,11 @@
   text-decoration:none;
   color:white;
   font-size:.95rem;
-  font-weight:500;
-  letter-spacing:2px;
+  font-weight:500;              /* MAIS DELICADO */
+  letter-spacing:2px;           /* ESTILO MARCA PREMIUM */
 }
 
-/* ÍCONES DESKTOP */
+/* ÍCONES */
 .nav .cart{
   position:relative;
   font-size:1.4rem;
@@ -69,8 +77,15 @@
   padding:3px 6px;
 }
 
-.nav .whatsapp{font-size:1.4rem;color:#25D366}
-.nav .instagram{font-size:1.4rem;color:#E1306C}
+.nav .whatsapp{
+  font-size:1.4rem;
+  color:#25D366;
+}
+
+.nav .instagram{
+  font-size:1.4rem;
+  color:#E1306C;
+}
 
 /* HAMBURGUER */
 .menu-toggle{
@@ -117,19 +132,16 @@
   letter-spacing:2px;
 }
 
-/* ÍCONES MOBILE */
 .mobile-menu .icons{
   display:flex;
-  gap:28px;
+  gap:24px;
   margin-top:60px;
-  align-items:center;
 }
 
 .mobile-menu .icons a{
   font-size:1.5rem;
 }
 
-.mobile-menu .cart{ color:var(--accent); }
 .mobile-menu .whatsapp{ color:#25D366 }
 .mobile-menu .instagram{ color:#E1306C }
 
@@ -199,13 +211,14 @@
     <a href="#topo" onclick="scrollTopo();toggleMenu()">INÍCIO</a>
     <a href="#produtos" onclick="toggleMenu()">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
-  </nav>
 
-  <!-- ÍCONES MOBILE (CARRINHO À ESQUERDA DO WHATSAPP) -->
-  <div class="icons">
+    <!-- CARRINHO APENAS ÍCONE -->
     <a href="carrinho.html" class="cart">
       <i class="fa-solid fa-cart-shopping"></i>
     </a>
+  </nav>
+
+  <div class="icons">
     <a href="https://wa.me/5547997465602" target="_blank" class="whatsapp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -221,7 +234,9 @@
   <a href="#produtos" class="btn">Comprar Agora</a>
 </section>
 
-<section id="produtos"></section>
+<section id="produtos">
+  <!-- produtos -->
+</section>
 
 <script>
 function toggleMenu(){
