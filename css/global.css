@@ -1,23 +1,94 @@
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Inter', Arial, sans-serif;
+/* =============================
+   RESET
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-body{
-  background:#f5f5f5;
-  color:#111;
+body {
+  background: #f5f5f5;
+  color: #111;
 }
 
-/* HEADER */
+/* =============================
+   HEADER
+============================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #000;
+  color: #fff;
+}
+
+header img {
+  height: 40px;
+}
+
+/* =============================
+   PRODUTOS
+============================= */
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.produto {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* =============================
+   BOTÕES
+============================= */
+button {
+  padding: 10px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* =============================
+   CARRINHO
+============================= */
+.item-resumo {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+/* =============================
+   HEADER GLOBAL (F PAC)
+============================= */
+:root{
+  --primary:#003366;
+  --accent:#FFC107;
+}
+
 .header{
-  background:#003366;
+  background:var(--primary);
   position:fixed;
   top:0;
   width:100%;
   z-index:1000;
+  transition:.35s ease;
 }
 
 .header-content{
@@ -26,11 +97,17 @@ body{
   align-items:center;
   height:100px;
   padding:0 30px;
+  transition:.35s ease;
 }
 
 .logo img{
   height:70px;
+  transition:.35s ease;
 }
+
+/* SHRINK */
+.header.shrink .header-content{height:58px}
+.header.shrink .logo img{height:38px}
 
 /* NAV */
 .nav{
@@ -41,23 +118,25 @@ body{
 
 .nav a{
   text-decoration:none;
-  color:white;
+  color:#fff;
   font-size:.9rem;
   font-weight:500;
   letter-spacing:2px;
 }
 
-/* ICONES */
+.nav a i{font-size:1.9rem}
+
+/* ÍCONES */
 .icon-cart{position:relative}
-.icon-cart i{color:#FFC107;font-size:1.6rem}
-.icon-whatsapp i{color:#25D366;font-size:1.6rem}
-.icon-instagram i{color:#E1306C;font-size:1.6rem}
+.icon-cart i{color:var(--accent)}
+.icon-whatsapp i{color:#25D366}
+.icon-instagram i{color:#E1306C}
 
 .cart-badge{
   position:absolute;
   top:-6px;
   right:-10px;
-  background:#FFC107;
+  background:var(--accent);
   color:#000;
   font-size:11px;
   font-weight:800;
@@ -65,24 +144,70 @@ body{
   padding:3px 6px;
 }
 
-/* CONTEÚDO */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:140px 20px 80px;
-}
-
-/* GRID PRODUTOS */
-.produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-
-/* FOOTER SIMPLES */
-footer{
-  padding:40px;
-  text-align:center;
-  background:#000;
+/* MOBILE */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
   color:#fff;
+  cursor:pointer;
+}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
+.mobile-overlay.active{opacity:1;visibility:visible}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:220px;
+  height:100vh;
+  background:#001a33;
+  padding:30px 20px;
+  transform:translateX(100%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  z-index:2000;
+}
+.mobile-menu.active{transform:translateX(0)}
+
+.mobile-menu .close{
+  color:#fff;
+  font-size:1.6rem;
+  margin-bottom:40px;
+  text-align:right;
+  cursor:pointer;
+}
+
+.mobile-menu nav{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+.mobile-menu nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1rem;
+  letter-spacing:2px;
+}
+
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+}
+
+.mobile-menu .icons i{font-size:2rem}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-toggle{display:block}
 }
