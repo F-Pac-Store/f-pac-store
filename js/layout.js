@@ -5,27 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!target) return;
 
     try {
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`Erro ao carregar ${url}`);
-      }
-
-      const html = await response.text();
+      const res = await fetch(url);
+      const html = await res.text();
       target.innerHTML = html;
 
-      // Aguarda renderização antes de rodar script
-      setTimeout(() => {
-        if (callback && typeof callback === "function") {
-          callback();
-        }
-      }, 50);
-
-    } catch (error) {
-      console.error(error);
-
-      // fallback simples (evita layout quebrado)
-      target.innerHTML = "";
+      if (callback && typeof callback === "function") {
+        callback();
+      }
+    } catch (e) {
+      console.error("Erro ao carregar:", url, e);
     }
   }
 
