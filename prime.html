@@ -1,320 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>PRIME | F PAC</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>PRIME | F PAC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheetel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.cssnk rel="stylesheet" href="css/global.cssER GLOBAL -->
+  <div id="header-placeholder"></div>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+  <main>
 
-:root{
-  --primary:#003366;
-  --accent:#FFC107;
-}
+    <!-- PRODUTO -->
+    <section class="produto">
+      <div class="produto-img">
+        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="    <div class="produto-info">
+        <h1>Modelo PRIME</h1>
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#f5f5f5;
-}
+        <div class="beneficios">
+          <div>✔ Tecido leve e resistente</div>
+          <div>✔ Caimento confortável</div>
+          <div>✔ Ideal para uso diário</div>
+          <div>✔ Base para qualquer estampa</div>
+        </div>
 
-/* HEADER PADRÃO */
-.header{
-  background:var(--primary);
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-  transition:.35s ease;
-}
+        <div class="descricao">
+          A PRIME é a base da F PAC.
+          Estrutura versátil, caimento confortável e base neutra,
+          pensada para receber qualquer direção criativa.
+          <br><br>
+          Seja texto, desenho ou a fusão dos dois,
+          ela entrega equilíbrio e leitura limpa.
+        </div>
+      </div>
+    </section>
 
-.header-content{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:100px;
-  padding:0 30px;
-  transition:.35s ease;
-}
+  </main>
 
-.logo img{height:70px;transition:.35s ease}
+  <!-- FOOTER GLOBAL -->
+  <div id="footer-placeholder"></div>
 
-.header.shrink .header-content{height:58px}
-.header.shrink .logo img{height:38px}
-
-/* NAV */
-.nav{display:flex;align-items:center;gap:42px}
-
-.nav a{
-  text-decoration:none;
-  color:#fff;
-  font-size:.9rem;
-  font-weight:500;
-  letter-spacing:2px;
-}
-
-.nav a i{font-size:1.9rem}
-
-/* ÍCONES */
-.icon-cart{position:relative}
-
-.icon-cart i{
-  color:var(--accent);
-  font-size:1.9rem;
-}
-
-.icon-whatsapp i{
-  color:#25D366;
-  font-size:1.9rem;
-}
-
-.icon-instagram i{
-  color:#E1306C;
-  font-size:1.9rem;
-}
-
-.cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-10px;
-  background:var(--accent);
-  color:#000;
-  font-size:11px;
-  font-weight:800;
-  border-radius:50%;
-  padding:3px 6px;
-}
-
-/* MENU MOBILE */
-.menu-toggle{
-  display:none;
-  font-size:2rem;
-  color:#fff;
-  cursor:pointer;
-}
-
-.mobile-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-  z-index:1500;
-}
-
-.mobile-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.mobile-menu{
-  position:fixed;
-  top:0;
-  right:0;
-  width:220px;
-  height:100vh;
-  background:#001a33;
-  padding:30px 20px;
-  transform:translateX(100%);
-  transition:transform .45s cubic-bezier(.4,0,.2,1);
-  z-index:2000;
-}
-
-.mobile-menu.active{
-  transform:translateX(0);
-}
-
-.mobile-menu .close{
-  color:#fff;
-  font-size:1.6rem;
-  margin-bottom:40px;
-  text-align:right;
-  cursor:pointer;
-}
-
-.mobile-menu nav{
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-}
-
-.mobile-menu nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:1rem;
-  letter-spacing:2px;
-}
-
-.mobile-menu .icons{
-  display:flex;
-  gap:24px;
-  margin-top:60px;
-}
-
-.mobile-menu .icons i{
-  font-size:2rem;
-}
-
-/* LAYOUT */
-.produto{
-  max-width:1100px;
-  margin:140px auto 60px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  padding:20px;
-}
-
-.produto-img img{
-  width:100%;
-  border-radius:18px;
-  background:#fff;
-  padding:20px;
-}
-
-.produto-info h1{
-  font-size:2.2rem;
-}
-
-.beneficios{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin:20px 0;
-}
-
-.beneficios div{
-  background:#fff;
-  padding:14px;
-  border-radius:10px;
-  font-weight:600;
-  text-align:center;
-}
-
-.descricao{
-  margin:20px 0;
-  line-height:1.6;
-}
-
-@media(max-width:768px){
-  .nav{display:none}
-  .menu-toggle{display:block}
-  .produto{grid-template-columns:1fr}
-}
-</style>
-</head>
-
-<body>
-
-<header class="header" id="header">
-  <div class="header-content">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
-    </a>
-
-    <nav class="nav">
-      <a href="index.html">INÍCIO</a>
-      <a href="index.html#produtos">PRODUTOS</a>
-      <a href="catalogo.html">CATÁLOGO</a>
-
-      <a href="carrinho.html" class="icon-cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="cart-badge" id="cartCount">0</span>
-      </a>
-
-      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </nav>
-
-    <div class="menu-toggle" onclick="openMenu()">☰</div>
-  </div>
-</header>
-
-<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="close" onclick="closeMenu()">✕</div>
-
-  <nav>
-    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
-    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
-    <a href="catalogo.html" onclick="closeMenu()">CATÁLOGO</a>
-  </nav>
-
-  <div class="icons">
-    <a href="carrinho.html" class="icon-cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-    </a>
-    <a href="https://wa.me/5547997465602" class="icon-whatsapp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-  </div>
-</div>
-
-<section class="produto">
-
-  <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
-  </div>
-
-  <div class="produto-info">
-    <h1>Modelo PRIME</h1>
-
-    <div class="beneficios">
-      <div>✔ Tecido leve e resistente</div>
-      <div>✔ Caimento confortável</div>
-      <div>✔ Ideal para uso diário</div>
-      <div>✔ Base para qualquer estampa</div>
-    </div>
-
-    <div class="descricao">
-      A PRIME é a base da F PAC.
-      Estrutura versátil, caimento confortável e base neutra,
-      pensada para receber qualquer direção criativa.
-      <br><br>
-      Seja texto, desenho ou a fusão dos dois,
-      ela entrega equilíbrio e leitura limpa.
-    </div>
-  </div>
-
-</section>
-
-<script>
-const header = document.getElementById("header");
-
-window.addEventListener("scroll",()=>{
-  header.classList.toggle("shrink", window.scrollY > 80);
-});
-
-function openMenu(){
-  document.getElementById("mobileMenu").classList.add("active");
-  document.getElementById("overlay").classList.add("active");
-}
-
-function closeMenu(){
-  document.getElementById("mobileMenu").classList.remove("active");
-  document.getElementById("overlay").classList.remove("active");
-}
-
-function atualizarCarrinho(){
-  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-  document.getElementById("cartCount").innerText = carrinho.length;
-}
-
-atualizarCarrinho();
-</script>
-
-</body>
+  <!-- JS GLOBAL -->
+  <script src="js/layout  <script src="js/header.jsbody>
 </html>
