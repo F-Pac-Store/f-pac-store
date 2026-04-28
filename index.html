@@ -30,6 +30,7 @@ body{
   width:100%;
   z-index:1000;
 }
+
 .header-content{
   height:100px;
   display:flex;
@@ -37,12 +38,19 @@ body{
   align-items:center;
   padding:0 30px;
 }
+
 .logo img{height:70px}
 
 /* NAV */
 .nav{display:flex;gap:42px}
-.nav a{color:#fff;text-decoration:none;font-size:.9rem;letter-spacing:2px}
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:.9rem;
+  letter-spacing:2px;
+}
 .nav i{font-size:1.9rem}
+
 .icon-cart{position:relative}
 .icon-cart i{color:var(--accent)}
 .cart-badge{
@@ -66,6 +74,7 @@ body{
   justify-content:center;
   align-items:center;
 }
+
 .btn{
   background:var(--accent);
   padding:16px 36px;
@@ -75,14 +84,25 @@ body{
   text-decoration:none;
 }
 
-/* SECTIONS */
+/* SEÇÕES */
 section{padding:80px 20px}
+
 .drop{
   background:#0b0b0b;
   color:#fff;
 }
-.drop-title{text-align:center;font-size:2rem;font-weight:800}
-.drop-subtitle{text-align:center;margin:10px 0 40px;color:#ccc}
+
+.drop-title{
+  text-align:center;
+  font-size:2rem;
+  font-weight:800;
+}
+
+.drop-subtitle{
+  text-align:center;
+  margin:10px 0 40px;
+  color:#ccc;
+}
 
 .drop-grid,
 .produtos-grid{
@@ -98,38 +118,52 @@ section{padding:80px 20px}
   border-radius:18px;
   overflow:hidden;
 }
+
 .card-full img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-/* FOOTER REFINADO */
+/* =============================
+   FOOTER OTIMIZADO (FINAL)
+============================= */
 .footer{
-  background:#0b0b0b;
-  color:#fff;
-  padding:45px 20px 25px;
+  background:var(--primary);
+  padding:20px 30px;
 }
+
 .footer-content{
   max-width:1200px;
   margin:auto;
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.footer-brand img{height:50px}
-.footer-brand p{margin-top:12px;font-size:.85rem;color:#bbb}
-.footer-links a{display:block;color:#ccc;font-size:.85rem;margin-bottom:8px;text-decoration:none}
-.footer-links a:hover{color:#fff}
-.footer-social a{font-size:1.6rem;color:#ccc;margin-right:14px}
-.footer-social a:hover{color:var(--accent)}
-.footer-bottom{
-  margin-top:20px;
-  padding-top:12px;
-  border-top:1px solid #1c1c1c;
-  text-align:center;
-  font-size:.75rem;
-  color:#777;
+
+.footer-logo img{
+  height:45px;
+}
+
+.footer-social a{
+  color:#fff;
+  font-size:1.8rem;
+  margin-left:20px;
+  transition:.3s;
+}
+
+.footer-social a:hover{
+  color:var(--accent);
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .nav{display:none}
+
+  .footer-content{
+    flex-direction:column;
+    gap:15px;
+  }
 }
 </style>
 </head>
@@ -141,16 +175,23 @@ section{padding:80px 20px}
     <a href="index.html" class="logo">
       <img src="assets/img/logos/f-pac-color.png">
     </a>
+
     <nav class="nav">
-      <a href="#">INÍCIO</a>
+      <a href="index.html">INÍCIO</a>
       <a href="#produtos">PRODUTOS</a>
       <a href="catalogo.html">CATÁLOGO</a>
+
       <a href="carrinho.html" class="icon-cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge">0</span>
       </a>
-      <a href="https://wa.me/5547997465602"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
+
+      <a href="https://wa.me/5547997465602">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/f_pac_store">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
     </nav>
   </div>
 </header>
@@ -162,40 +203,45 @@ section{padding:80px 20px}
 <section class="drop">
   <h2 class="drop-title">Destaques</h2>
   <p class="drop-subtitle">Peças selecionadas pela F PAC</p>
+
   <div class="drop-grid">
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
+    <a href="catalogo.html" class="card-full">
+      <img src="assets/img/cards/destaque-01.png">
+    </a>
+    <a href="catalogo.html" class="card-full">
+      <img src="assets/img/cards/destaque-02.png">
+    </a>
   </div>
 </section>
 
 <section id="produtos">
   <h2 class="drop-title">Produtos</h2>
   <p class="drop-subtitle">Escolha o que combina com você</p>
+
   <div class="produtos-grid">
-    <a href="force.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-    <a href="mark.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-    <a href="prime.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
+    <a href="force.html" class="card-full">
+      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    </a>
+    <a href="mark.html" class="card-full">
+      <img src="assets/img/cards/FP-peito C.png">
+    </a>
+    <a href="prime.html" class="card-full">
+      <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+    </a>
   </div>
 </section>
 
+<!-- FOOTER FINAL -->
 <footer class="footer">
   <div class="footer-content">
-    <div class="footer-brand">
+    <div class="footer-logo">
       <img src="assets/img/logos/f-pac-color.png">
-      <p>Não é só roupa.<br>É identidade.</p>
     </div>
-    <div class="footer-links">
-      <a href="index.html">Início</a>
-      <a href="#produtos">Produtos</a>
-      <a href="catalogo.html">Catálogo</a>
-    </div>
+
     <div class="footer-social">
       <a href="https://wa.me/5547997465602"><i class="fa-brands fa-whatsapp"></i></a>
       <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
     </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 F PAC Store · Não é só roupa. É identidade.
   </div>
 </footer>
 
