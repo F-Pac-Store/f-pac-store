@@ -1,31 +1,21 @@
 function initHeader() {
-  const header = document.getElementById("header");
   const menu = document.getElementById("mobileMenu");
   const overlay = document.getElementById("overlay");
-  const toggle = document.querySelector(".menu-toggle");
+  const toggle = document.getElementById("menuToggle");
+  const closeBtn = document.getElementById("closeMenu");
 
-  // Se o header ainda não existir, não executa
-  if (!header || !menu || !overlay || !toggle) {
-    return;
-  }
+  if (!menu || !overlay || !toggle) return;
 
-  // MENU MOBILE
-  window.openMenu = function () {
+  toggle.addEventListener("click", () => {
     menu.classList.add("active");
     overlay.classList.add("active");
-  };
+  });
 
-  window.closeMenu = function () {
+  overlay.addEventListener("click", closeMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+
+  function closeMenu() {
     menu.classList.remove("active");
     overlay.classList.remove("active");
-  };
-
-  // HEADER SHRINK NO SCROLL
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("shrink");
-    } else {
-      header.classList.remove("shrink");
-    }
-  });
+  }
 }
