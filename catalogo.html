@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo | F Pac Store</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-
-    :root{
-      --primary:#003366;
-      --accent:#FFC107;
-      --bg:#f5f5f5;
-    }
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-    }
-
-    /* HEADER */
-    .header{
-      background:var(--primary);
+<!DOCTYPE html><!DOCTYPE      background:var(--primary);
       position:fixed;
       top:0;
       width:100%;
@@ -80,59 +53,76 @@
 
     /* CONTEÚDO */
     .container{
-      max-width:1200px;
+      max-width:1400px;
       margin:auto;
-      padding:140px 20px 80px;
+      padding:140px 30px 80px;
     }
 
     .titulo{
       text-align:center;
-      margin-bottom:40px;
+      margin-bottom:50px;
     }
 
     .titulo h1{
-      font-size:2rem;
+      font-size:2.2rem;
       font-weight:800;
     }
 
     .titulo p{
-      margin-top:12px;
+      margin-top:14px;
       color:#555;
-      max-width:680px;
+      max-width:700px;
       margin-left:auto;
       margin-right:auto;
       line-height:1.6;
     }
 
+    /* GRID DE PRODUTOS - PADRÃO DESTAQUES */
     .produtos-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns:repeat(4, 1fr);
       gap:30px;
     }
 
-    .card-produto{
-      background:#fff;
-      height:200px;
+    .card-full{
+      height:260px;
       border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 10px 25px rgba(0,0,0,.1);
-      transition:.25s;
-      padding:20px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 10px 25px rgba(0,0,0,.10);
+      transition:.3s ease;
+      cursor:pointer;
     }
 
-    .card-produto img{
-      max-width:100%;
-      max-height:100%;
-      object-fit:contain;
+    .card-full img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
-    .card-produto:hover{
+    .card-full:hover{
       transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(0,0,0,.15);
     }
 
-    @media(max-width:768px){
+    /* RESPONSIVO */
+    @media(max-width:1200px){
+      .produtos-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+
+    @media(max-width:900px){
+      .produtos-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .produtos-grid{
+        grid-template-columns:1fr;
+      }
       .nav{display:none}
     }
   </style>
@@ -177,13 +167,21 @@
 
   <div class="produtos-grid">
 
-    <div class="card-produto">
+    <a href="#" class="card-full">
       <img src="assets/img/logos/f-pac-color.png" alt="F PAC Color">
-    </div>
+    </a>
 
-    <div class="card-produto">
+    <a href="#" class="card-full">
       <img src="assets/img/logos/FP-preto.png" alt="FP Preto">
-    </div>
+    </a>
+
+    <a href="#" class="card-full">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
+    </a>
+
+    <a href="#" class="card-full">
+      <img src="assets/img/logos/FP-preto.png" alt="FP">
+    </a>
 
   </div>
 
@@ -198,3 +196,30 @@
 
 </body>
 </html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo | F Pac Store</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --primary:#003366;
+      --accent:#FFC107;
+      --bg:#f5f5f5;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:#000;
+    }
+
+    /* HEADER */
+    .header{
