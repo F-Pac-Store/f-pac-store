@@ -6,26 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- FONTE -->
-  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <!-- ICONES -->
-  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS GLOBAL -->
-  css/global.css
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
-  <!-- HEADER GLOBAL -->
+  <!-- HEADER -->
   <div id="header-placeholder"></div>
 
   <main>
 
     <!-- PRODUTO -->
-    <section class="produto">
+    <section class="container produto">
+
       <div class="produto-img">
-        assets/img/cards/F-PAC-frente-e-costas.png
+        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
       </div>
 
       <div class="produto-info">
@@ -46,17 +47,24 @@
           Seja texto, desenho ou a fusão dos dois,
           ela entrega equilíbrio e leitura limpa.
         </div>
+
+        <!-- CTA -->
+        <a href="https://wa.me/5547997465602" target="_blank" class="btn">
+          Comprar pelo WhatsApp
+        </a>
+
       </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER GLOBAL -->
+  <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
-  <!-- JS GLOBAL -->
-  js/layout.js</script>
-  js/header.js</script>
+  <!-- JS -->
+  <script src="js/layout.js"></script>
+  <script src="js/header.js"></script>
 
 </body>
 </html>
