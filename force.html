@@ -1,117 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>FORCE | F PAC</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>FORCE | F PAC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#f5f5f5}
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
-/* HEADER */
-.header{background:#003366;padding:20px;text-align:center}
-.header a{color:white;text-decoration:none;font-weight:700}
+    /* HEADER */
+    header.header{
+      background:#003366;
+      padding:20px;
+      text-align:center
+    }
 
-/* LAYOUT */
-.produto{
-max-width:1100px;
-margin:60px auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-padding:20px;
-}
+    header.header a{
+      color:white;
+      text-decoration:none;
+      font-weight:700
+    }
 
-.produto-img img{
-width:100%;
-border-radius:18px;
-background:#fff;
-padding:20px;
-}
+    /* LAYOUT */
+    .produto{
+      max-width:1100px;
+      margin:60px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      padding:20px;
+    }
 
-.produto-info h1{font-size:2.2rem}
-.tag{margin:10px 0 20px;color:#555;font-weight:600}
+    .produto-img img{
+      width:100%;
+      border-radius:18px;
+      background:#fff;
+      padding:20px;
+    }
 
-.beneficios{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin:20px 0;
-}
+    .produto-info h1{
+      font-size:2.2rem
+    }
 
-.beneficios div{
-background:#fff;
-padding:14px;
-border-radius:10px;
-font-weight:600;
-text-align:center;
-}
+    .tag{
+      margin:10px 0 20px;
+      color:#555;
+      font-weight:600
+    }
 
-.descricao{margin:20px 0;line-height:1.6}
+    .beneficios{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:20px 0;
+    }
 
-.btn{
-display:block;
-background:#000;
-color:#fff;
-text-align:center;
-padding:18px;
-border-radius:12px;
-font-weight:800;
-text-decoration:none;
-}
+    .beneficios div{
+      background:#fff;
+      padding:14px;
+      border-radius:10px;
+      font-weight:600;
+      text-align:center;
+    }
 
-/* PROVA */
-.prova{margin:60px auto;max-width:900px}
-.comentario{background:#fff;padding:20px;border-radius:12px;margin-bottom:15px}
+    .descricao{
+      margin:20px 0;
+      line-height:1.6
+    }
 
-@media(max-width:768px){
-.produto{grid-template-columns:1fr}
-}
-</style>
+    .btn{
+      display:block;
+      background:#000;
+      color:#fff;
+      text-align:center;
+      padding:18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+    }
+
+    /* PROVA */
+    .prova{
+      margin:60px auto;
+      max-width:900px
+    }
+
+    .comentario{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:15px
+    }
+
+    @media(max-width:768px){
+      .produto{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="header">
-<a href="catalogo.html">← Voltar</a>
-</div>
+  <header class="header">
+    <a href="catalogo.html">← Voltar</a>
+  </header>
 
-<section class="produto">
+  <section class="produto">
 
-<div class="produto-img">
-<img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-</div>
+    <div class="produto-img">
+      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
+    </div>
 
-<div class="produto-info">
-<h1>Camisa FORCE</h1>
-<p class="tag">Presença não se pede. Se impõe.</p>
+    <div class="produto-info">
+      <h1>Modelo FORCE</h1>
 
-<div class="beneficios">
-<div>✔ Tecido encorpado premium</div>
-<div>✔ Caimento estruturado</div>
-<div>✔ Alta durabilidade</div>
-<div>✔ Estilo forte e marcante</div>
-</div>
+      <div class="beneficios">
+        <div>✔ Tecido encorpado premium</div>
+        <div>✔ Caimento estruturado</div>
+        <div>✔ Alta durabilidade</div>
+        <div>✔ Estilo forte e marcante</div>
+      </div>
 
-<div class="descricao">
-A FORCE foi criada pra quem não passa despercebido. 
-Modelagem firme, tecido mais pesado e presença visual agressiva.
-Não é básica. É posicionamento.
-</div>
+      <div class="descricao">
+        A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
+        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada para
+        valorizar estampas de texto acima de qualquer elemento gráfico.
+        <br><br>
+        Aqui, a escolha é objetiva: menos imagem, mais mensagem.
+      </div>
 
-<a href="#" class="btn">Comprar Agora</a>
+    </div>
 
-</div>
-
-</section>
-
-<section class="prova">
-<div class="comentario"><strong>Lucas R.</strong> — Camisa pesada, qualidade absurda.</div>
-<div class="comentario"><strong>Bruno K.</strong> — Dá outra postura no corpo.</div>
-</section>
+  </section>
 
 </body>
 </html>
