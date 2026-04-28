@@ -8,8 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
+    *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
+    /* HEADER */
+    header.header{
+      background:#003366;
+      padding:20px;
+      text-align:center
+    }
+
+    header.header a{
+      color:white;
+      text-decoration:none;
+      font-weight:700
+    }
+
+    /* LAYOUT */
     .produto{
       max-width:1100px;
       margin:60px auto;
@@ -26,7 +41,15 @@
       padding:20px;
     }
 
-    .produto-info h1{font-size:2.2rem}
+    .produto-info h1{
+      font-size:2.2rem
+    }
+
+    .tag{
+      margin:10px 0 20px;
+      color:#555;
+      font-weight:600
+    }
 
     .beneficios{
       display:grid;
@@ -43,32 +66,74 @@
       text-align:center;
     }
 
-    .descricao{margin:20px 0;line-height:1.6}
+    .descricao{
+      margin:20px 0;
+      line-height:1.6
+    }
+
+    .btn{
+      display:block;
+      background:#000;
+      color:#fff;
+      text-align:center;
+      padding:18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+    }
+
+    /* PROVA */
+    .prova{
+      margin:60px auto;
+      max-width:900px
+    }
+
+    .comentario{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:15px
+    }
+
+    @media(max-width:768px){
+      .produto{grid-template-columns:1fr}
+    }
   </style>
 </head>
 
 <body>
 
-<section class="produto">
-  <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-  </div>
+  <header class="header">
+    <a href="catalogo.html">← Voltar</a>
+  </header>
 
-  <div class="produto-info">
-    <h1>Modelo FORCE</h1>
+  <section class="produto">
 
-    <div class="beneficios">
-      <div>✔ Tecido encorpado premium</div>
-      <div>✔ Caimento estruturado</div>
-      <div>✔ Alta durabilidade</div>
-      <div>✔ Estilo forte e marcante</div>
+    <div class="produto-img">
+      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
     </div>
 
-    <div class="descricao">
-      A FORCE foi criada para quem prefere comunicar com clareza...
+    <div class="produto-info">
+      <h1>Modelo FORCE</h1>
+
+      <div class="beneficios">
+        <div>✔ Tecido encorpado premium</div>
+        <div>✔ Caimento estruturado</div>
+        <div>✔ Alta durabilidade</div>
+        <div>✔ Estilo forte e marcante</div>
+      </div>
+
+      <div class="descricao">
+        A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
+        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada para
+        valorizar estampas de texto acima de qualquer elemento gráfico.
+        <br><br>
+        Aqui, a escolha é objetiva: menos imagem, mais mensagem.
+      </div>
+
     </div>
-  </div>
-</section>
+
+  </section>
 
 </body>
 </html>
