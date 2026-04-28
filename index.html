@@ -131,32 +131,80 @@ section{padding:80px 20px}
   object-fit:cover;
 }
 
-/* FOOTER */
+/* =============================
+   FOOTER REFINADO
+============================= */
 .footer{
   background:#0b0b0b;
   color:#fff;
-  padding:70px 20px 40px;
+  padding:45px 20px 25px;
 }
+
 .footer-content{
   max-width:1200px;
   margin:auto;
   display:grid;
-  grid-template-columns:1.2fr 1fr 1fr;
+  grid-template-columns:1fr auto auto;
   gap:40px;
+  align-items:start;
 }
-.footer-brand img{height:60px}
-.footer-brand p{margin-top:15px;color:#ccc;font-size:.9rem}
-.footer-links a{display:block;color:#ccc;margin-bottom:10px;text-decoration:none}
+
+/* MARCA */
+.footer-brand{
+  max-width:320px;
+}
+
+.footer-brand img{
+  height:50px;
+}
+
+.footer-brand p{
+  margin-top:12px;
+  font-size:.85rem;
+  color:#bbb;
+  line-height:1.5;
+}
+
+/* LINKS */
+.footer-links a{
+  display:block;
+  margin-bottom:8px;
+  font-size:.85rem;
+  text-decoration:none;
+  color:#ccc;
+}
+
 .footer-links a:hover{color:#fff}
-.footer-social a{font-size:1.8rem;margin-right:15px;color:#ccc}
+
+/* REDES */
+.footer-social a{
+  font-size:1.6rem;
+  margin-right:14px;
+  color:#ccc;
+  transition:.3s;
+}
+
 .footer-social a:hover{color:var(--accent)}
+
+/* BASE */
 .footer-bottom{
+  margin-top:25px;
+  padding-top:15px;
+  border-top:1px solid #1c1c1c;
   text-align:center;
-  border-top:1px solid #222;
-  margin-top:30px;
-  padding-top:20px;
-  font-size:.8rem;
+  font-size:.75rem;
   color:#777;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .nav{display:none}
+
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:25px;
+  }
 }
 </style>
 </head>
@@ -189,20 +237,11 @@ section{padding:80px 20px}
 <section class="drop">
   <h2 class="drop-title">Destaques</h2>
   <p class="drop-subtitle">Peças selecionadas pela F PAC</p>
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-01.png"></a>
-    <a href="catalogo.html" class="card-full"><img src="assets/img/cards/destaque-02.png"></a>
-  </div>
 </section>
 
 <section id="produtos">
   <h2 class="drop-title">Produtos</h2>
   <p class="drop-subtitle">Escolha o que combina com você</p>
-  <div class="produtos-grid">
-    <a href="force.html" class="card-full"><img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"></a>
-    <a href="mark.html" class="card-full"><img src="assets/img/cards/FP-peito C.png"></a>
-    <a href="prime.html" class="card-full"><img src="assets/img/cards/F-PAC-frente-e-costas.png"></a>
-  </div>
 </section>
 
 <footer class="footer">
@@ -221,9 +260,11 @@ section{padding:80px 20px}
       <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 F PAC Store</div>
+
+  <div class="footer-bottom">
+    © 2026 F PAC Store · Não é só roupa. É identidade.
+  </div>
 </footer>
 
 </body>
 </html>
-``
