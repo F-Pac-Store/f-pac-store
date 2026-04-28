@@ -1,11 +1,18 @@
-function carregarLayout() {
-  fetch("inclui/header.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("header-placeholder").innerHTML = html);
+document.addEventListener("DOMContentLoaded", () => {
 
-  fetch("inclui/footer.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("footer-placeholder").innerHTML = html);
-}
+  const load = (url, targetId) => {
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error(`Erro ao carregar ${url}`);
+        return res.text();
+      })
+      .then(html => {
+        document.getElementById(targetId).innerHTML = html;
+      })
+      .catch(err => console.error(err));
+  };
 
-document.addEventListener("DOMContentLoaded", carregarLayout);
+  load("includes/header.html", "header-placeholder");
+  load("includes/footer.html", "footer-placeholder");
+
+});
