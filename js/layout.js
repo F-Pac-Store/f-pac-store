@@ -1,26 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const load = async (url, targetId, callback) => {
+  async function loadComponent(url, targetId, callback){
     const target = document.getElementById(targetId);
     if (!target) return;
 
     try {
-      const res = await fetch(url);
-      const html = await res.text();
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`Erro ao carregar ${url}`);
+      }
+
+      const html = await response.text();
       target.innerHTML = html;
 
-      if (callback) callback();
-    } catch (e) {
-      console.error(e);
-    }
-  };
+      // Aguarda renderização antes de rodar script
+      setTimeout(() => {
+        if (callback && typeof callback === "function") {
+          callback();
+        }
+      }, 50);
 
-  load("includes/header.html", "header-placeholder", () => {
-    // SOMENTE depois que o header existe
+    } catch (error) {
+      console.error(error);
+
+      // fallback simples (evita layout quebrado)
+      target.innerHTML = "";
+    }
+  }
+
+  // HEADER
+  loadComponent("includes/header.html", "header-placeholder", () => {
     if (typeof initHeader === "function") {
       initHeader();
     }
   });
 
-  load("includes/footer.html", "footer-placeholder");
+  // FOOTER
+  loadComponent("includes/footer.html", "footer-placeholder");
+
 });
