@@ -1,95 +1,216 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>MARK | F PAC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>MARK | F PAC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#f5f5f5}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-    /* HEADER */
-    .header{background:#111;padding:20px;text-align:center}
-    .header a{color:white;text-decoration:none;font-weight:700}
+:root{
+  --primary:#003366;
+  --accent:#FFC107;
+}
 
-    /* LAYOUT */
-    .produto{
-      max-width:1100px;
-      margin:60px auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      padding:20px;
-    }
+body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
-    .produto-img img{
-      width:100%;
-      border-radius:18px;
-      background:#fff;
-      padding:20px;
-    }
+/* HEADER PADRÃO */
+.header{
+  background:var(--primary);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
 
-    .produto-info h1{font-size:2.2rem}
+.header-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:100px;
+  padding:0 30px;
+}
 
-    .beneficios{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin:20px 0;
-    }
+.logo img{height:70px}
 
-    .beneficios div{
-      background:#fff;
-      padding:14px;
-      border-radius:10px;
-      font-weight:600;
-      text-align:center;
-    }
+/* NAV */
+.nav{display:flex;align-items:center;gap:42px}
+.nav a{
+  text-decoration:none;
+  color:#fff;
+  font-size:.9rem;
+  letter-spacing:2px;
+}
 
-    .descricao{margin:20px 0;line-height:1.6}
+.nav a i{font-size:1.9rem}
 
-    @media(max-width:768px){
-      .produto{grid-template-columns:1fr}
-    }
-  </style>
+/* ÍCONES */
+.icon-cart{position:relative}
+.icon-cart i{color:var(--accent);font-size:1.9rem}
+.icon-whatsapp i{color:#25D366;font-size:1.9rem}
+.icon-instagram i{color:#E1306C;font-size:1.9rem}
+
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-10px;
+  background:var(--accent);
+  color:#000;
+  font-size:11px;
+  font-weight:800;
+  border-radius:50%;
+  padding:3px 6px;
+}
+
+/* MOBILE */
+.menu-toggle{display:none;font-size:2rem;color:#fff;cursor:pointer}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+}
+
+.mobile-overlay.active{opacity:1;visibility:visible}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:220px;
+  height:100vh;
+  background:#001a33;
+  padding:30px 20px;
+  transform:translateX(100%);
+  transition:.4s;
+}
+
+.mobile-menu.active{transform:translateX(0)}
+
+.mobile-menu nav{display:flex;flex-direction:column;gap:32px}
+
+.mobile-menu .icons{display:flex;gap:24px;margin-top:60px}
+
+/* LAYOUT */
+.produto{
+  max-width:1100px;
+  margin:140px auto 60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  padding:20px;
+}
+
+.produto-img img{
+  width:100%;
+  border-radius:18px;
+  background:#fff;
+  padding:20px;
+}
+
+.beneficios{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:20px 0;
+}
+
+.beneficios div{
+  background:#fff;
+  padding:14px;
+  border-radius:10px;
+  font-weight:600;
+  text-align:center;
+}
+
+.descricao{margin:20px 0;line-height:1.6}
+
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-toggle{display:block}
+  .produto{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <a href="catalogo.html">← Voltar</a>
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo">
+      <img src="assets/img/logos/f-pac-color.png">
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">INÍCIO</a>
+      <a href="index.html#produtos">PRODUTOS</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+
+      <a href="carrinho.html" class="icon-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </nav>
+
+    <div class="menu-toggle" onclick="openMenu()">☰</div>
   </div>
+</header>
 
-  <section class="produto">
+<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
 
-    <div class="produto-img">
-      <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
-    </div>
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="index.html">INÍCIO</a>
+    <a href="index.html#produtos">PRODUTOS</a>
+    <a href="catalogo.html">CATÁLOGO</a>
+  </nav>
+</div>
 
-    <div class="produto-info">
-      <h1>Modelo MARK</h1>
+<section class="produto">
+<div class="produto-img">
+<img src="assets/img/cards/FP-peito C.png">
+</div>
 
-      <div class="beneficios">
-        <div>✔ Design minimalista premium</div>
-        <div>✔ Caimento limpo e moderno</div>
-        <div>✔ Conforto para uso diário</div>
-        <div>✔ Versatilidade total</div>
-      </div>
+<div class="produto-info">
+<h1>Modelo MARK</h1>
 
-      <div class="descricao">
-        A MARK é sobre identidade visual bem definida.
-        Com estética limpa, presença equilibrada e acabamento preciso,
-        foi pensada para quem prefere se expressar através de elementos gráficos — não de palavras.
-        <br><br>
-        Aqui, o destaque está no desenho: formas, traços e composições
-        que comunicam sem depender de texto.
-      </div>
-    </div>
+<div class="beneficios">
+<div>✔ Design minimalista premium</div>
+<div>✔ Caimento limpo e moderno</div>
+<div>✔ Conforto para uso diário</div>
+<div>✔ Versatilidade total</div>
+</div>
 
-  </section>
+<div class="descricao">
+A MARK é sobre identidade visual bem definida...
+</div>
+</div>
+</section>
+
+<script>
+function openMenu(){
+  document.getElementById("mobileMenu").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
+}
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+</script>
 
 </body>
 </html>
