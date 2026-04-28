@@ -5,66 +5,91 @@
   <title>MARK | F PAC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
 
-  <!-- ICONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="css/global.css">
+    /* HEADER */
+    .header{background:#111;padding:20px;text-align:center}
+    .header a{color:white;text-decoration:none;font-weight:700}
+
+    /* LAYOUT */
+    .produto{
+      max-width:1100px;
+      margin:60px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      padding:20px;
+    }
+
+    .produto-img img{
+      width:100%;
+      border-radius:18px;
+      background:#fff;
+      padding:20px;
+    }
+
+    .produto-info h1{font-size:2.2rem}
+
+    .beneficios{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:20px 0;
+    }
+
+    .beneficios div{
+      background:#fff;
+      padding:14px;
+      border-radius:10px;
+      font-weight:600;
+      text-align:center;
+    }
+
+    .descricao{margin:20px 0;line-height:1.6}
+
+    @media(max-width:768px){
+      .produto{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <div id="header-placeholder"></div>
+  <div class="header">
+    catalogo.html← Voltar</a>
+  </div>
 
-  <main>
+  <section class="produto">
 
-    <!-- PRODUTO -->
-    <section class="container produto">
+    <div class="produto-img">
+      assets/img/cards/FP-peito C.png
+    </div>
 
-      <div class="produto-img">
-        <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
+    <div class="produto-info">
+      <h1>Modelo MARK</h1>
+
+      <div class="beneficios">
+        <div>✔ Design minimalista premium</div>
+        <div>✔ Caimento limpo e moderno</div>
+        <div>✔ Conforto para uso diário</div>
+        <div>✔ Versatilidade total</div>
       </div>
 
-      <div class="produto-info">
-        <h1>Modelo MARK</h1>
-
-        <div class="beneficios">
-          <div>✔ Design minimalista premium</div>
-          <div>✔ Caimento limpo e moderno</div>
-          <div>✔ Conforto para uso diário</div>
-          <div>✔ Versatilidade total</div>
-        </div>
-
-        <div class="descricao">
-          A MARK é sobre identidade visual bem definida.
-          Com estética limpa, presença equilibrada e acabamento preciso,
-          foi pensada para quem prefere se expressar através de elementos gráficos — não de palavras.
-          <br><br>
-          Aqui, o destaque está no desenho: formas, traços e composições
-          que comunicam sem depender de texto.
-        </div>
-
-        <!-- CTA -->
-        <a href="https://wa.me/5547997465602" target="_blank" class="btn">
-          Comprar pelo WhatsApp
-        </a>
-
+      <div class="descricao">
+        A MARK é sobre identidade visual bem definida.
+        Com estética limpa, presença equilibrada e acabamento preciso,
+        foi pensada para quem prefere se expressar através de elementos gráficos — não de palavras.
+        <br><br>
+        Aqui, o destaque está no desenho: formas, traços e composições
+        que comunicam sem depender de texto.
       </div>
+    </div>
 
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <div id="footer-placeholder"></div>
-
-  <!-- JS -->
-  <script src="js/layout.js"></script>
-  <script src="js/header.js"></script>
+  </section>
 
 </body>
 </html>
