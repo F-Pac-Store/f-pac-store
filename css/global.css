@@ -1,87 +1,29 @@
 /* =============================
-   RESET
+   RESET & VARIÁVEIS
 ============================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  background: #f5f5f5;
-  color: #111;
-}
-
-/* =============================
-   HEADER
-============================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #000;
-  color: #fff;
-}
-
-header img {
-  height: 40px;
-}
-
-/* =============================
-   PRODUTOS
-============================= */
-.produtos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.produto {
-  background: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.produto img {
-  width: 100%;
-  border-radius: 6px;
-}
-
-/* =============================
-   BOTÕES
-============================= */
-button {
-  padding: 10px;
-  border: none;
-  background: black;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-/* =============================
-   CARRINHO
-============================= */
-.item-resumo {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background: #fff;
-  margin-bottom: 10px;
-}
-
-/* =============================
-   HEADER GLOBAL (F PAC)
-============================= */
 :root{
   --primary:#003366;
   --accent:#FFC107;
 }
 
+/* =============================
+   BASE
+============================= */
+body{
+  font-family:'Inter',sans-serif;
+  color:#000;
+  background:#fff;
+}
+
+/* =============================
+   HEADER (PADRÃO INDEX)
+============================= */
 .header{
   background:var(--primary);
   position:fixed;
@@ -105,11 +47,17 @@ button {
   transition:.35s ease;
 }
 
-/* SHRINK */
-.header.shrink .header-content{height:58px}
-.header.shrink .logo img{height:38px}
+.header.shrink .header-content{
+  height:58px;
+}
 
-/* NAV */
+.header.shrink .logo img{
+  height:38px;
+}
+
+/* =============================
+   NAV DESKTOP
+============================= */
 .nav{
   display:flex;
   align-items:center;
@@ -124,9 +72,13 @@ button {
   letter-spacing:2px;
 }
 
-.nav a i{font-size:1.9rem}
+.nav a i{
+  font-size:1.9rem;
+}
 
-/* ÍCONES */
+/* =============================
+   ÍCONES
+============================= */
 .icon-cart{position:relative}
 .icon-cart i{color:var(--accent)}
 .icon-whatsapp i{color:#25D366}
@@ -144,7 +96,9 @@ button {
   padding:3px 6px;
 }
 
-/* MOBILE */
+/* =============================
+   MENU MOBILE
+============================= */
 .menu-toggle{
   display:none;
   font-size:2rem;
@@ -161,7 +115,11 @@ button {
   transition:.3s;
   z-index:1500;
 }
-.mobile-overlay.active{opacity:1;visibility:visible}
+
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
 
 .mobile-menu{
   position:fixed;
@@ -175,7 +133,10 @@ button {
   transition:transform .45s cubic-bezier(.4,0,.2,1);
   z-index:2000;
 }
-.mobile-menu.active{transform:translateX(0)}
+
+.mobile-menu.active{
+  transform:translateX(0);
+}
 
 .mobile-menu .close{
   color:#fff;
@@ -204,9 +165,49 @@ button {
   margin-top:60px;
 }
 
-.mobile-menu .icons i{font-size:2rem}
+.mobile-menu .icons i{
+  font-size:2rem;
+}
 
-/* RESPONSIVO */
+/* =============================
+   LAYOUT PADRÃO
+============================= */
+section{
+  padding:80px 20px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* =============================
+   GRIDS (INDEX / CATÁLOGO)
+============================= */
+.produtos-grid,
+.drop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card-full{
+  height:380px;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.card-full img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* =============================
+   RESPONSIVO
+============================= */
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
