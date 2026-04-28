@@ -1,144 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Carrinho | F Pac Store</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Carrinho | F PAC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheetel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.cssnk rel="stylesheet" href="css/global.cssECÍFICO DO CARRINHO */
+    .cart-container{
+      max-width:800px;
+      margin:auto;
+      padding:40px 20px;
+    }
 
-<style>
-body{
-font-family:Inter,sans-serif;
-background:#f5f5f5;
-margin:0;
-padding-top:120px;
-}
+    .cart-card{
+      background:#fff;
+      border-radius:16px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+    }
 
-.header{
-background:#003366;
-position:fixed;
-top:0;
-width:100%;
-height:100px;
-display:flex;
-align-items:center;
-padding:0 20px;
-}
+    .cart-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid #eee;
+    }
 
-.header a{
-color:white;
-text-decoration:none;
-font-weight:700;
-}
+    .cart-item:last-child{
+      border-bottom:none;
+    }
 
-.container{
-max-width:800px;
-margin:auto;
-padding:20px;
-}
+    .cart-item strong{
+      display:block;
+    }
 
-.card{
-background:#fff;
-border-radius:16px;
-padding:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
+    .cart-item input{
+      width:60px;
+      padding:6px;
+    }
 
-.item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:16px;
-}
+    .remove{
+      background:none;
+      border:none;
+      color:#d00;
+      cursor:pointer;
+      font-weight:800;
+    }
 
-.item strong{display:block}
+    .total{
+      margin-top:20px;
+      font-size:1.3rem;
+      font-weight:800;
+      text-align:right;
+    }
 
-.qtd{
-width:60px;
-padding:6px;
-}
-
-.remove{
-background:none;
-border:none;
-color:#d00;
-cursor:pointer;
-}
-
-.total{
-margin-top:20px;
-font-size:1.3rem;
-font-weight:800;
-}
-
-.btn{
-margin-top:30px;
-width:100%;
-padding:16px;
-background:#000;
-color:#fff;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:800;
-}
-</style>
+    .btn-checkout{
+      margin-top:30px;
+      width:100%;
+      padding:16px;
+      background:#000;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
-  index.html← Continuar comprando</a>
-</header>
+  <!-- HEADER GLOBAL -->
+  <div id="header-placeholder"></div>
 
-<div class="container">
-  <div class="card">
+  <main class="cart-container">
 
-    <h1>Seu carrinho</h1>
+    <div class="cart-card">
+      <h1>Seu carrinho</h1>
 
-    <div id="lista"></div>
+      <div id="lista"></div>
 
-    <div class="total" id="total"></div>
+      <div class="total" id="total"></div>
 
-    <button class="btn" onclick="window.location.href='checkout.html'"></script>
+      <button class="btn-checkout" onclick="window.location.href='checkout.htmlin>
 
-<script>
-function renderCarrinho(){
-  const lista = document.getElementById("lista");
-  const totalDiv = document.getElementById("total");
-  const carrinho = getCarrinho();
+  <!-- FOOTER GLOBAL -->
+  <div id="footer-placeholder"></div>
 
-  lista.innerHTML = "";
+  <!-- JS GLOBAL -->
+  <script src="js/layout.jsscript src="js/header.js"></script>
 
-  if(carrinho.length === 0){
-    lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
-    totalDiv.innerText = "";
-    return;
-  }
+  <script>
+    /* ======== LÓGICA DO CARRINHO ======== */
 
-  carrinho.forEach((item,index)=>{
-    const div = document.createElement("div");
-    div.className="item";
-    div.innerHTML = `
-      <div>
-        <strong>${item.nome}</strong>
-        <small>${item.variacao?.cor || ""} ${item.variacao?.tamanho || ""}</small>
-      </div>
-      <input class="qtd" type="number" min="1"
-        value="${item.quantidade}"
-        onchange="atualizarQuantidade(${index},this.value)">
-      <span>R$ ${(item.preco*item.quantidade).toFixed(2)}</span>
-      <button class="remove" onclick="removerItem(${index});renderCarrinho()">x</button>
-    `;
-    lista.appendChild(div);
-  });
+    function getCarrinho(){
+      return JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+    }
 
-  totalDiv.innerText = "Total: R$ " + calcularTotal().toFixed(2);
-}
+    function salvarCarrinho(carrinho){
+      localStorage.setItem("fpacCarrinho", JSON.stringify(carrinho));
+    }
 
-renderCarrinho();
-</script>
+    function calcularTotal(){
+      return getCarrinho().reduce((acc,item)=>{
+        return acc + item.preco * item.quantidade;
+      },0);
+    }
+
+    function removerItem(index){
+      const carrinho = getCarrinho();
+      carrinho.splice(index,1);
+      salvarCarrinho(carrinho);
+      renderCarrinho();
+    }
+
+    function atualizarQuantidade(index,qtd){
+      const carrinho = getCarrinho();
+      carrinho[index].quantidade = Number(qtd);
+      salvarCarrinho(carrinho);
+      renderCarrinho();
+    }
+
+    function renderCarrinho(){
+      const lista = document.getElementById("lista");
+      const totalDiv = document.getElementById("total");
+      const carrinho = getCarrinho();
+
+      lista.innerHTML = "";
+      totalDiv.innerText = "";
+
+      if(carrinho.length === 0){
+        lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+        return;
+      }
+
+      carrinho.forEach((item,index)=>{
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+          <div>
+            <strong>${item.nome}</strong>
+            <small>${item.variacao || ""}</small>
+          </div>
+          <input type="number" min="1" value="${item.quantidade}"
+            onchange="atualizarQuantidade(${index},this.value)">
+          <span>R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
+          <button class="remove" onclick="removerItem(${index})">x</button>
+        `;
+
+        lista.appendChild(div);
+      });
+
+      totalDiv.innerText = "Total: R$ " + calcularTotal().toFixed(2);
+    }
+
+    renderCarrinho();
+  </script>
 
 </body>
 </html>
