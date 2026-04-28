@@ -5,29 +5,25 @@
   <title>FORCE | F PAC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- FONTE -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
+  <!-- ICONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS GLOBAL PADRÃO DO SITE -->
+  <link rel="stylesheet" href="CSS/global.css">
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#f5f5f5}
+    /* ===== ESTILOS ESPECÍFICOS DO PRODUTO ===== */
 
-    /* HEADER */
-    header.header{
-      background:#003366;
-      padding:20px;
-      text-align:center
+    body{
+      background:#f5f5f5;
     }
 
-    header.header a{
-      color:white;
-      text-decoration:none;
-      font-weight:700
-    }
-
-    /* LAYOUT */
     .produto{
       max-width:1100px;
-      margin:60px auto;
+      margin:160px auto 80px; /* espaço para header fixo */
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:40px;
@@ -42,13 +38,8 @@
     }
 
     .produto-info h1{
-      font-size:2.2rem
-    }
-
-    .tag{
-      margin:10px 0 20px;
-      color:#555;
-      font-weight:600
+      font-size:2.2rem;
+      margin-bottom:20px;
     }
 
     .beneficios{
@@ -68,49 +59,30 @@
 
     .descricao{
       margin:20px 0;
-      line-height:1.6
-    }
-
-    .btn{
-      display:block;
-      background:#000;
-      color:#fff;
-      text-align:center;
-      padding:18px;
-      border-radius:12px;
-      font-weight:800;
-      text-decoration:none;
-    }
-
-    /* PROVA */
-    .prova{
-      margin:60px auto;
-      max-width:900px
-    }
-
-    .comentario{
-      background:#fff;
-      padding:20px;
-      border-radius:12px;
-      margin-bottom:15px
+      line-height:1.6;
+      color:#333;
     }
 
     @media(max-width:768px){
-      .produto{grid-template-columns:1fr}
+      .produto{
+        grid-template-columns:1fr;
+        margin-top:140px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="header">
-    <a href="catalogo.html">← Voltar</a>
-  </header>
+  <!-- HEADER PADRÃO (IGUAL AO INDEX) -->
+  <div id="header-placeholder"></div>
 
+  <!-- CONTEÚDO DO PRODUTO -->
   <section class="produto">
 
     <div class="produto-img">
-      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
+      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png"
+           alt="Camisa F PAC modelo FORCE">
     </div>
 
     <div class="produto-info">
@@ -125,15 +97,25 @@
 
       <div class="descricao">
         A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
-        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada para
-        valorizar estampas de texto acima de qualquer elemento gráfico.
+        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada
+        para valorizar estampas de texto acima de qualquer elemento gráfico.
         <br><br>
         Aqui, a escolha é objetiva: menos imagem, mais mensagem.
       </div>
-
     </div>
 
   </section>
+
+  <!-- CARREGA HEADER + FUNÇÕES -->
+  <script>
+    fetch('inclui/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      });
+  </script>
+
+  <script src="js/header.js"></script>
 
 </body>
 </html>
