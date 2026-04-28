@@ -1,180 +1,215 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Checkout | F Pac Store</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Checkout | F PAC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+  <!-- ICONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-body{
-font-family:Inter,sans-serif;
-background:#f5f5f5;
-padding-top:120px;
-}
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="css/global.css">
 
-/* HEADER */
-.header{
-background:#003366;
-position:fixed;
-top:0;
-width:100%;
-height:100px;
-display:flex;
-align-items:center;
-padding:0 20px;
-z-index:1000;
-}
+  <style>
+    /* ESTILO ESPECÍFICO DO CHECKOUT */
+    .checkout-container{
+      max-width:800px;
+      margin:auto;
+      padding:40px 20px;
+    }
 
-.header a{
-color:white;
-text-decoration:none;
-font-weight:700;
-}
+    .checkout-card{
+      background:#fff;
+      border-radius:16px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+      margin-bottom:30px;
+    }
 
-/* CONTAINER */
-.container{
-max-width:800px;
-margin:auto;
-padding:20px;
-}
+    h1,h2{
+      margin-bottom:16px;
+    }
 
-/* CARD */
-.card{
-background:#fff;
-border-radius:16px;
-padding:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-margin-bottom:30px;
-}
+    #resumoPedido div{
+      margin-bottom:8px;
+    }
 
-h1,h2{
-margin-bottom:15px;
-}
+    .total{
+      margin-top:15px;
+      font-size:1.2rem;
+      font-weight:800;
+    }
 
-/* RESUMO */
-#resumoPedido div{
-margin-bottom:8px;
-}
+    label{
+      display:block;
+      margin-top:14px;
+      font-weight:600;
+    }
 
-.total{
-margin-top:15px;
-font-size:1.2rem;
-font-weight:800;
-}
+    input, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      font-family:inherit;
+    }
 
-/* FORM */
-label{
-display:block;
-margin-top:12px;
-font-weight:600;
-}
+    textarea{
+      resize:none;
+    }
 
-input, textarea, select{
-width:100%;
-margin-top:6px;
-padding:10px;
-border-radius:8px;
-border:1px solid #ccc;
-font-family:inherit;
-}
+    .erro{
+      display:none;
+      background:#fee2e2;
+      color:#7f1d1d;
+      padding:10px;
+      border-radius:8px;
+      margin-top:15px;
+    }
 
-textarea{resize:none}
+    .btn-finalizar{
+      margin-top:25px;
+      width:100%;
+      padding:16px;
+      background:#000;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;
+    }
 
-/* ERRO */
-#erro{
-display:none;
-background:#fee2e2;
-color:#7f1d1d;
-padding:10px;
-border-radius:8px;
-margin-top:15px;
-}
-
-/* BOTÃO */
-.btn{
-margin-top:25px;
-width:100%;
-padding:16px;
-background:#000;
-color:#fff;
-border:none;
-border-radius:12px;
-font-weight:800;
-cursor:pointer;
-}
-
-.btn:hover{
-opacity:.9;
-}
-</style>
+    .btn-finalizar:hover{
+      opacity:.9;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
-  <a href="carrinho.html">← Voltar ao carrinho</a>
-</header>
+  <!-- HEADER GLOBAL -->
+  <div id="header-placeholder"></div>
 
-<div class="container">
+  <main class="checkout-container">
 
-  <!-- RESUMO -->
-  <div class="card">
-    <h2>Resumo do Pedido</h2>
-    <div id="resumoPedido"></div>
-    <div class="total">
-      Total: <span id="totalPedido"></span>
+    <!-- RESUMO -->
+    <div class="checkout-card">
+      <h2>Resumo do Pedido</h2>
+      <div id="resumoPedido"></div>
+      <div class="total">
+        Total: <span id="totalPedido"></span>
+      </div>
     </div>
-  </div>
 
-  <!-- DADOS -->
-  <div class="card">
-    <h2>Dados para entrega</h2>
+    <!-- DADOS DO CLIENTE -->
+    <div class="checkout-card">
+      <h2>Dados para entrega</h2>
 
-    <label>Nome</label>
-    <input type="text" id="nome">
+      <label>Nome</label>
+      <input type="text" id="nome">
 
-    <label>WhatsApp</label>
-    <input type="text" id="whatsapp" placeholder="DDD + número">
+      <label>WhatsApp</label>
+      <input type="text" id="whatsapp" placeholder="DDD + número">
 
-    <label>Bairro</label>
-    <input type="text" id="bairro">
+      <label>Bairro</label>
+      <input type="text" id="bairro">
 
-    <label>Rua</label>
-    <input type="text" id="rua">
+      <label>Rua</label>
+      <input type="text" id="rua">
 
-    <label>Número</label>
-    <input type="text" id="numero">
+      <label>Número</label>
+      <input type="text" id="numero">
 
-    <label>Observações (opcional)</label>
-    <textarea id="obs" rows="3"></textarea>
+      <label>Observações (opcional)</label>
+      <textarea id="obs" rows="3"></textarea>
 
-    <div id="erro">Preencha todos os campos obrigatórios.</div>
+      <div class="erro" id="erro">
+        Preencha todos os campos obrigatórios.
+      </div>
 
-    <button class="btn" onclick="confirmarCheckout()">
-      Finalizar pedido pelo WhatsApp
-    </button>
-  </div>
+      <button class="btn-finalizar" onclick="confirmarCheckout()">
+        Finalizar pedido pelo WhatsApp
+      </button>
+    </div>
 
-</div>
+  </main>
 
-<!-- SCRIPTS -->
-<script src="js/carrinho.js"></script>
-<script src="checkout.js"></script>
+  <!-- FOOTER GLOBAL -->
+  <div id="footer-placeholder"></div>
 
-<script>
-/* Mapeia elementos para o checkout.js */
-const nomeEl = document.getElementById("nome");
-const whatsappEl = document.getElementById("whatsapp");
-const bairroEl = document.getElementById("bairro");
-const ruaEl = document.getElementById("rua");
-const numeroEl = document.getElementById("numero");
-const obsEl = document.getElementById("obs");
-const erroEl = document.getElementById("erro");
-</script>
+  <!-- JS GLOBAL -->
+  <script src="js/layout.js"></script>
+  <script src="js/header.js"></script>
+
+  <script>
+    /* ===== LÓGICA DO CHECKOUT ===== */
+
+    function getCarrinho(){
+      return JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+    }
+
+    function calcularTotal(){
+      return getCarrinho().reduce((acc,item)=>{
+        return acc + item.preco * item.quantidade;
+      },0);
+    }
+
+    function renderResumo(){
+      const resumoDiv = document.getElementById("resumoPedido");
+      const totalSpan = document.getElementById("totalPedido");
+      const carrinho = getCarrinho();
+
+      resumoDiv.innerHTML = "";
+
+      carrinho.forEach(item=>{
+        const linha = document.createElement("div");
+        linha.innerText = `${item.quantidade}x ${item.nome} – R$ ${(item.preco * item.quantidade).toFixed(2)}`;
+        resumoDiv.appendChild(linha);
+      });
+
+      totalSpan.innerText = "R$ " + calcularTotal().toFixed(2);
+    }
+
+    function confirmarCheckout(){
+      const nome = document.getElementById("nome").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const bairro = document.getElementById("bairro").value.trim();
+      const rua = document.getElementById("rua").value.trim();
+      const numero = document.getElementById("numero").value.trim();
+      const obs = document.getElementById("obs").value.trim();
+      const erro = document.getElementById("erro");
+
+      if(!nome || !whatsapp || !bairro || !rua || !numero){
+        erro.style.display = "block";
+        return;
+      }
+
+      erro.style.display = "none";
+
+      const carrinho = getCarrinho();
+      let mensagem = `Pedido F PAC (%0A)%0A`;
+
+      carrinho.forEach(item=>{
+        mensagem += `${item.quantidade}x ${item.nome} - R$ ${(item.preco * item.quantidade).toFixed(2)}%0A`;
+      });
+
+      mensagem += `%0ATotal: R$ ${calcularTotal().toFixed(2)}%0A%0A`;
+      mensagem += `Nome: ${nome}%0A`;
+      mensagem += `WhatsApp: ${whatsapp}%0A`;
+      mensagem += `Endereço: ${rua}, ${numero} - ${bairro}%0A`;
+      if(obs) mensagem += `Obs: ${obs}%0A`;
+
+      const url = `https://wa.me/5547997465602?text=${mensagem}`;
+      window.open(url, "_blank");
+    }
+
+    renderResumo();
+  </script>
 
 </body>
 </html>
