@@ -250,7 +250,7 @@ section{
   letter-spacing:1px;
 }
 
-/* FOOTER */
+/* FOOTER PADRÃO */
 .footer{
   background:var(--primary);
   padding:30px 20px;
@@ -258,8 +258,6 @@ section{
 }
 
 .footer-content{
-  max-width:1200px;
-  margin:auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -295,12 +293,8 @@ section{
   opacity:.8;
 }
 
-/* RESPONSIVO */
+/* MOBILE */
 @media(max-width:768px){
-
-  .nav{display:none}
-  .menu-toggle{display:block}
-
   .footer-content{
     flex-direction:column;
     text-align:center;
