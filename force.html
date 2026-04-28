@@ -1,139 +1,282 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>FORCE | F PAC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>FORCE | F PAC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#f5f5f5}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-    /* HEADER */
-    header.header{
-      background:#003366;
-      padding:20px;
-      text-align:center
-    }
+:root{
+  --primary:#003366;
+  --accent:#FFC107;
+}
 
-    header.header a{
-      color:white;
-      text-decoration:none;
-      font-weight:700
-    }
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f5f5;
+}
 
-    /* LAYOUT */
-    .produto{
-      max-width:1100px;
-      margin:60px auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      padding:20px;
-    }
+/* HEADER PADRÃO */
+.header{
+  background:var(--primary);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  transition:.35s ease;
+}
 
-    .produto-img img{
-      width:100%;
-      border-radius:18px;
-      background:#fff;
-      padding:20px;
-    }
+.header-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:100px;
+  padding:0 30px;
+}
 
-    .produto-info h1{
-      font-size:2.2rem
-    }
+.logo img{height:70px}
 
-    .tag{
-      margin:10px 0 20px;
-      color:#555;
-      font-weight:600
-    }
+.nav{display:flex;align-items:center;gap:42px}
+.nav a{
+  text-decoration:none;
+  color:#fff;
+  font-size:.9rem;
+  letter-spacing:2px;
+}
 
-    .beneficios{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin:20px 0;
-    }
+.nav a i{font-size:1.9rem}
 
-    .beneficios div{
-      background:#fff;
-      padding:14px;
-      border-radius:10px;
-      font-weight:600;
-      text-align:center;
-    }
+.icon-cart{position:relative}
+.icon-cart i{color:var(--accent)}
+.icon-whatsapp i{color:#25D366}
+.icon-instagram i{color:#E1306C}
 
-    .descricao{
-      margin:20px 0;
-      line-height:1.6
-    }
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-10px;
+  background:var(--accent);
+  color:#000;
+  font-size:11px;
+  font-weight:800;
+  border-radius:50%;
+  padding:3px 6px;
+}
 
-    .btn{
-      display:block;
-      background:#000;
-      color:#fff;
-      text-align:center;
-      padding:18px;
-      border-radius:12px;
-      font-weight:800;
-      text-decoration:none;
-    }
+/* MOBILE */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+}
 
-    /* PROVA */
-    .prova{
-      margin:60px auto;
-      max-width:900px
-    }
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
 
-    .comentario{
-      background:#fff;
-      padding:20px;
-      border-radius:12px;
-      margin-bottom:15px
-    }
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
 
-    @media(max-width:768px){
-      .produto{grid-template-columns:1fr}
-    }
-  </style>
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  width:220px;
+  height:100vh;
+  background:#001a33;
+  padding:30px 20px;
+  transform:translateX(100%);
+  transition:.4s;
+  z-index:2000;
+}
+
+.mobile-menu.active{
+  transform:translateX(0);
+}
+
+.mobile-menu .close{
+  color:#fff;
+  font-size:1.6rem;
+  margin-bottom:40px;
+  text-align:right;
+  cursor:pointer;
+}
+
+.mobile-menu nav{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+.mobile-menu nav a{
+  color:#fff;
+  text-decoration:none;
+}
+
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+}
+
+.mobile-menu .icons i{
+  font-size:2rem;
+}
+
+/* LAYOUT */
+.produto{
+  max-width:1100px;
+  margin:140px auto 60px; /* ajustado por causa do header fixo */
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  padding:20px;
+}
+
+.produto-img img{
+  width:100%;
+  border-radius:18px;
+  background:#fff;
+  padding:20px;
+}
+
+.produto-info h1{
+  font-size:2.2rem
+}
+
+.beneficios{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:20px 0;
+}
+
+.beneficios div{
+  background:#fff;
+  padding:14px;
+  border-radius:10px;
+  font-weight:600;
+  text-align:center;
+}
+
+.descricao{
+  margin:20px 0;
+  line-height:1.6
+}
+
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-toggle{display:block}
+  .produto{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-  <header class="header">
-    <a href="catalogo.html">← Voltar</a>
-  </header>
+<header class="header">
+  <div class="header-content">
+    <a href="index.html" class="logo">
+      <img src="assets/img/logos/f-pac-color.png">
+    </a>
 
-  <section class="produto">
+    <nav class="nav">
+      <a href="index.html">INÍCIO</a>
+      <a href="index.html#produtos">PRODUTOS</a>
+      <a href="catalogo.html">CATÁLOGO</a>
 
-    <div class="produto-img">
-      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
+      <a href="carrinho.html" class="icon-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </nav>
+
+    <div class="menu-toggle" onclick="openMenu()">☰</div>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close" onclick="closeMenu()">✕</div>
+
+  <nav>
+    <a href="index.html">INÍCIO</a>
+    <a href="index.html#produtos">PRODUTOS</a>
+    <a href="catalogo.html">CATÁLOGO</a>
+  </nav>
+
+  <div class="icons">
+    <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a href="https://wa.me/5547997465602"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</div>
+
+<section class="produto">
+
+  <div class="produto-img">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+  </div>
+
+  <div class="produto-info">
+    <h1>Modelo FORCE</h1>
+
+    <div class="beneficios">
+      <div>✔ Tecido encorpado premium</div>
+      <div>✔ Caimento estruturado</div>
+      <div>✔ Alta durabilidade</div>
+      <div>✔ Estilo forte e marcante</div>
     </div>
 
-    <div class="produto-info">
-      <h1>Modelo FORCE</h1>
-
-      <div class="beneficios">
-        <div>✔ Tecido encorpado premium</div>
-        <div>✔ Caimento estruturado</div>
-        <div>✔ Alta durabilidade</div>
-        <div>✔ Estilo forte e marcante</div>
-      </div>
-
-      <div class="descricao">
-        A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
-        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada para
-        valorizar estampas de texto acima de qualquer elemento gráfico.
-        <br><br>
-        Aqui, a escolha é objetiva: menos imagem, mais mensagem.
-      </div>
-
+    <div class="descricao">
+      A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
+      Modelagem firme, tecido mais encorpado e uma presença visual direta.
     </div>
+  </div>
 
-  </section>
+</section>
+
+<script>
+function openMenu(){
+  document.getElementById("mobileMenu").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
+}
+
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+
+function atualizarCarrinho(){
+  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+  document.getElementById("cartCount").innerText = carrinho.length;
+}
+
+atualizarCarrinho();
+</script>
 
 </body>
 </html>
