@@ -11,10 +11,10 @@
   <!-- ÍCONES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS GLOBAL (MESMO DO INDEX) -->
+  <!-- CSS GLOBAL (IGUAL AO INDEX) -->
   <link rel="stylesheet" href="CSS/global.css">
 
-  <!-- CSS DO PRODUTO (IGUAL AO QUE VOCÊ GOSTOU) -->
+  <!-- CSS DO PRODUTO (LAYOUT ORIGINAL PRESERVADO) -->
   <style>
     body{
       background:#f5f5f5;
@@ -73,10 +73,10 @@
 
 <body>
 
-  <!-- MENU DO INDEX (INCLUÍDO, SEM INTERFERIR NO LAYOUT) -->
+  <!-- MENU DO INDEX -->
   <div id="header-placeholder"></div>
 
-  <!-- PRODUTO (EXATAMENTE COMO ANTES) -->
+  <!-- PRODUTO (EXATAMENTE COMO VOCÊ GOSTOU) -->
   <section class="produto">
 
     <div class="produto-img">
@@ -111,21 +111,26 @@
 
     <div class="drop-grid">
       <a href="prime.html" class="card-full">
-        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="">
+        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
       </a>
 
       <a href="mark.html" class="card-full">
-        <img src="assets/img/cards/FP-peito C.png" alt="">
+        <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
       </a>
     </div>
   </section>
 
-  <!-- CARREGA O MENU -->
+  <!-- CARREGA O MENU DO INDEX (SEM INJETAR 404) -->
   <script>
     fetch('inclui/header.html')
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok) return;
+        return res.text();
+      })
       .then(html => {
-        document.getElementById('header-placeholder').innerHTML = html;
+        if (html) {
+          document.getElementById('header-placeholder').innerHTML = html;
+        }
       });
   </script>
 
