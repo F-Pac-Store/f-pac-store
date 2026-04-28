@@ -5,137 +5,38 @@
   <title>FORCE | F PAC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTE -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- ÍCONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- CSS GLOBAL (IGUAL AO INDEX) -->
   <link rel="stylesheet" href="CSS/global.css">
-
-  <!-- CSS DO PRODUTO (LAYOUT ORIGINAL PRESERVADO) -->
-  <style>
-    body{
-      background:#f5f5f5;
-    }
-
-    .produto{
-      max-width:1100px;
-      margin:160px auto 80px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      padding:20px;
-    }
-
-    .produto-img img{
-      width:100%;
-      border-radius:18px;
-      background:#fff;
-      padding:20px;
-    }
-
-    .produto-info h1{
-      font-size:2.2rem;
-      margin-bottom:20px;
-    }
-
-    .beneficios{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin:20px 0;
-    }
-
-    .beneficios div{
-      background:#fff;
-      padding:14px;
-      border-radius:10px;
-      font-weight:600;
-      text-align:center;
-    }
-
-    .descricao{
-      margin:20px 0;
-      line-height:1.6;
-      color:#333;
-    }
-
-    @media(max-width:768px){
-      .produto{
-        grid-template-columns:1fr;
-        margin-top:140px;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- MENU DO INDEX -->
-  <div id="header-placeholder"></div>
+<div id="header-placeholder"></div>
 
-  <!-- PRODUTO (EXATAMENTE COMO VOCÊ GOSTOU) -->
-  <section class="produto">
+<section class="produto">
+  <div class="produto-img">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+  </div>
 
-    <div class="produto-img">
-      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
-    </div>
+  <div class="produto-info">
+    <h1>Modelo FORCE</h1>
+  </div>
+</section>
 
-    <div class="produto-info">
-      <h1>Modelo FORCE</h1>
+<section class="drop">
+  <h2 class="drop-title">Outras opções</h2>
+  <div class="drop-grid">
+    <a href="prime.html" class="card-full">
+      <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+    </a>
+  </div>
+</section>
 
-      <div class="beneficios">
-        <div>✔ Tecido encorpado premium</div>
-        <div>✔ Caimento estruturado</div>
-        <div>✔ Alta durabilidade</div>
-        <div>✔ Estilo forte e marcante</div>
-      </div>
-
-      <div class="descricao">
-        A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
-        Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada
-        para valorizar estampas de texto acima de qualquer elemento gráfico.
-        <br><br>
-        Aqui, a escolha é objetiva: menos imagem, mais mensagem.
-      </div>
-    </div>
-
-  </section>
-
-  <!-- CARDS (MESMO PADRÃO DOS DESTAQUES DO INDEX) -->
-  <section class="drop">
-    <h2 class="drop-title">Outras opções</h2>
-    <p class="drop-subtitle">Explore outras estampas no mesmo padrão PRIME</p>
-
-    <div class="drop-grid">
-      <a href="prime.html" class="card-full">
-        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
-      </a>
-
-      <a href="mark.html" class="card-full">
-        <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
-      </a>
-    </div>
-  </section>
-
-  <!-- CARREGA O MENU DO INDEX (SEM INJETAR 404) -->
-  <script>
-    fetch('inclui/header.html')
-      .then(res => {
-        if (!res.ok) return;
-        return res.text();
-      })
-      .then(html => {
-        if (html) {
-          document.getElementById('header-placeholder').innerHTML = html;
-        }
-      });
-  </script>
-
-  <script src="js/header.js"></script>
+<script>
+fetch('inclui/header.html')
+  .then(r => r.text())
+  .then(h => document.getElementById('header-placeholder').innerHTML = h);
+</script>
 
 </body>
 </html>
-``
