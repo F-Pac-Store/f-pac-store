@@ -7,6 +7,14 @@
   box-sizing:border-box;
 }
 
+img{
+  display:block;
+  max-width:100%;
+}
+
+/* =============================
+   VARIÁVEIS
+============================= */
 :root{
   --primary:#003366;
   --accent:#FFC107;
@@ -21,8 +29,12 @@ body{
   background:#fff;
 }
 
+main{
+  padding-top:100px; /* evita conteúdo atrás do header fixo */
+}
+
 /* =============================
-   HEADER (PADRÃO INDEX)
+   HEADER (PADRÃO GERAL)
 ============================= */
 .header{
   background:var(--primary);
@@ -182,7 +194,7 @@ section{
 }
 
 /* =============================
-   GRIDS (INDEX / CATÁLOGO)
+   GRIDS
 ============================= */
 .produtos-grid,
 .drop-grid{
@@ -206,9 +218,56 @@ section{
 }
 
 /* =============================
+   FOOTER SLIM (PADRÃO FINAL)
+============================= */
+.footer{
+  background:var(--primary);
+  padding:10px 30px;
+}
+
+.footer-content{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.footer-logo img{
+  height:32px;
+}
+
+.footer-text{
+  font-size:.75rem;
+  color:#fff;
+  opacity:.9;
+  letter-spacing:.4px;
+  text-align:center;
+  flex:1;
+}
+
+.footer-social a{
+  color:#fff;
+  font-size:1.4rem;
+  margin-left:16px;
+  transition:.3s;
+}
+
+.footer-social a:hover{
+  color:var(--accent);
+}
+
+/* =============================
    RESPONSIVO
 ============================= */
 @media(max-width:768px){
   .nav{display:none}
   .menu-toggle{display:block}
+
+  .footer-content{
+    flex-direction:column;
+    gap:6px;
+  }
 }
+``
