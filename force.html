@@ -6,12 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="CSS/global.css">
+
+  <style>
+    body{font-family:'Inter',sans-serif;background:#f5f5f5}
+
+    .produto{
+      max-width:1100px;
+      margin:60px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      padding:20px;
+    }
+
+    .produto-img img{
+      width:100%;
+      border-radius:18px;
+      background:#fff;
+      padding:20px;
+    }
+
+    .produto-info h1{font-size:2.2rem}
+
+    .beneficios{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:20px 0;
+    }
+
+    .beneficios div{
+      background:#fff;
+      padding:14px;
+      border-radius:10px;
+      font-weight:600;
+      text-align:center;
+    }
+
+    .descricao{margin:20px 0;line-height:1.6}
+  </style>
 </head>
 
 <body>
-
-<div id="header-placeholder"></div>
 
 <section class="produto">
   <div class="produto-img">
@@ -20,23 +56,19 @@
 
   <div class="produto-info">
     <h1>Modelo FORCE</h1>
+
+    <div class="beneficios">
+      <div>✔ Tecido encorpado premium</div>
+      <div>✔ Caimento estruturado</div>
+      <div>✔ Alta durabilidade</div>
+      <div>✔ Estilo forte e marcante</div>
+    </div>
+
+    <div class="descricao">
+      A FORCE foi criada para quem prefere comunicar com clareza...
+    </div>
   </div>
 </section>
-
-<section class="drop">
-  <h2 class="drop-title">Outras opções</h2>
-  <div class="drop-grid">
-    <a href="prime.html" class="card-full">
-      <img src="assets/img/cards/F-PAC-frente-e-costas.png">
-    </a>
-  </div>
-</section>
-
-<script>
-fetch('inclui/header.html')
-  .then(r => r.text())
-  .then(h => document.getElementById('header-placeholder').innerHTML = h);
-</script>
 
 </body>
 </html>
