@@ -1,323 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo | F Pac Store</title>
+  <meta charset="UTF-8">
+  <title>Catálogo | F PAC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheetel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.cssnk rel="stylesheet" href="css/global.cssER GLOBAL -->
+  <div id="header-placeholder"></div>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+  <main class="container">
 
-:root{
-  --primary:#003366;
-  --accent:#FFC107;
-  --bg:#f5f5f5;
-}
-
-body{font-family:'Inter',sans-serif;background:var(--bg)}
-
-/* HEADER */
-.header{
-  background:var(--primary);
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-  transition:.35s ease;
-}
-
-.header-content{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:100px;
-  padding:0 30px;
-  transition:.35s ease;
-}
-
-.logo img{height:70px;transition:.35s ease}
-
-.header.shrink .header-content{height:58px}
-.header.shrink .logo img{height:38px}
-
-/* NAV */
-.nav{
-  display:flex;
-  align-items:center;
-  gap:42px;
-}
-
-.nav a{
-  text-decoration:none;
-  color:#fff;
-  font-size:.9rem;
-  letter-spacing:2px;
-}
-
-.nav a i{font-size:1.9rem}
-
-.icon-cart{position:relative}
-.icon-cart i{color:var(--accent)}
-.icon-whatsapp i{color:#25D366}
-.icon-instagram i{color:#E1306C}
-
-.cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-10px;
-  background:var(--accent);
-  color:#000;
-  font-size:11px;
-  font-weight:800;
-  border-radius:50%;
-  padding:3px 6px;
-}
-
-/* MOBILE MENU */
-.menu-toggle{
-  display:none;
-  font-size:2rem;
-  color:white;
-  cursor:pointer;
-}
-
-.mobile-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-  z-index:1500;
-}
-.mobile-overlay.active{opacity:1;visibility:visible}
-
-.mobile-menu{
-  position:fixed;
-  top:0;
-  right:0;
-  width:220px;
-  height:100vh;
-  background:#001a33;
-  padding:30px 20px;
-  transform:translateX(100%);
-  transition:.45s;
-  z-index:2000;
-}
-.mobile-menu.active{transform:translateX(0)}
-
-.mobile-menu .close{
-  color:white;
-  font-size:1.6rem;
-  margin-bottom:40px;
-  text-align:right;
-  cursor:pointer;
-}
-
-.mobile-menu nav{
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-}
-
-.mobile-menu nav a{
-  color:white;
-  text-decoration:none;
-  letter-spacing:2px;
-}
-
-.mobile-menu .icons{
-  display:flex;
-  gap:24px;
-  margin-top:60px;
-}
-
-.mobile-menu .icons i{font-size:2rem}
-
-/* CONTEÚDO */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:140px 20px 80px;
-}
-
-.titulo{text-align:center;margin-bottom:40px}
-
-.titulo h1{font-size:2rem;font-weight:800}
-
-.titulo p{
-  margin-top:12px;
-  color:#555;
-  max-width:680px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-
-.card-produto{
-  background:#fff;
-  height:200px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.1);
-  transition:.25s;
-  padding:20px;
-}
-
-.card-produto:hover{transform:translateY(-6px)}
-
-.card-produto img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-}
-
-.placeholder{color:#999}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-  .nav{display:none}
-  .menu-toggle{display:block}
-}
-</style>
-</head>
-
-<body>
-
-<header class="header" id="header">
-  <div class="header-content">
-
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
-    </a>
-
-    <nav class="nav">
-      <a href="index.html">INÍCIO</a>
-      <a href="index.html#produtos">PRODUTOS</a>
-      <a href="catalogo.html">CATÁLOGO</a>
-
-      <a href="carrinho.html" class="icon-cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="cart-badge" id="cartCount">0</span>
-      </a>
-
-      <a href="https://wa.me/5547997465602" class="icon-whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </nav>
-
-    <div class="menu-toggle" onclick="openMenu()">☰</div>
-
-  </div>
-</header>
-
-<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="close" onclick="closeMenu()">✕</div>
-
-  <nav>
-    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
-    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
-    <a href="catalogo.html">CATÁLOGO</a>
-  </nav>
-
-  <div class="icons">
-    <a href="carrinho.html" class="icon-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-    <a href="https://wa.me/5547997465602" class="icon-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
-  </div>
-</div>
-
-<main class="container">
-
-  <div class="titulo">
-    <h1>Catálogo Completo</h1>
-    <p>Todas as estampas disponíveis para sua PRIME.</p>
-  </div>
-
-  <div class="produtos-grid">
-
-    <!-- ORDEM ORIGINAL PRESERVADA -->
-
-    <div class="card-produto"><img src="assets/img/logos/f-pac-color.png"></div>
-
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-
-    <div class="card-produto"><img src="assets/img/logos/FP-preto.png"></div>
-
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-
-    <div class="card-produto"><img src="assets/img/estampas/f-pac-camaleao.png"></div>
-
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-
-    <div class="card-produto"><img src="assets/img/estampas/FP-agua.png"></div>
-
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-
-    <div class="card-produto"><img src="assets/img/estampas/f-pac-bordado.png"></div>
-
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-
-    <div class="card-produto">
-      <img src="assets/img/estampas/FP-pixel.png">
+    <div class="titulo">
+      <h1>Catálogo Completo</h1>
+      <p>Todas as estampas disponíveis para sua PRIME.</p>
     </div>
 
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
+    <div class="produtos-grid">
 
-    <div class="card-produto"><span class="placeholder">Em breve</span></div>
+      <!-- ORDEM ORIGINAL PRESERVADA -->
 
-  </div>
+      <div class="card-produto">
+        <img src="assets/img/logos/f-pac-color.png" alt="F PACdiv class="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-</main>
+      <div class="card-produto">
+        <img src="assets/img/logos/FP-preto.png" alt="FP Preto class="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-<script>
-const header = document.getElementById("header");
-const menu = document.getElementById("mobileMenu");
-const overlay = document.getElementById("overlay");
+      <div class="card-produto">
+        <img src="assets/img/estampas/f-pac-camaleao.png" alt="F PAC Camaleão="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-function openMenu(){
-  menu.classList.add("active");
-  overlay.classList.add("active");
-}
+      <div class="card-produto">
+        <img src="assets/img/estampas/FP-agua.png" alt="FP  <div class="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-function closeMenu(){
-  menu.classList.remove("active");
-  overlay.classList.remove("active");
-}
+      <div class="card-produto">
+        <img src="assets/img/estampas/f-pac-bordado.png" alt="F PAC Bordados="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-window.addEventListener("scroll",()=>{
-  header.classList.toggle("shrink", window.scrollY > 80);
-});
+      <div class="card-produto">
+        <img src="assets/img/estampas/FP-pixel.png" alt="FP  <div class="card-produto"><span class="placeholder">Em breve</span></div>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-function atualizarCarrinho(){
-  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
-  document.getElementById("cartCount").innerText = carrinho.length;
-}
-atualizarCarrinho();
-</script>
+      <div class="card-produto"><span class="placeholder">Em breve</span></div>
 
-</body>
+    </div>
+
+  </main>
+
+  <!-- FOOTER GLOBAL -->
+  <div id="footer-placeholder"></div>
+
+  <!-- JS GLOBAL -->
+  <script src="js/layout  <script src="js/header.jsbody>
 </html>
