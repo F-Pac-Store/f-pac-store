@@ -5,7 +5,9 @@
 <title>FORCE | F PAC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONTE -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- ICONES -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -19,9 +21,12 @@
 body{
   font-family:'Inter',sans-serif;
   background:#f5f5f5;
+  color:#000;
 }
 
-/* HEADER */
+/* =============================
+   HEADER
+============================= */
 .header{
   background:var(--primary);
   position:fixed;
@@ -31,24 +36,31 @@ body{
 }
 
 .header-content{
+  height:100px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  height:100px;
   padding:0 30px;
 }
 
 .logo img{height:70px}
 
-/* NAV */
-.nav{display:flex;gap:42px}
-.nav a{color:#fff;text-decoration:none;letter-spacing:2px}
-.nav a i{font-size:1.9rem}
+.nav{
+  display:flex;
+  gap:42px;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:.9rem;
+  letter-spacing:2px;
+}
+
+.nav i{font-size:1.9rem}
 
 .icon-cart{position:relative}
 .icon-cart i{color:var(--accent)}
-.icon-whatsapp i{color:#25D366}
-.icon-instagram i{color:#E1306C}
 
 .cart-badge{
   position:absolute;
@@ -62,10 +74,12 @@ body{
   padding:3px 6px;
 }
 
-/* PRODUTO */
+/* =============================
+   PRODUTO
+============================= */
 .produto{
   max-width:1100px;
-  margin:140px auto 60px;
+  margin:160px auto 80px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
@@ -77,6 +91,11 @@ body{
   border-radius:18px;
   background:#fff;
   padding:20px;
+}
+
+.produto-info h1{
+  font-size:2.2rem;
+  margin-bottom:20px;
 }
 
 .beneficios{
@@ -94,9 +113,13 @@ body{
   text-align:center;
 }
 
-.descricao{margin:20px 0;line-height:1.6}
+.descricao{
+  line-height:1.6;
+}
 
-/* SEÇÃO PREÇO */
+/* =============================
+   SEÇÃO PREÇO
+============================= */
 .preco-section{
   background:#0b0b0b;
   color:#fff;
@@ -107,13 +130,7 @@ body{
   text-align:center;
   font-size:2rem;
   font-weight:800;
-  margin-bottom:40px; /* ✅ ESPAÇO ENTRE TÍTULO E CARDS */
-}
-
-.preco-sub{
-  text-align:center;
-  margin:10px 0 40px;
-  color:#ccc;
+  margin-bottom:40px;
 }
 
 .preco-grid{
@@ -124,7 +141,6 @@ body{
   margin:auto;
 }
 
-/* CARD PADRÃO INDEX */
 .card-full{
   height:380px;
   border-radius:18px;
@@ -138,7 +154,6 @@ body{
   object-fit:cover;
 }
 
-/* OVERLAY PREÇO */
 .preco-overlay{
   position:absolute;
   bottom:0;
@@ -146,21 +161,46 @@ body{
   background:rgba(0,0,0,.65);
   color:#fff;
   text-align:center;
-  padding:18px;
-  font-size:1.3rem;
+  padding:16px;
+  font-size:1.2rem;
   font-weight:800;
 }
 
-/* HOVER */
-.card-full:hover{
-  transform:scale(1.02);
-  transition:.3s;
+/* =============================
+   FOOTER SLIM (FINAL)
+============================= */
+.footer{
+  background:var(--primary);
+  padding:8px 30px; /* ALTURA NO LIMITE DA LOGO */
+}
+
+.footer-content{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.footer-logo img{
+  height:32px;
+}
+
+.footer-text{
+  font-size:0.75rem;
+  color:#fff;
+  opacity:.9;
+  letter-spacing:.4px;
 }
 
 /* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
   .produto{grid-template-columns:1fr}
+  .footer-content{
+    flex-direction:column;
+    gap:6px;
+  }
 }
 </style>
 </head>
@@ -170,7 +210,7 @@ body{
 <header class="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
     </a>
 
     <nav class="nav">
@@ -182,14 +222,6 @@ body{
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge">0</span>
       </a>
-
-      <a href="#" class="icon-whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="#" class="icon-instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
     </nav>
   </div>
 </header>
@@ -197,10 +229,10 @@ body{
 <section class="produto">
 
   <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Modelo FORCE">
   </div>
 
-  <div>
+  <div class="produto-info">
     <h1>Modelo FORCE</h1>
 
     <div class="beneficios">
@@ -212,8 +244,7 @@ body{
 
     <div class="descricao">
       A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
-      Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada
-      para valorizar estampas de texto acima de qualquer elemento gráfico.
+      Modelagem firme, tecido mais encorpado e uma presença visual direta.
       <br><br>
       Aqui, a escolha é objetiva: menos imagem, mais mensagem.
     </div>
@@ -221,13 +252,10 @@ body{
 
 </section>
 
-<!-- CARDS DE PREÇO -->
 <section class="preco-section">
-
   <h2 class="preco-title">Escolha sua versão</h2>
 
   <div class="preco-grid">
-
     <a href="#" class="card-full">
       <img src="assets/img/cards/F-PAC-ESCRITA-peito C (2).png">
       <div class="preco-overlay">R$ 89,90 • Básica</div>
@@ -237,10 +265,20 @@ body{
       <img src="assets/img/cards/F-PAC-ESCRITA-peito C (3).png">
       <div class="preco-overlay">R$ 89,90 • Básica</div>
     </a>
-
   </div>
-
 </section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
+    </div>
+
+    <div class="footer-text">
+      © F PAC – Não é só roupa. É identidade!
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
