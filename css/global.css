@@ -237,6 +237,16 @@ section{
   opacity:1;
 }
 
+.preco-overlay{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  padding:10px;
+  font-size:.9rem;
+}
+
 /* PLACEHOLDER */
 .placeholder{
   position:absolute;
