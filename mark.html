@@ -16,7 +16,10 @@
   --accent:#FFC107;
 }
 
-body{font-family:'Inter',sans-serif;background:#f5f5f5}
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f5f5;
+}
 
 /* HEADER PADRÃO */
 .header{
@@ -25,6 +28,7 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   top:0;
   width:100%;
   z-index:1000;
+  transition:.35s ease;
 }
 
 .header-content{
@@ -33,16 +37,22 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   align-items:center;
   height:100px;
   padding:0 30px;
+  transition:.35s ease;
 }
 
-.logo img{height:70px}
+.logo img{height:70px;transition:.35s ease}
+
+.header.shrink .header-content{height:58px}
+.header.shrink .logo img{height:38px}
 
 /* NAV */
 .nav{display:flex;align-items:center;gap:42px}
+
 .nav a{
   text-decoration:none;
   color:#fff;
   font-size:.9rem;
+  font-weight:500;
   letter-spacing:2px;
 }
 
@@ -50,9 +60,21 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
 /* ÍCONES */
 .icon-cart{position:relative}
-.icon-cart i{color:var(--accent);font-size:1.9rem}
-.icon-whatsapp i{color:#25D366;font-size:1.9rem}
-.icon-instagram i{color:#E1306C;font-size:1.9rem}
+
+.icon-cart i{
+  color:var(--accent);
+  font-size:1.9rem;
+}
+
+.icon-whatsapp i{
+  color:#25D366;
+  font-size:1.9rem;
+}
+
+.icon-instagram i{
+  color:#E1306C;
+  font-size:1.9rem;
+}
 
 .cart-badge{
   position:absolute;
@@ -66,8 +88,13 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   padding:3px 6px;
 }
 
-/* MOBILE */
-.menu-toggle{display:none;font-size:2rem;color:#fff;cursor:pointer}
+/* MENU MOBILE */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+}
 
 .mobile-overlay{
   position:fixed;
@@ -75,9 +102,14 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   background:rgba(0,0,0,.45);
   opacity:0;
   visibility:hidden;
+  transition:.3s;
+  z-index:1500;
 }
 
-.mobile-overlay.active{opacity:1;visibility:visible}
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
 
 .mobile-menu{
   position:fixed;
@@ -88,14 +120,44 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   background:#001a33;
   padding:30px 20px;
   transform:translateX(100%);
-  transition:.4s;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  z-index:2000;
 }
 
-.mobile-menu.active{transform:translateX(0)}
+.mobile-menu.active{
+  transform:translateX(0);
+}
 
-.mobile-menu nav{display:flex;flex-direction:column;gap:32px}
+.mobile-menu .close{
+  color:#fff;
+  font-size:1.6rem;
+  margin-bottom:40px;
+  text-align:right;
+  cursor:pointer;
+}
 
-.mobile-menu .icons{display:flex;gap:24px;margin-top:60px}
+.mobile-menu nav{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+.mobile-menu nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1rem;
+  letter-spacing:2px;
+}
+
+.mobile-menu .icons{
+  display:flex;
+  gap:24px;
+  margin-top:60px;
+}
+
+.mobile-menu .icons i{
+  font-size:2rem;
+}
 
 /* LAYOUT */
 .produto{
@@ -114,6 +176,10 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   padding:20px;
 }
 
+.produto-info h1{
+  font-size:2.2rem;
+}
+
 .beneficios{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -129,7 +195,10 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
   text-align:center;
 }
 
-.descricao{margin:20px 0;line-height:1.6}
+.descricao{
+  margin:20px 0;
+  line-height:1.6;
+}
 
 @media(max-width:768px){
   .nav{display:none}
@@ -141,10 +210,10 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
 
 <body>
 
-<header class="header">
+<header class="header" id="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
     </a>
 
     <nav class="nav">
@@ -173,44 +242,79 @@ body{font-family:'Inter',sans-serif;background:#f5f5f5}
 <div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="mobile-menu" id="mobileMenu">
+  <div class="close" onclick="closeMenu()">✕</div>
+
   <nav>
-    <a href="index.html">INÍCIO</a>
-    <a href="index.html#produtos">PRODUTOS</a>
-    <a href="catalogo.html">CATÁLOGO</a>
+    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
+    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
+    <a href="catalogo.html" onclick="closeMenu()">CATÁLOGO</a>
   </nav>
+
+  <div class="icons">
+    <a href="carrinho.html" class="icon-cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+    <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
 </div>
 
 <section class="produto">
-<div class="produto-img">
-<img src="assets/img/cards/FP-peito C.png">
-</div>
 
-<div class="produto-info">
-<h1>Modelo MARK</h1>
+  <div class="produto-img">
+    <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
+  </div>
 
-<div class="beneficios">
-<div>✔ Design minimalista premium</div>
-<div>✔ Caimento limpo e moderno</div>
-<div>✔ Conforto para uso diário</div>
-<div>✔ Versatilidade total</div>
-</div>
+  <div class="produto-info">
+    <h1>Modelo MARK</h1>
 
-<div class="descricao">
-A MARK é sobre identidade visual bem definida...
-</div>
-</div>
+    <div class="beneficios">
+      <div>✔ Design minimalista premium</div>
+      <div>✔ Caimento limpo e moderno</div>
+      <div>✔ Conforto para uso diário</div>
+      <div>✔ Versatilidade total</div>
+    </div>
+
+    <div class="descricao">
+      A MARK é sobre identidade visual bem definida.
+      Com estética limpa, presença equilibrada e acabamento preciso,
+      foi pensada para quem prefere se expressar através de elementos gráficos — não de palavras.
+      <br><br>
+      Aqui, o destaque está no desenho: formas, traços e composições
+      que comunicam sem depender de texto.
+    </div>
+  </div>
+
 </section>
 
 <script>
+const header = document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("shrink", window.scrollY > 80);
+});
+
 function openMenu(){
   document.getElementById("mobileMenu").classList.add("active");
   document.getElementById("overlay").classList.add("active");
 }
+
 function closeMenu(){
   document.getElementById("mobileMenu").classList.remove("active");
   document.getElementById("overlay").classList.remove("active");
 }
+
+function atualizarCarrinho(){
+  const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
+  document.getElementById("cartCount").innerText = carrinho.length;
+}
+
+atualizarCarrinho();
 </script>
 
 </body>
-</html> 
+</html>
