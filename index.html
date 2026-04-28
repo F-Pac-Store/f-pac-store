@@ -11,8 +11,17 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{ --primary:#003366; --accent:#FFC107; }
-        body{font-family:'Inter',sans-serif}
+
+        :root{
+            --primary:#003366;
+            --accent:#FFC107;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            color:#000;
+            background:#fff;
+        }
 
         /* HEADER */
         .header{
@@ -39,7 +48,14 @@
 
         /* NAV */
         .nav{display:flex;align-items:center;gap:42px}
-        .nav a{text-decoration:none;color:white;font-size:.9rem;font-weight:500;letter-spacing:2px}
+        .nav a{
+            text-decoration:none;
+            color:#fff;
+            font-size:.9rem;
+            font-weight:500;
+            letter-spacing:2px;
+        }
+
         .nav a i{font-size:1.9rem}
 
         .icon-cart i{color:var(--accent)}
@@ -47,6 +63,7 @@
         .icon-instagram i{color:#E1306C}
 
         .icon-cart{position:relative}
+
         .cart-badge{
             position:absolute;
             top:-6px;
@@ -58,21 +75,6 @@
             border-radius:50%;
             padding:3px 6px;
         }
-
-        /* MOBILE */
-        .menu-toggle{display:none;font-size:2rem;color:white;cursor:pointer}
-
-        .mobile-overlay{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.45);
-            opacity:0;
-            visibility:hidden;
-            transition:.3s;
-            z-index:1500;
-        }
-
-        .mobile-overlay.active{opacity:1;visibility:visible}
 
         /* HERO */
         .hero{
@@ -89,14 +91,29 @@
             padding:16px 36px;
             border-radius:30px;
             font-weight:800;
-            color:black;
+            color:#000;
             text-decoration:none;
         }
 
-        /* DESTAQUES */
-        .drop{background:#0b0b0b;color:white;padding:80px 20px}
-        .drop-title{text-align:center;font-size:2rem;font-weight:800}
-        .drop-subtitle{text-align:center;color:#ccc;margin:10px 0 40px}
+        /* SEÇÃO DESTAQUES (FUNDO ESCURO) */
+        .drop{
+            background:#0b0b0b;
+            color:#fff;
+            padding:80px 20px;
+        }
+
+        .drop-title{
+            text-align:center;
+            font-size:2rem;
+            font-weight:800;
+            color:inherit;
+        }
+
+        .drop-subtitle{
+            text-align:center;
+            margin:10px 0 40px;
+            color:#ccc;
+        }
 
         .drop-grid{
             display:grid;
@@ -112,10 +129,24 @@
             overflow:hidden;
         }
 
-        .card-full img{width:100%;height:100%;object-fit:cover}
+        .card-full img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
 
-        /* PRODUTOS */
-        section{padding:80px 20px}
+        /* SEÇÃO PRODUTOS (FUNDO CLARO) */
+        section{
+            padding:80px 20px;
+        }
+
+        #produtos .drop-title{
+            color:#000;
+        }
+
+        #produtos .drop-subtitle{
+            color:#555;
+        }
 
         .produtos-grid{
             display:grid;
@@ -127,7 +158,6 @@
 
         @media(max-width:768px){
             .nav{display:none}
-            .menu-toggle{display:block}
         }
     </style>
 </head>
@@ -158,8 +188,6 @@
                 <i class="fa-brands fa-instagram"></i>
             </a>
         </nav>
-
-        <div class="menu-toggle">☰</div>
     </div>
 </header>
 
@@ -183,25 +211,20 @@
 
 <section id="produtos">
     <h2 class="drop-title">Produtos</h2>
-    <p class="drop-subtitle">Escolha oque combina mais com você</p>
+    <p class="drop-subtitle">Escolha o que combina mais com você</p>
 
     <div class="produtos-grid">
-
-        <!-- CARD 1 → FORÇA -->
         <a href="force.html" class="card-full">
             <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
         </a>
 
-        <!-- CARD 2 → MARK -->
         <a href="mark.html" class="card-full">
             <img src="assets/img/cards/FP-peito C.png">
         </a>
 
-        <!-- CARD 3 → PRIME -->
         <a href="prime.html" class="card-full">
             <img src="assets/img/cards/F-PAC-frente-e-costas.png">
         </a>
-
     </div>
 </section>
 
