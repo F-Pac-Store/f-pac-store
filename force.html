@@ -37,24 +37,46 @@ body{
   align-items:center;
   height:100px;
   padding:0 30px;
+  transition:.35s ease;
 }
 
-.logo img{height:70px}
+.logo img{height:70px;transition:.35s ease}
 
+.header.shrink .header-content{height:58px}
+.header.shrink .logo img{height:38px}
+
+/* NAV */
 .nav{display:flex;align-items:center;gap:42px}
+
 .nav a{
   text-decoration:none;
   color:#fff;
   font-size:.9rem;
+  font-weight:500;
   letter-spacing:2px;
 }
 
-.nav a i{font-size:1.9rem}
+.nav a i{
+  font-size:1.9rem;
+}
 
+/* ÍCONES PADRÃO */
 .icon-cart{position:relative}
-.icon-cart i{color:var(--accent)}
-.icon-whatsapp i{color:#25D366}
-.icon-instagram i{color:#E1306C}
+
+.icon-cart i{
+  color:var(--accent);
+  font-size:1.9rem;
+}
+
+.icon-whatsapp i{
+  color:#25D366;
+  font-size:1.9rem;
+}
+
+.icon-instagram i{
+  color:#E1306C;
+  font-size:1.9rem;
+}
 
 .cart-badge{
   position:absolute;
@@ -68,7 +90,7 @@ body{
   padding:3px 6px;
 }
 
-/* MOBILE */
+/* MENU MOBILE */
 .menu-toggle{
   display:none;
   font-size:2rem;
@@ -100,7 +122,7 @@ body{
   background:#001a33;
   padding:30px 20px;
   transform:translateX(100%);
-  transition:.4s;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
   z-index:2000;
 }
 
@@ -125,6 +147,8 @@ body{
 .mobile-menu nav a{
   color:#fff;
   text-decoration:none;
+  font-size:1rem;
+  letter-spacing:2px;
 }
 
 .mobile-menu .icons{
@@ -140,7 +164,7 @@ body{
 /* LAYOUT */
 .produto{
   max-width:1100px;
-  margin:140px auto 60px; /* ajustado por causa do header fixo */
+  margin:140px auto 60px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
@@ -155,7 +179,7 @@ body{
 }
 
 .produto-info h1{
-  font-size:2.2rem
+  font-size:2.2rem;
 }
 
 .beneficios{
@@ -175,7 +199,7 @@ body{
 
 .descricao{
   margin:20px 0;
-  line-height:1.6
+  line-height:1.6;
 }
 
 @media(max-width:768px){
@@ -188,10 +212,10 @@ body{
 
 <body>
 
-<header class="header">
+<header class="header" id="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
     </a>
 
     <nav class="nav">
@@ -223,22 +247,28 @@ body{
   <div class="close" onclick="closeMenu()">✕</div>
 
   <nav>
-    <a href="index.html">INÍCIO</a>
-    <a href="index.html#produtos">PRODUTOS</a>
-    <a href="catalogo.html">CATÁLOGO</a>
+    <a href="index.html" onclick="closeMenu()">INÍCIO</a>
+    <a href="index.html#produtos" onclick="closeMenu()">PRODUTOS</a>
+    <a href="catalogo.html" onclick="closeMenu()">CATÁLOGO</a>
   </nav>
 
   <div class="icons">
-    <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a>
-    <a href="https://wa.me/5547997465602"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
+    <a href="carrinho.html" class="icon-cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+    <a href="https://wa.me/5547997465602" class="icon-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/f_pac_store" class="icon-instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
   </div>
 </div>
 
 <section class="produto">
 
   <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC modelo FORCE">
   </div>
 
   <div class="produto-info">
@@ -253,13 +283,24 @@ body{
 
     <div class="descricao">
       A FORCE foi criada para quem prefere comunicar com clareza, não com excesso.
-      Modelagem firme, tecido mais encorpado e uma presença visual direta.
+      Modelagem firme, tecido mais encorpado e uma presença visual direta, pensada para
+      valorizar estampas de texto acima de qualquer elemento gráfico.
+      <br><br>
+      Aqui, a escolha é objetiva: menos imagem, mais mensagem.
     </div>
   </div>
 
 </section>
 
 <script>
+const header = document.getElementById("header");
+
+/* SHRINK HEADER */
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("shrink", window.scrollY > 80);
+});
+
+/* MENU MOBILE */
 function openMenu(){
   document.getElementById("mobileMenu").classList.add("active");
   document.getElementById("overlay").classList.add("active");
@@ -270,6 +311,7 @@ function closeMenu(){
   document.getElementById("overlay").classList.remove("active");
 }
 
+/* CARRINHO */
 function atualizarCarrinho(){
   const carrinho = JSON.parse(localStorage.getItem("fpacCarrinho")) || [];
   document.getElementById("cartCount").innerText = carrinho.length;
