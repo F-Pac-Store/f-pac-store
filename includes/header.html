@@ -5,6 +5,7 @@
       <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
     </a>
 
+    <!-- NAV DESKTOP -->
     <nav class="nav">
       <a href="index.html">INÍCIO</a>
       <a href="index.html#produtos">PRODUTOS</a>
@@ -24,18 +25,19 @@
       </a>
     </nav>
 
-    <div class="menu-toggle" onclick="openMenu()">☰</div>
+    <!-- BOTÃO MOBILE -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
   </div>
 </header>
 
 <!-- OVERLAY -->
-<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="mobile-overlay" id="overlay"></div>
 
 <!-- MENU MOBILE -->
 <div class="mobile-menu" id="mobileMenu">
-  <div class="close" onclick="closeMenu()">✕</div>
+  <div class="close" id="closeMenu">✕</div>
 
-  <nav>
+  <nav id="mobileNav">
     <a href="index.html">INÍCIO</a>
     <a href="index.html#produtos">PRODUTOS</a>
     <a href="catalogo.html">CATÁLOGO</a>
@@ -45,9 +47,11 @@
     <a href="carrinho.html">
       <i class="fa-solid fa-cart-shopping"></i>
     </a>
+
     <a href="https://wa.me/5547997465602" target="_blank">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
+
     <a href="https://www.instagram.com/f_pac_store" target="_blank">
       <i class="fa-brands fa-instagram"></i>
     </a>
