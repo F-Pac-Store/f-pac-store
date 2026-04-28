@@ -1,6 +1,4 @@
-/* =============================
-   RESET & VARIÁVEIS
-============================= */
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -8,196 +6,69 @@
 }
 
 img{
-  display:block;
   max-width:100%;
+  display:block;
 }
 
-/* =============================
-   VARIÁVEIS
-============================= */
 :root{
   --primary:#003366;
   --accent:#FFC107;
 }
 
-/* =============================
-   BASE
-============================= */
 body{
   font-family:'Inter',sans-serif;
-  color:#000;
   background:#fff;
-}
-
-main{
-  padding-top:100px; /* evita conteúdo atrás do header fixo */
-}
-
-/* =============================
-   HEADER (PADRÃO GERAL)
-============================= */
-.header{
-  background:var(--primary);
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-  transition:.35s ease;
-}
-
-.header-content{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:100px;
-  padding:0 30px;
-  transition:.35s ease;
-}
-
-.logo img{
-  height:70px;
-  transition:.35s ease;
-}
-
-.header.shrink .header-content{
-  height:58px;
-}
-
-.header.shrink .logo img{
-  height:38px;
-}
-
-/* =============================
-   NAV DESKTOP
-============================= */
-.nav{
-  display:flex;
-  align-items:center;
-  gap:42px;
-}
-
-.nav a{
-  text-decoration:none;
-  color:#fff;
-  font-size:.9rem;
-  font-weight:500;
-  letter-spacing:2px;
-}
-
-.nav a i{
-  font-size:1.9rem;
-}
-
-/* =============================
-   ÍCONES
-============================= */
-.icon-cart{position:relative}
-.icon-cart i{color:var(--accent)}
-.icon-whatsapp i{color:#25D366}
-.icon-instagram i{color:#E1306C}
-
-.cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-10px;
-  background:var(--accent);
   color:#000;
-  font-size:11px;
+}
+
+/* HEADER FIXO */
+main{
+  padding-top:100px;
+}
+
+/* HERO */
+.hero{
+  height:calc(100vh - 100px);
+  background:url('../assets/img/hero-003.png') no-repeat center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn{
+  background:var(--accent);
+  padding:16px 36px;
+  border-radius:30px;
   font-weight:800;
-  border-radius:50%;
-  padding:3px 6px;
-}
-
-/* =============================
-   MENU MOBILE
-============================= */
-.menu-toggle{
-  display:none;
-  font-size:2rem;
-  color:#fff;
-  cursor:pointer;
-}
-
-.mobile-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-  z-index:1500;
-}
-
-.mobile-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.mobile-menu{
-  position:fixed;
-  top:0;
-  right:0;
-  width:220px;
-  height:100vh;
-  background:#001a33;
-  padding:30px 20px;
-  transform:translateX(100%);
-  transition:transform .45s cubic-bezier(.4,0,.2,1);
-  z-index:2000;
-}
-
-.mobile-menu.active{
-  transform:translateX(0);
-}
-
-.mobile-menu .close{
-  color:#fff;
-  font-size:1.6rem;
-  margin-bottom:40px;
-  text-align:right;
-  cursor:pointer;
-}
-
-.mobile-menu nav{
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-}
-
-.mobile-menu nav a{
-  color:#fff;
   text-decoration:none;
-  font-size:1rem;
-  letter-spacing:2px;
+  color:#000;
 }
 
-.mobile-menu .icons{
-  display:flex;
-  gap:24px;
-  margin-top:60px;
-}
-
-.mobile-menu .icons i{
-  font-size:2rem;
-}
-
-/* =============================
-   LAYOUT PADRÃO
-============================= */
+/* SEÇÕES */
 section{
   padding:80px 20px;
 }
 
-.container{
-  max-width:1200px;
-  margin:auto;
+.drop{
+  background:#0b0b0b;
+  color:#fff;
 }
 
-/* =============================
-   GRIDS
-============================= */
-.produtos-grid,
-.drop-grid{
+.drop-title{
+  text-align:center;
+  font-size:2rem;
+  font-weight:800;
+}
+
+.drop-subtitle{
+  text-align:center;
+  margin:10px 0 40px;
+  color:#ccc;
+}
+
+/* GRIDS */
+.drop-grid,
+.produtos-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
@@ -217,9 +88,7 @@ section{
   object-fit:cover;
 }
 
-/* =============================
-   FOOTER SLIM (PADRÃO FINAL)
-============================= */
+/* FOOTER */
 .footer{
   background:var(--primary);
   padding:10px 30px;
@@ -231,7 +100,6 @@ section{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
 }
 
 .footer-logo img{
@@ -241,33 +109,20 @@ section{
 .footer-text{
   font-size:.75rem;
   color:#fff;
-  opacity:.9;
-  letter-spacing:.4px;
-  text-align:center;
   flex:1;
+  text-align:center;
 }
 
 .footer-social a{
   color:#fff;
   font-size:1.4rem;
   margin-left:16px;
-  transition:.3s;
 }
 
-.footer-social a:hover{
-  color:var(--accent);
-}
-
-/* =============================
-   RESPONSIVO
-============================= */
+/* RESPONSIVO */
 @media(max-width:768px){
-  .nav{display:none}
-  .menu-toggle{display:block}
-
   .footer-content{
     flex-direction:column;
     gap:6px;
   }
 }
-``
