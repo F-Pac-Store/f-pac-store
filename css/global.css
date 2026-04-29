@@ -129,3 +129,79 @@ body{
   font-size:.75rem;
   margin-top:20px;
 }
+
+/* =============================
+   MENU MOBILE
+============================= */
+
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  z-index:999;
+}
+
+.mobile-overlay.active{
+  display:block;
+}
+
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:280px;
+  height:100%;
+  background:var(--primary);
+  z-index:1000;
+  padding:30px;
+  transition:.3s;
+}
+
+.mobile-menu.active{
+  right:0;
+}
+
+.mobile-menu .close{
+  color:#fff;
+  font-size:2rem;
+  cursor:pointer;
+  text-align:right;
+}
+
+.mobile-menu nav{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.mobile-menu nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:2px;
+}
+
+.mobile-menu .icons{
+  margin-top:40px;
+  display:flex;
+  gap:20px;
+}
+
+.mobile-menu .icons a{
+  color:#fff;
+  font-size:1.6rem;
+}
+
+@media(max-width:768px){
+  .nav{display:none;}
+  .menu-toggle{display:block;}
+}
