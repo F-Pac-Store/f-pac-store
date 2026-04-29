@@ -1,249 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F PAC Store</title>
+  <meta charset="UTF-8">
+  <title>F PAC STORE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- FONTES E ICONES -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-:root{
-  --primary:#003366;
-  --accent:#FFC107;
-}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:#fff;
-  color:#000;
-}
-
-/* HEADER */
-.header{
-  background:var(--primary);
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-}
-
-.header-content{
-  height:100px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 30px;
-}
-
-.logo img{height:70px}
-
-/* NAV */
-.nav{display:flex;gap:42px}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:.9rem;
-  letter-spacing:2px;
-}
-.nav i{font-size:1.9rem}
-
-.icon-cart{position:relative}
-.icon-cart i{color:var(--accent)}
-.cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-10px;
-  background:var(--accent);
-  color:#000;
-  font-size:11px;
-  font-weight:800;
-  border-radius:50%;
-  padding:3px 6px;
-}
-
-/* HERO */
-.hero{
-  margin-top:100px;
-  height:calc(100vh - 100px);
-  background:url('assets/img/hero-003.png') no-repeat center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.btn{
-  background:var(--accent);
-  padding:16px 36px;
-  border-radius:30px;
-  font-weight:800;
-  color:#000;
-  text-decoration:none;
-}
-
-/* SEÇÕES */
-section{padding:80px 20px}
-
-.drop{
-  background:#0b0b0b;
-  color:#fff;
-}
-
-.drop-title{
-  text-align:center;
-  font-size:2rem;
-  font-weight:800;
-}
-
-.drop-subtitle{
-  text-align:center;
-  margin:10px 0 40px;
-  color:#ccc;
-}
-
-.drop-grid,
-.produtos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-
-.card-full{
-  height:380px;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.card-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* =============================
-   FOOTER OTIMIZADO (FINAL)
-============================= */
-.footer{
-  background:var(--primary);
-  padding:20px 30px;
-}
-
-.footer-content{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.footer-logo img{
-  height:45px;
-}
-
-.footer-social a{
-  color:#fff;
-  font-size:1.8rem;
-  margin-left:20px;
-  transition:.3s;
-}
-
-.footer-social a:hover{
-  color:var(--accent);
-}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-  .nav{display:none}
-
-  .footer-content{
-    flex-direction:column;
-    gap:15px;
-  }
-}
-</style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
-<header class="header">
-  <div class="header-content">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png">
-    </a>
+  <!-- HEADER -->
+  <div id="header-placeholder"></div>
 
-    <nav class="nav">
-      <a href="index.html">INÍCIO</a>
-      <a href="#produtos">PRODUTOS</a>
-      <a href="catalogo.html">CATÁLOGO</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>F PAC STORE</h1>
+      <p>Não é só roupa. É identidade.</p>
 
-      <a href="carrinho.html" class="icon-cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="cart-badge">0</span>
-      </a>
-
-      <a href="https://wa.me/5547997465602">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-      <a href="https://www.instagram.com/f_pac_store">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <a href="#produtos" class="btn">Comprar Agora</a>
-</section>
-
-<section class="drop">
-  <h2 class="drop-title">Destaques</h2>
-  <p class="drop-subtitle">Peças selecionadas pela F PAC</p>
-
-  <div class="drop-grid">
-    <a href="catalogo.html" class="card-full">
-      <img src="assets/img/cards/destaque-01.png">
-    </a>
-    <a href="catalogo.html" class="card-full">
-      <img src="assets/img/cards/destaque-02.png">
-    </a>
-  </div>
-</section>
-
-<section id="produtos">
-  <h2 class="drop-title">Produtos</h2>
-  <p class="drop-subtitle">Escolha o que combina com você</p>
-
-  <div class="produtos-grid">
-    <a href="force.html" class="card-full">
-      <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
-    </a>
-    <a href="mark.html" class="card-full">
-      <img src="assets/img/cards/FP-peito C.png">
-    </a>
-    <a href="prime.html" class="card-full">
-      <img src="assets/img/cards/F-PAC-frente-e-costas.png">
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER FINAL -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-logo">
-      <img src="assets/img/logos/f-pac-color.png">
+      <a href="#produtos" class="btn-primary">Comprar agora</a>
     </div>
+  </section>
 
-    <div class="footer-social">
-      <a href="https://wa.me/5547997465602"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/f_pac_store"><i class="fa-brands fa-instagram"></i></a>
+  <!-- PRODUTOS -->
+  <section id="produtos" class="secao">
+    <h2>Produtos</h2>
+    <p class="secao-sub">Escolha sua linha</p>
+
+    <div class="produtos-grid">
+      <a href="force.html" class="card-produto">
+        <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png">
+        <span>FORCE</span>
+      </a>
+
+      <a href="mark.html" class="card-produto">
+        <img src="assets/img/cards/FP-peito C.png">
+        <span>MARK</span>
+      </a>
+
+      <a href="prime.html" class="card-produto destaque">
+        <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+        <span>PRIME</span>
+      </a>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- JS -->
+  <script src="js/layout.js"></script>
+  <script src="js/header.js"></script>
 
 </body>
 </html>
