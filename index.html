@@ -5,7 +5,7 @@
   <title>F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTES E ICONES -->
+  <!-- FONTES E ÍCONES -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -18,16 +18,10 @@
   <!-- HEADER -->
   <div id="header-placeholder"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>F PAC STORE</h1>
-      <p>Não é só roupa. É identidade.</p>
-      <a href="#produtos" class="btn-primary">Comprar agora</a>
-    </div>
-  </section>
+  <!-- HERO (somente imagem) -->
+  <section class="hero"></section>
 
-  <!-- DESTAQUES / CARROSSEL -->
+  <!-- DESTAQUES -->
   <section class="secao destaques">
     <h2 class="titulo-destaque">Destaques</h2>
 
@@ -37,7 +31,7 @@
       <div class="carousel" id="carouselDestaques">
 
         <a href="prime.html" class="card-destaque">
-          <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+          <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="PRIME">
           <div class="destaque-overlay">
             <span class="tag">Personalizado</span>
             <h3>PRIME</h3>
@@ -46,7 +40,7 @@
         </a>
 
         <a href="catalogo.html" class="card-destaque">
-          <img src="assets/img/cards/FP-peito C.png">
+          <img src="assets/img/cards/FP-peito C.png" alt="Catálogo">
           <div class="destaque-overlay">
             <span class="tag">Exclusivo</span>
             <h3>CATÁLOGO</h3>
@@ -76,7 +70,7 @@
         <span>MARK</span>
       </a>
 
-      <a href="prime.html" class="card-produto destaque">
+      <a href="prime.html" class="card-produto">
         <img src="assets/img/cards/F-PAC-frente-e-costas.png">
         <span>PRIME</span>
       </a>
@@ -95,10 +89,10 @@
       const carousel = document.getElementById("carouselDestaques");
       const card = carousel.querySelector(".card-destaque");
       const gap = 30;
-      const cardWidth = card.offsetWidth + gap;
+      const width = card.offsetWidth + gap;
 
       carousel.scrollBy({
-        left: dir * cardWidth,
+        left: dir * width,
         behavior: "smooth"
       });
     }
