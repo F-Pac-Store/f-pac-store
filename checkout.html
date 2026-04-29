@@ -5,72 +5,76 @@
   <title>Checkout | F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 
-  <!-- ICONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/global.css">
+  css/global.css
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-content">
-      <a href="index.html" class="logo">
-        <img src="assets/img/logos/f-pac-color.png" alt="F PAC STORE">
-      </a>
-
-      <a href="carrinho.html" style="color:#fff;text-decoration:none;font-weight:600;">
-        ← Voltar ao carrinho
-      </a>
+      index.htmlassets/img/logos/f-pac-color.png</a>
+      carrinho.html← Voltar ao carrinho</a>
     </div>
   </header>
 
-  <main class="container" style="margin-top:140px;max-width:700px;">
+  <main class="container" style="margin-top:140px;max-width:720px;">
 
     <h1>Finalizar pedido</h1>
-    <p style="color:#555;margin:10px 0 30px;">
-      Revise seus dados e confirme para concluir o pedido.
-    </p>
 
-    <!-- RESUMO -->
-    <div style="background:#f5f5f5;padding:20px;border-radius:16px;margin-bottom:30px;">
-      <strong>Resumo do pedido</strong><br><br>
-
-      <span>Produto:</span> <strong>Camisa PRIME Personalizada</strong><br>
-      <span>Entrega:</span> Atendimento direto com equipe F PAC<br>
-      <span>Forma de finalização:</span> WhatsApp
+    <div id="resumoPedido"
+      style="background:#f5f5f5;padding:20px;border-radius:16px;margin-bottom:30px;">
     </div>
 
-    <!-- FORMULÁRIO -->
     <form>
 
       <label>Nome completo</label><br>
-      <input type="text" placeholder="Seu nome completo" required
-        style="width:100%;padding:14px;border-radius:10px;border:1px solid #ccc;margin-bottom:16px;">
+      <input required style="width:100%;padding:14px;margin-bottom:16px">
 
       <label>Email</label><br>
-      <input type="email" placeholder="Seu melhor email" required
-        style="width:100%;padding:14px;border-radius:10px;border:1px solid #ccc;margin-bottom:24px;">
+      <input type="email" required style="width:100%;padding:14px;margin-bottom:24px">
 
       <button type="submit"
-        style="width:100%;background:var(--primary);color:#fff;padding:16px;border:none;border-radius:40px;font-weight:800;font-size:1rem;cursor:pointer;">
-        Finalizar pedido
+        style="width:100%;background:var(--primary);color:#fff;padding:16px;border:none;border-radius:40px;font-weight:800;">
+        Confirmar pedido
       </button>
-
     </form>
 
-    <!-- CONFIANÇA -->
-    <p style="text-align:center;color:#555;margin-top:20px;font-size:.85rem;">
-      Após enviar, nossa equipe entrará em contato pelo WhatsApp<br>
-      para confirmar os detalhes da sua camisa.
+    <p style="text-align:center;color:#666;margin-top:20px;">
+      Após confirmar, nossa equipe entra em contato pelo WhatsApp.
     </p>
 
   </main>
+
+  js/carrinho.jsscript>
+
+  <script>
+    const resumo = document.getElementById("resumoPedido");
+    const carrinho = getCarrinho();
+
+    if (carrinho.length === 0) {
+      resumo.innerHTML = "<p>Carrinho vazio.</p>";
+    } else {
+      let html = "<strong>Resumo da compra</strong><br><br>";
+      let total = 0;
+
+      carrinho.forEach(item => {
+        html += `<p><strong>${item.nome}</strong><br>`;
+        if (item.variacao) {
+          Object.entries(item.variacao).forEach(([k,v])=>{
+            html += `${k}: ${v}<br>`;
+          });
+        }
+        html += `Preço: R$ ${item.preco.toFixed(2)}</p><br>`;
+        total += item.preco * item.quantidade;
+      });
+
+      html += `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+      resumo.innerHTML = html;
+    }
+  </script>
 
 </body>
 </html>
