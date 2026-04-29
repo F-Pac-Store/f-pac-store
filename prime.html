@@ -8,7 +8,7 @@
   <!-- FONTE -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- ÍCONES -->
+  <!-- ICONES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS GLOBAL -->
@@ -22,87 +22,72 @@
 
   <main>
 
-    <!-- HERO PRODUTO PRIME -->
+    <!-- HERO PRIME -->
     <section class="container produto">
-
       <div class="produto-img">
-        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME F PAC">
+        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
       </div>
 
       <div class="produto-info">
         <h1>Modelo PRIME</h1>
-        <div class="subtitulo">Linha PRIME · Camisa 100% personalizada</div>
+        <div class="subtitulo">Linha PRIME · Criação exclusiva</div>
 
         <div class="beneficios">
-          <div>✔ Até 3 estampas por camisa</div>
-          <div>✔ Posições exclusivas (frente, costas e ombro)</div>
-          <div>✔ Composição livre e criativa</div>
-          <div>✔ Peça única, feita sob medida</div>
+          <div>✔ Até 3 estampas</div>
+          <div>✔ Posições exclusivas</div>
+          <div>✔ Ombro incluso</div>
+          <div>✔ Peça única</div>
         </div>
 
         <div class="descricao">
-          A PRIME é a experiência máxima da F PAC STORE.
-          Aqui você não escolhe um modelo — você cria.
-          <br><br>
-          Cada PRIME nasce a partir das suas decisões: quantidade de estampas,
-          posições exclusivas e acabamento final.
-          Nenhuma peça é igual à outra.
+          A PRIME é a experiência máxima da F PAC STORE.
+          Aqui você cria sua própria composição.
         </div>
 
-        <a href="#prime-builder" class="cta-link">
-          Entenda como criar sua PRIME
-        </a>
+        <a href="#builder" class="cta-link">Criar minha PRIME</a>
       </div>
-
     </section>
 
-    <!-- BUILDER PRIME -->
-    <section id="prime-builder" class="prime-builder">
+    <!-- BUILDER -->
+    <section id="builder" class="prime-builder">
 
       <h2>Monte sua PRIME</h2>
-      <p class="prime-intro">
-        Personalize cada detalhe da sua camisa.<br>
-        A PRIME é criada por você.
-      </p>
+      <p class="prime-intro">Cada escolha define sua camisa.</p>
 
       <!-- ETAPA 1 -->
       <div class="prime-step">
-        <h3>1. Quantas estampas?</h3>
-        <div class="prime-options">
-          <button>1 estampa</button>
-          <button>2 estampas</button>
-          <button>3 estampas</button>
+        <h3>1. Quantidade de estampas</h3>
+        <div class="prime-options" data-step="quantidade">
+          <button data-value="1">1 estampa</button>
+          <button data-value="2">2 estampas</button>
+          <button data-value="3">3 estampas</button>
         </div>
       </div>
 
       <!-- ETAPA 2 -->
       <div class="prime-step">
-        <h3>2. Onde aplicar?</h3>
-        <div class="posicoes">
-          <span>Peito esquerdo</span>
-          <span>Peito central</span>
-          <span>Peito direito</span>
-          <span>Costas</span>
-          <span class="destaque">Ombro (exclusivo)</span>
+        <h3>2. Posições</h3>
+        <div class="prime-options" data-step="posicao">
+          <button data-value="Peito esquerdo">Peito esquerdo</button>
+          <button data-value="Peito central">Peito central</button>
+          <button data-value="Peito direito">Peito direito</button>
+          <button data-value="Costas">Costas</button>
+          <button data-value="Ombro" class="destaque">Ombro (exclusivo)</button>
         </div>
       </div>
 
       <!-- ETAPA 3 -->
       <div class="prime-step">
-        <h3>3. Acabamento da estampa</h3>
-        <div class="prime-options">
-          <button>Com fundo</button>
-          <button>Sem fundo</button>
+        <h3>3. Acabamento</h3>
+        <div class="prime-options" data-step="acabamento">
+          <button data-value="Com fundo">Com fundo</button>
+          <button data-value="Sem fundo">Sem fundo</button>
         </div>
       </div>
 
-      <a href="catalogo.html" class="btn-prime">
-        Escolher estampas no catálogo
-      </a>
-
-      <a href="https://wa.me/5547997465602" target="_blank" class="btn-prime btn-whats">
-        Criar minha PRIME no WhatsApp
-      </a>
+      <button id="btnFinalizar" class="btn-prime" disabled>
+        Finalizar PRIME no WhatsApp
+      </button>
 
     </section>
 
@@ -114,6 +99,7 @@
   <!-- JS -->
   <script src="js/layout.js"></script>
   <script src="js/header.js"></script>
+  <script src="js/prime.js"></script>
 
 </body>
 </html>
