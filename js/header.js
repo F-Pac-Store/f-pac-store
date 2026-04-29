@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", initHeader);
+
 function initHeader() {
   const menu = document.getElementById("mobileMenu");
   const overlay = document.getElementById("overlay");
@@ -6,16 +8,32 @@ function initHeader() {
 
   if (!menu || !overlay || !toggle) return;
 
-  toggle.addEventListener("click", () => {
-    menu.classList.add("active");
-    overlay.classList.add("active");
-  });
+  // ABRIR MENU
+  toggle.addEventListener("click", openMenu);
 
+  // FECHAR MENU
   overlay.addEventListener("click", closeMenu);
   if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+
+  // FECHAR AO CLICAR EM QUALQUER LINK
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // FECHAR COM ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  function openMenu() {
+    menu.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden"; // trava o scroll
+  }
 
   function closeMenu() {
     menu.classList.remove("active");
     overlay.classList.remove("active");
+    document.body.style.overflow = "";
   }
 }
