@@ -346,3 +346,24 @@ body{
 .fa-instagram {
   color: #E1306C;
 }
+
+/* =============================
+   HEADER SHRINK AO SCROLL
+============================= */
+
+.header{
+  transition: all .3s ease;
+}
+
+.header.shrink{
+  height:60px;
+}
+
+.header.shrink .header-content{
+  height:60px;
+}
+
+.header.shrink .logo img{
+  height:38px;
+}
+
