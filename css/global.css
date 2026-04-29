@@ -1,103 +1,159 @@
-/* ================= SEÇÕES GERAIS ================= */
-
-.secao{
-  padding:110px 20px;
-  text-align:center;
+:root{
+  --primary:#003366;
+  --accent:#FFC107;
 }
 
-.secao-sub{
-  margin-top:10px;
-  color:#666;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* ================= DESTAQUES ================= */
-
-.destaques{
-  background:#0b0b0b;
+body{
+  font-family:'Inter',sans-serif;
+  background:#fff;
+  color:#000;
 }
 
-.titulo-destaque{
-  color:#fff;
-  font-size:2rem;
-  margin-bottom:40px;
-}
+/* ================= HEADER ================= */
 
-.carousel-wrapper{
-  max-width:1200px;
-  margin:auto;
-}
-
-.carousel{
-  display:flex;
-  gap:30px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  padding-bottom:20px;
-}
-
-.carousel::-webkit-scrollbar{
-  display:none;
-}
-
-.card-destaque{
-  min-width:420px;
-  height:300px;
-  border:3px solid var(--accent);
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  text-decoration:none;
-  transition:.4s ease;
-  background:#000;
-}
-
-.card-destaque img{
+.header{
+  background:var(--primary);
+  position:fixed;
+  top:0;
   width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s ease;
+  z-index:1000;
+  transition:all .35s ease;
 }
 
-.destaque-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.25));
+.header-content{
+  height:100px;
+  display:flex;
+  align-items:center;
+  padding:0 40px;
+  transition:all .35s ease;
+}
+
+/* LOGO */
+.logo{
+  flex-shrink:0;
+}
+
+.logo img{
+  height:64px;
+  transition:all .35s ease;
+}
+
+/* MENU DESKTOP */
+.nav{
+  margin-left:auto;
+  display:flex;
+  gap:32px;
+  align-items:center;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:.85rem;
+  letter-spacing:2px;
+  font-weight:500;
+}
+
+.nav a i{
+  font-size:1.7rem;
+}
+
+/* ÍCONES */
+.icon-cart i{color:var(--accent)}
+.nav a .fa-whatsapp{color:#25D366!important}
+.nav a .fa-instagram{color:#E1306C!important}
+
+/* ================= HEADER SHRINK ================= */
+
+.header.shrink .header-content{
+  height:62px;
+  padding:0 30px;
+}
+
+.header.shrink .logo img{
+  height:38px;
+}
+
+.header.shrink .nav a{
+  font-size:.78rem;
+}
+
+.header.shrink .nav a i{
+  font-size:1.5rem;
+}
+
+/* ================= MENU MOBILE ================= */
+
+.menu-toggle{
+  display:none;
+  margin-left:auto;
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* MOBILE MENU (já existente e preservado) */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:260px;
+  height:100vh;
+  background:var(--primary);
+  padding:30px 20px;
+  transition:.3s ease;
+  z-index:2000;
+}
+
+.mobile-menu.active{
+  right:0;
+}
+
+.mobile-menu nav{
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  gap:20px;
+  margin-top:40px;
+}
+
+.mobile-menu nav a{
   color:#fff;
-  text-align:center;
-}
-
-.tag{
-  background:var(--accent);
-  color:#000;
-  padding:6px 16px;
-  border-radius:20px;
-  font-size:.7rem;
-  font-weight:800;
+  text-decoration:none;
+  font-size:1rem;
   letter-spacing:2px;
-  margin-bottom:10px;
 }
 
-.destaque-overlay h3{
-  color:var(--accent);
-  font-size:2rem;
+.mobile-menu .icons{
+  display:flex;
+  gap:20px;
+  margin-top:40px;
 }
 
-.card-destaque:hover{
-  transform:translateY(-10px);
-  box-shadow:0 24px 50px rgba(255,193,7,.4);
+.mobile-menu .icons i{
+  font-size:1.8rem;
 }
 
-.card-destaque:hover img{
-  transform:scale(1.06);
+/* ================= HERO ================= */
+
+.hero{
+  min-height:80vh;
+  background:url('../assets/img/hero-003.png') center 70% / cover no-repeat;
+  margin-top:100px;
 }
+
+.header.shrink + .hero{
+  margin-top:62px;
+}
+
+/* ================= RESPONSIVO ================= */
 
 @media(max-width:768px){
-  .card-destaque{
-    min-width:85%;
-  }
+  .nav{display:none}
+  .menu-toggle{display:block}
 }
-``
