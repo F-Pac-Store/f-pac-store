@@ -18,7 +18,7 @@
   <!-- HEADER -->
   <div id="header-placeholder"></div>
 
-  <!-- HERO (APENAS IMAGEM) -->
+  <!-- HERO -->
   <section class="hero"></section>
 
   <!-- DESTAQUES -->
@@ -26,14 +26,12 @@
     <h2 class="titulo-destaque">Destaques</h2>
 
     <div class="carousel-wrapper">
-      <button class="carousel-btn left" onclick="slideDestaque(-1)">‹</button>
-
-      <div class="carousel" id="carouselDestaques">
+      <div class="carousel">
 
         <a href="prime.html" class="card-destaque">
           <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="PRIME">
           <div class="destaque-overlay">
-            <span class="tag">Personalizado</span>
+            <span class="tag">Personalização</span>
             <h3>PRIME</h3>
             <p>Crie uma peça única</p>
           </div>
@@ -42,15 +40,31 @@
         <a href="catalogo.html" class="card-destaque">
           <img src="assets/img/cards/FP-peito C.png" alt="Catálogo">
           <div class="destaque-overlay">
-            <span class="tag">Exclusivo</span>
+            <span class="tag">Identidade</span>
             <h3>CATÁLOGO</h3>
-            <p>Artes originais F PAC</p>
+            <p>Artes exclusivas F PAC</p>
+          </div>
+        </a>
+
+        <a href="prime.html" class="card-destaque">
+          <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Promoção PRIME">
+          <div class="destaque-overlay">
+            <span class="tag">Promoção</span>
+            <h3>PRIME</h3>
+            <p>Frete grátis a partir de 2 peças</p>
+          </div>
+        </a>
+
+        <a href="mark.html" class="card-destaque">
+          <img src="assets/img/cards/FP-peito C.png" alt="MARK">
+          <div class="destaque-overlay">
+            <span class="tag">Destaque</span>
+            <h3>MARK</h3>
+            <p>A expressão visual da F PAC</p>
           </div>
         </a>
 
       </div>
-
-      <button class="carousel-btn right" onclick="slideDestaque(1)">›</button>
     </div>
   </section>
 
@@ -83,18 +97,6 @@
   <!-- JS -->
   <script src="js/layout.js"></script>
   <script src="js/header.js"></script>
-
-  <script>
-    function slideDestaque(dir){
-      const carousel = document.getElementById("carouselDestaques");
-      const card = carousel.querySelector(".card-destaque");
-      const gap = 30;
-      carousel.scrollBy({
-        left: dir * (card.offsetWidth + gap),
-        behavior: "smooth"
-      });
-    }
-  </script>
 
 </body>
 </html>
