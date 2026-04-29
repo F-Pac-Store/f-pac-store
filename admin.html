@@ -2,66 +2,138 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Login Admin | F PAC</title>
+  <title>Admin | F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     body{
-      font-family:'Inter',sans-serif;
-      background:#003366;
+      font-family: Arial, sans-serif;
+      background:#111;
       color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      height:100vh;
+      margin:0;
+      padding:20px;
     }
 
-    .login-box{
-      background:#fff;
-      color:#000;
-      padding:40px;
-      border-radius:16px;
-      width:320px;
-      text-align:center;
+    .container{
+      max-width:900px;
+      margin:auto;
     }
 
-    input{
+    .card{
+      background:#1c1c1c;
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:20px;
+    }
+
+    input,select{
       width:100%;
-      padding:12px;
-      margin:12px 0;
-      border-radius:8px;
-      border:1px solid #ccc;
+      padding:10px;
+      margin-top:8px;
+      border:none;
+      border-radius:6px;
     }
 
     button{
       width:100%;
-      padding:14px;
-      background:#FFC107;
+      padding:12px;
+      margin-top:10px;
+      background:#22c55e;
       border:none;
-      font-weight:800;
-      border-radius:30px;
+      color:#fff;
+      font-weight:bold;
       cursor:pointer;
+      border-radius:6px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+
+    td,th{
+      padding:10px;
+      border-bottom:1px solid #333;
+      text-align:center;
+    }
+
+    h2{
+      margin:0 0 10px 0;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="login-box">
-    <h2>Login Admin</h2>
+  <div class="container">
 
-    <input id="email" placeholder="Email">
-    <input id="senha" type="password" placeholder="Senha">
+    <!-- ========== ESTOQUE ========== -->
+    <div class="card">
+      <h2>📦 Estoque</h2>
 
-    <button onclick="login()">Entrar</button>
+      <select id="produto">
+        <option>PRIME</option>
+        <option>MARK</option>
+        <option>FORCE</option>
+      </select>
+
+      <select id="cor">
+        <option>Branco</option>
+        <option>Preto</option>
+        <option>Off White</option>
+      </select>
+
+      <input id="P" placeholder="P">
+      <input id="M" placeholder="M">
+      <input id="G" placeholder="G">
+      <input id="GG" placeholder="GG">
+
+      <button onclick="salvar()">Salvar Estoque</button>
+    </div>
+
+    <!-- ========== LISTAGEM ESTOQUE ========== -->
+    <div class="card">
+      <h2>📊 Estoque Atual</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Cor</th>
+            <th>P</th>
+            <th>M</th>
+            <th>G</th>
+            <th>GG</th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+
+    <!-- ========== PEDIDOS ========== -->
+    <div class="card">
+      <h2>📦 Pedidos</h2>
+      <div id="pedidos"></div>
+    </div>
+
   </div>
 
+  <!-- ========== FIREBASE ========== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } 
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDocs,
+      collection,
+      updateDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "SUA_API_KEY",
@@ -70,15 +142,83 @@
     };
 
     const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
     const auth = getAuth(app);
 
-    window.login = async () => {
-      try {
-        await signInWithEmailAndPassword(auth, email.value, senha.value);
-        window.location.href = "admin.html";
-      } catch (e) {
-        alert("Erro no login");
+    /* BLOQUEIO DE LOGIN */
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        carregarEstoque();
+        carregarPedidos();
       }
+    });
+
+    /* SALVAR ESTOQUE */
+    window.salvar = async () => {
+      const produto = document.getElementById("produto").value;
+      const cor = document.getElementById("cor").value;
+
+      await setDoc(doc(db, "estoque", produto + "_" + cor), {
+        P: Number(P.value || 0),
+        M: Number(M.value || 0),
+        G: Number(G.value || 0),
+        GG: Number(GG.value || 0)
+      });
+
+      alert("Estoque atualizado");
+      carregarEstoque();
+    };
+
+    /* LISTAR ESTOQUE */
+    async function carregarEstoque(){
+      const snap = await getDocs(collection(db,"estoque"));
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+
+      snap.forEach(d => {
+        const data = d.data();
+        const [produto, cor] = d.id.split("_");
+
+        lista.innerHTML += `
+          <tr>
+            <td>${produto}</td>
+            <td>${cor}</td>
+            <td>${data.P || 0}</td>
+            <td>${data.M || 0}</td>
+            <td>${data.G || 0}</td>
+            <td>${data.GG || 0}</td>
+          </tr>
+        `;
+      });
+    }
+
+    /* PEDIDOS */
+    async function carregarPedidos(){
+      const snap = await getDocs(collection(db,"pedidos"));
+      const box = document.getElementById("pedidos");
+      box.innerHTML = "";
+
+      snap.forEach(p => {
+        const d = p.data();
+
+        box.innerHTML += `
+          <div style="background:#222;padding:12px;margin:10px 0;border-radius:8px">
+            <strong>Cliente:</strong> ${d.cliente || "Sem nome"}<br>
+            <strong>Total:</strong> R$ ${d.total || 0}<br>
+            <strong>Status:</strong> ${d.status || "pendente"}<br>
+            <button onclick="atualizarStatus('${p.id}','enviado')">
+              Marcar como enviado
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    window.atualizarStatus = async (id,status) => {
+      await updateDoc(doc(db,"pedidos",id),{ status });
+      carregarPedidos();
     };
   </script>
 
