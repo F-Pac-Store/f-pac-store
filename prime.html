@@ -11,7 +11,7 @@
   <!-- ICONES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS GLOBAL -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/global.css">
 </head>
 
@@ -23,16 +23,16 @@
   <main>
 
     <!-- HERO PRIME -->
-    <section class="container produto produto-prime">
+    <section class="container produto">
 
       <!-- MOCK -->
       <div class="produto-img prime-mock">
-        <img src="assets/img/mocks/camisa-base.png" alt="Camisa PRIME" class="camisa-base">
+        <img src="assets/img/mocks/camisa-base.png" class="camisa-base" alt="Camisa PRIME">
 
-        <!-- Estampa mock -->
-        <div id="mock-estampa" class="mock-estampa peito-esquerdo">
-          F PAC
-        </div>
+        <!-- ESTAMPAS -->
+        <div class="mock-estampa e1 peito-esquerdo">F PAC</div>
+        <div class="mock-estampa e2 hidden">F PAC</div>
+        <div class="mock-estampa e3 hidden">F PAC</div>
       </div>
 
       <!-- INFO -->
@@ -48,9 +48,8 @@
         </div>
 
         <div class="descricao">
-          A PRIME é a experiência máxima da F PAC STORE.
-          Visualize em tempo real onde sua estampa será aplicada
-          e crie uma peça que não existe em nenhum outro lugar.
+          Crie uma composição única escolhendo
+          posição e quantidade de estampas.
         </div>
 
         <a href="#builder" class="cta-link">Criar minha PRIME</a>
@@ -62,24 +61,31 @@
     <section id="builder" class="prime-builder">
 
       <h2>Monte sua PRIME</h2>
-      <p class="prime-intro">
-        Veja sua criação ganhar forma antes mesmo de finalizar.
-      </p>
+      <p class="prime-intro">Configuração guiada, do seu jeito.</p>
 
-      <!-- POSIÇÃO -->
+      <!-- ETAPA 1 -->
       <div class="prime-step">
-        <h3>Posição da estampa</h3>
-
-        <div class="prime-options" data-step="posicao">
-          <button data-value="peito-esquerdo">Peito esquerdo</button>
-          <button data-value="peito-central">Peito central</button>
-          <button data-value="peito-direito">Peito direito</button>
-          <button data-value="costas">Costas</button>
-          <button data-value="ombro" class="destaque">Ombro (exclusivo)</button>
+        <h3>1. Quantidade de estampas</h3>
+        <div class="prime-options quantidade">
+          <button data-qtd="1">1 estampa</button>
+          <button data-qtd="2">2 estampas</button>
+          <button data-qtd="3">3 estampas</button>
         </div>
       </div>
 
-      <button class="btn-prime">
+      <!-- ETAPA 2 -->
+      <div class="prime-step">
+        <h3 id="step-title">2. Posição da estampa 1</h3>
+        <div class="prime-options posicoes">
+          <button data-pos="peito-esquerdo">Peito esquerdo</button>
+          <button data-pos="peito-central">Peito central</button>
+          <button data-pos="peito-direito">Peito direito</button>
+          <button data-pos="costas">Costas</button>
+          <button data-pos="ombro">Ombro</button>
+        </div>
+      </div>
+
+      <button class="btn-prime" id="btnContinuar">
         Continuar personalização
       </button>
 
