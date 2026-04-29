@@ -33,14 +33,18 @@ body{
   padding:0 30px;
 }
 
-/* Logo à esquerda (não mexe) */
+/* LOGO — NÃO MEXE */
 .logo{
   flex-shrink:0;
 }
 
-/* Todo o menu empurrado para a direita */
+.logo img{
+  height:60px;
+}
+
+/* MENU TODO NA EXTREMIDADE DIREITA */
 .nav{
-  margin-left:auto;
+  margin-left:auto;              /* <<< CHAVE DA SOLUÇÃO */
   display:flex;
   gap:30px;
   align-items:center;
@@ -57,14 +61,12 @@ body{
   font-size:1.9rem;
 }
 
-.icon-cart i{
-  color:var(--accent);
-}
-
+/* ÍCONES */
+.icon-cart i{color:var(--accent)}
 .nav a .fa-whatsapp{color:#25D366!important}
 .nav a .fa-instagram{color:#E1306C!important}
 
-/* Shrink */
+/* SHRINK */
 .header.shrink .header-content{
   height:60px;
 }
@@ -80,7 +82,6 @@ body{
   background:url('../assets/img/hero-003.png') center 70% / cover no-repeat;
 }
 
-/* Ajuste mobile */
 @media(max-width:768px){
   .hero{
     background-position:center 78%;
