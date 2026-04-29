@@ -15,9 +15,7 @@ body{
   color:#000;
 }
 
-/* =============================
-   HEADER
-============================= */
+/* ================= HEADER ================= */
 
 .header{
   background:var(--primary);
@@ -25,7 +23,7 @@ body{
   top:0;
   width:100%;
   z-index:1000;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
 .header-content{
@@ -34,12 +32,12 @@ body{
   align-items:center;
   justify-content:space-between;
   padding:0 30px;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
 .logo img{
   height:60px;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
 .nav{
@@ -59,10 +57,6 @@ body{
   font-size:1.9rem;
 }
 
-.icon-cart{
-  position:relative;
-}
-
 .icon-cart i{
   color:var(--accent);
 }
@@ -79,41 +73,24 @@ body{
   padding:3px 6px;
 }
 
-/* =============================
-   HEADER SHRINK AO SCROLL
-============================= */
+/* SHRINK */
+.header.shrink .header-content{height:60px}
+.header.shrink .logo img{height:38px}
 
-.header.shrink{
-  height:60px;
-}
-
-.header.shrink .header-content{
-  height:60px;
-}
-
-.header.shrink .logo img{
-  height:38px;
-}
-
-/* =============================
-   HERO
-============================= */
+/* ================= HERO ================= */
 
 .hero{
   margin-top:100px;
   min-height:80vh;
-
-  background-image:url('../assets/img/hero-003.png');
-  background-repeat:no-repeat;
-  background-size:cover;
-
-  /* PUXA A IMAGEM PARA BAIXO */
-  background-position:center 65%;
-
+  background:url('../assets/img/hero-003.png') center 65% / cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+}
+
+@media(max-width:768px){
+  .hero{background-position:center 75%}
 }
 
 .hero-content h1{
@@ -135,21 +112,77 @@ body{
   text-decoration:none;
 }
 
-/* AJUSTE FINO MOBILE */
-@media (max-width:768px){
-  .hero{
-    background-position:center 75%;
-  }
-}
-
-/* =============================
-   PRODUTOS
-============================= */
+/* ================= SEÇÕES ================= */
 
 .secao{
   padding:100px 20px;
   text-align:center;
 }
+
+.secao-sub{
+  margin-top:10px;
+  color:#666;
+}
+
+/* ================= DESTAQUES ================= */
+
+.destaques{
+  background:#0b0b0b;
+}
+
+.destaques-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(480px,1fr));
+  gap:30px;
+}
+
+.card-destaque{
+  position:relative;
+  height:320px;
+  border:3px solid var(--accent);
+  border-radius:20px;
+  overflow:hidden;
+  text-decoration:none;
+  transition:.35s ease;
+}
+
+.card-destaque img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.35s ease;
+}
+
+.destaque-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-align:center;
+}
+
+.destaque-overlay h3{
+  font-size:2rem;
+  margin-bottom:10px;
+  color:var(--accent);
+}
+
+.card-destaque:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,193,7,.35);
+}
+
+.card-destaque:hover img{
+  transform:scale(1.05);
+}
+
+/* ================= PRODUTOS ================= */
 
 .produtos-grid{
   margin-top:40px;
@@ -167,9 +200,7 @@ body{
   text-decoration:none;
 }
 
-.card-produto img{
-  width:100%;
-}
+.card-produto img{width:100%}
 
 .card-produto span{
   display:block;
@@ -177,9 +208,7 @@ body{
   font-weight:800;
 }
 
-/* =============================
-   FOOTER
-============================= */
+/* ================= FOOTER ================= */
 
 .footer{
   background:var(--primary);
@@ -195,15 +224,7 @@ body{
   align-items:center;
 }
 
-.footer-bottom{
-  text-align:center;
-  font-size:.75rem;
-  margin-top:20px;
-}
-
-/* =============================
-   MENU MOBILE
-============================= */
+/* ================= MENU MOBILE ================= */
 
 .menu-toggle{
   display:none;
@@ -220,9 +241,7 @@ body{
   z-index:999;
 }
 
-.mobile-overlay.active{
-  display:block;
-}
+.mobile-overlay.active{display:block}
 
 .mobile-menu{
   position:fixed;
@@ -236,16 +255,7 @@ body{
   transition:.3s;
 }
 
-.mobile-menu.active{
-  right:0;
-}
-
-.mobile-menu .close{
-  color:#fff;
-  font-size:2rem;
-  cursor:pointer;
-  text-align:right;
-}
+.mobile-menu.active{right:0}
 
 .mobile-menu nav{
   margin-top:40px;
@@ -257,41 +267,17 @@ body{
 .mobile-menu nav a{
   color:#fff;
   text-decoration:none;
-  font-weight:600;
-  letter-spacing:2px;
 }
 
-.mobile-menu .icons{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-}
-
-.mobile-menu .icons a{
-  font-size:1.6rem;
-}
-
-/* =============================
-   CORES DOS ÍCONES
-============================= */
-
-/* WhatsApp */
+/* ÍCONES */
 .nav a .fa-whatsapp,
-.mobile-menu a .fa-whatsapp{
-  color:#25D366 !important;
-}
+.mobile-menu a .fa-whatsapp{color:#25D366!important}
 
-/* Instagram */
 .nav a .fa-instagram,
-.mobile-menu a .fa-instagram{
-  color:#E1306C !important;
-}
+.mobile-menu a .fa-instagram{color:#E1306C!important}
 
-/* =============================
-   RESPONSIVO
-============================= */
-
+/* RESPONSIVO */
 @media(max-width:768px){
-  .nav{display:none;}
-  .menu-toggle{display:block;}
+  .nav{display:none}
+  .menu-toggle{display:block}
 }
