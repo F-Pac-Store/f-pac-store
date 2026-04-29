@@ -44,7 +44,7 @@ body{
 
 /* MENU TODO NA EXTREMIDADE DIREITA */
 .nav{
-  margin-left:auto;              /* <<< CHAVE DA SOLUÇÃO */
+  margin-left:auto;
   display:flex;
   gap:30px;
   align-items:center;
@@ -232,10 +232,13 @@ body{
   font-weight:800;
 }
 
-/* ================= RESPONSIVO ================= */
+/* ================= MENU MOBILE DESATIVADO ================= */
 
-@media(max-width:768px){
-  .nav{display:none}
-  .menu-toggle{display:block}
-  .card-destaque{min-width:85%}
+.menu-toggle{
+  display:none !important; /* REMOVE OS 3 TRAÇOS */
+}
+
+.mobile-menu,
+.mobile-overlay{
+  display:none !important;
 }
