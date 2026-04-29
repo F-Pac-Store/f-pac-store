@@ -1,228 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>MARK | F PAC STORE</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>MARK | F PAC STORE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONTE -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<!-- ICONES -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- ICONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-:root{
-  --primary:#003366;
-  --accent:#FFC107;
-}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:#f5f5f5;
-  color:#000;
-}
-
-/* HEADER */
-.header{
-  background:var(--primary);
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-}
-
-.header-content{
-  height:100px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 30px;
-}
-
-.logo img{height:70px}
-
-.nav{
-  display:flex;
-  gap:42px;
-}
-
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:.9rem;
-  letter-spacing:2px;
-}
-
-.icon-cart{position:relative}
-.icon-cart i{font-size:1.9rem;color:var(--accent)}
-
-.cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-10px;
-  background:var(--accent);
-  color:#000;
-  font-size:11px;
-  font-weight:800;
-  border-radius:50%;
-  padding:3px 6px;
-}
-
-/* HERO PRODUTO */
-.produto{
-  max-width:1100px;
-  margin:160px auto 80px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  padding:20px;
-}
-
-.produto-img img{
-  width:100%;
-  border-radius:18px;
-  background:#fff;
-  padding:20px;
-}
-
-.produto-info h1{
-  font-size:2.3rem;
-  margin-bottom:6px;
-}
-
-.subtitulo{
-  font-size:.9rem;
-  letter-spacing:2px;
-  font-weight:600;
-  color:#555;
-  text-transform:uppercase;
-}
-
-.beneficios{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin:24px 0;
-}
-
-.beneficios div{
-  background:#fff;
-  padding:14px;
-  border-radius:10px;
-  font-weight:600;
-  text-align:center;
-  font-size:.9rem;
-}
-
-.descricao{
-  line-height:1.6;
-  margin-bottom:24px;
-}
-
-.cta-link{
-  display:inline-block;
-  text-decoration:none;
-  font-weight:800;
-  color:#000;
-  border-bottom:2px solid var(--accent);
-  padding-bottom:4px;
-}
-
-/* FOOTER */
-.footer{
-  background:var(--primary);
-  padding:10px 30px;
-}
-
-.footer-content{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.footer-logo img{height:32px}
-
-.footer-text{
-  font-size:.75rem;
-  color:#fff;
-  opacity:.9;
-}
-
-@media(max-width:768px){
-  .nav{display:none}
-  .produto{grid-template-columns:1fr}
-  .footer-content{flex-direction:column;gap:6px}
-}
-</style>
+  <!-- CSS PADRÃO -->
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
-<header class="header">
-  <div class="header-content">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
-    </a>
+  <!-- HEADER PADRÃO -->
+  <div id="header-placeholder"></div>
 
-    <nav class="nav">
-      <a href="index.html">INÍCIO</a>
-      <a href="index.html#produtos">PRODUTOS</a>
-      <a href="catalogo.html">CATÁLOGO</a>
-      <a href="carrinho.html" class="icon-cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="cart-badge">0</span>
-      </a>
-    </nav>
-  </div>
-</header>
+  <main>
 
-<section class="produto">
+    <section class="produto">
 
-  <div class="produto-img">
-    <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
-  </div>
+      <div class="produto-img">
+        <img src="assets/img/cards/FP-peito C.png" alt="Modelo MARK">
+      </div>
 
-  <div class="produto-info">
-    <h1>Modelo MARK</h1>
-    <div class="subtitulo">Linha MARK · Camisas com desenho</div>
+      <div class="produto-info">
+        <h1>Modelo MARK</h1>
+        <div class="subtitulo">Linha MARK · Camisas com desenho</div>
 
-    <div class="beneficios">
-      <div>✔ Design gráfico exclusivo</div>
-      <div>✔ Estilo limpo e equilibrado</div>
-      <div>✔ Conforto para uso diário</div>
-      <div>✔ Identidade visual marcante</div>
-    </div>
+        <div class="beneficios">
+          <div>✔ Design gráfico exclusivo</div>
+          <div>✔ Estilo limpo e equilibrado</div>
+          <div>✔ Conforto para uso diário</div>
+          <div>✔ Identidade visual marcante</div>
+        </div>
 
-    <div class="descricao">
-      A MARK representa a expressão visual da F PAC.
-      Camisas pensadas para quem comunica através de formas,
-      traços e símbolos — sem depender de palavras.
-      <br><br>
-      Aqui, o desenho é o protagonista. Cada estampa carrega significado,
-      identidade e presença estética.
-    </div>
+        <div class="descricao">
+          A MARK representa a expressão visual da F PAC.
+          Camisas pensadas para quem comunica através de formas,
+          traços e símbolos — sem depender de palavras.
+          <br><br>
+          Aqui, o desenho é o protagonista.
+        </div>
 
-    <a href="catalogo.html" class="cta-link">
-      Escolher estampa MARK
-    </a>
-  </div>
+        <a href="catalogo.html" class="cta-link">
+          Escolher estampa MARK
+        </a>
+      </div>
 
-</section>
+    </section>
 
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
-    </div>
-    <div class="footer-text">
-      © F PAC STORE — Não é só roupa. É identidade.
-    </div>
-  </div>
-</footer>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- JS -->
+  <script src="js/layout.js"></script>
+  <script src="js/header.js"></script>
 
 </body>
 </html>
