@@ -1,30 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  async function loadComponent(url, targetId, callback){
+  async function loadComponent({ url, targetId, onLoad }) {
     const target = document.getElementById(targetId);
-    if (!target) return;
+    if (!target || target.dataset.loaded) return;
+
+    // Placeholder simples para evitar “vazio”
+    target.innerHTML = "<!-- carregando -->";
 
     try {
       const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error(`Erro ${res.status} ao carregar ${url}`);
+      }
+
       const html = await res.text();
       target.innerHTML = html;
+      target.dataset.loaded = "true";
 
-      if (callback && typeof callback === "function") {
-        callback();
+      if (typeof onLoad === "function") {
+        onLoad();
       }
-    } catch (e) {
-      console.error("Erro ao carregar:", url, e);
+
+    } catch (error) {
+      console.error(error);
+      target.innerHTML = "<!-- erro ao carregar componente -->";
     }
   }
 
   // HEADER
-  loadComponent("includes/header.html", "header-placeholder", () => {
-    if (typeof initHeader === "function") {
-      initHeader();
+  loadComponent({
+    url: "includes/header.html",
+    targetId: "header-placeholder",
+    onLoad: () => {
+      if (typeof initHeader === "function") {
+        initHeader();
+      }
     }
   });
 
   // FOOTER
-  loadComponent("includes/footer.html", "footer-placeholder");
+  loadComponent({
+    url: "includes/footer.html",
+    targetId: "footer-placeholder"
+  });
 
 });
