@@ -330,3 +330,19 @@ body{
   .nav{display:none}
   .menu-toggle{display:block}
 }
+
+/* =============================
+   CORES DOS ÍCONES (MENU)
+============================= */
+
+/* WhatsApp */
+.icon-whatsapp i,
+.fa-whatsapp {
+  color: #25D366;
+}
+
+/* Instagram */
+.icon-instagram i,
+.fa-instagram {
+  color: #E1306C;
+}
