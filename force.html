@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>FORCE | F PAC</title>
+<title>FORCE | F PAC STORE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- FONTE -->
@@ -57,10 +57,8 @@ body{
   letter-spacing:2px;
 }
 
-.nav i{font-size:1.9rem}
-
 .icon-cart{position:relative}
-.icon-cart i{color:var(--accent)}
+.icon-cart i{font-size:1.9rem;color:var(--accent)}
 
 .cart-badge{
   position:absolute;
@@ -75,7 +73,7 @@ body{
 }
 
 /* =============================
-   PRODUTO
+   HERO PRODUTO
 ============================= */
 .produto{
   max-width:1100px;
@@ -94,15 +92,23 @@ body{
 }
 
 .produto-info h1{
-  font-size:2.2rem;
-  margin-bottom:20px;
+  font-size:2.3rem;
+  margin-bottom:6px;
+}
+
+.produto-info .subtitulo{
+  font-size:.9rem;
+  letter-spacing:2px;
+  font-weight:600;
+  color:#555;
+  text-transform:uppercase;
 }
 
 .beneficios{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin:20px 0;
+  margin:24px 0;
 }
 
 .beneficios div{
@@ -111,14 +117,25 @@ body{
   border-radius:10px;
   font-weight:600;
   text-align:center;
+  font-size:.9rem;
 }
 
 .descricao{
   line-height:1.6;
+  margin-bottom:24px;
+}
+
+.cta-link{
+  display:inline-block;
+  text-decoration:none;
+  font-weight:800;
+  color:#000;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:4px;
 }
 
 /* =============================
-   SEÇÃO PREÇO
+   PREÇOS
 ============================= */
 .preco-section{
   background:#0b0b0b;
@@ -146,6 +163,11 @@ body{
   border-radius:18px;
   overflow:hidden;
   position:relative;
+  transition:.3s;
+}
+
+.card-full:hover{
+  transform:translateY(-6px);
 }
 
 .card-full img{
@@ -167,11 +189,11 @@ body{
 }
 
 /* =============================
-   FOOTER SLIM (FINAL)
+   FOOTER
 ============================= */
 .footer{
   background:var(--primary);
-  padding:8px 30px; /* ALTURA NO LIMITE DA LOGO */
+  padding:10px 30px;
 }
 
 .footer-content{
@@ -182,25 +204,19 @@ body{
   justify-content:space-between;
 }
 
-.footer-logo img{
-  height:32px;
-}
+.footer-logo img{height:32px}
 
 .footer-text{
-  font-size:0.75rem;
+  font-size:.75rem;
   color:#fff;
   opacity:.9;
-  letter-spacing:.4px;
 }
 
 /* RESPONSIVO */
 @media(max-width:768px){
   .nav{display:none}
   .produto{grid-template-columns:1fr}
-  .footer-content{
-    flex-direction:column;
-    gap:6px;
-  }
+  .footer-content{flex-direction:column;gap:6px}
 }
 </style>
 </head>
@@ -210,14 +226,13 @@ body{
 <header class="header">
   <div class="header-content">
     <a href="index.html" class="logo">
-      <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
+      <img src="assets/img/logos/f-pac-color.png" alt="F PAC STORE">
     </a>
 
     <nav class="nav">
       <a href="index.html">INÍCIO</a>
       <a href="index.html#produtos">PRODUTOS</a>
       <a href="catalogo.html">CATÁLOGO</a>
-
       <a href="carrinho.html" class="icon-cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-badge">0</span>
@@ -229,11 +244,12 @@ body{
 <section class="produto">
 
   <div class="produto-img">
-    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Modelo FORCE">
+    <img src="assets/img/cards/F-PAC-ESCRITA-peito C.png" alt="Camisa F PAC FORCE">
   </div>
 
   <div class="produto-info">
     <h1>Modelo FORCE</h1>
+    <div class="subtitulo">Linha FORCE · Camisas com mensagem</div>
 
     <div class="beneficios">
       <div>✔ Tecido encorpado premium</div>
@@ -248,11 +264,13 @@ body{
       <br><br>
       Aqui, a escolha é objetiva: menos imagem, mais mensagem.
     </div>
+
+    <a href="#precos" class="cta-link">Escolher minha FORCE</a>
   </div>
 
 </section>
 
-<section class="preco-section">
+<section id="precos" class="preco-section">
   <h2 class="preco-title">Escolha sua versão</h2>
 
   <div class="preco-grid">
@@ -273,9 +291,8 @@ body{
     <div class="footer-logo">
       <img src="assets/img/logos/f-pac-color.png" alt="F PAC">
     </div>
-
     <div class="footer-text">
-      © F PAC – Não é só roupa. É identidade!
+      © F PAC STORE — Não é só roupa. É identidade.
     </div>
   </div>
 </footer>
