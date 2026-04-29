@@ -5,10 +5,10 @@
   <title>Carrinho | F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
-  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  css/global.css
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
@@ -16,63 +16,22 @@
   <div id="header-placeholder"></div>
 
   <main class="container carrinho">
-
     <h1>Seu carrinho</h1>
-
-    <div id="listaCarrinho" class="lista-carrinho"></div>
+    <div id="listaCarrinho"></div>
 
     <div class="carrinho-resumo">
       <strong>Total:</strong>
       <span id="totalCarrinho">R$ 0,00</span>
     </div>
 
-    checkout.htmlFinalizar compra</a>
-
+    <a href="checkout.html" class="btn-prime">Finalizar compra</a>
   </main>
 
   <div id="footer-placeholder"></div>
 
-  js/layout.js
-  js/header.jsscript>
-  js/carrinho.jsscript>
-
-  <script>
-    const lista = document.getElementById("listaCarrinho");
-    const totalEl = document.getElementById("totalCarrinho");
-    const carrinho = getCarrinho();
-
-    if (carrinho.length === 0) {
-      lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
-    } else {
-      lista.innerHTML = "";
-
-      carrinho.forEach((item, index) => {
-
-        let detalhes = "";
-
-        if (item.id === "prime") {
-          detalhes = `
-            <p><strong>Estampas:</strong> ${item.variacao.estampas}</p>
-            <p><strong>Posição:</strong> ${item.variacao.posicao}</p>
-            <p><strong>Acabamento:</strong> ${item.variacao.acabamento}</p>
-          `;
-        }
-
-        lista.innerHTML += `
-          <div class="item-carrinho">
-            <div class="info-item">
-              <h3>${item.nome}</h3>
-              ${detalhes}
-              <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-              <button onclick="removerItem(${index})">Remover</button>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    totalEl.innerText = "R$ " + calcularTotal().toFixed(2);
-  </script>
+  <script src="js/layout.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/carrinho.js"></script>
 
 </body>
 </html>
