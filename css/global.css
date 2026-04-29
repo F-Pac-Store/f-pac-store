@@ -1,16 +1,9 @@
-/* =============================
-   VARIÁVEIS GLOBAIS
-============================= */
 :root{
   --primary:#003366;
   --accent:#FFC107;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Inter',sans-serif;
@@ -18,115 +11,70 @@ body{
   color:#000;
 }
 
-/* =============================
-   LAYOUT BASE
-============================= */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-}
+/* PRODUTO */
+.container{max-width:1200px;margin:auto;padding:40px 20px}
 
-/* =============================
-   PRODUTO (FORCE / MARK / PRIME)
-============================= */
 .produto{
+  margin-top:160px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
-  margin-top:160px;
 }
 
 .produto-img img{
   width:100%;
-  border-radius:20px;
   background:#fff;
   padding:20px;
+  border-radius:20px;
 }
 
-.produto-info h1{
-  font-size:2.3rem;
-  margin-bottom:6px;
-}
-
-.subtitulo{
-  font-size:.85rem;
-  letter-spacing:2px;
-  font-weight:600;
-  color:#555;
-  text-transform:uppercase;
-}
+.produto-info h1{font-size:2.3rem}
+.subtitulo{letter-spacing:2px;font-size:.85rem;color:#555}
 
 .beneficios{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin:24px 0;
+  margin:20px 0;
 }
 
 .beneficios div{
   background:#fff;
-  padding:14px;
-  border-radius:12px;
+  padding:12px;
+  border-radius:10px;
   font-weight:600;
   text-align:center;
-  font-size:.9rem;
-}
-
-.descricao{
-  line-height:1.6;
-  margin-bottom:24px;
 }
 
 .cta-link{
-  display:inline-block;
   font-weight:800;
   text-decoration:none;
-  color:#000;
   border-bottom:2px solid var(--accent);
-  padding-bottom:4px;
+  color:#000;
 }
 
-/* =============================
-   PRIME — EXPERIÊNCIA PREMIUM
-============================= */
+/* PRIME BUILDER */
 .prime-builder{
   max-width:1000px;
   margin:100px auto;
-  padding:60px 30px;
   background:#fff;
+  padding:60px 30px;
   border-radius:28px;
 }
 
-.prime-builder h2{
-  text-align:center;
-  font-size:2rem;
-  margin-bottom:10px;
-}
+.prime-builder h2{text-align:center}
+.prime-intro{text-align:center;color:#555;margin-bottom:40px}
 
-.prime-intro{
-  text-align:center;
-  color:#555;
-  margin-bottom:50px;
-}
-
-.prime-step{
-  margin-bottom:40px;
-}
-
-.prime-step h3{
-  margin-bottom:15px;
-  font-size:1.1rem;
-}
+.prime-step{margin-bottom:40px}
 
 .prime-options{
   display:flex;
-  gap:14px;
   flex-wrap:wrap;
+  gap:12px;
 }
 
 .prime-options button{
-  padding:12px 22px;
+  padding:12px 20px;
   border-radius:30px;
   border:1px solid #ccc;
   background:#f5f5f5;
@@ -134,65 +82,28 @@ body{
   cursor:pointer;
 }
 
-.prime-options button:hover{
+.prime-options button.active{
+  background:var(--accent);
   border-color:var(--accent);
 }
 
-.posicoes{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.posicoes span{
-  padding:10px 14px;
-  border-radius:20px;
-  background:#eee;
-  font-size:.85rem;
-}
-
-.posicoes .destaque{
-  background:var(--accent);
-  color:#000;
-  font-weight:800;
-}
-
-/* =============================
-   BOTÕES PRIME
-============================= */
 .btn-prime{
+  margin:40px auto 0;
   display:block;
-  margin:30px auto 0;
-  max-width:340px;
-  text-align:center;
   padding:16px;
   border-radius:40px;
   background:var(--primary);
   color:#fff;
   font-weight:800;
-  text-decoration:none;
+  border:none;
+  cursor:pointer;
 }
 
-.btn-whats{
-  background:#25d366;
+.btn-prime:disabled{
+  opacity:.4;
+  cursor:not-allowed;
 }
 
-/* =============================
-   RESPONSIVO
-============================= */
 @media(max-width:768px){
-
-  .produto{
-    grid-template-columns:1fr;
-    margin-top:140px;
-  }
-
-  .beneficios{
-    grid-template-columns:1fr;
-  }
-
-  .prime-options{
-    flex-direction:column;
-  }
-
+  .produto{grid-template-columns:1fr}
 }
