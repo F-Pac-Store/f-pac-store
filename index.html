@@ -5,17 +5,14 @@
   <title>F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTES E ICONES -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <div id="header-placeholder"></div>
 
   <!-- HERO -->
@@ -27,26 +24,32 @@
     </div>
   </section>
 
-  <!-- DESTAQUES -->
+  <!-- DESTAQUES / CARROSSEL -->
   <section class="secao destaques">
-    <div class="destaques-grid">
+    <h2>Destaques</h2>
 
-      <a href="prime.html" class="card-destaque">
-        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Linha PRIME">
-        <div class="destaque-overlay">
-          <h3>PRIME</h3>
-          <p>Camisa 100% personalizada</p>
-        </div>
-      </a>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn left" onclick="slideDestaque(-1)">‹</button>
 
-      <a href="catalogo.html" class="card-destaque">
-        <img src="assets/img/cards/FP-peito C.png" alt="Catálogo completo">
-        <div class="destaque-overlay">
-          <h3>CATÁLOGO</h3>
-          <p>Artes exclusivas da F PAC</p>
-        </div>
-      </a>
+      <div class="carousel" id="carouselDestaques">
+        <a href="prime.html" class="card-destaque">
+          <img src="assets/img/cards/F-PAC-frente-e-costas.png">
+          <div class="destaque-overlay">
+            <h3>PRIME</h3>
+            <p>Camisa 100% personalizada</p>
+          </div>
+        </a>
 
+        <a href="catalogo.html" class="card-destaque">
+          <img src="assets/img/cards/FP-peito C.png">
+          <div class="destaque-overlay">
+            <h3>CATÁLOGO</h3>
+            <p>Artes exclusivas F PAC</p>
+          </div>
+        </a>
+      </div>
+
+      <button class="carousel-btn right" onclick="slideDestaque(1)">›</button>
     </div>
   </section>
 
@@ -66,19 +69,25 @@
         <span>MARK</span>
       </a>
 
-      <a href="prime.html" class="card-produto destaque">
+      <a href="prime.html" class="card-produto">
         <img src="assets/img/cards/F-PAC-frente-e-costas.png">
         <span>PRIME</span>
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
-  <!-- JS -->
   <script src="js/layout.js"></script>
   <script src="js/header.js"></script>
+
+  <script>
+    function slideDestaque(dir){
+      const carousel = document.getElementById("carouselDestaques");
+      const cardWidth = carousel.querySelector(".card-destaque").offsetWidth + 30;
+      carousel.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+    }
+  </script>
 
 </body>
 </html>
