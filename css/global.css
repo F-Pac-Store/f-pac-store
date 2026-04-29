@@ -124,3 +124,74 @@ body{
 @media(max-width:768px){
   .produto{grid-template-columns:1fr}
 }
+
+/* =============================
+   CARRINHO PRIME PREVIEW
+============================= */
+
+.carrinho h1{
+  margin-bottom:30px;
+}
+
+.lista-carrinho{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.item-carrinho{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:20px;
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+  align-items:center;
+}
+
+.info-item h3{
+  margin-bottom:8px;
+}
+
+.info-item button{
+  margin-top:10px;
+  background:#eee;
+  border:none;
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* MOCK PRIME */
+.prime-preview{
+  position:relative;
+}
+
+.prime-preview img{
+  width:100%;
+  border-radius:12px;
+}
+
+.prime-preview .mock-estampa{
+  position:absolute;
+  background:var(--accent);
+  color:#000;
+  font-weight:800;
+  font-size:10px;
+  padding:4px 6px;
+  border-radius:4px;
+}
+
+/* POSIÇÕES */
+.peito-esquerdo{ top:45%; left:28%; }
+.peito-central{ top:45%; left:50%; transform:translateX(-50%); }
+.peito-direito{ top:45%; left:65%; }
+.costas{ top:40%; left:50%; transform:translateX(-50%); }
+.ombro{ top:30%; left:65%; }
+
+.carrinho-resumo{
+  margin:40px 0;
+  font-size:1.2rem;
+  text-align:right;
+}
+
