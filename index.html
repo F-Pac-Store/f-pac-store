@@ -18,7 +18,7 @@
   <!-- HEADER -->
   <div id="header-placeholder"></div>
 
-  <!-- HERO (somente imagem) -->
+  <!-- HERO (APENAS IMAGEM) -->
   <section class="hero"></section>
 
   <!-- DESTAQUES -->
@@ -89,10 +89,8 @@
       const carousel = document.getElementById("carouselDestaques");
       const card = carousel.querySelector(".card-destaque");
       const gap = 30;
-      const width = card.offsetWidth + gap;
-
       carousel.scrollBy({
-        left: dir * width,
+        left: dir * (card.offsetWidth + gap),
         behavior: "smooth"
       });
     }
