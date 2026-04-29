@@ -5,14 +5,17 @@
   <title>F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- FONTES E ICONES -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <div id="header-placeholder"></div>
 
   <!-- HERO -->
@@ -26,27 +29,31 @@
 
   <!-- DESTAQUES / CARROSSEL -->
   <section class="secao destaques">
-    <h2>Destaques</h2>
+    <h2 class="titulo-destaque">Destaques</h2>
 
     <div class="carousel-wrapper">
       <button class="carousel-btn left" onclick="slideDestaque(-1)">‹</button>
 
       <div class="carousel" id="carouselDestaques">
+
         <a href="prime.html" class="card-destaque">
           <img src="assets/img/cards/F-PAC-frente-e-costas.png">
           <div class="destaque-overlay">
+            <span class="tag">Personalizado</span>
             <h3>PRIME</h3>
-            <p>Camisa 100% personalizada</p>
+            <p>Crie uma peça única</p>
           </div>
         </a>
 
         <a href="catalogo.html" class="card-destaque">
           <img src="assets/img/cards/FP-peito C.png">
           <div class="destaque-overlay">
+            <span class="tag">Exclusivo</span>
             <h3>CATÁLOGO</h3>
-            <p>Artes exclusivas F PAC</p>
+            <p>Artes originais F PAC</p>
           </div>
         </a>
+
       </div>
 
       <button class="carousel-btn right" onclick="slideDestaque(1)">›</button>
@@ -69,23 +76,31 @@
         <span>MARK</span>
       </a>
 
-      <a href="prime.html" class="card-produto">
+      <a href="prime.html" class="card-produto destaque">
         <img src="assets/img/cards/F-PAC-frente-e-costas.png">
         <span>PRIME</span>
       </a>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
+  <!-- JS -->
   <script src="js/layout.js"></script>
   <script src="js/header.js"></script>
 
   <script>
     function slideDestaque(dir){
       const carousel = document.getElementById("carouselDestaques");
-      const cardWidth = carousel.querySelector(".card-destaque").offsetWidth + 30;
-      carousel.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+      const card = carousel.querySelector(".card-destaque");
+      const gap = 30;
+      const cardWidth = card.offsetWidth + gap;
+
+      carousel.scrollBy({
+        left: dir * cardWidth,
+        behavior: "smooth"
+      });
     }
   </script>
 
