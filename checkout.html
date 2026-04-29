@@ -1,29 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | F PAC</title>
+  <meta charset="UTF-8">
+  <title>Checkout | F PAC STORE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-CSS/global.css
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- ICONES -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
 
-<header class="header">
-  <div class="header-content">
-    carrinho.html← Voltar</a>
-  </div>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logos/f-pac-color.png" alt="F PAC STORE">
+      </a>
 
-<main class="container">
-  <h1>Finalizar Compra</h1>
-  <form>
-    <input placeholder="Nome"><br><br>
-    <input placeholder="Email"><br><br>
-    <button type="submit">Confirmar</button>
-  </form>
-</main>
+      <a href="carrinho.html" style="color:#fff;text-decoration:none;font-weight:600;">
+        ← Voltar ao carrinho
+      </a>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top:140px;max-width:700px;">
+
+    <h1>Finalizar pedido</h1>
+    <p style="color:#555;margin:10px 0 30px;">
+      Revise seus dados e confirme para concluir o pedido.
+    </p>
+
+    <!-- RESUMO -->
+    <div style="background:#f5f5f5;padding:20px;border-radius:16px;margin-bottom:30px;">
+      <strong>Resumo do pedido</strong><br><br>
+
+      <span>Produto:</span> <strong>Camisa PRIME Personalizada</strong><br>
+      <span>Entrega:</span> Atendimento direto com equipe F PAC<br>
+      <span>Forma de finalização:</span> WhatsApp
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form>
+
+      <label>Nome completo</label><br>
+      <input type="text" placeholder="Seu nome completo" required
+        style="width:100%;padding:14px;border-radius:10px;border:1px solid #ccc;margin-bottom:16px;">
+
+      <label>Email</label><br>
+      <input type="email" placeholder="Seu melhor email" required
+        style="width:100%;padding:14px;border-radius:10px;border:1px solid #ccc;margin-bottom:24px;">
+
+      <button type="submit"
+        style="width:100%;background:var(--primary);color:#fff;padding:16px;border:none;border-radius:40px;font-weight:800;font-size:1rem;cursor:pointer;">
+        Finalizar pedido
+      </button>
+
+    </form>
+
+    <!-- CONFIANÇA -->
+    <p style="text-align:center;color:#555;margin-top:20px;font-size:.85rem;">
+      Após enviar, nossa equipe entrará em contato pelo WhatsApp<br>
+      para confirmar os detalhes da sua camisa.
+    </p>
+
+  </main>
 
 </body>
 </html>
