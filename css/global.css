@@ -1,9 +1,16 @@
+/* =============================
+   VARIÁVEIS GLOBAIS
+============================= */
 :root{
   --primary:#003366;
   --accent:#FFC107;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Inter',sans-serif;
@@ -11,22 +18,36 @@ body{
   color:#000;
 }
 
+/* =============================
+   CONTAINER
+============================= */
 .container{
   max-width:1200px;
   margin:auto;
   padding:40px 20px;
 }
 
-/* PRODUTO */
+/* =============================
+   PRODUTO (FORCE / MARK / PRIME)
+============================= */
 .produto{
   margin-top:160px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
+  align-items:center;
 }
 
-.produto-info h1{font-size:2.3rem}
-.subtitulo{letter-spacing:2px;font-size:.85rem;color:#555}
+.produto-info h1{
+  font-size:2.3rem;
+}
+
+.subtitulo{
+  font-size:.85rem;
+  letter-spacing:2px;
+  color:#555;
+  margin:6px 0 20px;
+}
 
 .beneficios{
   display:grid;
@@ -43,14 +64,22 @@ body{
   text-align:center;
 }
 
+.descricao{
+  line-height:1.6;
+}
+
 .cta-link{
+  display:inline-block;
+  margin-top:14px;
   font-weight:800;
   border-bottom:2px solid var(--accent);
   color:#000;
   text-decoration:none;
 }
 
-/* MOCK PRIME */
+/* =============================
+   PRIME — MOCK VISUAL
+============================= */
 .prime-mock{
   position:relative;
   background:#fff;
@@ -63,31 +92,46 @@ body{
   display:block;
 }
 
-/* ESTAMPA MOCK */
+/* ESTAMPA MOCK (USADA NO PRIME E NO CARRINHO) */
 .mock-estampa{
   position:absolute;
   background:var(--accent);
   color:#000;
   font-weight:800;
-  padding:8px 14px;
-  border-radius:6px;
   font-size:0.75rem;
+  padding:6px 10px;
+  border-radius:6px;
+  white-space:nowrap;
+  pointer-events:none;
 }
 
-/* POSIÇÕES */
+/* POSIÇÕES UNIVERSAIS */
 .peito-esquerdo{ top:38%; left:32%; }
 .peito-central{ top:38%; left:50%; transform:translateX(-50%); }
 .peito-direito{ top:38%; left:62%; }
-.costas{ top:35%; left:50%; transform:translateX(-50%); }
+.costas{ top:36%; left:50%; transform:translateX(-50%); }
 .ombro{ top:22%; left:70%; }
 
-/* BUILDER */
+/* =============================
+   PRIME — BUILDER
+============================= */
 .prime-builder{
   max-width:1000px;
   margin:100px auto;
   background:#fff;
   padding:60px 30px;
   border-radius:28px;
+  text-align:center;
+}
+
+.prime-intro{
+  color:#555;
+  margin-bottom:40px;
+}
+
+.prime-step{
+  text-align:left;
+  margin-bottom:30px;
 }
 
 .prime-options{
@@ -112,23 +156,18 @@ body{
 
 .btn-prime{
   margin-top:40px;
-  padding:16px;
+  padding:16px 36px;
   border-radius:40px;
   background:var(--primary);
   color:#fff;
   font-weight:800;
   border:none;
-}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-  .produto{grid-template-columns:1fr}
+  cursor:pointer;
 }
 
 /* =============================
-   CARRINHO PRIME PREVIEW
+   CARRINHO — PREVIEW PRIME
 ============================= */
-
 .carrinho h1{
   margin-bottom:30px;
 }
@@ -162,7 +201,7 @@ body{
   cursor:pointer;
 }
 
-/* MOCK PRIME */
+/* PREVIEW MINI */
 .prime-preview{
   position:relative;
 }
@@ -173,25 +212,20 @@ body{
 }
 
 .prime-preview .mock-estampa{
-  position:absolute;
-  background:var(--accent);
-  color:#000;
-  font-weight:800;
   font-size:10px;
   padding:4px 6px;
   border-radius:4px;
 }
 
-/* POSIÇÕES */
-.peito-esquerdo{ top:45%; left:28%; }
-.peito-central{ top:45%; left:50%; transform:translateX(-50%); }
-.peito-direito{ top:45%; left:65%; }
-.costas{ top:40%; left:50%; transform:translateX(-50%); }
-.ombro{ top:30%; left:65%; }
+/* =============================
+   RESPONSIVO
+============================= */
+@media(max-width:768px){
+  .produto{
+    grid-template-columns:1fr;
+  }
 
-.carrinho-resumo{
-  margin:40px 0;
-  font-size:1.2rem;
-  text-align:right;
+  .beneficios{
+    grid-template-columns:1fr;
+  }
 }
-
