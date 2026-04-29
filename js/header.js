@@ -2,40 +2,19 @@ document.addEventListener("DOMContentLoaded", initHeader);
 
 function initHeader() {
   const menu = document.getElementById("mobileMenu");
-  const overlay = document.getElementById("overlay");
   const toggle = document.getElementById("menuToggle");
-  const closeBtn = document.getElementById("closeMenu");
 
-  if (!menu || !overlay || !toggle) return;
+  if (!menu || !toggle) return;
 
-  // ABRIR MENU
-  toggle.addEventListener("click", openMenu);
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
 
-  // FECHAR MENU
-  overlay.addEventListener("click", closeMenu);
-  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-
-  // FECHAR AO CLICAR EM QUALQUER LINK
   menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
   });
-
-  // FECHAR COM ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
-
-  function openMenu() {
-    menu.classList.add("active");
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden"; // trava o scroll
-  }
-
-  function closeMenu() {
-    menu.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-  }
 }
 
 // =============================
