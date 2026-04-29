@@ -5,102 +5,73 @@
   <title>Carrinho | F PAC STORE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap
+  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
 
-  <!-- ICONES -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/global.css">
+  css/global.css
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <div id="header-placeholder"></div>
 
   <main class="container carrinho">
 
     <h1>Seu carrinho</h1>
 
-    <div id="listaCarrinho" class="lista-carrinho">
-      <!-- Itens renderizados via JS -->
-    </div>
+    <div id="listaCarrinho" class="lista-carrinho"></div>
 
     <div class="carrinho-resumo">
       <strong>Total:</strong>
       <span id="totalCarrinho">R$ 0,00</span>
     </div>
 
-    <a href="checkout.html" class="btn-prime">
-      Finalizar compra
-    </a>
+    checkout.htmlFinalizar compra</a>
 
   </main>
 
-  <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
-  <!-- JS -->
-  <script src="js/layout.js"></script>
-  <script src="js/header.js"></script>
-  <script src="js/carrinho.js"></script>
+  js/layout.js
+  js/header.jsscript>
+  js/carrinho.jsscript>
 
-  <!-- SCRIPT DO CARRINHO -->
   <script>
-    const container = document.getElementById("listaCarrinho");
+    const lista = document.getElementById("listaCarrinho");
     const totalEl = document.getElementById("totalCarrinho");
     const carrinho = getCarrinho();
 
     if (carrinho.length === 0) {
-      container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
     } else {
-      container.innerHTML = "";
+      lista.innerHTML = "";
 
       carrinho.forEach((item, index) => {
 
-        let previewPrime = "";
+        let detalhes = "";
 
         if (item.id === "prime") {
-          previewPrime = `
-            <div class="prime-preview">
-              <img src="assets/img/mocks/camisa-base.png" alt="         <p><strong>Estampas:</strong> ${item.variacao.estampas}</p>
-              <p><strong>Posição:</strong> ${item.variacao.posicao}</p>
-              <p><strong>Acabamento:</strong> ${item.variacao.acabamento}</p>
-            </div>
+          detalhes = `
+            <p><strong>Estampas:</strong> ${item.variacao.estampas}</p>
+            <p><strong>Posição:</strong> ${item.variacao.posicao}</p>
+            <p><strong>Acabamento:</strong> ${item.variacao.acabamento}</p>
           `;
         }
 
-        container.innerHTML += `
+        lista.innerHTML += `
           <div class="item-carrinho">
-
-            ${previewPrime}
-
             <div class="info-item">
               <h3>${item.nome}</h3>
-              <p>R$ ${item.preco.toFixed(2)}</p>
-
-              <button onclick="removerItem(${index})">
-                Remover
-              </button>
+              ${detalhes}
+              <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
+              <button onclick="removerItem(${index})">Remover</button>
             </div>
-
           </div>
         `;
       });
     }
 
-    totalEl.innerText =
-      "R$ " + calcularTotal().toFixed(2);
-
-    function normalizarPosicao(posicao){
-      return posicao
-        .toLowerCase()
-        .replace(" ", "-")
-        .replace("ã","a")
-        .replace("ç","c");
-    }
+    totalEl.innerText = "R$ " + calcularTotal().toFixed(2);
   </script>
 
 </body>
