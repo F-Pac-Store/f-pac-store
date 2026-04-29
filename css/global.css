@@ -11,21 +11,18 @@ body{
   color:#000;
 }
 
-/* PRODUTO */
-.container{max-width:1200px;margin:auto;padding:40px 20px}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
 
+/* PRODUTO */
 .produto{
   margin-top:160px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
-}
-
-.produto-img img{
-  width:100%;
-  background:#fff;
-  padding:20px;
-  border-radius:20px;
 }
 
 .produto-info h1{font-size:2.3rem}
@@ -48,12 +45,43 @@ body{
 
 .cta-link{
   font-weight:800;
-  text-decoration:none;
   border-bottom:2px solid var(--accent);
   color:#000;
+  text-decoration:none;
 }
 
-/* PRIME BUILDER */
+/* MOCK PRIME */
+.prime-mock{
+  position:relative;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+}
+
+.camisa-base{
+  width:100%;
+  display:block;
+}
+
+/* ESTAMPA MOCK */
+.mock-estampa{
+  position:absolute;
+  background:var(--accent);
+  color:#000;
+  font-weight:800;
+  padding:8px 14px;
+  border-radius:6px;
+  font-size:0.75rem;
+}
+
+/* POSIÇÕES */
+.peito-esquerdo{ top:38%; left:32%; }
+.peito-central{ top:38%; left:50%; transform:translateX(-50%); }
+.peito-direito{ top:38%; left:62%; }
+.costas{ top:35%; left:50%; transform:translateX(-50%); }
+.ombro{ top:22%; left:70%; }
+
+/* BUILDER */
 .prime-builder{
   max-width:1000px;
   margin:100px auto;
@@ -62,19 +90,14 @@ body{
   border-radius:28px;
 }
 
-.prime-builder h2{text-align:center}
-.prime-intro{text-align:center;color:#555;margin-bottom:40px}
-
-.prime-step{margin-bottom:40px}
-
 .prime-options{
   display:flex;
-  flex-wrap:wrap;
   gap:12px;
+  flex-wrap:wrap;
 }
 
 .prime-options button{
-  padding:12px 20px;
+  padding:12px 22px;
   border-radius:30px;
   border:1px solid #ccc;
   background:#f5f5f5;
@@ -88,22 +111,16 @@ body{
 }
 
 .btn-prime{
-  margin:40px auto 0;
-  display:block;
+  margin-top:40px;
   padding:16px;
   border-radius:40px;
   background:var(--primary);
   color:#fff;
   font-weight:800;
   border:none;
-  cursor:pointer;
 }
 
-.btn-prime:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-
+/* RESPONSIVO */
 @media(max-width:768px){
   .produto{grid-template-columns:1fr}
 }
