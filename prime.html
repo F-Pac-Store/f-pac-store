@@ -22,12 +22,22 @@
 
   <main>
 
-    <!-- HERO PRIME -->
+    <!-- PRIME HERO + MOCK -->
     <section class="container produto">
-      <div class="produto-img">
-        <img src="assets/img/cards/F-PAC-frente-e-costas.png" alt="Modelo PRIME">
+
+      <!-- MOCK CAMISA -->
+      <div class="produto-img prime-mock">
+
+        <img src="assets/img/mocks/camisa-base.png" alt="Camisa PRIME" class="camisa-base">
+
+        <!-- ESTAMPA MOCK -->
+        <div id="mock-estampa" class="mock-estampa peito-esquerdo">
+          F PAC
+        </div>
+
       </div>
 
+      <!-- INFO -->
       <div class="produto-info">
         <h1>Modelo PRIME</h1>
         <div class="subtitulo">Linha PRIME · Criação exclusiva</div>
@@ -40,54 +50,34 @@
         </div>
 
         <div class="descricao">
-          A PRIME é a experiência máxima da F PAC STORE.
-          Aqui você cria sua própria composição.
+          Visualize em tempo real onde sua estampa será aplicada.
+          Cada PRIME é única.
         </div>
 
         <a href="#builder" class="cta-link">Criar minha PRIME</a>
       </div>
+
     </section>
 
     <!-- BUILDER -->
     <section id="builder" class="prime-builder">
 
       <h2>Monte sua PRIME</h2>
-      <p class="prime-intro">Cada escolha define sua camisa.</p>
+      <p class="prime-intro">Veja sua criação ganhar forma.</p>
 
-      <!-- ETAPA 1 -->
+      <!-- POSIÇÕES -->
       <div class="prime-step">
-        <h3>1. Quantidade de estampas</h3>
-        <div class="prime-options" data-step="quantidade">
-          <button data-value="1">1 estampa</button>
-          <button data-value="2">2 estampas</button>
-          <button data-value="3">3 estampas</button>
-        </div>
-      </div>
-
-      <!-- ETAPA 2 -->
-      <div class="prime-step">
-        <h3>2. Posição da estampa</h3>
+        <h3>Posição da estampa</h3>
         <div class="prime-options" data-step="posicao">
-          <button data-value="Peito esquerdo">Peito esquerdo</button>
-          <button data-value="Peito central">Peito central</button>
-          <button data-value="Peito direito">Peito direito</button>
-          <button data-value="Costas">Costas</button>
-          <button data-value="Ombro">Ombro (exclusivo)</button>
+          <button data-value="peito-esquerdo">Peito esquerdo</button>
+          <button data-value="peito-central">Peito central</button>
+          <button data-value="peito-direito">Peito direito</button>
+          <button data-value="costas">Costas</button>
+          <button data-value="ombro">Ombro (exclusivo)</button>
         </div>
       </div>
 
-      <!-- ETAPA 3 -->
-      <div class="prime-step">
-        <h3>3. Acabamento</h3>
-        <div class="prime-options" data-step="acabamento">
-          <button data-value="Com fundo">Com fundo</button>
-          <button data-value="Sem fundo">Sem fundo</button>
-        </div>
-      </div>
-
-      <button id="btnAdicionarCarrinho" class="btn-prime" disabled>
-        Adicionar PRIME ao carrinho
-      </button>
+      <button class="btn-prime">Continuar personalização</button>
 
     </section>
 
@@ -99,8 +89,7 @@
   <!-- JS -->
   <script src="js/layout.js"></script>
   <script src="js/header.js"></script>
-  <script src="js/carrinho.js"></script>
-  <script src="js/prime.js"></script>
+  <script src="js/prime-mock.js"></script>
 
 </body>
 </html>
