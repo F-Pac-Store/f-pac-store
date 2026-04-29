@@ -367,3 +367,18 @@ body{
   height:38px;
 }
 
+/* =============================
+   FORÇAR COR DOS ÍCONES NO MENU
+============================= */
+
+/* WhatsApp */
+.nav a .fa-whatsapp,
+.mobile-menu a .fa-whatsapp {
+  color: #25D366 !important;
+}
+
+/* Instagram */
+.nav a .fa-instagram,
+.mobile-menu a .fa-instagram {
+  color: #E1306C !important;
+}
